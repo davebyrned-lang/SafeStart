@@ -1,0 +1,14 @@
+{
+  "name": "safestart",
+  "version": "2.0.0",
+  "private": true,
+  "description": "SafeStart — parental controls made simple. Curated step-by-step guides, with live research for anything not curated yet.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "check": "node scripts/check.js",
+    "test": "node scripts/check.js && node scripts/api-test.js && node scripts/browser-test.js"
+  }
+}
