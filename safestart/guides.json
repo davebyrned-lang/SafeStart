@@ -1,2327 +1,2357 @@
 {
-  "version": "2026.08.20",
-  "verifiedOn": "2026-08-20",
-  "ageBands": [
-    {
-      "id": "7-11",
-      "label": "7–11",
-      "profile": "Maximum Protection"
-    },
-    {
-      "id": "11-12",
-      "label": "11–12",
-      "profile": "High Protection"
-    },
-    {
-      "id": "13-15",
-      "label": "13–15",
-      "profile": "Balanced Supervision"
-    },
-    {
-      "id": "16-17",
-      "label": "16–17",
-      "profile": "Guided Independence"
-    }
-  ],
-  "profiles": {
-    "Maximum Protection": {
-      "summary": "Lock the doors first. At this age the goal is no contact with strangers, no spending, and content well inside their age rating.",
-      "principles": [
-        "Chat with people they don’t know: off",
-        "Purchases: always need your approval",
-        "Content: the most restrictive setting available",
-        "Play together where you can, so the rules feel shared rather than imposed"
-      ]
-    },
-    "High Protection": {
-      "summary": "Still tightly controlled, but start explaining the reasons. Kids this age notice restrictions and will work around ones they don’t understand.",
-      "principles": [
-        "Chat limited to friends you’ve both agreed on",
-        "Purchases need your approval",
-        "Content one notch above the youngest setting",
-        "Agree screen time together rather than announcing it"
-      ]
-    },
-    "Balanced Supervision": {
-      "summary": "Teens need some room. Keep the safety rails that matter most (strangers, spending, sleep) and loosen the rest.",
-      "principles": [
-        "Friends-only messaging and voice chat",
-        "Private account by default",
-        "Spending limits rather than a hard block",
-        "Visibility over surveillance: you see patterns, not private messages"
-      ]
-    },
-    "Guided Independence": {
-      "summary": "They’re close to managing this themselves. Focus on the few settings that prevent real harm and on the habits they’ll keep after 18.",
-      "principles": [
-        "Keep location and sleep protections on",
-        "Talk through privacy settings rather than setting them silently",
-        "Agree a spending ceiling",
-        "Make sure they know how to block, report, and come to you"
-      ]
-    }
+ "version": "2026.08.20",
+ "verifiedOn": "2026-08-20",
+ "ageBands": [
+  {
+   "id": "7-11",
+   "label": "7–11",
+   "profile": "Maximum Protection"
   },
-  "devices": [
-    {
-      "id": "iphone",
-      "label": "iPhone",
-      "group": "Phones & tablets",
-      "short": "iPhone"
-    },
-    {
-      "id": "ipad",
-      "label": "iPad",
-      "group": "Phones & tablets",
-      "short": "iPad"
-    },
-    {
-      "id": "android",
-      "label": "Android phone or tablet",
-      "group": "Phones & tablets",
-      "short": "Android"
-    },
-    {
-      "id": "windows",
-      "label": "Windows PC",
-      "group": "Computers",
-      "short": "Windows"
-    },
-    {
-      "id": "mac",
-      "label": "Mac",
-      "group": "Computers",
-      "short": "Mac"
-    },
-    {
-      "id": "chromebook",
-      "label": "Chromebook",
-      "group": "Computers",
-      "short": "Chromebook"
-    },
-    {
-      "id": "playstation",
-      "label": "PlayStation",
-      "group": "Consoles",
-      "short": "PlayStation"
-    },
-    {
-      "id": "xbox",
-      "label": "Xbox",
-      "group": "Consoles",
-      "short": "Xbox"
-    },
-    {
-      "id": "switch",
-      "label": "Nintendo Switch",
-      "group": "Consoles",
-      "short": "Switch"
-    }
-  ],
-  "helpModes": [
-    {
-      "id": "quick",
-      "label": "Quick setup",
-      "icon": "bolt",
-      "hint": "Just tell me what to tap."
-    },
-    {
-      "id": "learn",
-      "label": "Learn as we go",
-      "icon": "book",
-      "hint": "Explain why each setting matters."
-    },
-    {
-      "id": "review",
-      "label": "Review my settings",
-      "icon": "check",
-      "hint": "I’ve set things up. Check my work."
-    },
-    {
-      "id": "stuck",
-      "label": "I can’t find it",
-      "icon": "help",
-      "hint": "The menu doesn’t look like the instructions."
-    }
-  ],
-  "guides": {
-    "roblox": {
-      "id": "roblox",
-      "name": "Roblox",
-      "type": "app",
-      "kind": "Game",
-      "blurb": "A platform of millions of user-made games. The games themselves are made by other users, so quality and content vary enormously.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "chromebook",
-        "xbox",
-        "playstation",
-        "switch"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 12,
-      "risks": [
-        "Open chat means adults can talk to your child inside games",
-        "Robux spending adds up fast, often through gift cards",
-        "Content ratings are set by creators, so some games slip through"
-      ],
-      "beforeYouStart": [
-        "You’ll need your own Roblox account, linked to your child’s, to change these settings.",
-        "Have your child’s login handy, and pick a Parent PIN they don’t know."
-      ],
-      "steps": [
-        {
-          "id": "link",
-          "title": "Link your account and set a Parent PIN",
-          "why": "Without a PIN, your child can undo everything you’re about to set in about ten seconds.",
-          "path": "Roblox → Settings → Parental Controls",
-          "do": [
-            "Sign in to your child’s Roblox account on a phone or at roblox.com.",
-            "Open Settings, then Parental Controls.",
-            "Add your own email as the parent email and verify it from your inbox.",
-            "Create a Parent PIN. Choose something your child won’t guess — not a birthday."
-          ],
-          "result": "Every setting below now requires your PIN to change."
-        },
-        {
-          "id": "maturity",
-          "title": "Set Content Maturity",
-          "why": "This is the single biggest lever. It filters which games your child can even open.",
-          "path": "Settings → Parental Controls → [your child] → Settings You Manage → Content restrictions → Content maturity",
-          "do": [
-            "Open Content restrictions, then Content maturity.",
-            "Pick the level for your child’s age from the table.",
-            "Confirm with your PIN."
-          ],
-          "recommended": {
-            "7-11": "Minimal",
-            "11-12": "Minimal",
-            "13-15": "Mild",
-            "16-17": "Moderate"
-          },
-          "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood."
-        },
-        {
-          "id": "chat",
-          "title": "Control who can talk to them",
-          "why": "Most of the real risk on Roblox is contact, not content. This is the step worth getting right.",
-          "path": "Settings → Parental Controls → Settings You Manage → Communication",
-          "do": [
-            "Open the Communication section.",
-            "Set each of Game chat, Direct chat, Friends chat and Party to the level below.",
-            "Confirm with your PIN."
-          ],
-          "recommended": {
-            "7-11": "All chat off",
-            "11-12": "Friends only, direct chat off",
-            "13-15": "Friends only",
-            "16-17": "Friends only"
-          },
-          "note": "Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users."
-        },
-        {
-          "id": "spend",
-          "title": "Put a ceiling on Robux spending",
-          "why": "In-game purchases are designed to be quick and frictionless. A monthly cap turns an expensive surprise into a small one.",
-          "path": "Settings → Parental Controls → Settings You Manage → Spending restrictions",
-          "do": [
-            "Open Spending restrictions.",
-            "Set a monthly spend limit you’re comfortable with.",
-            "Turn on transaction notifications so you see purchases as they happen."
-          ],
-          "recommended": {
-            "7-11": "£0 / $0 — no spending",
-            "11-12": "£0 / $0 — no spending",
-            "13-15": "A small monthly cap you agree together",
-            "16-17": "An agreed monthly cap"
-          },
-          "note": "Roblox also sends high-spend alerts at $100, $250 and $500."
-        },
-        {
-          "id": "screentime",
-          "title": "Set a daily time limit",
-          "why": "Roblox has no natural stopping point. A built-in limit avoids the nightly argument.",
-          "path": "Settings → Parental Controls → Screen time → Manage → Screen time limit",
-          "do": [
-            "Open Screen time, then Manage.",
-            "Choose a daily limit.",
-            "While you’re here, look at the list of the top games they played this week — it’s a good conversation starter."
-          ],
-          "recommended": {
-            "7-11": "30–45 minutes",
-            "11-12": "45–60 minutes",
-            "13-15": "Agree it together",
-            "16-17": "Agree it together"
-          }
-        },
-        {
-          "id": "friends",
-          "title": "Go through the friends list together",
-          "why": "Friend lists collect strangers over time. Ten minutes here is worth more than any setting.",
-          "do": [
-            "Open your child’s friends list.",
-            "Ask about anyone you don’t recognize: where did you meet them?",
-            "Remove anyone they only know from inside a game."
-          ],
-          "ages": [
-            "7-11",
-            "11-12",
-            "13-15"
-          ]
-        },
-        {
-          "id": "device",
-          "title": "Add a device-level backstop",
-          "why": "Roblox settings only cover Roblox. A device-level control catches the app they download next.",
-          "do": [
-            "Set up Screen Time (iPhone/iPad/Mac), Family Link (Android/Chromebook), Microsoft Family Safety (Windows/Xbox), or your console’s parental controls.",
-            "Require your approval for new app downloads."
-          ],
-          "note": "SafeStart has a separate guide for each of these — pick your device on the home screen."
-        }
-      ],
-      "checklist": [
-        "Parent PIN set and known only to you",
-        "Content maturity set for their age",
-        "Chat restricted to friends, or off",
-        "Monthly spending capped",
-        "Daily time limit set",
-        "Friends list reviewed together"
-      ],
-      "talkAboutIt": [
-        "Ask them to show you their favorite game and play a round with them.",
-        "Agree what they’ll do if someone asks them to move the chat to Discord or Snapchat — that’s a common grooming step.",
-        "Make sure they know nobody legitimate ever needs their password or a free-Robux code."
-      ],
-      "links": [
-        {
-          "label": "Roblox — Parental Controls Overview (official)",
-          "url": "https://en.help.roblox.com/hc/en-us/articles/30428310121620-Parental-Controls-Overview"
-        },
-        {
-          "label": "Roblox — Parental Controls hub (official)",
-          "url": "https://about.roblox.com/parental-controls"
-        },
-        {
-          "label": "Roblox — Content Maturity Labels (official)",
-          "url": "https://en.help.roblox.com/hc/en-us/articles/8862768451604-Content-Maturity-Labels"
-        }
-      ]
-    },
-    "tiktok": {
-      "id": "tiktok",
-      "name": "TikTok",
-      "type": "app",
-      "kind": "Social",
-      "blurb": "Short video feed driven by an algorithm. The feed adapts fast, which is both the appeal and the risk.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "chromebook"
-      ],
-      "minAge": 13,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 10,
-      "risks": [
-        "The algorithm can narrow quickly onto body image, diet or self-harm content",
-        "Public accounts invite comments and messages from strangers",
-        "It is genuinely hard to stop watching, which eats into sleep"
-      ],
-      "beforeYouStart": [
-        "TikTok’s minimum age is 13. If your child is younger, the honest answer is that they’re on the wrong app rather than the wrong settings.",
-        "You’ll need TikTok installed on your own phone, and your child’s phone in your hand for about a minute."
-      ],
-      "steps": [
-        {
-          "id": "pairing",
-          "title": "Set up Family Pairing",
-          "why": "Family Pairing lets you change your teen’s safety settings from your own phone, and stops them changing them back.",
-          "path": "Profile → ☰ (top right) → Settings and privacy → Family Pairing",
-          "do": [
-            "On your phone: open your profile, tap the three lines top right, then Settings and privacy.",
-            "Scroll to Family Pairing and tap Continue.",
-            "Choose Parent. You’ll get a QR code.",
-            "On your teen’s phone: go to the same Family Pairing screen, choose Teen, and scan your QR code.",
-            "Your teen reviews the permissions and taps Link accounts."
-          ],
-          "result": "Everything below is now set from your phone."
-        },
-        {
-          "id": "private",
-          "title": "Make the account private",
-          "why": "A public account means anyone can see their videos, comment, and work out where they go to school.",
-          "path": "Family Pairing → [your teen] → Privacy and safety",
-          "do": [
-            "Turn Private account on.",
-            "Turn off Suggest your teen’s account to others."
-          ],
-          "recommended": {
-            "13-15": "Private, on",
-            "16-17": "Private — worth agreeing together"
-          }
-        },
-        {
-          "id": "contact",
-          "title": "Limit messages, comments and mentions",
-          "why": "This is where strangers actually reach teenagers. Content filters don’t help with contact.",
-          "path": "Family Pairing → [your teen] → Privacy and safety → Safety",
-          "do": [
-            "Set who can send direct messages.",
-            "Set who can comment on their videos.",
-            "Set who can mention or tag them."
-          ],
-          "recommended": {
-            "13-15": "Friends, or No one for DMs",
-            "16-17": "Friends"
-          },
-          "note": "Direct messaging is switched off entirely for accounts registered as under 16."
-        },
-        {
-          "id": "restricted",
-          "title": "Turn on Restricted Mode and keyword filters",
-          "why": "Restricted Mode filters out content that isn’t appropriate for younger viewers. Keyword filters let you name the specific things you’re worried about.",
-          "path": "Family Pairing → Content preferences",
-          "do": [
-            "Turn Restricted Mode on.",
-            "Open Filter video keywords and add words relevant to your family — diet and body-image terms are a common starting point."
-          ]
-        },
-        {
-          "id": "screentime",
-          "title": "Set daily screen time and a Time away schedule",
-          "why": "TikTok’s feed has no end. The sleep effect is the most reliably harmful part for most teenagers.",
-          "path": "Family Pairing → [your teen] → Screen time",
-          "do": [
-            "Set a Daily screen time limit (the minimum TikTok allows is 40 minutes).",
-            "Add a Time away schedule covering school hours and bedtime."
-          ],
-          "recommended": {
-            "13-15": "60 minutes, phone out of the bedroom overnight",
-            "16-17": "Agree a limit together, keep the overnight block"
-          }
-        },
-        {
-          "id": "reset",
-          "title": "Show them how to reset the feed",
-          "why": "If the algorithm goes somewhere dark, they can fix it themselves. Teaching this beats monitoring it.",
-          "do": [
-            "Show them the 'not interested' option on a long-press of any video.",
-            "Show them Settings and privacy → Content preferences → Refresh your For You feed.",
-            "Agree that if the feed gets strange, they tell you and you fix it together — no blame."
-          ],
-          "ages": [
-            "13-15",
-            "16-17"
-          ]
-        }
-      ],
-      "checklist": [
-        "Family Pairing linked",
-        "Account set to private",
-        "DMs and comments limited to friends",
-        "Restricted Mode on",
-        "Daily limit and overnight Time away set",
-        "They know how to reset the feed and report a video"
-      ],
-      "talkAboutIt": [
-        "Ask what’s on their For You page right now. It’s the fastest way to know what they’re seeing.",
-        "Agree that filters and screenshots of DMs come to you without anyone getting in trouble.",
-        "Talk about why an account being private matters even when the videos seem harmless."
-      ],
-      "links": [
-        {
-          "label": "TikTok — Family Pairing (official support)",
-          "url": "https://support.tiktok.com/en/account-and-privacy/family-pairing"
-        },
-        {
-          "label": "TikTok — Guardian’s Guide (official)",
-          "url": "https://www.tiktok.com/safety/en/guardians-guide/"
-        },
-        {
-          "label": "Internet Matters — TikTok safety settings",
-          "url": "https://www.internetmatters.org/parental-controls/social-media/tiktok-privacy-and-safety-settings/"
-        }
-      ]
-    },
-    "instagram": {
-      "id": "instagram",
-      "name": "Instagram",
-      "type": "app",
-      "kind": "Social",
-      "blurb": "Photo, video and messaging app. Under-18 accounts now get a protected 'Teen Account' setup by default.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "chromebook"
-      ],
-      "minAge": 13,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 10,
-      "risks": [
-        "Contact from adults through DMs and story replies",
-        "Comparison and body-image pressure, especially in Reels",
-        "Location and school details leaking through tags and photos"
-      ],
-      "beforeYouStart": [
-        "Check the birthday on their account first. Teen Account protections only apply if Instagram knows they’re under 18 — a wrong birthday quietly disables all of it.",
-        "You’ll both need an Instagram account for supervision."
-      ],
-      "steps": [
-        {
-          "id": "birthday",
-          "title": "Check the birthday on the account is correct",
-          "why": "This is the step most people skip, and it undoes everything else. Teen Accounts are applied based on the stated age.",
-          "path": "Profile → ☰ → Settings and privacy → Accounts Center → Personal details",
-          "do": [
-            "Open their profile and check the date of birth on the account.",
-            "If it’s wrong, correct it. Instagram may ask for verification."
-          ],
-          "result": "With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically."
-        },
-        {
-          "id": "supervision",
-          "title": "Set up parental supervision",
-          "why": "Teen Accounts protect. Supervision gives you visibility, and for under-16s, approval rights over setting changes.",
-          "path": "Settings and privacy → Supervision (or Family Center)",
-          "do": [
-            "On your account, open Settings and privacy, then Supervision.",
-            "Tap Set up supervision and send the invitation to your teen.",
-            "Your teen opens the invitation and accepts it.",
-            "Either of you can start the invite — sometimes it’s easier if they invite you."
-          ],
-          "note": "You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages."
-        },
-        {
-          "id": "approvals",
-          "title": "Know what needs your approval (under 16)",
-          "why": "For under-16s, loosening a safety setting sends you a request. Expect a few, and treat each one as a conversation rather than a yes/no.",
-          "do": [
-            "Watch for approval requests in Supervision.",
-            "When one comes in, ask why they want the change before deciding."
-          ],
-          "ages": [
-            "13-15"
-          ]
-        },
-        {
-          "id": "dms",
-          "title": "Tighten messaging and comments",
-          "why": "DMs are the main route strangers use. Teen Accounts already restrict this, but it’s worth confirming.",
-          "path": "Settings and privacy → Messages and story replies / Comments",
-          "do": [
-            "Confirm messages are limited to people they follow.",
-            "Turn on Hidden Words to filter offensive comments and message requests.",
-            "Set story replies to People you follow."
-          ],
-          "recommended": {
-            "13-15": "People you follow only",
-            "16-17": "People you follow only"
-          }
-        },
-        {
-          "id": "private",
-          "title": "Confirm the account is private and location is off",
-          "why": "A private account plus no location tags is most of the privacy job done.",
-          "path": "Settings and privacy → Account privacy",
-          "do": [
-            "Confirm Private account is on.",
-            "Turn off location tags when posting.",
-            "Check their bio doesn’t name their school or team."
-          ]
-        },
-        {
-          "id": "time",
-          "title": "Check screen time and Sleep Mode",
-          "why": "Sleep Mode mutes notifications and auto-replies to DMs overnight. It’s the setting most likely to actually improve things.",
-          "path": "Settings and privacy → Time management",
-          "do": [
-            "Confirm Sleep Mode is on (default is 10pm to 8am).",
-            "Set a daily time limit if you want a firmer stop."
-          ]
-        },
-        {
-          "id": "followers",
-          "title": "Scroll the follower list together",
-          "why": "Follower lists are where the surprises live. Do this one together rather than behind their back.",
-          "do": [
-            "Open their followers list and scroll it with them.",
-            "Remove or block anyone they can’t place.",
-            "Show them how to block and report while you’re there."
-          ]
-        }
-      ],
-      "checklist": [
-        "Birthday on the account is correct",
-        "Supervision linked",
-        "Account private",
-        "DMs limited to people they follow",
-        "Hidden Words on",
-        "Sleep Mode on",
-        "Followers reviewed together"
-      ],
-      "talkAboutIt": [
-        "Ask who they message most. You’ll learn more from that than from any dashboard.",
-        "Agree what happens if an adult they don’t know messages them — screenshot, don’t reply, show you.",
-        "Talk about how edited and filtered the feed is, without lecturing."
-      ],
-      "links": [
-        {
-          "label": "Instagram — Teen Accounts (official)",
-          "url": "https://about.instagram.com/blog/announcements/instagram-teen-accounts"
-        },
-        {
-          "label": "Instagram — Parental supervision (official help)",
-          "url": "https://help.instagram.com/1119754640225545"
-        },
-        {
-          "label": "Meta — Family Center",
-          "url": "https://familycenter.meta.com/"
-        }
-      ]
-    },
-    "snapchat": {
-      "id": "snapchat",
-      "name": "Snapchat",
-      "type": "app",
-      "kind": "Social",
-      "blurb": "Messaging app built around disappearing photos and videos, plus a live location map.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android"
-      ],
-      "minAge": 13,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 10,
-      "risks": [
-        "Snap Map can broadcast their exact location to a wide friends list",
-        "Messages disappear, so evidence of harassment disappears too",
-        "Quick Add surfaces strangers as suggested friends"
-      ],
-      "beforeYouStart": [
-        "You need your own Snapchat account, and you need to be friends with your child on it before Family Center will work.",
-        "Family Center shows you who they talk to, not what they say. That’s deliberate, and worth explaining to your child."
-      ],
-      "steps": [
-        {
-          "id": "friend",
-          "title": "Add each other as friends",
-          "why": "Family Center only works between accounts that are already friends.",
-          "do": [
-            "On your account, tap Add Friends and search your child’s username.",
-            "Have them accept."
-          ]
-        },
-        {
-          "id": "familycenter",
-          "title": "Set up Family Center",
-          "why": "It shows you their contacts from the last week and lets you report accounts directly to Snapchat.",
-          "path": "Profile → ⚙️ Settings → Privacy Control → Family Center",
-          "do": [
-            "Open your profile, tap the gear icon, then Privacy Control, then Family Center.",
-            "Select your child’s name and send the invitation.",
-            "On their phone, they tap View Invitation, then Accept."
-          ],
-          "result": "You’ll see who they’ve messaged in the last seven days and their friends list."
-        },
-        {
-          "id": "location",
-          "title": "Turn on Ghost Mode",
-          "why": "Snap Map shows live location to everyone on their friends list. For most children this is the single most important setting on Snapchat.",
-          "path": "Map screen → ⚙️ (top right) → Ghost Mode",
-          "do": [
-            "From the camera screen, tap the location pin at the bottom left to open the Map.",
-            "Tap the gear icon in the top right.",
-            "Turn on Ghost Mode."
-          ],
-          "recommended": {
-            "7-11": "Ghost Mode on",
-            "11-12": "Ghost Mode on",
-            "13-15": "Ghost Mode on, or share with a small chosen list",
-            "16-17": "Agree together — at minimum, not 'My Friends'"
-          }
-        },
-        {
-          "id": "contact",
-          "title": "Limit who can contact them and see their story",
-          "why": "Default settings are more open than most parents expect.",
-          "path": "Profile → ⚙️ Settings → Privacy Controls",
-          "do": [
-            "Open Contact Me and set it to Friends.",
-            "Open View My Story and set it to My Friends, or a Custom list.",
-            "Turn off Quick Add so they stop being suggested to strangers."
-          ],
-          "recommended": {
-            "13-15": "Friends only, Quick Add off",
-            "16-17": "Friends only, Quick Add off"
-          }
-        },
-        {
-          "id": "content",
-          "title": "Restrict sensitive content in Stories and Spotlight",
-          "why": "Discover and Spotlight are public feeds, and they’re where most of the age-inappropriate content sits.",
-          "path": "Family Center → Content Controls",
-          "do": [
-            "In Family Center, open Content Controls.",
-            "Turn on the restriction for sensitive content."
-          ]
-        },
-        {
-          "id": "screenshots",
-          "title": "Talk about the disappearing part",
-          "why": "Children often believe a snap is gone forever. It isn’t — anyone can screenshot or photograph the screen with another phone.",
-          "do": [
-            "Explain that anything sent can be saved by the person receiving it.",
-            "Agree that if they’re ever sent something upsetting, they screenshot it before it disappears and show you."
-          ]
-        }
-      ],
-      "checklist": [
-        "Family Center linked",
-        "Ghost Mode on",
-        "Contact Me set to Friends",
-        "Quick Add off",
-        "Sensitive content restricted",
-        "They know how to screenshot and report"
-      ],
-      "talkAboutIt": [
-        "Ask them to show you their Snap Map and who can see them.",
-        "Agree the rule that disappearing doesn’t mean private.",
-        "Make sure they know they can block someone without explaining themselves to anyone."
-      ],
-      "links": [
-        {
-          "label": "Snapchat — Family Center (official)",
-          "url": "https://parents.snapchat.com/"
-        },
-        {
-          "label": "Snap — Family Center announcement",
-          "url": "https://newsroom.snap.com/deeper-insights-with-family-center"
-        },
-        {
-          "label": "Internet Matters — Snapchat privacy settings",
-          "url": "https://www.internetmatters.org/parental-controls/social-media/snapchat/"
-        }
-      ]
-    },
-    "discord": {
-      "id": "discord",
-      "name": "Discord",
-      "type": "app",
-      "kind": "Chat",
-      "blurb": "Text and voice chat organized into servers. Popular alongside gaming, and largely made up of communities of strangers.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "chromebook",
-        "playstation",
-        "xbox"
-      ],
-      "minAge": 13,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 12,
-      "risks": [
-        "Public servers put your child in rooms with adults they don’t know",
-        "Voice chat leaves no record",
-        "It’s a common place for someone met in a game to move the conversation"
-      ],
-      "beforeYouStart": [
-        "Discord now applies teen-appropriate settings by default to accounts registered as under 18, but you should still check them.",
-        "Family Center linking is done from your teen’s side — they generate a QR code that you scan with the Discord mobile app."
-      ],
-      "steps": [
-        {
-          "id": "familycenter",
-          "title": "Turn on Family Center and link your accounts",
-          "why": "It gives you a weekly picture of who they’re talking to and which servers they’ve joined.",
-          "path": "User Settings → Family Center",
-          "do": [
-            "Both of you: open User Settings and find the Family Center tab (on mobile, tap your profile icon first).",
-            "Turn on Enable Family Center tab.",
-            "Your teen opens Family Center and chooses Connect with Guardian to generate a QR code.",
-            "Scan that code with the Discord mobile app on your phone.",
-            "Your teen accepts the connection."
-          ],
-          "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days — plus a weekly email. You won’t see message content."
-        },
-        {
-          "id": "content",
-          "title": "Set the sensitive content filter",
-          "why": "Direct messages and server messages can contain images your child didn’t ask for.",
-          "path": "User Settings → Privacy & Safety",
-          "do": [
-            "Open Privacy & Safety.",
-            "Set sensitive content in direct messages to Block.",
-            "Set sensitive content in servers to Block."
-          ],
-          "recommended": {
-            "13-15": "Block everywhere",
-            "16-17": "Block or Blur"
-          }
-        },
-        {
-          "id": "dms",
-          "title": "Close down direct messages from strangers",
-          "why": "By default, sharing a server with someone can be enough for them to message your child privately.",
-          "path": "User Settings → Privacy & Safety",
-          "do": [
-            "Turn off Allow direct messages from server members.",
-            "Set who can send friend requests to Friends of Friends, or off entirely.",
-            "Turn off Message Requests if you’d rather nothing gets through at all."
-          ],
-          "recommended": {
-            "13-15": "Server DMs off, friend requests from friends of friends only",
-            "16-17": "Server DMs off"
-          }
-        },
-        {
-          "id": "servers",
-          "title": "Go through their server list together",
-          "why": "This is the part that matters most and no setting can do it for you. Most risk on Discord comes from which rooms they’re in.",
-          "do": [
-            "Open their server list and ask about each one: what is it, who’s in it, how did you find it?",
-            "Leave any large public server they can’t explain.",
-            "Agree that new servers get mentioned to you."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Set a monthly spending cap",
-          "why": "Nitro subscriptions and gifts are easy to rack up.",
-          "path": "Family Center → spending settings",
-          "do": [
-            "Set a monthly limit on purchases."
-          ],
-          "recommended": {
-            "13-15": "£0 / $0 unless agreed",
-            "16-17": "A small agreed cap"
-          }
-        },
-        {
-          "id": "screentime",
-          "title": "Set screen time limits",
-          "why": "Voice chat sessions run long, especially at night.",
-          "path": "Family Center → Screen Time Limits",
-          "do": [
-            "Schedule downtime, particularly overnight."
-          ]
-        }
-      ],
-      "checklist": [
-        "Family Center linked",
-        "Sensitive content blocked",
-        "Server DMs turned off",
-        "Friend requests limited",
-        "Server list reviewed together",
-        "Spending capped"
-      ],
-      "talkAboutIt": [
-        "Ask which server they spend the most time in and what they like about it.",
-        "Agree that if anyone asks them to move to a private DM or another app, they tell you.",
-        "Make sure they know how to block and report inside Discord."
-      ],
-      "links": [
-        {
-          "label": "Discord — Family Center for parents (official)",
-          "url": "https://support.discord.com/hc/en-us/articles/14155043715735-Family-Center-for-Parents-and-Guardians"
-        },
-        {
-          "label": "Discord — Family Center hub (official)",
-          "url": "https://discord.com/safety-family-center"
-        },
-        {
-          "label": "Discord — teen-by-default settings",
-          "url": "https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally"
-        }
-      ]
-    },
-    "youtube": {
-      "id": "youtube",
-      "name": "YouTube",
-      "type": "app",
-      "kind": "Video",
-      "blurb": "The biggest video platform. Which version your child should use depends heavily on their age.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "chromebook",
-        "playstation",
-        "xbox",
-        "switch"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 10,
-      "risks": [
-        "Autoplay and recommendations pull children well past what they set out to watch",
-        "Comments sections are unmoderated in practice",
-        "Content aimed at adults is often styled to look child-friendly"
-      ],
-      "beforeYouStart": [
-        "There are three options: YouTube Kids (young children), a supervised YouTube account through Family Link (roughly 9+), and a normal account (13+).",
-        "You’ll need the Family Link app, or access to families.google.com."
-      ],
-      "steps": [
-        {
-          "id": "choose",
-          "title": "Choose the right version of YouTube",
-          "why": "Getting this right matters more than any individual toggle.",
-          "do": [
-            "Under about 9: use the YouTube Kids app instead.",
-            "Roughly 9 to 12: use a supervised YouTube account via Family Link.",
-            "13 and over: a normal account, with the settings below applied."
-          ],
-          "recommended": {
-            "7-11": "YouTube Kids, or a supervised account on Explore",
-            "11-12": "Supervised account",
-            "13-15": "Supervised account or normal account with limits",
-            "16-17": "Normal account, with a conversation about the feed"
-          }
-        },
-        {
-          "id": "level",
-          "title": "Set the content level",
-          "why": "This decides which slice of YouTube they can reach. It’s the main control on a supervised account.",
-          "path": "Family Link app → [your child] → Controls → Content restrictions → YouTube",
-          "do": [
-            "Open Family Link and select your child.",
-            "Go to Controls, Content restrictions, then YouTube.",
-            "Pick the content setting for their age."
-          ],
-          "recommended": {
-            "7-11": "Explore (suggested 9+)",
-            "11-12": "Explore (suggested 9+)",
-            "13-15": "Explore more (suggested 13+)",
-            "16-17": "Most of YouTube"
-          },
-          "note": "The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them."
-        },
-        {
-          "id": "autoplay",
-          "title": "Turn off autoplay and pause history",
-          "why": "Autoplay is what turns a ten-minute video into two hours. Pausing history slows down the recommendation loop.",
-          "path": "YouTube app → Profile → Settings",
-          "do": [
-            "Turn Autoplay off.",
-            "Pause watch history and search history.",
-            "Clear the existing history if the recommendations have already drifted."
-          ]
-        },
-        {
-          "id": "block",
-          "title": "Block channels you don’t want",
-          "why": "Faster than trying to filter by topic, and it sticks.",
-          "do": [
-            "On a video from a channel you want gone, open the menu and choose Block this channel.",
-            "You can also manage blocked channels from the parent settings."
-          ]
-        },
-        {
-          "id": "time",
-          "title": "Set a time limit at the device level",
-          "why": "YouTube doesn’t have its own strong time limit, so use Screen Time or Family Link.",
-          "do": [
-            "iPhone/iPad: Settings → Screen Time → App Limits.",
-            "Android/Chromebook: Family Link → Controls → Daily limit."
-          ]
-        }
-      ],
-      "checklist": [
-        "Right version of YouTube for their age",
-        "Content level set",
-        "Autoplay off",
-        "Watch and search history paused",
-        "Time limit set at device level"
-      ],
-      "talkAboutIt": [
-        "Watch a couple of their favorite creators with them and ask what they like.",
-        "Talk about sponsorship and why creators recommend things.",
-        "Agree what they do if a video makes them uncomfortable — close it and tell you, not keep watching."
-      ],
-      "links": [
-        {
-          "label": "YouTube — content settings for supervised accounts (official)",
-          "url": "https://support.google.com/youtube/answer/10315823?hl=en"
-        },
-        {
-          "label": "Google — YouTube & YouTube Kids options for your child (official)",
-          "url": "https://support.google.com/families/answer/10495678?hl=en"
-        },
-        {
-          "label": "YouTube — parental controls for supervised accounts (official)",
-          "url": "https://support.google.com/youtube/answer/13877231?hl=en"
-        }
-      ]
-    },
-    "fortnite": {
-      "id": "fortnite",
-      "name": "Fortnite",
-      "type": "app",
-      "kind": "Game",
-      "blurb": "Online shooter with cartoon violence, played in squads with voice chat. Controls sit in two places: Epic’s account and the console or device.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "playstation",
-        "xbox",
-        "switch"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 12,
-      "risks": [
-        "Open voice chat with random squadmates, including adults",
-        "V-Bucks spending, often through gift cards",
-        "Battle pass mechanics that reward daily play and make missing a day feel costly"
-      ],
-      "beforeYouStart": [
-        "Choose a 6-digit PIN before you start — it’s shared with the Epic Games Store.",
-        "You’ll need to set controls in Fortnite and again on the console or device. Neither covers the other."
-      ],
-      "steps": [
-        {
-          "id": "pin",
-          "title": "Set the parental controls PIN",
-          "why": "Everything else depends on this. Without it, the settings are suggestions.",
-          "path": "Fortnite main menu → ☰ → ⚙️ → Parental Controls",
-          "do": [
-            "From the main menu, open the three-line menu, then the gear icon.",
-            "Choose Parental Controls.",
-            "Create a 6-digit PIN. Don’t reuse a PIN your child already knows.",
-            "Confirm the email address that receives reports."
-          ]
-        },
-        {
-          "id": "voice",
-          "title": "Set voice and text chat",
-          "why": "This is the biggest one. Random squad fill puts your child in a voice channel with strangers by default.",
-          "path": "Parental Controls → Voice Chat / Text Chat",
-          "do": [
-            "Set Voice Chat and Text Chat to the level below.",
-            "Confirm with your PIN."
-          ],
-          "recommended": {
-            "7-11": "Nobody",
-            "11-12": "Friends Only",
-            "13-15": "Friends Only",
-            "16-17": "Friends Only, or Friends & Teammates if agreed"
-          },
-          "note": "The options are Nobody, Friends Only, Friends & Teammates, and Everybody."
-        },
-        {
-          "id": "language",
-          "title": "Turn on the mature language filter",
-          "why": "Replaces swearing in text chat with heart symbols. Small thing, easy win.",
-          "path": "Parental Controls → Filter Mature Language",
-          "do": [
-            "Toggle Filter Mature Language on."
-          ]
-        },
-        {
-          "id": "friends",
-          "title": "Require your PIN to add friends",
-          "why": "It turns every new friend request into a two-second conversation, which is exactly what you want.",
-          "path": "Parental Controls → Require a PIN to add Epic friends",
-          "do": [
-            "Turn it on."
-          ],
-          "ages": [
-            "7-11",
-            "11-12",
-            "13-15"
-          ]
-        },
-        {
-          "id": "time",
-          "title": "Set playtime limits and weekly reports",
-          "why": "Fortnite matches don’t end at a convenient moment. A scheduled limit avoids the 'one more game' loop.",
-          "path": "Parental Controls → Playtime",
-          "do": [
-            "Set a daily limit (adjustable in 15-minute increments).",
-            "Set a different schedule for weekends if that suits you.",
-            "Turn on Weekly Playtime Reports so you get an email summary."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Require your PIN for purchases",
-          "why": "V-Bucks purchases are two taps away otherwise.",
-          "path": "Epic Games Store settings → Parental Controls → require PIN for purchases",
-          "do": [
-            "In the Epic Games Store parental controls, turn on the requirement for a PIN on all purchases.",
-            "Remove any saved payment card if your child plays unsupervised."
-          ]
-        },
-        {
-          "id": "platform",
-          "title": "Set the console or device controls too",
-          "why": "Epic’s controls don’t govern the console’s own chat and spending. Both layers are needed.",
-          "do": [
-            "PlayStation: set communication and spending limits in Family Management.",
-            "Xbox: set Privacy & online safety and spending in Microsoft Family Safety.",
-            "Switch: set restriction level and play-time limits in the Parental Controls app.",
-            "iPhone/iPad: use Screen Time. Android: use Family Link."
-          ],
-          "note": "SafeStart has a guide for each console — pick your device on the home screen."
-        }
-      ],
-      "checklist": [
-        "6-digit PIN set",
-        "Voice and text chat restricted",
-        "Mature language filter on",
-        "PIN required to add friends",
-        "Playtime limit and weekly report on",
-        "Purchases require a PIN",
-        "Console or device controls also set"
-      ],
-      "talkAboutIt": [
-        "Ask who they usually squad up with, and whether they’ve ever played with someone they only know online.",
-        "Agree the rule: nobody in a game ever needs to know your real name, school or where you live.",
-        "Watch a match with them. It tells you more than any setting screen."
-      ],
-      "links": [
-        {
-          "label": "Epic Games — parental controls (official)",
-          "url": "https://www.epicgames.com/help/en-US/epic-accounts-c5719348850459/parental-controls-c5719341581595"
-        },
-        {
-          "label": "Epic Games — Fortnite parental controls (official)",
-          "url": "https://www.epicgames.com/site/en-US/parental-controls"
-        },
-        {
-          "label": "Internet Matters — Fortnite parental controls",
-          "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/fortnite-battle-royale-parental-controls/"
-        }
-      ]
-    },
-    "minecraft": {
-      "id": "minecraft",
-      "name": "Minecraft",
-      "type": "app",
-      "kind": "Game",
-      "blurb": "Building and survival game. Single player is about as safe as gaming gets. Multiplayer servers and Realms are where the controls matter.",
-      "devices": [
-        "iphone",
-        "ipad",
-        "android",
-        "windows",
-        "mac",
-        "chromebook",
-        "playstation",
-        "xbox",
-        "switch"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 12,
-      "risks": [
-        "Public servers have open chat and no reliable moderation",
-        "Third-party servers and mods sit outside Microsoft’s controls entirely",
-        "Marketplace purchases with Minecoins"
-      ],
-      "beforeYouStart": [
-        "Most Minecraft controls actually live in the Microsoft account, not in the game. Set up a child account inside your family group first.",
-        "Single-player and a private Realm with known friends is a genuinely low-risk setup. Public servers are a different thing."
-      ],
-      "steps": [
-        {
-          "id": "account",
-          "title": "Put them on a child Microsoft account inside your family",
-          "why": "Nothing else works without this. An adult account can’t be supervised.",
-          "path": "family.microsoft.com",
-          "do": [
-            "Go to family.microsoft.com and sign in with your own Microsoft account.",
-            "Add your child as a family member, with their correct date of birth.",
-            "Make sure Minecraft is signed in with that account."
-          ]
-        },
-        {
-          "id": "multiplayer",
-          "title": "Set multiplayer and communication in Xbox privacy settings",
-          "why": "These three toggles control who can reach your child inside Minecraft, on every platform.",
-          "path": "account.xbox.com/settings → [your child] → Privacy & online safety → Xbox Series X|S, Xbox One, and Windows 10 devices",
-          "do": [
-            "Go to account.xbox.com/settings and sign in with your parent account.",
-            "Select your child’s profile, then the Privacy & online safety tab.",
-            "Choose the Xbox and Windows devices section.",
-            "Set 'You can join multiplayer games', 'Others can communicate with voice, text, or invites' and 'You can add friends' to the levels below."
-          ],
-          "recommended": {
-            "7-11": "Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.",
-            "11-12": "Multiplayer: Allow. Communicate: Friends only. Add friends: Block.",
-            "13-15": "Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.",
-            "16-17": "Multiplayer: Allow. Communicate: Friends only."
-          }
-        },
-        {
-          "id": "chat",
-          "title": "Turn chat off inside the game as well",
-          "why": "Two layers is better than one, and the in-game setting covers cases the account setting doesn’t.",
-          "do": [
-            "In Minecraft, open Settings and look for the chat option in the profile or general settings.",
-            "Turn chat off, or set it to show only commands, for younger children."
-          ],
-          "ages": [
-            "7-11",
-            "11-12"
-          ],
-          "confidence": "medium",
-          "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters — check the official Minecraft help link below."
-        },
-        {
-          "id": "realms",
-          "title": "Prefer a private Realm over public servers",
-          "why": "A Realm is invite-only and controlled by whoever owns it. Public servers are open to anyone.",
-          "do": [
-            "If they want to play with friends, set up or join a Realm rather than a public server.",
-            "As the Realm owner, you control the invite list.",
-            "Talk about third-party servers — those sit entirely outside these controls."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Require approval for purchases",
-          "why": "The Minecraft Marketplace sells skins and worlds for Minecoins, and children are the target market.",
-          "path": "family.microsoft.com → [your child] → Spending",
-          "do": [
-            "Turn on 'Needs organizer approval to buy things'.",
-            "Turn on purchase notification emails."
-          ]
-        },
-        {
-          "id": "time",
-          "title": "Set screen time in Microsoft Family Safety",
-          "why": "Covers Minecraft across Xbox and Windows in one place.",
-          "path": "family.microsoft.com → [your child] → Screen time",
-          "do": [
-            "Set daily limits or a schedule, per device."
-          ]
-        }
-      ],
-      "checklist": [
-        "Child account inside your Microsoft family",
-        "Multiplayer and communication set to friends only",
-        "Chat restricted in game for younger children",
-        "Playing on Realms rather than public servers",
-        "Purchases need approval",
-        "Screen time set"
-      ],
-      "talkAboutIt": [
-        "Ask them to give you a tour of what they’ve built. It’s an easy in.",
-        "Agree that public servers get checked with you first.",
-        "Talk about mods and downloads — where they come from matters."
-      ],
-      "links": [
-        {
-          "label": "Minecraft — parental controls and safety (official)",
-          "url": "https://help.minecraft.net/hc/en-us/articles/4408968616845"
-        },
-        {
-          "label": "Xbox — privacy and online safety settings (official)",
-          "url": "https://account.xbox.com/settings"
-        },
-        {
-          "label": "Microsoft Family Safety (official)",
-          "url": "https://family.microsoft.com/"
-        }
-      ]
-    },
-    "iphone": {
-      "id": "iphone",
-      "name": "iPhone",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Apple’s controls live in Screen Time, and work best when the child is in your Family Sharing group.",
-      "devices": [
-        "iphone"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 15,
-      "risks": [
-        "App Store downloads that bypass everything you’ve set up",
-        "The browser, which reaches everything the app controls don’t",
-        "Late-night use, which is the most consistently harmful pattern"
-      ],
-      "beforeYouStart": [
-        "Set up Family Sharing first and add your child’s Apple Account to your family group. Screen Time is far weaker without it.",
-        "Choose a Screen Time passcode that is not the phone’s unlock code and that your child doesn’t know."
-      ],
-      "steps": [
-        {
-          "id": "family",
-          "title": "Add them to Family Sharing",
-          "why": "It lets you manage their phone from yours, and it’s what makes Ask to Buy possible.",
-          "path": "Settings → [your name] → Family Sharing",
-          "do": [
-            "On your iPhone, open Settings and tap your name.",
-            "Tap Family Sharing and add your child.",
-            "If they’re under 13, create a child Apple Account for them here."
-          ]
-        },
-        {
-          "id": "passcode",
-          "title": "Set a Screen Time passcode",
-          "why": "Without a separate passcode, your child can turn all of this off in about fifteen seconds.",
-          "path": "Settings → Screen Time → [your child] → Change Screen Time Passcode",
-          "do": [
-            "Open Settings, then Screen Time, then choose your child under Family.",
-            "Set a Screen Time passcode.",
-            "Use a different code from the phone unlock, and don’t use a birthday."
-          ]
-        },
-        {
-          "id": "restrictions",
-          "title": "Turn on Content & Privacy Restrictions",
-          "why": "This is the master switch that unlocks everything else.",
-          "path": "Settings → Screen Time → [your child] → Content & Privacy Restrictions",
-          "do": [
-            "Open Content & Privacy Restrictions.",
-            "Enter your Screen Time passcode.",
-            "Toggle Content & Privacy Restrictions on."
-          ]
-        },
-        {
-          "id": "purchases",
-          "title": "Require approval for downloads and purchases",
-          "why": "Otherwise every setting you choose is one free app download away from irrelevant.",
-          "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
-          "do": [
-            "Set In-app Purchases to Don’t Allow.",
-            "Set Installing Apps and Deleting Apps according to the ages below.",
-            "Turn on Ask to Buy in Family Sharing so download requests come to your phone."
-          ],
-          "recommended": {
-            "7-11": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
-            "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
-            "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
-            "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
-          }
-        },
-        {
-          "id": "content",
-          "title": "Set content ratings and web filtering",
-          "why": "The browser is the widest open door on the phone. Web content filtering closes most of it.",
-          "path": "Content & Privacy Restrictions → App Store, Media, Web & Games",
-          "do": [
-            "Set age ratings for apps, films, TV and music.",
-            "Open Web Content and choose the level below.",
-            "For younger children, Allowed Websites lets you list the only sites that work."
-          ],
-          "recommended": {
-            "7-11": "Allowed Websites Only, apps rated 9+",
-            "11-12": "Limit Adult Websites, apps rated 12+",
-            "13-15": "Limit Adult Websites, apps rated 12+",
-            "16-17": "Limit Adult Websites"
-          }
-        },
-        {
-          "id": "downtime",
-          "title": "Set Downtime and App Limits",
-          "why": "Downtime is the one that protects sleep, which is the change most families actually feel.",
-          "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
-          "do": [
-            "Set Downtime to cover overnight — school nights first if you want an easier start.",
-            "Add App Limits for the categories that run away with time, usually Social and Games.",
-            "Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum)."
-          ],
-          "recommended": {
-            "7-11": "Downtime from 7pm, Social and Games limited to 45 min",
-            "11-12": "Downtime from 8:30pm",
-            "13-15": "Downtime from 9:30pm on school nights",
-            "16-17": "Agree a Downtime window together"
-          }
-        },
-        {
-          "id": "privacy",
-          "title": "Lock down privacy and location changes",
-          "why": "Stops apps quietly gaining location or contacts access later.",
-          "path": "Content & Privacy Restrictions → Privacy",
-          "do": [
-            "Open Location Services and set it to Don’t Allow Changes after you’ve set it how you want.",
-            "Do the same for Contacts and Photos.",
-            "Turn on Communication Limits so contact during Downtime is restricted to known contacts."
-          ]
-        }
-      ],
-      "checklist": [
-        "Child added to Family Sharing",
-        "Screen Time passcode set, and secret",
-        "Content & Privacy Restrictions on",
-        "Ask to Buy on, in-app purchases off",
-        "Web content filtered",
-        "Downtime covering overnight",
-        "Privacy changes locked"
-      ],
-      "talkAboutIt": [
-        "Tell them what you’ve set and why. Hidden controls get worked around; explained ones usually don’t.",
-        "Agree how they earn more freedom over time.",
-        "Show them how to report and block in the apps they use most."
-      ],
-      "links": [
-        {
-          "label": "Apple — Use parental controls on your child’s device (official)",
-          "url": "https://support.apple.com/en-us/105121"
-        },
-        {
-          "label": "Apple — Family Sharing (official)",
-          "url": "https://support.apple.com/en-us/HT201060"
-        },
-        {
-          "label": "Apple — Screen Time (official)",
-          "url": "https://support.apple.com/en-us/HT208982"
-        }
-      ]
-    },
-    "ipad": {
-      "id": "ipad",
-      "name": "iPad",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Same Screen Time controls as iPhone. Worth setting separately, since iPads are more often shared and more often used for video.",
-      "devices": [
-        "ipad"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 15,
-      "risks": [
-        "Shared iPads often sit on an adult account with no restrictions at all",
-        "Long-form video and games make time limits more important than on a phone",
-        "The browser reaches everything the app controls don’t"
-      ],
-      "beforeYouStart": [
-        "If the iPad is shared, decide whether it’s your child’s device (set it up under their Apple Account) or a family device (set restrictions on the account it uses).",
-        "Set up Family Sharing first and pick a Screen Time passcode your child doesn’t know."
-      ],
-      "steps": [
-        {
-          "id": "family",
-          "title": "Add them to Family Sharing",
-          "why": "Lets you manage the iPad from your own phone and enables Ask to Buy.",
-          "path": "Settings → [your name] → Family Sharing",
-          "do": [
-            "On your device, open Settings and tap your name.",
-            "Tap Family Sharing and add your child.",
-            "Make sure the iPad is signed in to their Apple Account, not yours."
-          ]
-        },
-        {
-          "id": "passcode",
-          "title": "Set a Screen Time passcode",
-          "why": "Otherwise every setting below can be switched off from the iPad itself.",
-          "path": "Settings → Screen Time → [your child] → Change Screen Time Passcode",
-          "do": [
-            "Open Settings, then Screen Time.",
-            "Set a Screen Time passcode that differs from the unlock code."
-          ]
-        },
-        {
-          "id": "restrictions",
-          "title": "Turn on Content & Privacy Restrictions",
-          "why": "The master switch for content ratings, web filtering and purchases.",
-          "path": "Settings → Screen Time → [your child] → Content & Privacy Restrictions",
-          "do": [
-            "Open Content & Privacy Restrictions and enter your passcode.",
-            "Toggle it on."
-          ]
-        },
-        {
-          "id": "purchases",
-          "title": "Require approval for downloads and purchases",
-          "why": "iPads are where 'free' games with aggressive in-app purchases tend to land.",
-          "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
-          "do": [
-            "Set In-app Purchases to Don’t Allow.",
-            "Set Installing Apps to match the ages below.",
-            "Turn on Ask to Buy so requests come to your phone."
-          ],
-          "recommended": {
-            "7-11": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
-            "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
-            "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
-            "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
-          }
-        },
-        {
-          "id": "content",
-          "title": "Set content ratings and web filtering",
-          "why": "Safari is the widest open door on the device.",
-          "path": "Content & Privacy Restrictions → App Store, Media, Web & Games",
-          "do": [
-            "Set age ratings for apps, films, TV and music.",
-            "Open Web Content and pick the level below.",
-            "For younger children, Allowed Websites Only is much stronger than the adult filter."
-          ],
-          "recommended": {
-            "7-11": "Allowed Websites Only, apps rated 9+",
-            "11-12": "Limit Adult Websites, apps rated 12+",
-            "13-15": "Limit Adult Websites, apps rated 12+",
-            "16-17": "Limit Adult Websites"
-          }
-        },
-        {
-          "id": "downtime",
-          "title": "Set Downtime and App Limits",
-          "why": "iPads get used for hours without anyone noticing. Limits create a natural stop.",
-          "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
-          "do": [
-            "Set Downtime to cover the evening and overnight.",
-            "Add App Limits for video and games.",
-            "Use Always Allowed for anything that should still work, like messages to you."
-          ],
-          "recommended": {
-            "7-11": "Downtime from 7pm, 45 min on games and video",
-            "11-12": "Downtime from 8:30pm",
-            "13-15": "Downtime from 9:30pm on school nights",
-            "16-17": "Agree a window together"
-          }
-        }
-      ],
-      "checklist": [
-        "iPad signed in to the child’s Apple Account",
-        "Screen Time passcode set and secret",
-        "Content & Privacy Restrictions on",
-        "Ask to Buy on, in-app purchases off",
-        "Web content filtered",
-        "Downtime and app limits set"
-      ],
-      "talkAboutIt": [
-        "If the iPad is shared, agree who uses it when and for what.",
-        "Keep it out of the bedroom overnight if you can — it does more than any setting.",
-        "Tell them what you’ve set and why."
-      ],
-      "links": [
-        {
-          "label": "Apple — Use parental controls on your child’s device (official)",
-          "url": "https://support.apple.com/en-us/105121"
-        },
-        {
-          "label": "Apple — Family Sharing (official)",
-          "url": "https://support.apple.com/en-us/HT201060"
-        }
-      ]
-    },
-    "android": {
-      "id": "android",
-      "name": "Android phone or tablet",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Google’s Family Link supervises the child’s Google account and the device itself.",
-      "devices": [
-        "android"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 15,
-      "risks": [
-        "Apps sideloaded outside the Play Store bypass Play’s age ratings",
-        "The browser reaches everything app controls don’t",
-        "Overnight use"
-      ],
-      "beforeYouStart": [
-        "You need to be 18+ with your own Google Account, and you and your child need to be in the same country.",
-        "Changes can take about five minutes to reach the device, so don’t panic if a setting doesn’t apply instantly."
-      ],
-      "steps": [
-        {
-          "id": "setup",
-          "title": "Set up Family Link supervision",
-          "why": "It’s the foundation. Nothing else in this guide works without it.",
-          "path": "Family Link app, or familylink.google.com",
-          "do": [
-            "Install the Family Link app on your phone.",
-            "Create a Google Account for your child if they’re under 13, or add supervision to their existing account.",
-            "Follow the prompts on their device to link it. You’ll need the device in your hands."
-          ],
-          "note": "Family Link can supervise Android devices and Chromebooks. It cannot supervise iPhones or iPads."
-        },
-        {
-          "id": "apps",
-          "title": "Control app downloads and approvals",
-          "why": "The quickest way for controls to become irrelevant is a new app you didn’t know about.",
-          "path": "Family Link → [your child] → Controls → Apps",
-          "do": [
-            "Turn on approval for all Play Store downloads, including free apps.",
-            "Set Play Store content ratings for apps, games, films and TV.",
-            "Review what’s already installed and block anything that shouldn’t be there."
-          ],
-          "recommended": {
-            "7-11": "Approval required for everything, apps rated PEGI 7 / ESRB E",
-            "11-12": "Approval required for everything, apps rated PEGI 12 / ESRB E10+",
-            "13-15": "Approval required for paid apps, ratings PEGI 12 / ESRB T",
-            "16-17": "Notifications rather than approvals"
-          }
-        },
-        {
-          "id": "web",
-          "title": "Filter web and search",
-          "why": "Chrome is the widest opening on the device.",
-          "path": "Family Link → [your child] → Controls → Content restrictions → Google Chrome / Google Search",
-          "do": [
-            "Set Chrome to Try to block explicit sites, or Only allow approved sites for younger children.",
-            "Turn SafeSearch on and lock it.",
-            "Add specific sites to allow or block as needed."
-          ],
-          "recommended": {
-            "7-11": "Only allow approved sites",
-            "11-12": "Try to block explicit sites",
-            "13-15": "Try to block explicit sites",
-            "16-17": "Try to block explicit sites"
-          }
-        },
-        {
-          "id": "time",
-          "title": "Set daily limits and bedtime",
-          "why": "Bedtime is the setting that changes the most in practice.",
-          "path": "Family Link → [your child] → Controls → Daily limit / Bedtime",
-          "do": [
-            "Set daily limits, which can differ by day of the week.",
-            "Set a bedtime schedule that locks the device.",
-            "You can grant bonus time from your phone when it’s genuinely warranted."
-          ]
-        },
-        {
-          "id": "location",
-          "title": "Decide on location sharing",
-          "why": "Useful for younger children. For teenagers, worth agreeing rather than imposing.",
-          "path": "Family Link → [your child] → Location",
-          "do": [
-            "Turn on location if you want it, and tell your child it’s on.",
-            "For older teens, discuss it first — covert tracking damages trust more than it protects."
-          ]
-        },
-        {
-          "id": "youtube",
-          "title": "Set YouTube separately",
-          "why": "YouTube has its own content levels that sit inside Family Link.",
-          "path": "Family Link → [your child] → Controls → Content restrictions → YouTube",
-          "do": [
-            "Choose the content setting: Explore (9+), Explore more (13+) or Most of YouTube.",
-            "Consider the YouTube Kids app instead for under-9s."
-          ]
-        }
-      ],
-      "checklist": [
-        "Family Link supervision active",
-        "Download approval on",
-        "Play content ratings set",
-        "SafeSearch on and locked",
-        "Chrome filtering set",
-        "Daily limit and bedtime set",
-        "YouTube content level set"
-      ],
-      "talkAboutIt": [
-        "Show them the Family Link app so it isn’t a mystery.",
-        "Agree what happens when they want a new app — a request, not a fight.",
-        "Talk about sideloading if they’re technical enough to know the term."
-      ],
-      "links": [
-        {
-          "label": "Google — Family Link setup (official)",
-          "url": "https://support.google.com/families/answer/7101025?hl=en"
-        },
-        {
-          "label": "Google Families help center (official)",
-          "url": "https://families.google/familylink/"
-        },
-        {
-          "label": "Google — YouTube options for your child (official)",
-          "url": "https://support.google.com/families/answer/10495678?hl=en"
-        }
-      ]
-    },
-    "windows": {
-      "id": "windows",
-      "name": "Windows PC",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Microsoft Family Safety covers Windows, Xbox and Edge from one dashboard.",
-      "devices": [
-        "windows"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 15,
-      "risks": [
-        "Web filtering only works in Microsoft Edge, so other browsers need blocking",
-        "A local (non-Microsoft) account bypasses everything",
-        "Game downloads and in-game spending"
-      ],
-      "beforeYouStart": [
-        "Your child needs their own child Microsoft account, signed in on the PC. If they use your account, none of this applies.",
-        "Web filtering is Edge-only. Plan to block other browsers, or the filter does nothing."
-      ],
-      "steps": [
-        {
-          "id": "account",
-          "title": "Create a child account in your family group",
-          "why": "The foundation for everything else.",
-          "path": "family.microsoft.com",
-          "do": [
-            "Go to family.microsoft.com and sign in with your Microsoft account.",
-            "Add a family member, choosing the child option, with their correct date of birth.",
-            "On the PC, sign them in with that account and make sure they’re not using yours."
-          ]
-        },
-        {
-          "id": "content",
-          "title": "Set content filters",
-          "why": "Blocks adult sites in Edge and sets age ratings for apps and games.",
-          "path": "family.microsoft.com → [your child] → Content filters",
-          "do": [
-            "Turn on Filter inappropriate websites and searches.",
-            "Turn on Only use allowed browsers, which blocks Chrome, Firefox and others.",
-            "Under Apps and games, set the age rating limit."
-          ],
-          "recommended": {
-            "7-11": "Age rating 7, allowed sites only",
-            "11-12": "Age rating 12, adult sites blocked",
-            "13-15": "Age rating 12–16, adult sites blocked",
-            "16-17": "Age rating 16–18, adult sites blocked"
-          }
-        },
-        {
-          "id": "time",
-          "title": "Set screen time",
-          "why": "You can set different limits per device, which helps if homework happens on the same PC.",
-          "path": "family.microsoft.com → [your child] → Screen time",
-          "do": [
-            "Set a schedule for the Windows device.",
-            "Add separate app limits if a specific game is the problem rather than the PC itself."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Require approval for purchases",
-          "why": "Stops surprise Microsoft Store and game purchases.",
-          "path": "family.microsoft.com → [your child] → Spending",
-          "do": [
-            "Turn on 'Needs organizer approval to buy things'.",
-            "Turn on email notifications for purchases.",
-            "Remove any saved card, or use a balance instead."
-          ]
-        },
-        {
-          "id": "reports",
-          "title": "Turn on activity reporting",
-          "why": "A weekly summary is a better conversation starter than a live feed.",
-          "path": "family.microsoft.com → [your child] → Activity reporting",
-          "do": [
-            "Turn on activity reporting and weekly email summaries.",
-            "Tell your child it’s on. Reports work better as a shared thing."
-          ]
-        }
-      ],
-      "checklist": [
-        "Child Microsoft account created and in use",
-        "Web filtering on, other browsers blocked",
-        "App and game age ratings set",
-        "Screen time schedule set",
-        "Purchases need approval",
-        "Activity reporting on"
-      ],
-      "talkAboutIt": [
-        "Agree homework time versus game time rather than one blanket limit.",
-        "Explain that the web filter only works in Edge, so switching browsers isn’t a loophole, it’s just blocked.",
-        "Look at the weekly report together."
-      ],
-      "links": [
-        {
-          "label": "Microsoft Family Safety (official)",
-          "url": "https://family.microsoft.com/"
-        },
-        {
-          "label": "Microsoft — family safety features (official)",
-          "url": "https://support.microsoft.com/en-us/topic/what-is-microsoft-family-safety-b1b0b9c8-8de4-4e5e-9b7b-2b1cf5e4f9a5"
-        }
-      ]
-    },
-    "mac": {
-      "id": "mac",
-      "name": "Mac",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Screen Time on macOS works much like iPhone, and syncs across devices signed in to the same Apple Account.",
-      "devices": [
-        "mac"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "medium",
-      "minutes": 12,
-      "risks": [
-        "Shared family Macs often run on an adult account with no controls",
-        "The browser reaches everything app controls don’t",
-        "Downloads outside the App Store"
-      ],
-      "beforeYouStart": [
-        "Give your child their own user account on the Mac, signed in to their own Apple Account inside your Family Sharing group.",
-        "macOS menu names shift between versions. If a menu doesn’t match, check Apple’s official page linked below."
-      ],
-      "steps": [
-        {
-          "id": "account",
-          "title": "Give them their own login and add them to Family Sharing",
-          "why": "Screen Time applies per account. On a shared login it does nothing useful.",
-          "path": "System Settings → Users & Groups / Family",
-          "do": [
-            "Create a separate user account on the Mac for your child.",
-            "Add their Apple Account to your Family Sharing group.",
-            "Sign them in to that account on the Mac."
-          ]
-        },
-        {
-          "id": "passcode",
-          "title": "Turn on Screen Time and set a passcode",
-          "why": "The passcode is what stops them switching it off.",
-          "path": "System Settings → Screen Time",
-          "do": [
-            "Open System Settings, then Screen Time.",
-            "Select your child under Family.",
-            "Turn on Lock Screen Time Settings and set a passcode they don’t know."
-          ]
-        },
-        {
-          "id": "content",
-          "title": "Set content and privacy restrictions",
-          "why": "Covers web content, app ratings and store purchases.",
-          "path": "Screen Time → Content & Privacy",
-          "do": [
-            "Turn on Content & Privacy.",
-            "Under Content Restrictions, set web content to Limit Adult Websites, or Allowed Websites Only for younger children.",
-            "Set app and media age ratings.",
-            "Under Store Restrictions, turn off in-app purchases and require a password for every purchase."
-          ],
-          "recommended": {
-            "7-11": "Allowed Websites Only",
-            "11-12": "Limit Adult Websites",
-            "13-15": "Limit Adult Websites",
-            "16-17": "Limit Adult Websites"
-          }
-        },
-        {
-          "id": "downtime",
-          "title": "Set Downtime and App Limits",
-          "why": "Homework on a laptop makes a blanket limit unrealistic, so limit the categories that actually run away.",
-          "path": "Screen Time → Downtime / App Limits",
-          "do": [
-            "Set Downtime for the evening and overnight.",
-            "Add App Limits for Games and Social rather than everything.",
-            "Add anything they need for schoolwork to Always Allowed."
-          ]
-        }
-      ],
-      "checklist": [
-        "Child has their own Mac login",
-        "Added to Family Sharing",
-        "Screen Time locked with a passcode",
-        "Web content filtered",
-        "Purchases require a password",
-        "Downtime and category limits set"
-      ],
-      "talkAboutIt": [
-        "Separate schoolwork from everything else so limits feel fair.",
-        "Agree where the laptop lives overnight.",
-        "Tell them what’s set rather than letting them discover it."
-      ],
-      "links": [
-        {
-          "label": "Apple — Use parental controls on your child’s device (official)",
-          "url": "https://support.apple.com/en-us/105121"
-        },
-        {
-          "label": "Apple — Screen Time on Mac (official)",
-          "url": "https://support.apple.com/guide/mac-help/screen-time-mchl8bd1release/mac"
-        }
-      ]
-    },
-    "chromebook": {
-      "id": "chromebook",
-      "name": "Chromebook",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Managed through Family Link, the same as Android. School-issued Chromebooks are managed by the school instead.",
-      "devices": [
-        "chromebook"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "medium",
-      "minutes": 12,
-      "risks": [
-        "School-issued devices may already be managed, and your controls won’t apply",
-        "Everything runs in the browser, so web filtering matters more than app controls",
-        "Extensions can change how sites behave"
-      ],
-      "beforeYouStart": [
-        "If this is a school Chromebook, the school’s policies take priority and you may not be able to add supervision. Ask the school first.",
-        "Chromebook supervision needs Chrome OS 71 or later."
-      ],
-      "steps": [
-        {
-          "id": "supervise",
-          "title": "Add your child’s account as supervised",
-          "why": "Supervision is what connects the Chromebook to Family Link.",
-          "path": "Family Link app, or familylink.google.com",
-          "do": [
-            "Set up your child’s Google Account with supervision in Family Link.",
-            "On the Chromebook, sign in with that supervised account.",
-            "Make sure they aren’t signing in as a guest, which bypasses supervision."
-          ]
-        },
-        {
-          "id": "web",
-          "title": "Filter the web and lock SafeSearch",
-          "why": "On a Chromebook, the browser is the device. This is the main control.",
-          "path": "Family Link → [your child] → Controls → Content restrictions → Google Chrome",
-          "do": [
-            "Choose Try to block explicit sites, or Only allow approved sites for younger children.",
-            "Turn SafeSearch on and lock it.",
-            "Add specific allow or block entries as needed."
-          ],
-          "recommended": {
-            "7-11": "Only allow approved sites",
-            "11-12": "Try to block explicit sites",
-            "13-15": "Try to block explicit sites",
-            "16-17": "Try to block explicit sites"
-          }
-        },
-        {
-          "id": "apps",
-          "title": "Control apps and extensions",
-          "why": "Extensions are the Chromebook equivalent of installing software.",
-          "path": "Family Link → [your child] → Controls → Apps",
-          "do": [
-            "Require approval for Play Store downloads.",
-            "Review installed extensions and remove anything unfamiliar.",
-            "Decide whether they can install extensions at all."
-          ]
-        },
-        {
-          "id": "time",
-          "title": "Set daily limits and bedtime",
-          "why": "Especially worth it if the Chromebook is also the homework machine.",
-          "path": "Family Link → [your child] → Controls → Daily limit / Bedtime",
-          "do": [
-            "Set daily limits that vary by day if homework needs differ.",
-            "Set a bedtime that locks the device."
-          ]
-        }
-      ],
-      "checklist": [
-        "Supervised account signed in, guest mode not in use",
-        "Chrome filtering set",
-        "SafeSearch locked",
-        "App and extension approval on",
-        "Daily limit and bedtime set"
-      ],
-      "talkAboutIt": [
-        "If it’s a school device, check what the school already blocks so you’re not duplicating.",
-        "Agree homework time versus free time.",
-        "Explain that guest mode isn’t a workaround, because you’ll notice."
-      ],
-      "links": [
-        {
-          "label": "Google — Family Link setup (official)",
-          "url": "https://support.google.com/families/answer/7101025?hl=en"
-        },
-        {
-          "label": "Google — Chromebook supervision (official)",
-          "url": "https://support.google.com/families/answer/7680868?hl=en"
-        }
-      ]
-    },
-    "playstation": {
-      "id": "playstation",
-      "name": "PlayStation",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Controls are set by the Family Manager, either on the console or at playstation.com.",
-      "devices": [
-        "playstation"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 15,
-      "risks": [
-        "Voice chat with strangers in online matches",
-        "PlayStation Store spending, including through wallet top-ups",
-        "Games rated well above the child’s age arriving through friends' recommendations"
-      ],
-      "beforeYouStart": [
-        "You need a PlayStation Network account in your own name to act as Family Manager.",
-        "Create a child account for your child rather than letting them use an adult one — this is the step that makes everything else possible."
-      ],
-      "steps": [
-        {
-          "id": "family",
-          "title": "Set up Family Management and a child account",
-          "why": "Restrictions only apply to child accounts within your family.",
-          "path": "playstation.com/acct/family",
-          "do": [
-            "Sign in at playstation.com/acct/family with your own account.",
-            "Add a family member and create a child account with their real date of birth.",
-            "Sign that account in on the console."
-          ]
-        },
-        {
-          "id": "age",
-          "title": "Set age-level restrictions for games and content",
-          "why": "Blocks games above their rating from launching, which is more reliable than hoping you notice.",
-          "path": "Family Management → [your child] → Parental Controls → Age level for games",
-          "do": [
-            "Set the age level for games to match their age.",
-            "Set the level for Blu-ray and DVD content.",
-            "Restrict or block the internet browser for younger children."
-          ],
-          "recommended": {
-            "7-11": "PEGI 7 / ESRB E, browser blocked",
-            "11-12": "PEGI 12 / ESRB E10+, browser blocked",
-            "13-15": "PEGI 12–16 / ESRB T, browser restricted",
-            "16-17": "PEGI 16–18 / ESRB T–M"
-          }
-        },
-        {
-          "id": "comms",
-          "title": "Restrict communication and user-generated content",
-          "why": "This is the setting that governs voice chat, messages and shared content from strangers.",
-          "path": "Family Management → [your child] → Parental Controls → Communication and user-generated content",
-          "do": [
-            "Restrict messaging and chat with other players.",
-            "Restrict the ability to view or share videos and images made by other players."
-          ],
-          "recommended": {
-            "7-11": "Restricted — no messaging or chat",
-            "11-12": "Restricted",
-            "13-15": "Allowed with friends only",
-            "16-17": "Allowed, discussed together"
-          }
-        },
-        {
-          "id": "time",
-          "title": "Set play time limits",
-          "why": "PlayStation lets you set both a daily amount and a window of hours, which is useful for school nights.",
-          "path": "Family Management → [your child] → Play Time Settings",
-          "do": [
-            "Set the hours of the day they can play.",
-            "Set a daily duration.",
-            "Choose whether the console logs them out at the limit or just warns them.",
-            "Note these settings apply to both PS5 and PS4."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Set a monthly spending limit",
-          "why": "Wallet top-ups and in-game currency are where console spending usually escapes.",
-          "path": "Family Management → [your child] → Monthly spending limit",
-          "do": [
-            "Set a monthly limit, or zero.",
-            "Remove any saved payment card from the account."
-          ],
-          "recommended": {
-            "7-11": "£0 / $0",
-            "11-12": "£0 / $0",
-            "13-15": "A small agreed monthly cap",
-            "16-17": "An agreed monthly cap"
-          }
-        }
-      ],
-      "checklist": [
-        "Family Manager set up",
-        "Child account created and in use",
-        "Game age level set",
-        "Communication restricted",
-        "Play time limits set",
-        "Monthly spend limit set"
-      ],
-      "talkAboutIt": [
-        "Ask who they play with online and whether they’ve met them in person.",
-        "Agree a rule about accepting party invites from people they don’t know.",
-        "Set the play window together so the console isn’t the one saying no."
-      ],
-      "links": [
-        {
-          "label": "PlayStation — Family Management (official)",
-          "url": "https://www.playstation.com/en-us/support/account/set-up-parental-controls-ps5/"
-        },
-        {
-          "label": "PlayStation — family account management",
-          "url": "https://www.playstation.com/acct/family"
-        },
-        {
-          "label": "Internet Matters — PS5 parental controls",
-          "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/"
-        }
-      ]
-    },
-    "xbox": {
-      "id": "xbox",
-      "name": "Xbox",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Managed through Microsoft Family Safety, which also covers Windows PCs on the same account.",
-      "devices": [
-        "xbox"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 15,
-      "risks": [
-        "Voice and text chat with strangers in multiplayer",
-        "Cross-network play, which brings in players from other platforms with different rules",
-        "Store and in-game spending"
-      ],
-      "beforeYouStart": [
-        "Your child needs a child Microsoft account inside your family group. An adult account can’t be restricted.",
-        "The same settings also cover Minecraft and any Windows PC signed in with that account."
-      ],
-      "steps": [
-        {
-          "id": "account",
-          "title": "Create a child account in your family group",
-          "why": "The base layer. Without it, none of the controls apply.",
-          "path": "family.microsoft.com, or the Xbox Family Settings app",
-          "do": [
-            "Sign in at family.microsoft.com with your Microsoft account.",
-            "Add your child as a family member with their correct date of birth.",
-            "Sign them in on the Xbox with that account."
-          ]
-        },
-        {
-          "id": "content",
-          "title": "Set access to content by age",
-          "why": "Blocks games and apps above their rating.",
-          "path": "family.microsoft.com → [your child] → Content filters → Apps and games",
-          "do": [
-            "Set the age limit for apps and games.",
-            "Turn on web filtering if they use the Xbox browser."
-          ],
-          "recommended": {
-            "7-11": "Age 7",
-            "11-12": "Age 12",
-            "13-15": "Age 12–16",
-            "16-17": "Age 16–18"
-          }
-        },
-        {
-          "id": "privacy",
-          "title": "Set privacy and online safety",
-          "why": "This is where multiplayer and who can talk to your child is actually decided.",
-          "path": "account.xbox.com/settings → [your child] → Privacy & online safety → Xbox Series X|S, Xbox One, and Windows 10 devices",
-          "do": [
-            "Set 'You can join multiplayer games' according to what you’re comfortable with.",
-            "Set 'Others can communicate with voice, text, or invites' to Friends only.",
-            "Set 'You can add friends' — block it for younger children so requests come through you.",
-            "Decide on cross-network play, which allows players from other platforms."
-          ],
-          "recommended": {
-            "7-11": "Communicate: Friends only. Add friends: Block. Cross-network: Block.",
-            "11-12": "Communicate: Friends only. Add friends: Block.",
-            "13-15": "Communicate: Friends only. Add friends: Allow.",
-            "16-17": "Communicate: Friends only."
-          }
-        },
-        {
-          "id": "time",
-          "title": "Set screen time",
-          "why": "You can set separate schedules per device, so Xbox and PC don’t share one budget.",
-          "path": "family.microsoft.com → [your child] → Screen time",
-          "do": [
-            "Set a schedule for the Xbox.",
-            "Add multiple time slots in a day if that fits your routine better than one block."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Control spending",
-          "why": "Stops in-game currency purchases turning into a monthly surprise.",
-          "path": "family.microsoft.com → [your child] → Spending",
-          "do": [
-            "Turn on 'Needs organizer approval to buy things'.",
-            "Turn on purchase notifications.",
-            "Consider adding money to their balance rather than leaving a card on the account."
-          ]
-        }
-      ],
-      "checklist": [
-        "Child Microsoft account created and in use",
-        "App and game age limits set",
-        "Communication set to friends only",
-        "Friend requests controlled",
-        "Screen time schedule set",
-        "Purchases need approval"
-      ],
-      "talkAboutIt": [
-        "Ask who’s in their party when they play. It’s the fastest way to spot a stranger.",
-        "Agree what happens when a friend request comes in from someone they only know in game.",
-        "Look at the weekly activity report together rather than alone."
-      ],
-      "links": [
-        {
-          "label": "Xbox — privacy and online safety settings (official)",
-          "url": "https://account.xbox.com/settings"
-        },
-        {
-          "label": "Microsoft Family Safety (official)",
-          "url": "https://family.microsoft.com/"
-        },
-        {
-          "label": "Xbox — family settings app (official)",
-          "url": "https://www.xbox.com/en-US/apps/xbox-family-settings-app"
-        }
-      ]
-    },
-    "switch": {
-      "id": "switch",
-      "name": "Nintendo Switch",
-      "type": "device",
-      "kind": "Device",
-      "blurb": "Controlled through a separate phone app, which is the easiest console setup of the three.",
-      "devices": [
-        "switch"
-      ],
-      "minAge": 0,
-      "lastVerified": "2026-08-20",
-      "sourceConfidence": "high",
-      "minutes": 10,
-      "risks": [
-        "Voice chat in some games happens through a phone app, outside the console’s controls",
-        "eShop spending",
-        "Sharing screenshots and videos to social media"
-      ],
-      "beforeYouStart": [
-        "Download the Nintendo Switch Parental Controls app on your phone — it’s separate from the main Nintendo app.",
-        "You’ll need the console in front of you once, to link it with a registration code."
-      ],
-      "steps": [
-        {
-          "id": "link",
-          "title": "Link the app to the console",
-          "why": "Once linked, you manage everything from your phone without touching the console again.",
-          "path": "Nintendo Switch Parental Controls app",
-          "do": [
-            "Install the Nintendo Switch Parental Controls app and sign in with your Nintendo Account.",
-            "The app gives you a registration code.",
-            "On the console, go to System Settings, then Parental Controls, and enter the code.",
-            "Set a PIN that your child doesn’t know."
-          ]
-        },
-        {
-          "id": "level",
-          "title": "Set the restriction level",
-          "why": "The quickest way to match content to their age. You can fine-tune afterwards.",
-          "path": "App → Console settings → Restriction Level",
-          "do": [
-            "Choose the age band that describes your child.",
-            "Or choose Custom to set software rating, posting to social media, and communication individually."
-          ],
-          "recommended": {
-            "7-11": "Child level",
-            "11-12": "Pre-Teen level",
-            "13-15": "Teen level",
-            "16-17": "Custom, agreed together"
-          }
-        },
-        {
-          "id": "comms",
-          "title": "Restrict communication and social posting",
-          "why": "Stops screenshots being posted publicly and limits in-game communication with strangers.",
-          "path": "App → Console settings → Custom settings",
-          "do": [
-            "Turn off Posting to Social Media.",
-            "Restrict Communicating with Others.",
-            "Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls — check that separately."
-          ],
-          "ages": [
-            "7-11",
-            "11-12",
-            "13-15"
-          ]
-        },
-        {
-          "id": "time",
-          "title": "Set a play-time limit and bedtime alarm",
-          "why": "The console can suspend the game at the limit rather than just showing a message, which removes the argument.",
-          "path": "App → Play-Time Limit",
-          "do": [
-            "Set a daily play-time limit, with different values for weekdays and weekends if you like.",
-            "Set a bedtime alarm.",
-            "Turn on Suspend Software if you want the limit to be firm rather than advisory."
-          ]
-        },
-        {
-          "id": "spend",
-          "title": "Block eShop spending",
-          "why": "Set up in a different place from everything else, which is why it gets missed.",
-          "path": "accounts.nintendo.com → Family Group",
-          "do": [
-            "Sign in at accounts.nintendo.com and open your Family Group.",
-            "Select your child and turn on the eShop purchase restriction.",
-            "Remove any saved card."
-          ]
-        }
-      ],
-      "checklist": [
-        "Parental Controls app linked to the console",
-        "PIN set and secret",
-        "Restriction level set for their age",
-        "Social posting off",
-        "Play-time limit and bedtime alarm set",
-        "eShop purchases blocked"
-      ],
-      "talkAboutIt": [
-        "Ask whether any of their games use the phone app for voice chat, since that’s outside these controls.",
-        "Agree the play-time limit together so the alarm isn’t a surprise.",
-        "Play something together. The Switch is good for that."
-      ],
-      "links": [
-        {
-          "label": "Nintendo — Parental Controls (official)",
-          "url": "https://www.nintendo.com/switch/parental-controls/"
-        },
-        {
-          "label": "Nintendo Account — family groups (official)",
-          "url": "https://accounts.nintendo.com/"
-        },
-        {
-          "label": "Internet Matters — Nintendo Switch parental controls",
-          "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/nintendo-switch/"
-        }
-      ]
-    }
+  {
+   "id": "11-12",
+   "label": "11–12",
+   "profile": "High Protection"
+  },
+  {
+   "id": "13-15",
+   "label": "13–15",
+   "profile": "Balanced Supervision"
+  },
+  {
+   "id": "16-17",
+   "label": "16–17",
+   "profile": "Guided Independence"
   }
+ ],
+ "profiles": {
+  "Maximum Protection": {
+   "summary": "Lock the doors first. At this age the goal is no contact with strangers, no spending, and content well inside their age rating.",
+   "principles": [
+    "Chat with people they don’t know: off",
+    "Purchases: always need your approval",
+    "Content: the most restrictive setting available",
+    "Play together where you can, so the rules feel shared rather than imposed"
+   ]
+  },
+  "High Protection": {
+   "summary": "Still tightly controlled, but start explaining the reasons. Kids this age notice restrictions and will work around ones they don’t understand.",
+   "principles": [
+    "Chat limited to friends you’ve both agreed on",
+    "Purchases need your approval",
+    "Content one notch above the youngest setting",
+    "Agree screen time together rather than announcing it"
+   ]
+  },
+  "Balanced Supervision": {
+   "summary": "Teens need some room. Keep the safety rails that matter most (strangers, spending, sleep) and loosen the rest.",
+   "principles": [
+    "Friends-only messaging and voice chat",
+    "Private account by default",
+    "Spending limits rather than a hard block",
+    "Visibility over surveillance: you see patterns, not private messages"
+   ]
+  },
+  "Guided Independence": {
+   "summary": "They’re close to managing this themselves. Focus on the few settings that prevent real harm and on the habits they’ll keep after 18.",
+   "principles": [
+    "Keep location and sleep protections on",
+    "Talk through privacy settings rather than setting them silently",
+    "Agree a spending ceiling",
+    "Make sure they know how to block, report, and come to you"
+   ]
+  }
+ },
+ "devices": [
+  {
+   "id": "iphone",
+   "label": "iPhone",
+   "group": "Phones & tablets",
+   "short": "iPhone"
+  },
+  {
+   "id": "ipad",
+   "label": "iPad",
+   "group": "Phones & tablets",
+   "short": "iPad"
+  },
+  {
+   "id": "android",
+   "label": "Android phone or tablet",
+   "group": "Phones & tablets",
+   "short": "Android"
+  },
+  {
+   "id": "windows",
+   "label": "Windows PC",
+   "group": "Computers",
+   "short": "Windows"
+  },
+  {
+   "id": "mac",
+   "label": "Mac",
+   "group": "Computers",
+   "short": "Mac"
+  },
+  {
+   "id": "chromebook",
+   "label": "Chromebook",
+   "group": "Computers",
+   "short": "Chromebook"
+  },
+  {
+   "id": "playstation",
+   "label": "PlayStation",
+   "group": "Consoles",
+   "short": "PlayStation"
+  },
+  {
+   "id": "xbox",
+   "label": "Xbox",
+   "group": "Consoles",
+   "short": "Xbox"
+  },
+  {
+   "id": "switch",
+   "label": "Nintendo Switch",
+   "group": "Consoles",
+   "short": "Switch"
+  }
+ ],
+ "helpModes": [
+  {
+   "id": "quick",
+   "label": "Quick setup",
+   "icon": "bolt",
+   "hint": "Just tell me what to tap."
+  },
+  {
+   "id": "learn",
+   "label": "Learn as we go",
+   "icon": "book",
+   "hint": "Explain why each setting matters."
+  },
+  {
+   "id": "review",
+   "label": "Review my settings",
+   "icon": "check",
+   "hint": "I’ve set things up. Check my work."
+  },
+  {
+   "id": "stuck",
+   "label": "I can’t find it",
+   "icon": "help",
+   "hint": "The menu doesn’t look like the instructions."
+  }
+ ],
+ "countries": [
+  {
+   "id": "US",
+   "label": "United States",
+   "short": "US",
+   "emergency": "911",
+   "currency": "$"
+  },
+  {
+   "id": "UK",
+   "label": "United Kingdom",
+   "short": "UK",
+   "emergency": "999",
+   "currency": "£"
+  },
+  {
+   "id": "CA",
+   "label": "Canada",
+   "short": "Canada",
+   "emergency": "911",
+   "currency": "$"
+  },
+  {
+   "id": "IE",
+   "label": "Ireland",
+   "short": "Ireland",
+   "emergency": "999 or 112",
+   "currency": "€"
+  }
+ ],
+ "guides": {
+  "roblox": {
+   "id": "roblox",
+   "name": "Roblox",
+   "type": "app",
+   "kind": "Game",
+   "blurb": "A platform of millions of user-made games. The games themselves are made by other users, so quality and content vary enormously.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "xbox",
+    "playstation",
+    "switch"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 12,
+   "risks": [
+    "Open chat means adults can talk to your child inside games",
+    "Robux spending adds up fast, often through gift cards",
+    "Content ratings are set by creators, so some games slip through"
+   ],
+   "beforeYouStart": [
+    "You’ll need your own Roblox account, linked to your child’s, to change these settings.",
+    "Have your child’s login handy, and pick a Parent PIN they don’t know."
+   ],
+   "steps": [
+    {
+     "id": "link",
+     "title": "Link your account and set a Parent PIN",
+     "why": "Without a PIN, your child can undo everything you’re about to set in about ten seconds.",
+     "path": "Roblox → Settings → Parental Controls",
+     "do": [
+      "Sign in to your child’s Roblox account on a phone or at roblox.com.",
+      "Open Settings, then Parental Controls.",
+      "Add your own email as the parent email and verify it from your inbox.",
+      "Create a Parent PIN. Choose something your child won’t guess — not a birthday."
+     ],
+     "result": "Every setting below now requires your PIN to change."
+    },
+    {
+     "id": "maturity",
+     "title": "Set Content Maturity",
+     "why": "This is the single biggest lever. It filters which games your child can even open.",
+     "path": "Settings → Parental Controls → [your child] → Settings You Manage → Content restrictions → Content maturity",
+     "do": [
+      "Open Content restrictions, then Content maturity.",
+      "Pick the level for your child’s age from the table.",
+      "Confirm with your PIN."
+     ],
+     "recommended": {
+      "7-11": "Minimal",
+      "11-12": "Minimal",
+      "13-15": "Mild",
+      "16-17": "Moderate"
+     },
+     "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood."
+    },
+    {
+     "id": "chat",
+     "title": "Control who can talk to them",
+     "why": "Most of the real risk on Roblox is contact, not content. This is the step worth getting right.",
+     "path": "Settings → Parental Controls → Settings You Manage → Communication",
+     "do": [
+      "Open the Communication section.",
+      "Set each of Game chat, Direct chat, Friends chat and Party to the level below.",
+      "Confirm with your PIN."
+     ],
+     "recommended": {
+      "7-11": "All chat off",
+      "11-12": "Friends only, direct chat off",
+      "13-15": "Friends only",
+      "16-17": "Friends only"
+     },
+     "note": "Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users."
+    },
+    {
+     "id": "spend",
+     "title": "Put a ceiling on Robux spending",
+     "why": "In-game purchases are designed to be quick and frictionless. A monthly cap turns an expensive surprise into a small one.",
+     "path": "Settings → Parental Controls → Settings You Manage → Spending restrictions",
+     "do": [
+      "Open Spending restrictions.",
+      "Set a monthly spend limit you’re comfortable with.",
+      "Turn on transaction notifications so you see purchases as they happen."
+     ],
+     "recommended": {
+      "7-11": "{cur}0 — no spending",
+      "11-12": "{cur}0 — no spending",
+      "13-15": "A small monthly cap you agree together",
+      "16-17": "An agreed monthly cap"
+     },
+     "note": "Roblox also sends high-spend alerts at $100, $250 and $500."
+    },
+    {
+     "id": "screentime",
+     "title": "Set a daily time limit",
+     "why": "Roblox has no natural stopping point. A built-in limit avoids the nightly argument.",
+     "path": "Settings → Parental Controls → Screen time → Manage → Screen time limit",
+     "do": [
+      "Open Screen time, then Manage.",
+      "Choose a daily limit.",
+      "While you’re here, look at the list of the top games they played this week — it’s a good conversation starter."
+     ],
+     "recommended": {
+      "7-11": "30–45 minutes",
+      "11-12": "45–60 minutes",
+      "13-15": "Agree it together",
+      "16-17": "Agree it together"
+     }
+    },
+    {
+     "id": "friends",
+     "title": "Go through the friends list together",
+     "why": "Friend lists collect strangers over time. Ten minutes here is worth more than any setting.",
+     "do": [
+      "Open your child’s friends list.",
+      "Ask about anyone you don’t recognize: where did you meet them?",
+      "Remove anyone they only know from inside a game."
+     ],
+     "ages": [
+      "7-11",
+      "11-12",
+      "13-15"
+     ]
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "Roblox settings only cover Roblox. A device-level control catches the app they download next.",
+     "do": [
+      "Set up Screen Time (iPhone/iPad/Mac), Family Link (Android/Chromebook), Microsoft Family Safety (Windows/Xbox), or your console’s parental controls.",
+      "Require your approval for new app downloads."
+     ],
+     "note": "SafeStart has a separate guide for each of these — pick your device on the home screen."
+    }
+   ],
+   "checklist": [
+    "Parent PIN set and known only to you",
+    "Content maturity set for their age",
+    "Chat restricted to friends, or off",
+    "Monthly spending capped",
+    "Daily time limit set",
+    "Friends list reviewed together"
+   ],
+   "talkAboutIt": [
+    "Ask them to show you their favorite game and play a round with them.",
+    "Agree what they’ll do if someone asks them to move the chat to Discord or Snapchat — that’s a common grooming step.",
+    "Make sure they know nobody legitimate ever needs their password or a free-Robux code."
+   ],
+   "links": [
+    {
+     "label": "Roblox — Parental Controls Overview (official)",
+     "url": "https://en.help.roblox.com/hc/en-us/articles/30428310121620-Parental-Controls-Overview"
+    },
+    {
+     "label": "Roblox — Parental Controls hub (official)",
+     "url": "https://about.roblox.com/parental-controls"
+    },
+    {
+     "label": "Roblox — Content Maturity Labels (official)",
+     "url": "https://en.help.roblox.com/hc/en-us/articles/8862768451604-Content-Maturity-Labels"
+    }
+   ]
+  },
+  "tiktok": {
+   "id": "tiktok",
+   "name": "TikTok",
+   "type": "app",
+   "kind": "Social",
+   "blurb": "Short video feed driven by an algorithm. The feed adapts fast, which is both the appeal and the risk.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "risks": [
+    "The algorithm can narrow quickly onto body image, diet or self-harm content",
+    "Public accounts invite comments and messages from strangers",
+    "It is genuinely hard to stop watching, which eats into sleep"
+   ],
+   "beforeYouStart": [
+    "TikTok’s minimum age is 13. If your child is younger, the honest answer is that they’re on the wrong app rather than the wrong settings.",
+    "You’ll need TikTok installed on your own phone, and your child’s phone in your hand for about a minute."
+   ],
+   "steps": [
+    {
+     "id": "pairing",
+     "title": "Set up Family Pairing",
+     "why": "Family Pairing lets you change your teen’s safety settings from your own phone, and stops them changing them back.",
+     "path": "Profile → ☰ (top right) → Settings and privacy → Family Pairing",
+     "do": [
+      "On your phone: open your profile, tap the three lines top right, then Settings and privacy.",
+      "Scroll to Family Pairing and tap Continue.",
+      "Choose Parent. You’ll get a QR code.",
+      "On your teen’s phone: go to the same Family Pairing screen, choose Teen, and scan your QR code.",
+      "Your teen reviews the permissions and taps Link accounts."
+     ],
+     "result": "Everything below is now set from your phone."
+    },
+    {
+     "id": "private",
+     "title": "Make the account private",
+     "why": "A public account means anyone can see their videos, comment, and work out where they go to school.",
+     "path": "Family Pairing → [your teen] → Privacy and safety",
+     "do": [
+      "Turn Private account on.",
+      "Turn off Suggest your teen’s account to others."
+     ],
+     "recommended": {
+      "13-15": "Private, on",
+      "16-17": "Private — worth agreeing together"
+     }
+    },
+    {
+     "id": "contact",
+     "title": "Limit messages, comments and mentions",
+     "why": "This is where strangers actually reach teenagers. Content filters don’t help with contact.",
+     "path": "Family Pairing → [your teen] → Privacy and safety → Safety",
+     "do": [
+      "Set who can send direct messages.",
+      "Set who can comment on their videos.",
+      "Set who can mention or tag them."
+     ],
+     "recommended": {
+      "13-15": "Friends, or No one for DMs",
+      "16-17": "Friends"
+     },
+     "note": "Direct messaging is switched off entirely for accounts registered as under 16."
+    },
+    {
+     "id": "restricted",
+     "title": "Turn on Restricted Mode and keyword filters",
+     "why": "Restricted Mode filters out content that isn’t appropriate for younger viewers. Keyword filters let you name the specific things you’re worried about.",
+     "path": "Family Pairing → Content preferences",
+     "do": [
+      "Turn Restricted Mode on.",
+      "Open Filter video keywords and add words relevant to your family — diet and body-image terms are a common starting point."
+     ]
+    },
+    {
+     "id": "screentime",
+     "title": "Set daily screen time and a Time away schedule",
+     "why": "TikTok’s feed has no end. The sleep effect is the most reliably harmful part for most teenagers.",
+     "path": "Family Pairing → [your teen] → Screen time",
+     "do": [
+      "Set a Daily screen time limit (the minimum TikTok allows is 40 minutes).",
+      "Add a Time away schedule covering school hours and bedtime."
+     ],
+     "recommended": {
+      "13-15": "60 minutes, phone out of the bedroom overnight",
+      "16-17": "Agree a limit together, keep the overnight block"
+     }
+    },
+    {
+     "id": "reset",
+     "title": "Show them how to reset the feed",
+     "why": "If the algorithm goes somewhere dark, they can fix it themselves. Teaching this beats monitoring it.",
+     "do": [
+      "Show them the 'not interested' option on a long-press of any video.",
+      "Show them Settings and privacy → Content preferences → Refresh your For You feed.",
+      "Agree that if the feed gets strange, they tell you and you fix it together — no blame."
+     ],
+     "ages": [
+      "13-15",
+      "16-17"
+     ]
+    }
+   ],
+   "checklist": [
+    "Family Pairing linked",
+    "Account set to private",
+    "DMs and comments limited to friends",
+    "Restricted Mode on",
+    "Daily limit and overnight Time away set",
+    "They know how to reset the feed and report a video"
+   ],
+   "talkAboutIt": [
+    "Ask what’s on their For You page right now. It’s the fastest way to know what they’re seeing.",
+    "Agree that filters and screenshots of DMs come to you without anyone getting in trouble.",
+    "Talk about why an account being private matters even when the videos seem harmless."
+   ],
+   "links": [
+    {
+     "label": "TikTok — Family Pairing (official support)",
+     "url": "https://support.tiktok.com/en/account-and-privacy/family-pairing"
+    },
+    {
+     "label": "TikTok — Guardian’s Guide (official)",
+     "url": "https://www.tiktok.com/safety/en/guardians-guide/"
+    },
+    {
+     "label": "Internet Matters — TikTok safety settings",
+     "url": "https://www.internetmatters.org/parental-controls/social-media/tiktok-privacy-and-safety-settings/"
+    }
+   ]
+  },
+  "instagram": {
+   "id": "instagram",
+   "name": "Instagram",
+   "type": "app",
+   "kind": "Social",
+   "blurb": "Photo, video and messaging app. Under-18 accounts now get a protected 'Teen Account' setup by default.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "risks": [
+    "Contact from adults through DMs and story replies",
+    "Comparison and body-image pressure, especially in Reels",
+    "Location and school details leaking through tags and photos"
+   ],
+   "beforeYouStart": [
+    "Check the birthday on their account first. Teen Account protections only apply if Instagram knows they’re under 18 — a wrong birthday quietly disables all of it.",
+    "You’ll both need an Instagram account for supervision."
+   ],
+   "steps": [
+    {
+     "id": "birthday",
+     "title": "Check the birthday on the account is correct",
+     "why": "This is the step most people skip, and it undoes everything else. Teen Accounts are applied based on the stated age.",
+     "path": "Profile → ☰ → Settings and privacy → Accounts Center → Personal details",
+     "do": [
+      "Open their profile and check the date of birth on the account.",
+      "If it’s wrong, correct it. Instagram may ask for verification."
+     ],
+     "result": "With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically."
+    },
+    {
+     "id": "supervision",
+     "title": "Set up parental supervision",
+     "why": "Teen Accounts protect. Supervision gives you visibility, and for under-16s, approval rights over setting changes.",
+     "path": "Settings and privacy → Supervision (or Family Center)",
+     "do": [
+      "On your account, open Settings and privacy, then Supervision.",
+      "Tap Set up supervision and send the invitation to your teen.",
+      "Your teen opens the invitation and accepts it.",
+      "Either of you can start the invite — sometimes it’s easier if they invite you."
+     ],
+     "note": "You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages."
+    },
+    {
+     "id": "approvals",
+     "title": "Know what needs your approval (under 16)",
+     "why": "For under-16s, loosening a safety setting sends you a request. Expect a few, and treat each one as a conversation rather than a yes/no.",
+     "do": [
+      "Watch for approval requests in Supervision.",
+      "When one comes in, ask why they want the change before deciding."
+     ],
+     "ages": [
+      "13-15"
+     ]
+    },
+    {
+     "id": "dms",
+     "title": "Tighten messaging and comments",
+     "why": "DMs are the main route strangers use. Teen Accounts already restrict this, but it’s worth confirming.",
+     "path": "Settings and privacy → Messages and story replies / Comments",
+     "do": [
+      "Confirm messages are limited to people they follow.",
+      "Turn on Hidden Words to filter offensive comments and message requests.",
+      "Set story replies to People you follow."
+     ],
+     "recommended": {
+      "13-15": "People you follow only",
+      "16-17": "People you follow only"
+     }
+    },
+    {
+     "id": "private",
+     "title": "Confirm the account is private and location is off",
+     "why": "A private account plus no location tags is most of the privacy job done.",
+     "path": "Settings and privacy → Account privacy",
+     "do": [
+      "Confirm Private account is on.",
+      "Turn off location tags when posting.",
+      "Check their bio doesn’t name their school or team."
+     ]
+    },
+    {
+     "id": "time",
+     "title": "Check screen time and Sleep Mode",
+     "why": "Sleep Mode mutes notifications and auto-replies to DMs overnight. It’s the setting most likely to actually improve things.",
+     "path": "Settings and privacy → Time management",
+     "do": [
+      "Confirm Sleep Mode is on (default is 10pm to 8am).",
+      "Set a daily time limit if you want a firmer stop."
+     ]
+    },
+    {
+     "id": "followers",
+     "title": "Scroll the follower list together",
+     "why": "Follower lists are where the surprises live. Do this one together rather than behind their back.",
+     "do": [
+      "Open their followers list and scroll it with them.",
+      "Remove or block anyone they can’t place.",
+      "Show them how to block and report while you’re there."
+     ]
+    }
+   ],
+   "checklist": [
+    "Birthday on the account is correct",
+    "Supervision linked",
+    "Account private",
+    "DMs limited to people they follow",
+    "Hidden Words on",
+    "Sleep Mode on",
+    "Followers reviewed together"
+   ],
+   "talkAboutIt": [
+    "Ask who they message most. You’ll learn more from that than from any dashboard.",
+    "Agree what happens if an adult they don’t know messages them — screenshot, don’t reply, show you.",
+    "Talk about how edited and filtered the feed is, without lecturing."
+   ],
+   "links": [
+    {
+     "label": "Instagram — Teen Accounts (official)",
+     "url": "https://about.instagram.com/blog/announcements/instagram-teen-accounts"
+    },
+    {
+     "label": "Instagram — Parental supervision (official help)",
+     "url": "https://help.instagram.com/1119754640225545"
+    },
+    {
+     "label": "Meta — Family Center",
+     "url": "https://familycenter.meta.com/"
+    }
+   ]
+  },
+  "snapchat": {
+   "id": "snapchat",
+   "name": "Snapchat",
+   "type": "app",
+   "kind": "Social",
+   "blurb": "Messaging app built around disappearing photos and videos, plus a live location map.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "risks": [
+    "Snap Map can broadcast their exact location to a wide friends list",
+    "Messages disappear, so evidence of harassment disappears too",
+    "Quick Add surfaces strangers as suggested friends"
+   ],
+   "beforeYouStart": [
+    "You need your own Snapchat account, and you need to be friends with your child on it before Family Center will work.",
+    "Family Center shows you who they talk to, not what they say. That’s deliberate, and worth explaining to your child."
+   ],
+   "steps": [
+    {
+     "id": "friend",
+     "title": "Add each other as friends",
+     "why": "Family Center only works between accounts that are already friends.",
+     "do": [
+      "On your account, tap Add Friends and search your child’s username.",
+      "Have them accept."
+     ]
+    },
+    {
+     "id": "familycenter",
+     "title": "Set up Family Center",
+     "why": "It shows you their contacts from the last week and lets you report accounts directly to Snapchat.",
+     "path": "Profile → ⚙️ Settings → Privacy Control → Family Center",
+     "do": [
+      "Open your profile, tap the gear icon, then Privacy Control, then Family Center.",
+      "Select your child’s name and send the invitation.",
+      "On their phone, they tap View Invitation, then Accept."
+     ],
+     "result": "You’ll see who they’ve messaged in the last seven days and their friends list."
+    },
+    {
+     "id": "location",
+     "title": "Turn on Ghost Mode",
+     "why": "Snap Map shows live location to everyone on their friends list. For most children this is the single most important setting on Snapchat.",
+     "path": "Map screen → ⚙️ (top right) → Ghost Mode",
+     "do": [
+      "From the camera screen, tap the location pin at the bottom left to open the Map.",
+      "Tap the gear icon in the top right.",
+      "Turn on Ghost Mode."
+     ],
+     "recommended": {
+      "7-11": "Ghost Mode on",
+      "11-12": "Ghost Mode on",
+      "13-15": "Ghost Mode on, or share with a small chosen list",
+      "16-17": "Agree together — at minimum, not 'My Friends'"
+     }
+    },
+    {
+     "id": "contact",
+     "title": "Limit who can contact them and see their story",
+     "why": "Default settings are more open than most parents expect.",
+     "path": "Profile → ⚙️ Settings → Privacy Controls",
+     "do": [
+      "Open Contact Me and set it to Friends.",
+      "Open View My Story and set it to My Friends, or a Custom list.",
+      "Turn off Quick Add so they stop being suggested to strangers."
+     ],
+     "recommended": {
+      "13-15": "Friends only, Quick Add off",
+      "16-17": "Friends only, Quick Add off"
+     }
+    },
+    {
+     "id": "content",
+     "title": "Restrict sensitive content in Stories and Spotlight",
+     "why": "Discover and Spotlight are public feeds, and they’re where most of the age-inappropriate content sits.",
+     "path": "Family Center → Content Controls",
+     "do": [
+      "In Family Center, open Content Controls.",
+      "Turn on the restriction for sensitive content."
+     ]
+    },
+    {
+     "id": "screenshots",
+     "title": "Talk about the disappearing part",
+     "why": "Children often believe a snap is gone forever. It isn’t — anyone can screenshot or photograph the screen with another phone.",
+     "do": [
+      "Explain that anything sent can be saved by the person receiving it.",
+      "Agree that if they’re ever sent something upsetting, they screenshot it before it disappears and show you."
+     ]
+    }
+   ],
+   "checklist": [
+    "Family Center linked",
+    "Ghost Mode on",
+    "Contact Me set to Friends",
+    "Quick Add off",
+    "Sensitive content restricted",
+    "They know how to screenshot and report"
+   ],
+   "talkAboutIt": [
+    "Ask them to show you their Snap Map and who can see them.",
+    "Agree the rule that disappearing doesn’t mean private.",
+    "Make sure they know they can block someone without explaining themselves to anyone."
+   ],
+   "links": [
+    {
+     "label": "Snapchat — Family Center (official)",
+     "url": "https://parents.snapchat.com/"
+    },
+    {
+     "label": "Snap — Family Center announcement",
+     "url": "https://newsroom.snap.com/deeper-insights-with-family-center"
+    },
+    {
+     "label": "Internet Matters — Snapchat privacy settings",
+     "url": "https://www.internetmatters.org/parental-controls/social-media/snapchat/"
+    }
+   ]
+  },
+  "discord": {
+   "id": "discord",
+   "name": "Discord",
+   "type": "app",
+   "kind": "Chat",
+   "blurb": "Text and voice chat organized into servers. Popular alongside gaming, and largely made up of communities of strangers.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 12,
+   "risks": [
+    "Public servers put your child in rooms with adults they don’t know",
+    "Voice chat leaves no record",
+    "It’s a common place for someone met in a game to move the conversation"
+   ],
+   "beforeYouStart": [
+    "Discord now applies teen-appropriate settings by default to accounts registered as under 18, but you should still check them.",
+    "Family Center linking is done from your teen’s side — they generate a QR code that you scan with the Discord mobile app."
+   ],
+   "steps": [
+    {
+     "id": "familycenter",
+     "title": "Turn on Family Center and link your accounts",
+     "why": "It gives you a weekly picture of who they’re talking to and which servers they’ve joined.",
+     "path": "User Settings → Family Center",
+     "do": [
+      "Both of you: open User Settings and find the Family Center tab (on mobile, tap your profile icon first).",
+      "Turn on Enable Family Center tab.",
+      "Your teen opens Family Center and chooses Connect with Guardian to generate a QR code.",
+      "Scan that code with the Discord mobile app on your phone.",
+      "Your teen accepts the connection."
+     ],
+     "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days — plus a weekly email. You won’t see message content."
+    },
+    {
+     "id": "content",
+     "title": "Set the sensitive content filter",
+     "why": "Direct messages and server messages can contain images your child didn’t ask for.",
+     "path": "User Settings → Privacy & Safety",
+     "do": [
+      "Open Privacy & Safety.",
+      "Set sensitive content in direct messages to Block.",
+      "Set sensitive content in servers to Block."
+     ],
+     "recommended": {
+      "13-15": "Block everywhere",
+      "16-17": "Block or Blur"
+     }
+    },
+    {
+     "id": "dms",
+     "title": "Close down direct messages from strangers",
+     "why": "By default, sharing a server with someone can be enough for them to message your child privately.",
+     "path": "User Settings → Privacy & Safety",
+     "do": [
+      "Turn off Allow direct messages from server members.",
+      "Set who can send friend requests to Friends of Friends, or off entirely.",
+      "Turn off Message Requests if you’d rather nothing gets through at all."
+     ],
+     "recommended": {
+      "13-15": "Server DMs off, friend requests from friends of friends only",
+      "16-17": "Server DMs off"
+     }
+    },
+    {
+     "id": "servers",
+     "title": "Go through their server list together",
+     "why": "This is the part that matters most and no setting can do it for you. Most risk on Discord comes from which rooms they’re in.",
+     "do": [
+      "Open their server list and ask about each one: what is it, who’s in it, how did you find it?",
+      "Leave any large public server they can’t explain.",
+      "Agree that new servers get mentioned to you."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Set a monthly spending cap",
+     "why": "Nitro subscriptions and gifts are easy to rack up.",
+     "path": "Family Center → spending settings",
+     "do": [
+      "Set a monthly limit on purchases."
+     ],
+     "recommended": {
+      "13-15": "{cur}0 unless agreed",
+      "16-17": "A small agreed cap"
+     }
+    },
+    {
+     "id": "screentime",
+     "title": "Set screen time limits",
+     "why": "Voice chat sessions run long, especially at night.",
+     "path": "Family Center → Screen Time Limits",
+     "do": [
+      "Schedule downtime, particularly overnight."
+     ]
+    }
+   ],
+   "checklist": [
+    "Family Center linked",
+    "Sensitive content blocked",
+    "Server DMs turned off",
+    "Friend requests limited",
+    "Server list reviewed together",
+    "Spending capped"
+   ],
+   "talkAboutIt": [
+    "Ask which server they spend the most time in and what they like about it.",
+    "Agree that if anyone asks them to move to a private DM or another app, they tell you.",
+    "Make sure they know how to block and report inside Discord."
+   ],
+   "links": [
+    {
+     "label": "Discord — Family Center for parents (official)",
+     "url": "https://support.discord.com/hc/en-us/articles/14155043715735-Family-Center-for-Parents-and-Guardians"
+    },
+    {
+     "label": "Discord — Family Center hub (official)",
+     "url": "https://discord.com/safety-family-center"
+    },
+    {
+     "label": "Discord — teen-by-default settings",
+     "url": "https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally"
+    }
+   ]
+  },
+  "youtube": {
+   "id": "youtube",
+   "name": "YouTube",
+   "type": "app",
+   "kind": "Video",
+   "blurb": "The biggest video platform. Which version your child should use depends heavily on their age.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "risks": [
+    "Autoplay and recommendations pull children well past what they set out to watch",
+    "Comments sections are unmoderated in practice",
+    "Content aimed at adults is often styled to look child-friendly"
+   ],
+   "beforeYouStart": [
+    "There are three options: YouTube Kids (young children), a supervised YouTube account through Family Link (roughly 9+), and a normal account (13+).",
+    "You’ll need the Family Link app, or access to families.google.com."
+   ],
+   "steps": [
+    {
+     "id": "choose",
+     "title": "Choose the right version of YouTube",
+     "why": "Getting this right matters more than any individual toggle.",
+     "do": [
+      "Under about 9: use the YouTube Kids app instead.",
+      "Roughly 9 to 12: use a supervised YouTube account via Family Link.",
+      "13 and over: a normal account, with the settings below applied."
+     ],
+     "recommended": {
+      "7-11": "YouTube Kids, or a supervised account on Explore",
+      "11-12": "Supervised account",
+      "13-15": "Supervised account or normal account with limits",
+      "16-17": "Normal account, with a conversation about the feed"
+     }
+    },
+    {
+     "id": "level",
+     "title": "Set the content level",
+     "why": "This decides which slice of YouTube they can reach. It’s the main control on a supervised account.",
+     "path": "Family Link app → [your child] → Controls → Content restrictions → YouTube",
+     "do": [
+      "Open Family Link and select your child.",
+      "Go to Controls, Content restrictions, then YouTube.",
+      "Pick the content setting for their age."
+     ],
+     "recommended": {
+      "7-11": "Explore (suggested 9+)",
+      "11-12": "Explore (suggested 9+)",
+      "13-15": "Explore more (suggested 13+)",
+      "16-17": "Most of YouTube"
+     },
+     "note": "The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them."
+    },
+    {
+     "id": "autoplay",
+     "title": "Turn off autoplay and pause history",
+     "why": "Autoplay is what turns a ten-minute video into two hours. Pausing history slows down the recommendation loop.",
+     "path": "YouTube app → Profile → Settings",
+     "do": [
+      "Turn Autoplay off.",
+      "Pause watch history and search history.",
+      "Clear the existing history if the recommendations have already drifted."
+     ]
+    },
+    {
+     "id": "block",
+     "title": "Block channels you don’t want",
+     "why": "Faster than trying to filter by topic, and it sticks.",
+     "do": [
+      "On a video from a channel you want gone, open the menu and choose Block this channel.",
+      "You can also manage blocked channels from the parent settings."
+     ]
+    },
+    {
+     "id": "time",
+     "title": "Set a time limit at the device level",
+     "why": "YouTube doesn’t have its own strong time limit, so use Screen Time or Family Link.",
+     "do": [
+      "iPhone/iPad: Settings → Screen Time → App Limits.",
+      "Android/Chromebook: Family Link → Controls → Daily limit."
+     ]
+    }
+   ],
+   "checklist": [
+    "Right version of YouTube for their age",
+    "Content level set",
+    "Autoplay off",
+    "Watch and search history paused",
+    "Time limit set at device level"
+   ],
+   "talkAboutIt": [
+    "Watch a couple of their favorite creators with them and ask what they like.",
+    "Talk about sponsorship and why creators recommend things.",
+    "Agree what they do if a video makes them uncomfortable — close it and tell you, not keep watching."
+   ],
+   "links": [
+    {
+     "label": "YouTube — content settings for supervised accounts (official)",
+     "url": "https://support.google.com/youtube/answer/10315823?hl=en"
+    },
+    {
+     "label": "Google — YouTube & YouTube Kids options for your child (official)",
+     "url": "https://support.google.com/families/answer/10495678?hl=en"
+    },
+    {
+     "label": "YouTube — parental controls for supervised accounts (official)",
+     "url": "https://support.google.com/youtube/answer/13877231?hl=en"
+    }
+   ]
+  },
+  "fortnite": {
+   "id": "fortnite",
+   "name": "Fortnite",
+   "type": "app",
+   "kind": "Game",
+   "blurb": "Online shooter with cartoon violence, played in squads with voice chat. Controls sit in two places: Epic’s account and the console or device.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "playstation",
+    "xbox",
+    "switch"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 12,
+   "risks": [
+    "Open voice chat with random squadmates, including adults",
+    "V-Bucks spending, often through gift cards",
+    "Battle pass mechanics that reward daily play and make missing a day feel costly"
+   ],
+   "beforeYouStart": [
+    "Choose a 6-digit PIN before you start — it’s shared with the Epic Games Store.",
+    "You’ll need to set controls in Fortnite and again on the console or device. Neither covers the other."
+   ],
+   "steps": [
+    {
+     "id": "pin",
+     "title": "Set the parental controls PIN",
+     "why": "Everything else depends on this. Without it, the settings are suggestions.",
+     "path": "Fortnite main menu → ☰ → ⚙️ → Parental Controls",
+     "do": [
+      "From the main menu, open the three-line menu, then the gear icon.",
+      "Choose Parental Controls.",
+      "Create a 6-digit PIN. Don’t reuse a PIN your child already knows.",
+      "Confirm the email address that receives reports."
+     ]
+    },
+    {
+     "id": "voice",
+     "title": "Set voice and text chat",
+     "why": "This is the biggest one. Random squad fill puts your child in a voice channel with strangers by default.",
+     "path": "Parental Controls → Voice Chat / Text Chat",
+     "do": [
+      "Set Voice Chat and Text Chat to the level below.",
+      "Confirm with your PIN."
+     ],
+     "recommended": {
+      "7-11": "Nobody",
+      "11-12": "Friends Only",
+      "13-15": "Friends Only",
+      "16-17": "Friends Only, or Friends & Teammates if agreed"
+     },
+     "note": "The options are Nobody, Friends Only, Friends & Teammates, and Everybody."
+    },
+    {
+     "id": "language",
+     "title": "Turn on the mature language filter",
+     "why": "Replaces swearing in text chat with heart symbols. Small thing, easy win.",
+     "path": "Parental Controls → Filter Mature Language",
+     "do": [
+      "Toggle Filter Mature Language on."
+     ]
+    },
+    {
+     "id": "friends",
+     "title": "Require your PIN to add friends",
+     "why": "It turns every new friend request into a two-second conversation, which is exactly what you want.",
+     "path": "Parental Controls → Require a PIN to add Epic friends",
+     "do": [
+      "Turn it on."
+     ],
+     "ages": [
+      "7-11",
+      "11-12",
+      "13-15"
+     ]
+    },
+    {
+     "id": "time",
+     "title": "Set playtime limits and weekly reports",
+     "why": "Fortnite matches don’t end at a convenient moment. A scheduled limit avoids the 'one more game' loop.",
+     "path": "Parental Controls → Playtime",
+     "do": [
+      "Set a daily limit (adjustable in 15-minute increments).",
+      "Set a different schedule for weekends if that suits you.",
+      "Turn on Weekly Playtime Reports so you get an email summary."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Require your PIN for purchases",
+     "why": "V-Bucks purchases are two taps away otherwise.",
+     "path": "Epic Games Store settings → Parental Controls → require PIN for purchases",
+     "do": [
+      "In the Epic Games Store parental controls, turn on the requirement for a PIN on all purchases.",
+      "Remove any saved payment card if your child plays unsupervised."
+     ]
+    },
+    {
+     "id": "platform",
+     "title": "Set the console or device controls too",
+     "why": "Epic’s controls don’t govern the console’s own chat and spending. Both layers are needed.",
+     "do": [
+      "PlayStation: set communication and spending limits in Family Management.",
+      "Xbox: set Privacy & online safety and spending in Microsoft Family Safety.",
+      "Switch: set restriction level and play-time limits in the Parental Controls app.",
+      "iPhone/iPad: use Screen Time. Android: use Family Link."
+     ],
+     "note": "SafeStart has a guide for each console — pick your device on the home screen."
+    }
+   ],
+   "checklist": [
+    "6-digit PIN set",
+    "Voice and text chat restricted",
+    "Mature language filter on",
+    "PIN required to add friends",
+    "Playtime limit and weekly report on",
+    "Purchases require a PIN",
+    "Console or device controls also set"
+   ],
+   "talkAboutIt": [
+    "Ask who they usually squad up with, and whether they’ve ever played with someone they only know online.",
+    "Agree the rule: nobody in a game ever needs to know your real name, school or where you live.",
+    "Watch a match with them. It tells you more than any setting screen."
+   ],
+   "links": [
+    {
+     "label": "Epic Games — parental controls (official)",
+     "url": "https://www.epicgames.com/help/en-US/epic-accounts-c5719348850459/parental-controls-c5719341581595"
+    },
+    {
+     "label": "Epic Games — Fortnite parental controls (official)",
+     "url": "https://www.epicgames.com/site/en-US/parental-controls"
+    },
+    {
+     "label": "Internet Matters — Fortnite parental controls",
+     "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/fortnite-battle-royale-parental-controls/"
+    }
+   ]
+  },
+  "minecraft": {
+   "id": "minecraft",
+   "name": "Minecraft",
+   "type": "app",
+   "kind": "Game",
+   "blurb": "Building and survival game. Single player is about as safe as gaming gets. Multiplayer servers and Realms are where the controls matter.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 12,
+   "risks": [
+    "Public servers have open chat and no reliable moderation",
+    "Third-party servers and mods sit outside Microsoft’s controls entirely",
+    "Marketplace purchases with Minecoins"
+   ],
+   "beforeYouStart": [
+    "Most Minecraft controls actually live in the Microsoft account, not in the game. Set up a child account inside your family group first.",
+    "Single-player and a private Realm with known friends is a genuinely low-risk setup. Public servers are a different thing."
+   ],
+   "steps": [
+    {
+     "id": "account",
+     "title": "Put them on a child Microsoft account inside your family",
+     "why": "Nothing else works without this. An adult account can’t be supervised.",
+     "path": "family.microsoft.com",
+     "do": [
+      "Go to family.microsoft.com and sign in with your own Microsoft account.",
+      "Add your child as a family member, with their correct date of birth.",
+      "Make sure Minecraft is signed in with that account."
+     ]
+    },
+    {
+     "id": "multiplayer",
+     "title": "Set multiplayer and communication in Xbox privacy settings",
+     "why": "These three toggles control who can reach your child inside Minecraft, on every platform.",
+     "path": "account.xbox.com/settings → [your child] → Privacy & online safety → Xbox Series X|S, Xbox One, and Windows 10 devices",
+     "do": [
+      "Go to account.xbox.com/settings and sign in with your parent account.",
+      "Select your child’s profile, then the Privacy & online safety tab.",
+      "Choose the Xbox and Windows devices section.",
+      "Set 'You can join multiplayer games', 'Others can communicate with voice, text, or invites' and 'You can add friends' to the levels below."
+     ],
+     "recommended": {
+      "7-11": "Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.",
+      "11-12": "Multiplayer: Allow. Communicate: Friends only. Add friends: Block.",
+      "13-15": "Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.",
+      "16-17": "Multiplayer: Allow. Communicate: Friends only."
+     }
+    },
+    {
+     "id": "chat",
+     "title": "Turn chat off inside the game as well",
+     "why": "Two layers is better than one, and the in-game setting covers cases the account setting doesn’t.",
+     "do": [
+      "In Minecraft, open Settings and look for the chat option in the profile or general settings.",
+      "Turn chat off, or set it to show only commands, for younger children."
+     ],
+     "ages": [
+      "7-11",
+      "11-12"
+     ],
+     "confidence": "medium",
+     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters — check the official Minecraft help link below."
+    },
+    {
+     "id": "realms",
+     "title": "Prefer a private Realm over public servers",
+     "why": "A Realm is invite-only and controlled by whoever owns it. Public servers are open to anyone.",
+     "do": [
+      "If they want to play with friends, set up or join a Realm rather than a public server.",
+      "As the Realm owner, you control the invite list.",
+      "Talk about third-party servers — those sit entirely outside these controls."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Require approval for purchases",
+     "why": "The Minecraft Marketplace sells skins and worlds for Minecoins, and children are the target market.",
+     "path": "family.microsoft.com → [your child] → Spending",
+     "do": [
+      "Turn on 'Needs organizer approval to buy things'.",
+      "Turn on purchase notification emails."
+     ]
+    },
+    {
+     "id": "time",
+     "title": "Set screen time in Microsoft Family Safety",
+     "why": "Covers Minecraft across Xbox and Windows in one place.",
+     "path": "family.microsoft.com → [your child] → Screen time",
+     "do": [
+      "Set daily limits or a schedule, per device."
+     ]
+    }
+   ],
+   "checklist": [
+    "Child account inside your Microsoft family",
+    "Multiplayer and communication set to friends only",
+    "Chat restricted in game for younger children",
+    "Playing on Realms rather than public servers",
+    "Purchases need approval",
+    "Screen time set"
+   ],
+   "talkAboutIt": [
+    "Ask them to give you a tour of what they’ve built. It’s an easy in.",
+    "Agree that public servers get checked with you first.",
+    "Talk about mods and downloads — where they come from matters."
+   ],
+   "links": [
+    {
+     "label": "Minecraft — parental controls and safety (official)",
+     "url": "https://help.minecraft.net/hc/en-us/articles/4408968616845"
+    },
+    {
+     "label": "Xbox — privacy and online safety settings (official)",
+     "url": "https://account.xbox.com/settings"
+    },
+    {
+     "label": "Microsoft Family Safety (official)",
+     "url": "https://family.microsoft.com/"
+    }
+   ]
+  },
+  "iphone": {
+   "id": "iphone",
+   "name": "iPhone",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Apple’s controls live in Screen Time, and work best when the child is in your Family Sharing group.",
+   "devices": [
+    "iphone"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 15,
+   "risks": [
+    "App Store downloads that bypass everything you’ve set up",
+    "The browser, which reaches everything the app controls don’t",
+    "Late-night use, which is the most consistently harmful pattern"
+   ],
+   "beforeYouStart": [
+    "Set up Family Sharing first and add your child’s Apple Account to your family group. Screen Time is far weaker without it.",
+    "Choose a Screen Time passcode that is not the phone’s unlock code and that your child doesn’t know."
+   ],
+   "steps": [
+    {
+     "id": "family",
+     "title": "Add them to Family Sharing",
+     "why": "It lets you manage their phone from yours, and it’s what makes Ask to Buy possible.",
+     "path": "Settings → [your name] → Family Sharing",
+     "do": [
+      "On your iPhone, open Settings and tap your name.",
+      "Tap Family Sharing and add your child.",
+      "If they’re under 13, create a child Apple Account for them here."
+     ]
+    },
+    {
+     "id": "passcode",
+     "title": "Set a Screen Time passcode",
+     "why": "Without a separate passcode, your child can turn all of this off in about fifteen seconds.",
+     "path": "Settings → Screen Time → [your child] → Change Screen Time Passcode",
+     "do": [
+      "Open Settings, then Screen Time, then choose your child under Family.",
+      "Set a Screen Time passcode.",
+      "Use a different code from the phone unlock, and don’t use a birthday."
+     ]
+    },
+    {
+     "id": "restrictions",
+     "title": "Turn on Content & Privacy Restrictions",
+     "why": "This is the master switch that unlocks everything else.",
+     "path": "Settings → Screen Time → [your child] → Content & Privacy Restrictions",
+     "do": [
+      "Open Content & Privacy Restrictions.",
+      "Enter your Screen Time passcode.",
+      "Toggle Content & Privacy Restrictions on."
+     ]
+    },
+    {
+     "id": "purchases",
+     "title": "Require approval for downloads and purchases",
+     "why": "Otherwise every setting you choose is one free app download away from irrelevant.",
+     "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
+     "do": [
+      "Set In-app Purchases to Don’t Allow.",
+      "Set Installing Apps and Deleting Apps according to the ages below.",
+      "Turn on Ask to Buy in Family Sharing so download requests come to your phone."
+     ],
+     "recommended": {
+      "7-11": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
+      "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
+      "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
+      "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
+     }
+    },
+    {
+     "id": "content",
+     "title": "Set content ratings and web filtering",
+     "why": "The browser is the widest open door on the phone. Web content filtering closes most of it.",
+     "path": "Content & Privacy Restrictions → App Store, Media, Web & Games",
+     "do": [
+      "Set age ratings for apps, films, TV and music.",
+      "Open Web Content and choose the level below.",
+      "For younger children, Allowed Websites lets you list the only sites that work."
+     ],
+     "recommended": {
+      "7-11": "Allowed Websites Only, apps rated 9+",
+      "11-12": "Limit Adult Websites, apps rated 12+",
+      "13-15": "Limit Adult Websites, apps rated 12+",
+      "16-17": "Limit Adult Websites"
+     }
+    },
+    {
+     "id": "downtime",
+     "title": "Set Downtime and App Limits",
+     "why": "Downtime is the one that protects sleep, which is the change most families actually feel.",
+     "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
+     "do": [
+      "Set Downtime to cover overnight — school nights first if you want an easier start.",
+      "Add App Limits for the categories that run away with time, usually Social and Games.",
+      "Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum)."
+     ],
+     "recommended": {
+      "7-11": "Downtime from 7pm, Social and Games limited to 45 min",
+      "11-12": "Downtime from 8:30pm",
+      "13-15": "Downtime from 9:30pm on school nights",
+      "16-17": "Agree a Downtime window together"
+     }
+    },
+    {
+     "id": "privacy",
+     "title": "Lock down privacy and location changes",
+     "why": "Stops apps quietly gaining location or contacts access later.",
+     "path": "Content & Privacy Restrictions → Privacy",
+     "do": [
+      "Open Location Services and set it to Don’t Allow Changes after you’ve set it how you want.",
+      "Do the same for Contacts and Photos.",
+      "Turn on Communication Limits so contact during Downtime is restricted to known contacts."
+     ]
+    }
+   ],
+   "checklist": [
+    "Child added to Family Sharing",
+    "Screen Time passcode set, and secret",
+    "Content & Privacy Restrictions on",
+    "Ask to Buy on, in-app purchases off",
+    "Web content filtered",
+    "Downtime covering overnight",
+    "Privacy changes locked"
+   ],
+   "talkAboutIt": [
+    "Tell them what you’ve set and why. Hidden controls get worked around; explained ones usually don’t.",
+    "Agree how they earn more freedom over time.",
+    "Show them how to report and block in the apps they use most."
+   ],
+   "links": [
+    {
+     "label": "Apple — Use parental controls on your child’s device (official)",
+     "url": "https://support.apple.com/en-us/105121"
+    },
+    {
+     "label": "Apple — Family Sharing (official)",
+     "url": "https://support.apple.com/en-us/HT201060"
+    },
+    {
+     "label": "Apple — Screen Time (official)",
+     "url": "https://support.apple.com/en-us/HT208982"
+    }
+   ]
+  },
+  "ipad": {
+   "id": "ipad",
+   "name": "iPad",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Same Screen Time controls as iPhone. Worth setting separately, since iPads are more often shared and more often used for video.",
+   "devices": [
+    "ipad"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 15,
+   "risks": [
+    "Shared iPads often sit on an adult account with no restrictions at all",
+    "Long-form video and games make time limits more important than on a phone",
+    "The browser reaches everything the app controls don’t"
+   ],
+   "beforeYouStart": [
+    "If the iPad is shared, decide whether it’s your child’s device (set it up under their Apple Account) or a family device (set restrictions on the account it uses).",
+    "Set up Family Sharing first and pick a Screen Time passcode your child doesn’t know."
+   ],
+   "steps": [
+    {
+     "id": "family",
+     "title": "Add them to Family Sharing",
+     "why": "Lets you manage the iPad from your own phone and enables Ask to Buy.",
+     "path": "Settings → [your name] → Family Sharing",
+     "do": [
+      "On your device, open Settings and tap your name.",
+      "Tap Family Sharing and add your child.",
+      "Make sure the iPad is signed in to their Apple Account, not yours."
+     ]
+    },
+    {
+     "id": "passcode",
+     "title": "Set a Screen Time passcode",
+     "why": "Otherwise every setting below can be switched off from the iPad itself.",
+     "path": "Settings → Screen Time → [your child] → Change Screen Time Passcode",
+     "do": [
+      "Open Settings, then Screen Time.",
+      "Set a Screen Time passcode that differs from the unlock code."
+     ]
+    },
+    {
+     "id": "restrictions",
+     "title": "Turn on Content & Privacy Restrictions",
+     "why": "The master switch for content ratings, web filtering and purchases.",
+     "path": "Settings → Screen Time → [your child] → Content & Privacy Restrictions",
+     "do": [
+      "Open Content & Privacy Restrictions and enter your passcode.",
+      "Toggle it on."
+     ]
+    },
+    {
+     "id": "purchases",
+     "title": "Require approval for downloads and purchases",
+     "why": "iPads are where 'free' games with aggressive in-app purchases tend to land.",
+     "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
+     "do": [
+      "Set In-app Purchases to Don’t Allow.",
+      "Set Installing Apps to match the ages below.",
+      "Turn on Ask to Buy so requests come to your phone."
+     ],
+     "recommended": {
+      "7-11": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
+      "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
+      "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
+      "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
+     }
+    },
+    {
+     "id": "content",
+     "title": "Set content ratings and web filtering",
+     "why": "Safari is the widest open door on the device.",
+     "path": "Content & Privacy Restrictions → App Store, Media, Web & Games",
+     "do": [
+      "Set age ratings for apps, films, TV and music.",
+      "Open Web Content and pick the level below.",
+      "For younger children, Allowed Websites Only is much stronger than the adult filter."
+     ],
+     "recommended": {
+      "7-11": "Allowed Websites Only, apps rated 9+",
+      "11-12": "Limit Adult Websites, apps rated 12+",
+      "13-15": "Limit Adult Websites, apps rated 12+",
+      "16-17": "Limit Adult Websites"
+     }
+    },
+    {
+     "id": "downtime",
+     "title": "Set Downtime and App Limits",
+     "why": "iPads get used for hours without anyone noticing. Limits create a natural stop.",
+     "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
+     "do": [
+      "Set Downtime to cover the evening and overnight.",
+      "Add App Limits for video and games.",
+      "Use Always Allowed for anything that should still work, like messages to you."
+     ],
+     "recommended": {
+      "7-11": "Downtime from 7pm, 45 min on games and video",
+      "11-12": "Downtime from 8:30pm",
+      "13-15": "Downtime from 9:30pm on school nights",
+      "16-17": "Agree a window together"
+     }
+    }
+   ],
+   "checklist": [
+    "iPad signed in to the child’s Apple Account",
+    "Screen Time passcode set and secret",
+    "Content & Privacy Restrictions on",
+    "Ask to Buy on, in-app purchases off",
+    "Web content filtered",
+    "Downtime and app limits set"
+   ],
+   "talkAboutIt": [
+    "If the iPad is shared, agree who uses it when and for what.",
+    "Keep it out of the bedroom overnight if you can — it does more than any setting.",
+    "Tell them what you’ve set and why."
+   ],
+   "links": [
+    {
+     "label": "Apple — Use parental controls on your child’s device (official)",
+     "url": "https://support.apple.com/en-us/105121"
+    },
+    {
+     "label": "Apple — Family Sharing (official)",
+     "url": "https://support.apple.com/en-us/HT201060"
+    }
+   ]
+  },
+  "android": {
+   "id": "android",
+   "name": "Android phone or tablet",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Google’s Family Link supervises the child’s Google account and the device itself.",
+   "devices": [
+    "android"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 15,
+   "risks": [
+    "Apps sideloaded outside the Play Store bypass Play’s age ratings",
+    "The browser reaches everything app controls don’t",
+    "Overnight use"
+   ],
+   "beforeYouStart": [
+    "You need to be 18+ with your own Google Account, and you and your child need to be in the same country.",
+    "Changes can take about five minutes to reach the device, so don’t panic if a setting doesn’t apply instantly."
+   ],
+   "steps": [
+    {
+     "id": "setup",
+     "title": "Set up Family Link supervision",
+     "why": "It’s the foundation. Nothing else in this guide works without it.",
+     "path": "Family Link app, or familylink.google.com",
+     "do": [
+      "Install the Family Link app on your phone.",
+      "Create a Google Account for your child if they’re under 13, or add supervision to their existing account.",
+      "Follow the prompts on their device to link it. You’ll need the device in your hands."
+     ],
+     "note": "Family Link can supervise Android devices and Chromebooks. It cannot supervise iPhones or iPads."
+    },
+    {
+     "id": "apps",
+     "title": "Control app downloads and approvals",
+     "why": "The quickest way for controls to become irrelevant is a new app you didn’t know about.",
+     "path": "Family Link → [your child] → Controls → Apps",
+     "do": [
+      "Turn on approval for all Play Store downloads, including free apps.",
+      "Set Play Store content ratings for apps, games, films and TV.",
+      "Review what’s already installed and block anything that shouldn’t be there."
+     ],
+     "recommended": {
+      "7-11": "Approval required for everything, apps rated PEGI 7 / ESRB E",
+      "11-12": "Approval required for everything, apps rated PEGI 12 / ESRB E10+",
+      "13-15": "Approval required for paid apps, ratings PEGI 12 / ESRB T",
+      "16-17": "Notifications rather than approvals"
+     }
+    },
+    {
+     "id": "web",
+     "title": "Filter web and search",
+     "why": "Chrome is the widest opening on the device.",
+     "path": "Family Link → [your child] → Controls → Content restrictions → Google Chrome / Google Search",
+     "do": [
+      "Set Chrome to Try to block explicit sites, or Only allow approved sites for younger children.",
+      "Turn SafeSearch on and lock it.",
+      "Add specific sites to allow or block as needed."
+     ],
+     "recommended": {
+      "7-11": "Only allow approved sites",
+      "11-12": "Try to block explicit sites",
+      "13-15": "Try to block explicit sites",
+      "16-17": "Try to block explicit sites"
+     }
+    },
+    {
+     "id": "time",
+     "title": "Set daily limits and bedtime",
+     "why": "Bedtime is the setting that changes the most in practice.",
+     "path": "Family Link → [your child] → Controls → Daily limit / Bedtime",
+     "do": [
+      "Set daily limits, which can differ by day of the week.",
+      "Set a bedtime schedule that locks the device.",
+      "You can grant bonus time from your phone when it’s genuinely warranted."
+     ]
+    },
+    {
+     "id": "location",
+     "title": "Decide on location sharing",
+     "why": "Useful for younger children. For teenagers, worth agreeing rather than imposing.",
+     "path": "Family Link → [your child] → Location",
+     "do": [
+      "Turn on location if you want it, and tell your child it’s on.",
+      "For older teens, discuss it first — covert tracking damages trust more than it protects."
+     ]
+    },
+    {
+     "id": "youtube",
+     "title": "Set YouTube separately",
+     "why": "YouTube has its own content levels that sit inside Family Link.",
+     "path": "Family Link → [your child] → Controls → Content restrictions → YouTube",
+     "do": [
+      "Choose the content setting: Explore (9+), Explore more (13+) or Most of YouTube.",
+      "Consider the YouTube Kids app instead for under-9s."
+     ]
+    }
+   ],
+   "checklist": [
+    "Family Link supervision active",
+    "Download approval on",
+    "Play content ratings set",
+    "SafeSearch on and locked",
+    "Chrome filtering set",
+    "Daily limit and bedtime set",
+    "YouTube content level set"
+   ],
+   "talkAboutIt": [
+    "Show them the Family Link app so it isn’t a mystery.",
+    "Agree what happens when they want a new app — a request, not a fight.",
+    "Talk about sideloading if they’re technical enough to know the term."
+   ],
+   "links": [
+    {
+     "label": "Google — Family Link setup (official)",
+     "url": "https://support.google.com/families/answer/7101025?hl=en"
+    },
+    {
+     "label": "Google Families help center (official)",
+     "url": "https://families.google/familylink/"
+    },
+    {
+     "label": "Google — YouTube options for your child (official)",
+     "url": "https://support.google.com/families/answer/10495678?hl=en"
+    }
+   ]
+  },
+  "windows": {
+   "id": "windows",
+   "name": "Windows PC",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Microsoft Family Safety covers Windows, Xbox and Edge from one dashboard.",
+   "devices": [
+    "windows"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 15,
+   "risks": [
+    "Web filtering only works in Microsoft Edge, so other browsers need blocking",
+    "A local (non-Microsoft) account bypasses everything",
+    "Game downloads and in-game spending"
+   ],
+   "beforeYouStart": [
+    "Your child needs their own child Microsoft account, signed in on the PC. If they use your account, none of this applies.",
+    "Web filtering is Edge-only. Plan to block other browsers, or the filter does nothing."
+   ],
+   "steps": [
+    {
+     "id": "account",
+     "title": "Create a child account in your family group",
+     "why": "The foundation for everything else.",
+     "path": "family.microsoft.com",
+     "do": [
+      "Go to family.microsoft.com and sign in with your Microsoft account.",
+      "Add a family member, choosing the child option, with their correct date of birth.",
+      "On the PC, sign them in with that account and make sure they’re not using yours."
+     ]
+    },
+    {
+     "id": "content",
+     "title": "Set content filters",
+     "why": "Blocks adult sites in Edge and sets age ratings for apps and games.",
+     "path": "family.microsoft.com → [your child] → Content filters",
+     "do": [
+      "Turn on Filter inappropriate websites and searches.",
+      "Turn on Only use allowed browsers, which blocks Chrome, Firefox and others.",
+      "Under Apps and games, set the age rating limit."
+     ],
+     "recommended": {
+      "7-11": "Age rating 7, allowed sites only",
+      "11-12": "Age rating 12, adult sites blocked",
+      "13-15": "Age rating 12–16, adult sites blocked",
+      "16-17": "Age rating 16–18, adult sites blocked"
+     }
+    },
+    {
+     "id": "time",
+     "title": "Set screen time",
+     "why": "You can set different limits per device, which helps if homework happens on the same PC.",
+     "path": "family.microsoft.com → [your child] → Screen time",
+     "do": [
+      "Set a schedule for the Windows device.",
+      "Add separate app limits if a specific game is the problem rather than the PC itself."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Require approval for purchases",
+     "why": "Stops surprise Microsoft Store and game purchases.",
+     "path": "family.microsoft.com → [your child] → Spending",
+     "do": [
+      "Turn on 'Needs organizer approval to buy things'.",
+      "Turn on email notifications for purchases.",
+      "Remove any saved card, or use a balance instead."
+     ]
+    },
+    {
+     "id": "reports",
+     "title": "Turn on activity reporting",
+     "why": "A weekly summary is a better conversation starter than a live feed.",
+     "path": "family.microsoft.com → [your child] → Activity reporting",
+     "do": [
+      "Turn on activity reporting and weekly email summaries.",
+      "Tell your child it’s on. Reports work better as a shared thing."
+     ]
+    }
+   ],
+   "checklist": [
+    "Child Microsoft account created and in use",
+    "Web filtering on, other browsers blocked",
+    "App and game age ratings set",
+    "Screen time schedule set",
+    "Purchases need approval",
+    "Activity reporting on"
+   ],
+   "talkAboutIt": [
+    "Agree homework time versus game time rather than one blanket limit.",
+    "Explain that the web filter only works in Edge, so switching browsers isn’t a loophole, it’s just blocked.",
+    "Look at the weekly report together."
+   ],
+   "links": [
+    {
+     "label": "Microsoft Family Safety (official)",
+     "url": "https://family.microsoft.com/"
+    },
+    {
+     "label": "Microsoft — family safety features (official)",
+     "url": "https://support.microsoft.com/en-us/topic/what-is-microsoft-family-safety-b1b0b9c8-8de4-4e5e-9b7b-2b1cf5e4f9a5"
+    }
+   ]
+  },
+  "mac": {
+   "id": "mac",
+   "name": "Mac",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Screen Time on macOS works much like iPhone, and syncs across devices signed in to the same Apple Account.",
+   "devices": [
+    "mac"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "medium",
+   "minutes": 12,
+   "risks": [
+    "Shared family Macs often run on an adult account with no controls",
+    "The browser reaches everything app controls don’t",
+    "Downloads outside the App Store"
+   ],
+   "beforeYouStart": [
+    "Give your child their own user account on the Mac, signed in to their own Apple Account inside your Family Sharing group.",
+    "macOS menu names shift between versions. If a menu doesn’t match, check Apple’s official page linked below."
+   ],
+   "steps": [
+    {
+     "id": "account",
+     "title": "Give them their own login and add them to Family Sharing",
+     "why": "Screen Time applies per account. On a shared login it does nothing useful.",
+     "path": "System Settings → Users & Groups / Family",
+     "do": [
+      "Create a separate user account on the Mac for your child.",
+      "Add their Apple Account to your Family Sharing group.",
+      "Sign them in to that account on the Mac."
+     ]
+    },
+    {
+     "id": "passcode",
+     "title": "Turn on Screen Time and set a passcode",
+     "why": "The passcode is what stops them switching it off.",
+     "path": "System Settings → Screen Time",
+     "do": [
+      "Open System Settings, then Screen Time.",
+      "Select your child under Family.",
+      "Turn on Lock Screen Time Settings and set a passcode they don’t know."
+     ]
+    },
+    {
+     "id": "content",
+     "title": "Set content and privacy restrictions",
+     "why": "Covers web content, app ratings and store purchases.",
+     "path": "Screen Time → Content & Privacy",
+     "do": [
+      "Turn on Content & Privacy.",
+      "Under Content Restrictions, set web content to Limit Adult Websites, or Allowed Websites Only for younger children.",
+      "Set app and media age ratings.",
+      "Under Store Restrictions, turn off in-app purchases and require a password for every purchase."
+     ],
+     "recommended": {
+      "7-11": "Allowed Websites Only",
+      "11-12": "Limit Adult Websites",
+      "13-15": "Limit Adult Websites",
+      "16-17": "Limit Adult Websites"
+     }
+    },
+    {
+     "id": "downtime",
+     "title": "Set Downtime and App Limits",
+     "why": "Homework on a laptop makes a blanket limit unrealistic, so limit the categories that actually run away.",
+     "path": "Screen Time → Downtime / App Limits",
+     "do": [
+      "Set Downtime for the evening and overnight.",
+      "Add App Limits for Games and Social rather than everything.",
+      "Add anything they need for schoolwork to Always Allowed."
+     ]
+    }
+   ],
+   "checklist": [
+    "Child has their own Mac login",
+    "Added to Family Sharing",
+    "Screen Time locked with a passcode",
+    "Web content filtered",
+    "Purchases require a password",
+    "Downtime and category limits set"
+   ],
+   "talkAboutIt": [
+    "Separate schoolwork from everything else so limits feel fair.",
+    "Agree where the laptop lives overnight.",
+    "Tell them what’s set rather than letting them discover it."
+   ],
+   "links": [
+    {
+     "label": "Apple — Use parental controls on your child’s device (official)",
+     "url": "https://support.apple.com/en-us/105121"
+    },
+    {
+     "label": "Apple — Screen Time on Mac (official)",
+     "url": "https://support.apple.com/guide/mac-help/screen-time-mchl8bd1release/mac"
+    }
+   ]
+  },
+  "chromebook": {
+   "id": "chromebook",
+   "name": "Chromebook",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Managed through Family Link, the same as Android. School-issued Chromebooks are managed by the school instead.",
+   "devices": [
+    "chromebook"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "medium",
+   "minutes": 12,
+   "risks": [
+    "School-issued devices may already be managed, and your controls won’t apply",
+    "Everything runs in the browser, so web filtering matters more than app controls",
+    "Extensions can change how sites behave"
+   ],
+   "beforeYouStart": [
+    "If this is a school Chromebook, the school’s policies take priority and you may not be able to add supervision. Ask the school first.",
+    "Chromebook supervision needs Chrome OS 71 or later."
+   ],
+   "steps": [
+    {
+     "id": "supervise",
+     "title": "Add your child’s account as supervised",
+     "why": "Supervision is what connects the Chromebook to Family Link.",
+     "path": "Family Link app, or familylink.google.com",
+     "do": [
+      "Set up your child’s Google Account with supervision in Family Link.",
+      "On the Chromebook, sign in with that supervised account.",
+      "Make sure they aren’t signing in as a guest, which bypasses supervision."
+     ]
+    },
+    {
+     "id": "web",
+     "title": "Filter the web and lock SafeSearch",
+     "why": "On a Chromebook, the browser is the device. This is the main control.",
+     "path": "Family Link → [your child] → Controls → Content restrictions → Google Chrome",
+     "do": [
+      "Choose Try to block explicit sites, or Only allow approved sites for younger children.",
+      "Turn SafeSearch on and lock it.",
+      "Add specific allow or block entries as needed."
+     ],
+     "recommended": {
+      "7-11": "Only allow approved sites",
+      "11-12": "Try to block explicit sites",
+      "13-15": "Try to block explicit sites",
+      "16-17": "Try to block explicit sites"
+     }
+    },
+    {
+     "id": "apps",
+     "title": "Control apps and extensions",
+     "why": "Extensions are the Chromebook equivalent of installing software.",
+     "path": "Family Link → [your child] → Controls → Apps",
+     "do": [
+      "Require approval for Play Store downloads.",
+      "Review installed extensions and remove anything unfamiliar.",
+      "Decide whether they can install extensions at all."
+     ]
+    },
+    {
+     "id": "time",
+     "title": "Set daily limits and bedtime",
+     "why": "Especially worth it if the Chromebook is also the homework machine.",
+     "path": "Family Link → [your child] → Controls → Daily limit / Bedtime",
+     "do": [
+      "Set daily limits that vary by day if homework needs differ.",
+      "Set a bedtime that locks the device."
+     ]
+    }
+   ],
+   "checklist": [
+    "Supervised account signed in, guest mode not in use",
+    "Chrome filtering set",
+    "SafeSearch locked",
+    "App and extension approval on",
+    "Daily limit and bedtime set"
+   ],
+   "talkAboutIt": [
+    "If it’s a school device, check what the school already blocks so you’re not duplicating.",
+    "Agree homework time versus free time.",
+    "Explain that guest mode isn’t a workaround, because you’ll notice."
+   ],
+   "links": [
+    {
+     "label": "Google — Family Link setup (official)",
+     "url": "https://support.google.com/families/answer/7101025?hl=en"
+    },
+    {
+     "label": "Google — Chromebook supervision (official)",
+     "url": "https://support.google.com/families/answer/7680868?hl=en"
+    }
+   ]
+  },
+  "playstation": {
+   "id": "playstation",
+   "name": "PlayStation",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Controls are set by the Family Manager, either on the console or at playstation.com.",
+   "devices": [
+    "playstation"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 15,
+   "risks": [
+    "Voice chat with strangers in online matches",
+    "PlayStation Store spending, including through wallet top-ups",
+    "Games rated well above the child’s age arriving through friends' recommendations"
+   ],
+   "beforeYouStart": [
+    "You need a PlayStation Network account in your own name to act as Family Manager.",
+    "Create a child account for your child rather than letting them use an adult one — this is the step that makes everything else possible."
+   ],
+   "steps": [
+    {
+     "id": "family",
+     "title": "Set up Family Management and a child account",
+     "why": "Restrictions only apply to child accounts within your family.",
+     "path": "playstation.com/acct/family",
+     "do": [
+      "Sign in at playstation.com/acct/family with your own account.",
+      "Add a family member and create a child account with their real date of birth.",
+      "Sign that account in on the console."
+     ]
+    },
+    {
+     "id": "age",
+     "title": "Set age-level restrictions for games and content",
+     "why": "Blocks games above their rating from launching, which is more reliable than hoping you notice.",
+     "path": "Family Management → [your child] → Parental Controls → Age level for games",
+     "do": [
+      "Set the age level for games to match their age.",
+      "Set the level for Blu-ray and DVD content.",
+      "Restrict or block the internet browser for younger children."
+     ],
+     "recommended": {
+      "7-11": "PEGI 7 / ESRB E, browser blocked",
+      "11-12": "PEGI 12 / ESRB E10+, browser blocked",
+      "13-15": "PEGI 12–16 / ESRB T, browser restricted",
+      "16-17": "PEGI 16–18 / ESRB T–M"
+     }
+    },
+    {
+     "id": "comms",
+     "title": "Restrict communication and user-generated content",
+     "why": "This is the setting that governs voice chat, messages and shared content from strangers.",
+     "path": "Family Management → [your child] → Parental Controls → Communication and user-generated content",
+     "do": [
+      "Restrict messaging and chat with other players.",
+      "Restrict the ability to view or share videos and images made by other players."
+     ],
+     "recommended": {
+      "7-11": "Restricted — no messaging or chat",
+      "11-12": "Restricted",
+      "13-15": "Allowed with friends only",
+      "16-17": "Allowed, discussed together"
+     }
+    },
+    {
+     "id": "time",
+     "title": "Set play time limits",
+     "why": "PlayStation lets you set both a daily amount and a window of hours, which is useful for school nights.",
+     "path": "Family Management → [your child] → Play Time Settings",
+     "do": [
+      "Set the hours of the day they can play.",
+      "Set a daily duration.",
+      "Choose whether the console logs them out at the limit or just warns them.",
+      "Note these settings apply to both PS5 and PS4."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Set a monthly spending limit",
+     "why": "Wallet top-ups and in-game currency are where console spending usually escapes.",
+     "path": "Family Management → [your child] → Monthly spending limit",
+     "do": [
+      "Set a monthly limit, or zero.",
+      "Remove any saved payment card from the account."
+     ],
+     "recommended": {
+      "7-11": "{cur}0",
+      "11-12": "{cur}0",
+      "13-15": "A small agreed monthly cap",
+      "16-17": "An agreed monthly cap"
+     }
+    }
+   ],
+   "checklist": [
+    "Family Manager set up",
+    "Child account created and in use",
+    "Game age level set",
+    "Communication restricted",
+    "Play time limits set",
+    "Monthly spend limit set"
+   ],
+   "talkAboutIt": [
+    "Ask who they play with online and whether they’ve met them in person.",
+    "Agree a rule about accepting party invites from people they don’t know.",
+    "Set the play window together so the console isn’t the one saying no."
+   ],
+   "links": [
+    {
+     "label": "PlayStation — Family Management (official)",
+     "url": "https://www.playstation.com/en-us/support/account/set-up-parental-controls-ps5/"
+    },
+    {
+     "label": "PlayStation — family account management",
+     "url": "https://www.playstation.com/acct/family"
+    },
+    {
+     "label": "Internet Matters — PS5 parental controls",
+     "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/"
+    }
+   ]
+  },
+  "xbox": {
+   "id": "xbox",
+   "name": "Xbox",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Managed through Microsoft Family Safety, which also covers Windows PCs on the same account.",
+   "devices": [
+    "xbox"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 15,
+   "risks": [
+    "Voice and text chat with strangers in multiplayer",
+    "Cross-network play, which brings in players from other platforms with different rules",
+    "Store and in-game spending"
+   ],
+   "beforeYouStart": [
+    "Your child needs a child Microsoft account inside your family group. An adult account can’t be restricted.",
+    "The same settings also cover Minecraft and any Windows PC signed in with that account."
+   ],
+   "steps": [
+    {
+     "id": "account",
+     "title": "Create a child account in your family group",
+     "why": "The base layer. Without it, none of the controls apply.",
+     "path": "family.microsoft.com, or the Xbox Family Settings app",
+     "do": [
+      "Sign in at family.microsoft.com with your Microsoft account.",
+      "Add your child as a family member with their correct date of birth.",
+      "Sign them in on the Xbox with that account."
+     ]
+    },
+    {
+     "id": "content",
+     "title": "Set access to content by age",
+     "why": "Blocks games and apps above their rating.",
+     "path": "family.microsoft.com → [your child] → Content filters → Apps and games",
+     "do": [
+      "Set the age limit for apps and games.",
+      "Turn on web filtering if they use the Xbox browser."
+     ],
+     "recommended": {
+      "7-11": "Age 7",
+      "11-12": "Age 12",
+      "13-15": "Age 12–16",
+      "16-17": "Age 16–18"
+     }
+    },
+    {
+     "id": "privacy",
+     "title": "Set privacy and online safety",
+     "why": "This is where multiplayer and who can talk to your child is actually decided.",
+     "path": "account.xbox.com/settings → [your child] → Privacy & online safety → Xbox Series X|S, Xbox One, and Windows 10 devices",
+     "do": [
+      "Set 'You can join multiplayer games' according to what you’re comfortable with.",
+      "Set 'Others can communicate with voice, text, or invites' to Friends only.",
+      "Set 'You can add friends' — block it for younger children so requests come through you.",
+      "Decide on cross-network play, which allows players from other platforms."
+     ],
+     "recommended": {
+      "7-11": "Communicate: Friends only. Add friends: Block. Cross-network: Block.",
+      "11-12": "Communicate: Friends only. Add friends: Block.",
+      "13-15": "Communicate: Friends only. Add friends: Allow.",
+      "16-17": "Communicate: Friends only."
+     }
+    },
+    {
+     "id": "time",
+     "title": "Set screen time",
+     "why": "You can set separate schedules per device, so Xbox and PC don’t share one budget.",
+     "path": "family.microsoft.com → [your child] → Screen time",
+     "do": [
+      "Set a schedule for the Xbox.",
+      "Add multiple time slots in a day if that fits your routine better than one block."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Control spending",
+     "why": "Stops in-game currency purchases turning into a monthly surprise.",
+     "path": "family.microsoft.com → [your child] → Spending",
+     "do": [
+      "Turn on 'Needs organizer approval to buy things'.",
+      "Turn on purchase notifications.",
+      "Consider adding money to their balance rather than leaving a card on the account."
+     ]
+    }
+   ],
+   "checklist": [
+    "Child Microsoft account created and in use",
+    "App and game age limits set",
+    "Communication set to friends only",
+    "Friend requests controlled",
+    "Screen time schedule set",
+    "Purchases need approval"
+   ],
+   "talkAboutIt": [
+    "Ask who’s in their party when they play. It’s the fastest way to spot a stranger.",
+    "Agree what happens when a friend request comes in from someone they only know in game.",
+    "Look at the weekly activity report together rather than alone."
+   ],
+   "links": [
+    {
+     "label": "Xbox — privacy and online safety settings (official)",
+     "url": "https://account.xbox.com/settings"
+    },
+    {
+     "label": "Microsoft Family Safety (official)",
+     "url": "https://family.microsoft.com/"
+    },
+    {
+     "label": "Xbox — family settings app (official)",
+     "url": "https://www.xbox.com/en-US/apps/xbox-family-settings-app"
+    }
+   ]
+  },
+  "switch": {
+   "id": "switch",
+   "name": "Nintendo Switch",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Controlled through a separate phone app, which is the easiest console setup of the three.",
+   "devices": [
+    "switch"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-08-20",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "risks": [
+    "Voice chat in some games happens through a phone app, outside the console’s controls",
+    "eShop spending",
+    "Sharing screenshots and videos to social media"
+   ],
+   "beforeYouStart": [
+    "Download the Nintendo Switch Parental Controls app on your phone — it’s separate from the main Nintendo app.",
+    "You’ll need the console in front of you once, to link it with a registration code."
+   ],
+   "steps": [
+    {
+     "id": "link",
+     "title": "Link the app to the console",
+     "why": "Once linked, you manage everything from your phone without touching the console again.",
+     "path": "Nintendo Switch Parental Controls app",
+     "do": [
+      "Install the Nintendo Switch Parental Controls app and sign in with your Nintendo Account.",
+      "The app gives you a registration code.",
+      "On the console, go to System Settings, then Parental Controls, and enter the code.",
+      "Set a PIN that your child doesn’t know."
+     ]
+    },
+    {
+     "id": "level",
+     "title": "Set the restriction level",
+     "why": "The quickest way to match content to their age. You can fine-tune afterwards.",
+     "path": "App → Console settings → Restriction Level",
+     "do": [
+      "Choose the age band that describes your child.",
+      "Or choose Custom to set software rating, posting to social media, and communication individually."
+     ],
+     "recommended": {
+      "7-11": "Child level",
+      "11-12": "Pre-Teen level",
+      "13-15": "Teen level",
+      "16-17": "Custom, agreed together"
+     }
+    },
+    {
+     "id": "comms",
+     "title": "Restrict communication and social posting",
+     "why": "Stops screenshots being posted publicly and limits in-game communication with strangers.",
+     "path": "App → Console settings → Custom settings",
+     "do": [
+      "Turn off Posting to Social Media.",
+      "Restrict Communicating with Others.",
+      "Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls — check that separately."
+     ],
+     "ages": [
+      "7-11",
+      "11-12",
+      "13-15"
+     ]
+    },
+    {
+     "id": "time",
+     "title": "Set a play-time limit and bedtime alarm",
+     "why": "The console can suspend the game at the limit rather than just showing a message, which removes the argument.",
+     "path": "App → Play-Time Limit",
+     "do": [
+      "Set a daily play-time limit, with different values for weekdays and weekends if you like.",
+      "Set a bedtime alarm.",
+      "Turn on Suspend Software if you want the limit to be firm rather than advisory."
+     ]
+    },
+    {
+     "id": "spend",
+     "title": "Block eShop spending",
+     "why": "Set up in a different place from everything else, which is why it gets missed.",
+     "path": "accounts.nintendo.com → Family Group",
+     "do": [
+      "Sign in at accounts.nintendo.com and open your Family Group.",
+      "Select your child and turn on the eShop purchase restriction.",
+      "Remove any saved card."
+     ]
+    }
+   ],
+   "checklist": [
+    "Parental Controls app linked to the console",
+    "PIN set and secret",
+    "Restriction level set for their age",
+    "Social posting off",
+    "Play-time limit and bedtime alarm set",
+    "eShop purchases blocked"
+   ],
+   "talkAboutIt": [
+    "Ask whether any of their games use the phone app for voice chat, since that’s outside these controls.",
+    "Agree the play-time limit together so the alarm isn’t a surprise.",
+    "Play something together. The Switch is good for that."
+   ],
+   "links": [
+    {
+     "label": "Nintendo — Parental Controls (official)",
+     "url": "https://www.nintendo.com/switch/parental-controls/"
+    },
+    {
+     "label": "Nintendo Account — family groups (official)",
+     "url": "https://accounts.nintendo.com/"
+    },
+    {
+     "label": "Internet Matters — Nintendo Switch parental controls",
+     "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/nintendo-switch/"
+    }
+   ]
+  }
+ }
 }

@@ -17,6 +17,28 @@ bug is gone:
 
 Adding a new guide is now editing JSON, not fighting escapes.
 
+## What phase one added
+
+Three things, on top of the original build.
+
+**Every guide has its own URL.** `scripts/build.js` reads `guides.json` and writes a real
+HTML page per guide at `/roblox/`, `/iphone/` and so on, with the content already in the
+markup, its own title and description, a canonical tag, and HowTo structured data. Before
+this, all 21 pages looked like one page to a search engine and the content only existed
+after JavaScript ran. There is a `sitemap.xml` and a `robots.txt` now too.
+
+**A crisis route at `/help/`.** For the parent whose worst day has already happened. Every
+reporting body, phone number and URL on those pages was checked against the organization's
+own site, and where a platform's reporting route could not be verified we say so instead of
+guessing. The pages are fully static and work with JavaScript switched off, because they
+have to work when everything else is having a bad day. The chat also watches for a live
+incident and surfaces the same route immediately, without waiting on the model.
+
+**A country setting.** US, Canada, UK and Ireland. It picks the currency in spending advice
+and the right national reporting bodies. It also fixes the old `£0 / $0` line, which was
+the site quietly admitting it did not know where you were. Detection is from the browser's
+own timezone, so nothing is sent anywhere, and the picker is always visible.
+
 ## How it works
 
 Static first, on purpose. A parent in a hurry should never wait for a network round trip.
@@ -40,8 +62,10 @@ Parent taps "Ask SafeStart"
 
 | Path | What it is |
 |------|------------|
-| `index.html` | The whole front end. No build step, no framework, no dependencies. |
+| `src/app.html` | The whole front end, as a template. No framework, no dependencies. Build fills in the per-page bits. |
 | `guides.json` | The curated guide database. 17 guides, 97 steps. This is the file you'll edit most. |
+| `safeguarding.json` | The crisis content behind `/help/`: reporting bodies per country, what to do first, per-platform routes. |
+| `scripts/build.js` | Generates the prerendered pages, the crisis pages, `sitemap.xml` and `robots.txt`. |
 | `assets/` | TrustRaise logo (color and mono white), favicons, and self-hosted Inter. |
 | `api/guide.js` | Generates a guide for an app that isn't curated yet. GET, so the CDN caches it. |
 | `api/ask.js` | Streaming follow-up chat. |
@@ -69,8 +93,9 @@ Parent taps "Ask SafeStart"
 1. Go to [vercel.com/new](https://vercel.com/new).
 2. Import the `safestart` repository. If you don't see it, click **Adjust GitHub App
    Permissions** and give Vercel access.
-3. Framework preset: **Other**. Leave the build command and output directory empty. There
-   is no build step.
+3. Framework preset: **Other**. Leave the build command and output directory **empty** in
+   the dashboard. `vercel.json` sets the build command, so anything typed here overrides it
+   and will break the deploy.
 4. Click **Deploy**.
 
 The site will be live in under a minute. Curated guides already work at this point. The
@@ -99,8 +124,12 @@ That's it. From now on, every commit you push in GitHub Desktop deploys automati
 ## Running it locally
 
 ```bash
-node scripts/dev-server.js      # http://localhost:3000
+npm run dev        # builds the pages, then serves them at http://localhost:3000
 ```
+
+If you edit `guides.json` or `safeguarding.json`, re-run `npm run build` to regenerate the
+pages. The generated files are gitignored, so they never get committed and Vercel always
+rebuilds them from source.
 
 For the chat and live lookups locally, copy `.env.example` to `.env.local` and put your key
 in it. The dev server reads it automatically.
@@ -111,9 +140,14 @@ login. The included dev server needs neither.
 ## Testing
 
 ```bash
-npm run check     # validates guides.json and loads every handler
+npm run build     # regenerate the pages after a content edit
+npm run check     # validates the JSON, the template and the build output
 npm test          # the above, plus API tests and a headless browser run
 ```
+
+`npm run check` will also fail if a page is missing a canonical tag, if two pages share a
+title, if a reporting URL is not https, or if a currency string hard-codes two symbols
+again.
 
 `api-test.js` mocks the Anthropic endpoint, so the full test suite costs nothing to run.
 

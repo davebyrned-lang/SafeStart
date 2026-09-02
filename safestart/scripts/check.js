@@ -116,14 +116,94 @@ else ok(`chat system prompt builds (${sample.length} chars)`);
 if (!/```json/.test(guideSystemPrompt())) fail('guide system prompt is missing the JSON schema block');
 else ok('guide system prompt builds');
 
-console.log('\nindex.html');
-const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
-if (!/fetch\("guides\.json"\)/.test(html)) fail('index.html does not fetch guides.json');
-else ok('fetches guides.json');
-if (!/\/api\/guide\?/.test(html)) fail('index.html does not call /api/guide');
+console.log('\nsrc/app.html');
+const html = fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf8');
+if (!/fetch\("\/guides\.json"\)/.test(html)) fail('app template does not fetch /guides.json');
+else ok('fetches /guides.json');
+if (!/\/api\/guide\?/.test(html)) fail('app template does not call /api/guide');
 else ok('calls /api/guide');
-if (!/\/api\/ask/.test(html)) fail('index.html does not call /api/ask');
+if (!/\/api\/ask/.test(html)) fail('app template does not call /api/ask');
 else ok('calls /api/ask');
+['@TITLE@', '@DESC@', '@CANON@', '@HEADEXTRA@', '@MAIN@'].forEach((tok) => {
+  if (html.indexOf(tok) === -1) fail('app template is missing the ' + tok + ' placeholder');
+  else ok('has ' + tok);
+});
+if (/(?:src|href)="assets\//.test(html)) {
+  fail('app template has relative asset paths, which break on nested URLs like /roblox/');
+} else ok('asset paths are absolute');
+
+// --- safeguarding data -------------------------------------------------------
+console.log('\nsafeguarding.json');
+const SG = JSON.parse(fs.readFileSync(path.join(ROOT, 'safeguarding.json'), 'utf8'));
+const countryIds = (data.countries || []).map((c) => c.id);
+if (!countryIds.length) fail('guides.json has no countries block');
+else ok('countries: ' + countryIds.join(', '));
+
+countryIds.forEach((id) => {
+  const cc = SG.byCountry[id];
+  if (!cc) return fail('safeguarding.json has no entry for ' + id);
+  if (!cc.police || !cc.police.emergency) fail(id + ' has no emergency number');
+  if (!cc.bodies || !cc.bodies.length) fail(id + ' has no reporting bodies');
+  else {
+    const bad = cc.bodies.filter((b) => b.url && !/^https:\/\//.test(b.url));
+    if (bad.length) fail(id + ' has a non-https reporting URL: ' + bad[0].url);
+    else ok(id + ': ' + cc.bodies.length + ' reporting bodies, emergency ' + cc.police.emergency);
+  }
+});
+if (!SG.situations || SG.situations.length < 3) fail('safeguarding.json needs at least three situations');
+else ok(SG.situations.length + ' situations');
+SG.platforms.forEach((p) => {
+  if (!p.route) fail('platform ' + p.id + ' has no route described');
+  if (p.url && !p.urlLabel) fail('platform ' + p.id + ' has a URL with no label');
+});
+ok(SG.platforms.length + ' platform reporting routes');
+const unverified = SG.platforms.filter((p) => p.confidence === 'low');
+if (unverified.length) {
+  warn('in-app-only platforms (no verified web form): ' + unverified.map((p) => p.id).join(', '));
+}
+
+// --- currency tokens ---------------------------------------------------------
+console.log('\ncurrency');
+const rawGuides = fs.readFileSync(path.join(ROOT, 'guides.json'), 'utf8');
+if (/£\d+\s*\/\s*\$/.test(rawGuides)) {
+  fail('guides.json still hard-codes two currency symbols in one string; use the {cur} token');
+} else ok('no hard-coded dual-currency strings');
+const curCount = (rawGuides.match(/\{cur\}/g) || []).length;
+ok(curCount + ' {cur} tokens, substituted per country at render time');
+
+// --- build output ------------------------------------------------------------
+console.log('\nbuild output');
+const expected = ['index.html', 'sitemap.xml', 'robots.txt', 'help/index.html']
+  .concat(countryIds.map((c) => 'help/' + c.toLowerCase() + '/index.html'))
+  .concat(Object.keys(data.guides).map((id) => id + '/index.html'));
+const missing = expected.filter((f) => !fs.existsSync(path.join(ROOT, f)));
+if (missing.length) fail('not built yet (run npm run build): ' + missing.slice(0, 3).join(', ') + (missing.length > 3 ? ' and ' + (missing.length - 3) + ' more' : ''));
+else ok(expected.length + ' pages present');
+
+if (!missing.length) {
+  const titles = new Set();
+  let dupes = 0;
+  expected.filter((f) => f.endsWith('index.html')).forEach((f) => {
+    const page = fs.readFileSync(path.join(ROOT, f), 'utf8');
+    const m = page.match(/<title>([^<]*)<\/title>/);
+    if (!m) return fail(f + ' has no title');
+    if (titles.has(m[1])) dupes++;
+    titles.add(m[1]);
+    if (!/rel="canonical"/.test(page)) fail(f + ' has no canonical tag');
+    if (page.indexOf('@MAIN@') !== -1 || page.indexOf('@TITLE@') !== -1) fail(f + ' has an unsubstituted placeholder');
+  });
+  if (dupes) fail(dupes + ' pages share a title with another page');
+  else ok('every page has a unique title and a canonical tag');
+
+  const guideIds = Object.keys(data.guides);
+  const sample = fs.readFileSync(path.join(ROOT, guideIds[0] + '/index.html'), 'utf8');
+  if (!/"@type":\s*"HowTo"/.test(sample)) fail('guide pages have no HowTo structured data');
+  else ok('HowTo structured data present');
+
+  const helpPage = fs.readFileSync(path.join(ROOT, 'help/us/index.html'), 'utf8');
+  if (helpPage.indexOf('911') === -1) fail('US help page does not show the emergency number');
+  else ok('crisis pages carry the emergency number');
+}
 
 console.log(
   `\n${failures ? 'FAILED' : 'PASSED'} — ${failures} failure(s), ${warnings} warning(s)\n`

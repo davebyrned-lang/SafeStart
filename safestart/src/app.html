@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>@TITLE@</title>
+<meta name="description" content="@DESC@">
+<meta name="theme-color" content="#0B1B4D">
+<link rel="canonical" href="@CANON@">
+<meta property="og:title" content="@OGTITLE@">
+<meta property="og:description" content="@DESC@">
+<meta property="og:type" content="@OGTYPE@">
+<meta property="og:url" content="@CANON@">
+<meta property="og:site_name" content="SafeStart">
+<meta name="twitter:card" content="summary">
+@HEADEXTRA@
+<link rel="icon" href="/assets/favicon-64.png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+/* Inter is self-hosted rather than loaded from Google Fonts. A child-safety
+   site shouldn't send a parent's browser to a third party just to render text. */
+@font-face { font-family: Inter; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: Inter; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/inter-700.woff2") format("woff2"); }
+/* ============================================================
+   SafeStart — a free tool from TrustRaise
+   Palette, type and proportions follow the TrustRaise brand:
+   roughly 70% Paper/Mist, 20% Ink/Slate, 10% Blue/Navy,
+   under 1% Signal yellow (used only for a completed state).
+   ============================================================ */
+
+:root {
+  --blue: #1F3FE2;
+  --navy: #0B1B4D;
+  --ink: #1A1A1A;
+  --slate: #5A6478;
+  --mist: #F2F4FA;
+  --paper: #FFFFFF;
+  --signal: #FFD23F;
+
+  --blue-tint: #E9EDFD;
+  --blue-tint-2: #D6DDFB;
+  --navy-tint: #E4E8F2;
+  --line: #DFE4F0;
+
+  --bg: var(--mist);
+  --surface: var(--paper);
+  --surface-2: var(--mist);
+  --heading: var(--navy);
+  --body: var(--ink);
+  --muted: var(--slate);
+
+  --radius-sm: 12px;
+  --radius: 18px;
+  --radius-lg: 26px;
+  --shadow: 0 1px 2px rgba(11,27,77,.05), 0 10px 26px rgba(11,27,77,.07);
+  --shadow-lg: 0 2px 8px rgba(11,27,77,.08), 0 24px 60px rgba(11,27,77,.16);
+  --font: Inter, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --maxw: 800px;
+  --ease: cubic-bezier(.34,1.4,.5,1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #060F2B;
+    --surface: #0E1E47;
+    --surface-2: #142559;
+    --line: #23356E;
+    --blue: #7D93F5;
+    --blue-tint: #16265C;
+    --blue-tint-2: #1D3070;
+    --navy-tint: #16265C;
+    --heading: #EEF1FB;
+    --body: #DDE3F5;
+    --muted: #94A0C0;
+    --mist: #16265C;
+    --paper: #0E1E47;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 26px rgba(0,0,0,.35);
+    --shadow-lg: 0 2px 8px rgba(0,0,0,.5), 0 24px 60px rgba(0,0,0,.55);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--body);
+  line-height: 1.55;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--blue); }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; border-radius: 6px; }
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 18px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------------- header ---------------- */
+.site-head {
+  position: sticky; top: 0; z-index: 40;
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.site-head.scrolled { border-bottom-color: var(--line); }
+.site-head .wrap { display: flex; align-items: center; gap: 12px; height: 66px; }
+
+.brand { display: flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; color: inherit; }
+.brand-mark {
+  width: 32px; height: 32px; border-radius: 9px; background: var(--navy);
+  display: grid; place-items: center; flex: none;
+}
+@media (prefers-color-scheme: dark) { .brand-mark { background: var(--blue-tint-2); } }
+.brand-mark svg { width: 19px; height: 19px; color: #fff; }
+.brand-name { font-weight: 700; letter-spacing: -.025em; font-size: 1.2rem; color: var(--heading); }
+
+.head-spacer { flex: 1; }
+
+.by-line { display: flex; align-items: center; gap: 7px; text-decoration: none; }
+.by-line span { font-size: .74rem; color: var(--muted); font-weight: 500; }
+.by-line img { height: 15px; width: auto; display: block; }
+.by-line .logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .by-line .logo-light { display: none; }
+  .by-line .logo-dark { display: block; }
+}
+
+.ghost-btn {
+  background: none; border: 1.5px solid var(--line); color: var(--muted);
+  border-radius: 999px; padding: 8px 15px; font-size: .87rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.ghost-btn:hover { border-color: var(--blue); color: var(--blue); }
+.ghost-btn svg { width: 15px; height: 15px; }
+.ghost-btn[hidden] { display: none; }
+
+/* The crisis route. Solid navy so it reads as the most important thing in the
+   header without resorting to alarm-red, which the brand palette doesn't carry
+   and which makes a frightened parent feel worse. */
+.help-btn {
+  background: var(--navy); color: #fff; text-decoration: none;
+  border-radius: 999px; padding: 9px 16px; font-size: .87rem; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+  transition: transform .16s var(--ease), background .16s;
+}
+.help-btn:hover { background: var(--blue); transform: translateY(-1px); }
+.help-btn svg { width: 15px; height: 15px; flex: none; }
+.help-btn-short { display: none; }
+@media (prefers-color-scheme: dark) { .help-btn { background: var(--blue); } }
+@media (max-width: 560px) {
+  .help-btn-long { display: none; }
+  .help-btn-short { display: inline; }
+  .help-btn { padding: 9px 14px; }
+  /* The crisis route outranks the byline for the width. TrustRaise still has
+     the footer, which is where the attribution actually belongs. */
+  .by-line { display: none; }
+}
+
+/* country control */
+.country-pick {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .84rem; color: var(--muted);
+}
+.country-pick select {
+  font: inherit; font-weight: 600; color: var(--heading);
+  background: var(--surface); border: 1.5px solid var(--line);
+  border-radius: 999px; padding: 6px 12px; cursor: pointer;
+}
+.country-pick select:hover { border-color: var(--blue); }
+.hero .country-pick { margin-top: 14px; }
+
+/* ---------------- hero ---------------- */
+.hero { padding: 40px 0 8px; }
+.hero h1 {
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  line-height: 1.08; letter-spacing: -.035em; margin: 0 0 14px;
+  color: var(--heading); font-weight: 700;
+}
+.hero h1 .hl {
+  background: linear-gradient(transparent 62%, var(--signal) 62%, var(--signal) 92%, transparent 92%);
+  padding: 0 2px;
+}
+.hero p { color: var(--muted); margin: 0; font-size: 1.09rem; max-width: 44ch; }
+
+/* ---------------- picker ---------------- */
+.picker { list-style: none; margin: 30px 0 0; padding: 0; counter-reset: pick; }
+
+.pick {
+  background: var(--surface); border-radius: var(--radius-lg);
+  padding: 22px 20px; margin-bottom: 14px; box-shadow: var(--shadow);
+  border: 1px solid transparent;
+}
+.pick.answered { border-color: var(--blue-tint-2); }
+
+.pick-head { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.pick-num {
+  flex: none; width: 30px; height: 30px; border-radius: 10px;
+  background: var(--blue-tint); color: var(--blue);
+  display: grid; place-items: center; font-size: .92rem; font-weight: 700;
+}
+.pick.answered .pick-num { background: var(--blue); color: #fff; }
+.pick-q { font-size: 1.12rem; font-weight: 600; color: var(--heading); letter-spacing: -.015em; }
+.pick-answer {
+  margin-left: auto; font-size: .84rem; font-weight: 600; color: var(--blue);
+  background: var(--blue-tint); padding: 4px 11px; border-radius: 999px;
+}
+
+/* chips */
+.chips { display: flex; flex-wrap: wrap; gap: 9px; }
+.chip {
+  background: var(--surface-2); border: 2px solid transparent; color: var(--body);
+  border-radius: 999px; padding: 11px 19px; font-size: .97rem; font-weight: 600;
+  transition: transform .18s var(--ease), background .15s, color .15s;
+}
+.chip:hover { border-color: var(--blue); transform: translateY(-2px); }
+.chip:active { transform: translateY(0) scale(.97); }
+.chip[aria-pressed="true"] { background: var(--blue); color: #fff; border-color: var(--blue); }
+.chip .chip-sub { display: block; font-weight: 400; font-size: .77rem; opacity: .75; margin-top: -3px; }
+
+/* tiles */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(146px, 1fr)); gap: 11px; }
+.card {
+  background: var(--surface-2); border: 2px solid transparent; border-radius: var(--radius);
+  padding: 15px 14px 14px; text-align: left; color: inherit;
+  display: flex; flex-direction: column; gap: 3px; min-height: 118px;
+  transition: transform .2s var(--ease), border-color .15s, background .15s;
+}
+.card:hover { border-color: var(--blue); transform: translateY(-3px); }
+.card:active { transform: translateY(-1px) scale(.98); }
+.card[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-tint); }
+
+.card-ico {
+  width: 40px; height: 40px; border-radius: 12px; margin-bottom: 8px;
+  display: grid; place-items: center; flex: none;
+  background: var(--blue-tint); color: var(--blue);
+  transition: transform .25s var(--ease);
+}
+.card:hover .card-ico { transform: rotate(-6deg) scale(1.08); }
+.card-ico svg { width: 22px; height: 22px; }
+.card.is-device .card-ico { background: var(--navy-tint); color: var(--navy); }
+@media (prefers-color-scheme: dark) { .card.is-device .card-ico { color: var(--blue); } }
+
+/* Compact variant for the device row: nine tiles shouldn't need nine rows. */
+.card-grid.compact { grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); gap: 9px; }
+.card.compact {
+  flex-direction: row; align-items: center; gap: 11px;
+  min-height: 0; padding: 11px 13px;
+}
+.card.compact .card-ico { width: 34px; height: 34px; border-radius: 10px; margin-bottom: 0; }
+.card.compact .card-ico svg { width: 19px; height: 19px; }
+.card.compact .c-name { font-size: .95rem; }
+
+.card .c-name { font-weight: 650; letter-spacing: -.015em; line-height: 1.25; color: var(--heading); }
+.card .c-kind { font-size: .79rem; color: var(--muted); }
+.card .c-mins { font-size: .75rem; color: var(--blue); margin-top: auto; padding-top: 6px; font-weight: 600; }
+
+.pick-note { font-size: .88rem; color: var(--muted); margin: 14px 0 0; }
+.pick-note button {
+  background: none; border: 0; color: var(--blue); font-weight: 600; padding: 0;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+.device-cta {
+  width: 100%; display: flex; align-items: center; gap: 13px; text-align: left;
+  background: var(--navy); color: #fff; border: 0; border-radius: var(--radius);
+  padding: 15px 17px; margin-bottom: 14px;
+  transition: transform .18s var(--ease);
+}
+@media (prefers-color-scheme: dark) { .device-cta { background: var(--blue-tint-2); } }
+.device-cta:hover { transform: translateY(-2px); }
+.device-cta .dc-ico { width: 38px; height: 38px; border-radius: 11px; background: rgba(255,255,255,.14); display: grid; place-items: center; flex: none; }
+.device-cta .dc-ico svg { width: 21px; height: 21px; }
+.device-cta .dc-title { font-weight: 650; letter-spacing: -.01em; }
+.device-cta .dc-sub { font-size: .84rem; opacity: .78; }
+.device-cta .dc-arrow { margin-left: auto; flex: none; }
+.device-cta .dc-arrow svg { width: 19px; height: 19px; }
+
+/* search */
+.search-box { position: relative; margin-top: 4px; }
+.search-box > svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); pointer-events: none; }
+.search-box input {
+  width: 100%; font: inherit; font-size: 1rem;
+  padding: 14px 16px 14px 46px;
+  border: 2px solid var(--line); border-radius: var(--radius-sm);
+  background: var(--surface); color: var(--body);
+}
+.search-box input:focus { outline: none; border-color: var(--blue); }
+.search-box input::placeholder { color: var(--muted); }
+
+.search-results { margin: 9px 0 0; padding: 0; list-style: none; }
+.search-results li { margin-bottom: 7px; }
+.search-hit {
+  width: 100%; text-align: left; display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 2px solid var(--line); border-radius: var(--radius-sm);
+  padding: 11px 14px; color: inherit;
+}
+.search-hit:hover { border-color: var(--blue); }
+.search-hit .hit-ico { width: 30px; height: 30px; border-radius: 9px; background: var(--blue-tint); color: var(--blue); display: grid; place-items: center; flex: none; }
+.search-hit .hit-ico svg { width: 17px; height: 17px; }
+.search-hit .hit-name { font-weight: 600; color: var(--heading); }
+.search-hit .hit-kind { font-size: .81rem; color: var(--muted); margin-left: auto; }
+.search-hit.is-new { border-style: dashed; }
+
+/* ---------------- guide ---------------- */
+.guide-head { padding: 24px 0 0; }
+.back-link {
+  background: none; border: 0; padding: 6px 0; color: var(--muted);
+  font-size: .9rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 14px;
+}
+.back-link:hover { color: var(--blue); }
+.back-link svg { width: 15px; height: 15px; }
+
+.guide-title { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+.guide-title .g-ico {
+  width: 54px; height: 54px; border-radius: 16px; flex: none;
+  background: var(--blue-tint); color: var(--blue); display: grid; place-items: center;
+}
+.guide-title .g-ico svg { width: 29px; height: 29px; }
+.guide-head h1 { font-size: clamp(1.7rem, 6vw, 2.3rem); letter-spacing: -.035em; margin: 0; line-height: 1.1; color: var(--heading); font-weight: 700; }
+.guide-blurb { color: var(--muted); margin: 0 0 16px; }
+
+.meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: .79rem; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+  background: var(--surface); color: var(--muted); border: 1px solid var(--line);
+}
+.pill svg { width: 13px; height: 13px; }
+.pill.conf-high { background: var(--blue-tint); color: var(--blue); border-color: transparent; }
+.pill.conf-medium { background: var(--navy-tint); color: var(--navy); border-color: transparent; }
+@media (prefers-color-scheme: dark) { .pill.conf-medium { color: var(--body); } }
+.pill.conf-limited { background: var(--signal); color: #4a3c00; border-color: transparent; }
+
+.controls {
+  background: var(--surface); border-radius: var(--radius-lg);
+  padding: 18px 19px; margin-bottom: 22px; box-shadow: var(--shadow);
+}
+.control-row + .control-row { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+.control-row > .ctl-label {
+  font-size: .87rem; color: var(--muted); font-weight: 600; display: block; margin-bottom: 10px;
+}
+
+/* Collapsed summary: most people arrive with their answers already set,
+   so the full panel is noise until they want to change something. */
+.controls.collapsed { padding: 0; background: none; box-shadow: none; }
+.ctl-summary {
+  width: 100%; display: flex; align-items: center; gap: 10px; text-align: left;
+  background: var(--surface); border: 0; border-radius: var(--radius);
+  padding: 13px 17px; box-shadow: var(--shadow); color: var(--body);
+}
+.ctl-summary .cs-bits { font-size: .92rem; font-weight: 600; color: var(--heading); }
+.ctl-summary .cs-sep { color: var(--muted); font-weight: 400; padding: 0 2px; }
+.ctl-summary .cs-change { margin-left: auto; font-size: .87rem; font-weight: 650; color: var(--blue); display: inline-flex; align-items: center; gap: 5px; flex: none; }
+.ctl-summary .cs-change svg { width: 14px; height: 14px; }
+.ctl-summary:hover .cs-change { text-decoration: underline; text-underline-offset: 3px; }
+
+.age-nudge {
+  margin: -8px 0 20px; padding: 13px 16px; border-radius: var(--radius-sm);
+  background: var(--blue-tint); color: var(--navy); font-size: .92rem; font-weight: 500;
+  display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
+}
+@media (prefers-color-scheme: dark) { .age-nudge { color: var(--body); } }
+.age-nudge svg { width: 17px; height: 17px; flex: none; margin-top: 2px; color: var(--blue); }
+
+.profile-card {
+  background: var(--navy); color: #fff; border-radius: var(--radius);
+  padding: 18px 20px; margin-bottom: 24px;
+}
+@media (prefers-color-scheme: dark) { .profile-card { background: var(--blue-tint-2); } }
+.profile-card h3 { margin: 0 0 6px; font-size: 1.02rem; letter-spacing: -.015em; font-weight: 650; }
+.profile-card p { margin: 0; font-size: .94rem; opacity: .84; }
+
+.callout {
+  border-radius: var(--radius); padding: 17px 19px; margin-bottom: 22px;
+  background: var(--surface);
+}
+.callout h3 { margin: 0 0 10px; font-size: .95rem; color: var(--heading); font-weight: 650; letter-spacing: -.01em; }
+.callout ul { margin: 0; padding-left: 20px; }
+.callout li { margin-bottom: 6px; font-size: .95rem; color: var(--muted); }
+.callout li:last-child { margin-bottom: 0; }
+.callout li::marker { color: var(--blue); }
+
+/* steps */
+.steps { list-style: none; margin: 0 0 28px; padding: 0; }
+.step {
+  background: var(--surface); border: 2px solid transparent; border-radius: var(--radius);
+  padding: 19px 20px; margin-bottom: 12px; box-shadow: var(--shadow);
+  transition: border-color .2s;
+}
+.step.done { border-color: var(--blue-tint-2); }
+.step-head { display: flex; gap: 14px; align-items: flex-start; }
+.step-num {
+  flex: none; width: 32px; height: 32px; border-radius: 11px;
+  background: var(--blue-tint); color: var(--blue);
+  display: grid; place-items: center; font-size: .95rem; font-weight: 700;
+  transition: background .2s, color .2s;
+}
+.step.done .step-num { background: var(--blue); color: #fff; }
+.step.done .step-num .num-text { display: none; }
+.step-num svg { width: 17px; height: 17px; display: none; }
+.step.done .step-num svg { display: block; }
+.step h3 { margin: 3px 0 0; font-size: 1.08rem; letter-spacing: -.02em; line-height: 1.3; color: var(--heading); font-weight: 650; }
+.step-body { padding-left: 46px; }
+
+.why {
+  margin: 12px 0 0; font-size: .94rem; color: var(--muted);
+  border-left: 3px solid var(--blue); padding-left: 13px; border-radius: 2px;
+}
+.why b { color: var(--heading); font-weight: 650; }
+
+.path {
+  margin: 13px 0 0; font-size: .86rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--surface-2); border-radius: 10px; padding: 10px 13px; color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.do-list { margin: 13px 0 0; padding-left: 21px; }
+.do-list li { margin-bottom: 6px; }
+.do-list li:last-child { margin-bottom: 0; }
+.do-list li::marker { color: var(--blue); font-weight: 600; }
+
+.rec {
+  margin-top: 14px; padding: 12px 15px; border-radius: 12px;
+  background: var(--blue-tint); font-size: .93rem; color: var(--navy);
+}
+@media (prefers-color-scheme: dark) { .rec { color: var(--body); } }
+.rec .rec-label { font-size: .78rem; font-weight: 650; color: var(--blue); display: block; margin-bottom: 4px; }
+.rec-table { width: 100%; border-collapse: collapse; font-size: .89rem; }
+.rec-table td { padding: 4px 0; vertical-align: top; }
+.rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
+
+.result, .note {
+  margin: 13px 0 0; font-size: .89rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+}
+.result svg, .note svg { width: 16px; height: 16px; flex: none; margin-top: 3px; }
+.result svg { color: var(--blue); }
+.note svg { color: var(--navy); }
+@media (prefers-color-scheme: dark) { .note svg { color: var(--blue); } }
+
+.step-done-btn {
+  margin-top: 15px; background: none; border: 2px solid var(--line); color: var(--muted);
+  border-radius: 999px; padding: 8px 16px; font-size: .87rem; font-weight: 650;
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: transform .18s var(--ease);
+}
+.step-done-btn svg { width: 15px; height: 15px; }
+.step-done-btn:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+.step.done .step-done-btn { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* checklist */
+.check-card {
+  background: var(--surface); border-radius: var(--radius);
+  padding: 20px 21px; margin-bottom: 22px; box-shadow: var(--shadow);
+}
+.check-card h2 { margin: 0 0 14px; font-size: 1.1rem; letter-spacing: -.02em; display: flex; align-items: center; gap: 9px; color: var(--heading); font-weight: 650; }
+.check-card h2 svg { width: 19px; height: 19px; color: var(--blue); }
+.check-list { list-style: none; margin: 0; padding: 0; }
+.check-item {
+  width: 100%; text-align: left; background: none; border: 0; padding: 9px 6px;
+  display: flex; gap: 12px; align-items: flex-start; color: var(--muted); font-size: .96rem; border-radius: 10px;
+}
+.check-item:hover { background: var(--surface-2); }
+.check-box {
+  flex: none; width: 22px; height: 22px; border-radius: 7px; border: 2px solid var(--line);
+  display: grid; place-items: center; margin-top: 1px;
+  transition: transform .2s var(--ease), background .15s, border-color .15s;
+}
+.check-box svg { width: 13px; height: 13px; color: #fff; opacity: 0; }
+.check-item.on .check-box { background: var(--blue); border-color: var(--blue); transform: scale(1.08); }
+.check-item.on .check-box svg { opacity: 1; }
+.check-item.on { color: var(--body); }
+
+.progress-bar { height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; margin-bottom: 16px; }
+.progress-bar span { display: block; height: 100%; border-radius: 999px; background: var(--blue); width: 0; transition: width .3s var(--ease); }
+.progress-bar.complete span { background: var(--signal); }
+
+.all-done {
+  margin: 14px 0 0; padding: 13px 16px; border-radius: 12px;
+  background: var(--signal); color: #4a3c00; font-size: .93rem; font-weight: 600;
+  display: flex; align-items: center; gap: 9px;
+}
+.all-done svg { width: 18px; height: 18px; flex: none; }
+
+.link-list { list-style: none; margin: 0; padding: 0; }
+.link-list li { margin-bottom: 9px; }
+.link-list a { display: flex; gap: 9px; align-items: center; font-size: .95rem; text-decoration: none; font-weight: 500; }
+.link-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.link-list svg { width: 14px; height: 14px; flex: none; }
+
+.talk-list { list-style: none; margin: 0; padding: 0; }
+.talk-list li { position: relative; padding-left: 26px; margin-bottom: 11px; font-size: .95rem; color: var(--muted); }
+.talk-list li::before {
+  content: ""; position: absolute; left: 0; top: 5px; width: 14px; height: 12px;
+  border-radius: 4px 4px 4px 0; border: 2px solid var(--blue);
+}
+
+.disclaimer { font-size: .84rem; color: var(--muted); margin: 26px 0 0; line-height: 1.6; }
+
+/* crisis card at the foot of every guide */
+.help-card {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--navy); color: #fff; text-decoration: none;
+  border-radius: var(--radius); padding: 20px 22px; margin: 26px 0 8px;
+  transition: transform .18s var(--ease);
+}
+.help-card:hover { transform: translateY(-2px); }
+.help-card-icon {
+  width: 34px; height: 34px; border-radius: 10px; flex: none;
+  background: rgba(255,255,255,.13); display: grid; place-items: center;
+}
+.help-card-icon svg { width: 19px; height: 19px; color: #fff; }
+.help-card strong { display: block; font-size: 1.02rem; margin-bottom: 4px; }
+.help-card span span { font-size: .9rem; line-height: 1.55; color: rgba(255,255,255,.82); }
+@media (prefers-color-scheme: dark) { .help-card { background: var(--blue); } }
+
+/* ---------------- crisis pages (/help/) ----------------
+   These are rendered at build time and never touched by JavaScript. Styles
+   here have to stand on their own. */
+
+.emergency {
+  background: var(--navy); color: #fff;
+  border-radius: var(--radius); padding: 18px 20px; margin: 22px 0 26px;
+  font-size: .97rem; line-height: 1.6;
+}
+.emergency strong { display: block; font-size: 1.08rem; margin-bottom: 5px; }
+@media (prefers-color-scheme: dark) { .emergency { background: var(--blue); } }
+
+.section-h {
+  font-size: 1.5rem; font-weight: 700; color: var(--heading);
+  letter-spacing: -.02em; margin: 38px 0 6px;
+}
+.country-note { font-size: .9rem; color: var(--muted); margin: 0 0 22px; }
+.country-note a { color: var(--blue); }
+
+.body-card {
+  border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  padding: 15px 17px; margin: 12px 0;
+}
+.body-card.primary { border-color: var(--blue); background: var(--blue-tint); }
+.body-card h3 { font-size: 1.02rem; margin: 0 0 5px; color: var(--heading); }
+.body-card h3 a { color: var(--blue); }
+.body-card p { margin: 0 0 6px; font-size: .92rem; line-height: 1.6; }
+.body-card .phone { font-weight: 600; color: var(--heading); }
+@media (prefers-color-scheme: dark) { .body-card.primary { background: rgba(31,63,226,.14); } }
+
+.situation { scroll-margin-top: 80px; }
+.advice { margin: 14px 0; padding-left: 14px; border-left: 3px solid var(--blue-tint-2); }
+.advice h3 { font-size: .99rem; margin: 0 0 4px; color: var(--heading); }
+.advice p { margin: 0; font-size: .93rem; line-height: 1.62; }
+
+.say {
+  margin: 14px 0 4px; padding: 14px 16px;
+  background: var(--surface-2); border-radius: var(--radius-sm);
+  font-size: 1.02rem; line-height: 1.55; color: var(--heading); font-weight: 500;
+  border: 0;
+}
+.platform-table td { vertical-align: top; font-size: .89rem; line-height: 1.55; }
+.platform-table td:first-child { white-space: nowrap; }
+.platform-table a { color: var(--blue); }
+.tiny { font-size: .74rem; color: var(--muted); font-weight: 500; }
+
+/* ---------------- footer ---------------- */
+.site-foot { margin-top: 54px; padding: 34px 0 40px; border-top: 1px solid var(--line); }
+.foot-inner { display: flex; flex-direction: column; gap: 14px; }
+.foot-logo img { height: 26px; width: auto; display: block; }
+.foot-logo .logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .foot-logo .logo-light { display: none; }
+  .foot-logo .logo-dark { display: block; }
+}
+.foot-tag { font-size: .84rem; font-weight: 600; color: var(--blue); letter-spacing: -.005em; }
+.site-foot p { margin: 0; font-size: .92rem; color: var(--muted); max-width: 56ch; line-height: 1.6; }
+.site-foot p strong { color: var(--heading); font-weight: 650; }
+.foot-link { font-weight: 600; text-decoration: none; }
+.foot-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.foot-legal { font-size: .8rem; color: var(--muted); padding-top: 6px; }
+
+/* ---------------- loading / error ---------------- */
+.loading { text-align: center; padding: 60px 20px; }
+.spinner {
+  width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 18px;
+  border: 3px solid var(--line); border-top-color: var(--blue);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.loading p { color: var(--muted); margin: 0; }
+.loading .sub { font-size: .89rem; margin-top: 8px; }
+
+.error-box {
+  background: var(--surface); border-radius: var(--radius);
+  padding: 20px 21px; margin: 22px 0; box-shadow: var(--shadow);
+  border-left: 4px solid var(--blue);
+}
+.error-box h3 { margin: 0 0 8px; font-size: 1.05rem; color: var(--heading); font-weight: 650; }
+.error-box p { margin: 0 0 14px; color: var(--muted); font-size: .95rem; }
+
+/* ---------------- chat ---------------- */
+.ask-fab {
+  position: fixed; right: 16px; bottom: 16px; z-index: 50;
+  background: var(--blue); color: #fff; border: 0; border-radius: 999px;
+  padding: 14px 22px; font-weight: 650; font-size: .95rem; box-shadow: var(--shadow-lg);
+  display: inline-flex; align-items: center; gap: 9px;
+  transition: transform .2s var(--ease);
+}
+.ask-fab:hover { transform: translateY(-3px); }
+.ask-fab svg { width: 18px; height: 18px; }
+.ask-fab[hidden] { display: none; }
+
+.chat-panel {
+  position: fixed; inset: auto 0 0 0; z-index: 60;
+  background: var(--surface);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-lg);
+  display: flex; flex-direction: column;
+  height: min(78vh, 660px);
+  max-width: var(--maxw); margin: 0 auto;
+  transform: translateY(100%); transition: transform .26s cubic-bezier(.32,.72,0,1);
+}
+.chat-panel.open { transform: translateY(0); }
+.chat-panel[hidden] { display: none; }
+
+.chat-head { display: flex; align-items: center; gap: 11px; padding: 16px 19px; border-bottom: 1px solid var(--line); }
+.chat-head h2 { margin: 0; font-size: 1.05rem; letter-spacing: -.02em; color: var(--heading); font-weight: 650; }
+.chat-head .chat-ctx { font-size: .8rem; color: var(--muted); }
+.chat-close { margin-left: auto; background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
+.chat-close:hover { background: var(--surface-2); color: var(--heading); }
+.chat-close svg { width: 19px; height: 19px; }
+
+.chat-log { flex: 1; overflow-y: auto; padding: 18px 19px; -webkit-overflow-scrolling: touch; }
+.msg { margin-bottom: 16px; }
+.msg-role { font-size: .74rem; font-weight: 650; color: var(--muted); margin-bottom: 5px; }
+.msg.user .bubble { background: var(--blue-tint); border-radius: 14px; padding: 11px 14px; color: var(--navy); }
+@media (prefers-color-scheme: dark) { .msg.user .bubble { color: var(--body); } }
+.msg .bubble { font-size: .96rem; }
+.msg .bubble > *:first-child { margin-top: 0; }
+.msg .bubble > *:last-child { margin-bottom: 0; }
+.msg .bubble h3, .msg .bubble h4 { font-size: .97rem; margin: 15px 0 7px; letter-spacing: -.015em; color: var(--heading); }
+.msg .bubble p { margin: 0 0 10px; }
+.msg .bubble ul, .msg .bubble ol { margin: 0 0 10px; padding-left: 22px; }
+.msg .bubble li { margin-bottom: 5px; }
+.msg .bubble li::marker { color: var(--blue); }
+.msg .bubble code { background: var(--surface-2); border-radius: 5px; padding: 1px 6px; font-size: .88em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.msg .bubble table { border-collapse: collapse; width: 100%; font-size: .89rem; margin: 0 0 11px; }
+.msg .bubble th, .msg .bubble td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; }
+.msg .bubble th { background: var(--surface-2); font-weight: 650; color: var(--heading); }
+
+.chat-status { font-size: .88rem; color: var(--muted); display: flex; align-items: center; gap: 9px; margin-bottom: 16px; }
+.chat-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); animation: pulse 1.1s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: .28; } 50% { opacity: 1; } }
+
+.chat-intro {
+  font-size: .95rem; color: var(--muted); background: var(--surface-2);
+  border-radius: 14px; padding: 13px 15px; margin-bottom: 16px; line-height: 1.5;
+}
+.chat-intro strong { color: var(--heading); font-weight: 650; }
+
+.chat-suggest { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 19px 13px; }
+.chat-suggest button {
+  background: var(--surface-2); border: 2px solid transparent; color: var(--muted);
+  border-radius: 999px; padding: 8px 14px; font-size: .87rem; text-align: left;
+}
+.chat-suggest button:hover { border-color: var(--blue); color: var(--blue); }
+
+.chat-form { display: flex; gap: 10px; padding: 13px 19px calc(13px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); align-items: flex-end; }
+.chat-form textarea {
+  flex: 1; font: inherit; font-size: .97rem; resize: none; max-height: 130px;
+  border: 2px solid var(--line); border-radius: 13px; padding: 11px 14px;
+  background: var(--bg); color: var(--body);
+}
+.chat-form textarea:focus { outline: none; border-color: var(--blue); }
+.chat-send {
+  background: var(--blue); color: #fff; border: 0; border-radius: 12px;
+  width: 44px; height: 44px; display: grid; place-items: center; flex: none;
+}
+.chat-send:disabled { opacity: .4; cursor: default; }
+.chat-send svg { width: 19px; height: 19px; }
+
+.chat-scrim {
+  position: fixed; inset: 0; z-index: 55; background: rgba(11,27,77,.42);
+  opacity: 0; transition: opacity .24s; backdrop-filter: blur(3px);
+}
+.chat-scrim.open { opacity: 1; }
+.chat-scrim[hidden] { display: none; }
+
+.chat-foot-note { font-size: .76rem; color: var(--muted); padding: 0 19px 11px; margin: 0; }
+
+@media (min-width: 860px) {
+  .chat-panel {
+    inset: auto 20px 20px auto; left: auto; margin: 0;
+    width: 450px; height: min(72vh, 630px);
+    border-radius: var(--radius-lg);
+    transform: translateY(24px) scale(.98); opacity: 0;
+    transition: transform .2s cubic-bezier(.32,.72,0,1), opacity .18s;
+  }
+  .chat-panel.open { transform: none; opacity: 1; }
+  .chat-scrim { background: rgba(11,27,77,.24); }
+}
+
+.chat-help {
+  display: flex; gap: 12px; align-items: flex-start; text-decoration: none;
+  background: var(--navy); color: #fff; border-radius: 16px;
+  padding: 15px 16px; margin: 4px 0 12px;
+}
+.chat-help-icon {
+  width: 28px; height: 28px; border-radius: 8px; flex: none;
+  background: rgba(255,255,255,.14); display: grid; place-items: center;
+}
+.chat-help-icon svg { width: 16px; height: 16px; color: #fff; }
+.chat-help strong { display: block; font-size: .93rem; margin-bottom: 3px; }
+.chat-help span span { font-size: .84rem; line-height: 1.5; color: rgba(255,255,255,.82); }
+@media (prefers-color-scheme: dark) { .chat-help { background: var(--blue); } }
+
+/* ---------------- print ---------------- */
+@media print {
+  .site-head, .ask-fab, .chat-panel, .chat-scrim, .controls, .step-done-btn,
+  .back-link, .site-foot { display: none !important; }
+  body { background: #fff; font-size: 11.5pt; }
+  .step, .check-card, .profile-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
+  .profile-card { background: #f4f6fc !important; color: #0B1B4D !important; }
+}
+
+@media (max-width: 500px) {
+  body { font-size: 16.5px; }
+  .step-body { padding-left: 0; margin-top: 12px; }
+  .card-grid { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); }
+  .pick { padding: 19px 16px; }
+  .by-line span { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-head" id="siteHead">
+  <div class="wrap">
+    <button class="brand" id="brandBtn" aria-label="SafeStart home">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
+          <path d="M12 2.6l7.4 3.1v6.1c0 4.6-3.1 8.7-7.4 9.9-4.3-1.2-7.4-5.3-7.4-9.9V5.7z"/>
+          <path d="M8.7 12.1l2.4 2.4 4.2-4.6"/>
+        </svg>
+      </span>
+      <span class="brand-name">SafeStart</span>
+    </button>
+    <div class="head-spacer"></div>
+    <a class="help-btn" href="/help/">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span class="help-btn-long">Something's happened</span>
+      <span class="help-btn-short">Help now</span>
+    </a>
+    <button class="ghost-btn" id="printBtn" hidden>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      Print
+    </button>
+    <a class="by-line" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">
+      <span>from</span>
+      <img class="logo-light" src="/assets/trustraise-logo.png" alt="TrustRaise">
+      <img class="logo-dark" src="/assets/trustraise-logo-white.png" alt="TrustRaise">
+    </a>
+  </div>
+</header>
+
+<main id="app" class="wrap">@MAIN@</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <a class="foot-logo" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer" aria-label="TrustRaise">
+      <img class="logo-light" src="/assets/trustraise-logo.png" alt="TrustRaise">
+      <img class="logo-dark" src="/assets/trustraise-logo-white.png" alt="TrustRaise">
+    </a>
+    <div class="foot-tag">Building Trust. Driving Revenue. Scaling Responsibly.</div>
+    <p><strong>SafeStart is a free tool from TrustRaise.</strong> We help technology companies, advertisers and startups build child and teen safety that actually works — and prove it pays. Parents shouldn't need a consultant to lock down a tablet, so we built this and gave it away.</p>
+    <p><a class="foot-link" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p>
+    <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
+  </div>
+</footer>
+
+<button class="ask-fab" id="askFab" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
+  Ask SafeStart
+</button>
+
+<div class="chat-scrim" id="chatScrim" hidden></div>
+
+<section class="chat-panel" id="chatPanel" hidden aria-label="Ask SafeStart">
+  <div class="chat-head">
+    <div>
+      <h2>Ask SafeStart</h2>
+      <div class="chat-ctx" id="chatCtx"></div>
+    </div>
+    <button class="chat-close" id="chatClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="chat-log" id="chatLog"></div>
+  <div class="chat-suggest" id="chatSuggest"></div>
+  <form class="chat-form" id="chatForm">
+    <textarea id="chatInput" rows="1" placeholder="I can't find that menu…" aria-label="Your question"></textarea>
+    <button type="submit" class="chat-send" id="chatSend" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+    </button>
+  </form>
+  <p class="chat-foot-note">SafeStart checks official sources, but menus change. Check anything that looks off against the platform's own help pages.</p>
+</section>
+
+<script>
+"use strict";
+
+/* ============================================================
+   SafeStart front end — a free tool from TrustRaise.
+
+   All guide content lives in guides.json and is inserted with
+   textContent, never as raw HTML. That is deliberate: the old
+   build broke repeatedly on escaped quotes inside JS strings.
+   ============================================================ */
+
+var DATA = null;
+var state = {
+  view: "home",
+  guideId: null,
+  guide: null,
+  ageBand: null,
+  device: null,
+  helpMode: "quick",
+  country: "US",
+  done: {},
+  checked: {}
+};
+
+var app = document.getElementById("app");
+
+/* ---------------- DOM helpers ---------------- */
+
+function el(tag, attrs, kids) {
+  var node = document.createElement(tag);
+  if (attrs) {
+    Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === "class") node.className = v;
+      else if (k === "text") node.textContent = v;
+      else if (k === "html") node.innerHTML = v;
+      else if (k.slice(0, 2) === "on") node.addEventListener(k.slice(2).toLowerCase(), v);
+      else node.setAttribute(k, v === true ? "" : v);
+    });
+  }
+  (kids || []).forEach(function (kid) {
+    if (kid === null || kid === undefined) return;
+    node.appendChild(typeof kid === "string" ? document.createTextNode(kid) : kid);
+  });
+  return node;
+}
+
+function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+
+/* ---------------- icon set ----------------
+   Generic symbols rather than platform logos: no trademarks
+   reproduced, and one consistent line style throughout.        */
+
+var ICONS = {
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/>',
+  back: '<path d="M19 12H5M12 19l-7-7 7-7"/>',
+  arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  shield: '<path d="M12 2.6l7.4 3.1v6.1c0 4.6-3.1 8.7-7.4 9.9-4.3-1.2-7.4-5.3-7.4-9.9V5.7z"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+  alert: '<path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>',
+  chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>',
+  sparkle: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>',
+
+  blocks: '<rect x="3" y="3" width="8.5" height="8.5" rx="2"/><rect x="12.5" y="12.5" width="8.5" height="8.5" rx="2"/><rect x="12.5" y="3" width="8.5" height="8.5" rx="2" opacity=".45"/>',
+  music: '<path d="M9 17.5V5.8l10-2.1v11.4"/><ellipse cx="6.6" cy="18" rx="2.6" ry="2.2"/><ellipse cx="16.6" cy="15.6" rx="2.6" ry="2.2"/>',
+  camera: '<rect x="2.6" y="6.5" width="18.8" height="14" rx="3.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8.4 6.5 9.7 4h4.6l1.3 2.5"/>',
+  bubbleShot: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/><circle cx="12" cy="11.2" r="2.6"/>',
+  bubbles: '<path d="M14.6 11.2a5.8 5.8 0 0 1-6.2 5.8 6.1 6.1 0 0 1-2.6-.6L2 18l1.3-3.6a5.8 5.8 0 0 1 5.5-8.6 5.8 5.8 0 0 1 5.8 5.4z"/><path d="M17 8.4A5.9 5.9 0 0 1 22 14a5.7 5.7 0 0 1-.9 3l.9 2.8-3.1-1a6 6 0 0 1-4.6-.4"/>',
+  play: '<rect x="2" y="4.8" width="20" height="14.4" rx="4.5"/><path d="M10.3 9.2v5.6l4.6-2.8z"/>',
+  target: '<circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="3.4"/><path d="M12 1.4v4.2M12 18.4v4.2M1.4 12h4.2M18.4 12h4.2"/>',
+  gridcube: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>',
+
+  phone: '<rect x="6" y="2" width="12" height="20" rx="3.5"/><path d="M10.4 5.4h3.2"/><path d="M9.8 18.6h4.4"/>',
+  tablet: '<rect x="4" y="2" width="16" height="20" rx="3"/><path d="M10.4 18.8h3.2"/>',
+  phoneDot: '<rect x="6" y="2" width="12" height="20" rx="3.5"/><path d="M9.6 5.2h4.8"/><circle cx="12" cy="18.4" r="1.2"/>',
+  monitor: '<rect x="2" y="3.6" width="20" height="13.2" rx="2.6"/><path d="M8.4 21h7.2M12 16.8V21"/>',
+  laptop: '<rect x="4" y="4" width="16" height="11" rx="2.4"/><path d="M1.8 18.6h20.4"/>',
+  browser: '<rect x="4" y="4" width="16" height="11" rx="2.4"/><path d="M4 7.8h16"/><path d="M1.8 18.6h20.4"/><circle cx="6.4" cy="5.9" r=".55" fill="currentColor" stroke="none"/>',
+  gamepad: '<path d="M7.4 7.6h9.2a4.8 4.8 0 0 1 4.7 3.9l.6 3.7a2.5 2.5 0 0 1-4.5 1.9l-1.6-2.1H8.2l-1.6 2.1a2.5 2.5 0 0 1-4.5-1.9l.6-3.7a4.8 4.8 0 0 1 4.7-3.9z"/><path d="M6.6 11v2.6M5.3 12.3h2.6"/><circle cx="16.4" cy="11.5" r=".95" fill="currentColor" stroke="none"/><circle cx="18.5" cy="13.4" r=".95" fill="currentColor" stroke="none"/>',
+  handheld: '<rect x="2.4" y="4" width="19.2" height="16" rx="3.4"/><path d="M8.8 4v16M15.2 4v16"/><circle cx="5.6" cy="9" r="1.1"/><circle cx="18.4" cy="14.4" r="1.1"/>',
+  people: '<circle cx="9.2" cy="8" r="3.3"/><path d="M2.6 20a6.6 6.6 0 0 1 13.2 0"/><path d="M16 5.2a3.3 3.3 0 0 1 0 5.6"/><path d="M17.6 14.4A6.6 6.6 0 0 1 21.6 20"/>'
+};
+
+var GUIDE_ICON = {
+  roblox: "blocks", tiktok: "music", instagram: "camera", snapchat: "bubbleShot",
+  discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
+  iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
+  mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
+  switch: "handheld"
+};
+
+var KIND_ICON = {
+  Game: "gamepad", Social: "people", Chat: "bubbles",
+  Video: "play", Device: "monitor", Other: "shield"
+};
+
+function icon(name, cls) {
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", "1.9");
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
+  svg.setAttribute("aria-hidden", "true");
+  if (cls) svg.setAttribute("class", cls);
+  svg.innerHTML = ICONS[name] || ICONS.shield;
+  return svg;
+}
+
+function guideIcon(g) {
+  return icon(GUIDE_ICON[g.id] || KIND_ICON[g.kind] || "shield");
+}
+
+/* ---------------- country + currency ----------------
+   Country drives two things: the currency symbol in spending advice, and which
+   national reporting bodies the crisis page shows. Detection is from the
+   browser's own timezone, so nothing is sent anywhere and no IP lookup happens.
+   It is a guess, and the picker is always visible so a parent can correct it. */
+
+var TZ_COUNTRY = {
+  "Europe/London": "UK", "Europe/Belfast": "UK", "Europe/Dublin": "IE",
+  "America/Toronto": "CA", "America/Vancouver": "CA", "America/Edmonton": "CA",
+  "America/Winnipeg": "CA", "America/Halifax": "CA", "America/St_Johns": "CA",
+  "America/Regina": "CA", "America/Moncton": "CA", "America/Whitehorse": "CA"
+};
+
+function detectCountry() {
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+    if (TZ_COUNTRY[tz]) return TZ_COUNTRY[tz];
+    if (tz.indexOf("America/") === 0) return "US";
+  } catch (e) { /* older browsers */ }
+  return "US";
+}
+
+function countryInfo(id) {
+  if (!DATA || !DATA.countries) return { id: "US", label: "United States", currency: "$" };
+  var found = DATA.countries.filter(function (c) { return c.id === (id || state.country); })[0];
+  return found || DATA.countries[0];
+}
+
+/* Replaces the {cur} token in guide data. Guide content stores "{cur}0" rather
+   than a hard-coded symbol, which is what used to produce the "£0 / $0" line. */
+function cur(text) {
+  if (typeof text !== "string" || text.indexOf("{cur}") === -1) return text;
+  return text.split("{cur}").join(countryInfo().currency);
+}
+
+function countryPick() {
+  var wrap = el("div", { class: "country-pick" }, [
+    el("label", { text: "Guidance for", for: "countrySel" })
+  ]);
+  var sel = el("select", { id: "countrySel", "aria-label": "Your country" });
+  (DATA.countries || []).forEach(function (c) {
+    var o = el("option", { value: c.id, text: c.label });
+    if (c.id === state.country) o.selected = true;
+    sel.appendChild(o);
+  });
+  sel.addEventListener("change", function () {
+    state.country = sel.value;
+    saveProgress();
+    if (state.view === "guide") renderGuide();
+    else renderHome(true);
+  });
+  wrap.appendChild(sel);
+  return wrap;
+}
+
+/* ---------------- persistence (best effort) ---------------- */
+
+function saveProgress() {
+  try {
+    if (state.guideId) {
+      localStorage.setItem("safestart:" + state.guideId,
+        JSON.stringify({ done: state.done, checked: state.checked }));
+    }
+    localStorage.setItem("safestart:prefs", JSON.stringify({
+      ageBand: state.ageBand, device: state.device, helpMode: state.helpMode, country: state.country
+    }));
+  } catch (e) { /* private browsing, quota, embedded preview */ }
+}
+
+function loadProgress(guideId) {
+  var out = { done: {}, checked: {} };
+  try {
+    var raw = localStorage.getItem("safestart:" + guideId);
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      out.done = parsed.done || {};
+      out.checked = parsed.checked || {};
+    }
+  } catch (e) { /* ignore */ }
+  return out;
+}
+
+function loadPrefs() {
+  try {
+    var raw = localStorage.getItem("safestart:prefs");
+    if (!raw) return;
+    var p = JSON.parse(raw);
+    if (p.ageBand) state.ageBand = p.ageBand;
+    if (p.device) state.device = p.device;
+    if (p.helpMode) state.helpMode = p.helpMode;
+    if (p.country) state.country = p.country;
+  } catch (e) { /* ignore */ }
+}
+
+/* ---------------- routing ---------------- */
+
+/* Guides live at real paths (/roblox/) so each one is its own indexable page.
+   The old ?guide= form still resolves, because links to it are already out
+   in the world. */
+function pathGuideId() {
+  var m = location.pathname.match(/^\/([a-z0-9-]+)\/?$/i);
+  return m ? m[1].toLowerCase() : null;
+}
+
+function readUrl() {
+  var q = new URLSearchParams(location.search);
+  if (q.get("age")) state.ageBand = q.get("age");
+  if (q.get("device")) state.device = q.get("device");
+  if (q.get("mode")) state.helpMode = q.get("mode");
+  if (q.get("country")) state.country = q.get("country");
+  var fromPath = pathGuideId();
+  if (fromPath && DATA && DATA.guides && DATA.guides[fromPath]) return fromPath;
+  return q.get("guide");
+}
+
+function writeUrl(replace) {
+  var path = "/";
+  var q = new URLSearchParams();
+  if (state.view === "guide" && state.guideId) {
+    path = "/" + state.guideId + "/";
+    if (state.ageBand) q.set("age", state.ageBand);
+    if (state.device) q.set("device", state.device);
+    if (state.helpMode && state.helpMode !== "quick") q.set("mode", state.helpMode);
+  }
+  var url = path + (q.toString() ? "?" + q.toString() : "");
+  if (replace) history.replaceState(null, "", url);
+  else history.pushState(null, "", url);
+}
+
+window.addEventListener("popstate", function () {
+  var g = readUrl();
+  if (g) openGuide(g, true);
+  else renderHome(true);
+});
+
+/* ---------------- home: the picker ---------------- */
+
+function renderHome(skipUrl) {
+  state.view = "home";
+  state.guideId = null;
+  state.guide = null;
+  document.getElementById("askFab").hidden = true;
+  document.getElementById("printBtn").hidden = true;
+  closeChat();
+  if (!skipUrl) writeUrl(false);
+
+  clear(app);
+  document.title = "SafeStart — parental controls made simple";
+
+  app.appendChild(el("section", { class: "hero" }, [
+    el("h1", {}, [
+      document.createTextNode("Parental controls, "),
+      el("span", { class: "hl", text: "sorted" }),
+      document.createTextNode(".")
+    ]),
+    el("p", { text: "Three quick questions and you get the exact taps, in the right order, for your child's age. Most take about ten minutes." }),
+    countryPick()
+  ]));
+
+  var picker = el("ol", { class: "picker" });
+  picker.appendChild(stepAge());
+  picker.appendChild(stepDevice());
+  picker.appendChild(stepApp());
+  app.appendChild(picker);
+}
+
+function pickCard(num, question, answer, bodyNodes) {
+  var head = el("div", { class: "pick-head" }, [
+    el("span", { class: "pick-num", text: String(num) }),
+    el("span", { class: "pick-q", text: question })
+  ]);
+  if (answer) head.appendChild(el("span", { class: "pick-answer", text: answer }));
+
+  var card = el("li", { class: "pick" + (answer ? " answered" : "") }, [head]);
+  bodyNodes.forEach(function (n) { if (n) card.appendChild(n); });
+  return card;
+}
+
+function stepAge() {
+  var chips = el("div", { class: "chips" });
+  DATA.ageBands.forEach(function (b) {
+    chips.appendChild(el("button", {
+      class: "chip",
+      "aria-pressed": state.ageBand === b.id ? "true" : "false",
+      onclick: function () {
+        state.ageBand = state.ageBand === b.id ? null : b.id;
+        saveProgress();
+        renderHome(true);
+      }
+    }, [
+      document.createTextNode(b.label),
+      el("span", { class: "chip-sub", text: b.profile })
+    ]));
+  });
+
+  var answer = state.ageBand ? labelForBand(state.ageBand) : null;
+  return pickCard(1, "How old is your child?", answer, [chips]);
+}
+
+function stepDevice() {
+  var grid = el("div", { class: "card-grid compact" });
+  DATA.devices.forEach(function (d) {
+    grid.appendChild(el("button", {
+      class: "card compact is-device",
+      "aria-pressed": state.device === d.id ? "true" : "false",
+      onclick: function () {
+        state.device = state.device === d.id ? null : d.id;
+        saveProgress();
+        renderHome(true);
+      }
+    }, [
+      el("span", { class: "card-ico" }, [icon(GUIDE_ICON[d.id] || "monitor")]),
+      el("span", { class: "c-name", text: d.short || d.label })
+    ]));
+  });
+
+  var dev = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
+  return pickCard(2, "What are they using it on?", dev ? dev.label : null, [
+    grid,
+    el("p", { class: "pick-note" }, [
+      document.createTextNode("Not sure, or it's more than one? "),
+      el("button", {
+        onclick: function () { state.device = null; saveProgress(); renderHome(true); }
+      }, [document.createTextNode("Skip this")]),
+      document.createTextNode(" and pick the app below.")
+    ])
+  ]);
+}
+
+function stepApp() {
+  var body = [];
+
+  /* If a device is chosen, offer the device guide itself as the headline action. */
+  if (state.device && DATA.guides[state.device]) {
+    var dg = DATA.guides[state.device];
+    body.push(el("button", {
+      class: "device-cta",
+      onclick: function () { openGuide(dg.id); }
+    }, [
+      el("span", { class: "dc-ico" }, [icon(GUIDE_ICON[dg.id] || "monitor")]),
+      el("span", {}, [
+        el("span", { class: "dc-title", text: "Set up the " + dg.name + " itself", style: "display:block" }),
+        el("span", { class: "dc-sub", text: "Start here. It covers every app on the device." })
+      ]),
+      el("span", { class: "dc-arrow" }, [icon("arrow")])
+    ]));
+  }
+
+  /* App tiles, narrowed to the chosen device. */
+  var apps = [];
+  Object.keys(DATA.guides).forEach(function (id) {
+    var g = DATA.guides[id];
+    if (g.type === "device") return;
+    if (state.device && g.devices && g.devices.indexOf(state.device) === -1) return;
+    apps.push(g);
+  });
+
+  var grid = el("div", { class: "card-grid" });
+  apps.forEach(function (g) {
+    grid.appendChild(el("button", {
+      class: "card",
+      onclick: function () { openGuide(g.id); }
+    }, [
+      el("span", { class: "card-ico" }, [guideIcon(g)]),
+      el("span", { class: "c-name", text: g.name }),
+      el("span", { class: "c-kind", text: g.kind }),
+      el("span", { class: "c-mins", text: "~" + (g.minutes || 10) + " min" })
+    ]));
+  });
+  body.push(grid);
+
+  if (state.device && apps.length < 8) {
+    body.push(el("p", { class: "pick-note" }, [
+      document.createTextNode("Only showing apps that run on that device. "),
+      el("button", {
+        onclick: function () { state.device = null; saveProgress(); renderHome(true); }
+      }, [document.createTextNode("Show everything")])
+    ]));
+  }
+
+  /* Search, for anything not on the tiles. */
+  var input = el("input", {
+    type: "search",
+    id: "homeSearch",
+    placeholder: "Or search for something else…",
+    autocomplete: "off",
+    spellcheck: "false",
+    "aria-label": "Search for an app, game or device"
+  });
+  var results = el("ul", { class: "search-results", id: "searchResults" });
+  body.push(el("div", { class: "search-box", style: "margin-top:16px" }, [icon("search"), input]));
+  body.push(results);
+
+  setTimeout(function () {
+    input.addEventListener("input", function () { renderSearch(input.value, results); });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        var first = results.querySelector(".search-hit");
+        if (first) first.click();
+      }
+    });
+  }, 0);
+
+  return pickCard(3, "Which app or game?", null, body);
+}
+
+function renderSearch(term, results) {
+  clear(results);
+  var q = term.trim().toLowerCase();
+  if (q.length < 2) return;
+
+  var hits = [];
+  Object.keys(DATA.guides).forEach(function (id) {
+    var g = DATA.guides[id];
+    if (g.name.toLowerCase().indexOf(q) !== -1 || id.indexOf(q) !== -1) hits.push(g);
+  });
+
+  hits.slice(0, 6).forEach(function (g) {
+    results.appendChild(el("li", {}, [
+      el("button", { class: "search-hit", onclick: function () { openGuide(g.id); } }, [
+        el("span", { class: "hit-ico" }, [guideIcon(g)]),
+        el("span", { class: "hit-name", text: g.name }),
+        el("span", { class: "hit-kind", text: g.kind })
+      ])
+    ]));
+  });
+
+  if (!hits.length) {
+    results.appendChild(el("li", {}, [
+      el("button", {
+        class: "search-hit is-new",
+        onclick: function () { generateGuide(term.trim()); }
+      }, [
+        el("span", { class: "hit-ico" }, [icon("sparkle")]),
+        el("span", { class: "hit-name", text: "Look up " + String.fromCharCode(8220) + term.trim() + String.fromCharCode(8221) }),
+        el("span", { class: "hit-kind", text: "not curated yet" })
+      ])
+    ]));
+  }
+}
+
+/* ---------------- guide ---------------- */
+
+function openGuide(id, skipUrl) {
+  var g = DATA.guides[id];
+  if (!g) { renderHome(); return; }
+  state.view = "guide";
+  state.guideId = id;
+  state.guide = g;
+  var prog = loadProgress(id);
+  state.done = prog.done;
+  state.checked = prog.checked;
+  if (g.type === "device") state.device = g.id;
+  controlsOpen = false;
+  if (!skipUrl) writeUrl(false);
+  renderGuide();
+  window.scrollTo(0, 0);
+}
+
+function renderGuide() {
+  var g = state.guide;
+  clear(app);
+  document.title = g.name + " parental controls — SafeStart";
+  document.getElementById("askFab").hidden = false;
+  document.getElementById("printBtn").hidden = false;
+  updateChatContext();
+
+  var head = el("section", { class: "guide-head" }, [
+    el("button", { class: "back-link", onclick: function () { renderHome(); } }, [
+      icon("back"), document.createTextNode("Start over")
+    ]),
+    el("div", { class: "guide-title" }, [
+      el("span", { class: "g-ico" }, [guideIcon(g)]),
+      el("h1", { text: g.name })
+    ]),
+    g.blurb ? el("p", { class: "guide-blurb", text: g.blurb }) : null
+  ]);
+
+  var meta = el("div", { class: "meta-row" });
+  meta.appendChild(el("span", { class: "pill" }, [icon("clock"), document.createTextNode("About " + (g.minutes || 10) + " minutes")]));
+  var conf = (g.sourceConfidence || "medium").toLowerCase();
+  var confText = conf === "high" ? "Checked against official docs"
+    : conf === "limited" ? "Official guidance unverified"
+    : "Partly third-party sources";
+  meta.appendChild(el("span", { class: "pill conf-" + conf }, [icon("shield"), document.createTextNode(confText)]));
+  if (g.lastVerified) meta.appendChild(el("span", { class: "pill", text: "Verified " + formatDate(g.lastVerified) }));
+  if (g.generated) meta.appendChild(el("span", { class: "pill conf-medium", text: "Researched just now" }));
+  head.appendChild(meta);
+  app.appendChild(head);
+
+  app.appendChild(buildControls(g));
+
+  if (!state.ageBand) {
+    app.appendChild(el("div", { class: "age-nudge" }, [
+      icon("info"),
+      el("span", { text: "Pick an age above and every step below adjusts to match." })
+    ]));
+  } else {
+    var band = DATA.ageBands.filter(function (b) { return b.id === state.ageBand; })[0];
+    var prof = band && DATA.profiles[band.profile];
+    if (prof) {
+      app.appendChild(el("div", { class: "profile-card" }, [
+        el("h3", { text: band.profile + "  ·  ages " + band.label }),
+        el("p", { text: prof.summary })
+      ]));
+    }
+  }
+
+  if (state.ageBand && g.minAge && parseInt(state.ageBand, 10) < g.minAge) {
+    app.appendChild(el("div", { class: "age-nudge", style: "margin-bottom:22px" }, [
+      icon("alert"),
+      el("span", { text: g.name + " sets its minimum age at " + g.minAge + ". Below that there is no account type built for them, so the settings below can only do so much. Worth a conversation about whether they use it at all." })
+    ]));
+  }
+
+  if (g.risks && g.risks.length) app.appendChild(callout("What actually goes wrong here", g.risks));
+  if (g.beforeYouStart && g.beforeYouStart.length) app.appendChild(callout("Before you start", g.beforeYouStart));
+
+  var visible = (g.steps || []).filter(function (s) {
+    if (!state.ageBand) return true;
+    if (!s.ages || !s.ages.length) return true;
+    return s.ages.indexOf(state.ageBand) !== -1;
+  });
+
+  var list = el("ol", { class: "steps" });
+  visible.forEach(function (step, i) { list.appendChild(renderStep(step, i + 1)); });
+  app.appendChild(list);
+
+  if (g.checklist && g.checklist.length) app.appendChild(renderChecklist(g));
+
+  if (g.talkAboutIt && g.talkAboutIt.length) {
+    var talk = el("div", { class: "check-card" }, [
+      el("h2", {}, [icon("chat"), document.createTextNode("Worth talking about")])
+    ]);
+    var tl = el("ul", { class: "talk-list" });
+    g.talkAboutIt.forEach(function (t) { tl.appendChild(el("li", { text: t })); });
+    talk.appendChild(tl);
+    app.appendChild(talk);
+  }
+
+  if (g.links && g.links.length) {
+    var links = el("div", { class: "check-card" }, [
+      el("h2", {}, [icon("link"), document.createTextNode("Official sources")])
+    ]);
+    var ll = el("ul", { class: "link-list" });
+    g.links.forEach(function (l) {
+      ll.appendChild(el("li", {}, [
+        el("a", { href: l.url, target: "_blank", rel: "noopener noreferrer" }, [
+          icon("link"), document.createTextNode(l.label)
+        ])
+      ]));
+    });
+    links.appendChild(ll);
+    app.appendChild(links);
+  }
+
+  app.appendChild(helpCard());
+
+  app.appendChild(el("p", {
+    class: "disclaimer",
+    text: "Menus move. If something on screen doesn't match these steps, tap Ask SafeStart and describe what you can see, or check the official link above."
+  }));
+
+  app.appendChild(el("div", { style: "height:80px" }));
+}
+
+/* Every guide ends with a route out to the crisis page. A parent who arrives
+   looking for settings sometimes turns out to need something else entirely,
+   and this is the cheapest place to catch that. */
+function helpCard() {
+  return el("a", { class: "help-card", href: "/help/" }, [
+    el("span", { class: "help-card-icon" }, [icon("alert")]),
+    el("span", {}, [
+      el("strong", { text: "Has something already happened?" }),
+      el("span", { text: "If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell." })
+    ])
+  ]);
+}
+
+function callout(title, items) {
+  var box = el("div", { class: "callout" }, [el("h3", { text: title })]);
+  var ul = el("ul");
+  items.forEach(function (t) { ul.appendChild(el("li", { text: t })); });
+  box.appendChild(ul);
+  return box;
+}
+
+var controlsOpen = false;
+
+function buildControls(g) {
+  /* Collapsed by default once we know the age — they picked it on the way in. */
+  if (state.ageBand && !controlsOpen) {
+    var bits = [labelForBand(state.ageBand) + " years"];
+    var dev = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
+    if (dev && g.type !== "device") bits.push(dev.short || dev.label);
+    var mode = DATA.helpModes.filter(function (m) { return m.id === state.helpMode; })[0];
+    if (mode) bits.push(mode.label);
+
+    var line = el("span", { class: "cs-bits" });
+    bits.forEach(function (b, i) {
+      if (i) line.appendChild(el("span", { class: "cs-sep", text: "·" }));
+      line.appendChild(document.createTextNode(b));
+    });
+
+    return el("div", { class: "controls collapsed" }, [
+      el("button", {
+        class: "ctl-summary",
+        "aria-expanded": "false",
+        onclick: function () { controlsOpen = true; renderGuide(); }
+      }, [
+        line,
+        el("span", { class: "cs-change" }, [document.createTextNode("Change"), icon("arrow")])
+      ])
+    ]);
+  }
+
+  var wrap = el("div", { class: "controls" });
+
+  var ageRow = el("div", { class: "control-row" }, [el("span", { class: "ctl-label", text: "Child's age" })]);
+  var ageChips = el("div", { class: "chips" });
+  DATA.ageBands.forEach(function (b) {
+    ageChips.appendChild(el("button", {
+      class: "chip",
+      "aria-pressed": state.ageBand === b.id ? "true" : "false",
+      onclick: function () {
+        state.ageBand = state.ageBand === b.id ? null : b.id;
+        saveProgress(); writeUrl(true); renderGuide();
+      }
+    }, [document.createTextNode(b.label)]));
+  });
+  ageRow.appendChild(ageChips);
+  wrap.appendChild(ageRow);
+
+  if (g.type !== "device" && g.devices && g.devices.length > 1) {
+    var devRow = el("div", { class: "control-row" }, [el("span", { class: "ctl-label", text: "Where they use it" })]);
+    var devChips = el("div", { class: "chips" });
+    g.devices.forEach(function (dId) {
+      var d = DATA.devices.filter(function (x) { return x.id === dId; })[0];
+      if (!d) return;
+      devChips.appendChild(el("button", {
+        class: "chip",
+        "aria-pressed": state.device === d.id ? "true" : "false",
+        onclick: function () {
+          state.device = state.device === d.id ? null : d.id;
+          saveProgress(); writeUrl(true); renderGuide();
+        }
+      }, [document.createTextNode(d.short || d.label)]));
+    });
+    devRow.appendChild(devChips);
+    wrap.appendChild(devRow);
+  }
+
+  var modeRow = el("div", { class: "control-row" }, [el("span", { class: "ctl-label", text: "How much detail" })]);
+  var modeChips = el("div", { class: "chips" });
+  DATA.helpModes.forEach(function (m) {
+    if (m.id === "review" || m.id === "stuck") return;
+    modeChips.appendChild(el("button", {
+      class: "chip",
+      "aria-pressed": state.helpMode === m.id ? "true" : "false",
+      onclick: function () {
+        state.helpMode = m.id;
+        saveProgress(); writeUrl(true); renderGuide();
+      }
+    }, [document.createTextNode(m.label)]));
+  });
+  modeChips.appendChild(el("button", {
+    class: "chip",
+    onclick: function () { openChat("I have already set some of this up. Can you check my settings?"); }
+  }, [document.createTextNode("Review my settings")]));
+  modeRow.appendChild(modeChips);
+  wrap.appendChild(modeRow);
+
+  return wrap;
+}
+
+function renderStep(step, num) {
+  var key = step.id || String(num);
+  var isDone = !!state.done[key];
+  var li = el("li", { class: "step" + (isDone ? " done" : "") });
+
+  li.appendChild(el("div", { class: "step-head" }, [
+    el("span", { class: "step-num" }, [
+      el("span", { class: "num-text", text: String(num) }),
+      icon("check")
+    ]),
+    el("h3", { text: step.title })
+  ]));
+
+  var body = el("div", { class: "step-body" });
+
+  if (state.helpMode === "learn" && step.why) {
+    body.appendChild(el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]));
+  }
+
+  if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
+
+  if (step.do && step.do.length) {
+    var ol = el("ol", { class: "do-list" });
+    step.do.forEach(function (d) { ol.appendChild(el("li", { text: d })); });
+    body.appendChild(ol);
+  }
+
+  if (step.recommended) {
+    var rec = el("div", { class: "rec" }, [
+      el("span", {
+        class: "rec-label",
+        text: state.ageBand ? "Recommended for ages " + labelForBand(state.ageBand) : "Recommended by age"
+      })
+    ]);
+    if (state.ageBand && step.recommended[state.ageBand]) {
+      rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+    } else {
+      var table = el("table", { class: "rec-table" });
+      Object.keys(step.recommended).forEach(function (k) {
+        table.appendChild(el("tr", {}, [
+          el("td", { text: labelForBand(k) }),
+          el("td", { text: cur(step.recommended[k]) })
+        ]));
+      });
+      rec.appendChild(table);
+    }
+    body.appendChild(rec);
+  }
+
+  if (step.result && state.helpMode === "learn") {
+    body.appendChild(el("p", { class: "result" }, [icon("check"), document.createTextNode(step.result)]));
+  }
+  if (step.note) {
+    body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
+  }
+
+  body.appendChild(el("button", {
+    class: "step-done-btn",
+    onclick: function () {
+      state.done[key] = !state.done[key];
+      saveProgress();
+      renderGuide();
+    }
+  }, [icon("check"), document.createTextNode(isDone ? "Done" : "Mark done")]));
+
+  li.appendChild(body);
+  return li;
+}
+
+function renderChecklist(g) {
+  var card = el("div", { class: "check-card" }, [
+    el("h2", {}, [icon("check"), document.createTextNode("Safety check")])
+  ]);
+
+  var total = g.checklist.length;
+  var count = g.checklist.filter(function (_, i) { return state.checked[i]; }).length;
+  var complete = count === total;
+
+  card.appendChild(el("div", { class: "progress-bar" + (complete ? " complete" : "") }, [
+    el("span", { style: "width:" + Math.round((count / total) * 100) + "%" })
+  ]));
+
+  var ul = el("ul", { class: "check-list" });
+  g.checklist.forEach(function (item, i) {
+    var on = !!state.checked[i];
+    ul.appendChild(el("li", {}, [
+      el("button", {
+        class: "check-item" + (on ? " on" : ""),
+        onclick: function () {
+          state.checked[i] = !state.checked[i];
+          saveProgress();
+          renderGuide();
+        }
+      }, [
+        el("span", { class: "check-box" }, [icon("check")]),
+        el("span", { text: item })
+      ])
+    ]));
+  });
+  card.appendChild(ul);
+
+  if (complete) {
+    card.appendChild(el("div", { class: "all-done" }, [
+      icon("check"),
+      el("span", { text: "That's the whole list. Worth revisiting in six months, or after a big app update." })
+    ]));
+  }
+
+  return card;
+}
+
+function labelForBand(id) {
+  var b = DATA.ageBands.filter(function (x) { return x.id === id; })[0];
+  return b ? b.label : id;
+}
+
+function formatDate(iso) {
+  try {
+    var d = new Date(iso + "T00:00:00");
+    return d.toLocaleDateString(undefined, { day: "numeric", month: "short", year: "numeric" });
+  } catch (e) { return iso; }
+}
+
+/* ---------------- generated guides ---------------- */
+
+function generateGuide(name) {
+  state.view = "guide";
+  state.guideId = null;
+  clear(app);
+  window.scrollTo(0, 0);
+  document.getElementById("askFab").hidden = true;
+  document.getElementById("printBtn").hidden = true;
+
+  app.appendChild(el("div", { class: "loading" }, [
+    el("div", { class: "spinner" }),
+    el("p", { text: "Looking up " + name + "…" }),
+    el("p", { class: "sub", text: "Reading the platform's official documentation. This one takes a few seconds because it isn't curated yet." })
+  ]));
+
+  var params = new URLSearchParams({ app: name });
+  if (state.device) params.set("device", state.device);
+  if (state.ageBand) params.set("age", state.ageBand);
+  if (state.country) params.set("country", state.country);
+
+  fetch("/api/guide?" + params.toString())
+    .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
+    .then(function (res) {
+      if (!res.ok || !res.body.guide) {
+        showGuideError(name, res.body && res.body.message);
+        return;
+      }
+      var g = res.body.guide;
+      DATA.guides[g.id] = g;
+      state.guideId = g.id;
+      state.guide = g;
+      state.done = {};
+      state.checked = {};
+      renderGuide();
+    })
+    .catch(function () { showGuideError(name); });
+}
+
+function showGuideError(name, message) {
+  clear(app);
+  app.appendChild(el("div", { class: "error-box" }, [
+    el("h3", { text: "I couldn't put together a guide for " + name }),
+    el("p", { text: message || "Something went wrong reaching the research service. Worth trying again in a moment." }),
+    el("button", { class: "ghost-btn", onclick: function () { renderHome(); } }, [
+      document.createTextNode("Back to the start")
+    ])
+  ]));
+}
+
+/* ---------------- chat ---------------- */
+
+var chat = { open: false, busy: false, messages: [], helpShown: false };
+
+var chatPanel = document.getElementById("chatPanel");
+var chatScrim = document.getElementById("chatScrim");
+var chatLog = document.getElementById("chatLog");
+var chatInput = document.getElementById("chatInput");
+var chatForm = document.getElementById("chatForm");
+var chatSend = document.getElementById("chatSend");
+var chatSuggest = document.getElementById("chatSuggest");
+
+document.getElementById("askFab").addEventListener("click", function () { openChat(); });
+document.getElementById("chatClose").addEventListener("click", closeChat);
+chatScrim.addEventListener("click", closeChat);
+document.addEventListener("keydown", function (e) { if (e.key === "Escape" && chat.open) closeChat(); });
+
+function updateChatContext() {
+  var bits = [];
+  if (state.guide) bits.push(state.guide.name);
+  if (state.ageBand) bits.push("ages " + labelForBand(state.ageBand));
+  var d = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
+  if (d && state.guide && state.guide.type !== "device") bits.push(d.label);
+  document.getElementById("chatCtx").textContent = bits.join("  ·  ");
+}
+
+function openChat(prefill) {
+  chat.open = true;
+  chatPanel.hidden = false;
+  chatScrim.hidden = false;
+  document.getElementById("askFab").hidden = true;
+  updateChatContext();
+  requestAnimationFrame(function () {
+    chatPanel.classList.add("open");
+    chatScrim.classList.add("open");
+  });
+  if (!chat.messages.length && !chatLog.firstChild) {
+    var name = state.guide ? state.guide.name : "parental controls";
+    chatLog.appendChild(el("div", { class: "chat-intro" }, [
+      el("strong", { text: "Stuck, or want a second opinion?" }),
+      el("br"),
+      document.createTextNode(
+        "Tell me what you can see on screen and I'll work out where you are. I check " +
+        "official sources for " + name + " before answering, so give me a few seconds."
+      )
+    ]));
+  }
+  if (!chat.messages.length) renderSuggestions();
+  if (prefill) {
+    chatInput.value = prefill;
+    sendChat();
+  } else {
+    setTimeout(function () { chatInput.focus(); }, 280);
+  }
+}
+
+function closeChat() {
+  chat.open = false;
+  chatPanel.classList.remove("open");
+  chatScrim.classList.remove("open");
+  if (state.view === "guide" && state.guide) document.getElementById("askFab").hidden = false;
+  setTimeout(function () {
+    if (!chat.open) { chatPanel.hidden = true; chatScrim.hidden = true; }
+  }, 260);
+}
+
+function renderSuggestions() {
+  clear(chatSuggest);
+  var g = state.guide;
+  var ideas = [
+    "I can't find that menu on my screen",
+    g ? "What if my child changes it back?" : "Where should I start?",
+    g ? "How do I explain this without a row?" : "Which device should I do first?",
+    "What did I miss?"
+  ];
+  ideas.forEach(function (t) {
+    chatSuggest.appendChild(el("button", {
+      type: "button",
+      onclick: function () { chatInput.value = t; sendChat(); }
+    }, [document.createTextNode(t)]));
+  });
+}
+
+chatForm.addEventListener("submit", function (e) { e.preventDefault(); sendChat(); });
+chatInput.addEventListener("input", function () {
+  chatInput.style.height = "auto";
+  chatInput.style.height = Math.min(chatInput.scrollHeight, 130) + "px";
+});
+chatInput.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendChat(); }
+});
+
+/* If a parent types something that sounds like a live incident, the route to
+   real help appears immediately and without waiting on the model. The model
+   still answers, but the link above it is static and always correct. Matching
+   is deliberately loose: a false positive costs a card nobody needed, a false
+   negative costs something that matters. */
+var HELP_PATTERNS = [
+  /\bsextort|\bblackmail|\bextort/i,
+  /\bnude|\bnaked|\bexplicit (photo|image|picture)|\bintimate image/i,
+  /\bgroom(ed|ing)?\b/i,
+  /\b(older|grown|adult) (man|woman|person|guy)\b.{0,40}\b(messag|contact|talk|chat|met)/i,
+  /\b(messag|contact|talk|chat)\w*\b.{0,40}\b(older|grown|adult) (man|woman|person|guy)\b/i,
+  /\bpredator|\bpaedophile|\bpedophile/i,
+  /\bthreaten\w*\b.{0,50}\b(share|post|send|leak|photo|picture|image|video)/i,
+  /\b(sent|shared|posted|leaked)\b.{0,40}\b(photo|picture|image|video)\b.{0,40}\b(of (my|her|his|their) )?(child|son|daughter|kid)/i,
+  /\b(self.?harm|suicid|hurt (them|him|her)self)/i,
+  /\bmeet(ing)? (up|in person)\b.{0,40}\b(stranger|someone|person) (they|she|he)\b/i,
+  /\bcatfish|\bimpersonat/i,
+  /\bwhat (do|should) i do\b.{0,30}\b(police|report)\b/i
+];
+
+function looksLikeIncident(text) {
+  for (var i = 0; i < HELP_PATTERNS.length; i++) {
+    if (HELP_PATTERNS[i].test(text)) return true;
+  }
+  return false;
+}
+
+function maybeSurfaceHelp(text) {
+  if (chat.helpShown || !looksLikeIncident(text)) return;
+  chat.helpShown = true;
+  var card = el("a", { class: "chat-help", href: "/help/" }, [
+    el("span", { class: "chat-help-icon" }, [icon("alert")]),
+    el("span", {}, [
+      el("strong", { text: "If this has already happened, start here" }),
+      el("span", { text: "What to do first, what not to delete, and who to report it to where you are. If your child is in immediate danger, call " + countryInfo().emergency + "." })
+    ])
+  ]);
+  chatLog.appendChild(card);
+  chatLog.scrollTop = chatLog.scrollHeight;
+}
+
+function addMessage(role, text) {
+  var msg = el("div", { class: "msg " + role }, [
+    el("div", { class: "msg-role", text: role === "user" ? "You" : "SafeStart" })
+  ]);
+  var bubble = el("div", { class: "bubble" });
+  if (role === "user") bubble.textContent = text;
+  else bubble.innerHTML = markdown(text);
+  msg.appendChild(bubble);
+  chatLog.appendChild(msg);
+  chatLog.scrollTop = chatLog.scrollHeight;
+  return bubble;
+}
+
+function sendChat() {
+  var text = chatInput.value.trim();
+  if (!text || chat.busy) return;
+
+  clear(chatSuggest);
+  chatInput.value = "";
+  chatInput.style.height = "auto";
+  chat.busy = true;
+  chatSend.disabled = true;
+
+  chat.messages.push({ role: "user", content: text });
+  addMessage("user", text);
+  maybeSurfaceHelp(text);
+
+  var status = el("div", { class: "chat-status" }, [
+    el("span", { class: "dot" }),
+    el("span", { text: "Thinking…" })
+  ]);
+  chatLog.appendChild(status);
+  chatLog.scrollTop = chatLog.scrollHeight;
+
+  var ctx = {
+    ageBand: state.ageBand ? labelForBand(state.ageBand) : null,
+    deviceLabel: deviceLabel(),
+    appLabel: state.guide ? state.guide.name : null,
+    country: state.country,
+    helpMode: state.helpMode,
+    guideId: state.guide && !state.guide.generated ? state.guide.id : null,
+    guideSummary: state.guide && state.guide.generated ? summarise(state.guide) : null
+  };
+
+  var reply = "";
+  var bubble = null;
+
+  fetch("/api/ask", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ messages: chat.messages, context: ctx })
+  })
+    .then(function (res) {
+      if (!res.ok || !res.body) {
+        return res.json().catch(function () { return {}; }).then(function (b) {
+          throw new Error(b.message || "SafeStart couldn't answer just then.");
+        });
+      }
+      var reader = res.body.getReader();
+      var decoder = new TextDecoder();
+      var buffer = "";
+
+      function pump() {
+        return reader.read().then(function (chunk) {
+          if (chunk.done) return;
+          buffer += decoder.decode(chunk.value, { stream: true });
+          var lines = buffer.split("\n");
+          buffer = lines.pop();
+
+          lines.forEach(function (line) {
+            if (line.indexOf("data:") !== 0) return;
+            var payload = line.slice(5).trim();
+            if (!payload) return;
+            var ev;
+            try { ev = JSON.parse(payload); } catch (e) { return; }
+
+            if (ev.type === "searching") {
+              status.lastChild.textContent = "Checking official sources…";
+            } else if (ev.type === "text") {
+              if (!bubble) {
+                if (status.parentNode) status.parentNode.removeChild(status);
+                bubble = addMessage("assistant", "");
+              }
+              reply += ev.text;
+              bubble.innerHTML = markdown(reply);
+              chatLog.scrollTop = chatLog.scrollHeight;
+            } else if (ev.type === "error") {
+              throw new Error(ev.message);
+            }
+          });
+
+          return pump();
+        });
+      }
+      return pump();
+    })
+    .then(function () {
+      if (status.parentNode) status.parentNode.removeChild(status);
+      if (reply) chat.messages.push({ role: "assistant", content: reply });
+      else addMessage("assistant", "I didn't get an answer back that time. Try asking again.");
+    })
+    .catch(function (err) {
+      if (status.parentNode) status.parentNode.removeChild(status);
+      if (!bubble) addMessage("assistant", (err && err.message) || "Something went wrong. Try again in a moment.");
+    })
+    .then(function () {
+      chat.busy = false;
+      chatSend.disabled = false;
+      chatLog.scrollTop = chatLog.scrollHeight;
+    });
+}
+
+function deviceLabel() {
+  if (!state.device) return null;
+  var d = DATA.devices.filter(function (x) { return x.id === state.device; })[0];
+  return d ? d.label : state.device;
+}
+
+function summarise(g) {
+  var out = [g.name + " — " + (g.blurb || "")];
+  (g.steps || []).forEach(function (s, i) {
+    out.push((i + 1) + ". " + s.title + (s.path ? " (" + s.path + ")" : ""));
+  });
+  return out.join("\n");
+}
+
+/* ---------------- minimal markdown (escape first, then format) ---------------- */
+
+function esc(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function inline(s) {
+  return s
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[\s(])\*([^*\n]+)\*/g, "$1<em>$2</em>")
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g, '$1<a href="$2" target="_blank" rel="noopener noreferrer">$2</a>');
+}
+
+function markdown(src) {
+  var lines = esc(src).split("\n");
+  var html = [];
+  var listType = null;
+  var tableRows = null;
+
+  function closeList() { if (listType) { html.push("</" + listType + ">"); listType = null; } }
+  function closeTable() {
+    if (tableRows) {
+      var out = ["<table>"];
+      tableRows.forEach(function (row, i) {
+        var tag = i === 0 ? "th" : "td";
+        out.push("<tr>" + row.map(function (c) { return "<" + tag + ">" + inline(c) + "</" + tag + ">"; }).join("") + "</tr>");
+      });
+      out.push("</table>");
+      html.push(out.join(""));
+      tableRows = null;
+    }
+  }
+
+  lines.forEach(function (raw) {
+    var line = raw.replace(/\s+$/, "");
+
+    if (/^\s*\|.*\|\s*$/.test(line)) {
+      var cells = line.trim().replace(/^\||\|$/g, "").split("|").map(function (c) { return c.trim(); });
+      if (cells.every(function (c) { return /^:?-{2,}:?$/.test(c); })) return;
+      closeList();
+      if (!tableRows) tableRows = [];
+      tableRows.push(cells);
+      return;
+    }
+    closeTable();
+
+    if (!line.trim()) { closeList(); return; }
+
+    var h = line.match(/^(#{1,6})\s+(.*)$/);
+    if (h) {
+      closeList();
+      var lvl = Math.min(h[1].length + 2, 6);
+      html.push("<h" + lvl + ">" + inline(h[2]) + "</h" + lvl + ">");
+      return;
+    }
+
+    var ol = line.match(/^\s*\d+[.)]\s+(.*)$/);
+    if (ol) {
+      if (listType !== "ol") { closeList(); html.push("<ol>"); listType = "ol"; }
+      html.push("<li>" + inline(ol[1]) + "</li>");
+      return;
+    }
+
+    var ul = line.match(/^\s*[-*+]\s+(.*)$/);
+    if (ul) {
+      if (listType !== "ul") { closeList(); html.push("<ul>"); listType = "ul"; }
+      html.push("<li>" + inline(ul[1]) + "</li>");
+      return;
+    }
+
+    closeList();
+    html.push("<p>" + inline(line) + "</p>");
+  });
+
+  closeList();
+  closeTable();
+  return html.join("");
+}
+
+/* ---------------- boot ---------------- */
+
+document.getElementById("brandBtn").addEventListener("click", function () { renderHome(); });
+document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+
+window.addEventListener("scroll", function () {
+  document.getElementById("siteHead").classList.toggle("scrolled", window.scrollY > 4);
+}, { passive: true });
+
+function boot() {
+  /* The crisis pages under /help/ are fully static on purpose. They must not
+     depend on this script, on guides.json, or on anything else being healthy,
+     so the app leaves them alone entirely. */
+  if (/^\/help(\/|$)/.test(location.pathname)) {
+    document.getElementById("askFab").hidden = true;
+    document.getElementById("printBtn").hidden = false;
+    return;
+  }
+
+  /* On a prerendered page the guide is already in the HTML. Leave it on screen
+     while the data loads rather than flashing a spinner over readable content.
+     Only a cold page with an empty <main> gets the spinner. */
+  if (!app.firstChild) {
+    app.appendChild(el("div", { class: "loading" }, [el("div", { class: "spinner" })]));
+  }
+
+  fetch("/guides.json")
+    .then(function (r) {
+      if (!r.ok) throw new Error("guides.json returned " + r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      DATA = data;
+      state.country = detectCountry();
+      loadPrefs();          // a stored preference wins over detection
+      var g = readUrl();    // an explicit ?country= wins over both
+      if (g && DATA.guides[g]) openGuide(g, true);
+      else renderHome(true);
+    })
+    .catch(function (err) {
+      clear(app);
+      app.appendChild(el("div", { class: "error-box" }, [
+        el("h3", { text: "SafeStart couldn't load its guides" }),
+        el("p", { text: "Refreshing usually fixes it. If it keeps happening, the guides file may not have deployed." }),
+        el("p", { class: "disclaimer", text: String((err && err.message) || err) })
+      ]));
+    });
+}
+
+boot();
+</script>
+</body>
+</html>

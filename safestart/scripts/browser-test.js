@@ -40,7 +40,15 @@ function check(name, condition, detail) {
     check('every tile has an icon', (await page.locator('.card .card-ico svg').count()) === cards);
 
     console.log('\nbranding');
-    check('TrustRaise byline in the header', await page.locator('.by-line img').first().isVisible());
+    // Below 560px the crisis link takes the width and the byline drops out. TrustRaise
+    // still has the footer, which is where the attribution belongs anyway.
+    check('byline hidden on a narrow screen', !(await page.locator('.by-line').first().isVisible()));
+    await page.setViewportSize({ width: 900, height: 900 });
+    await page.waitForTimeout(120);
+    check('TrustRaise byline in the header on a wide screen',
+      await page.locator('.by-line img').first().isVisible());
+    await page.setViewportSize({ width: 420, height: 900 });
+    await page.waitForTimeout(120);
     const footer = await page.locator('.site-foot').textContent();
     check('footer names TrustRaise', footer.includes('TrustRaise'));
     check('footer carries the tagline', footer.includes('Building Trust. Driving Revenue. Scaling Responsibly.'));
@@ -53,8 +61,12 @@ function check(name, condition, detail) {
     check('Inter is self-hosted', fontResp.status() === 200, 'status ' + fontResp.status());
     check('Inter actually renders',
       await page.evaluate(() => document.fonts.check('600 16px Inter')));
+    // rel=canonical and rel=alternate are metadata for crawlers, not resources the
+    // browser fetches, so they don't count as a third-party request.
     const external = await page.evaluate(() =>
-      [...document.querySelectorAll('link[href^="http"], script[src^="http"]')].map((n) => n.href || n.src));
+      [...document.querySelectorAll('link[href^="http"], script[src^="http"]')]
+        .filter((n) => !['canonical', 'alternate'].includes((n.getAttribute('rel') || '').toLowerCase()))
+        .map((n) => n.href || n.src));
     check('no third-party requests', external.length === 0, external.join(' | '));
 
     console.log('\npicker flow');
@@ -149,6 +161,81 @@ function check(name, condition, detail) {
     check('/api/guide serves curated guides for free', rc.status() === 200, 'status ' + rc.status());
     const rj = await rc.json();
     check('curated response is marked as curated', rj.source === 'curated');
+
+    // --- phase one: real URLs, no-JS resilience, country, crisis route --------
+
+    console.log('\nprerendered guide URLs');
+    await page.goto(BASE + '/roblox/', { waitUntil: 'networkidle' });
+    check('/roblox/ resolves', (await page.locator('.guide-title').textContent()).includes('Roblox'));
+    const robloxTitle = await page.title();
+    check('guide page has its own title', /Roblox/i.test(robloxTitle), robloxTitle);
+    const canon = await page.locator('link[rel=canonical]').getAttribute('href');
+    check('canonical points at the guide', /\/roblox\/$/.test(canon), canon);
+    const ld = await page.locator('script[type="application/ld+json"]').first().textContent();
+    check('HowTo structured data is valid JSON', JSON.parse(ld)['@type'] === 'HowTo');
+    check('fonts load on a nested URL',
+      await page.evaluate(() => document.fonts.check('600 16px Inter')));
+
+    console.log('\nworks without javascript');
+    const noJs = await browser.newContext({ javaScriptEnabled: false });
+    const noJsPage = await noJs.newPage();
+    await noJsPage.goto(BASE + '/roblox/');
+    const noJsText = await noJsPage.locator('#app').textContent();
+    check('guide content is in the HTML', noJsText.includes('Parent PIN'), noJsText.slice(0, 80));
+    check('steps render without JS', (await noJsPage.locator('.step').count()) >= 5);
+
+    await noJsPage.goto(BASE + '/help/uk/');
+    const helpText = await noJsPage.locator('#app').textContent();
+    check('UK crisis page renders without JS', helpText.includes('999'));
+    check('UK page shows UK bodies', /CEOP|Internet Watch/.test(helpText));
+    check('UK page does not show US bodies', !/CyberTipline/.test(helpText));
+    await noJsPage.goto(BASE + '/help/us/');
+    const usText = await noJsPage.locator('#app').textContent();
+    check('US crisis page shows US bodies', /CyberTipline/.test(usText));
+    check('crisis page leads with the emergency number',
+      (await noJsPage.locator('.emergency').first().textContent()).includes('911'));
+    check('do-not-pay guidance present', /do not pay|never pay|Do not pay/i.test(usText));
+    check('do-not-delete guidance present', /do not delete|Do not delete/i.test(usText));
+    await noJs.close();
+
+    console.log('\ncountry and currency');
+    await page.goto(BASE + '/roblox/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.rec');
+    const usSpend = await page.locator('.step', { hasText: 'Robux' }).locator('.rec').textContent();
+    check('currency renders as a single symbol', !/£.*\$|\$.*£/.test(usSpend), usSpend.slice(0, 60));
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('#countrySel');
+    await page.selectOption('#countrySel', 'UK');
+    await page.locator('.card', { hasText: 'Roblox' }).first().click();
+    await page.waitForSelector('.rec');
+    const ukSpend = await page.locator('.step', { hasText: 'Robux' }).locator('.rec').textContent();
+    check('UK sees pounds', ukSpend.includes('£'), ukSpend.slice(0, 60));
+    check('UK does not also see dollars', !ukSpend.includes('$0'), ukSpend.slice(0, 60));
+
+    console.log('\ncrisis route');
+    check('every guide ends with a route to help',
+      await page.locator('.help-card').isVisible());
+    check('header carries the crisis link',
+      (await page.locator('.help-btn').getAttribute('href')) === '/help/');
+    await page.locator('#askFab').click();
+    await page.fill('#chatInput', 'a grown man has been messaging my daughter on roblox');
+    await page.locator('#chatSend').click();
+    await page.waitForTimeout(400);
+    check('chat surfaces the crisis route immediately',
+      await page.locator('.chat-help').isVisible());
+    check('crisis card names the emergency number',
+      (await page.locator('.chat-help').textContent()).includes('999'));
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('#askFab, .card');
+
+    console.log('\nrobots and sitemap');
+    const sm = await page.request.get(BASE + '/sitemap.xml');
+    check('sitemap serves', sm.status() === 200, 'status ' + sm.status());
+    const smBody = await sm.text();
+    check('sitemap lists every guide', (smBody.match(/<url>/g) || []).length >= 22);
+    const rb = await page.request.get(BASE + '/robots.txt');
+    check('robots.txt serves', rb.status() === 200, 'status ' + rb.status());
+    check('robots points at the sitemap', (await rb.text()).includes('sitemap.xml'));
 
     console.log('\nconsole');
     // The chat test above deliberately runs with no API key, so a 503 on /api/ask is

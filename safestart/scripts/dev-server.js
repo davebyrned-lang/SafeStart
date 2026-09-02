@@ -84,9 +84,19 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (pathname === '/') pathname = '/index.html';
-  const file = path.join(ROOT, pathname);
-  if (!file.startsWith(ROOT) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+  // Directory URLs (/roblox/, /help/uk/) serve that directory's index.html, which
+  // is what Vercel does for the prerendered pages in production.
+  let file = path.join(ROOT, pathname);
+  if (!file.startsWith(ROOT)) {
+    res.writeHead(404, { 'content-type': 'text/plain' });
+    return res.end('Not found');
+  }
+  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) {
+    file = path.join(file, 'index.html');
+  } else if (!fs.existsSync(file) && fs.existsSync(file + '/index.html')) {
+    file = path.join(file, 'index.html');
+  }
+  if (!fs.existsSync(file) || fs.statSync(file).isDirectory()) {
     res.writeHead(404, { 'content-type': 'text/plain' });
     return res.end('Not found');
   }
