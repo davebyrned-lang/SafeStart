@@ -126,7 +126,7 @@ That's it. From now on, every commit you push in GitHub Desktop deploys automati
 npm run dev        # builds the pages, then serves them at http://localhost:3000
 ```
 
-If you edit `guides.json` or `safeguarding.json`, run `npm run build` and commit whatever
+If you edit `guides.json` or `safeguarding.json`, run `npm run pages` and commit whatever
 changes. The generated pages are committed on purpose: Vercel runs no build step, so
 deploying is just pushing files and nothing on their side can fail.
 
@@ -139,7 +139,7 @@ login. The included dev server needs neither.
 ## Testing
 
 ```bash
-npm run build     # regenerate the pages after a content edit
+npm run pages     # regenerate the pages after a content edit
 npm run check     # validates the JSON, the template and the build output
 npm test          # the above, plus API tests and a headless browser run
 ```
