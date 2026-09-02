@@ -93,9 +93,8 @@ Parent taps "Ask SafeStart"
 1. Go to [vercel.com/new](https://vercel.com/new).
 2. Import the `safestart` repository. If you don't see it, click **Adjust GitHub App
    Permissions** and give Vercel access.
-3. Framework preset: **Other**. Leave the build command and output directory **empty** in
-   the dashboard. `vercel.json` sets the build command, so anything typed here overrides it
-   and will break the deploy.
+3. Framework preset: **Other**. Leave the build command and output directory empty. There
+   is no build step on Vercel.
 4. Click **Deploy**.
 
 The site will be live in under a minute. Curated guides already work at this point. The
@@ -127,9 +126,9 @@ That's it. From now on, every commit you push in GitHub Desktop deploys automati
 npm run dev        # builds the pages, then serves them at http://localhost:3000
 ```
 
-If you edit `guides.json` or `safeguarding.json`, re-run `npm run build` to regenerate the
-pages. The generated files are gitignored, so they never get committed and Vercel always
-rebuilds them from source.
+If you edit `guides.json` or `safeguarding.json`, run `npm run build` and commit whatever
+changes. The generated pages are committed on purpose: Vercel runs no build step, so
+deploying is just pushing files and nothing on their side can fail.
 
 For the chat and live lookups locally, copy `.env.example` to `.env.local` and put your key
 in it. The dev server reads it automatically.
