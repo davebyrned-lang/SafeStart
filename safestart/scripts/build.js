@@ -11,9 +11,9 @@
  *
  * Output is written in place next to the source and IS committed to the repo.
  * That is deliberate: Vercel then needs no build step, so deploying stays exactly
- * what it always was, pushing files. Nothing on their end can fail.
+ * what it always was, pushing files. Nothing can fail on their end.
  * After editing guides.json or safeguarding.json, run `npm run build` and commit
- * whatever changes.
+ * what changes.
  */
 
 const fs = require("fs");
@@ -331,11 +331,14 @@ function renderHelpShared(country) {
   SG.firstThings.steps.forEach((s, i) => {
     out.push('<li class="step"><div class="step-head"><span class="step-num">' + (i + 1) + "</span>");
     out.push('<span class="num-text"><h3>' + esc(s.title) + "</h3></span></div>");
-    out.push('<div class="step-body"><p>' + esc(s.body) + "</p>");
-    if (s.source) out.push('<p class="note">Source: ' + esc(s.source) + "</p>");
-    out.push("</div></li>");
+    out.push('<div class="step-body"><p>' + esc(s.body) + "</p></div></li>");
   });
-  out.push("</ol></div>");
+  out.push("</ol>");
+  // Said once, here, rather than by name-dropping an agency inside each piece of
+  // advice. A parent in Manchester does not need to read about the Irish police
+  // to be told not to delete the messages.
+  if (SG.provenance) out.push('<p class="note">' + esc(SG.provenance) + "</p>");
+  out.push("</div>");
 
   // where to report
   out.push('<div class="check-card"><h2>Where to report it</h2>');
@@ -357,10 +360,20 @@ function renderHelpShared(country) {
     out.push('<section class="check-card situation" id="' + esc(s.id) + '">');
     out.push("<h2>" + esc(s.label) + "</h2>");
     out.push('<p class="guide-blurb">' + esc(s.summary) + "</p>");
-    s.keyAdvice.forEach((a) => {
-      out.push('<div class="advice"><h3>' + esc(a.title) + "</h3><p>" + esc(a.body) + "</p></div>");
-    });
+    // Advice with a `countries` list is local to those countries and is left off
+    // every other page. Everything else is universal and appears everywhere.
+    s.keyAdvice
+      .filter((a) => !a.countries || a.countries.indexOf(country) !== -1)
+      .forEach((a) => {
+        out.push('<div class="advice"><h3>' + esc(a.title) + "</h3><p>" + esc(a.body) + "</p></div>");
+      });
     if (s.context) out.push('<p class="note">' + esc(s.context) + "</p>");
+    if (s.countryNotes && s.countryNotes[country]) {
+      out.push('<p class="note">' + esc(s.countryNotes[country]) + "</p>");
+    }
+    // Citations sit under the advice rather than inside it, so the instruction
+    // reads as an instruction and the sourcing is still there for anyone checking.
+    if (s.sources) out.push('<p class="tiny">Sources: ' + esc(s.sources) + "</p>");
     out.push("</section>");
   });
 
@@ -372,7 +385,6 @@ function renderHelpShared(country) {
   SG.evidence.practical.forEach((e) => out.push("<li>" + esc(e) + " <em>(SafeStart guidance)</em></li>"));
   out.push("</ul>");
   out.push('<p class="note">' + esc(SG.evidence.note) + "</p>");
-  out.push('<p class="note">The first four come from ' + esc(SG.evidence.officialSource) + ".</p>");
   out.push("</div>");
 
   // platforms

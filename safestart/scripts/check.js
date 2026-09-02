@@ -203,6 +203,40 @@ if (!missing.length) {
   const helpPage = fs.readFileSync(path.join(ROOT, 'help/us/index.html'), 'utf8');
   if (helpPage.indexOf('911') === -1) fail('US help page does not show the emergency number');
   else ok('crisis pages carry the emergency number');
+
+  // A parent in Manchester should not be reading about the Irish police, and a
+  // parent in Toronto should not be reading about the FBI. The advice is the same
+  // everywhere, so it is written without naming anyone's agency. Only the
+  // reporting section, the explicit "Sources:" citations, and link URLs may name
+  // a national body, and only their own country's.
+  const AGENCIES = {
+    US: ['NCMEC', 'CyberTipline', 'FBI', 'IC3', 'missingkids'],
+    UK: ['CEOP', 'Internet Watch', 'IWF', 'NSPCC', 'Childline', 'National Crime Agency'],
+    CA: ['Cybertip', 'NeedHelpNow', 'Canadian Centre'],
+    IE: ['Garda', 'Hotline.ie', 'ISPCC', 'Coimisi'],
+  };
+  let leaks = 0;
+  countryIds.forEach((cc) => {
+    let page = fs.readFileSync(path.join(ROOT, 'help/' + cc.toLowerCase() + '/index.html'), 'utf8');
+    // The reporting section, citation lines and URLs are allowed to name bodies.
+    page = page.replace(/href="[^"]*"/g, '');
+    page = page.replace(/<p class="tiny">[\s\S]*?<\/p>/g, '');
+    const reportStart = page.indexOf('Where to report it');
+    const reportEnd = page.indexOf('What has happened?');
+    if (reportStart !== -1 && reportEnd > reportStart) {
+      page = page.slice(0, reportStart) + page.slice(reportEnd);
+    }
+    Object.keys(AGENCIES).forEach((owner) => {
+      if (owner === cc) return;
+      AGENCIES[owner].forEach((token) => {
+        if (page.indexOf(token) !== -1) {
+          fail('help/' + cc.toLowerCase() + '/ mentions ' + owner + "'s \"" + token + '" outside the reporting section');
+          leaks++;
+        }
+      });
+    });
+  });
+  if (!leaks) ok('no country-specific agency names leak into the shared advice');
 }
 
 console.log(

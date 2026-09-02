@@ -1,44 +1,46 @@
 {
- "version": "1.0",
+ "version": "1.1",
  "verifiedOn": "2026-09-02",
  "title": "Something has happened",
  "lede": "If something has already gone wrong, this page is the fastest route to the right help. Take a breath first. You have more time than it feels like, and the things that matter most take about five minutes.",
+
+ "provenance": "The advice on this page is the same in every country. It is what child protection agencies in the US, UK, Canada and Ireland all tell parents, and where they differ we say so. Only the reporting routes change depending on where you are, and those are set by the country you picked above.",
+
  "firstThings": {
   "title": "Do these first",
   "steps": [
    {
-    "title": "Stay calm, and tell them they are not in trouble",
-    "body": "Your reaction in the first minute decides how much they tell you in the next hour. An Garda Síochána puts this first in its guidance to parents: stay calm, reassure your child, let them know they are not in trouble and that you are there to help. Whatever they did, what has been done to them is the crime.",
-    "source": "An Garda Síochána"
+    "title": "Stay calm, and say out loud that they are not in trouble",
+    "body": "Your reaction in the first minute decides how much they tell you in the next hour. Say it plainly: you are not in trouble, and I am going to help. Whatever choice they made, what has been done to them is the crime."
    },
    {
     "title": "Do not delete anything",
-    "body": "Block the person, but leave the messages, the images and the account where they are. Deleting destroys the evidence that lets police identify them. The UK's National Crime Agency is specific about this: deactivate an account rather than deleting it, because deactivated data can still be retrieved.",
-    "source": "NCMEC, National Crime Agency, An Garda Síochána"
+    "body": "Block the person, but leave the messages, the images and the account exactly where they are. Deleting destroys what investigators need to identify them. If you want the account gone, deactivate it rather than deleting it, because deactivated data can still be recovered."
    },
    {
-    "title": "Screenshot before you block",
-    "body": "Capture the conversation, the profile and anything they sent. Then block. Doing it in that order takes an extra two minutes and is the difference between a report that goes somewhere and one that doesn't.",
-    "source": "Cybertip.ca, NeedHelpNow.ca"
+    "title": "Screenshot before you block"
+    ,
+    "body": "Capture the conversation, the profile and anything they sent. Then block. Doing it in that order costs two extra minutes and is the difference between a report that goes somewhere and one that doesn't."
    }
   ]
  },
+
  "evidence": {
   "title": "What to save before you block",
-  "intro": "Official guidance names the first four. The last two are SafeStart's own practical advice rather than an official instruction, and they make a report much easier to act on.",
+  "intro": "The first four are what an investigator will ask you for. The last two are SafeStart's own advice, and they make a report much easier to act on.",
   "official": [
    "The messages themselves, including anything already deleted from view",
    "Any images or videos that were sent or received",
    "Phone numbers, and bank or payment details if money was asked for",
    "The web addresses of any page where images have been shared"
   ],
-  "officialSource": "National Crime Agency",
   "practical": [
    "The exact username, display name and profile link, which change often",
    "Dates and times, or a screenshot that shows them"
   ],
-  "note": "Save screenshots somewhere outside the app itself, so that a deleted account doesn't take them with it. Your own photo library or an email to yourself is fine."
+  "note": "Save screenshots somewhere outside the app itself, so a deleted account doesn't take them with it. Your own photo library or an email to yourself is fine."
  },
+
  "situations": [
   {
    "id": "sextortion",
@@ -48,22 +50,23 @@
    "keyAdvice": [
     {
      "title": "Do not pay",
-     "body": "Every official body agrees on this. NCMEC: cooperating or paying rarely stops the blackmail. The FBI: offenders often release the material whether or not they are paid. Cybertip.ca: never pay money and never send additional nudes."
+     "body": "Paying almost never stops it. Offenders frequently share the material anyway, and once you have shown you can pay, they come back for more."
     },
     {
      "title": "If you have already paid, stop there",
-     "body": "The National Crime Agency's line is the one worth holding on to: if you have paid, don't panic, but don't pay anything more. Paying once does not make things worse. Paying again does."
+     "body": "Don't panic, and don't pay anything more. Paying once has not made things worse. Paying again will."
     },
     {
      "title": "Block, but keep everything",
-     "body": "NCMEC is explicit: block the suspect, but do not delete your profile or messages, because they can help stop the blackmailer."
+     "body": "Block them, and do not delete the profile or the messages. Those are what let investigators find the person behind the account."
     },
     {
      "title": "Tell your child this is not their fault",
-     "body": "NCMEC's own words are worth repeating to them directly: the blackmailer is to blame, not you. Even if you made a choice you regret, what they are doing is a crime. The FBI's advice to parents is to make clear that your first move will be to help, always."
+     "body": "Say it directly: the blackmailer is to blame, not you. Even if you made a choice you regret, what they are doing is a crime. And make clear your first move is to help, always."
     }
    ],
-   "context": "Financial sextortion disproportionately targets teenage boys. The National Crime Agency identifies males aged 14 to 17 as particularly at risk, and the Canadian Centre for Child Protection reports that 83% of sextortion victims were male where gender was known. That said, the FBI has interviewed victims as young as 8, of both genders, and notes the only common trait among victims is internet access. If you have a daughter, this still applies to her."
+   "context": "Financial sextortion targets teenage boys disproportionately. Where the victim's gender was recorded, around 83% were male, and boys aged roughly 14 to 17 are the most commonly targeted group. Victims as young as 8 have been reported, of both genders, so if you have a daughter this still applies to her.",
+   "sources": "Canadian Centre for Child Protection, UK National Crime Agency, FBI"
   },
   {
    "id": "grooming",
@@ -72,8 +75,8 @@
    "urgent": true,
    "keyAdvice": [
     {
-     "title": "Report it to the national body, not just the platform",
-     "body": "Platform reports get the account removed. A report to your country's child protection body is what gets it investigated. Do both, and do the national one first."
+     "title": "Report to the national body, not just the platform",
+     "body": "A platform report gets the account removed. A report to your country's child protection body is what gets the person investigated. Do both, and do the national one first. The reporting section above has the right one for where you are."
     },
     {
      "title": "Keep the account open for now",
@@ -81,10 +84,10 @@
     },
     {
      "title": "Ask gently, and ask once",
-     "body": "You need to know roughly what happened and how long it has been going on. You do not need every detail, and pressing for detail is the part that makes children stop talking. The professionals who take your report are trained for that conversation."
+     "body": "You need to know roughly what happened and how long it has been going on. You do not need every detail, and pressing for detail is what makes children stop talking. The people who take your report are trained for that conversation."
     }
    ],
-   "context": "A common pattern is that contact starts inside a game or a public server and quickly moves to a private app such as Discord, Snapchat or WhatsApp. If your child has been asked to move a conversation somewhere more private, that on its own is worth reporting."
+   "context": "A common pattern is that contact starts inside a game or a public server and moves quickly to a private app. If your child has been asked to move a conversation somewhere more private, that on its own is worth reporting."
   },
   {
    "id": "images",
@@ -93,40 +96,48 @@
    "urgent": true,
    "keyAdvice": [
     {
-     "title": "Use Take It Down, and understand why StopNCII will turn you away",
-     "body": "Take It Down is NCMEC's free service for images taken of someone under 18. It works anywhere, not just the US. StopNCII is the adult equivalent and requires the person to have been 18 or over both when the image was taken and now, so it will reject a case involving a child. Parents land on the wrong one all the time."
+     "title": "Use Take It Down, and know that StopNCII will turn you away",
+     "body": "Take It Down is a free removal service for images taken of someone under 18, and it works anywhere in the world. StopNCII is the adult equivalent and requires the person to have been 18 or over both when the image was taken and now, so it will reject a case involving a child. Parents land on the wrong one all the time."
     },
     {
-     "title": "The image does not leave your device",
-     "body": "Take It Down generates a digital fingerprint, a hash, on your own device. The image itself is never uploaded. Participating platforms match the hash and remove the content. This is worth explaining to a teenager who is terrified of handing the image to anyone."
+     "title": "The image never leaves your device",
+     "body": "Take It Down turns the image into a digital fingerprint on your own device. The image itself is never uploaded anywhere. Participating platforms match that fingerprint and remove the content. This is worth explaining to a teenager who is terrified of handing the picture to anyone."
     },
     {
-     "title": "In the UK, Report Remove is designed for this",
-     "body": "Report Remove is run jointly by Childline and the Internet Watch Foundation for under-18s in the UK. The young person reports it themselves, verifies their age, and gets updates plus counsellor support through their Childline account."
+     "title": "Report Remove is built for this",
+     "countries": ["UK"],
+     "body": "In the UK, under-18s can use Report Remove, run jointly by Childline and the Internet Watch Foundation. The young person reports it themselves, verifies their age, and gets updates and counsellor support through their Childline account."
     }
    ],
-   "context": "There is no separate Canadian hash-removal service. Canadian families use Take It Down, and NeedHelpNow.ca has step-by-step removal instructions for each major platform."
+   "context": "Removal is rarely instant and rarely total. It is still worth doing, because every copy taken down is one fewer, and the services above are the only ones with direct removal channels into the major platforms.",
+   "countryNotes": {
+    "CA": "There is no separate Canadian removal service. Take It Down works here, and NeedHelpNow.ca has step-by-step removal instructions for each major platform.",
+    "IE": "Intimate image abuse reports to Hotline.ie cannot be made anonymously, unlike their other report types."
+   }
   },
   {
    "id": "bullying",
    "label": "My child is being bullied or harassed",
-   "summary": "Sustained cruelty, exclusion, threats or humiliation from people your child may well know.",
+   "summary": "Sustained cruelty, exclusion, threats or humiliation, usually from people your child actually knows.",
    "urgent": false,
    "keyAdvice": [
     {
      "title": "Screenshot the pattern, not just the worst message",
-     "body": "A single message rarely gets acted on. A run of them over days does. Capture dates where you can."
+     "body": "A single message rarely gets acted on. A run of them over days does. Capture dates wherever you can."
     },
     {
      "title": "Report inside the platform first",
-     "body": "For bullying, the platform is genuinely the right first stop, and most have a specific bullying or harassment category that routes faster than a general report."
+     "body": "For bullying the platform genuinely is the right first stop, and most have a specific bullying or harassment category that routes faster than a general report."
     },
     {
      "title": "Involve the school if the people involved are from school",
-     "body": "Most online bullying between classmates is a school matter with an online surface. Schools in all four countries have a duty here and are usually better placed to stop it than any platform."
+     "body": "Most online bullying between classmates is a school matter with an online surface. Schools have a duty here and are usually better placed to stop it than any platform is."
     }
    ],
-   "context": "The UK's CEOP Safety Centre does not handle bullying and will redirect you to Childline. That is not a brush-off, it is a routing decision, and Childline is the better service for it."
+   "context": "Bullying is generally outside the remit of the child exploitation hotlines, which handle abuse and grooming. That is a routing decision rather than a brush-off, and the school plus the platform is the faster route.",
+   "countryNotes": {
+    "UK": "CEOP does not take bullying reports and will point you to Childline, which is the better service for it."
+   }
   },
   {
    "id": "content",
@@ -136,25 +147,26 @@
    "keyAdvice": [
     {
      "title": "Deal with the child before the settings",
-     "body": "The instinct is to go and fix the controls. Do that later today. Right now the useful thing is letting them describe it, telling them it was not their fault for seeing it, and not reacting with alarm that they then have to manage."
+     "body": "The instinct is to go and fix the controls. Do that later today. Right now the useful thing is letting them describe it, telling them it was not their fault for seeing it, and not reacting with alarm they then have to manage."
     },
     {
-     "title": "Report the content where they saw it",
-     "body": "If it was child sexual abuse material, report it to your national body rather than the platform, and do not download, forward or screenshot it. That is the one situation where screenshotting is the wrong move and can itself be an offence."
+     "title": "If it was child sexual abuse material, do not screenshot it",
+     "body": "This is the one situation where screenshotting is the wrong move. Do not download, forward or save it. Report the address to your national body instead, using the reporting section above."
     },
     {
      "title": "Then tighten the setting that let it through",
-     "body": "Once they are settled, the relevant SafeStart guide will have the specific control. Usually it is a content maturity or restricted mode setting, or an autoplay behaviour."
+     "body": "Once they are settled, the relevant SafeStart guide has the specific control. It is usually a content maturity setting, a restricted mode, or an autoplay behaviour."
     }
    ],
-   "context": "Do not go looking for the content to see how bad it was. If it is illegal material, viewing and saving it creates problems for you and for any investigation."
+   "context": "Do not go looking for the content yourself to see how bad it was. If it is illegal material, viewing and saving it creates problems for you and for any investigation."
   }
  ],
+
  "byCountry": {
   "US": {
    "police": {
     "emergency": "911",
-    "line": "That is NCMEC's own guidance too. Their CyberTipline is for reporting, not for emergencies.",
+    "line": "Hotlines are for reporting, not for emergencies. If someone is at risk right now, call first and report afterwards.",
     "nonEmergency": "For a non-emergency report, contact your local FBI field office, call 1-800-CALL-FBI, or use tips.fbi.gov."
    },
    "bodies": [
@@ -179,7 +191,7 @@
     },
     {
      "name": "FBI IC3",
-     "what": "Intake for cyber-enabled crime. Useful for the record, but note their own wording: you will not be contacted by IC3. Do not rely on it for help in a live situation.",
+     "what": "Intake for cyber-enabled crime. Useful for the record, but their own wording is that you will not be contacted by IC3. Do not rely on it for help in a live situation.",
      "url": "https://complaint.ic3.gov/",
      "caveat": true
     }
@@ -188,19 +200,19 @@
   "UK": {
    "police": {
     "emergency": "999",
-    "line": "That is the National Crime Agency's guidance for anyone at immediate risk of harm.",
+    "line": "Hotlines are for reporting, not for emergencies. If someone is at risk right now, call first and report afterwards.",
     "nonEmergency": "Call 101 for a non-emergency report to your local police."
    },
    "bodies": [
     {
      "name": "CEOP Safety Centre",
-     "what": "Reports go to a Child Protection Advisor at CEOP, which is a command of the National Crime Agency. For online sexual abuse or concerning contact. Not for bullying.",
+     "what": "Reports go to a Child Protection Advisor at CEOP, part of the National Crime Agency. For online sexual abuse or concerning contact from an adult. Not for bullying.",
      "url": "https://www.ceop.police.uk/Safety-Centre/",
      "primary": true
     },
     {
      "name": "Report Remove",
-     "what": "For under-18s in the UK to get a nude image of themselves removed. Run by Childline with the Internet Watch Foundation.",
+     "what": "For under-18s in the UK to get a nude image of themselves taken down. Run by Childline with the Internet Watch Foundation.",
      "url": "https://www.iwf.org.uk/our-technology/report-remove/",
      "primary": true
     },
@@ -215,20 +227,20 @@
      "url": "https://www.nspcc.org.uk/about-us/our-services/nspcc-helpline/",
      "phone": "0808 800 5000 — phone 10am to 4pm Mon to Fri, email help@nspcc.org.uk 11am to 4pm daily",
      "caveat": true,
-     "caveatNote": "Not a 24-hour service. Childline, for your child, is 24 hours on 0800 1111."
+     "caveatNote": "Not a 24-hour service. Childline, for your child rather than for you, is 24 hours on 0800 1111."
     }
    ]
   },
   "CA": {
    "police": {
     "emergency": "911",
-    "line": "That is Cybertip.ca's own guidance. They forward their reports to police as well.",
+    "line": "Hotlines are for reporting, not for emergencies. If someone is at risk right now, call first and report afterwards.",
     "nonEmergency": "Contact your local police service. Cybertip forwards its reports to police as well."
    },
    "bodies": [
     {
      "name": "Cybertip.ca",
-     "what": "Canada's national tipline, operated by the Canadian Centre for Child Protection. Covers child sexual abuse material, grooming, luring, intimate images, sextortion and AI deepfakes.",
+     "what": "Canada's national tipline, run by the Canadian Centre for Child Protection. Covers child sexual abuse material, grooming, luring, intimate images, sextortion and AI deepfakes.",
      "url": "https://cybertip.ca/en/report/",
      "phone": "Staffed 8:30am to 4:00pm Central, Mon to Fri. Online reporting is open at all times.",
      "primary": true
@@ -241,7 +253,7 @@
     },
     {
      "name": "Take It Down",
-     "what": "There is no Canadian hash-removal service, so Canadian families use NCMEC's, which works internationally.",
+     "what": "The image removal service used by Canadian families, since there is no separate Canadian one. It works internationally.",
      "url": "https://takeitdown.ncmec.org/"
     }
    ]
@@ -249,20 +261,20 @@
   "IE": {
    "police": {
     "emergency": "999 or 112",
-    "line": "An Garda Síochána are clear that urgent situations should always be reported to them directly, and that a hotline report does not replace it.",
+    "line": "Hotlines are for reporting, not for emergencies. If someone is at risk right now, call first and report afterwards.",
     "nonEmergency": "Your local Garda station. Garda Confidential is 1800 666 111, and the Garda child sexual abuse reporting line is 1800 555 222."
    },
    "bodies": [
     {
      "name": "An Garda Síochána",
-     "what": "Report directly. Hotline.ie says plainly that reporting to them is not a substitute for notifying the Gardaí.",
+     "what": "The Irish police. Report directly to them. A hotline report does not replace it.",
      "phone": "999 or 112 in an emergency, 1800 555 222 for child sexual abuse reporting",
      "url": "https://www.garda.ie/en/crime/online-child-exploitation/online-child-exploitation.html",
      "primary": true
     },
     {
      "name": "Hotline.ie",
-     "what": "Reporting for child sexual abuse material, grooming, intimate image abuse and sexual extortion. Anonymous except for intimate image abuse reports.",
+     "what": "Reporting for child sexual abuse material, grooming, intimate image abuse and sexual extortion. Anonymous, except for intimate image abuse reports.",
      "url": "https://hotline.ie/report/",
      "phone": "+353 86 8116273, also on WhatsApp",
      "primary": true
@@ -275,13 +287,14 @@
     },
     {
      "name": "Coimisiún na Meán",
-     "what": "The regulator. Use this when a platform has failed to act, not as a first step. You need to have reported to the platform first, and they will not accept child sexual abuse material.",
+     "what": "The media regulator. Use this when a platform has failed to act, not as a first step. You need to have reported to the platform first, and they will not accept child sexual abuse material.",
      "url": "https://www.cnam.ie/general-public/report-complain/",
      "caveat": true
     }
    ]
   }
  },
+
  "platforms": [
   {
    "id": "roblox",
@@ -304,7 +317,7 @@
    "name": "Discord",
    "route": "Discord has a dedicated form for parents and guardians, which does not require you to be in the server. If you have access to your teen's account you can also report from inside the app.",
    "url": "https://support.discord.com/hc/en-us/articles/360000291932",
-   "urlLabel": "How to contact Discord Safety for parents",
+   "urlLabel": "Contacting Discord Safety as a parent",
    "confidence": "high"
   },
   {
@@ -318,7 +331,7 @@
   {
    "id": "instagram",
    "name": "Instagram",
-   "route": "Reporting is in app. The help pages describe the process rather than offering a separate form, so a parent generally needs access to the account to report content.",
+   "route": "Reporting is in app. The help pages describe the process rather than offering a separate form, so you generally need access to the account to report content.",
    "url": "https://help.instagram.com/192435014247952",
    "urlLabel": "Report a post or profile",
    "confidence": "medium"
@@ -352,28 +365,32 @@
    "confidence": "medium"
   }
  ],
- "platformsNote": "Platform reporting routes move often, and several of these companies have deliberately pushed reporting inside the app and behind a login. Where we could not confirm a working web form we have said so rather than guessing. If a link here fails, the in-app route described alongside it still works.",
+
+ "platformsNote": "Platform reporting routes move often, and several of these companies have deliberately pushed reporting inside the app and behind a login. Where we could not confirm a working web form we say so rather than guessing. If a link here fails, the in-app route described alongside it still works.",
+
  "talking": {
   "title": "What to say",
   "lines": [
    {
     "text": "You are not in trouble. I am glad you told me.",
-    "note": "An Garda Síochána put reassurance ahead of every practical step in their guidance to parents, and it is the thing most parents skip."
+    "note": "Reassurance comes before every practical step, and it is the part most parents skip."
    },
    {
     "text": "This is not your fault, even if you made a choice you regret. What they are doing is a crime.",
-    "note": "Close to NCMEC's own wording, which is worth using almost verbatim."
+    "note": "Worth saying almost word for word."
    },
    {
     "text": "My first move is to help. Always.",
-    "note": "The FBI's suggested framing for parents."
+    "note": "Children weigh up whether telling you will make things worse. This answers that before they ask."
    },
    {
-    "text": "We are going to sort this out together, and I am not going to take your phone away as a punishment for telling me.",
-    "note": "SafeStart's own addition. Fear of losing the device is one of the most common reasons children don't tell anyone."
+    "text": "We are going to sort this out together, and I am not taking your phone away as a punishment for telling me.",
+    "note": "SafeStart's own addition. Fear of losing the device is one of the most common reasons children tell nobody."
    }
   ]
  },
+
  "standingLine": "Reporting to a hotline does not replace reporting to the police. If your child is in immediate danger, call the emergency number first.",
+
  "disclaimer": "SafeStart is not an emergency service and cannot take reports. This page points you to the organizations that can. Every link and phone number here was checked against the organization's own website on the date shown."
 }
