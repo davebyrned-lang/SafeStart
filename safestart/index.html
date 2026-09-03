@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+/* Runs before any CSS is applied. Kept inline and tiny on purpose: a separate
+   file would paint light first and then snap to dark. */
+(function () {
+  var t = "auto";
+  try { t = localStorage.getItem("safestart:theme") || "auto"; } catch (e) {}
+  var dark = t === "dark" ||
+    (t === "auto" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SafeStart — parental controls made simple</title>
@@ -190,8 +201,7 @@
   --ease: cubic-bezier(.34,1.4,.5,1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
+:root[data-theme="dark"] {
     --bg: #131E3D;
     --surface: #1C2A4E;
     --surface-2: #26355C;
@@ -211,7 +221,6 @@
     --paper: #1C2A4E;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 26px rgba(0,0,0,.35);
     --shadow-lg: 0 2px 8px rgba(0,0,0,.5), 0 24px 60px rgba(0,0,0,.55);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -257,7 +266,7 @@ button { font: inherit; cursor: pointer; }
   width: 32px; height: 32px; border-radius: 9px; background: var(--navy);
   display: grid; place-items: center; flex: none;
 }
-@media (prefers-color-scheme: dark) { .brand-mark { background: var(--blue-tint-2); } }
+:root[data-theme="dark"] .brand-mark { background: var(--blue-tint-2); }
 .brand-mark svg { width: 19px; height: 19px; color: #fff; }
 .brand-name { font-weight: 700; letter-spacing: -.025em; font-size: 1.2rem; color: var(--heading); }
 
@@ -267,10 +276,8 @@ button { font: inherit; cursor: pointer; }
 .by-line span { font-size: .74rem; color: var(--muted); font-weight: 500; }
 .by-line img { height: 15px; width: auto; display: block; }
 .by-line .logo-dark { display: none; }
-@media (prefers-color-scheme: dark) {
-  .by-line .logo-light { display: none; }
-  .by-line .logo-dark { display: block; }
-}
+:root[data-theme="dark"] .by-line .logo-light { display: none; }
+:root[data-theme="dark"] .by-line .logo-dark { display: block; }
 
 .ghost-btn {
   background: none; border: 1.5px solid var(--line); color: var(--muted);
@@ -293,7 +300,16 @@ button { font: inherit; cursor: pointer; }
 .help-btn:hover { background: var(--blue); transform: translateY(-1px); }
 .help-btn svg { width: 15px; height: 15px; flex: none; }
 .help-btn-short { display: none; }
-@media (prefers-color-scheme: dark) { .help-btn { background: var(--blue); } }
+
+.theme-btn {
+  width: 34px; height: 34px; flex: none; border-radius: 50%;
+  background: none; border: 1.5px solid var(--control-line); color: var(--muted);
+  display: inline-grid; place-items: center;
+  transition: color .15s, border-color .15s, transform .16s var(--ease);
+}
+.theme-btn:hover { color: var(--blue); border-color: var(--blue); transform: rotate(-15deg); }
+.theme-btn svg { width: 16px; height: 16px; }
+:root[data-theme="dark"] .help-btn { background: var(--blue); }
 @media (max-width: 560px) {
   .help-btn-long { display: none; }
   .help-btn-short { display: inline; }
@@ -392,7 +408,7 @@ button { font: inherit; cursor: pointer; }
 .card:hover .card-ico { transform: rotate(-6deg) scale(1.08); }
 .card-ico svg { width: 22px; height: 22px; }
 .card.is-device .card-ico { background: var(--navy-tint); color: var(--navy); }
-@media (prefers-color-scheme: dark) { .card.is-device .card-ico { color: var(--blue); } }
+:root[data-theme="dark"] .card.is-device .card-ico { color: var(--blue); }
 
 /* Compact variant for the device row: nine tiles shouldn't need nine rows. */
 .card-grid.compact { grid-template-columns: repeat(auto-fill, minmax(138px, 1fr)); gap: 9px; }
@@ -420,7 +436,7 @@ button { font: inherit; cursor: pointer; }
   padding: 15px 17px; margin-bottom: 14px;
   transition: transform .18s var(--ease);
 }
-@media (prefers-color-scheme: dark) { .device-cta { background: var(--blue-tint-2); } }
+:root[data-theme="dark"] .device-cta { background: var(--blue-tint-2); }
 .device-cta:hover { transform: translateY(-2px); }
 .device-cta .dc-ico { width: 38px; height: 38px; border-radius: 11px; background: rgba(255,255,255,.14); display: grid; place-items: center; flex: none; }
 .device-cta .dc-ico svg { width: 21px; height: 21px; }
@@ -611,7 +627,7 @@ button { font: inherit; cursor: pointer; }
 .pill svg { width: 13px; height: 13px; }
 .pill.conf-high { background: var(--blue-tint); color: var(--blue); border-color: transparent; }
 .pill.conf-medium { background: var(--navy-tint); color: var(--navy); border-color: transparent; }
-@media (prefers-color-scheme: dark) { .pill.conf-medium { color: var(--body); } }
+:root[data-theme="dark"] .pill.conf-medium { color: var(--body); }
 .pill.conf-limited { background: var(--signal); color: #4a3c00; border-color: transparent; }
 
 .controls {
@@ -642,14 +658,14 @@ button { font: inherit; cursor: pointer; }
   background: var(--blue-tint); color: var(--navy); font-size: .92rem; font-weight: 500;
   display: flex; align-items: flex-start; gap: 10px; line-height: 1.45;
 }
-@media (prefers-color-scheme: dark) { .age-nudge { color: var(--body); } }
+:root[data-theme="dark"] .age-nudge { color: var(--body); }
 .age-nudge svg { width: 17px; height: 17px; flex: none; margin-top: 2px; color: var(--blue); }
 
 .profile-card {
   background: var(--navy); color: #fff; border-radius: var(--radius);
   padding: 18px 20px; margin-bottom: 24px;
 }
-@media (prefers-color-scheme: dark) { .profile-card { background: var(--blue-tint-2); } }
+:root[data-theme="dark"] .profile-card { background: var(--blue-tint-2); }
 .profile-card h3 { margin: 0 0 6px; font-size: 1.02rem; letter-spacing: -.015em; font-weight: 650; }
 .profile-card p { margin: 0; font-size: .94rem; opacity: .84; }
 
@@ -707,7 +723,7 @@ button { font: inherit; cursor: pointer; }
   margin-top: 14px; padding: 12px 15px; border-radius: 12px;
   background: var(--blue-tint); font-size: .93rem; color: var(--navy);
 }
-@media (prefers-color-scheme: dark) { .rec { color: var(--body); } }
+:root[data-theme="dark"] .rec { color: var(--body); }
 .rec .rec-label { font-size: .78rem; font-weight: 650; color: var(--blue); display: block; margin-bottom: 4px; }
 .rec-table { width: 100%; border-collapse: collapse; font-size: .89rem; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
@@ -720,7 +736,7 @@ button { font: inherit; cursor: pointer; }
 .result svg, .note svg { width: 16px; height: 16px; flex: none; margin-top: 3px; }
 .result svg { color: var(--blue); }
 .note svg { color: var(--navy); }
-@media (prefers-color-scheme: dark) { .note svg { color: var(--blue); } }
+:root[data-theme="dark"] .note svg { color: var(--blue); }
 
 .step-done-btn {
   margin-top: 15px; background: none; border: 2px solid var(--line); color: var(--muted);
@@ -796,7 +812,7 @@ button { font: inherit; cursor: pointer; }
 .help-card-icon svg { width: 19px; height: 19px; color: #fff; }
 .help-card strong { display: block; font-size: 1.02rem; margin-bottom: 4px; }
 .help-card span span { font-size: .9rem; line-height: 1.55; color: rgba(255,255,255,.82); }
-@media (prefers-color-scheme: dark) { .help-card { background: var(--blue); } }
+:root[data-theme="dark"] .help-card { background: var(--blue); }
 
 /* ---------------- crisis pages (/help/) ----------------
    These are rendered at build time and never touched by JavaScript. Styles
@@ -808,7 +824,7 @@ button { font: inherit; cursor: pointer; }
   font-size: .97rem; line-height: 1.6;
 }
 .emergency strong { display: block; font-size: 1.08rem; margin-bottom: 5px; }
-@media (prefers-color-scheme: dark) { .emergency { background: var(--blue); } }
+:root[data-theme="dark"] .emergency { background: var(--blue); }
 
 .section-h {
   font-size: 1.5rem; font-weight: 700; color: var(--heading);
@@ -826,7 +842,7 @@ button { font: inherit; cursor: pointer; }
 .body-card h3 a { color: var(--blue); }
 .body-card p { margin: 0 0 6px; font-size: .92rem; line-height: 1.6; }
 .body-card .phone { font-weight: 600; color: var(--heading); }
-@media (prefers-color-scheme: dark) { .body-card.primary { background: rgba(31,63,226,.14); } }
+:root[data-theme="dark"] .body-card.primary { background: rgba(31,63,226,.14); }
 
 .situation { scroll-margin-top: 80px; }
 .advice { margin: 14px 0; padding-left: 14px; border-left: 3px solid var(--blue-tint-2); }
@@ -867,10 +883,8 @@ button { font: inherit; cursor: pointer; }
 .foot-inner { display: flex; flex-direction: column; gap: 14px; }
 .foot-logo img { height: 26px; width: auto; display: block; }
 .foot-logo .logo-dark { display: none; }
-@media (prefers-color-scheme: dark) {
-  .foot-logo .logo-light { display: none; }
-  .foot-logo .logo-dark { display: block; }
-}
+:root[data-theme="dark"] .foot-logo .logo-light { display: none; }
+:root[data-theme="dark"] .foot-logo .logo-dark { display: block; }
 .foot-tag { font-size: .84rem; font-weight: 600; color: var(--blue); letter-spacing: -.005em; }
 .site-foot p { margin: 0; font-size: .92rem; color: var(--muted); max-width: 56ch; line-height: 1.6; }
 .site-foot p strong { color: var(--heading); font-weight: 650; }
@@ -933,7 +947,7 @@ button { font: inherit; cursor: pointer; }
 .msg { margin-bottom: 16px; }
 .msg-role { font-size: .74rem; font-weight: 650; color: var(--muted); margin-bottom: 5px; }
 .msg.user .bubble { background: var(--blue-tint); border-radius: 14px; padding: 11px 14px; color: var(--navy); }
-@media (prefers-color-scheme: dark) { .msg.user .bubble { color: var(--body); } }
+:root[data-theme="dark"] .msg.user .bubble { color: var(--body); }
 .msg .bubble { font-size: .96rem; }
 .msg .bubble > *:first-child { margin-top: 0; }
 .msg .bubble > *:last-child { margin-bottom: 0; }
@@ -1011,7 +1025,7 @@ button { font: inherit; cursor: pointer; }
 .chat-help-icon svg { width: 16px; height: 16px; color: #fff; }
 .chat-help strong { display: block; font-size: .93rem; margin-bottom: 3px; }
 .chat-help span span { font-size: .84rem; line-height: 1.5; color: rgba(255,255,255,.82); }
-@media (prefers-color-scheme: dark) { .chat-help { background: var(--blue); } }
+:root[data-theme="dark"] .chat-help { background: var(--blue); }
 
 /* ---------------- print ---------------- */
 @media print {
@@ -1054,6 +1068,7 @@ button { font: inherit; cursor: pointer; }
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
       Print
     </button>
+    <button class="theme-btn" id="themeBtn" type="button"></button>
     <a class="by-line" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">
       <span>from</span>
       <img class="logo-light" src="/assets/trustraise-logo.png" alt="TrustRaise">
@@ -1199,6 +1214,9 @@ var ICONS = {
   browser: '<rect x="4" y="4" width="16" height="11" rx="2.4"/><path d="M4 7.8h16"/><path d="M1.8 18.6h20.4"/><circle cx="6.4" cy="5.9" r=".55" fill="currentColor" stroke="none"/>',
   gamepad: '<path d="M7.4 7.6h9.2a4.8 4.8 0 0 1 4.7 3.9l.6 3.7a2.5 2.5 0 0 1-4.5 1.9l-1.6-2.1H8.2l-1.6 2.1a2.5 2.5 0 0 1-4.5-1.9l.6-3.7a4.8 4.8 0 0 1 4.7-3.9z"/><path d="M6.6 11v2.6M5.3 12.3h2.6"/><circle cx="16.4" cy="11.5" r=".95" fill="currentColor" stroke="none"/><circle cx="18.5" cy="13.4" r=".95" fill="currentColor" stroke="none"/>',
   handheld: '<rect x="2.4" y="4" width="19.2" height="16" rx="3.4"/><path d="M8.8 4v16M15.2 4v16"/><circle cx="5.6" cy="9" r="1.1"/><circle cx="18.4" cy="14.4" r="1.1"/>',
+  sun: '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.6 12h2.4M19 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/>',
+  moon: '<path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.6 8.6 0 1 0 11 11z"/>',
+  autoTheme: '<circle cx="12" cy="12" r="8.6"/><path d="M12 3.4a8.6 8.6 0 0 1 0 17.2z" fill="currentColor" stroke="none"/>',
   people: '<circle cx="9.2" cy="8" r="3.3"/><path d="M2.6 20a6.6 6.6 0 0 1 13.2 0"/><path d="M16 5.2a3.3 3.3 0 0 1 0 5.6"/><path d="M17.6 14.4A6.6 6.6 0 0 1 21.6 20"/>'
 };
 
@@ -1289,6 +1307,61 @@ function countryPick() {
   });
   wrap.appendChild(sel);
   return wrap;
+}
+
+/* ---------------- theme ----------------
+   Three states rather than two. "Auto" is the honest default because it matches
+   whatever the parent has already told their phone they want, but anyone who
+   disagrees with that gets to say so, and the site remembers. */
+
+var THEMES = [
+  { id: "auto",  icon: "autoTheme", label: "Match my device" },
+  { id: "light", icon: "sun",       label: "Light" },
+  { id: "dark",  icon: "moon",      label: "Dark" }
+];
+
+function currentTheme() {
+  try { return localStorage.getItem("safestart:theme") || "auto"; } catch (e) { return "auto"; }
+}
+
+function systemPrefersDark() {
+  return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+}
+
+function applyTheme(id) {
+  var dark = id === "dark" || (id === "auto" && systemPrefersDark());
+  document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+  try { localStorage.setItem("safestart:theme", id); } catch (e) { /* private mode */ }
+  paintThemeBtn(id);
+}
+
+function paintThemeBtn(id) {
+  var btn = document.getElementById("themeBtn");
+  if (!btn) return;
+  var t = THEMES.filter(function (x) { return x.id === id; })[0] || THEMES[0];
+  var next = THEMES[(THEMES.indexOf(t) + 1) % THEMES.length];
+  clear(btn);
+  btn.appendChild(icon(t.icon));
+  btn.setAttribute("title", "Appearance: " + t.label + ". Switch to " + next.label.toLowerCase() + ".");
+  btn.setAttribute("aria-label", "Appearance: " + t.label + ". Switch to " + next.label.toLowerCase() + ".");
+}
+
+function initTheme() {
+  var btn = document.getElementById("themeBtn");
+  if (btn) {
+    btn.addEventListener("click", function () {
+      var i = THEMES.map(function (t) { return t.id; }).indexOf(currentTheme());
+      applyTheme(THEMES[(i + 1) % THEMES.length].id);
+    });
+  }
+  // While on auto, follow the device if it changes under us at sunset.
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var onChange = function () { if (currentTheme() === "auto") applyTheme("auto"); };
+    if (mq.addEventListener) mq.addEventListener("change", onChange);
+    else if (mq.addListener) mq.addListener(onChange);
+  }
+  paintThemeBtn(currentTheme());
 }
 
 /* ---------------- persistence (best effort) ---------------- */
@@ -2895,6 +2968,8 @@ function boot() {
   /* The crisis pages under /help/ are fully static on purpose. They must not
      depend on this script, on guides.json, or on anything else being healthy,
      so the app leaves them alone entirely. */
+  initTheme();
+
   if (/^\/help(\/|$)/.test(location.pathname)) {
     document.getElementById("askFab").hidden = true;
     document.getElementById("printBtn").hidden = false;

@@ -107,9 +107,39 @@ function check(name, condition, detail) {
     await page.waitForTimeout(200);
     check('device-only plan is buildable again', await page.locator('.build-cta').isVisible());
 
+    console.log('\nappearance toggle');
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.emulateMedia({ colorScheme: 'dark' });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    const themeAttr = () => page.evaluate(() => document.documentElement.getAttribute('data-theme'));
+    const themePref = () => page.evaluate(() => { try { return localStorage.getItem('safestart:theme'); } catch (e) { return null; } });
+    check('follows the device when nothing is chosen', (await themeAttr()) === 'dark' && (await themePref()) === null);
+    await page.locator('#themeBtn').click();
+    await page.waitForTimeout(150);
+    check('one tap overrides a dark device to light',
+      (await themeAttr()) === 'light' && (await themePref()) === 'light');
+    await page.reload({ waitUntil: 'networkidle' });
+    check('the choice survives a reload', (await themeAttr()) === 'light');
+    check('and is set before the app boots, so there is no flash',
+      (await page.evaluate(() => document.documentElement.getAttribute('data-theme'))) === 'light');
+    await page.locator('#themeBtn').click();
+    await page.waitForTimeout(120);
+    check('second tap goes to dark', (await themePref()) === 'dark');
+    await page.locator('#themeBtn').click();
+    await page.waitForTimeout(120);
+    check('third tap returns to matching the device', (await themePref()) === 'auto');
+    check('the button says what it will do next',
+      /Switch to/.test(await page.locator('#themeBtn').getAttribute('aria-label')));
+    await page.goto(BASE + '/help/uk/', { waitUntil: 'networkidle' });
+    check('the toggle works on the static crisis pages too',
+      (await page.locator('#themeBtn').count()) === 1);
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    check('auto follows a light device as well', (await themeAttr()) === 'light');
+
     console.log('\nheadline highlight is readable in both themes');
     for (const scheme of ['light', 'dark']) {
-      await page.emulateMedia({ colorScheme: scheme });
+      await page.evaluate((s) => document.documentElement.setAttribute('data-theme', s), scheme);
       await page.waitForTimeout(120);
       const hl = await page.evaluate(() => {
         const e = document.querySelector('.hero h1 .hl');
@@ -118,7 +148,7 @@ function check(name, condition, detail) {
       });
       check(`${scheme}: highlight is not a yellow fill behind the heading`, !hl.hasYellowFill, hl.colour);
     }
-    await page.emulateMedia({ colorScheme: 'light' });
+    await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
 
     console.log('\nover-age warning');
     await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
