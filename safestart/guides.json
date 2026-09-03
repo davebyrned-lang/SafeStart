@@ -216,7 +216,8 @@
       "Add your own email as the parent email and verify it from your inbox.",
       "Create a Parent PIN. Choose something your child won’t guess — not a birthday."
      ],
-     "result": "Every setting below now requires your PIN to change."
+     "result": "Every setting below now requires your PIN to change.",
+     "mins": 2
     },
     {
      "id": "maturity",
@@ -234,7 +235,8 @@
       "13-15": "Mild",
       "16-17": "Moderate"
      },
-     "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood."
+     "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood.",
+     "mins": 2
     },
     {
      "id": "chat",
@@ -252,7 +254,8 @@
       "13-15": "Friends only",
       "16-17": "Friends only"
      },
-     "note": "Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users."
+     "note": "Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users.",
+     "mins": 2
     },
     {
      "id": "spend",
@@ -270,7 +273,8 @@
       "13-15": "A small monthly cap you agree together",
       "16-17": "An agreed monthly cap"
      },
-     "note": "Roblox also sends high-spend alerts at $100, $250 and $500."
+     "note": "Roblox also sends high-spend alerts at $100, $250 and $500.",
+     "mins": 2
     },
     {
      "id": "screentime",
@@ -287,7 +291,8 @@
       "11-12": "45–60 minutes",
       "13-15": "Agree it together",
       "16-17": "Agree it together"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "friends",
@@ -302,7 +307,8 @@
       "7-11",
       "11-12",
       "13-15"
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "device",
@@ -312,7 +318,11 @@
       "Set up Screen Time (iPhone/iPad/Mac), Family Link (Android/Chromebook), Microsoft Family Safety (Windows/Xbox), or your console’s parental controls.",
       "Require your approval for new app downloads."
      ],
-     "note": "SafeStart has a separate guide for each of these — pick your device on the home screen."
+     "note": "SafeStart has a separate guide for each of these — pick your device on the home screen.",
+     "mins": 2,
+     "redundantWith": [
+      "device-controls"
+     ]
     }
    ],
    "checklist": [
@@ -341,7 +351,8 @@
      "label": "Roblox — Content Maturity Labels (official)",
      "url": "https://en.help.roblox.com/hc/en-us/articles/8862768451604-Content-Maturity-Labels"
     }
-   ]
+   ],
+   "priority": 2
   },
   "tiktok": {
    "id": "tiktok",
@@ -383,7 +394,8 @@
       "On your teen’s phone: go to the same Family Pairing screen, choose Teen, and scan your QR code.",
       "Your teen reviews the permissions and taps Link accounts."
      ],
-     "result": "Everything below is now set from your phone."
+     "result": "Everything below is now set from your phone.",
+     "mins": 2
     },
     {
      "id": "private",
@@ -397,7 +409,8 @@
      "recommended": {
       "13-15": "Private, on",
       "16-17": "Private — worth agreeing together"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "contact",
@@ -413,7 +426,8 @@
       "13-15": "Friends, or No one for DMs",
       "16-17": "Friends"
      },
-     "note": "Direct messaging is switched off entirely for accounts registered as under 16."
+     "note": "Direct messaging is switched off entirely for accounts registered as under 16.",
+     "mins": 2
     },
     {
      "id": "restricted",
@@ -423,7 +437,8 @@
      "do": [
       "Turn Restricted Mode on.",
       "Open Filter video keywords and add words relevant to your family — diet and body-image terms are a common starting point."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "screentime",
@@ -437,7 +452,8 @@
      "recommended": {
       "13-15": "60 minutes, phone out of the bedroom overnight",
       "16-17": "Agree a limit together, keep the overnight block"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "reset",
@@ -451,7 +467,8 @@
      "ages": [
       "13-15",
       "16-17"
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -480,7 +497,8 @@
      "label": "Internet Matters — TikTok safety settings",
      "url": "https://www.internetmatters.org/parental-controls/social-media/tiktok-privacy-and-safety-settings/"
     }
-   ]
+   ],
+   "priority": 6
   },
   "instagram": {
    "id": "instagram",
@@ -519,7 +537,8 @@
       "Open their profile and check the date of birth on the account.",
       "If it’s wrong, correct it. Instagram may ask for verification."
      ],
-     "result": "With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically."
+     "result": "With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically.",
+     "mins": 1
     },
     {
      "id": "supervision",
@@ -532,7 +551,8 @@
       "Your teen opens the invitation and accepts it.",
       "Either of you can start the invite — sometimes it’s easier if they invite you."
      ],
-     "note": "You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages."
+     "note": "You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages.",
+     "mins": 1
     },
     {
      "id": "approvals",
@@ -544,7 +564,8 @@
      ],
      "ages": [
       "13-15"
-     ]
+     ],
+     "mins": 1
     },
     {
      "id": "dms",
@@ -559,7 +580,8 @@
      "recommended": {
       "13-15": "People you follow only",
       "16-17": "People you follow only"
-     }
+     },
+     "mins": 1
     },
     {
      "id": "private",
@@ -570,7 +592,8 @@
       "Confirm Private account is on.",
       "Turn off location tags when posting.",
       "Check their bio doesn’t name their school or team."
-     ]
+     ],
+     "mins": 1
     },
     {
      "id": "time",
@@ -580,7 +603,8 @@
      "do": [
       "Confirm Sleep Mode is on (default is 10pm to 8am).",
       "Set a daily time limit if you want a firmer stop."
-     ]
+     ],
+     "mins": 1
     },
     {
      "id": "followers",
@@ -590,7 +614,8 @@
       "Open their followers list and scroll it with them.",
       "Remove or block anyone they can’t place.",
       "Show them how to block and report while you’re there."
-     ]
+     ],
+     "mins": 1
     }
    ],
    "checklist": [
@@ -620,7 +645,8 @@
      "label": "Meta — Family Center",
      "url": "https://familycenter.meta.com/"
     }
-   ]
+   ],
+   "priority": 5
   },
   "snapchat": {
    "id": "snapchat",
@@ -654,7 +680,8 @@
      "do": [
       "On your account, tap Add Friends and search your child’s username.",
       "Have them accept."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "familycenter",
@@ -666,7 +693,8 @@
       "Select your child’s name and send the invitation.",
       "On their phone, they tap View Invitation, then Accept."
      ],
-     "result": "You’ll see who they’ve messaged in the last seven days and their friends list."
+     "result": "You’ll see who they’ve messaged in the last seven days and their friends list.",
+     "mins": 2
     },
     {
      "id": "location",
@@ -683,7 +711,8 @@
       "11-12": "Ghost Mode on",
       "13-15": "Ghost Mode on, or share with a small chosen list",
       "16-17": "Agree together — at minimum, not 'My Friends'"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "contact",
@@ -698,7 +727,8 @@
      "recommended": {
       "13-15": "Friends only, Quick Add off",
       "16-17": "Friends only, Quick Add off"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "content",
@@ -708,7 +738,8 @@
      "do": [
       "In Family Center, open Content Controls.",
       "Turn on the restriction for sensitive content."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "screenshots",
@@ -717,7 +748,8 @@
      "do": [
       "Explain that anything sent can be saved by the person receiving it.",
       "Agree that if they’re ever sent something upsetting, they screenshot it before it disappears and show you."
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -746,7 +778,8 @@
      "label": "Internet Matters — Snapchat privacy settings",
      "url": "https://www.internetmatters.org/parental-controls/social-media/snapchat/"
     }
-   ]
+   ],
+   "priority": 3
   },
   "discord": {
    "id": "discord",
@@ -790,7 +823,8 @@
       "Scan that code with the Discord mobile app on your phone.",
       "Your teen accepts the connection."
      ],
-     "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days — plus a weekly email. You won’t see message content."
+     "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days — plus a weekly email. You won’t see message content.",
+     "mins": 2
     },
     {
      "id": "content",
@@ -805,7 +839,8 @@
      "recommended": {
       "13-15": "Block everywhere",
       "16-17": "Block or Blur"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "dms",
@@ -820,7 +855,8 @@
      "recommended": {
       "13-15": "Server DMs off, friend requests from friends of friends only",
       "16-17": "Server DMs off"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "servers",
@@ -830,7 +866,8 @@
       "Open their server list and ask about each one: what is it, who’s in it, how did you find it?",
       "Leave any large public server they can’t explain.",
       "Agree that new servers get mentioned to you."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "spend",
@@ -843,7 +880,8 @@
      "recommended": {
       "13-15": "{cur}0 unless agreed",
       "16-17": "A small agreed cap"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "screentime",
@@ -852,7 +890,8 @@
      "path": "Family Center → Screen Time Limits",
      "do": [
       "Schedule downtime, particularly overnight."
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -881,7 +920,8 @@
      "label": "Discord — teen-by-default settings",
      "url": "https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally"
     }
-   ]
+   ],
+   "priority": 1
   },
   "youtube": {
    "id": "youtube",
@@ -928,7 +968,8 @@
       "11-12": "Supervised account",
       "13-15": "Supervised account or normal account with limits",
       "16-17": "Normal account, with a conversation about the feed"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "level",
@@ -946,7 +987,11 @@
       "13-15": "Explore more (suggested 13+)",
       "16-17": "Most of YouTube"
      },
-     "note": "The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them."
+     "note": "The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them.",
+     "mins": 2,
+     "provides": [
+      "youtube-detail"
+     ]
     },
     {
      "id": "autoplay",
@@ -957,7 +1002,8 @@
       "Turn Autoplay off.",
       "Pause watch history and search history.",
       "Clear the existing history if the recommendations have already drifted."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "block",
@@ -966,7 +1012,8 @@
      "do": [
       "On a video from a channel you want gone, open the menu and choose Block this channel.",
       "You can also manage blocked channels from the parent settings."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "time",
@@ -975,7 +1022,8 @@
      "do": [
       "iPhone/iPad: Settings → Screen Time → App Limits.",
       "Android/Chromebook: Family Link → Controls → Daily limit."
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -1003,7 +1051,8 @@
      "label": "YouTube — parental controls for supervised accounts (official)",
      "url": "https://support.google.com/youtube/answer/13877231?hl=en"
     }
-   ]
+   ],
+   "priority": 8
   },
   "fortnite": {
    "id": "fortnite",
@@ -1045,7 +1094,8 @@
       "Choose Parental Controls.",
       "Create a 6-digit PIN. Don’t reuse a PIN your child already knows.",
       "Confirm the email address that receives reports."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "voice",
@@ -1062,7 +1112,8 @@
       "13-15": "Friends Only",
       "16-17": "Friends Only, or Friends & Teammates if agreed"
      },
-     "note": "The options are Nobody, Friends Only, Friends & Teammates, and Everybody."
+     "note": "The options are Nobody, Friends Only, Friends & Teammates, and Everybody.",
+     "mins": 2
     },
     {
      "id": "language",
@@ -1071,7 +1122,8 @@
      "path": "Parental Controls → Filter Mature Language",
      "do": [
       "Toggle Filter Mature Language on."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "friends",
@@ -1085,7 +1137,8 @@
       "7-11",
       "11-12",
       "13-15"
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "time",
@@ -1096,7 +1149,8 @@
       "Set a daily limit (adjustable in 15-minute increments).",
       "Set a different schedule for weekends if that suits you.",
       "Turn on Weekly Playtime Reports so you get an email summary."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "spend",
@@ -1106,7 +1160,8 @@
      "do": [
       "In the Epic Games Store parental controls, turn on the requirement for a PIN on all purchases.",
       "Remove any saved payment card if your child plays unsupervised."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "platform",
@@ -1118,7 +1173,11 @@
       "Switch: set restriction level and play-time limits in the Parental Controls app.",
       "iPhone/iPad: use Screen Time. Android: use Family Link."
      ],
-     "note": "SafeStart has a guide for each console — pick your device on the home screen."
+     "note": "SafeStart has a guide for each console — pick your device on the home screen.",
+     "mins": 2,
+     "redundantWith": [
+      "device-controls"
+     ]
     }
    ],
    "checklist": [
@@ -1148,7 +1207,8 @@
      "label": "Internet Matters — Fortnite parental controls",
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/fortnite-battle-royale-parental-controls/"
     }
-   ]
+   ],
+   "priority": 4
   },
   "minecraft": {
    "id": "minecraft",
@@ -1190,6 +1250,10 @@
       "Go to family.microsoft.com and sign in with your own Microsoft account.",
       "Add your child as a family member, with their correct date of birth.",
       "Make sure Minecraft is signed in with that account."
+     ],
+     "mins": 2,
+     "redundantWith": [
+      "microsoft-family"
      ]
     },
     {
@@ -1208,7 +1272,8 @@
       "11-12": "Multiplayer: Allow. Communicate: Friends only. Add friends: Block.",
       "13-15": "Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.",
       "16-17": "Multiplayer: Allow. Communicate: Friends only."
-     }
+     },
+     "mins": 2
     },
     {
      "id": "chat",
@@ -1223,7 +1288,8 @@
       "11-12"
      ],
      "confidence": "medium",
-     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters — check the official Minecraft help link below."
+     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters — check the official Minecraft help link below.",
+     "mins": 2
     },
     {
      "id": "realms",
@@ -1233,7 +1299,8 @@
       "If they want to play with friends, set up or join a Realm rather than a public server.",
       "As the Realm owner, you control the invite list.",
       "Talk about third-party servers — those sit entirely outside these controls."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "spend",
@@ -1243,7 +1310,8 @@
      "do": [
       "Turn on 'Needs organizer approval to buy things'.",
       "Turn on purchase notification emails."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "time",
@@ -1252,7 +1320,8 @@
      "path": "family.microsoft.com → [your child] → Screen time",
      "do": [
       "Set daily limits or a schedule, per device."
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -1281,7 +1350,8 @@
      "label": "Microsoft Family Safety (official)",
      "url": "https://family.microsoft.com/"
     }
-   ]
+   ],
+   "priority": 7
   },
   "iphone": {
    "id": "iphone",
@@ -1315,6 +1385,11 @@
       "On your iPhone, open Settings and tap your name.",
       "Tap Family Sharing and add your child.",
       "If they’re under 13, create a child Apple Account for them here."
+     ],
+     "mins": 2,
+     "provides": [
+      "device-controls",
+      "apple-family"
      ]
     },
     {
@@ -1326,7 +1401,8 @@
       "Open Settings, then Screen Time, then choose your child under Family.",
       "Set a Screen Time passcode.",
       "Use a different code from the phone unlock, and don’t use a birthday."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "restrictions",
@@ -1337,7 +1413,8 @@
       "Open Content & Privacy Restrictions.",
       "Enter your Screen Time passcode.",
       "Toggle Content & Privacy Restrictions on."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "purchases",
@@ -1354,7 +1431,8 @@
       "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
-     }
+     },
+     "mins": 2
     },
     {
      "id": "content",
@@ -1371,7 +1449,8 @@
       "11-12": "Limit Adult Websites, apps rated 12+",
       "13-15": "Limit Adult Websites, apps rated 12+",
       "16-17": "Limit Adult Websites"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "downtime",
@@ -1388,7 +1467,8 @@
       "11-12": "Downtime from 8:30pm",
       "13-15": "Downtime from 9:30pm on school nights",
       "16-17": "Agree a Downtime window together"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "privacy",
@@ -1399,7 +1479,8 @@
       "Open Location Services and set it to Don’t Allow Changes after you’ve set it how you want.",
       "Do the same for Contacts and Photos.",
       "Turn on Communication Limits so contact during Downtime is restricted to known contacts."
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -1429,7 +1510,8 @@
      "label": "Apple — Screen Time (official)",
      "url": "https://support.apple.com/en-us/HT208982"
     }
-   ]
+   ],
+   "priority": 0
   },
   "ipad": {
    "id": "ipad",
@@ -1463,6 +1545,11 @@
       "On your device, open Settings and tap your name.",
       "Tap Family Sharing and add your child.",
       "Make sure the iPad is signed in to their Apple Account, not yours."
+     ],
+     "mins": 2,
+     "provides": [
+      "device-controls",
+      "apple-family"
      ]
     },
     {
@@ -1473,7 +1560,8 @@
      "do": [
       "Open Settings, then Screen Time.",
       "Set a Screen Time passcode that differs from the unlock code."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "restrictions",
@@ -1483,7 +1571,8 @@
      "do": [
       "Open Content & Privacy Restrictions and enter your passcode.",
       "Toggle it on."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "purchases",
@@ -1500,7 +1589,8 @@
       "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
-     }
+     },
+     "mins": 2
     },
     {
      "id": "content",
@@ -1517,7 +1607,8 @@
       "11-12": "Limit Adult Websites, apps rated 12+",
       "13-15": "Limit Adult Websites, apps rated 12+",
       "16-17": "Limit Adult Websites"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "downtime",
@@ -1534,7 +1625,8 @@
       "11-12": "Downtime from 8:30pm",
       "13-15": "Downtime from 9:30pm on school nights",
       "16-17": "Agree a window together"
-     }
+     },
+     "mins": 2
     }
    ],
    "checklist": [
@@ -1559,7 +1651,8 @@
      "label": "Apple — Family Sharing (official)",
      "url": "https://support.apple.com/en-us/HT201060"
     }
-   ]
+   ],
+   "priority": 0
   },
   "android": {
    "id": "android",
@@ -1594,7 +1687,12 @@
       "Create a Google Account for your child if they’re under 13, or add supervision to their existing account.",
       "Follow the prompts on their device to link it. You’ll need the device in your hands."
      ],
-     "note": "Family Link can supervise Android devices and Chromebooks. It cannot supervise iPhones or iPads."
+     "note": "Family Link can supervise Android devices and Chromebooks. It cannot supervise iPhones or iPads.",
+     "mins": 2,
+     "provides": [
+      "device-controls",
+      "google-family"
+     ]
     },
     {
      "id": "apps",
@@ -1611,7 +1709,8 @@
       "11-12": "Approval required for everything, apps rated PEGI 12 / ESRB E10+",
       "13-15": "Approval required for paid apps, ratings PEGI 12 / ESRB T",
       "16-17": "Notifications rather than approvals"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "web",
@@ -1628,7 +1727,8 @@
       "11-12": "Try to block explicit sites",
       "13-15": "Try to block explicit sites",
       "16-17": "Try to block explicit sites"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "time",
@@ -1639,7 +1739,8 @@
       "Set daily limits, which can differ by day of the week.",
       "Set a bedtime schedule that locks the device.",
       "You can grant bonus time from your phone when it’s genuinely warranted."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "location",
@@ -1649,7 +1750,8 @@
      "do": [
       "Turn on location if you want it, and tell your child it’s on.",
       "For older teens, discuss it first — covert tracking damages trust more than it protects."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "youtube",
@@ -1659,6 +1761,10 @@
      "do": [
       "Choose the content setting: Explore (9+), Explore more (13+) or Most of YouTube.",
       "Consider the YouTube Kids app instead for under-9s."
+     ],
+     "mins": 2,
+     "redundantWith": [
+      "youtube-detail"
      ]
     }
    ],
@@ -1689,7 +1795,8 @@
      "label": "Google — YouTube options for your child (official)",
      "url": "https://support.google.com/families/answer/10495678?hl=en"
     }
-   ]
+   ],
+   "priority": 0
   },
   "windows": {
    "id": "windows",
@@ -1723,6 +1830,11 @@
       "Go to family.microsoft.com and sign in with your Microsoft account.",
       "Add a family member, choosing the child option, with their correct date of birth.",
       "On the PC, sign them in with that account and make sure they’re not using yours."
+     ],
+     "mins": 3,
+     "provides": [
+      "device-controls",
+      "microsoft-family"
      ]
     },
     {
@@ -1740,7 +1852,8 @@
       "11-12": "Age rating 12, adult sites blocked",
       "13-15": "Age rating 12–16, adult sites blocked",
       "16-17": "Age rating 16–18, adult sites blocked"
-     }
+     },
+     "mins": 3
     },
     {
      "id": "time",
@@ -1750,7 +1863,8 @@
      "do": [
       "Set a schedule for the Windows device.",
       "Add separate app limits if a specific game is the problem rather than the PC itself."
-     ]
+     ],
+     "mins": 3
     },
     {
      "id": "spend",
@@ -1761,7 +1875,8 @@
       "Turn on 'Needs organizer approval to buy things'.",
       "Turn on email notifications for purchases.",
       "Remove any saved card, or use a balance instead."
-     ]
+     ],
+     "mins": 3
     },
     {
      "id": "reports",
@@ -1771,7 +1886,8 @@
      "do": [
       "Turn on activity reporting and weekly email summaries.",
       "Tell your child it’s on. Reports work better as a shared thing."
-     ]
+     ],
+     "mins": 3
     }
    ],
    "checklist": [
@@ -1796,7 +1912,8 @@
      "label": "Microsoft — family safety features (official)",
      "url": "https://support.microsoft.com/en-us/topic/what-is-microsoft-family-safety-b1b0b9c8-8de4-4e5e-9b7b-2b1cf5e4f9a5"
     }
-   ]
+   ],
+   "priority": 0
   },
   "mac": {
    "id": "mac",
@@ -1830,6 +1947,11 @@
       "Create a separate user account on the Mac for your child.",
       "Add their Apple Account to your Family Sharing group.",
       "Sign them in to that account on the Mac."
+     ],
+     "mins": 3,
+     "provides": [
+      "device-controls",
+      "apple-family"
      ]
     },
     {
@@ -1841,7 +1963,8 @@
       "Open System Settings, then Screen Time.",
       "Select your child under Family.",
       "Turn on Lock Screen Time Settings and set a passcode they don’t know."
-     ]
+     ],
+     "mins": 3
     },
     {
      "id": "content",
@@ -1859,7 +1982,8 @@
       "11-12": "Limit Adult Websites",
       "13-15": "Limit Adult Websites",
       "16-17": "Limit Adult Websites"
-     }
+     },
+     "mins": 3
     },
     {
      "id": "downtime",
@@ -1870,7 +1994,8 @@
       "Set Downtime for the evening and overnight.",
       "Add App Limits for Games and Social rather than everything.",
       "Add anything they need for schoolwork to Always Allowed."
-     ]
+     ],
+     "mins": 3
     }
    ],
    "checklist": [
@@ -1895,7 +2020,8 @@
      "label": "Apple — Screen Time on Mac (official)",
      "url": "https://support.apple.com/guide/mac-help/screen-time-mchl8bd1release/mac"
     }
-   ]
+   ],
+   "priority": 0
   },
   "chromebook": {
    "id": "chromebook",
@@ -1929,6 +2055,11 @@
       "Set up your child’s Google Account with supervision in Family Link.",
       "On the Chromebook, sign in with that supervised account.",
       "Make sure they aren’t signing in as a guest, which bypasses supervision."
+     ],
+     "mins": 3,
+     "provides": [
+      "device-controls",
+      "google-family"
      ]
     },
     {
@@ -1946,7 +2077,8 @@
       "11-12": "Try to block explicit sites",
       "13-15": "Try to block explicit sites",
       "16-17": "Try to block explicit sites"
-     }
+     },
+     "mins": 3
     },
     {
      "id": "apps",
@@ -1957,7 +2089,8 @@
       "Require approval for Play Store downloads.",
       "Review installed extensions and remove anything unfamiliar.",
       "Decide whether they can install extensions at all."
-     ]
+     ],
+     "mins": 3
     },
     {
      "id": "time",
@@ -1967,7 +2100,8 @@
      "do": [
       "Set daily limits that vary by day if homework needs differ.",
       "Set a bedtime that locks the device."
-     ]
+     ],
+     "mins": 3
     }
    ],
    "checklist": [
@@ -1991,7 +2125,8 @@
      "label": "Google — Chromebook supervision (official)",
      "url": "https://support.google.com/families/answer/7680868?hl=en"
     }
-   ]
+   ],
+   "priority": 0
   },
   "playstation": {
    "id": "playstation",
@@ -2025,6 +2160,10 @@
       "Sign in at playstation.com/acct/family with your own account.",
       "Add a family member and create a child account with their real date of birth.",
       "Sign that account in on the console."
+     ],
+     "mins": 3,
+     "provides": [
+      "device-controls"
      ]
     },
     {
@@ -2042,7 +2181,8 @@
       "11-12": "PEGI 12 / ESRB E10+, browser blocked",
       "13-15": "PEGI 12–16 / ESRB T, browser restricted",
       "16-17": "PEGI 16–18 / ESRB T–M"
-     }
+     },
+     "mins": 3
     },
     {
      "id": "comms",
@@ -2058,7 +2198,8 @@
       "11-12": "Restricted",
       "13-15": "Allowed with friends only",
       "16-17": "Allowed, discussed together"
-     }
+     },
+     "mins": 3
     },
     {
      "id": "time",
@@ -2070,7 +2211,8 @@
       "Set a daily duration.",
       "Choose whether the console logs them out at the limit or just warns them.",
       "Note these settings apply to both PS5 and PS4."
-     ]
+     ],
+     "mins": 3
     },
     {
      "id": "spend",
@@ -2086,7 +2228,8 @@
       "11-12": "{cur}0",
       "13-15": "A small agreed monthly cap",
       "16-17": "An agreed monthly cap"
-     }
+     },
+     "mins": 3
     }
    ],
    "checklist": [
@@ -2115,7 +2258,8 @@
      "label": "Internet Matters — PS5 parental controls",
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/"
     }
-   ]
+   ],
+   "priority": 0
   },
   "xbox": {
    "id": "xbox",
@@ -2149,6 +2293,11 @@
       "Sign in at family.microsoft.com with your Microsoft account.",
       "Add your child as a family member with their correct date of birth.",
       "Sign them in on the Xbox with that account."
+     ],
+     "mins": 3,
+     "provides": [
+      "device-controls",
+      "microsoft-family"
      ]
     },
     {
@@ -2165,7 +2314,8 @@
       "11-12": "Age 12",
       "13-15": "Age 12–16",
       "16-17": "Age 16–18"
-     }
+     },
+     "mins": 3
     },
     {
      "id": "privacy",
@@ -2183,7 +2333,8 @@
       "11-12": "Communicate: Friends only. Add friends: Block.",
       "13-15": "Communicate: Friends only. Add friends: Allow.",
       "16-17": "Communicate: Friends only."
-     }
+     },
+     "mins": 3
     },
     {
      "id": "time",
@@ -2193,7 +2344,8 @@
      "do": [
       "Set a schedule for the Xbox.",
       "Add multiple time slots in a day if that fits your routine better than one block."
-     ]
+     ],
+     "mins": 3
     },
     {
      "id": "spend",
@@ -2204,7 +2356,8 @@
       "Turn on 'Needs organizer approval to buy things'.",
       "Turn on purchase notifications.",
       "Consider adding money to their balance rather than leaving a card on the account."
-     ]
+     ],
+     "mins": 3
     }
    ],
    "checklist": [
@@ -2233,7 +2386,8 @@
      "label": "Xbox — family settings app (official)",
      "url": "https://www.xbox.com/en-US/apps/xbox-family-settings-app"
     }
-   ]
+   ],
+   "priority": 0
   },
   "switch": {
    "id": "switch",
@@ -2268,6 +2422,10 @@
       "The app gives you a registration code.",
       "On the console, go to System Settings, then Parental Controls, and enter the code.",
       "Set a PIN that your child doesn’t know."
+     ],
+     "mins": 2,
+     "provides": [
+      "device-controls"
      ]
     },
     {
@@ -2284,7 +2442,8 @@
       "11-12": "Pre-Teen level",
       "13-15": "Teen level",
       "16-17": "Custom, agreed together"
-     }
+     },
+     "mins": 2
     },
     {
      "id": "comms",
@@ -2300,7 +2459,8 @@
       "7-11",
       "11-12",
       "13-15"
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "time",
@@ -2311,7 +2471,8 @@
       "Set a daily play-time limit, with different values for weekdays and weekends if you like.",
       "Set a bedtime alarm.",
       "Turn on Suspend Software if you want the limit to be firm rather than advisory."
-     ]
+     ],
+     "mins": 2
     },
     {
      "id": "spend",
@@ -2322,7 +2483,8 @@
       "Sign in at accounts.nintendo.com and open your Family Group.",
       "Select your child and turn on the eShop purchase restriction.",
       "Remove any saved card."
-     ]
+     ],
+     "mins": 2
     }
    ],
    "checklist": [
@@ -2351,7 +2513,8 @@
      "label": "Internet Matters — Nintendo Switch parental controls",
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/nintendo-switch/"
     }
-   ]
+   ],
+   "priority": 0
   }
  }
 }

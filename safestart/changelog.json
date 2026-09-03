@@ -1,0 +1,42 @@
+{
+ "updated": "2026-09-03",
+ "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
+ "entries": [
+  {
+   "date": "2026-09-03",
+   "kind": "site",
+   "title": "Plans instead of one guide at a time",
+   "body": "Setting up a child's device meant reading four separate guides and doing the same device-level step in each. Now you pick the device, the age and the apps they use, and get one plan with the overlaps merged, broken into roughly ten-minute sittings. The individual guides are unchanged and still work on their own."
+  },
+  {
+   "date": "2026-09-03",
+   "kind": "site",
+   "title": "Weekly source checking turned on",
+   "body": "Every Monday, each guide's official source pages are re-read and compared against what we publish. Guides confirmed unchanged get their date updated automatically. Anything that looks different is flagged for a person to check, and never rewritten automatically. The results appear here."
+  },
+  {
+   "date": "2026-09-02",
+   "kind": "correction",
+   "title": "Crisis pages were quoting the wrong country's police",
+   "body": "The 'something has happened' pages named specific national agencies inside advice that is identical everywhere, so a parent in the UK was reading about An Garda Síochána and a Canadian agency. The advice is now written without naming anyone's agency, and country names appear only in the reporting routes, in country-specific notes, and in one citation under a statistic. Found by a reader, not by us."
+  },
+  {
+   "date": "2026-09-02",
+   "kind": "site",
+   "title": "Added the 'something has happened' pages",
+   "body": "Every route through SafeStart assumed you were setting things up in advance. There was nothing for the parent whose child has already been contacted, threatened over an image, or bullied. There is now, with the reporting routes for the US, UK, Canada and Ireland, checked against each organisation's own site."
+  },
+  {
+   "date": "2026-09-02",
+   "kind": "correction",
+   "title": "Spending advice showed two currencies at once",
+   "body": "Recommended spending limits read '£0 / $0' because the site had no idea where you were. There is a country setting now, and the currency follows it."
+  },
+  {
+   "date": "2026-08-20",
+   "kind": "verification",
+   "title": "All 17 guides written and verified",
+   "body": "Every step checked against the platform's own documentation. Guides where the official source could not confirm a detail are marked with a lower source confidence on the page itself rather than presented as certain."
+  }
+ ]
+}

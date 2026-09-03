@@ -389,6 +389,98 @@ button { font: inherit; cursor: pointer; }
 .search-hit .hit-kind { font-size: .81rem; color: var(--muted); margin-left: auto; }
 .search-hit.is-new { border-style: dashed; }
 
+/* ---------------- multi-select tiles + build CTA ---------------- */
+
+.card.selectable { position: relative; }
+.card-tick {
+  position: absolute; top: 9px; right: 9px;
+  width: 20px; height: 20px; border-radius: 7px;
+  border: 1.5px solid var(--line); background: var(--surface);
+  display: grid; place-items: center;
+}
+.card-tick svg { width: 12px; height: 12px; color: #fff; opacity: 0; }
+.card.selectable.on { border-color: var(--blue); background: var(--blue-tint); }
+.card.selectable.on .card-tick { background: var(--blue); border-color: var(--blue); }
+.card.selectable.on .card-tick svg { opacity: 1; }
+
+.build-cta {
+  width: 100%; margin-top: 16px; padding: 16px 18px;
+  background: var(--blue); color: #fff; border: 0; border-radius: var(--radius);
+  display: flex; align-items: center; gap: 12px; text-align: left;
+  transition: transform .16s var(--ease);
+}
+.build-cta:hover { transform: translateY(-1px); }
+.bc-title { font-weight: 700; font-size: 1.05rem; }
+.bc-sub { font-size: .86rem; color: rgba(255,255,255,.82); }
+.build-cta .dc-arrow { margin-left: auto; }
+.build-cta svg { width: 18px; height: 18px; }
+.pick-note.dim { color: var(--muted); font-style: italic; }
+
+.escape-hatch { text-align: center; color: var(--muted); font-size: .9rem; margin: 26px 0 60px; }
+.escape-hatch button, .link-btn {
+  background: none; border: 0; padding: 0; color: var(--blue);
+  font: inherit; font-weight: 600; text-decoration: underline;
+}
+
+/* ---------------- the plan ---------------- */
+
+.plan-progress { display: flex; align-items: center; gap: 12px; margin: 18px 0 6px; }
+/* The page sits on Mist, so the shared track colour would be invisible here. */
+.plan-progress .progress-bar { flex: 1; margin-bottom: 0; background: var(--navy-tint); }
+.plan-progress-text { font-size: .84rem; color: var(--muted); font-weight: 600; white-space: nowrap; }
+
+.plan-tools { display: flex; gap: 9px; margin: 14px 0 22px; flex-wrap: wrap; }
+
+.session {
+  border: 1.5px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); margin-bottom: 14px; overflow: hidden;
+}
+.session.done { opacity: .68; }
+.session-head {
+  width: 100%; display: flex; align-items: center; gap: 13px;
+  padding: 16px 18px; background: none; border: 0; text-align: left;
+}
+.session-num {
+  width: 30px; height: 30px; border-radius: 10px; flex: none;
+  background: var(--blue-tint); color: var(--blue);
+  display: grid; place-items: center; font-weight: 700; font-size: .92rem;
+}
+.session.done .session-num { background: var(--signal); color: #4a3c00; }
+.session-num svg { width: 15px; height: 15px; }
+.st-main { font-weight: 700; color: var(--heading); font-size: 1rem; }
+.st-sub { font-size: .85rem; color: var(--muted); }
+.session-chev { margin-left: auto; color: var(--muted); transition: transform .2s; }
+.session-chev svg { width: 17px; height: 17px; transform: rotate(90deg); }
+.session.open .session-chev { transform: rotate(180deg); }
+.session-body { display: none; padding: 0 18px 6px; }
+.session.open .session-body { display: block; }
+
+.session-guide {
+  display: flex; align-items: center; gap: 8px;
+  margin: 14px 0 10px; padding-top: 12px; border-top: 1px solid var(--line);
+  font-weight: 600; color: var(--heading); font-size: .93rem;
+}
+.session-guide svg { width: 17px; height: 17px; color: var(--blue); }
+.sg-link { margin-left: auto; font-size: .8rem; font-weight: 500; color: var(--blue); }
+
+/* ---------------- QR dialog ---------------- */
+
+.qr-scrim {
+  position: fixed; inset: 0; z-index: 80; background: rgba(11,27,77,.45);
+  display: grid; place-items: center; padding: 20px;
+  backdrop-filter: blur(3px);
+}
+.qr-box {
+  background: var(--surface); border-radius: var(--radius-lg);
+  padding: 26px; max-width: 380px; width: 100%; text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.qr-box h2 { font-size: 1.2rem; color: var(--heading); margin: 0 0 8px; }
+.qr-box p { font-size: .88rem; color: var(--muted); line-height: 1.55; margin: 0 0 16px; }
+.qr-holder { margin: 0 auto 14px; width: 210px; height: 210px; display: grid; place-items: center; }
+.qr-holder svg { width: 100%; height: 100%; }
+.qr-url { font-size: .72rem !important; word-break: break-all; color: var(--muted); }
+
 /* ---------------- guide ---------------- */
 .guide-head { padding: 24px 0 0; }
 .back-link {
@@ -649,6 +741,24 @@ button { font: inherit; cursor: pointer; }
 .platform-table a { color: var(--blue); }
 .tiny { font-size: .74rem; color: var(--muted); font-weight: 500; }
 
+/* ---------------- changelog ---------------- */
+
+.log-entry {
+  border-left: 3px solid var(--line); padding: 0 0 4px 18px; margin: 0 0 26px;
+}
+.log-entry.log-correction { border-left-color: var(--signal); }
+.log-entry.log-verification, .log-entry.log-freshness-check { border-left-color: var(--blue); }
+.log-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px; }
+.log-kind {
+  font-size: .7rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--blue);
+}
+.log-correction .log-kind { color: #8a6d00; }
+.log-head time { font-size: .8rem; color: var(--muted); }
+.log-entry h2 { font-size: 1.08rem; color: var(--heading); margin: 0 0 6px; }
+.log-entry p { font-size: .93rem; line-height: 1.62; margin: 0 0 6px; }
+.log-detail { color: var(--muted); font-size: .87rem !important; }
+
 /* ---------------- footer ---------------- */
 .site-foot { margin-top: 54px; padding: 34px 0 40px; border-top: 1px solid var(--line); }
 .foot-inner { display: flex; flex-direction: column; gap: 14px; }
@@ -897,6 +1007,7 @@ button { font: inherit; cursor: pointer; }
     <div class="foot-tag">Building Trust. Driving Revenue. Scaling Responsibly.</div>
     <p><strong>SafeStart is a free tool from TrustRaise.</strong> We help technology companies, advertisers and startups build child and teen safety that actually works — and prove it pays. Parents shouldn't need a consultant to lock down a tablet, so we built this and gave it away.</p>
     <p><a class="foot-link" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p>
+    <p><a class="foot-link" href="/changelog/">What has changed</a> · every correction and source check, with dates</p>
     <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
   </div>
 </footer>
@@ -949,6 +1060,8 @@ var state = {
   device: null,
   helpMode: "quick",
   country: "US",
+  apps: [],        // the apps picked for a merged plan
+  planDone: {},    // step keys already ticked off in the plan
   done: {},
   checked: {}
 };
@@ -1110,10 +1223,29 @@ function saveProgress() {
       localStorage.setItem("safestart:" + state.guideId,
         JSON.stringify({ done: state.done, checked: state.checked }));
     }
+    if (state.view === "plan") {
+      localStorage.setItem("safestart:plan:" + planKey(), JSON.stringify(state.planDone));
+    }
     localStorage.setItem("safestart:prefs", JSON.stringify({
-      ageBand: state.ageBand, device: state.device, helpMode: state.helpMode, country: state.country
+      ageBand: state.ageBand, device: state.device, helpMode: state.helpMode,
+      country: state.country, apps: state.apps
     }));
   } catch (e) { /* private browsing, quota, embedded preview */ }
+}
+
+/* A plan is identified by what went into it, so coming back to the same link
+   picks the progress back up, and changing the selection starts a fresh one
+   rather than inheriting ticks that no longer apply. */
+function planKey() {
+  return [state.device || "-", state.ageBand || "-", state.apps.slice().sort().join("+")].join("|");
+}
+
+function loadPlanProgress() {
+  state.planDone = {};
+  try {
+    var raw = localStorage.getItem("safestart:plan:" + planKey());
+    if (raw) state.planDone = JSON.parse(raw) || {};
+  } catch (e) { /* ignore */ }
 }
 
 function loadProgress(guideId) {
@@ -1138,6 +1270,7 @@ function loadPrefs() {
     if (p.device) state.device = p.device;
     if (p.helpMode) state.helpMode = p.helpMode;
     if (p.country) state.country = p.country;
+    if (Array.isArray(p.apps)) state.apps = p.apps;
   } catch (e) { /* ignore */ }
 }
 
@@ -1151,34 +1284,55 @@ function pathGuideId() {
   return m ? m[1].toLowerCase() : null;
 }
 
+function isPlanPath() { return /^\/plan\/?$/.test(location.pathname); }
+
 function readUrl() {
   var q = new URLSearchParams(location.search);
   if (q.get("age")) state.ageBand = q.get("age");
   if (q.get("device")) state.device = q.get("device");
   if (q.get("mode")) state.helpMode = q.get("mode");
   if (q.get("country")) state.country = q.get("country");
+  if (q.get("apps")) {
+    state.apps = q.get("apps").split(",").map(function (s) { return s.trim(); })
+      .filter(function (id) { return DATA && DATA.guides[id] && DATA.guides[id].type === "app"; });
+  }
   var fromPath = pathGuideId();
   if (fromPath && DATA && DATA.guides && DATA.guides[fromPath]) return fromPath;
   return q.get("guide");
 }
 
-function writeUrl(replace) {
-  var path = "/";
+/* The plan URL carries everything it needs, so it can be sent to a phone,
+   bookmarked, or handed to the other parent, and it rebuilds identically. */
+function planUrl(absolute) {
   var q = new URLSearchParams();
-  if (state.view === "guide" && state.guideId) {
-    path = "/" + state.guideId + "/";
+  if (state.device) q.set("device", state.device);
+  if (state.ageBand) q.set("age", state.ageBand);
+  if (state.apps.length) q.set("apps", state.apps.join(","));
+  if (state.country) q.set("country", state.country);
+  return (absolute ? location.origin : "") + "/plan/?" + q.toString();
+}
+
+function writeUrl(replace) {
+  var url;
+  if (state.view === "plan") {
+    url = planUrl(false);
+  } else if (state.view === "guide" && state.guideId) {
+    var q = new URLSearchParams();
     if (state.ageBand) q.set("age", state.ageBand);
     if (state.device) q.set("device", state.device);
     if (state.helpMode && state.helpMode !== "quick") q.set("mode", state.helpMode);
+    url = "/" + state.guideId + "/" + (q.toString() ? "?" + q.toString() : "");
+  } else {
+    url = "/";
   }
-  var url = path + (q.toString() ? "?" + q.toString() : "");
   if (replace) history.replaceState(null, "", url);
   else history.pushState(null, "", url);
 }
 
 window.addEventListener("popstate", function () {
   var g = readUrl();
-  if (g) openGuide(g, true);
+  if (isPlanPath()) renderPlan(true);
+  else if (g) openGuide(g, true);
   else renderHome(true);
 });
 
@@ -1198,19 +1352,60 @@ function renderHome(skipUrl) {
 
   app.appendChild(el("section", { class: "hero" }, [
     el("h1", {}, [
-      document.createTextNode("Parental controls, "),
-      el("span", { class: "hl", text: "sorted" }),
+      document.createTextNode("Let's set this up "),
+      el("span", { class: "hl", text: "together" }),
       document.createTextNode(".")
     ]),
-    el("p", { text: "Three quick questions and you get the exact taps, in the right order, for your child's age. Most take about ten minutes." }),
+    el("p", { text: "Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short sittings rather than one long evening." }),
     countryPick()
   ]));
 
   var picker = el("ol", { class: "picker" });
-  picker.appendChild(stepAge());
   picker.appendChild(stepDevice());
-  picker.appendChild(stepApp());
+  picker.appendChild(stepAge());
+  picker.appendChild(stepApps());
   app.appendChild(picker);
+
+  app.appendChild(el("p", { class: "escape-hatch" }, [
+    document.createTextNode("Just after one app? "),
+    el("button", { onclick: function () { renderOneApp(); } }, [document.createTextNode("Browse the guides")]),
+    document.createTextNode(".")
+  ]));
+}
+
+/* The old single-guide grid, kept as a side door. Someone who arrives from a
+   search result wants one guide, not a project. */
+function renderOneApp() {
+  clear(app);
+  state.view = "home";
+  app.appendChild(el("section", { class: "hero" }, [
+    el("h1", { text: "All guides" }),
+    el("p", { text: "One app or device at a time. Or " }),
+  ]));
+  app.querySelector(".hero p").appendChild(
+    el("button", { class: "link-btn", onclick: function () { renderHome(true); } },
+      [document.createTextNode("build a plan for a whole device")])
+  );
+  app.querySelector(".hero p").appendChild(document.createTextNode(" instead."));
+
+  ["app", "device"].forEach(function (kind) {
+    var ids = Object.keys(DATA.guides).filter(function (id) {
+      return (DATA.guides[id].type === "app") === (kind === "app");
+    });
+    app.appendChild(el("h2", { class: "section-h", text: kind === "app" ? "Apps and games" : "Phones, computers and consoles" }));
+    var grid = el("div", { class: "card-grid" });
+    ids.forEach(function (id) {
+      var g = DATA.guides[id];
+      grid.appendChild(el("button", { class: "card", onclick: function () { openGuide(g.id); } }, [
+        el("span", { class: "card-ico" }, [guideIcon(g)]),
+        el("span", { class: "c-name", text: g.name }),
+        el("span", { class: "c-kind", text: g.kind }),
+        el("span", { class: "c-mins", text: "~" + (g.minutes || 10) + " min" })
+      ]));
+    });
+    app.appendChild(grid);
+  });
+  app.appendChild(el("div", { style: "height:60px" }));
 }
 
 function pickCard(num, question, answer, bodyNodes) {
@@ -1223,6 +1418,36 @@ function pickCard(num, question, answer, bodyNodes) {
   var card = el("li", { class: "pick" + (answer ? " answered" : "") }, [head]);
   bodyNodes.forEach(function (n) { if (n) card.appendChild(n); });
   return card;
+}
+
+function stepDevice() {
+  var grid = el("div", { class: "card-grid compact" });
+  DATA.devices.forEach(function (d) {
+    grid.appendChild(el("button", {
+      class: "card compact is-device",
+      "aria-pressed": state.device === d.id ? "true" : "false",
+      onclick: function () {
+        state.device = state.device === d.id ? null : d.id;
+        // Drop any picked app that doesn't run on the new device, rather than
+        // silently building a plan with steps the parent can't follow.
+        state.apps = state.apps.filter(function (id) {
+          var g = DATA.guides[id];
+          return !state.device || !g.devices || g.devices.indexOf(state.device) !== -1;
+        });
+        saveProgress();
+        renderHome(true);
+      }
+    }, [
+      el("span", { class: "card-ico" }, [icon(GUIDE_ICON[d.id] || "monitor")]),
+      el("span", { class: "c-name", text: d.short || d.label })
+    ]));
+  });
+
+  var dev = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
+  return pickCard(1, "Which device are we setting up?", dev ? dev.label : null, [
+    grid,
+    el("p", { class: "pick-note", text: "Pick the one they use most. You can do another afterwards." })
+  ]);
 }
 
 function stepAge() {
@@ -1243,59 +1468,12 @@ function stepAge() {
   });
 
   var answer = state.ageBand ? labelForBand(state.ageBand) : null;
-  return pickCard(1, "How old is your child?", answer, [chips]);
+  return pickCard(2, "How old are they?", answer, [chips]);
 }
 
-function stepDevice() {
-  var grid = el("div", { class: "card-grid compact" });
-  DATA.devices.forEach(function (d) {
-    grid.appendChild(el("button", {
-      class: "card compact is-device",
-      "aria-pressed": state.device === d.id ? "true" : "false",
-      onclick: function () {
-        state.device = state.device === d.id ? null : d.id;
-        saveProgress();
-        renderHome(true);
-      }
-    }, [
-      el("span", { class: "card-ico" }, [icon(GUIDE_ICON[d.id] || "monitor")]),
-      el("span", { class: "c-name", text: d.short || d.label })
-    ]));
-  });
-
-  var dev = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
-  return pickCard(2, "What are they using it on?", dev ? dev.label : null, [
-    grid,
-    el("p", { class: "pick-note" }, [
-      document.createTextNode("Not sure, or it's more than one? "),
-      el("button", {
-        onclick: function () { state.device = null; saveProgress(); renderHome(true); }
-      }, [document.createTextNode("Skip this")]),
-      document.createTextNode(" and pick the app below.")
-    ])
-  ]);
-}
-
-function stepApp() {
+function stepApps() {
   var body = [];
 
-  /* If a device is chosen, offer the device guide itself as the headline action. */
-  if (state.device && DATA.guides[state.device]) {
-    var dg = DATA.guides[state.device];
-    body.push(el("button", {
-      class: "device-cta",
-      onclick: function () { openGuide(dg.id); }
-    }, [
-      el("span", { class: "dc-ico" }, [icon(GUIDE_ICON[dg.id] || "monitor")]),
-      el("span", {}, [
-        el("span", { class: "dc-title", text: "Set up the " + dg.name + " itself", style: "display:block" }),
-        el("span", { class: "dc-sub", text: "Start here. It covers every app on the device." })
-      ]),
-      el("span", { class: "dc-arrow" }, [icon("arrow")])
-    ]));
-  }
-
-  /* App tiles, narrowed to the chosen device. */
   var apps = [];
   Object.keys(DATA.guides).forEach(function (id) {
     var g = DATA.guides[id];
@@ -1303,43 +1481,43 @@ function stepApp() {
     if (state.device && g.devices && g.devices.indexOf(state.device) === -1) return;
     apps.push(g);
   });
+  apps.sort(function (a, b) { return (a.priority || 9) - (b.priority || 9); });
 
   var grid = el("div", { class: "card-grid" });
   apps.forEach(function (g) {
+    var on = state.apps.indexOf(g.id) !== -1;
     grid.appendChild(el("button", {
-      class: "card",
-      onclick: function () { openGuide(g.id); }
+      class: "card selectable" + (on ? " on" : ""),
+      "aria-pressed": on ? "true" : "false",
+      onclick: function () {
+        var i = state.apps.indexOf(g.id);
+        if (i === -1) state.apps.push(g.id); else state.apps.splice(i, 1);
+        saveProgress();
+        renderHome(true);
+      }
     }, [
+      el("span", { class: "card-tick" }, [icon("check")]),
       el("span", { class: "card-ico" }, [guideIcon(g)]),
       el("span", { class: "c-name", text: g.name }),
-      el("span", { class: "c-kind", text: g.kind }),
-      el("span", { class: "c-mins", text: "~" + (g.minutes || 10) + " min" })
+      el("span", { class: "c-kind", text: g.kind })
     ]));
   });
   body.push(grid);
 
-  if (state.device && apps.length < 8) {
-    body.push(el("p", { class: "pick-note" }, [
-      document.createTextNode("Only showing apps that run on that device. "),
-      el("button", {
-        onclick: function () { state.device = null; saveProgress(); renderHome(true); }
-      }, [document.createTextNode("Show everything")])
-    ]));
-  }
+  body.push(el("p", { class: "pick-note", text: "Tick everything they actually use. Overlapping steps get merged, so three apps is nowhere near three times the work." }));
 
   /* Search, for anything not on the tiles. */
   var input = el("input", {
     type: "search",
     id: "homeSearch",
-    placeholder: "Or search for something else…",
+    placeholder: "Something else?",
     autocomplete: "off",
     spellcheck: "false",
     "aria-label": "Search for an app, game or device"
   });
   var results = el("ul", { class: "search-results", id: "searchResults" });
-  body.push(el("div", { class: "search-box", style: "margin-top:16px" }, [icon("search"), input]));
+  body.push(el("div", { class: "search-box", style: "margin-top:14px" }, [icon("search"), input]));
   body.push(results);
-
   setTimeout(function () {
     input.addEventListener("input", function () { renderSearch(input.value, results); });
     input.addEventListener("keydown", function (e) {
@@ -1351,7 +1529,26 @@ function stepApp() {
     });
   }, 0);
 
-  return pickCard(3, "Which app or game?", null, body);
+  var answer = state.apps.length ? state.apps.length + " picked" : null;
+  var card = pickCard(3, "What do they use on it?", answer, body);
+
+  /* The build button lives outside the numbered steps, because it is the
+     outcome rather than another question. */
+  if (state.device && state.ageBand) {
+    var plan = buildPlan();
+    card.appendChild(el("button", { class: "build-cta", onclick: function () { renderPlan(); } }, [
+      el("span", {}, [
+        el("span", { class: "bc-title", text: "Build my plan", style: "display:block" }),
+        el("span", { class: "bc-sub", text: plan.totalMins + " minutes across " + plan.sessions.length +
+          (plan.sessions.length === 1 ? " sitting" : " sittings") +
+          (plan.dropped ? ", " + plan.dropped + " overlapping " + (plan.dropped === 1 ? "step" : "steps") + " merged" : "") })
+      ]),
+      el("span", { class: "dc-arrow" }, [icon("arrow")])
+    ]));
+  } else {
+    card.appendChild(el("p", { class: "pick-note dim", text: "Pick a device and an age and I'll build the plan." }));
+  }
+  return card;
 }
 
 function renderSearch(term, results) {
@@ -1387,6 +1584,308 @@ function renderSearch(term, results) {
       ])
     ]));
   }
+}
+
+
+/* ---------------- QR handoff ----------------
+   A parent setting up an Xbox is stood at a TV holding a phone. This moves the
+   plan to the phone. The encoder is vendored and loaded only when asked for, so
+   nobody pays 56KB for a button they never press, and nothing leaves the site. */
+
+var qrLoading = null;
+function loadQr(cb) {
+  if (window.qrcode) return cb(null);
+  if (qrLoading) return qrLoading.push(cb);
+  qrLoading = [cb];
+  var sc = document.createElement("script");
+  sc.src = "/assets/qrcode.js";
+  sc.onload = function () { qrLoading.forEach(function (f) { f(null); }); qrLoading = null; };
+  sc.onerror = function () { qrLoading.forEach(function (f) { f(new Error("load failed")); }); qrLoading = null; };
+  document.head.appendChild(sc);
+}
+
+function showQr() {
+  var url = planUrl(true);
+  var scrim = el("div", { class: "qr-scrim" });
+  var box = el("div", { class: "qr-box", role: "dialog", "aria-label": "Open this plan on your phone" });
+  var close = function () { scrim.remove(); document.removeEventListener("keydown", onKey); };
+  var onKey = function (e) { if (e.key === "Escape") close(); };
+  document.addEventListener("keydown", onKey);
+  scrim.addEventListener("click", function (e) { if (e.target === scrim) close(); });
+
+  box.appendChild(el("h2", { text: "Open this on your phone" }));
+  box.appendChild(el("p", { text: "Point your phone's camera at this. Your progress is saved per device, so ticking steps off on the phone won't show up here." }));
+  var holder = el("div", { class: "qr-holder", text: "Loading…" });
+  box.appendChild(holder);
+  box.appendChild(el("p", { class: "qr-url", text: url }));
+  box.appendChild(el("button", { class: "ghost-btn", onclick: close }, [document.createTextNode("Close")]));
+  scrim.appendChild(box);
+  document.body.appendChild(scrim);
+
+  loadQr(function (err) {
+    clear(holder);
+    if (err || !window.qrcode) {
+      holder.appendChild(el("p", { class: "note", text: "Couldn't draw the code. The link below works just as well, copy it across however you like." }));
+      return;
+    }
+    var q = window.qrcode(0, "M");
+    q.addData(url);
+    q.make();
+    holder.innerHTML = q.createSvgTag({ scalable: true });
+  });
+}
+
+/* ---------------- the merged plan ----------------
+   The job a parent actually has is "make this iPad safe", not "configure
+   Roblox". So we take the device guide plus whatever apps they picked, drop the
+   steps that duplicate each other, order by how much risk each step removes,
+   and cut the result into sittings short enough that someone might finish one. */
+
+function stepAppliesToAge(s) {
+  return !s.ages || !state.ageBand || s.ages.indexOf(state.ageBand) !== -1;
+}
+
+function planOrder() {
+  var order = [];
+  if (state.device && DATA.guides[state.device]) order.push(state.device);
+  state.apps.slice()
+    .filter(function (id) { return DATA.guides[id]; })
+    .sort(function (a, b) { return (DATA.guides[a].priority || 9) - (DATA.guides[b].priority || 9); })
+    .forEach(function (id) { order.push(id); });
+  return order;
+}
+
+function buildPlan() {
+  var order = planOrder();
+  var dropped = 0;
+
+  /* One pass to see what the selected guides collectively cover. A step that
+     says "now go and set up your device controls" is dead weight once the
+     device guide is in the same plan. */
+  var provided = {};
+  order.forEach(function (gid) {
+    (DATA.guides[gid].steps || []).forEach(function (s) {
+      if (!stepAppliesToAge(s)) return;
+      (s.provides || []).forEach(function (tag) { if (!provided[tag]) provided[tag] = gid; });
+    });
+  });
+
+  var items = [];
+  order.forEach(function (gid) {
+    var g = DATA.guides[gid];
+    (g.steps || []).forEach(function (s) {
+      if (!stepAppliesToAge(s)) return;
+      var covered = (s.redundantWith || []).some(function (tag) {
+        return provided[tag] && provided[tag] !== gid;
+      });
+      if (covered) { dropped++; return; }
+      items.push({ key: gid + ":" + s.id, guideId: gid, guideName: g.name, step: s, mins: s.mins || 2 });
+    });
+  });
+
+  /* Sittings of roughly ten minutes, preferring to break where one guide ends
+     so a session reads as "the iPad bit" rather than an arbitrary slice. */
+  var sessions = [], cur = [], mins = 0;
+  items.forEach(function (item, i) {
+    var newGuide = i > 0 && items[i - 1].guideId !== item.guideId;
+    if (cur.length && ((mins >= 8 && newGuide) || mins + item.mins > 13)) {
+      sessions.push({ steps: cur, mins: mins });
+      cur = []; mins = 0;
+    }
+    cur.push(item);
+    mins += item.mins;
+  });
+  if (cur.length) sessions.push({ steps: cur, mins: mins });
+
+  return {
+    order: order, sessions: sessions, items: items, dropped: dropped,
+    totalMins: items.reduce(function (n, it) { return n + it.mins; }, 0)
+  };
+}
+
+function planProgress(plan) {
+  var done = plan.items.filter(function (it) { return state.planDone[it.key]; }).length;
+  return { done: done, total: plan.items.length,
+           pct: plan.items.length ? Math.round(done / plan.items.length * 100) : 0 };
+}
+
+function listSentence(arr) {
+  if (arr.length === 1) return arr[0];
+  if (arr.length === 2) return arr[0] + " and " + arr[1];
+  return arr.slice(0, -1).join(", ") + " and " + arr[arr.length - 1];
+}
+
+function renderPlan(skipUrl) {
+  if (!state.device || !state.ageBand) return renderHome(true);
+  state.view = "plan";
+  state.guideId = null;
+  state.guide = null;
+  loadPlanProgress();
+  document.getElementById("askFab").hidden = false;
+  document.getElementById("printBtn").hidden = false;
+  updateChatContext();
+  if (!skipUrl) writeUrl(false);
+
+  var plan = buildPlan();
+  var dev = DATA.devices.filter(function (d) { return d.id === state.device; })[0];
+  var devLabel = dev ? dev.label : state.device;
+  document.title = "Your plan for " + devLabel + " — SafeStart";
+
+  clear(app);
+  app.appendChild(el("button", { class: "back-link", onclick: function () { renderHome(); } },
+    [document.createTextNode("Change my picks")]));
+
+  app.appendChild(el("div", { class: "guide-head" }, [
+    el("h1", { class: "guide-title", text: "Your plan for " + devLabel })
+  ]));
+
+  var appNames = state.apps.filter(function (id) { return DATA.guides[id]; })
+                           .map(function (id) { return DATA.guides[id].name; });
+  app.appendChild(el("p", { class: "guide-blurb", text:
+    "For a " + labelForBand(state.ageBand) + " year old" +
+    (appNames.length ? ", covering " + listSentence(appNames) : "") + "." }));
+
+  var meta = [
+    el("span", { class: "pill", text: plan.totalMins + " minutes total" }),
+    el("span", { class: "pill", text: plan.sessions.length + (plan.sessions.length === 1 ? " sitting" : " sittings") })
+  ];
+  if (plan.dropped) {
+    meta.push(el("span", { class: "pill", text: plan.dropped + " overlapping " +
+      (plan.dropped === 1 ? "step" : "steps") + " merged" }));
+  }
+  app.appendChild(el("div", { class: "meta-row" }, meta));
+
+  var prog = planProgress(plan);
+  app.appendChild(el("div", { class: "plan-progress" }, [
+    el("div", { class: "progress-bar" + (prog.pct === 100 ? " complete" : "") },
+      [el("span", { style: "width:" + prog.pct + "%" })]),
+    el("span", { class: "plan-progress-text", text: prog.done + " of " + prog.total + " done" })
+  ]));
+
+  app.appendChild(planToolbar());
+
+  var firstOpen = true;
+  plan.sessions.forEach(function (sess, i) {
+    var allDone = sess.steps.every(function (it) { return state.planDone[it.key]; });
+    var open = !allDone && firstOpen;
+    if (open) firstOpen = false;
+    app.appendChild(renderSession(sess, i + 1, plan.sessions.length, allDone, open));
+  });
+
+  if (prog.total && prog.done === prog.total) {
+    app.appendChild(el("div", { class: "all-done" }, [
+      icon("check"),
+      el("span", { text: "That is the whole plan done. Worth telling your child what you have set and why: explained controls get worked around far less than hidden ones." })
+    ]));
+  }
+
+  app.appendChild(helpCard());
+  app.appendChild(el("p", { class: "disclaimer", text:
+    "Menus move. If something on screen does not match, tap Ask SafeStart and describe what you can see." }));
+  app.appendChild(el("div", { style: "height:80px" }));
+}
+
+function planToolbar() {
+  var bar = el("div", { class: "plan-tools" });
+  bar.appendChild(el("button", { class: "ghost-btn", onclick: function () { showQr(); } }, [
+    icon("phone"), document.createTextNode("Send to my phone")
+  ]));
+  var copyBtn = el("button", { class: "ghost-btn" }, [icon("link"), document.createTextNode("Copy link")]);
+  copyBtn.addEventListener("click", function () { copyPlanLink(copyBtn); });
+  bar.appendChild(copyBtn);
+  return bar;
+}
+
+function copyPlanLink(btn) {
+  var url = planUrl(true);
+  var label = btn.lastChild;
+  var restore = function () { setTimeout(function () { label.textContent = "Copy link"; }, 1600); };
+  try {
+    navigator.clipboard.writeText(url).then(
+      function () { label.textContent = "Copied"; restore(); },
+      function () { window.prompt("Copy this link:", url); }
+    );
+  } catch (e) { window.prompt("Copy this link:", url); }
+}
+
+function renderSession(sess, num, total, allDone, open) {
+  var card = el("section", { class: "session" + (allDone ? " done" : "") + (open ? " open" : "") });
+
+  card.appendChild(el("button", { class: "session-head", onclick: function () {
+    card.classList.toggle("open");
+  } }, [
+    el("span", { class: "session-num" }, [allDone ? icon("check") : document.createTextNode(String(num))]),
+    el("span", { class: "session-title" }, [
+      el("span", { class: "st-main", text: "Sitting " + num + " of " + total, style: "display:block" }),
+      el("span", { class: "st-sub", text: sessionSummary(sess) })
+    ]),
+    el("span", { class: "session-chev" }, [icon("arrow")])
+  ]));
+
+  var body = el("div", { class: "session-body" });
+  var lastGuide = null;
+  sess.steps.forEach(function (item, i) {
+    if (item.guideId !== lastGuide) {
+      lastGuide = item.guideId;
+      body.appendChild(el("div", { class: "session-guide" }, [
+        guideIcon(DATA.guides[item.guideId]),
+        el("span", { text: DATA.guides[item.guideId].name }),
+        el("a", { class: "sg-link", href: "/" + item.guideId + "/", text: "full guide" })
+      ]));
+    }
+    body.appendChild(renderPlanStep(item, i + 1));
+  });
+  card.appendChild(body);
+  return card;
+}
+
+function sessionSummary(sess) {
+  var names = [];
+  sess.steps.forEach(function (it) { if (names.indexOf(it.guideName) === -1) names.push(it.guideName); });
+  return "About " + sess.mins + " minutes · " + listSentence(names);
+}
+
+function renderPlanStep(item, num) {
+  var s = item.step;
+  var isDone = !!state.planDone[item.key];
+  var wrap = el("div", { class: "step" + (isDone ? " done" : "") });
+
+  wrap.appendChild(el("div", { class: "step-head" }, [
+    el("span", { class: "step-num", text: String(num) }),
+    el("span", { class: "num-text" }, [el("h3", { text: s.title })])
+  ]));
+
+  var body = el("div", { class: "step-body" });
+  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
+
+  if (s.do && s.do.length) {
+    var ol = el("ol", { class: "do-list" });
+    s.do.forEach(function (d) { ol.appendChild(el("li", { text: d })); });
+    body.appendChild(ol);
+  }
+
+  if (s.recommended && s.recommended[state.ageBand]) {
+    body.appendChild(el("div", { class: "rec" }, [
+      el("span", { class: "rec-label", text: "For ages " + labelForBand(state.ageBand) }),
+      el("div", { text: cur(s.recommended[state.ageBand]) })
+    ]));
+  }
+  if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
+  if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+
+  var btn = el("button", { class: "step-done-btn" }, [icon("check"),
+    document.createTextNode(isDone ? "Done" : "Mark done")]);
+  btn.addEventListener("click", function () {
+    if (state.planDone[item.key]) delete state.planDone[item.key];
+    else state.planDone[item.key] = true;
+    saveProgress();
+    renderPlan(true);
+  });
+  body.appendChild(btn);
+
+  wrap.appendChild(body);
+  return wrap;
 }
 
 /* ---------------- guide ---------------- */
@@ -1817,6 +2316,10 @@ document.addEventListener("keydown", function (e) { if (e.key === "Escape" && ch
 
 function updateChatContext() {
   var bits = [];
+  if (state.view === "plan") {
+    var pd = DATA.devices.filter(function (x) { return x.id === state.device; })[0];
+    bits.push("Plan for " + (pd ? pd.label : state.device));
+  }
   if (state.guide) bits.push(state.guide.name);
   if (state.ageBand) bits.push("ages " + labelForBand(state.ageBand));
   var d = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
@@ -1968,7 +2471,11 @@ function sendChat() {
   var ctx = {
     ageBand: state.ageBand ? labelForBand(state.ageBand) : null,
     deviceLabel: deviceLabel(),
-    appLabel: state.guide ? state.guide.name : null,
+    appLabel: state.guide ? state.guide.name :
+      (state.view === "plan" && state.apps.length
+        ? state.apps.filter(function (id) { return DATA.guides[id]; })
+                    .map(function (id) { return DATA.guides[id].name; }).join(", ")
+        : null),
     country: state.country,
     helpMode: state.helpMode,
     guideId: state.guide && !state.guide.generated ? state.guide.id : null,
@@ -2174,7 +2681,8 @@ function boot() {
       state.country = detectCountry();
       loadPrefs();          // a stored preference wins over detection
       var g = readUrl();    // an explicit ?country= wins over both
-      if (g && DATA.guides[g]) openGuide(g, true);
+      if (isPlanPath()) renderPlan(true);
+      else if (g && DATA.guides[g]) openGuide(g, true);
       else renderHome(true);
     })
     .catch(function (err) {

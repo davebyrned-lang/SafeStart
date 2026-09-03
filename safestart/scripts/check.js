@@ -162,6 +162,50 @@ if (unverified.length) {
   warn('in-app-only platforms (no verified web form): ' + unverified.map((p) => p.id).join(', '));
 }
 
+// --- plan metadata -----------------------------------------------------------
+console.log('\nplan merging');
+const apps = Object.keys(data.guides).filter((id) => data.guides[id].type === 'app');
+const devices = Object.keys(data.guides).filter((id) => data.guides[id].type !== 'app');
+const noPriority = apps.filter((id) => typeof data.guides[id].priority !== 'number');
+if (noPriority.length) fail('apps with no priority, so plan ordering is arbitrary: ' + noPriority.join(', '));
+else ok(apps.length + ' apps have an ordering priority');
+if (devices.some((id) => data.guides[id].priority !== 0)) fail('every device guide must be priority 0 so it leads the plan');
+else ok('devices lead every plan');
+
+const noMins = [];
+Object.keys(data.guides).forEach((id) => {
+  (data.guides[id].steps || []).forEach((s) => { if (!s.mins) noMins.push(id + ':' + s.id); });
+});
+if (noMins.length) fail(noMins.length + ' steps have no minute estimate, so sittings cannot be sized');
+else ok('every step carries a minute estimate');
+
+// A redundantWith tag that nothing provides is a silent no-op: the step never
+// gets merged away and the parent does the same thing twice.
+const provided = new Set();
+Object.keys(data.guides).forEach((id) => {
+  (data.guides[id].steps || []).forEach((s) => (s.provides || []).forEach((t) => provided.add(t)));
+});
+const orphans = [];
+Object.keys(data.guides).forEach((id) => {
+  (data.guides[id].steps || []).forEach((s) => {
+    (s.redundantWith || []).forEach((t) => { if (!provided.has(t)) orphans.push(id + ':' + s.id + ' -> ' + t); });
+  });
+});
+if (orphans.length) fail('redundantWith tags nothing provides: ' + orphans.join(', '));
+else ok(provided.size + ' overlap tags, all of them matched');
+
+// --- changelog ---------------------------------------------------------------
+console.log('\nchangelog');
+const log = JSON.parse(fs.readFileSync(path.join(ROOT, 'changelog.json'), 'utf8'));
+if (!Array.isArray(log.entries) || !log.entries.length) fail('changelog has no entries');
+else ok(log.entries.length + ' changelog entries');
+const badDates = (log.entries || []).filter((e) => !/^\d{4}-\d{2}-\d{2}$/.test(e.date || ''));
+if (badDates.length) fail(badDates.length + ' changelog entries have no usable date');
+else ok('every entry is dated');
+if (!(log.entries || []).some((e) => e.kind === 'correction')) {
+  warn('no corrections logged yet — the changelog is only worth publishing if it includes them');
+}
+
 // --- currency tokens ---------------------------------------------------------
 console.log('\ncurrency');
 const rawGuides = fs.readFileSync(path.join(ROOT, 'guides.json'), 'utf8');
@@ -173,7 +217,8 @@ ok(curCount + ' {cur} tokens, substituted per country at render time');
 
 // --- build output ------------------------------------------------------------
 console.log('\nbuild output');
-const expected = ['index.html', 'sitemap.xml', 'robots.txt', 'help/index.html']
+const expected = ['index.html', 'sitemap.xml', 'robots.txt', 'help/index.html',
+                  'changelog/index.html', 'plan/index.html']
   .concat(countryIds.map((c) => 'help/' + c.toLowerCase() + '/index.html'))
   .concat(Object.keys(data.guides).map((id) => id + '/index.html'));
 const missing = expected.filter((f) => !fs.existsSync(path.join(ROOT, f)));

@@ -17,6 +17,51 @@ bug is gone:
 
 Adding a new guide is now editing JSON, not fighting escapes.
 
+## The plan
+
+The home page asks which device, what age, and which apps, then merges the relevant
+guides into one plan. Overlapping steps are dropped (the device guide already covers
+"go and set up your device controls", so Roblox's version of that step disappears),
+steps are ordered device-first then by how much risk each app carries, and the result
+is cut into roughly ten-minute sittings. Progress lives in the browser only, keyed by
+what went into the plan, so the same link picks up where you left off and a different
+selection starts clean.
+
+Plans live at `/plan/?device=…&age=…&apps=…`, which means the link can be sent to a
+phone, bookmarked, or handed to the other parent. The "Send to my phone" button draws
+a QR of that link, for when you're stood at a TV setting up a console.
+
+The single-guide pages are untouched. Someone arriving from a search result still gets
+one guide, not a project.
+
+## Freshness
+
+`node scripts/freshness.js` re-reads every guide's own official source pages and compares
+them against the steps we publish.
+
+The split is the important part:
+
+- **Confirmed unchanged** → `lastVerified` gets bumped. That's a fact the run established.
+- **Looks changed** → reported, never edited. A model quietly rewriting safety
+  instructions is how a wrong menu path ships to every reader at once.
+- **Sources unreachable** → left completely alone. Not being able to read a page is not
+  evidence of anything.
+
+It runs weekly via GitHub Actions and opens a pull request with the report. **The workflow
+file has to live at `.github/workflows/freshness.yml` in the repo root**, because that's
+the only place GitHub looks, and this repo keeps the site one level down. The source of
+truth is `safestart/ops/freshness-workflow.yml`; copy it up if you edit it.
+
+Add `ANTHROPIC_API_KEY` under Settings → Secrets and variables → Actions for it to run.
+Roughly a dollar or two a week.
+
+## The changelog
+
+`/changelog/` publishes every correction and every automated check, with dates. It's built
+from `changelog.json`, which the freshness job appends to, so it can't quietly fall behind
+what actually happened. Corrections are in there too, including the ones a reader found
+before we did. A verification date nobody can check is just a claim.
+
 ## What phase one added
 
 Three things, on top of the original build.
@@ -65,7 +110,11 @@ Parent taps "Ask SafeStart"
 | `src/app.html` | The whole front end, as a template. No framework, no dependencies. Build fills in the per-page bits. |
 | `guides.json` | The curated guide database. 17 guides, 97 steps. This is the file you'll edit most. |
 | `safeguarding.json` | The crisis content behind `/help/`: reporting bodies per country, what to do first, per-platform routes. |
-| `scripts/build.js` | Generates the prerendered pages, the crisis pages, `sitemap.xml` and `robots.txt`. |
+| `scripts/build.js` | Generates the prerendered pages, the crisis pages, the changelog, `sitemap.xml` and `robots.txt`. |
+| `scripts/freshness.js` | Weekly source re-check. Bumps confirmed dates, reports anything that moved. |
+| `changelog.json` | The public record behind `/changelog/`. The freshness job appends to it. |
+| `ops/freshness-workflow.yml` | The GitHub Action. Must be copied to `.github/workflows/` at the repo root. |
+| `assets/qrcode.js` | Vendored QR encoder (MIT), loaded only when someone taps "Send to my phone". |
 | `assets/` | TrustRaise logo (color and mono white), favicons, and self-hosted Inter. |
 | `api/guide.js` | Generates a guide for an app that isn't curated yet. GET, so the CDN caches it. |
 | `api/ask.js` | Streaming follow-up chat. |

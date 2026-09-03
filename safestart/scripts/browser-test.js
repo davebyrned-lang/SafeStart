@@ -33,10 +33,13 @@ function check(name, condition, detail) {
     console.log('\nhome');
     await page.goto(BASE, { waitUntil: 'networkidle' });
     await page.waitForSelector('.card-grid .card');
-    const cards = await page.locator('.card').count();
-    check(`${cards} guide cards render`, cards >= 17, `saw ${cards}`);
-    check('hero copy present', (await page.locator('h1').first().textContent()).length > 10);
+    check('headline is the collaborative one',
+      (await page.locator('h1').first().textContent()).includes("Let's set this up together"));
     check('three picker steps', (await page.locator('.pick').count()) === 3);
+    check('device step comes first',
+      (await page.locator('.pick-q').first().textContent()).includes('device'));
+    const cards = await page.locator('.card').count();
+    check(`${cards} tiles render`, cards >= 17, `saw ${cards}`);
     check('every tile has an icon', (await page.locator('.card .card-ico svg').count()) === cards);
 
     console.log('\nbranding');
@@ -69,15 +72,17 @@ function check(name, condition, detail) {
         .map((n) => n.href || n.src));
     check('no third-party requests', external.length === 0, external.join(' | '));
 
-    console.log('\npicker flow');
+    console.log('\ndevice-first picker');
     await page.locator('.card', { hasText: 'iPhone' }).first().click();
-    await page.waitForSelector('.device-cta');
-    check('device selection offers the device guide', await page.locator('.device-cta').isVisible());
+    await page.waitForTimeout(150);
     const appsForIphone = await page.locator('.pick').nth(2).locator('.card').count();
     check('app tiles filter to the chosen device', appsForIphone > 0 && appsForIphone <= 8, `saw ${appsForIphone}`);
-    await page.locator('.pick-note button').first().click();
+    check('no build button until an age is picked', (await page.locator('.build-cta').count()) === 0);
+    await page.locator('.chip', { hasText: '11\u201312' }).first().click();
     await page.waitForTimeout(150);
-    check('skip clears the device', (await page.locator('.device-cta').count()) === 0);
+    check('build button appears once device and age are set', await page.locator('.build-cta').isVisible());
+    check('device-only plan is allowed',
+      (await page.locator('.build-cta').textContent()).includes('sitting'));
 
     console.log('\nsearch');
     await page.fill('#homeSearch', 'rob');
@@ -89,7 +94,10 @@ function check(name, condition, detail) {
     await page.fill('#homeSearch', '');
 
     console.log('\nguide — roblox');
-    await page.locator('.card', { hasText: 'Roblox' }).first().click();
+    // The picker above stored an age. Clear it so this section tests the
+    // cold-start path a search visitor actually lands on.
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.goto(BASE + '/roblox/', { waitUntil: 'networkidle' });
     await page.waitForSelector('.step');
     const stepsAll = await page.locator('.step').count();
     check(`${stepsAll} steps render`, stepsAll >= 5, `saw ${stepsAll}`);
@@ -206,7 +214,8 @@ function check(name, condition, detail) {
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
     await page.waitForSelector('#countrySel');
     await page.selectOption('#countrySel', 'UK');
-    await page.locator('.card', { hasText: 'Roblox' }).first().click();
+    // Tiles now toggle selection rather than opening a guide, so go direct.
+    await page.goto(BASE + '/roblox/', { waitUntil: 'networkidle' });
     await page.waitForSelector('.rec');
     const ukSpend = await page.locator('.step', { hasText: 'Robux' }).locator('.rec').textContent();
     check('UK sees pounds', ukSpend.includes('£'), ukSpend.slice(0, 60));
@@ -228,11 +237,76 @@ function check(name, condition, detail) {
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
     await page.waitForSelector('#askFab, .card');
 
+    console.log('\nmerged plan');
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.locator('.card', { hasText: 'iPad' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.chip', { hasText: '7\u201311' }).first().click();
+    await page.waitForTimeout(120);
+    for (const name of ['Roblox', 'YouTube', 'Minecraft']) {
+      await page.locator('.card.selectable', { hasText: name }).first().click();
+      await page.waitForTimeout(80);
+    }
+    check('three apps selected', (await page.locator('.card.selectable.on').count()) === 3);
+    const ctaText = await page.locator('.build-cta').textContent();
+    check('build button reports sittings, not one long slog', /sittings/.test(ctaText), ctaText);
+    check('overlap is merged and said out loud', /overlapping step/.test(ctaText), ctaText);
+
+    await page.locator('.build-cta').click();
+    await page.waitForSelector('.session');
+    check('plan has its own url', /\/plan\/\?/.test(page.url()), page.url());
+    check('url carries the app selection', /apps=/.test(page.url()));
+    const sessions = await page.locator('.session').count();
+    check(`${sessions} sittings, none of them enormous`, sessions >= 3 && sessions <= 8, `saw ${sessions}`);
+    const subs = await page.locator('.st-sub').allTextContents();
+    check('every sitting is roughly ten minutes',
+      subs.every((t) => { const m = t.match(/About (\d+) minutes/); return m && +m[1] <= 13; }), subs.join(' | '));
+    check('device guide comes first', subs[0].includes('iPad'), subs[0]);
+
+    const planText = await page.locator('#app').textContent();
+    check('the redundant device-backstop step is gone',
+      !planText.includes('Add a device-level backstop'));
+
+    await page.locator('.session.open .step-done-btn').first().click();
+    await page.waitForTimeout(200);
+    check('ticking a step moves the counter',
+      (await page.locator('.plan-progress-text').textContent()).startsWith('1 of'));
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.waitForSelector('.session');
+    check('plan progress survives a reload',
+      (await page.locator('.plan-progress-text').textContent()).startsWith('1 of'));
+
+    const planUrl = page.url();
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.goto(planUrl, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.session');
+    check('plan rebuilds identically from its url alone',
+      (await page.locator('.session').count()) === sessions);
+
+    console.log('\nQR handoff');
+    check('encoder is not loaded until asked for',
+      (await page.locator('script[src*="qrcode"]').count()) === 0);
+    await page.locator('.plan-tools .ghost-btn').first().click();
+    await page.waitForSelector('.qr-holder svg', { timeout: 8000 });
+    check('QR renders', await page.locator('.qr-holder svg').isVisible());
+    check('the link is shown as text too, for anyone who cannot scan',
+      (await page.locator('.qr-url').textContent()).includes('/plan/'));
+    await page.keyboard.press('Escape');
+    await page.waitForTimeout(150);
+    check('escape closes it', (await page.locator('.qr-scrim').count()) === 0);
+
+    console.log('\nplan page is not indexable');
+    const planShell = await (await page.request.get(BASE + '/plan/')).text();
+    check('/plan/ is noindex', /noindex/.test(planShell));
+    check('/plan/ tells a no-JS visitor where to go', /noscript/.test(planShell));
+
     console.log('\nrobots and sitemap');
     const sm = await page.request.get(BASE + '/sitemap.xml');
     check('sitemap serves', sm.status() === 200, 'status ' + sm.status());
     const smBody = await sm.text();
     check('sitemap lists every guide', (smBody.match(/<url>/g) || []).length >= 22);
+    check('sitemap leaves the plan page out', !smBody.includes('/plan/'));
     const rb = await page.request.get(BASE + '/robots.txt');
     check('robots.txt serves', rb.status() === 200, 'status ' + rb.status());
     check('robots points at the sitemap', (await rb.text()).includes('sitemap.xml'));

@@ -1,0 +1,102 @@
+# SafeStart freshness check.
+#
+# IMPORTANT: GitHub only runs workflows from `.github/workflows/` at the ROOT of
+# the repository. This repo keeps the site one level down in `safestart/`, so the
+# source of truth for this file lives at `safestart/ops/freshness-workflow.yml`
+# and the running copy must be at `.github/workflows/freshness.yml` in the repo
+# root. If you edit one, copy it to the other.
+#
+# What it does, once a week:
+#   1. Re-reads every guide's own official source pages
+#   2. Compares them against the steps we publish
+#   3. Bumps lastVerified ONLY for guides confirmed unchanged
+#   4. Opens a pull request with a report of anything that looks different
+#
+# It never rewrites a guide's instructions. That is deliberate: a model quietly
+# editing safety content is how a wrong menu path ships to every reader at once.
+#
+# Setup: add ANTHROPIC_API_KEY under Settings → Secrets and variables → Actions.
+
+name: Freshness check
+
+on:
+  schedule:
+    # Mondays at 07:00 UTC. Early enough to be waiting when the week starts.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+    inputs:
+      guides:
+        description: "Optional: check only these guides, space separated (e.g. roblox tiktok)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: freshness
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: safestart
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run the freshness check
+        id: check
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          ARGS=""
+          for g in ${{ github.event.inputs.guides }}; do ARGS="$ARGS --guide $g"; done
+          node scripts/freshness.js --write $ARGS | tee run.log
+          echo "needs_human=$(node -p "require('./freshness/summary.json').needsHuman")" >> "$GITHUB_OUTPUT"
+          echo "checked=$(node -p "require('./freshness/summary.json').checked")" >> "$GITHUB_OUTPUT"
+          rm -f run.log
+
+      - name: Rebuild the pages
+        run: node scripts/build.js
+
+      - name: Sanity check before proposing anything
+        run: node scripts/check.js
+
+      - name: Open a pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: freshness/auto
+          base: main
+          commit-message: "Freshness check: ${{ steps.check.outputs.checked }} guides re-read"
+          title: "Freshness check — ${{ steps.check.outputs.needs_human }} guide(s) need a look"
+          delete-branch: true
+          add-paths: |
+            safestart/guides.json
+            safestart/changelog.json
+            safestart/freshness/**
+            safestart/**/index.html
+            safestart/sitemap.xml
+          body: |
+            Weekly automated re-read of every guide's official sources.
+
+            **${{ steps.check.outputs.needs_human }} guide(s) need a human look.**
+            ${{ steps.check.outputs.checked }} guides were checked in total.
+
+            The full report is in `safestart/freshness/`. What this PR has already
+            done on its own is bump `lastVerified` for guides where the sources
+            were readable and nothing had changed, which is a fact this run
+            established rather than a judgement it made.
+
+            It has **not** edited any guide's instructions. Anything flagged in
+            the report needs you to open the official page and decide.
+
+            If the report says nothing changed and only dates moved, this is safe
+            to merge as-is.

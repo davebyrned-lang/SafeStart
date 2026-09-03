@@ -25,6 +25,9 @@ const SITE = (process.env.SITE_URL || "https://safestart.trust-raise.com").repla
 const TEMPLATE = fs.readFileSync(path.join(ROOT, "src", "app.html"), "utf8");
 const DATA = JSON.parse(fs.readFileSync(path.join(ROOT, "guides.json"), "utf8"));
 const SG = JSON.parse(fs.readFileSync(path.join(ROOT, "safeguarding.json"), "utf8"));
+const LOG = fs.existsSync(path.join(ROOT, "changelog.json"))
+  ? JSON.parse(fs.readFileSync(path.join(ROOT, "changelog.json"), "utf8"))
+  : { entries: [] };
 
 const written = [];
 const urls = [];
@@ -58,7 +61,7 @@ function page(opts) {
     .replace(/@DESC@/g, esc(opts.description))
     .replace(/@CANON@/g, esc(canon))
     .replace(/@OGTYPE@/g, esc(opts.ogType || "website"))
-    .replace(/@HEADEXTRA@/g, () => opts.head || "")
+    .replace(/@HEADEXTRA@/g, () => (opts.noindex ? '<meta name="robots" content="noindex,follow">\n' : "") + (opts.head || ""))
     .replace(/@MAIN@/g, () => opts.main || "");
 }
 
@@ -263,8 +266,8 @@ function renderHomeStatic() {
 
   return [
     '<section class="hero">',
-    "<h1>Parental controls, <span class=\"hl\">sorted</span>.</h1>",
-    "<p>Three quick questions and you get the exact taps, in the right order, for your child's age. Most take about ten minutes.</p>",
+    "<h1>Let's set this up <span class=\"hl\">together</span>.</h1>",
+    "<p>Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short sittings rather than one long evening.</p>",
     "</section>",
     helpCardStatic(),
     list("Apps and games", apps),
@@ -295,6 +298,63 @@ function homeJsonLd() {
       }))
     })
   );
+}
+
+
+/* ---------------- changelog ----------------
+   Anyone can put a "last checked" date on a page. Publishing the record of what
+   actually changed, including the corrections, is the part that can be checked.
+   Freshness runs append themselves here automatically. */
+
+const KIND_LABEL = {
+  correction: "Correction",
+  verification: "Verification",
+  site: "Change",
+  "freshness-check": "Freshness check",
+};
+
+function renderChangelogStatic() {
+  const out = [];
+  out.push('<a class="back-link" href="/">Back to SafeStart</a>');
+  out.push('<div class="guide-head"><h1 class="guide-title">What has changed</h1></div>');
+  out.push('<p class="guide-blurb">' + esc(LOG.intro || "") + "</p>");
+
+  const corrections = (LOG.entries || []).filter((e) => e.kind === "correction").length;
+  const checks = (LOG.entries || []).filter((e) => e.kind === "freshness-check").length;
+  const meta = ['<span class="pill">' + (LOG.entries || []).length + " entries</span>"];
+  if (corrections) meta.push('<span class="pill">' + corrections + (corrections === 1 ? " correction" : " corrections") + "</span>");
+  if (checks) meta.push('<span class="pill">' + checks + (checks === 1 ? " automated check" : " automated checks") + "</span>");
+  out.push('<div class="meta-row">' + meta.join("") + "</div>");
+
+  (LOG.entries || []).forEach((e) => {
+    out.push('<article class="log-entry log-' + esc(e.kind || "site") + '">');
+    out.push('<div class="log-head"><span class="log-kind">' +
+      esc(KIND_LABEL[e.kind] || "Change") + '</span><time>' + esc(niceDate(e.date)) + "</time></div>");
+
+    if (e.kind === "freshness-check") {
+      const bits = [];
+      bits.push(e.checked + " guides re-read against their official sources.");
+      if ((e.reverified || []).length) bits.push("Confirmed unchanged: " + e.reverified.join(", ") + ".");
+      if ((e.flagged || []).length) {
+        bits.push("Flagged for review: " + e.flagged.map((f) => f.guide).join(", ") + ".");
+      } else {
+        bits.push("Nothing needed changing.");
+      }
+      if ((e.unreadable || []).length) bits.push("Sources unreachable: " + e.unreadable.join(", ") + ".");
+      out.push("<h2>Weekly source check</h2>");
+      out.push("<p>" + esc(bits.join(" ")) + "</p>");
+      (e.flagged || []).forEach((f) => {
+        (f.summary || []).forEach((line) => out.push('<p class="log-detail">' + esc(f.guide) + ": " + esc(line) + "</p>"));
+      });
+    } else {
+      out.push("<h2>" + esc(e.title || "") + "</h2>");
+      out.push("<p>" + esc(e.body || "") + "</p>");
+    }
+    out.push("</article>");
+  });
+
+  out.push('<p class="disclaimer">This page is generated from the same file the weekly check writes to, so it cannot quietly fall behind what actually happened.</p>');
+  return out.join("\n");
 }
 
 /* ---------------- crisis pages ---------------- */
@@ -464,6 +524,27 @@ function build() {
     }));
     urls.push({ loc: SITE + "/" + id + "/", priority: "0.9", lastmod: g.lastVerified });
   });
+
+  write("changelog/index.html", page({
+    url: "/changelog/",
+    title: "What has changed — SafeStart",
+    description: "Every correction and every automated source check on SafeStart's parental control guides, with dates. Published so the verification dates can be checked rather than taken on trust.",
+    main: renderChangelogStatic()
+  }));
+  urls.push({ loc: SITE + "/changelog/", priority: "0.5", lastmod: LOG.updated });
+
+  // The plan is built in the browser from whatever is in the query string, so
+  // there is no fixed content to prerender and nothing to index. The shell just
+  // has to exist so the path resolves.
+  write("plan/index.html", page({
+    url: "/plan/",
+    title: "Your setup plan — SafeStart",
+    description: "A merged parental control plan for one child's device and the apps they use.",
+    noindex: true,
+    main: '<div class="loading"><div class="spinner"></div></div>' +
+          '<noscript><p class="disclaimer">Building a plan needs JavaScript. ' +
+          'Every individual guide works without it — <a href="/">browse them here</a>.</p></noscript>'
+  }));
 
   // crisis pages
   write("help/index.html", page({
