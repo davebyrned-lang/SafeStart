@@ -76,13 +76,15 @@ function check(name, condition, detail) {
     await page.locator('.card', { hasText: 'iPhone' }).first().click();
     await page.waitForTimeout(150);
     const appsForIphone = await page.locator('.pick').nth(2).locator('.card').count();
-    check('app tiles filter to the chosen device', appsForIphone > 0 && appsForIphone <= 8, `saw ${appsForIphone}`);
+    // Fewer than the full catalogue, because consoles-only guides drop out.
+    check('app tiles filter to the chosen device',
+      appsForIphone > 0 && appsForIphone < 20, `saw ${appsForIphone}`);
     check('no build button until an age is picked', (await page.locator('.build-cta').count()) === 0);
     await page.locator('.chip', { hasText: '11\u201312' }).first().click();
     await page.waitForTimeout(150);
     check('build button appears once device and age are set', await page.locator('.build-cta').isVisible());
     check('device-only plan is allowed',
-      (await page.locator('.build-cta').textContent()).includes('sitting'));
+      (await page.locator('.build-cta').textContent()).includes('part'));
 
     console.log('\nthe device setup is optional');
     check('offers to skip a device that is already done',
@@ -366,17 +368,22 @@ function check(name, condition, detail) {
     }
     check('three apps selected', (await page.locator('.card.selectable.on').count()) === 3);
     const ctaText = await page.locator('.build-cta').textContent();
-    check('build button reports sittings, not one long slog', /sittings/.test(ctaText), ctaText);
-    check('overlap is merged and said out loud', /overlapping step/.test(ctaText), ctaText);
+    // The button leads with the first part, not the total. A reader who is told
+    // "34 minutes" up front closes the tab; one who is told "12 minutes, four
+    // parts, whenever suits" starts. The full count is still on the button.
+    check('build button leads with the first part, not the total',
+      /part 1, about \d+ minutes/.test(ctaText) && /\d+ parts in total/.test(ctaText), ctaText);
 
     await page.locator('.build-cta').click();
     await page.waitForSelector('.session');
     check('plan has its own url', /\/plan\/\?/.test(page.url()), page.url());
     check('url carries the app selection', /apps=/.test(page.url()));
     const sessions = await page.locator('.session').count();
-    check(`${sessions} sittings, none of them enormous`, sessions >= 3 && sessions <= 8, `saw ${sessions}`);
+    check(`${sessions} parts, none of them enormous`, sessions >= 3 && sessions <= 8, `saw ${sessions}`);
+    const metaText = await page.locator('.meta-row').textContent();
+    check('overlap is merged and said out loud', /overlapping step/.test(metaText), metaText);
     const subs = await page.locator('.st-sub').allTextContents();
-    check('every sitting is roughly ten minutes',
+    check('every part is roughly ten minutes',
       subs.every((t) => { const m = t.match(/About (\d+) minutes/); return m && +m[1] <= 13; }), subs.join(' | '));
     check('device guide comes first', subs[0].includes('iPad'), subs[0]);
 
@@ -408,9 +415,20 @@ function check(name, condition, detail) {
     async function driftOnClick(label, locator) {
       await locator.scrollIntoViewIfNeeded();
       await page.waitForTimeout(180);
-      const before = await scrollY();
+      // Read the position at the moment the click lands, not before. Playwright
+      // nudges an element into view of its own accord just before clicking, and
+      // with smooth scrolling on that nudge is still gliding when a reading
+      // taken earlier would be compared against. What we care about is whether
+      // the app moves the page, so measure from where the app found it.
+      await page.evaluate(() => {
+        window.__yAtClick = null;
+        document.addEventListener('click', () => {
+          if (window.__yAtClick === null) window.__yAtClick = window.pageYOffset;
+        }, { capture: true, once: true });
+      });
       await locator.click();
       await page.waitForTimeout(320);
+      const before = await page.evaluate(() => window.__yAtClick);
       const drift = Math.abs((await scrollY()) - before);
       check(label + ' does not jump the page', drift <= 4, `drifted ${drift}px from ${before}`);
     }

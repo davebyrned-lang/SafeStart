@@ -941,8 +941,8 @@ button { font: inherit; cursor: pointer; }
     <div class="head-spacer"></div>
     <a class="help-btn" href="/help/">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
-      <span class="help-btn-long">Something's happened</span>
-      <span class="help-btn-short">Help now</span>
+      <span class="help-btn-long">Get help now</span>
+      <span class="help-btn-short">Get help</span>
     </a>
     <button class="ghost-btn" id="printBtn" hidden>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -1415,16 +1415,24 @@ function loadPrefs() {
    which is fine for correctness and terrible to use: the browser lands you back
    at the top of the page each time you tick a box. Hold the scroll position
    across the swap so the thing you just tapped stays under your thumb. */
+/* The page sets scroll-behavior: smooth for anchor links, which would turn a
+   restore into a visible glide and let a second restore fight the first. These
+   restores have to land immediately, so they opt out. */
+function jumpTo(y) {
+  try { window.scrollTo({ top: y, left: 0, behavior: "instant" }); }
+  catch (e) { window.scrollTo(0, y); }
+}
+
 function keepPlace(render) {
   var y = window.pageYOffset || document.documentElement.scrollTop || 0;
   var active = document.activeElement;
   var mark = active && active.getAttribute && active.getAttribute("data-focus-key");
   render();
-  window.scrollTo(0, y);
+  jumpTo(y);
   // The new DOM may not have reached full height when we first ask, so ask again
   // once layout has settled. Two cheap calls beat one that lands short.
   requestAnimationFrame(function () {
-    window.scrollTo(0, y);
+    jumpTo(y);
     if (mark) {
       var again = document.querySelector('[data-focus-key="' + mark + '"]');
       if (again && again.focus) again.focus({ preventScroll: true });
@@ -1765,9 +1773,9 @@ function stepApps() {
     card.appendChild(el("button", { class: "build-cta", onclick: function () { renderPlan(); } }, [
       el("span", {}, [
         el("span", { class: "bc-title", text: "Build my plan", style: "display:block" }),
-        el("span", { class: "bc-sub", text: plan.totalMins + " minutes across " + plan.sessions.length +
-          (plan.sessions.length === 1 ? " sitting" : " sittings") +
-          (plan.dropped ? ", " + plan.dropped + " overlapping " + (plan.dropped === 1 ? "step" : "steps") + " merged" : "") })
+        el("span", { class: "bc-sub", text:
+          "Start with part 1, about " + (plan.sessions[0] ? plan.sessions[0].mins : plan.totalMins) + " minutes. " +
+          plan.sessions.length + (plan.sessions.length === 1 ? " part" : " parts") + " in total, done whenever suits." })
       ]),
       el("span", { class: "dc-arrow" }, [icon("arrow")])
     ]));
@@ -1901,8 +1909,13 @@ function confirmDialog(opts) {
    parent picked. We use the bottom of the band, so 11-12 counts as 11. */
 function bandFloor(bandId) { return parseInt(bandId, 10) || 0; }
 
+/* Every social app's minimum is 13, so for an under-7 the per-app warning would
+   fire on almost every tile and become noise. The guides themselves carry the
+   under-age notice, which is the right place for it. */
+function suppressAgeWarning() { return state.ageBand === "0-6"; }
+
 function overAgeApps(bandId, appIds) {
-  if (!bandId) return [];
+  if (!bandId || bandId === "0-6") return [];
   return appIds.filter(function (id) {
     var g = DATA.guides[id];
     return g && g.minAge && bandFloor(bandId) < g.minAge;
@@ -1994,6 +2007,37 @@ function buildPlan() {
   };
 }
 
+/* Recomputes the counter, the bar, and whether each part now reads as finished,
+   without rebuilding the page. */
+function refreshPlanProgress() {
+  var plan = buildPlan();
+  var prog = planProgress(plan);
+  var bar = document.querySelector(".plan-progress .progress-bar");
+  var fill = bar && bar.querySelector("span");
+  var label = document.querySelector(".plan-progress-text");
+  if (fill) fill.style.width = prog.pct + "%";
+  if (bar) bar.classList.toggle("complete", prog.pct === 100);
+  if (label) label.textContent = prog.done + " of " + prog.total + " done";
+
+  var cards = document.querySelectorAll(".session");
+  plan.sessions.forEach(function (sess, i) {
+    var card = cards[i];
+    if (!card) return;
+    var allDone = sess.steps.every(function (it) { return state.planDone[it.key]; });
+    card.classList.toggle("done", allDone);
+    var num = card.querySelector(".session-num");
+    if (num) {
+      clear(num);
+      if (allDone) num.appendChild(icon("check"));
+      else num.appendChild(document.createTextNode(String(i + 1)));
+    }
+  });
+
+  var finished = document.querySelector(".all-done");
+  if (prog.total && prog.done === prog.total && !finished) renderPlan(true);
+  else if (finished && prog.done !== prog.total) finished.remove();
+}
+
 function planProgress(plan) {
   var done = plan.items.filter(function (it) { return state.planDone[it.key]; }).length;
   return { done: done, total: plan.items.length,
@@ -2043,8 +2087,8 @@ function renderPlan(skipUrl) {
         " year old. The device's own settings are left alone, as you said they're already done." }));
 
   var meta = [
-    el("span", { class: "pill", text: plan.totalMins + " minutes total" }),
-    el("span", { class: "pill", text: plan.sessions.length + (plan.sessions.length === 1 ? " sitting" : " sittings") })
+    el("span", { class: "pill", text: "Part 1 takes about " + (plan.sessions[0] ? plan.sessions[0].mins : plan.totalMins) + " minutes" }),
+    el("span", { class: "pill", text: plan.sessions.length + (plan.sessions.length === 1 ? " part in total" : " parts in total") })
   ];
   if (plan.dropped) {
     meta.push(el("span", { class: "pill", text: plan.dropped + " overlapping " +
@@ -2113,7 +2157,7 @@ function renderSession(sess, num, total, allDone, open) {
   } }, [
     el("span", { class: "session-num" }, [allDone ? icon("check") : document.createTextNode(String(num))]),
     el("span", { class: "session-title" }, [
-      el("span", { class: "st-main", text: "Sitting " + num + " of " + total, style: "display:block" }),
+      el("span", { class: "st-main", text: "Part " + num + " of " + total, style: "display:block" }),
       el("span", { class: "st-sub", text: sessionSummary(sess) })
     ]),
     el("span", { class: "session-chev" }, [icon("arrow")])
@@ -2174,10 +2218,14 @@ function renderPlanStep(item, num) {
   var btn = el("button", { class: "step-done-btn", "data-focus-key": "plan:" + item.key }, [icon("check"),
     document.createTextNode(isDone ? "Done" : "Mark done")]);
   btn.addEventListener("click", function () {
-    if (state.planDone[item.key]) delete state.planDone[item.key];
-    else state.planDone[item.key] = true;
+    var nowDone = !state.planDone[item.key];
+    if (nowDone) state.planDone[item.key] = true; else delete state.planDone[item.key];
     saveProgress();
-    keepPlace(function () { renderPlan(true); });
+    // Touch only what changed. A full re-render here reflowed the page under the
+    // reader's finger, which loses their place in a list they are working down.
+    wrap.classList.toggle("done", nowDone);
+    btn.lastChild.textContent = nowDone ? "Done" : "Mark done";
+    refreshPlanProgress();
   });
   body.appendChild(btn);
 

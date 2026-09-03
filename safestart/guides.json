@@ -1,7 +1,12 @@
 {
  "version": "2026.08.20",
- "verifiedOn": "2026-08-20",
+ "verifiedOn": "2026-09-03",
  "ageBands": [
+  {
+   "id": "0-6",
+   "label": "Under 7",
+   "profile": "Maximum Protection"
+  },
   {
    "id": "7-11",
    "label": "7–11",
@@ -115,6 +120,12 @@
    "label": "Nintendo Switch",
    "group": "Consoles",
    "short": "Switch"
+  },
+  {
+   "id": "firetablet",
+   "label": "Amazon Fire tablet",
+   "group": "Phones & tablets",
+   "short": "Fire tablet"
   }
  ],
  "helpModes": [
@@ -189,7 +200,8 @@
     "chromebook",
     "xbox",
     "playstation",
-    "switch"
+    "switch",
+    "firetablet"
    ],
    "minAge": 0,
    "lastVerified": "2026-08-20",
@@ -230,6 +242,7 @@
       "Confirm with your PIN."
      ],
      "recommended": {
+      "0-6": "Minimal",
       "7-11": "Minimal",
       "11-12": "Minimal",
       "13-15": "Mild",
@@ -249,6 +262,7 @@
       "Confirm with your PIN."
      ],
      "recommended": {
+      "0-6": "All chat off",
       "7-11": "All chat off",
       "11-12": "Friends only, direct chat off",
       "13-15": "Friends only",
@@ -268,6 +282,7 @@
       "Turn on transaction notifications so you see purchases as they happen."
      ],
      "recommended": {
+      "0-6": "{cur}0 — no spending",
       "7-11": "{cur}0 — no spending",
       "11-12": "{cur}0 — no spending",
       "13-15": "A small monthly cap you agree together",
@@ -287,6 +302,7 @@
       "While you’re here, look at the list of the top games they played this week. It’s a good conversation starter."
      ],
      "recommended": {
+      "0-6": "20–30 minutes",
       "7-11": "30–45 minutes",
       "11-12": "45–60 minutes",
       "13-15": "Agree it together",
@@ -304,6 +320,7 @@
       "Remove anyone they only know from inside a game."
      ],
      "ages": [
+      "0-6",
       "7-11",
       "11-12",
       "13-15"
@@ -352,7 +369,7 @@
      "url": "https://en.help.roblox.com/hc/en-us/articles/8862768451604-Content-Maturity-Labels"
     }
    ],
-   "priority": 2
+   "priority": 3
   },
   "tiktok": {
    "id": "tiktok",
@@ -366,7 +383,8 @@
     "android",
     "windows",
     "mac",
-    "chromebook"
+    "chromebook",
+    "firetablet"
    ],
    "minAge": 13,
    "lastVerified": "2026-08-20",
@@ -498,7 +516,7 @@
      "url": "https://www.internetmatters.org/parental-controls/social-media/tiktok-privacy-and-safety-settings/"
     }
    ],
-   "priority": 6
+   "priority": 8
   },
   "instagram": {
    "id": "instagram",
@@ -512,7 +530,8 @@
     "android",
     "windows",
     "mac",
-    "chromebook"
+    "chromebook",
+    "firetablet"
    ],
    "minAge": 13,
    "lastVerified": "2026-08-20",
@@ -646,7 +665,7 @@
      "url": "https://familycenter.meta.com/"
     }
    ],
-   "priority": 5
+   "priority": 7
   },
   "snapchat": {
    "id": "snapchat",
@@ -707,6 +726,7 @@
       "Turn on Ghost Mode."
      ],
      "recommended": {
+      "0-6": "Ghost Mode on",
       "7-11": "Ghost Mode on",
       "11-12": "Ghost Mode on",
       "13-15": "Ghost Mode on, or share with a small chosen list",
@@ -779,7 +799,7 @@
      "url": "https://www.internetmatters.org/parental-controls/social-media/snapchat/"
     }
    ],
-   "priority": 3
+   "priority": 4
   },
   "discord": {
    "id": "discord",
@@ -938,7 +958,8 @@
     "chromebook",
     "playstation",
     "xbox",
-    "switch"
+    "switch",
+    "firetablet"
    ],
    "minAge": 0,
    "lastVerified": "2026-08-20",
@@ -964,6 +985,7 @@
       "13 and over: a normal account, with the settings below applied."
      ],
      "recommended": {
+      "0-6": "YouTube Kids, or a supervised account on Explore",
       "7-11": "YouTube Kids, or a supervised account on Explore",
       "11-12": "Supervised account",
       "13-15": "Supervised account or normal account with limits",
@@ -982,6 +1004,7 @@
       "Pick the content setting for their age."
      ],
      "recommended": {
+      "0-6": "Explore (suggested 9+)",
       "7-11": "Explore (suggested 9+)",
       "11-12": "Explore (suggested 9+)",
       "13-15": "Explore more (suggested 13+)",
@@ -1052,7 +1075,7 @@
      "url": "https://support.google.com/youtube/answer/13877231?hl=en"
     }
    ],
-   "priority": 8
+   "priority": 10
   },
   "fortnite": {
    "id": "fortnite",
@@ -1107,6 +1130,7 @@
       "Confirm with your PIN."
      ],
      "recommended": {
+      "0-6": "Nobody",
       "7-11": "Nobody",
       "11-12": "Friends Only",
       "13-15": "Friends Only",
@@ -1134,6 +1158,7 @@
       "Turn it on."
      ],
      "ages": [
+      "0-6",
       "7-11",
       "11-12",
       "13-15"
@@ -1208,7 +1233,7 @@
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/fortnite-battle-royale-parental-controls/"
     }
    ],
-   "priority": 4
+   "priority": 6
   },
   "minecraft": {
    "id": "minecraft",
@@ -1225,7 +1250,8 @@
     "chromebook",
     "playstation",
     "xbox",
-    "switch"
+    "switch",
+    "firetablet"
    ],
    "minAge": 0,
    "lastVerified": "2026-08-20",
@@ -1268,6 +1294,7 @@
       "Set 'You can join multiplayer games', 'Others can communicate with voice, text, or invites' and 'You can add friends' to the levels below."
      ],
      "recommended": {
+      "0-6": "Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.",
       "7-11": "Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.",
       "11-12": "Multiplayer: Allow. Communicate: Friends only. Add friends: Block.",
       "13-15": "Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.",
@@ -1284,6 +1311,7 @@
       "Turn chat off, or set it to show only commands, for younger children."
      ],
      "ages": [
+      "0-6",
       "7-11",
       "11-12"
      ],
@@ -1351,7 +1379,7 @@
      "url": "https://family.microsoft.com/"
     }
    ],
-   "priority": 7
+   "priority": 9
   },
   "iphone": {
    "id": "iphone",
@@ -1427,6 +1455,7 @@
       "Turn on Ask to Buy in Family Sharing so download requests come to your phone."
      ],
      "recommended": {
+      "0-6": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
       "7-11": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
       "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
@@ -1445,6 +1474,7 @@
       "For younger children, Allowed Websites lets you list the only sites that work."
      ],
      "recommended": {
+      "0-6": "Allowed Websites Only, apps rated 9+",
       "7-11": "Allowed Websites Only, apps rated 9+",
       "11-12": "Limit Adult Websites, apps rated 12+",
       "13-15": "Limit Adult Websites, apps rated 12+",
@@ -1463,6 +1493,7 @@
       "Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum)."
      ],
      "recommended": {
+      "0-6": "Downtime from 7pm, Social and Games limited to 45 min",
       "7-11": "Downtime from 7pm, Social and Games limited to 45 min",
       "11-12": "Downtime from 8:30pm",
       "13-15": "Downtime from 9:30pm on school nights",
@@ -1585,6 +1616,7 @@
       "Turn on Ask to Buy so requests come to your phone."
      ],
      "recommended": {
+      "0-6": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
       "7-11": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
       "11-12": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
@@ -1603,6 +1635,7 @@
       "For younger children, Allowed Websites Only is much stronger than the adult filter."
      ],
      "recommended": {
+      "0-6": "Allowed Websites Only, apps rated 9+",
       "7-11": "Allowed Websites Only, apps rated 9+",
       "11-12": "Limit Adult Websites, apps rated 12+",
       "13-15": "Limit Adult Websites, apps rated 12+",
@@ -1621,6 +1654,7 @@
       "Use Always Allowed for anything that should still work, like messages to you."
      ],
      "recommended": {
+      "0-6": "Downtime from 7pm, 45 min on games and video",
       "7-11": "Downtime from 7pm, 45 min on games and video",
       "11-12": "Downtime from 8:30pm",
       "13-15": "Downtime from 9:30pm on school nights",
@@ -1705,6 +1739,7 @@
       "Review what’s already installed and block anything that shouldn’t be there."
      ],
      "recommended": {
+      "0-6": "Approval required for everything, apps rated PEGI 7 / ESRB E",
       "7-11": "Approval required for everything, apps rated PEGI 7 / ESRB E",
       "11-12": "Approval required for everything, apps rated PEGI 12 / ESRB E10+",
       "13-15": "Approval required for paid apps, ratings PEGI 12 / ESRB T",
@@ -1723,6 +1758,7 @@
       "Add specific sites to allow or block as needed."
      ],
      "recommended": {
+      "0-6": "Only allow approved sites",
       "7-11": "Only allow approved sites",
       "11-12": "Try to block explicit sites",
       "13-15": "Try to block explicit sites",
@@ -1848,6 +1884,7 @@
       "Under Apps and games, set the age rating limit."
      ],
      "recommended": {
+      "0-6": "Age rating 7, allowed sites only",
       "7-11": "Age rating 7, allowed sites only",
       "11-12": "Age rating 12, adult sites blocked",
       "13-15": "Age rating 12–16, adult sites blocked",
@@ -1978,6 +2015,7 @@
       "Under Store Restrictions, turn off in-app purchases and require a password for every purchase."
      ],
      "recommended": {
+      "0-6": "Allowed Websites Only",
       "7-11": "Allowed Websites Only",
       "11-12": "Limit Adult Websites",
       "13-15": "Limit Adult Websites",
@@ -2073,6 +2111,7 @@
       "Add specific allow or block entries as needed."
      ],
      "recommended": {
+      "0-6": "Only allow approved sites",
       "7-11": "Only allow approved sites",
       "11-12": "Try to block explicit sites",
       "13-15": "Try to block explicit sites",
@@ -2177,6 +2216,7 @@
       "Restrict or block the internet browser for younger children."
      ],
      "recommended": {
+      "0-6": "PEGI 7 / ESRB E, browser blocked",
       "7-11": "PEGI 7 / ESRB E, browser blocked",
       "11-12": "PEGI 12 / ESRB E10+, browser blocked",
       "13-15": "PEGI 12–16 / ESRB T, browser restricted",
@@ -2194,6 +2234,7 @@
       "Restrict the ability to view or share videos and images made by other players."
      ],
      "recommended": {
+      "0-6": "Restricted — no messaging or chat",
       "7-11": "Restricted — no messaging or chat",
       "11-12": "Restricted",
       "13-15": "Allowed with friends only",
@@ -2224,6 +2265,7 @@
       "Remove any saved payment card from the account."
      ],
      "recommended": {
+      "0-6": "{cur}0",
       "7-11": "{cur}0",
       "11-12": "{cur}0",
       "13-15": "A small agreed monthly cap",
@@ -2310,6 +2352,7 @@
       "Turn on web filtering if they use the Xbox browser."
      ],
      "recommended": {
+      "0-6": "Age 7",
       "7-11": "Age 7",
       "11-12": "Age 12",
       "13-15": "Age 12–16",
@@ -2329,6 +2372,7 @@
       "Decide on cross-network play, which allows players from other platforms."
      ],
      "recommended": {
+      "0-6": "Communicate: Friends only. Add friends: Block. Cross-network: Block.",
       "7-11": "Communicate: Friends only. Add friends: Block. Cross-network: Block.",
       "11-12": "Communicate: Friends only. Add friends: Block.",
       "13-15": "Communicate: Friends only. Add friends: Allow.",
@@ -2438,6 +2482,7 @@
       "Or choose Custom to set software rating, posting to social media, and communication individually."
      ],
      "recommended": {
+      "0-6": "Child level",
       "7-11": "Child level",
       "11-12": "Pre-Teen level",
       "13-15": "Teen level",
@@ -2456,6 +2501,7 @@
       "Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately."
      ],
      "ages": [
+      "0-6",
       "7-11",
       "11-12",
       "13-15"
@@ -2515,6 +2561,1036 @@
     }
    ],
    "priority": 0
+  },
+  "firetablet": {
+   "id": "firetablet",
+   "name": "Amazon Fire tablet",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Often a child's first tablet. Amazon Kids builds a walled garden with genuinely good controls inside it, and almost none outside it. The lock screen PIN is the whole wall.",
+   "devices": [
+    "firetablet"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-03",
+   "sourceConfidence": "medium",
+   "minutes": 15,
+   "priority": 0,
+   "risks": [
+    "Without a lock screen PIN your child simply switches to your profile, where nothing is filtered",
+    "Amazon Kids+ is a content subscription, not the safety product. Every control here is free",
+    "Filtered browsing filters rather than blocks, and Alexa and pre-installed apps can lead out of the sandbox"
+   ],
+   "beforeYouStart": [
+    "You'll set this up from your own Amazon account, so have your password to hand.",
+    "Decide on a lock screen PIN your child does not know and won't watch you type."
+   ],
+   "steps": [
+    {
+     "id": "pin",
+     "title": "Set a lock screen PIN first",
+     "why": "This is the one that matters. Amazon's own setup guide says it plainly: the PIN is what stops your child getting out of their profile and into yours. Without it everything below is decoration.",
+     "path": "Settings → Security & Privacy → Lock Screen Passcode",
+     "do": [
+      "Open Settings on the tablet, then Security & Privacy.",
+      "Set a lock screen PIN or password.",
+      "Use something your child hasn't seen you type, and not a birthday."
+     ],
+     "result": "Switching out of a child profile now needs your PIN.",
+     "provides": [
+      "device-controls"
+     ],
+     "mins": 2
+    },
+    {
+     "id": "profile",
+     "title": "Create a child profile",
+     "why": "The child profile is the sandbox. Age filters, time limits and the safer browser all live inside it and apply nowhere else.",
+     "do": [
+      "Open the Amazon Kids app, or follow the setup prompts on a new tablet.",
+      "Tap Add Child.",
+      "Enter their name, date of birth and pick an avatar. You can add up to four children."
+     ],
+     "note": "Amazon Kids is free. Amazon Kids+ is a paid content library on top of it, and buying it adds no extra controls.",
+     "mins": 2
+    },
+    {
+     "id": "age",
+     "title": "Set the age filter",
+     "why": "This is what decides which books, videos and apps your child sees at all.",
+     "path": "parents.amazon.com → gear icon next to your child → Adjust Age Filter",
+     "do": [
+      "Go to parents.amazon.com or open the Parent Dashboard app.",
+      "Click the gear icon next to your child's name.",
+      "Choose Adjust Age Filter and set it to their actual age."
+     ],
+     "recommended": {
+      "0-6": "Their real age, not older",
+      "7-11": "Their real age, not older",
+      "11-12": "Their real age",
+      "13-15": "Their real age",
+      "16-17": "Their real age"
+     },
+     "note": "Setting it above their age to 'give them more choice' is the most common way this gets undone.",
+     "mins": 2
+    },
+    {
+     "id": "web",
+     "title": "Decide about the browser",
+     "why": "The browser reaches everything the app filters don't. For younger children this is the single biggest decision on the tablet.",
+     "path": "Parent Dashboard → Settings → Fire Tablet Web Browser",
+     "do": [
+      "In the Parent Dashboard, open Settings, then Fire Tablet Web Browser.",
+      "Turn the browser off entirely, or pick Hand-Selected Websites & Videos, or Filtered Websites & Videos.",
+      "You can add your own allowed or blocked addresses either way."
+     ],
+     "recommended": {
+      "0-6": "Browser off, or Hand-Selected",
+      "7-11": "Browser off, or Hand-Selected",
+      "11-12": "Hand-Selected",
+      "13-15": "Filtered",
+      "16-17": "Filtered"
+     },
+     "note": "Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.",
+     "mins": 2
+    },
+    {
+     "id": "time",
+     "title": "Set time limits and a bedtime",
+     "why": "A tablet has no natural stopping point, and a scheduled limit avoids the nightly negotiation.",
+     "path": "Parent Dashboard → Settings → Daily Screen Time",
+     "do": [
+      "In the Parent Dashboard, open Settings, then Daily Screen Time.",
+      "Set a daily limit under Screen time, and a window under Schedule.",
+      "If you want reading before games, set goals under Learn First."
+     ],
+     "recommended": {
+      "0-6": "45–60 minutes, off an hour before bed",
+      "7-11": "45–60 minutes, off an hour before bed",
+      "11-12": "60–90 minutes",
+      "13-15": "Agree it together",
+      "16-17": "Agree it together"
+     },
+     "mins": 2
+    },
+    {
+     "id": "store",
+     "title": "Make app downloads a request",
+     "why": "Children ask rather than install, and you get a say without having to police it.",
+     "path": "Parent Dashboard → Content → Store Access",
+     "do": [
+      "In the Parent Dashboard, open Content, then Store Access.",
+      "Turn on approval for third-party apps and games.",
+      "Leave in-app purchases requiring approval, which is the default."
+     ],
+     "note": "You'll get an email or text when they ask, and the app only arrives once you approve.",
+     "mins": 2
+    },
+    {
+     "id": "talk",
+     "title": "Check what's outside the sandbox",
+     "why": "Amazon Kids is strong inside the profile and absent outside it. Ten minutes on your own profile is worth more than another setting inside theirs.",
+     "do": [
+      "Open your own adult profile and look at what's installed and signed in.",
+      "Remove or sign out of anything you'd rather they didn't find if the PIN ever slips.",
+      "Tell your child the PIN exists and why, rather than letting them discover it."
+     ],
+     "mins": 2
+    }
+   ],
+   "checklist": [
+    "Lock screen PIN set and known only to you",
+    "Child profile created with their real date of birth",
+    "Age filter matches their age",
+    "Browser off or restricted",
+    "Daily limit and bedtime set",
+    "App downloads need your approval"
+   ],
+   "talkAboutIt": [
+    "Show them the Parent Dashboard so it isn't a mystery.",
+    "Agree what happens when they want a new app, so it becomes a request rather than a fight.",
+    "Ask what they'd do if something on the tablet upset them, and make clear the answer is to tell you."
+   ],
+   "links": [
+    {
+     "label": "Amazon — set up a Fire tablet for kids (official)",
+     "url": "https://www.aboutamazon.com/news/devices/set-up-fire-tablet-kids"
+    },
+    {
+     "label": "Amazon — Parent Dashboard parental controls (official)",
+     "url": "https://www.aboutamazon.com/news/devices/set-parental-controls-using-amazon-parent-dashboard"
+    },
+    {
+     "label": "Amazon — web browsing controls on Fire Kids tablets (official)",
+     "url": "https://www.aboutamazon.com/news/devices/amazon-explains-web-browsing-controls-on-fire-kids-tablets"
+    },
+    {
+     "label": "Amazon — approving child app requests (official)",
+     "url": "https://www.aboutamazon.com/news/devices/amazon-helps-kids-access-parent-approved-games-and-apps"
+    }
+   ]
+  },
+  "whatsapp": {
+   "id": "whatsapp",
+   "name": "WhatsApp",
+   "type": "app",
+   "kind": "Chat",
+   "blurb": "Encrypted messaging, and the app most children move to when they get a phone. For under-13s there is now a parent-managed account with real controls. From 13 there is no supervision at all, and the privacy settings are the whole toolkit.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "firetablet"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-09-03",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "priority": 5,
+   "risks": [
+    "Anyone with your child's phone number can add them to a group, and the number can never be hidden",
+    "Blocking someone does not stop them seeing your child's messages in a group you both share",
+    "There is no supervision mode from age 13, so device controls and conversation are the only levers"
+   ],
+   "beforeYouStart": [
+    "Have your child's phone in your hand for about ten minutes.",
+    "If they are under 13, you'll also need your own phone for the parent-managed setup."
+   ],
+   "steps": [
+    {
+     "id": "managed",
+     "title": "If they are under 13, use a parent-managed account",
+     "why": "This is new, and it is the only real supervision WhatsApp offers. Only saved contacts can message them, messages from unknown numbers go to you for approval, and location sharing and disappearing messages are removed entirely.",
+     "path": "Child's phone: install and register → Parent's phone: scan QR → create parent PIN",
+     "do": [
+      "Install WhatsApp on your child's phone and register their number, entering their real birthday.",
+      "On your own phone, scan the QR code shown on theirs.",
+      "Create a 6-digit parent PIN. Do not share it with your child.",
+      "Enter that PIN on your child's device to finish."
+     ],
+     "note": "Still rolling out by country, so it may not appear yet. It also cannot be applied to an account that already exists, and it switches itself off on their 13th birthday.",
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
+     "mins": 1
+    },
+    {
+     "id": "age",
+     "title": "Check the minimum age, and what most guides get wrong",
+     "why": "WhatsApp's minimum is 13, including in the EU and UK. It was raised to 16 in Europe in 2018 and has since gone back to 13, so a lot of parenting advice you'll find is out of date.",
+     "do": [
+      "If your child is under 13, the parent-managed account above is the supported route.",
+      "If they are 13 or over, there is no supervision available and the steps below are the whole toolkit."
+     ],
+     "note": "From 13 there is no activity reporting, no contact approval and no way for you to see anything. Personal chats are end-to-end encrypted, so WhatsApp cannot read them either.",
+     "mins": 1
+    },
+    {
+     "id": "privacy",
+     "title": "Tighten the four privacy settings",
+     "why": "The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group.",
+     "path": "Settings → Privacy",
+     "do": [
+      "Open Settings, then Privacy.",
+      "Set Last seen and online, Profile photo, About, and Status one at a time.",
+      "Choose My contacts, or My contacts except, rather than Everyone."
+     ],
+     "recommended": {
+      "0-6": "My contacts for all four",
+      "7-11": "My contacts for all four",
+      "11-12": "My contacts for all four",
+      "13-15": "My contacts for all four",
+      "16-17": "Agree it together, My contacts is still the sensible floor"
+     },
+     "mins": 1
+    },
+    {
+     "id": "groups",
+     "title": "Restrict who can add them to groups",
+     "why": "Group invites are the main way strangers reach a child on WhatsApp.",
+     "path": "Settings → Privacy → Groups",
+     "do": [
+      "Open Settings, then Privacy, then Groups.",
+      "Set it to My contacts, or My contacts except."
+     ],
+     "recommended": {
+      "0-6": "My contacts",
+      "7-11": "My contacts",
+      "11-12": "My contacts",
+      "13-15": "My contacts",
+      "16-17": "My contacts"
+     },
+     "note": "Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.",
+     "mins": 1
+    },
+    {
+     "id": "calls",
+     "title": "Silence unknown callers",
+     "why": "Cuts out cold calls from numbers they don't know, which is a common scam and contact route.",
+     "path": "Settings → Privacy → Calls → Silence unknown callers",
+     "do": [
+      "Open Settings, then Privacy, then Calls.",
+      "Turn on Silence unknown callers."
+     ],
+     "mins": 1
+    },
+    {
+     "id": "location",
+     "title": "Check live location sharing",
+     "why": "Live location can be shared into a group, which shares it with every member including people your child has never met.",
+     "path": "Settings → Privacy → Live location",
+     "do": [
+      "Open Settings, then Privacy, then Live location.",
+      "If anything is listed, tap Stop sharing.",
+      "Agree that live location is for family only."
+     ],
+     "mins": 1
+    },
+    {
+     "id": "blocking",
+     "title": "Show them how to block and report",
+     "why": "The most useful thing on this app is a child who knows what to do without asking first.",
+     "do": [
+      "Open any chat, tap the contact name, and show them Block and Report.",
+      "Explain that the person is not told they have been reported.",
+      "Agree that anything odd gets screenshotted and shown to you before they block."
+     ],
+     "note": "One real limit worth explaining: blocking someone does not hide their messages inside a group you both belong to, and a group chat cannot be blocked at all.",
+     "mins": 1
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "These settings only cover this one service. A device-level control catches the app they download next.",
+     "do": [
+      "Set up Screen Time, Family Link, Microsoft Family Safety or your console's own controls.",
+      "Require your approval for new app downloads."
+     ],
+     "note": "SafeStart has a separate guide for each of these. Pick your device on the home screen.",
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 1
+    }
+   ],
+   "checklist": [
+    "Under 13: parent-managed account set up with a PIN only you know",
+    "Last seen, profile photo, About and Status limited to contacts",
+    "Group adds limited to contacts",
+    "Unknown callers silenced",
+    "Live location not being shared",
+    "They know how to block and report"
+   ],
+   "talkAboutIt": [
+    "Explain that a group invite link gets past the group setting, so the rule is to ask before joining a group they don't recognise.",
+    "Agree what happens if an adult they don't know messages them: screenshot, don't reply, show you.",
+    "Point out that their phone number is visible to everyone in any group they join, and it cannot be hidden."
+   ],
+   "links": [
+    {
+     "label": "WhatsApp — parent-managed accounts (official)",
+     "url": "https://faq.whatsapp.com/899820539143195"
+    },
+    {
+     "label": "WhatsApp — parental controls for parent-managed accounts (official)",
+     "url": "https://faq.whatsapp.com/1201762518588626"
+    },
+    {
+     "label": "WhatsApp — how to change your privacy settings (official)",
+     "url": "https://faq.whatsapp.com/3307102709559968"
+    },
+    {
+     "label": "WhatsApp — group privacy settings (official)",
+     "url": "https://faq.whatsapp.com/1131457590844955"
+    },
+    {
+     "label": "WhatsApp — minimum age (official)",
+     "url": "https://faq.whatsapp.com/695318248185629"
+    }
+   ]
+  },
+  "twitch": {
+   "id": "twitch",
+   "name": "Twitch",
+   "type": "app",
+   "kind": "Video",
+   "blurb": "Live streaming with live chat. Twitch added real parental controls in 2026, but the teen has to start the link and can undo it. The setting that matters most is whether your child can go live themselves.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch",
+    "firetablet"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-09-03",
+   "sourceConfidence": "high",
+   "minutes": 12,
+   "priority": 2,
+   "risks": [
+    "A child streaming themselves is live and unedited to an audience of strangers who can make requests in real time",
+    "Controls are opt-in, started by the teen, and the teen can unlink at any time",
+    "Anyone can watch Twitch with no account at all, so not making them an account is not a control"
+   ],
+   "beforeYouStart": [
+    "You need your own Twitch account, separate from your child's.",
+    "Your child starts the link from their side, so you'll need them with you."
+   ],
+   "steps": [
+    {
+     "id": "link",
+     "title": "Link your account to theirs in the Family Center",
+     "why": "Everything else depends on this. Note that your teen starts it, not you, and either of you can unlink later.",
+     "path": "Teen: Settings → Family Center → sharable link → Parent accepts",
+     "do": [
+      "Ask your child to open Settings, then Family Center, and send you the sharable link.",
+      "Open the link on your own Twitch account and accept.",
+      "You can link up to ten teen accounts. They can link to only one parent."
+     ],
+     "note": "You'll be emailed if they unlink, but by then the controls are already off. Twitch says these controls are not mandatory for 13 to 17 year olds, so this is a weaker arrangement than Screen Time or Family Link.",
+     "mins": 2
+    },
+    {
+     "id": "live",
+     "title": "Stop them going live",
+     "why": "This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat making requests, is the risk Twitch's own parent guidance circles hardest. It also stops Stories and video uploads.",
+     "path": "Family Center → Streaming & Video Uploads",
+     "do": [
+      "In the Family Center, open Streaming & Video Uploads.",
+      "Turn off the ability to go live."
+     ],
+     "recommended": {
+      "13-15": "Off",
+      "16-17": "Off unless you've talked it through properly"
+     },
+     "note": "Twitch documents viewers daring minors into things on stream, and warns that a full name, school or town said out loud on a live stream cannot be taken back.",
+     "ages": [
+      "13-15",
+      "16-17"
+     ],
+     "mins": 2
+    },
+    {
+     "id": "dms",
+     "title": "Turn off direct messages",
+     "why": "Whispers are Twitch's DMs and are the main private contact route from a stranger.",
+     "path": "Family Center → Disable DMs",
+     "do": [
+      "In the Family Center, open Disable DMs and turn whispers off.",
+      "On your child's own account, also check Security and Privacy Settings for Block Whispers from Strangers."
+     ],
+     "note": "Twitch's own help pages disagree about whether Block Whispers from Strangers is on by default, so check the toggle rather than assume. Also worth knowing: if your child whispers a stranger, that person can reply for the next 48 hours.",
+     "mins": 2
+    },
+    {
+     "id": "sensitive",
+     "title": "Restrict sensitive content from the parent side",
+     "why": "Under-18 accounts hide some categories by default, but the teen can turn their own protections back off. Setting it from the Family Center is what puts it in your hands instead.",
+     "path": "Family Center → Protect from Sensitive Content",
+     "do": [
+      "In the Family Center, open Protect from Sensitive Content.",
+      "Leave the restrictions on."
+     ],
+     "note": "Be clear with yourself about what this does. Hiding a category removes it from browsing and recommendations. If your child follows a streamer, or goes straight to a channel page, they still see everything.",
+     "mins": 2
+    },
+    {
+     "id": "time",
+     "title": "Set a daily time limit",
+     "why": "Live content has no episode ending. The limit applies across every device they watch on.",
+     "path": "Family Center → Enact Time Limits",
+     "do": [
+      "In the Family Center, open Enact Time Limits.",
+      "Set a daily limit."
+     ],
+     "recommended": {
+      "13-15": "Agree it together",
+      "16-17": "Agree it together"
+     },
+     "ages": [
+      "13-15",
+      "16-17"
+     ],
+     "mins": 2
+    },
+    {
+     "id": "filters",
+     "title": "Turn on chat filters on their account",
+     "why": "These are the most under-used control on Twitch. They follow your child from channel to channel rather than depending on each streamer's moderation.",
+     "path": "Any channel → Chat settings → Chat Filters",
+     "do": [
+      "On your child's account, open Chat settings on any channel.",
+      "Turn on filters for Discrimination, Sexually Explicit Language, Hostility and Profanity."
+     ],
+     "note": "Filters catch categories of language. They do not catch someone being friendly with bad intentions, which is the thing that actually matters.",
+     "mins": 2
+    },
+    {
+     "id": "report",
+     "title": "Agree what to report, and read the weekly email",
+     "why": "You'll get a weekly summary of who they whispered, who they blocked, which channels they watched and what they spent.",
+     "do": [
+      "Read the weekly email when it arrives, and ask about anything you don't recognise.",
+      "Agree that any request to do something on camera gets shown to you.",
+      "Show them how to report a channel or a user."
+     ],
+     "note": "If an adult makes a sexually suggestive request to your child, report it under Child Endangerment. Twitch escalates those to NCMEC and law enforcement.",
+     "mins": 2
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "These settings only cover this one service. A device-level control catches the app they download next.",
+     "do": [
+      "Set up Screen Time, Family Link, Microsoft Family Safety or your console's own controls.",
+      "Require your approval for new app downloads."
+     ],
+     "note": "SafeStart has a separate guide for each of these. Pick your device on the home screen.",
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 2
+    }
+   ],
+   "checklist": [
+    "Family Center linked",
+    "Going live turned off",
+    "Whispers turned off",
+    "Sensitive content restricted from your side",
+    "Daily limit set",
+    "Chat filters on"
+   ],
+   "talkAboutIt": [
+    "Ask which streamers they follow and watch a few minutes with them.",
+    "Agree that anything a stream or a chat asks them to do gets shown to you first.",
+    "If they want to stream, talk about what is in shot behind them and what their username gives away."
+   ],
+   "links": [
+    {
+     "label": "Twitch — Parental Controls in the Family Center (official)",
+     "url": "https://help.twitch.tv/s/article/family-center"
+    },
+    {
+     "label": "Twitch — guide for parents and educators (official)",
+     "url": "https://safety.twitch.tv/s/article/Guide-Parents-Educators"
+    },
+    {
+     "label": "Twitch — viewer controls and content labels (official)",
+     "url": "https://safety.twitch.tv/s/article/Viewer-Controls"
+    },
+    {
+     "label": "Twitch — how whispers work (official)",
+     "url": "https://help.twitch.tv/s/article/how-to-use-whispers"
+    }
+   ]
+  },
+  "netflix": {
+   "id": "netflix",
+   "name": "Netflix",
+   "type": "app",
+   "kind": "Video",
+   "blurb": "A kids profile is easy to make and does very little on its own. What matters is locking the adult profiles, because otherwise your child is two taps away from all of them.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch",
+    "firetablet"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-03",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "priority": 11,
+   "risks": [
+    "A kids profile is pointless if the adult profiles have no PIN, and profile locks are off by default",
+    "Each adult profile has to be locked separately",
+    "A Kids profile's rating cannot be raised later, and Netflix's fix is to delete it and lose the history"
+   ],
+   "beforeYouStart": [
+    "Do this on a computer or in the mobile app. Most of it cannot be done from the TV app.",
+    "You'll need your Netflix password a few times."
+   ],
+   "steps": [
+    {
+     "id": "profile",
+     "title": "Make them their own profile",
+     "why": "Ratings, autoplay and history are all set per profile, so a shared profile means none of it applies.",
+     "path": "Manage Profiles → Add Profile → For Kids",
+     "do": [
+      "Open Manage Profiles, then Add Profile.",
+      "Name it, and tick the For Kids box for younger children.",
+      "On a TV the label may read Kids Profile rather than For Kids."
+     ],
+     "note": "The main account profile cannot be turned into a kids profile, and there is a limit of five profiles.",
+     "mins": 2
+    },
+    {
+     "id": "rating",
+     "title": "Set the maturity rating",
+     "why": "This is the main content control, and it applies to Netflix games as well as films and shows.",
+     "path": "Account → Profiles → Adjust parental controls",
+     "do": [
+      "Go to Account, then Profiles, then Adjust parental controls.",
+      "Pick the profile and verify it's you.",
+      "Set the maturity rating and save."
+     ],
+     "recommended": {
+      "0-6": "TV-Y7 / G",
+      "7-11": "TV-Y7 / G",
+      "11-12": "TV-PG / PG",
+      "13-15": "TV-14 / PG-13",
+      "16-17": "Agree it together"
+     },
+     "note": "Rating names vary by country. These are the US names; in the UK and Ireland you'll see BBFC ratings in the same place.",
+     "mins": 2
+    },
+    {
+     "id": "lock",
+     "title": "Lock every adult profile with a PIN",
+     "why": "This is the step almost everyone misses, and without it the rest is decoration. A child who can tap back to your profile has no restrictions at all.",
+     "path": "Account → Profiles → [adult profile] → Profile Lock",
+     "do": [
+      "Go to Account, then Profiles, then pick an adult profile.",
+      "Choose Profile Lock, then Create a Profile Lock.",
+      "Set a 4-digit PIN and save.",
+      "Repeat for every adult profile on the account."
+     ],
+     "result": "Your child can no longer switch into an unrestricted profile.",
+     "note": "On the main profile you can also turn on Require a PIN to add a new profile, which stops them making a fresh unrestricted one. Note that Extra Member accounts cannot use profile locks at all.",
+     "mins": 2
+    },
+    {
+     "id": "titles",
+     "title": "Block specific titles if you need to",
+     "why": "Netflix is the only one of the big streamers that lets you block an individual show.",
+     "path": "Account → Profiles → Adjust parental controls → Title Restrictions",
+     "do": [
+      "On the same parental controls screen, find Title Restrictions.",
+      "Type the title and select it.",
+      "Save."
+     ],
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12",
+      "13-15"
+     ],
+     "mins": 2
+    },
+    {
+     "id": "autoplay",
+     "title": "Turn off autoplay",
+     "why": "Autoplay is what turns one episode into an evening, and previews are what surface things they weren't looking for.",
+     "path": "Account → Profiles → [child] → Playback settings",
+     "do": [
+      "Go to Account, then Profiles, then the child's profile, then Playback settings.",
+      "Turn off Autoplay previews and Autoplay next episode."
+     ],
+     "recommended": {
+      "0-6": "Both off",
+      "7-11": "Both off",
+      "11-12": "Both off",
+      "13-15": "Previews off at least",
+      "16-17": "Their call"
+     },
+     "mins": 2
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "These settings only cover this one service. A device-level control catches the app they download next.",
+     "do": [
+      "Set up Screen Time, Family Link, Microsoft Family Safety or your console's own controls.",
+      "Require your approval for new app downloads."
+     ],
+     "note": "SafeStart has a separate guide for each of these. Pick your device on the home screen.",
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 2
+    }
+   ],
+   "checklist": [
+    "Child has their own profile",
+    "Maturity rating set for their age",
+    "Every adult profile has a PIN",
+    "Autoplay turned off",
+    "Titles blocked if needed"
+   ],
+   "talkAboutIt": [
+    "Watch the first episode of something new with them rather than vetting it alone.",
+    "Agree what they do if something they start makes them uncomfortable: stop it and tell you."
+   ],
+   "links": [
+    {
+     "label": "Netflix — parental controls (official)",
+     "url": "https://help.netflix.com/en/node/264"
+    },
+    {
+     "label": "Netflix — maturity ratings and blocking titles (official)",
+     "url": "https://help.netflix.com/en/node/114276"
+    },
+    {
+     "label": "Netflix — profile lock PIN (official)",
+     "url": "https://help.netflix.com/en/node/114277"
+    },
+    {
+     "label": "Netflix — create a kids profile (official)",
+     "url": "https://help.netflix.com/en/node/114275"
+    }
+   ]
+  },
+  "disneyplus": {
+   "id": "disneyplus",
+   "name": "Disney+",
+   "type": "app",
+   "kind": "Video",
+   "blurb": "Junior Mode is a solid walled garden for young children. The setting that catches people out is the one allowing unrated live sports and news, which is on by default and includes its ad breaks.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch",
+    "firetablet"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-03",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "priority": 13,
+   "risks": [
+    "Unrated live content is allowed by default on every profile that isn't in Junior Mode",
+    "The main profile defaults to the highest rating and cannot be put in Junior Mode",
+    "Junior Mode is all or nothing, with no middle setting for an older child"
+   ],
+   "beforeYouStart": [
+    "You can only change these on a web browser or in the mobile app, not on the TV app.",
+    "Have your Disney+ password ready. Most of these steps ask for it."
+   ],
+   "steps": [
+    {
+     "id": "junior",
+     "title": "Turn on Junior Mode for younger children",
+     "why": "This is the kids profile, renamed. If you go looking for Kids Profile in the app you won't find it.",
+     "path": "Edit Profiles → [profile] → Parental Controls → Junior Mode",
+     "do": [
+      "Go to your profiles and choose Add Profile, or Edit Profiles for one that exists.",
+      "Pick an avatar and name it.",
+      "Under Parental Controls, switch Junior Mode on.",
+      "Save."
+     ],
+     "note": "Junior Mode profiles see no ads. The main profile cannot be put into Junior Mode, and turning Junior Mode off needs your password.",
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
+     "mins": 1
+    },
+    {
+     "id": "rating",
+     "title": "Set the content rating for an older child",
+     "why": "For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode cannot be tuned.",
+     "path": "Edit Profiles → [profile] → Parental Controls → Content rating",
+     "do": [
+      "Go to your profiles, choose Edit Profiles, and select the profile.",
+      "Under Parental Controls choose Content rating.",
+      "Enter your password, pick the rating, and save."
+     ],
+     "recommended": {
+      "11-12": "TV-PG / PG",
+      "13-15": "TV-14 / PG-13",
+      "16-17": "Agree it together"
+     },
+     "note": "Rating names vary by country. These are the US names; in the UK and Ireland you'll see BBFC ratings in the same place.",
+     "ages": [
+      "11-12",
+      "13-15",
+      "16-17"
+     ],
+     "mins": 1
+    },
+    {
+     "id": "unrated",
+     "title": "Turn off unrated live content",
+     "why": "This is the one that catches people out. It is on by default, and Disney's own warning is blunt: live content and live ads may feature adult themes, products and services. Setting a child's profile to a low rating and stopping there leaves live sports, live news and their ad breaks wide open.",
+     "path": "Edit Profiles → [profile] → Parental Controls → allow titles without ratings",
+     "do": [
+      "On the same Parental Controls screen for the profile, find the setting allowing titles without ratings, such as live sports and news.",
+      "Turn it off."
+     ],
+     "result": "Unrated live content and its ads no longer appear on that profile.",
+     "note": "Turning it back on later needs your password. Turning it off does not.",
+     "mins": 1
+    },
+    {
+     "id": "pin",
+     "title": "Put a PIN on your own profile",
+     "why": "The main profile defaults to the highest rating, so without a PIN your child switches into it in two taps.",
+     "path": "Edit Profiles → [your profile] → Parental Controls → Profile PIN",
+     "do": [
+      "Go to your profiles, choose Edit Profiles, and select your own profile.",
+      "Under Parental Controls choose Profile PIN.",
+      "Enter your password, set a 4-digit PIN, and save."
+     ],
+     "result": "Your profile can no longer be opened without the PIN.",
+     "mins": 1
+    },
+    {
+     "id": "newprofiles",
+     "title": "Stop new profiles being created",
+     "why": "Otherwise a child simply makes themselves a fresh unrestricted one.",
+     "path": "Account → Settings → Restrict profile creation",
+     "do": [
+      "Open Account.",
+      "Under Settings, turn Restrict profile creation on.",
+      "Enter your password and continue."
+     ],
+     "mins": 1
+    },
+    {
+     "id": "exit",
+     "title": "Turn on Kid-Proof Exit",
+     "why": "Makes leaving Junior Mode deliberate rather than accidental.",
+     "path": "Edit Profiles → Kid-Proof Exit",
+     "do": [
+      "Go to Edit Profiles and switch Kid-Proof Exit on.",
+      "Enter your password."
+     ],
+     "note": "This only slows the exit from Junior Mode. It does not lock where they land, which is what the profile PIN above is for.",
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
+     "mins": 1
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "These settings only cover this one service. A device-level control catches the app they download next.",
+     "do": [
+      "Set up Screen Time, Family Link, Microsoft Family Safety or your console's own controls.",
+      "Require your approval for new app downloads."
+     ],
+     "note": "SafeStart has a separate guide for each of these. Pick your device on the home screen.",
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 1
+    }
+   ],
+   "checklist": [
+    "Junior Mode on, or a content rating set",
+    "Unrated live content turned off",
+    "PIN on your own profile",
+    "New profiles need your password",
+    "Kid-Proof Exit on for younger children"
+   ],
+   "talkAboutIt": [
+    "Junior Mode is all-ages, so an older child will find it babyish. Better to talk about why than let them work around it.",
+    "Agree what they do if something they start makes them uncomfortable."
+   ],
+   "links": [
+    {
+     "label": "Disney+ — parental controls (official)",
+     "url": "https://help.disneyplus.com/article/disneyplus-parental-controls"
+    },
+    {
+     "label": "Disney+ — Junior Mode (official)",
+     "url": "https://help.disneyplus.com/article/disneyplus-kids-profiles"
+    },
+    {
+     "label": "Disney+ — content ratings (official)",
+     "url": "https://help.disneyplus.com/article/disneyplus-content-ratings"
+    }
+   ]
+  },
+  "primevideo": {
+   "id": "primevideo",
+   "name": "Prime Video",
+   "type": "app",
+   "kind": "Video",
+   "blurb": "The controls are good, but two things trip parents up: viewing restrictions apply only to the device you set them on, and downloads from your profile stay visible in a kids profile.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch",
+    "firetablet"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-03",
+   "sourceConfidence": "high",
+   "minutes": 12,
+   "priority": 12,
+   "risks": [
+    "Viewing restrictions apply per device, so setting them on the laptop does nothing to the TV or tablet",
+    "Downloads made on an adult profile are still reachable from a kids profile",
+    "Setting the PIN does not by itself switch the restrictions on"
+   ],
+   "beforeYouStart": [
+    "Have your Amazon account password ready.",
+    "Make a list of every device the household watches on. You will need to repeat one step on each."
+   ],
+   "steps": [
+    {
+     "id": "pin",
+     "title": "Create the Account PIN",
+     "why": "This one PIN sits above everything. It locks purchases, overrides any profile PIN, and controls who can add or remove profiles.",
+     "path": "Your Profiles → Edit profile → Account PIN and locks",
+     "do": [
+      "Go to Your Profiles, then Edit profile, and pick the account holder's profile.",
+      "Choose Manage next to Account PIN and locks.",
+      "Enter your Amazon details.",
+      "Choose Create next to Prime Video Account PIN, set it, and continue."
+     ],
+     "note": "Creating the PIN is not the same as switching restrictions on. On Android in particular they are two separate actions, so do the next steps as well.",
+     "mins": 2
+    },
+    {
+     "id": "kids",
+     "title": "Make them a kids profile",
+     "why": "A kids profile only shows titles rated 12 and under, filters search, and blocks purchases outright.",
+     "path": "Profile icon → Add new",
+     "do": [
+      "Hover over your profile icon and choose Add new, or use Edit profiles on mobile.",
+      "Name it and set it up as a kids profile.",
+      "You can have up to six profiles in total."
+     ],
+     "note": "Be aware of one real hole: downloads made on an adult profile, including an 18-rated film, stay accessible from the kids profile.",
+     "mins": 2
+    },
+    {
+     "id": "restrictions",
+     "title": "Set viewing restrictions, then repeat on every device",
+     "why": "This is the trap. Prime Video's own help pages say it plainly: viewing restrictions only apply to the device that set them up. The settings screen does not look like that.",
+     "path": "Account & Settings → Permissions",
+     "do": [
+      "On a computer, go to Account & Settings, then Permissions.",
+      "Choose the age restriction and tick the devices you want it to apply to.",
+      "Save.",
+      "Now do the same on the TV, the tablet and any phone they watch on."
+     ],
+     "recommended": {
+      "0-6": "Kids (All) or Older Kids (7+)",
+      "7-11": "Kids (All) or Older Kids (7+)",
+      "11-12": "Older Kids (7+)",
+      "13-15": "Teens (13+)",
+      "16-17": "Young Adults (16+), or agree it together"
+     },
+     "result": "Only content at or below that level plays on the devices you ticked.",
+     "note": "The five levels are Kids (All), Older Kids (7+), Teens (13+), Young Adults (16+) and Adults (18+). They map to local ratings, so in the UK and Ireland they line up with U, PG, 12, 15 and 18.",
+     "mins": 2
+    },
+    {
+     "id": "purchase",
+     "title": "Lock purchases",
+     "why": "Rentals and purchases are one tap from the same screen they watch on.",
+     "path": "Account & Settings → Permissions → purchase restrictions",
+     "do": [
+      "From the same Permissions screen, turn on purchase restrictions.",
+      "On Android this lives under Settings, then Parental Controls, then Purchase Restrictions."
+     ],
+     "result": "Buying or renting now needs your Account PIN.",
+     "note": "Purchase restrictions do apply to every profile and every device, unlike viewing restrictions.",
+     "mins": 2
+    },
+    {
+     "id": "lockprofile",
+     "title": "Lock your own profile and stop new ones",
+     "why": "Otherwise your child watches from your profile instead of theirs.",
+     "path": "Your Profiles → Edit profile → Profile / Account PIN and locks",
+     "do": [
+      "Go to Your Profiles, Edit profile, then your own profile.",
+      "Choose Manage next to Profile / Account PIN and locks, enter your password and PIN.",
+      "Switch Profile lock on and save.",
+      "On the same screen, switch Creation and removal lock on."
+     ],
+     "mins": 2
+    },
+    {
+     "id": "firetv",
+     "title": "If you watch on a Fire TV, set that separately",
+     "why": "Fire TV has its own parental controls, and nothing in Prime Video's settings covers them.",
+     "do": [
+      "On the Fire TV device itself, open Settings, then Preferences, then Parental Controls.",
+      "Turn them on and set a PIN."
+     ],
+     "note": "Amazon states this outright: Fire TV parental controls have to be managed on the device.",
+     "mins": 2
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "These settings only cover this one service. A device-level control catches the app they download next.",
+     "do": [
+      "Set up Screen Time, Family Link, Microsoft Family Safety or your console's own controls.",
+      "Require your approval for new app downloads."
+     ],
+     "note": "SafeStart has a separate guide for each of these. Pick your device on the home screen.",
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 2
+    }
+   ],
+   "checklist": [
+    "Account PIN created",
+    "Kids profile made",
+    "Viewing restrictions set on every device",
+    "Purchases locked",
+    "Your own profile locked",
+    "Fire TV set separately if you have one"
+   ],
+   "talkAboutIt": [
+    "Explain that downloads on your profile are visible to them, so it is worth agreeing what gets downloaded.",
+    "Watch something new together rather than vetting it alone."
+   ],
+   "links": [
+    {
+     "label": "Prime Video — parental controls (official)",
+     "url": "https://www.primevideo.com/help?nodeId=G26NRYUT8ATMMZRB"
+    },
+    {
+     "label": "Prime Video — maturity ratings by country (official)",
+     "url": "https://www.primevideo.com/help?nodeId=GFGQU3WYEG6FSJFJ"
+    },
+    {
+     "label": "Prime Video — lock your profile (official)",
+     "url": "https://www.primevideo.com/help?nodeId=T2VYxsiqT2CP35ChTf"
+    },
+    {
+     "label": "Prime Video — kids profiles (official)",
+     "url": "https://www.primevideo.com/help?nodeId=GD6ARQYPV5H7RYA4"
+    }
+   ]
   }
- }
+ },
+ "_new": {}
 }
