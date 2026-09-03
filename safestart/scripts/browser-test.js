@@ -284,6 +284,36 @@ function check(name, condition, detail) {
     check('plan rebuilds identically from its url alone',
       (await page.locator('.session').count()) === sessions);
 
+    console.log('\nthe page stays where you left it');
+    // Every one of these views rebuilds itself on interaction. Without care that
+    // throws the reader back to the top mid-task, which is the single most
+    // irritating thing a form can do.
+    const scrollY = () => page.evaluate(() => window.pageYOffset);
+    async function driftOnClick(label, locator) {
+      await locator.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(180);
+      const before = await scrollY();
+      await locator.click();
+      await page.waitForTimeout(320);
+      const drift = Math.abs((await scrollY()) - before);
+      check(label + ' does not jump the page', drift <= 4, `drifted ${drift}px from ${before}`);
+    }
+    await driftOnClick('ticking a plan step',
+      page.locator('.session.open .step-done-btn').nth(1));
+
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.card.selectable');
+    await driftOnClick('picking an app', page.locator('.card.selectable').nth(3));
+    await driftOnClick('changing the age', page.locator('.chip').nth(2));
+
+    await page.goto(BASE + '/roblox/?age=11-12', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.check-item');
+    await driftOnClick('ticking a checklist item', page.locator('.check-item').first());
+    await driftOnClick('marking a guide step done', page.locator('.step-done-btn').first());
+
+    await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox,youtube,minecraft', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.session');
+
     console.log('\nQR handoff');
     check('encoder is not loaded until asked for',
       (await page.locator('script[src*="qrcode"]').count()) === 0);

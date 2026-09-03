@@ -1208,8 +1208,11 @@ function countryPick() {
   sel.addEventListener("change", function () {
     state.country = sel.value;
     saveProgress();
-    if (state.view === "guide") renderGuide();
-    else renderHome(true);
+    keepPlace(function () {
+      if (state.view === "guide") renderGuide();
+      else if (state.view === "plan") renderPlan(true);
+      else renderHome(true);
+    });
   });
   wrap.appendChild(sel);
   return wrap;
@@ -1272,6 +1275,27 @@ function loadPrefs() {
     if (p.country) state.country = p.country;
     if (Array.isArray(p.apps)) state.apps = p.apps;
   } catch (e) { /* ignore */ }
+}
+
+/* Every one of these views rebuilds itself wholesale when something changes,
+   which is fine for correctness and terrible to use: the browser lands you back
+   at the top of the page each time you tick a box. Hold the scroll position
+   across the swap so the thing you just tapped stays under your thumb. */
+function keepPlace(render) {
+  var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+  var active = document.activeElement;
+  var mark = active && active.getAttribute && active.getAttribute("data-focus-key");
+  render();
+  window.scrollTo(0, y);
+  // The new DOM may not have reached full height when we first ask, so ask again
+  // once layout has settled. Two cheap calls beat one that lands short.
+  requestAnimationFrame(function () {
+    window.scrollTo(0, y);
+    if (mark) {
+      var again = document.querySelector('[data-focus-key="' + mark + '"]');
+      if (again && again.focus) again.focus({ preventScroll: true });
+    }
+  });
 }
 
 /* ---------------- routing ---------------- */
@@ -1435,8 +1459,9 @@ function stepDevice() {
           return !state.device || !g.devices || g.devices.indexOf(state.device) !== -1;
         });
         saveProgress();
-        renderHome(true);
-      }
+        keepPlace(function () { renderHome(true); });
+      },
+      "data-focus-key": "device:" + d.id
     }, [
       el("span", { class: "card-ico" }, [icon(GUIDE_ICON[d.id] || "monitor")]),
       el("span", { class: "c-name", text: d.short || d.label })
@@ -1459,8 +1484,9 @@ function stepAge() {
       onclick: function () {
         state.ageBand = state.ageBand === b.id ? null : b.id;
         saveProgress();
-        renderHome(true);
-      }
+        keepPlace(function () { renderHome(true); });
+      },
+      "data-focus-key": "age:" + b.id
     }, [
       document.createTextNode(b.label),
       el("span", { class: "chip-sub", text: b.profile })
@@ -1493,8 +1519,9 @@ function stepApps() {
         var i = state.apps.indexOf(g.id);
         if (i === -1) state.apps.push(g.id); else state.apps.splice(i, 1);
         saveProgress();
-        renderHome(true);
-      }
+        keepPlace(function () { renderHome(true); });
+      },
+      "data-focus-key": "app:" + g.id
     }, [
       el("span", { class: "card-tick" }, [icon("check")]),
       el("span", { class: "card-ico" }, [guideIcon(g)]),
@@ -1874,13 +1901,13 @@ function renderPlanStep(item, num) {
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
-  var btn = el("button", { class: "step-done-btn" }, [icon("check"),
+  var btn = el("button", { class: "step-done-btn", "data-focus-key": "plan:" + item.key }, [icon("check"),
     document.createTextNode(isDone ? "Done" : "Mark done")]);
   btn.addEventListener("click", function () {
     if (state.planDone[item.key]) delete state.planDone[item.key];
     else state.planDone[item.key] = true;
     saveProgress();
-    renderPlan(true);
+    keepPlace(function () { renderPlan(true); });
   });
   body.appendChild(btn);
 
@@ -2055,7 +2082,7 @@ function buildControls(g) {
       el("button", {
         class: "ctl-summary",
         "aria-expanded": "false",
-        onclick: function () { controlsOpen = true; renderGuide(); }
+        onclick: function () { controlsOpen = true; keepPlace(renderGuide); }
       }, [
         line,
         el("span", { class: "cs-change" }, [document.createTextNode("Change"), icon("arrow")])
@@ -2073,7 +2100,7 @@ function buildControls(g) {
       "aria-pressed": state.ageBand === b.id ? "true" : "false",
       onclick: function () {
         state.ageBand = state.ageBand === b.id ? null : b.id;
-        saveProgress(); writeUrl(true); renderGuide();
+        saveProgress(); writeUrl(true); keepPlace(renderGuide);
       }
     }, [document.createTextNode(b.label)]));
   });
@@ -2091,7 +2118,7 @@ function buildControls(g) {
         "aria-pressed": state.device === d.id ? "true" : "false",
         onclick: function () {
           state.device = state.device === d.id ? null : d.id;
-          saveProgress(); writeUrl(true); renderGuide();
+          saveProgress(); writeUrl(true); keepPlace(renderGuide);
         }
       }, [document.createTextNode(d.short || d.label)]));
     });
@@ -2108,7 +2135,7 @@ function buildControls(g) {
       "aria-pressed": state.helpMode === m.id ? "true" : "false",
       onclick: function () {
         state.helpMode = m.id;
-        saveProgress(); writeUrl(true); renderGuide();
+        saveProgress(); writeUrl(true); keepPlace(renderGuide);
       }
     }, [document.createTextNode(m.label)]));
   });
@@ -2185,7 +2212,7 @@ function renderStep(step, num) {
     onclick: function () {
       state.done[key] = !state.done[key];
       saveProgress();
-      renderGuide();
+      keepPlace(renderGuide);
     }
   }, [icon("check"), document.createTextNode(isDone ? "Done" : "Mark done")]));
 
@@ -2215,7 +2242,7 @@ function renderChecklist(g) {
         onclick: function () {
           state.checked[i] = !state.checked[i];
           saveProgress();
-          renderGuide();
+          keepPlace(renderGuide);
         }
       }, [
         el("span", { class: "check-box" }, [icon("check")]),
