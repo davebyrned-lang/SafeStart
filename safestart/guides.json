@@ -214,7 +214,7 @@
       "Sign in to your child’s Roblox account on a phone or at roblox.com.",
       "Open Settings, then Parental Controls.",
       "Add your own email as the parent email and verify it from your inbox.",
-      "Create a Parent PIN. Choose something your child won’t guess — not a birthday."
+      "Create a Parent PIN. Choose something your child won’t guess, and not a birthday."
      ],
      "result": "Every setting below now requires your PIN to change.",
      "mins": 2
@@ -284,7 +284,7 @@
      "do": [
       "Open Screen time, then Manage.",
       "Choose a daily limit.",
-      "While you’re here, look at the list of the top games they played this week — it’s a good conversation starter."
+      "While you’re here, look at the list of the top games they played this week. It’s a good conversation starter."
      ],
      "recommended": {
       "7-11": "30–45 minutes",
@@ -318,7 +318,7 @@
       "Set up Screen Time (iPhone/iPad/Mac), Family Link (Android/Chromebook), Microsoft Family Safety (Windows/Xbox), or your console’s parental controls.",
       "Require your approval for new app downloads."
      ],
-     "note": "SafeStart has a separate guide for each of these — pick your device on the home screen.",
+     "note": "SafeStart has a separate guide for each of these. Pick your device on the home screen.",
      "mins": 2,
      "redundantWith": [
       "device-controls"
@@ -335,7 +335,7 @@
    ],
    "talkAboutIt": [
     "Ask them to show you their favorite game and play a round with them.",
-    "Agree what they’ll do if someone asks them to move the chat to Discord or Snapchat — that’s a common grooming step.",
+    "Agree what they’ll do if someone asks them to move the chat to Discord or Snapchat. That’s a common grooming step.",
     "Make sure they know nobody legitimate ever needs their password or a free-Robux code."
    ],
    "links": [
@@ -436,7 +436,7 @@
      "path": "Family Pairing → Content preferences",
      "do": [
       "Turn Restricted Mode on.",
-      "Open Filter video keywords and add words relevant to your family — diet and body-image terms are a common starting point."
+      "Open Filter video keywords and add words relevant to your family. Diet and body-image terms are a common starting point."
      ],
      "mins": 2
     },
@@ -462,7 +462,7 @@
      "do": [
       "Show them the 'not interested' option on a long-press of any video.",
       "Show them Settings and privacy → Content preferences → Refresh your For You feed.",
-      "Agree that if the feed gets strange, they tell you and you fix it together — no blame."
+      "Agree that if the feed gets strange, they tell you and you fix it together, with no blame."
      ],
      "ages": [
       "13-15",
@@ -524,7 +524,7 @@
     "Location and school details leaking through tags and photos"
    ],
    "beforeYouStart": [
-    "Check the birthday on their account first. Teen Account protections only apply if Instagram knows they’re under 18 — a wrong birthday quietly disables all of it.",
+    "Check the birthday on their account first. Teen Account protections only apply if Instagram knows they’re under 18. A wrong birthday quietly disables all of it.",
     "You’ll both need an Instagram account for supervision."
    ],
    "steps": [
@@ -549,7 +549,7 @@
       "On your account, open Settings and privacy, then Supervision.",
       "Tap Set up supervision and send the invitation to your teen.",
       "Your teen opens the invitation and accepts it.",
-      "Either of you can start the invite — sometimes it’s easier if they invite you."
+      "Either of you can start the invite, and sometimes it’s easier if they invite you."
      ],
      "note": "You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages.",
      "mins": 1
@@ -629,7 +629,7 @@
    ],
    "talkAboutIt": [
     "Ask who they message most. You’ll learn more from that than from any dashboard.",
-    "Agree what happens if an adult they don’t know messages them — screenshot, don’t reply, show you.",
+    "Agree what happens if an adult they don’t know messages them: screenshot, don’t reply, show you.",
     "Talk about how edited and filtered the feed is, without lecturing."
    ],
    "links": [
@@ -744,7 +744,7 @@
     {
      "id": "screenshots",
      "title": "Talk about the disappearing part",
-     "why": "Children often believe a snap is gone forever. It isn’t — anyone can screenshot or photograph the screen with another phone.",
+     "why": "Children often believe a snap is gone forever. It isn’t. Anyone can screenshot or photograph the screen with another phone.",
      "do": [
       "Explain that anything sent can be saved by the person receiving it.",
       "Agree that if they’re ever sent something upsetting, they screenshot it before it disappears and show you."
@@ -808,7 +808,7 @@
    ],
    "beforeYouStart": [
     "Discord now applies teen-appropriate settings by default to accounts registered as under 18, but you should still check them.",
-    "Family Center linking is done from your teen’s side — they generate a QR code that you scan with the Discord mobile app."
+    "Family Center linking is done from your teen’s side. They generate a QR code that you scan with the Discord mobile app."
    ],
    "steps": [
     {
@@ -823,7 +823,7 @@
       "Scan that code with the Discord mobile app on your phone.",
       "Your teen accepts the connection."
      ],
-     "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days — plus a weekly email. You won’t see message content.",
+     "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days, plus a weekly email. You won’t see message content.",
      "mins": 2
     },
     {
@@ -1036,7 +1036,7 @@
    "talkAboutIt": [
     "Watch a couple of their favorite creators with them and ask what they like.",
     "Talk about sponsorship and why creators recommend things.",
-    "Agree what they do if a video makes them uncomfortable — close it and tell you, not keep watching."
+    "Agree what they do if a video makes them uncomfortable: close it and tell you, rather than keep watching."
    ],
    "links": [
     {
@@ -1080,7 +1080,7 @@
     "Battle pass mechanics that reward daily play and make missing a day feel costly"
    ],
    "beforeYouStart": [
-    "Choose a 6-digit PIN before you start — it’s shared with the Epic Games Store.",
+    "Choose a 6-digit PIN before you start. It’s shared with the Epic Games Store.",
     "You’ll need to set controls in Fortnite and again on the console or device. Neither covers the other."
    ],
    "steps": [
@@ -1173,7 +1173,7 @@
       "Switch: set restriction level and play-time limits in the Parental Controls app.",
       "iPhone/iPad: use Screen Time. Android: use Family Link."
      ],
-     "note": "SafeStart has a guide for each console — pick your device on the home screen.",
+     "note": "SafeStart has a guide for each console. Pick your device on the home screen.",
      "mins": 2,
      "redundantWith": [
       "device-controls"
@@ -1288,7 +1288,7 @@
       "11-12"
      ],
      "confidence": "medium",
-     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters — check the official Minecraft help link below.",
+     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters. Check the official Minecraft help link below.",
      "mins": 2
     },
     {
@@ -1639,7 +1639,7 @@
    ],
    "talkAboutIt": [
     "If the iPad is shared, agree who uses it when and for what.",
-    "Keep it out of the bedroom overnight if you can — it does more than any setting.",
+    "Keep it out of the bedroom overnight if you can. It does more than any setting.",
     "Tell them what you’ve set and why."
    ],
    "links": [
@@ -1779,7 +1779,7 @@
    ],
    "talkAboutIt": [
     "Show them the Family Link app so it isn’t a mystery.",
-    "Agree what happens when they want a new app — a request, not a fight.",
+    "Agree what happens when they want a new app, so it becomes a request rather than a fight.",
     "Talk about sideloading if they’re technical enough to know the term."
    ],
    "links": [
@@ -2148,7 +2148,7 @@
    ],
    "beforeYouStart": [
     "You need a PlayStation Network account in your own name to act as Family Manager.",
-    "Create a child account for your child rather than letting them use an adult one — this is the step that makes everything else possible."
+    "Create a child account for your child rather than letting them use an adult one. This is the step that makes everything else possible."
    ],
    "steps": [
     {
@@ -2408,7 +2408,7 @@
     "Sharing screenshots and videos to social media"
    ],
    "beforeYouStart": [
-    "Download the Nintendo Switch Parental Controls app on your phone — it’s separate from the main Nintendo app.",
+    "Download the Nintendo Switch Parental Controls app on your phone. It’s separate from the main Nintendo app.",
     "You’ll need the console in front of you once, to link it with a registration code."
    ],
    "steps": [
@@ -2453,7 +2453,7 @@
      "do": [
       "Turn off Posting to Social Media.",
       "Restrict Communicating with Others.",
-      "Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls — check that separately."
+      "Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately."
      ],
      "ages": [
       "7-11",
