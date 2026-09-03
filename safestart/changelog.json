@@ -4,6 +4,18 @@
  "entries": [
   {
    "date": "2026-09-03",
+   "kind": "correction",
+   "title": "Quick setup was hiding the reason for every single step",
+   "body": "A reader said she did not understand why we suggested pausing YouTube history, since history is how you see what your child has been watching. She found the answer by asking the chat, which told her it stops the recommendations chasing whatever they clicked once. Looking into it, the reason was never on her screen at all: Quick setup dropped the why from every step, and Quick setup is the default. A parent told to tap something with no reason given is the one most likely to switch it back a week later. The reason is now one closed line on every step, so quick still means quick, and it opens with a tap. Learn as we go is unchanged."
+  },
+  {
+   "date": "2026-09-03",
+   "kind": "site",
+   "title": "Twenty-four steps now say what the setting costs you",
+   "body": "Having a reason on the page is only useful if the reason is honest about the trade. So we went back through every step where the setting either looks wrong or takes something away, and said so plainly: Ghost Mode hides your child from you as well as from strangers, turning Roblox chat off can mean playing alone, going private on TikTok costs the views that are the point of the app for a lot of teenagers, Ask to Buy pings you for free apps too, automatic web filtering will block the odd homework page, and a Minecraft Realm is a paid subscription, which is the real reason families end up on public servers instead."
+  },
+  {
+   "date": "2026-09-03",
    "kind": "site",
    "title": "Where a platform runs a version for younger children, we now say so",
    "body": "Eleven of the guides now name the version built for under-13s and link the official page for it: YouTube Kids, Roblox Kids and Roblox Select, Fortnite's Cabined Accounts, Microsoft child accounts for Minecraft, WhatsApp's new parent-managed accounts, kids profiles on Netflix, Disney+ and Prime Video, Amazon Kids on Fire tablets, and Google Kids Space. Each one also carries the catch, because most of them have one. Netflix quietly switches off the kid-safe features if you raise the maturity rating. Prime Video downloads from an adult profile are still reachable from the Kids profile. YouTube Kids has search on by default. Where a platform has nothing for under-13s, which is Discord, Instagram, Snapchat and Twitch, the guide says that plainly instead of implying a setting exists."

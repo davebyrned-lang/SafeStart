@@ -42,14 +42,14 @@
    "@type": "HowToStep",
    "position": 2,
    "name": "Set the content level",
-   "text": "This decides which slice of YouTube they can reach. It’s the main control on a supervised account. Open Family Link and select your child. Go to Controls, Content restrictions, then YouTube. Pick the content setting for their age.",
+   "text": "This decides which slice of YouTube they can reach, and it is the main control on a supervised account. Pitch it tighter than they will accept and they watch on a friend's phone instead, where you can see nothing at all, so aim for the level they will actually live with. Open Family Link and select your child. Go to Controls, Content restrictions, then YouTube. Pick the content setting for their age.",
    "url": "https://safestart.trust-raise.com/youtube/#step-2"
   },
   {
    "@type": "HowToStep",
    "position": 3,
    "name": "Turn off autoplay and pause history",
-   "text": "Autoplay is what turns a ten-minute video into two hours. Pausing history slows down the recommendation loop. Turn Autoplay off. Pause watch history and search history. Clear the existing history if the recommendations have already drifted.",
+   "text": "Autoplay is what turns a ten-minute video into two hours. Pausing history is the one that looks wrong, because history is how you see what they have been watching. That is the trade: you give up your own record, and in exchange the recommendations stop chasing whatever they clicked once. If the record matters more to you, leave history on and turn off autoplay only. Turn Autoplay off. Pause watch history and search history. Clear the existing history if the recommendations have already drifted.",
    "url": "https://safestart.trust-raise.com/youtube/#step-3"
   },
   {
@@ -697,6 +697,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1089,8 +1108,8 @@ button { font: inherit; cursor: pointer; }
 </ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Choose the right version of YouTube</h3></span></div><div class="step-body"><p class="why">Getting this right matters more than any individual toggle.</p><ol class="do-list"><li>Under about 9: use the YouTube Kids app instead.</li><li>Roughly 9 to 12: use a supervised YouTube account via Family Link.</li><li>13 and over: a normal account, with the settings below applied.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>YouTube Kids, or a supervised account on Explore</td></tr><tr><td>7–11</td><td>YouTube Kids, or a supervised account on Explore</td></tr><tr><td>11–12</td><td>Supervised account</td></tr><tr><td>13–15</td><td>Supervised account or normal account with limits</td></tr><tr><td>16–17</td><td>Normal account, with a conversation about the feed</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the content level</h3></span></div><div class="step-body"><p class="why">This decides which slice of YouTube they can reach. It’s the main control on a supervised account.</p><p class="path"><code>Family Link app → [your child] → Controls → Content restrictions → YouTube</code></p><ol class="do-list"><li>Open Family Link and select your child.</li><li>Go to Controls, Content restrictions, then YouTube.</li><li>Pick the content setting for their age.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Explore (suggested 9+)</td></tr><tr><td>7–11</td><td>Explore (suggested 9+)</td></tr><tr><td>11–12</td><td>Explore (suggested 9+)</td></tr><tr><td>13–15</td><td>Explore more (suggested 13+)</td></tr><tr><td>16–17</td><td>Most of YouTube</td></tr></tbody></table></div><p class="note">The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off autoplay and pause history</h3></span></div><div class="step-body"><p class="why">Autoplay is what turns a ten-minute video into two hours. Pausing history slows down the recommendation loop.</p><p class="path"><code>YouTube app → Profile → Settings</code></p><ol class="do-list"><li>Turn Autoplay off.</li><li>Pause watch history and search history.</li><li>Clear the existing history if the recommendations have already drifted.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the content level</h3></span></div><div class="step-body"><p class="why">This decides which slice of YouTube they can reach, and it is the main control on a supervised account. Pitch it tighter than they will accept and they watch on a friend&#39;s phone instead, where you can see nothing at all, so aim for the level they will actually live with.</p><p class="path"><code>Family Link app → [your child] → Controls → Content restrictions → YouTube</code></p><ol class="do-list"><li>Open Family Link and select your child.</li><li>Go to Controls, Content restrictions, then YouTube.</li><li>Pick the content setting for their age.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Explore (suggested 9+)</td></tr><tr><td>7–11</td><td>Explore (suggested 9+)</td></tr><tr><td>11–12</td><td>Explore (suggested 9+)</td></tr><tr><td>13–15</td><td>Explore more (suggested 13+)</td></tr><tr><td>16–17</td><td>Most of YouTube</td></tr></tbody></table></div><p class="note">The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off autoplay and pause history</h3></span></div><div class="step-body"><p class="why">Autoplay is what turns a ten-minute video into two hours. Pausing history is the one that looks wrong, because history is how you see what they have been watching. That is the trade: you give up your own record, and in exchange the recommendations stop chasing whatever they clicked once. If the record matters more to you, leave history on and turn off autoplay only.</p><p class="path"><code>YouTube app → Profile → Settings</code></p><ol class="do-list"><li>Turn Autoplay off.</li><li>Pause watch history and search history.</li><li>Clear the existing history if the recommendations have already drifted.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Block channels you don’t want</h3></span></div><div class="step-body"><p class="why">Faster than trying to filter by topic, and it sticks.</p><ol class="do-list"><li>On a video from a channel you want gone, open the menu and choose Block this channel.</li><li>You can also manage blocked channels from the parent settings.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a time limit at the device level</h3></span></div><div class="step-body"><p class="why">YouTube doesn’t have its own strong time limit, so use Screen Time or Family Link.</p><ol class="do-list"><li>iPhone/iPad: Settings → Screen Time → App Limits.</li><li>Android/Chromebook: Family Link → Controls → Daily limit.</li></ol></div></li>
 </ol>
@@ -2311,7 +2330,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2619,11 +2639,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2715,6 +2732,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

@@ -49,7 +49,7 @@
    "@type": "HowToStep",
    "position": 3,
    "name": "Tighten the four privacy settings",
-   "text": "The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group. Open Settings, then Privacy. Set Last seen and online, Profile photo, About, and Status one at a time. Choose My contacts, or My contacts except, rather than Everyone.",
+   "text": "The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group. One thing to know before you change Last seen: WhatsApp applies it both ways, so once they stop sharing theirs, they stop seeing everyone else's too. Open Settings, then Privacy. Set Last seen and online, Profile photo, About, and Status one at a time. Choose My contacts, or My contacts except, rather than Everyone.",
    "url": "https://safestart.trust-raise.com/whatsapp/#step-3"
   },
   {
@@ -718,6 +718,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1110,7 +1129,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>If they are under 13, use a parent-managed account</h3></span></div><div class="step-body"><p class="why">This is new, and it is the only real supervision WhatsApp offers. Only saved contacts can message them, messages from unknown numbers go to you for approval, and location sharing and disappearing messages are removed entirely.</p><p class="path"><code>Child&#39;s phone: install and register → Parent&#39;s phone: scan QR → create parent PIN</code></p><ol class="do-list"><li>Install WhatsApp on your child&#39;s phone and register their number, entering their real birthday.</li><li>On your own phone, scan the QR code shown on theirs.</li><li>Create a 6-digit parent PIN. Do not share it with your child.</li><li>Enter that PIN on your child&#39;s device to finish.</li></ol><p class="note">Still rolling out by country, so it may not appear yet. It also cannot be applied to an account that already exists, and it switches itself off on their 13th birthday.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Check the minimum age, and what most guides get wrong</h3></span></div><div class="step-body"><p class="why">WhatsApp&#39;s minimum is 13, including in the EU and UK. It was raised to 16 in Europe in 2018 and has since gone back to 13, so a lot of parenting advice you&#39;ll find is out of date.</p><ol class="do-list"><li>If your child is under 13, the parent-managed account above is the supported route.</li><li>If they are 13 or over, there is no supervision available and the steps below are the whole toolkit.</li></ol><p class="note">From 13 there is no activity reporting, no contact approval and no way for you to see anything. Personal chats are end-to-end encrypted, so WhatsApp cannot read them either.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Tighten the four privacy settings</h3></span></div><div class="step-body"><p class="why">The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group.</p><p class="path"><code>Settings → Privacy</code></p><ol class="do-list"><li>Open Settings, then Privacy.</li><li>Set Last seen and online, Profile photo, About, and Status one at a time.</li><li>Choose My contacts, or My contacts except, rather than Everyone.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>My contacts for all four</td></tr><tr><td>7–11</td><td>My contacts for all four</td></tr><tr><td>11–12</td><td>My contacts for all four</td></tr><tr><td>13–15</td><td>My contacts for all four</td></tr><tr><td>16–17</td><td>Agree it together, My contacts is still the sensible floor</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Tighten the four privacy settings</h3></span></div><div class="step-body"><p class="why">The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group. One thing to know before you change Last seen: WhatsApp applies it both ways, so once they stop sharing theirs, they stop seeing everyone else&#39;s too.</p><p class="path"><code>Settings → Privacy</code></p><ol class="do-list"><li>Open Settings, then Privacy.</li><li>Set Last seen and online, Profile photo, About, and Status one at a time.</li><li>Choose My contacts, or My contacts except, rather than Everyone.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>My contacts for all four</td></tr><tr><td>7–11</td><td>My contacts for all four</td></tr><tr><td>11–12</td><td>My contacts for all four</td></tr><tr><td>13–15</td><td>My contacts for all four</td></tr><tr><td>16–17</td><td>Agree it together, My contacts is still the sensible floor</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Restrict who can add them to groups</h3></span></div><div class="step-body"><p class="why">Group invites are the main way strangers reach a child on WhatsApp.</p><p class="path"><code>Settings → Privacy → Groups</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Groups.</li><li>Set it to My contacts, or My contacts except.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>My contacts</td></tr><tr><td>7–11</td><td>My contacts</td></tr><tr><td>11–12</td><td>My contacts</td></tr><tr><td>13–15</td><td>My contacts</td></tr><tr><td>16–17</td><td>My contacts</td></tr></tbody></table></div><p class="note">Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Silence unknown callers</h3></span></div><div class="step-body"><p class="why">Cuts out cold calls from numbers they don&#39;t know, which is a common scam and contact route.</p><p class="path"><code>Settings → Privacy → Calls → Silence unknown callers</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Calls.</li><li>Turn on Silence unknown callers.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Check live location sharing</h3></span></div><div class="step-body"><p class="why">Live location can be shared into a group, which shares it with every member including people your child has never met.</p><p class="path"><code>Settings → Privacy → Live location</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Live location.</li><li>If anything is listed, tap Stop sharing.</li><li>Agree that live location is for family only.</li></ol></div></li>
@@ -2337,7 +2356,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2645,11 +2665,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2741,6 +2758,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

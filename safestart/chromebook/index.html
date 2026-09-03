@@ -690,6 +690,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -2295,7 +2314,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2603,11 +2623,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2699,6 +2716,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

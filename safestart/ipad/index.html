@@ -63,14 +63,14 @@
    "@type": "HowToStep",
    "position": 5,
    "name": "Set content ratings and web filtering",
-   "text": "Safari is the widest open door on the device. Set age ratings for apps, films, TV and music. Open Web Content and pick the level below. For younger children, Allowed Websites Only is much stronger than the adult filter.",
+   "text": "Safari is the widest open door on the device. Automatic filtering will also block the odd school or research page, so plan on adding a few addresses by hand. That is the filter working, not failing. Set age ratings for apps, films, TV and music. Open Web Content and pick the level below. For younger children, Allowed Websites Only is much stronger than the adult filter.",
    "url": "https://safestart.trust-raise.com/ipad/#step-5"
   },
   {
    "@type": "HowToStep",
    "position": 6,
    "name": "Set Downtime and App Limits",
-   "text": "iPads get used for hours without anyone noticing. Limits create a natural stop. Set Downtime to cover the evening and overnight. Add App Limits for video and games. Use Always Allowed for anything that should still work, like messages to you.",
+   "text": "iPads get used for hours without anyone noticing, and limits create a natural stop. During downtime only phone calls and the apps you put on the Always Allowed list stay available, so set that list first. On an iPad it usually wants to include whatever they use for homework. Set Downtime to cover the evening and overnight. Add App Limits for video and games. Use Always Allowed for anything that should still work, like messages to you.",
    "url": "https://safestart.trust-raise.com/ipad/#step-6"
   }
  ],
@@ -704,6 +704,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1092,8 +1111,8 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set a Screen Time passcode</h3></span></div><div class="step-body"><p class="why">Otherwise every setting below can be switched off from the iPad itself.</p><p class="path"><code>Settings → Screen Time → [your child] → Change Screen Time Passcode</code></p><ol class="do-list"><li>Open Settings, then Screen Time.</li><li>Set a Screen Time passcode that differs from the unlock code.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Content &amp; Privacy Restrictions</h3></span></div><div class="step-body"><p class="why">The master switch for content ratings, web filtering and purchases.</p><p class="path"><code>Settings → Screen Time → [your child] → Content &amp; Privacy Restrictions</code></p><ol class="do-list"><li>Open Content &amp; Privacy Restrictions and enter your passcode.</li><li>Toggle it on.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Require approval for downloads and purchases</h3></span></div><div class="step-body"><p class="why">iPads are where &#39;free&#39; games with aggressive in-app purchases tend to land.</p><p class="path"><code>Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases</code></p><ol class="do-list"><li>Set In-app Purchases to Don’t Allow.</li><li>Set Installing Apps to match the ages below.</li><li>Turn on Ask to Buy so requests come to your phone.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>7–11</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>11–12</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>13–15</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>16–17</td><td>Installing apps: Allow. In-app purchases: Ask to Buy.</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set content ratings and web filtering</h3></span></div><div class="step-body"><p class="why">Safari is the widest open door on the device.</p><p class="path"><code>Content &amp; Privacy Restrictions → App Store, Media, Web &amp; Games</code></p><ol class="do-list"><li>Set age ratings for apps, films, TV and music.</li><li>Open Web Content and pick the level below.</li><li>For younger children, Allowed Websites Only is much stronger than the adult filter.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>7–11</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>11–12</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>13–15</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>16–17</td><td>Limit Adult Websites</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set Downtime and App Limits</h3></span></div><div class="step-body"><p class="why">iPads get used for hours without anyone noticing. Limits create a natural stop.</p><p class="path"><code>Settings → Screen Time → [your child] → Downtime / App Limits</code></p><ol class="do-list"><li>Set Downtime to cover the evening and overnight.</li><li>Add App Limits for video and games.</li><li>Use Always Allowed for anything that should still work, like messages to you.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Downtime from 7pm, 45 min on games and video</td></tr><tr><td>7–11</td><td>Downtime from 7pm, 45 min on games and video</td></tr><tr><td>11–12</td><td>Downtime from 8:30pm</td></tr><tr><td>13–15</td><td>Downtime from 9:30pm on school nights</td></tr><tr><td>16–17</td><td>Agree a window together</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set content ratings and web filtering</h3></span></div><div class="step-body"><p class="why">Safari is the widest open door on the device. Automatic filtering will also block the odd school or research page, so plan on adding a few addresses by hand. That is the filter working, not failing.</p><p class="path"><code>Content &amp; Privacy Restrictions → App Store, Media, Web &amp; Games</code></p><ol class="do-list"><li>Set age ratings for apps, films, TV and music.</li><li>Open Web Content and pick the level below.</li><li>For younger children, Allowed Websites Only is much stronger than the adult filter.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>7–11</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>11–12</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>13–15</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>16–17</td><td>Limit Adult Websites</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set Downtime and App Limits</h3></span></div><div class="step-body"><p class="why">iPads get used for hours without anyone noticing, and limits create a natural stop. During downtime only phone calls and the apps you put on the Always Allowed list stay available, so set that list first. On an iPad it usually wants to include whatever they use for homework.</p><p class="path"><code>Settings → Screen Time → [your child] → Downtime / App Limits</code></p><ol class="do-list"><li>Set Downtime to cover the evening and overnight.</li><li>Add App Limits for video and games.</li><li>Use Always Allowed for anything that should still work, like messages to you.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Downtime from 7pm, 45 min on games and video</td></tr><tr><td>7–11</td><td>Downtime from 7pm, 45 min on games and video</td></tr><tr><td>11–12</td><td>Downtime from 8:30pm</td></tr><tr><td>13–15</td><td>Downtime from 9:30pm on school nights</td></tr><tr><td>16–17</td><td>Agree a window together</td></tr></tbody></table></div></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
 <li class="check-item">iPad signed in to the child’s Apple Account</li>
@@ -2312,7 +2331,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2620,11 +2640,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2716,6 +2733,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

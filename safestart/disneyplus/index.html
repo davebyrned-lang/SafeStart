@@ -42,7 +42,7 @@
    "@type": "HowToStep",
    "position": 2,
    "name": "Set the content rating for an older child",
-   "text": "For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode cannot be tuned. Go to your profiles, choose Edit Profiles, and select the profile. Under Parental Controls choose Content rating. Enter your password, pick the rating, and save.",
+   "text": "For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode has nothing to adjust. This is where families tend to give up: Junior Mode feels babyish to a 10 or 11 year old, so it gets switched off and nothing takes its place. A rating on an ordinary profile is the middle option that actually survives. Go to your profiles, choose Edit Profiles, and select the profile. Under Parental Controls choose Content rating. Enter your password, pick the rating, and save.",
    "url": "https://safestart.trust-raise.com/disneyplus/#step-2"
   },
   {
@@ -711,6 +711,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1102,7 +1121,7 @@ button { font: inherit; cursor: pointer; }
 </ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Turn on Junior Mode for younger children</h3></span></div><div class="step-body"><p class="why">This is the kids profile, renamed. If you go looking for Kids Profile in the app you won&#39;t find it.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Junior Mode</code></p><ol class="do-list"><li>Go to your profiles and choose Add Profile, or Edit Profiles for one that exists.</li><li>Pick an avatar and name it.</li><li>Under Parental Controls, switch Junior Mode on.</li><li>Save.</li></ol><p class="note">Junior Mode profiles see no ads. The main profile cannot be put into Junior Mode, and turning Junior Mode off needs your password.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the content rating for an older child</h3></span></div><div class="step-body"><p class="why">For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode cannot be tuned.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Content rating</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select the profile.</li><li>Under Parental Controls choose Content rating.</li><li>Enter your password, pick the rating, and save.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>11–12</td><td>TV-PG / PG</td></tr><tr><td>13–15</td><td>TV-14 / PG-13</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div><p class="note">Rating names vary by country. These are the US names; in the UK and Ireland you&#39;ll see BBFC ratings in the same place.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the content rating for an older child</h3></span></div><div class="step-body"><p class="why">For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode has nothing to adjust. This is where families tend to give up: Junior Mode feels babyish to a 10 or 11 year old, so it gets switched off and nothing takes its place. A rating on an ordinary profile is the middle option that actually survives.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Content rating</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select the profile.</li><li>Under Parental Controls choose Content rating.</li><li>Enter your password, pick the rating, and save.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>11–12</td><td>TV-PG / PG</td></tr><tr><td>13–15</td><td>TV-14 / PG-13</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div><p class="note">Rating names vary by country. These are the US names; in the UK and Ireland you&#39;ll see BBFC ratings in the same place.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off unrated live content</h3></span></div><div class="step-body"><p class="why">This is the one that catches people out. It is on by default, and Disney&#39;s own warning is blunt: live content and live ads may feature adult themes, products and services. Setting a child&#39;s profile to a low rating and stopping there leaves live sports, live news and their ad breaks wide open.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → allow titles without ratings</code></p><ol class="do-list"><li>On the same Parental Controls screen for the profile, find the setting allowing titles without ratings, such as live sports and news.</li><li>Turn it off.</li></ol><p class="result">Unrated live content and its ads no longer appear on that profile.</p><p class="note">Turning it back on later needs your password. Turning it off does not.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Put a PIN on your own profile</h3></span></div><div class="step-body"><p class="why">The main profile defaults to the highest rating, so without a PIN your child switches into it in two taps.</p><p class="path"><code>Edit Profiles → [your profile] → Parental Controls → Profile PIN</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select your own profile.</li><li>Under Parental Controls choose Profile PIN.</li><li>Enter your password, set a 4-digit PIN, and save.</li></ol><p class="result">Your profile can no longer be opened without the PIN.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Stop new profiles being created</h3></span></div><div class="step-body"><p class="why">Otherwise a child simply makes themselves a fresh unrestricted one.</p><p class="path"><code>Account → Settings → Restrict profile creation</code></p><ol class="do-list"><li>Open Account.</li><li>Under Settings, turn Restrict profile creation on.</li><li>Enter your password and continue.</li></ol></div></li>
@@ -2325,7 +2344,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2633,11 +2653,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2729,6 +2746,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

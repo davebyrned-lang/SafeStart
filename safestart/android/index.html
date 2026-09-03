@@ -56,7 +56,7 @@
    "@type": "HowToStep",
    "position": 4,
    "name": "Set daily limits and bedtime",
-   "text": "Bedtime is the setting that changes the most in practice. Set daily limits, which can differ by day of the week. Set a bedtime schedule that locks the device. You can grant bonus time from your phone when it’s genuinely warranted.",
+   "text": "Bedtime is the setting that changes the most in practice. Family Link locks the device rather than nagging, so agree how they reach you after it kicks in before the first night rather than during it. Set daily limits, which can differ by day of the week. Set a bedtime schedule that locks the device. You can grant bonus time from your phone when it’s genuinely warranted.",
    "url": "https://safestart.trust-raise.com/android/#step-4"
   },
   {
@@ -704,6 +704,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1097,7 +1116,7 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Link supervision</h3></span></div><div class="step-body"><p class="why">It’s the foundation. Nothing else in this guide works without it.</p><p class="path"><code>Family Link app, or familylink.google.com</code></p><ol class="do-list"><li>Install the Family Link app on your phone.</li><li>Create a Google Account for your child if they’re under 13, or add supervision to their existing account.</li><li>Follow the prompts on their device to link it. You’ll need the device in your hands.</li></ol><p class="note">Family Link can supervise Android devices and Chromebooks. It cannot supervise iPhones or iPads.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Control app downloads and approvals</h3></span></div><div class="step-body"><p class="why">The quickest way for controls to become irrelevant is a new app you didn’t know about.</p><p class="path"><code>Family Link → [your child] → Controls → Apps</code></p><ol class="do-list"><li>Turn on approval for all Play Store downloads, including free apps.</li><li>Set Play Store content ratings for apps, games, films and TV.</li><li>Review what’s already installed and block anything that shouldn’t be there.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Approval required for everything, apps rated PEGI 7 / ESRB E</td></tr><tr><td>7–11</td><td>Approval required for everything, apps rated PEGI 7 / ESRB E</td></tr><tr><td>11–12</td><td>Approval required for everything, apps rated PEGI 12 / ESRB E10+</td></tr><tr><td>13–15</td><td>Approval required for paid apps, ratings PEGI 12 / ESRB T</td></tr><tr><td>16–17</td><td>Notifications rather than approvals</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Filter web and search</h3></span></div><div class="step-body"><p class="why">Chrome is the widest opening on the device.</p><p class="path"><code>Family Link → [your child] → Controls → Content restrictions → Google Chrome / Google Search</code></p><ol class="do-list"><li>Set Chrome to Try to block explicit sites, or Only allow approved sites for younger children.</li><li>Turn SafeSearch on and lock it.</li><li>Add specific sites to allow or block as needed.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Only allow approved sites</td></tr><tr><td>7–11</td><td>Only allow approved sites</td></tr><tr><td>11–12</td><td>Try to block explicit sites</td></tr><tr><td>13–15</td><td>Try to block explicit sites</td></tr><tr><td>16–17</td><td>Try to block explicit sites</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set daily limits and bedtime</h3></span></div><div class="step-body"><p class="why">Bedtime is the setting that changes the most in practice.</p><p class="path"><code>Family Link → [your child] → Controls → Daily limit / Bedtime</code></p><ol class="do-list"><li>Set daily limits, which can differ by day of the week.</li><li>Set a bedtime schedule that locks the device.</li><li>You can grant bonus time from your phone when it’s genuinely warranted.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set daily limits and bedtime</h3></span></div><div class="step-body"><p class="why">Bedtime is the setting that changes the most in practice. Family Link locks the device rather than nagging, so agree how they reach you after it kicks in before the first night rather than during it.</p><p class="path"><code>Family Link → [your child] → Controls → Daily limit / Bedtime</code></p><ol class="do-list"><li>Set daily limits, which can differ by day of the week.</li><li>Set a bedtime schedule that locks the device.</li><li>You can grant bonus time from your phone when it’s genuinely warranted.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Decide on location sharing</h3></span></div><div class="step-body"><p class="why">Useful for younger children. For teenagers, worth agreeing rather than imposing.</p><p class="path"><code>Family Link → [your child] → Location</code></p><ol class="do-list"><li>Turn on location if you want it, and tell your child it’s on.</li><li>For older teens, discuss it first — covert tracking damages trust more than it protects.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set YouTube separately</h3></span></div><div class="step-body"><p class="why">YouTube has its own content levels that sit inside Family Link.</p><p class="path"><code>Family Link → [your child] → Controls → Content restrictions → YouTube</code></p><ol class="do-list"><li>Choose the content setting: Explore (9+), Explore more (13+) or Most of YouTube.</li><li>Consider the YouTube Kids app instead for under-9s.</li></ol></div></li>
 </ol>
@@ -2320,7 +2339,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2628,11 +2648,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2724,6 +2741,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

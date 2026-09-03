@@ -300,13 +300,25 @@ function check(name, condition, detail) {
     check('summary shows the answers', (await page.locator('.ctl-summary').textContent()).includes('7–11'));
 
     console.log('\nhelp modes');
-    check('quick mode hides the why', (await page.locator('.why').count()) === 0);
+    // Quick setup used to drop the reason entirely. That is what sent a reader to
+    // the chat to ask why you would pause YouTube history. It is closed now, not gone.
+    check('quick mode keeps the reason, one tap away',
+      (await page.locator('.why-toggle').count()) > 0);
+    check('and it starts closed, so quick setup stays quick',
+      (await page.locator('.why-toggle[open]').count()) === 0);
+    const firstWhy = page.locator('.why-toggle').first();
+    await firstWhy.locator('summary').click();
+    await page.waitForTimeout(150);
+    check('tapping it opens the reason', await firstWhy.locator('.why').isVisible());
     await page.locator('.ctl-summary').click();
     await page.waitForSelector('.controls:not(.collapsed)');
     check('controls reopen on Change', (await page.locator('.ctl-label').count()) > 0);
     await page.locator('.chip', { hasText: 'Learn as we go' }).first().click();
     await page.waitForTimeout(150);
-    check('learn mode shows the why', (await page.locator('.why').count()) > 0);
+    check('learn mode shows the why with nothing to tap',
+      (await page.locator('p.why').count()) > 0 && (await page.locator('.why-toggle').count()) === 0);
+    check('and the reason names what the setting costs you',
+      (await page.locator('.step', { hasText: 'Content Maturity' }).locator('.why').textContent()).length > 60);
 
     console.log('\nprogress');
     await page.locator('.check-item').first().click();

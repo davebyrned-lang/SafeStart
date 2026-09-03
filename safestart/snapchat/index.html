@@ -49,7 +49,7 @@
    "@type": "HowToStep",
    "position": 3,
    "name": "Turn on Ghost Mode",
-   "text": "Snap Map shows live location to everyone on their friends list. For most children this is the single most important setting on Snapchat. From the camera screen, tap the location pin at the bottom left to open the Map. Tap the gear icon in the top right. Turn on Ghost Mode.",
+   "text": "Snap Map shows live location to everyone on their friends list, which for most children makes this the single most important setting on Snapchat. One thing to expect: Ghost Mode hides them from everyone on that list, and if you are on it, that includes you. From the camera screen, tap the location pin at the bottom left to open the Map. Tap the gear icon in the top right. Turn on Ghost Mode.",
    "url": "https://safestart.trust-raise.com/snapchat/#step-3"
   },
   {
@@ -704,6 +704,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1094,7 +1113,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Add each other as friends</h3></span></div><div class="step-body"><p class="why">Family Center only works between accounts that are already friends.</p><ol class="do-list"><li>On your account, tap Add Friends and search your child’s username.</li><li>Have them accept.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set up Family Center</h3></span></div><div class="step-body"><p class="why">It shows you their contacts from the last week and lets you report accounts directly to Snapchat.</p><p class="path"><code>Profile → ⚙️ Settings → Privacy Control → Family Center</code></p><ol class="do-list"><li>Open your profile, tap the gear icon, then Privacy Control, then Family Center.</li><li>Select your child’s name and send the invitation.</li><li>On their phone, they tap View Invitation, then Accept.</li></ol><p class="result">You’ll see who they’ve messaged in the last seven days and their friends list.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Ghost Mode</h3></span></div><div class="step-body"><p class="why">Snap Map shows live location to everyone on their friends list. For most children this is the single most important setting on Snapchat.</p><p class="path"><code>Map screen → ⚙️ (top right) → Ghost Mode</code></p><ol class="do-list"><li>From the camera screen, tap the location pin at the bottom left to open the Map.</li><li>Tap the gear icon in the top right.</li><li>Turn on Ghost Mode.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Ghost Mode on</td></tr><tr><td>7–11</td><td>Ghost Mode on</td></tr><tr><td>11–12</td><td>Ghost Mode on</td></tr><tr><td>13–15</td><td>Ghost Mode on, or share with a small chosen list</td></tr><tr><td>16–17</td><td>Agree together — at minimum, not &#39;My Friends&#39;</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Ghost Mode</h3></span></div><div class="step-body"><p class="why">Snap Map shows live location to everyone on their friends list, which for most children makes this the single most important setting on Snapchat. One thing to expect: Ghost Mode hides them from everyone on that list, and if you are on it, that includes you.</p><p class="path"><code>Map screen → ⚙️ (top right) → Ghost Mode</code></p><ol class="do-list"><li>From the camera screen, tap the location pin at the bottom left to open the Map.</li><li>Tap the gear icon in the top right.</li><li>Turn on Ghost Mode.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Ghost Mode on</td></tr><tr><td>7–11</td><td>Ghost Mode on</td></tr><tr><td>11–12</td><td>Ghost Mode on</td></tr><tr><td>13–15</td><td>Ghost Mode on, or share with a small chosen list</td></tr><tr><td>16–17</td><td>Agree together — at minimum, not &#39;My Friends&#39;</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Limit who can contact them and see their story</h3></span></div><div class="step-body"><p class="why">Default settings are more open than most parents expect.</p><p class="path"><code>Profile → ⚙️ Settings → Privacy Controls</code></p><ol class="do-list"><li>Open Contact Me and set it to Friends.</li><li>Open View My Story and set it to My Friends, or a Custom list.</li><li>Turn off Quick Add so they stop being suggested to strangers.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends only, Quick Add off</td></tr><tr><td>16–17</td><td>Friends only, Quick Add off</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Restrict sensitive content in Stories and Spotlight</h3></span></div><div class="step-body"><p class="why">Discover and Spotlight are public feeds, and they’re where most of the age-inappropriate content sits.</p><p class="path"><code>Family Center → Content Controls</code></p><ol class="do-list"><li>In Family Center, open Content Controls.</li><li>Turn on the restriction for sensitive content.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Talk about the disappearing part</h3></span></div><div class="step-body"><p class="why">Children often believe a snap is gone forever. It isn’t. Anyone can screenshot or photograph the screen with another phone.</p><ol class="do-list"><li>Explain that anything sent can be saved by the person receiving it.</li><li>Agree that if they’re ever sent something upsetting, they screenshot it before it disappears and show you.</li></ol></div></li>
@@ -2317,7 +2336,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2625,11 +2645,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2721,6 +2738,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

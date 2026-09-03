@@ -42,7 +42,7 @@
    "@type": "HowToStep",
    "position": 2,
    "name": "Stop them going live",
-   "text": "This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat making requests, is the risk Twitch's own parent guidance circles hardest. It also stops Stories and video uploads. In the Family Center, open Streaming & Video Uploads. Turn off the ability to go live.",
+   "text": "This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat attached, is the thing worth stopping first. Wanting to stream is not automatically a no, though. It is a conversation about doing it somewhere other than a bedroom, with someone keeping an eye on the chat. In the Family Center, open Streaming & Video Uploads. Turn off the ability to go live.",
    "url": "https://safestart.trust-raise.com/twitch/#step-2"
   },
   {
@@ -718,6 +718,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1107,7 +1126,7 @@ button { font: inherit; cursor: pointer; }
 </ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Link your account to theirs in the Family Center</h3></span></div><div class="step-body"><p class="why">Everything else depends on this. Note that your teen starts it, not you, and either of you can unlink later.</p><p class="path"><code>Teen: Settings → Family Center → sharable link → Parent accepts</code></p><ol class="do-list"><li>Ask your child to open Settings, then Family Center, and send you the sharable link.</li><li>Open the link on your own Twitch account and accept.</li><li>You can link up to ten teen accounts. They can link to only one parent.</li></ol><p class="note">You&#39;ll be emailed if they unlink, but by then the controls are already off. Twitch says these controls are not mandatory for 13 to 17 year olds, so this is a weaker arrangement than Screen Time or Family Link.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Stop them going live</h3></span></div><div class="step-body"><p class="why">This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat making requests, is the risk Twitch&#39;s own parent guidance circles hardest. It also stops Stories and video uploads.</p><p class="path"><code>Family Center → Streaming &amp; Video Uploads</code></p><ol class="do-list"><li>In the Family Center, open Streaming &amp; Video Uploads.</li><li>Turn off the ability to go live.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Off</td></tr><tr><td>16–17</td><td>Off unless you&#39;ve talked it through properly</td></tr></tbody></table></div><p class="note">Twitch documents viewers daring minors into things on stream, and warns that a full name, school or town said out loud on a live stream cannot be taken back.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Stop them going live</h3></span></div><div class="step-body"><p class="why">This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat attached, is the thing worth stopping first. Wanting to stream is not automatically a no, though. It is a conversation about doing it somewhere other than a bedroom, with someone keeping an eye on the chat.</p><p class="path"><code>Family Center → Streaming &amp; Video Uploads</code></p><ol class="do-list"><li>In the Family Center, open Streaming &amp; Video Uploads.</li><li>Turn off the ability to go live.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Off</td></tr><tr><td>16–17</td><td>Off unless you&#39;ve talked it through properly</td></tr></tbody></table></div><p class="note">Twitch documents viewers daring minors into things on stream, and warns that a full name, school or town said out loud on a live stream cannot be taken back.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off direct messages</h3></span></div><div class="step-body"><p class="why">Whispers are Twitch&#39;s DMs and are the main private contact route from a stranger.</p><p class="path"><code>Family Center → Disable DMs</code></p><ol class="do-list"><li>In the Family Center, open Disable DMs and turn whispers off.</li><li>On your child&#39;s own account, also check Security and Privacy Settings for Block Whispers from Strangers.</li></ol><p class="note">Twitch&#39;s own help pages disagree about whether Block Whispers from Strangers is on by default, so check the toggle rather than assume. Also worth knowing: if your child whispers a stranger, that person can reply for the next 48 hours.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Restrict sensitive content from the parent side</h3></span></div><div class="step-body"><p class="why">Under-18 accounts hide some categories by default, but the teen can turn their own protections back off. Setting it from the Family Center is what puts it in your hands instead.</p><p class="path"><code>Family Center → Protect from Sensitive Content</code></p><ol class="do-list"><li>In the Family Center, open Protect from Sensitive Content.</li><li>Leave the restrictions on.</li></ol><p class="note">Be clear with yourself about what this does. Hiding a category removes it from browsing and recommendations. If your child follows a streamer, or goes straight to a channel page, they still see everything.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a daily time limit</h3></span></div><div class="step-body"><p class="why">Live content has no episode ending. The limit applies across every device they watch on.</p><p class="path"><code>Family Center → Enact Time Limits</code></p><ol class="do-list"><li>In the Family Center, open Enact Time Limits.</li><li>Set a daily limit.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Agree it together</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div></div></li>
@@ -2334,7 +2353,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2642,11 +2662,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2738,6 +2755,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

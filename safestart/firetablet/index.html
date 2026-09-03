@@ -56,7 +56,7 @@
    "@type": "HowToStep",
    "position": 4,
    "name": "Decide about the browser",
-   "text": "The browser reaches everything the app filters don't. For younger children this is the single biggest decision on the tablet. In the Parent Dashboard, open Settings, then Fire Tablet Web Browser. Turn the browser off entirely, or pick Hand-Selected Websites & Videos, or Filtered Websites & Videos. You can add your own allowed or blocked addresses either way.",
+   "text": "The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last. In the Parent Dashboard, open Settings, then Fire Tablet Web Browser. Turn the browser off entirely, or pick Hand-Selected Websites & Videos, or Filtered Websites & Videos. You can add your own allowed or blocked addresses either way.",
    "url": "https://safestart.trust-raise.com/firetablet/#step-4"
   },
   {
@@ -711,6 +711,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1104,7 +1123,7 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set a lock screen PIN first</h3></span></div><div class="step-body"><p class="why">This is the one that matters. Amazon&#39;s own setup guide says it plainly: the PIN is what stops your child getting out of their profile and into yours. Without it everything below is decoration.</p><p class="path"><code>Settings → Security &amp; Privacy → Lock Screen Passcode</code></p><ol class="do-list"><li>Open Settings on the tablet, then Security &amp; Privacy.</li><li>Set a lock screen PIN or password.</li><li>Use something your child hasn&#39;t seen you type, and not a birthday.</li></ol><p class="result">Switching out of a child profile now needs your PIN.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Create a child profile</h3></span></div><div class="step-body"><p class="why">The child profile is the sandbox. Age filters, time limits and the safer browser all live inside it and apply nowhere else.</p><ol class="do-list"><li>Open the Amazon Kids app, or follow the setup prompts on a new tablet.</li><li>Tap Add Child.</li><li>Enter their name, date of birth and pick an avatar. You can add up to four children.</li></ol><p class="note">Amazon Kids is free. Amazon Kids+ is a paid content library on top of it, and buying it adds no extra controls.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set the age filter</h3></span></div><div class="step-body"><p class="why">This is what decides which books, videos and apps your child sees at all.</p><p class="path"><code>parents.amazon.com → gear icon next to your child → Adjust Age Filter</code></p><ol class="do-list"><li>Go to parents.amazon.com or open the Parent Dashboard app.</li><li>Click the gear icon next to your child&#39;s name.</li><li>Choose Adjust Age Filter and set it to their actual age.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Their real age, not older</td></tr><tr><td>7–11</td><td>Their real age, not older</td></tr><tr><td>11–12</td><td>Their real age</td></tr><tr><td>13–15</td><td>Their real age</td></tr><tr><td>16–17</td><td>Their real age</td></tr></tbody></table></div><p class="note">Setting it above their age to &#39;give them more choice&#39; is the most common way this gets undone.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Decide about the browser</h3></span></div><div class="step-body"><p class="why">The browser reaches everything the app filters don&#39;t. For younger children this is the single biggest decision on the tablet.</p><p class="path"><code>Parent Dashboard → Settings → Fire Tablet Web Browser</code></p><ol class="do-list"><li>In the Parent Dashboard, open Settings, then Fire Tablet Web Browser.</li><li>Turn the browser off entirely, or pick Hand-Selected Websites &amp; Videos, or Filtered Websites &amp; Videos.</li><li>You can add your own allowed or blocked addresses either way.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Browser off, or Hand-Selected</td></tr><tr><td>7–11</td><td>Browser off, or Hand-Selected</td></tr><tr><td>11–12</td><td>Hand-Selected</td></tr><tr><td>13–15</td><td>Filtered</td></tr><tr><td>16–17</td><td>Filtered</td></tr></tbody></table></div><p class="note">Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Decide about the browser</h3></span></div><div class="step-body"><p class="why">The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last.</p><p class="path"><code>Parent Dashboard → Settings → Fire Tablet Web Browser</code></p><ol class="do-list"><li>In the Parent Dashboard, open Settings, then Fire Tablet Web Browser.</li><li>Turn the browser off entirely, or pick Hand-Selected Websites &amp; Videos, or Filtered Websites &amp; Videos.</li><li>You can add your own allowed or blocked addresses either way.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Browser off, or Hand-Selected</td></tr><tr><td>7–11</td><td>Browser off, or Hand-Selected</td></tr><tr><td>11–12</td><td>Hand-Selected</td></tr><tr><td>13–15</td><td>Filtered</td></tr><tr><td>16–17</td><td>Filtered</td></tr></tbody></table></div><p class="note">Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set time limits and a bedtime</h3></span></div><div class="step-body"><p class="why">A tablet has no natural stopping point, and a scheduled limit avoids the nightly negotiation.</p><p class="path"><code>Parent Dashboard → Settings → Daily Screen Time</code></p><ol class="do-list"><li>In the Parent Dashboard, open Settings, then Daily Screen Time.</li><li>Set a daily limit under Screen time, and a window under Schedule.</li><li>If you want reading before games, set goals under Learn First.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>45–60 minutes, off an hour before bed</td></tr><tr><td>7–11</td><td>45–60 minutes, off an hour before bed</td></tr><tr><td>11–12</td><td>60–90 minutes</td></tr><tr><td>13–15</td><td>Agree it together</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Make app downloads a request</h3></span></div><div class="step-body"><p class="why">Children ask rather than install, and you get a say without having to police it.</p><p class="path"><code>Parent Dashboard → Content → Store Access</code></p><ol class="do-list"><li>In the Parent Dashboard, open Content, then Store Access.</li><li>Turn on approval for third-party apps and games.</li><li>Leave in-app purchases requiring approval, which is the default.</li></ol><p class="note">You&#39;ll get an email or text when they ask, and the app only arrives once you approve.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Check what&#39;s outside the sandbox</h3></span></div><div class="step-body"><p class="why">Amazon Kids is strong inside the profile and absent outside it. Ten minutes on your own profile is worth more than another setting inside theirs.</p><ol class="do-list"><li>Open your own adult profile and look at what&#39;s installed and signed in.</li><li>Remove or sign out of anything you&#39;d rather they didn&#39;t find if the PIN ever slips.</li><li>Tell your child the PIN exists and why, rather than letting them discover it.</li></ol></div></li>
@@ -2328,7 +2347,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2636,11 +2656,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2732,6 +2749,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

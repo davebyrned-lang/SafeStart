@@ -275,7 +275,7 @@
     {
      "id": "chat",
      "title": "Control who can talk to them",
-     "why": "Most of the real risk on Roblox is contact, not content. This is the step worth getting right.",
+     "why": "Most of the real risk on Roblox is contact rather than content, so this is the step worth getting right. It is also the one children argue about most, because Roblox is something they play with friends and chat off can mean playing alone. Friends only is usually the setting that holds: it keeps the people they actually know and drops the rest.",
      "path": "Settings → Parental Controls → Settings You Manage → Communication",
      "do": [
       "Open the Communication section.",
@@ -454,7 +454,7 @@
     {
      "id": "private",
      "title": "Make the account private",
-     "why": "A public account means anyone can see their videos, comment, and work out where they go to school.",
+     "why": "A public account means anyone can see their videos, comment, and work out where they go to school from the background. Going private does cost them views, which for a lot of teenagers is the entire point of the app, so this one lands better agreed than announced.",
      "path": "Family Pairing → [your teen] → Privacy and safety",
      "do": [
       "Turn Private account on.",
@@ -657,7 +657,7 @@
     {
      "id": "private",
      "title": "Confirm the account is private and location is off",
-     "why": "A private account plus no location tags is most of the privacy job done.",
+     "why": "A private account plus no location tags is most of the privacy job done. Expect some pushback, because private costs them reach and followers, and that is a real loss to a teenager rather than an imagined one. Better to name it than to pretend the setting is free.",
      "path": "Settings and privacy → Account privacy",
      "do": [
       "Confirm Private account is on.",
@@ -771,7 +771,7 @@
     {
      "id": "location",
      "title": "Turn on Ghost Mode",
-     "why": "Snap Map shows live location to everyone on their friends list. For most children this is the single most important setting on Snapchat.",
+     "why": "Snap Map shows live location to everyone on their friends list, which for most children makes this the single most important setting on Snapchat. One thing to expect: Ghost Mode hides them from everyone on that list, and if you are on it, that includes you.",
      "path": "Map screen → ⚙️ (top right) → Ghost Mode",
      "do": [
       "From the camera screen, tap the location pin at the bottom left to open the Map.",
@@ -919,7 +919,7 @@
     {
      "id": "dms",
      "title": "Close down direct messages from strangers",
-     "why": "By default, sharing a server with someone can be enough for them to message your child privately.",
+     "why": "By default, sharing a server with someone can be enough for them to message your child privately. Closing this down does cut off people they met in a server and genuinely get on with, which is most of how friendships work on Discord, so friend requests from friends of friends is usually the setting that survives contact with a teenager.",
      "path": "User Settings → Privacy & Safety",
      "do": [
       "Turn off Allow direct messages from server members.",
@@ -1051,7 +1051,7 @@
     {
      "id": "level",
      "title": "Set the content level",
-     "why": "This decides which slice of YouTube they can reach. It’s the main control on a supervised account.",
+     "why": "This decides which slice of YouTube they can reach, and it is the main control on a supervised account. Pitch it tighter than they will accept and they watch on a friend's phone instead, where you can see nothing at all, so aim for the level they will actually live with.",
      "path": "Family Link app → [your child] → Controls → Content restrictions → YouTube",
      "do": [
       "Open Family Link and select your child.",
@@ -1074,7 +1074,7 @@
     {
      "id": "autoplay",
      "title": "Turn off autoplay and pause history",
-     "why": "Autoplay is what turns a ten-minute video into two hours. Pausing history slows down the recommendation loop.",
+     "why": "Autoplay is what turns a ten-minute video into two hours. Pausing history is the one that looks wrong, because history is how you see what they have been watching. That is the trade: you give up your own record, and in exchange the recommendations stop chasing whatever they clicked once. If the record matters more to you, leave history on and turn off autoplay only.",
      "path": "YouTube app → Profile → Settings",
      "do": [
       "Turn Autoplay off.",
@@ -1192,7 +1192,7 @@
     {
      "id": "voice",
      "title": "Set voice and text chat",
-     "why": "This is the biggest one. Random squad fill puts your child in a voice channel with strangers by default.",
+     "why": "This is the biggest one. Random squad fill puts your child in a voice channel with strangers by default. Nobody is the safest setting and also the most likely to get undone, because Fortnite is a team game and no voice means no playing properly with friends. Friends Only takes the strangers out and leaves the game worth playing, which is why it is the recommendation from about 11 upwards.",
      "path": "Parental Controls → Voice Chat / Text Chat",
      "do": [
       "Set Voice Chat and Text Chat to the level below.",
@@ -1387,7 +1387,7 @@
     {
      "id": "chat",
      "title": "Turn chat off inside the game as well",
-     "why": "Two layers is better than one, and the in-game setting covers cases the account setting doesn’t.",
+     "why": "Two layers beats one, and the in-game setting covers cases the account setting does not. Worth knowing that chat off also means they cannot coordinate with the friends they are building with. On a private Realm with people you know, leaving it on is a reasonable call.",
      "do": [
       "In Minecraft, open Settings and look for the chat option in the profile or general settings.",
       "Turn chat off, or set it to show only commands, for younger children."
@@ -1404,7 +1404,7 @@
     {
      "id": "realms",
      "title": "Prefer a private Realm over public servers",
-     "why": "A Realm is invite-only and controlled by whoever owns it. Public servers are open to anyone.",
+     "why": "A Realm is invite-only and controlled by whoever owns it, where public servers are open to anyone. It is a paid subscription, which is the honest reason most families end up on public servers instead, so it is worth pricing before you promise it.",
      "do": [
       "If they want to play with friends, set up or join a Realm rather than a public server.",
       "As the Realm owner, you control the invite list.",
@@ -1543,7 +1543,7 @@
     {
      "id": "purchases",
      "title": "Require approval for downloads and purchases",
-     "why": "Otherwise every setting you choose is one free app download away from irrelevant.",
+     "why": "Otherwise every setting you choose is one free app download away from irrelevant. Ask to Buy does mean a notification every time they want anything, free apps included, and that wears thin quickly. It is still worth it for the first few months, and you can loosen it once you can see what they actually ask for.",
      "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
      "do": [
       "Set In-app Purchases to Don’t Allow.",
@@ -1562,7 +1562,7 @@
     {
      "id": "content",
      "title": "Set content ratings and web filtering",
-     "why": "The browser is the widest open door on the phone. Web content filtering closes most of it.",
+     "why": "The browser is the widest open door on the phone, and web content filtering closes most of it. The cost is that automatic filtering also blocks school and research pages that look wrong to it, so expect to add a few addresses by hand rather than assuming the filter has broken.",
      "path": "Content & Privacy Restrictions → App Store, Media, Web & Games",
      "do": [
       "Set age ratings for apps, films, TV and music.",
@@ -1581,7 +1581,7 @@
     {
      "id": "downtime",
      "title": "Set Downtime and App Limits",
-     "why": "Downtime is the one that protects sleep, which is the change most families actually feel.",
+     "why": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.",
      "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
      "do": [
       "Set Downtime to cover overnight — school nights first if you want an easier start.",
@@ -1723,7 +1723,7 @@
     {
      "id": "content",
      "title": "Set content ratings and web filtering",
-     "why": "Safari is the widest open door on the device.",
+     "why": "Safari is the widest open door on the device. Automatic filtering will also block the odd school or research page, so plan on adding a few addresses by hand. That is the filter working, not failing.",
      "path": "Content & Privacy Restrictions → App Store, Media, Web & Games",
      "do": [
       "Set age ratings for apps, films, TV and music.",
@@ -1742,7 +1742,7 @@
     {
      "id": "downtime",
      "title": "Set Downtime and App Limits",
-     "why": "iPads get used for hours without anyone noticing. Limits create a natural stop.",
+     "why": "iPads get used for hours without anyone noticing, and limits create a natural stop. During downtime only phone calls and the apps you put on the Always Allowed list stay available, so set that list first. On an iPad it usually wants to include whatever they use for homework.",
      "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
      "do": [
       "Set Downtime to cover the evening and overnight.",
@@ -1865,7 +1865,7 @@
     {
      "id": "time",
      "title": "Set daily limits and bedtime",
-     "why": "Bedtime is the setting that changes the most in practice.",
+     "why": "Bedtime is the setting that changes the most in practice. Family Link locks the device rather than nagging, so agree how they reach you after it kicks in before the first night rather than during it.",
      "path": "Family Link → [your child] → Controls → Daily limit / Bedtime",
      "do": [
       "Set daily limits, which can differ by day of the week.",
@@ -2471,7 +2471,7 @@
     {
      "id": "privacy",
      "title": "Set privacy and online safety",
-     "why": "This is where multiplayer and who can talk to your child is actually decided.",
+     "why": "This is where multiplayer and who can talk to your child is actually decided. Blocking communication outright also blocks party chat with the friends they see at school every day, which is usually what makes a parent switch the whole thing off a week later. Friends-only is the setting that lasts.",
      "path": "account.xbox.com/settings → [your child] → Privacy & online safety → Xbox Series X|S, Xbox One, and Windows 10 devices",
      "do": [
       "Set 'You can join multiplayer games' according to what you’re comfortable with.",
@@ -2601,7 +2601,7 @@
     {
      "id": "comms",
      "title": "Restrict communication and social posting",
-     "why": "Stops screenshots being posted publicly and limits in-game communication with strangers.",
+     "why": "Stops screenshots being posted publicly and limits in-game communication with strangers. It also stops them sending screenshots to friends, which for a lot of children is half the fun of the console, so this is worth deciding deliberately rather than taking whatever the age preset picked.",
      "path": "App → Console settings → Custom settings",
      "do": [
       "Turn off Posting to Social Media.",
@@ -2745,7 +2745,7 @@
     {
      "id": "web",
      "title": "Decide about the browser",
-     "why": "The browser reaches everything the app filters don't. For younger children this is the single biggest decision on the tablet.",
+     "why": "The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last.",
      "path": "Parent Dashboard → Settings → Fire Tablet Web Browser",
      "do": [
       "In the Parent Dashboard, open Settings, then Fire Tablet Web Browser.",
@@ -2913,7 +2913,7 @@
     {
      "id": "privacy",
      "title": "Tighten the four privacy settings",
-     "why": "The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group.",
+     "why": "The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group. One thing to know before you change Last seen: WhatsApp applies it both ways, so once they stop sharing theirs, they stop seeing everyone else's too.",
      "path": "Settings → Privacy",
      "do": [
       "Open Settings, then Privacy.",
@@ -3096,7 +3096,7 @@
     {
      "id": "live",
      "title": "Stop them going live",
-     "why": "This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat making requests, is the risk Twitch's own parent guidance circles hardest. It also stops Stories and video uploads.",
+     "why": "This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat attached, is the thing worth stopping first. Wanting to stream is not automatically a no, though. It is a conversation about doing it somewhere other than a bedroom, with someone keeping an eye on the chat.",
      "path": "Family Center → Streaming & Video Uploads",
      "do": [
       "In the Family Center, open Streaming & Video Uploads.",
@@ -3277,7 +3277,7 @@
     {
      "id": "rating",
      "title": "Set the maturity rating",
-     "why": "This is the main content control, and it applies to Netflix games as well as films and shows.",
+     "why": "This is the main content control, and it applies to Netflix games as well as films and shows. Two things to watch. Setting a rating above the kids level switches off the kid-safe experience along with it. And a Kids profile that Netflix created automatically when you opened the account cannot be raised at all, so if you need a higher level you have to delete it and make a new profile.",
      "path": "Account → Profiles → Adjust parental controls",
      "do": [
       "Go to Account, then Profiles, then Adjust parental controls.",
@@ -3330,7 +3330,7 @@
     {
      "id": "autoplay",
      "title": "Turn off autoplay",
-     "why": "Autoplay is what turns one episode into an evening, and previews are what surface things they weren't looking for.",
+     "why": "Autoplay is what turns one episode into an evening, and the previews are what put things in front of them they were not looking for. It is set per profile, so switching it off on theirs leaves yours alone.",
      "path": "Account → Profiles → [child] → Playback settings",
      "do": [
       "Go to Account, then Profiles, then the child's profile, then Playback settings.",
@@ -3458,7 +3458,7 @@
     {
      "id": "rating",
      "title": "Set the content rating for an older child",
-     "why": "For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode cannot be tuned.",
+     "why": "For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode has nothing to adjust. This is where families tend to give up: Junior Mode feels babyish to a 10 or 11 year old, so it gets switched off and nothing takes its place. A rating on an ordinary profile is the middle option that actually survives.",
      "path": "Edit Profiles → [profile] → Parental Controls → Content rating",
      "do": [
       "Go to your profiles, choose Edit Profiles, and select the profile.",

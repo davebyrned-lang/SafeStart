@@ -56,7 +56,7 @@
    "@type": "HowToStep",
    "position": 4,
    "name": "Control who can talk to them",
-   "text": "Most of the real risk on Roblox is contact, not content. This is the step worth getting right. Open the Communication section. Set each of Game chat, Direct chat, Friends chat and Party to the level below. Confirm with your PIN.",
+   "text": "Most of the real risk on Roblox is contact rather than content, so this is the step worth getting right. It is also the one children argue about most, because Roblox is something they play with friends and chat off can mean playing alone. Friends only is usually the setting that holds: it keeps the people they actually know and drops the rest. Open the Communication section. Set each of Game chat, Direct chat, Friends chat and Party to the level below. Confirm with your PIN.",
    "url": "https://safestart.trust-raise.com/roblox/#step-4"
   },
   {
@@ -718,6 +718,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1112,7 +1131,7 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Check which account they are on</h3></span></div><div class="step-body"><p class="why">Since June 2026 the account type decides what your child can see and who can reach them, before any setting you change.</p><p class="path"><code>Settings → Parental Controls → [your child]</code></p><ol class="do-list"><li>Look at the account type shown for your child.</li><li>Roblox Kids is for 5 to 8. It shows only pre-screened Minimal and Mild experiences, and chat is off until you switch it on from your linked account.</li><li>Roblox Select is for 9 to 15 and goes up to Moderate.</li><li>If the type looks wrong for their age, verify yourself as a parent so Roblox can place them properly.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Roblox Kids</td></tr><tr><td>7–11</td><td>Roblox Kids to age 8, then Roblox Select</td></tr><tr><td>11–12</td><td>Roblox Select</td></tr><tr><td>13–15</td><td>Roblox Select</td></tr><tr><td>16–17</td><td>The standard account</td></tr></tbody></table></div><p class="note">Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Link your account and set a Parent PIN</h3></span></div><div class="step-body"><p class="why">Without a PIN, your child can undo everything you’re about to set in about ten seconds.</p><p class="path"><code>Roblox → Settings → Parental Controls</code></p><ol class="do-list"><li>Sign in to your child’s Roblox account on a phone or at roblox.com.</li><li>Open Settings, then Parental Controls.</li><li>Add your own email as the parent email and verify it from your inbox.</li><li>Create a Parent PIN. Choose something your child won’t guess, and not a birthday.</li></ol><p class="result">Every setting below now requires your PIN to change.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set Content Maturity</h3></span></div><div class="step-body"><p class="why">This is the single biggest lever. It filters which games your child can even open.</p><p class="path"><code>Settings → Parental Controls → [your child] → Settings You Manage → Content restrictions → Content maturity</code></p><ol class="do-list"><li>Open Content restrictions, then Content maturity.</li><li>Pick the level for your child’s age from the table.</li><li>Confirm with your PIN.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Minimal</td></tr><tr><td>7–11</td><td>Minimal</td></tr><tr><td>11–12</td><td>Minimal</td></tr><tr><td>13–15</td><td>Mild</td></tr><tr><td>16–17</td><td>Moderate</td></tr></tbody></table></div><p class="note">The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Control who can talk to them</h3></span></div><div class="step-body"><p class="why">Most of the real risk on Roblox is contact, not content. This is the step worth getting right.</p><p class="path"><code>Settings → Parental Controls → Settings You Manage → Communication</code></p><ol class="do-list"><li>Open the Communication section.</li><li>Set each of Game chat, Direct chat, Friends chat and Party to the level below.</li><li>Confirm with your PIN.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>All chat off</td></tr><tr><td>7–11</td><td>All chat off</td></tr><tr><td>11–12</td><td>Friends only, direct chat off</td></tr><tr><td>13–15</td><td>Friends only</td></tr><tr><td>16–17</td><td>Friends only</td></tr></tbody></table></div><p class="note">Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Control who can talk to them</h3></span></div><div class="step-body"><p class="why">Most of the real risk on Roblox is contact rather than content, so this is the step worth getting right. It is also the one children argue about most, because Roblox is something they play with friends and chat off can mean playing alone. Friends only is usually the setting that holds: it keeps the people they actually know and drops the rest.</p><p class="path"><code>Settings → Parental Controls → Settings You Manage → Communication</code></p><ol class="do-list"><li>Open the Communication section.</li><li>Set each of Game chat, Direct chat, Friends chat and Party to the level below.</li><li>Confirm with your PIN.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>All chat off</td></tr><tr><td>7–11</td><td>All chat off</td></tr><tr><td>11–12</td><td>Friends only, direct chat off</td></tr><tr><td>13–15</td><td>Friends only</td></tr><tr><td>16–17</td><td>Friends only</td></tr></tbody></table></div><p class="note">Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Put a ceiling on Robux spending</h3></span></div><div class="step-body"><p class="why">In-game purchases are designed to be quick and frictionless. A monthly cap turns an expensive surprise into a small one.</p><p class="path"><code>Settings → Parental Controls → Settings You Manage → Spending restrictions</code></p><ol class="do-list"><li>Open Spending restrictions.</li><li>Set a monthly spend limit you’re comfortable with.</li><li>Turn on transaction notifications so you see purchases as they happen.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>$0 — no spending</td></tr><tr><td>7–11</td><td>$0 — no spending</td></tr><tr><td>11–12</td><td>$0 — no spending</td></tr><tr><td>13–15</td><td>A small monthly cap you agree together</td></tr><tr><td>16–17</td><td>An agreed monthly cap</td></tr></tbody></table></div><p class="note">Roblox also sends high-spend alerts at $100, $250 and $500.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set a daily time limit</h3></span></div><div class="step-body"><p class="why">Roblox has no natural stopping point. A built-in limit avoids the nightly argument.</p><p class="path"><code>Settings → Parental Controls → Screen time → Manage → Screen time limit</code></p><ol class="do-list"><li>Open Screen time, then Manage.</li><li>Choose a daily limit.</li><li>While you’re here, look at the list of the top games they played this week. It’s a good conversation starter.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>20–30 minutes</td></tr><tr><td>7–11</td><td>30–45 minutes</td></tr><tr><td>11–12</td><td>45–60 minutes</td></tr><tr><td>13–15</td><td>Agree it together</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Go through the friends list together</h3></span></div><div class="step-body"><p class="why">Friend lists collect strangers over time. Ten minutes here is worth more than any setting.</p><ol class="do-list"><li>Open your child’s friends list.</li><li>Ask about anyone you don’t recognize: where did you meet them?</li><li>Remove anyone they only know from inside a game.</li></ol></div></li>
@@ -2336,7 +2355,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2644,11 +2664,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2740,6 +2757,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

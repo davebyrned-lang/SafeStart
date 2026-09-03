@@ -620,6 +620,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -993,7 +1012,17 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">10 entries</span><span class="pill">3 corrections</span></div>
+<div class="meta-row"><span class="pill">12 entries</span><span class="pill">4 corrections</span></div>
+<article class="log-entry log-correction">
+<div class="log-head"><span class="log-kind">Correction</span><time>3 September 2026</time></div>
+<h2>Quick setup was hiding the reason for every single step</h2>
+<p>A reader said she did not understand why we suggested pausing YouTube history, since history is how you see what your child has been watching. She found the answer by asking the chat, which told her it stops the recommendations chasing whatever they clicked once. Looking into it, the reason was never on her screen at all: Quick setup dropped the why from every step, and Quick setup is the default. A parent told to tap something with no reason given is the one most likely to switch it back a week later. The reason is now one closed line on every step, so quick still means quick, and it opens with a tap. Learn as we go is unchanged.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>3 September 2026</time></div>
+<h2>Twenty-four steps now say what the setting costs you</h2>
+<p>Having a reason on the page is only useful if the reason is honest about the trade. So we went back through every step where the setting either looks wrong or takes something away, and said so plainly: Ghost Mode hides your child from you as well as from strangers, turning Roblox chat off can mean playing alone, going private on TikTok costs the views that are the point of the app for a lot of teenagers, Ask to Buy pings you for free apps too, automatic web filtering will block the odd homework page, and a Minecraft Realm is a paid subscription, which is the real reason families end up on public servers instead.</p>
+</article>
 <article class="log-entry log-site">
 <div class="log-head"><span class="log-kind">Change</span><time>3 September 2026</time></div>
 <h2>Where a platform runs a version for younger children, we now say so</h2>
@@ -2243,7 +2272,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2551,11 +2581,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2647,6 +2674,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

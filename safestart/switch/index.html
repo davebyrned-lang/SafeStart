@@ -49,7 +49,7 @@
    "@type": "HowToStep",
    "position": 3,
    "name": "Restrict communication and social posting",
-   "text": "Stops screenshots being posted publicly and limits in-game communication with strangers. Turn off Posting to Social Media. Restrict Communicating with Others. Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately.",
+   "text": "Stops screenshots being posted publicly and limits in-game communication with strangers. It also stops them sending screenshots to friends, which for a lot of children is half the fun of the console, so this is worth deciding deliberately rather than taking whatever the age preset picked. Turn off Posting to Social Media. Restrict Communicating with Others. Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately.",
    "url": "https://safestart.trust-raise.com/switch/#step-3"
   },
   {
@@ -697,6 +697,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1083,7 +1102,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Link the app to the console</h3></span></div><div class="step-body"><p class="why">Once linked, you manage everything from your phone without touching the console again.</p><p class="path"><code>Nintendo Switch Parental Controls app</code></p><ol class="do-list"><li>Install the Nintendo Switch Parental Controls app and sign in with your Nintendo Account.</li><li>The app gives you a registration code.</li><li>On the console, go to System Settings, then Parental Controls, and enter the code.</li><li>Set a PIN that your child doesn’t know.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the restriction level</h3></span></div><div class="step-body"><p class="why">The quickest way to match content to their age. You can fine-tune afterwards.</p><p class="path"><code>App → Console settings → Restriction Level</code></p><ol class="do-list"><li>Choose the age band that describes your child.</li><li>Or choose Custom to set software rating, posting to social media, and communication individually.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Child level</td></tr><tr><td>7–11</td><td>Child level</td></tr><tr><td>11–12</td><td>Pre-Teen level</td></tr><tr><td>13–15</td><td>Teen level</td></tr><tr><td>16–17</td><td>Custom, agreed together</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and social posting</h3></span></div><div class="step-body"><p class="why">Stops screenshots being posted publicly and limits in-game communication with strangers.</p><p class="path"><code>App → Console settings → Custom settings</code></p><ol class="do-list"><li>Turn off Posting to Social Media.</li><li>Restrict Communicating with Others.</li><li>Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and social posting</h3></span></div><div class="step-body"><p class="why">Stops screenshots being posted publicly and limits in-game communication with strangers. It also stops them sending screenshots to friends, which for a lot of children is half the fun of the console, so this is worth deciding deliberately rather than taking whatever the age preset picked.</p><p class="path"><code>App → Console settings → Custom settings</code></p><ol class="do-list"><li>Turn off Posting to Social Media.</li><li>Restrict Communicating with Others.</li><li>Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set a play-time limit and bedtime alarm</h3></span></div><div class="step-body"><p class="why">The console can suspend the game at the limit rather than just showing a message, which removes the argument.</p><p class="path"><code>App → Play-Time Limit</code></p><ol class="do-list"><li>Set a daily play-time limit, with different values for weekdays and weekends if you like.</li><li>Set a bedtime alarm.</li><li>Turn on Suspend Software if you want the limit to be firm rather than advisory.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Block eShop spending</h3></span></div><div class="step-body"><p class="why">Set up in a different place from everything else, which is why it gets missed.</p><p class="path"><code>accounts.nintendo.com → Family Group</code></p><ol class="do-list"><li>Sign in at accounts.nintendo.com and open your Family Group.</li><li>Select your child and turn on the eShop purchase restriction.</li><li>Remove any saved card.</li></ol></div></li>
 </ol>
@@ -2305,7 +2324,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2613,11 +2633,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2709,6 +2726,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {

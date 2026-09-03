@@ -56,21 +56,21 @@
    "@type": "HowToStep",
    "position": 4,
    "name": "Require approval for downloads and purchases",
-   "text": "Otherwise every setting you choose is one free app download away from irrelevant. Set In-app Purchases to Don’t Allow. Set Installing Apps and Deleting Apps according to the ages below. Turn on Ask to Buy in Family Sharing so download requests come to your phone.",
+   "text": "Otherwise every setting you choose is one free app download away from irrelevant. Ask to Buy does mean a notification every time they want anything, free apps included, and that wears thin quickly. It is still worth it for the first few months, and you can loosen it once you can see what they actually ask for. Set In-app Purchases to Don’t Allow. Set Installing Apps and Deleting Apps according to the ages below. Turn on Ask to Buy in Family Sharing so download requests come to your phone.",
    "url": "https://safestart.trust-raise.com/iphone/#step-4"
   },
   {
    "@type": "HowToStep",
    "position": 5,
    "name": "Set content ratings and web filtering",
-   "text": "The browser is the widest open door on the phone. Web content filtering closes most of it. Set age ratings for apps, films, TV and music. Open Web Content and choose the level below. For younger children, Allowed Websites lets you list the only sites that work.",
+   "text": "The browser is the widest open door on the phone, and web content filtering closes most of it. The cost is that automatic filtering also blocks school and research pages that look wrong to it, so expect to add a few addresses by hand rather than assuming the filter has broken. Set age ratings for apps, films, TV and music. Open Web Content and choose the level below. For younger children, Allowed Websites lets you list the only sites that work.",
    "url": "https://safestart.trust-raise.com/iphone/#step-5"
   },
   {
    "@type": "HowToStep",
    "position": 6,
    "name": "Set Downtime and App Limits",
-   "text": "Downtime is the one that protects sleep, which is the change most families actually feel. Set Downtime to cover overnight — school nights first if you want an easier start. Add App Limits for the categories that run away with time, usually Social and Games. Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).",
+   "text": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages. Set Downtime to cover overnight — school nights first if you want an easier start. Add App Limits for the categories that run away with time, usually Social and Games. Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).",
    "url": "https://safestart.trust-raise.com/iphone/#step-6"
   },
   {
@@ -711,6 +711,25 @@ button { font: inherit; cursor: pointer; }
 }
 .why b { color: var(--heading); font-weight: 650; }
 
+/* Quick setup used to drop the reason entirely, which is how a reader ended up
+   asking the chat why you would pause YouTube history. One line, closed by
+   default, so "just tell me what to tap" still means that. */
+.why-toggle { margin: 11px 0 0; }
+.why-toggle > summary {
+  display: inline-flex; align-items: center; gap: 5px; cursor: pointer;
+  font-size: .84rem; font-weight: 600; color: var(--blue);
+  list-style: none; padding: 2px 0;
+}
+.why-toggle > summary::-webkit-details-marker { display: none; }
+.why-toggle > summary::after {
+  content: ""; width: 6px; height: 6px; margin-left: 1px;
+  border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px); transition: transform .15s ease;
+}
+.why-toggle[open] > summary::after { transform: rotate(-135deg) translate(-1px, -1px); }
+.why-toggle > summary:hover { text-decoration: underline; }
+.why-toggle .why { margin-top: 8px; }
+
 .path {
   margin: 13px 0 0; font-size: .86rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -1098,9 +1117,9 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Add them to Family Sharing</h3></span></div><div class="step-body"><p class="why">It lets you manage their phone from yours, and it’s what makes Ask to Buy possible.</p><p class="path"><code>Settings → [your name] → Family Sharing</code></p><ol class="do-list"><li>On your iPhone, open Settings and tap your name.</li><li>Tap Family Sharing and add your child.</li><li>If they’re under 13, create a child Apple Account for them here.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set a Screen Time passcode</h3></span></div><div class="step-body"><p class="why">Without a separate passcode, your child can turn all of this off in about fifteen seconds.</p><p class="path"><code>Settings → Screen Time → [your child] → Change Screen Time Passcode</code></p><ol class="do-list"><li>Open Settings, then Screen Time, then choose your child under Family.</li><li>Set a Screen Time passcode.</li><li>Use a different code from the phone unlock, and don’t use a birthday.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Content &amp; Privacy Restrictions</h3></span></div><div class="step-body"><p class="why">This is the master switch that unlocks everything else.</p><p class="path"><code>Settings → Screen Time → [your child] → Content &amp; Privacy Restrictions</code></p><ol class="do-list"><li>Open Content &amp; Privacy Restrictions.</li><li>Enter your Screen Time passcode.</li><li>Toggle Content &amp; Privacy Restrictions on.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Require approval for downloads and purchases</h3></span></div><div class="step-body"><p class="why">Otherwise every setting you choose is one free app download away from irrelevant.</p><p class="path"><code>Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases</code></p><ol class="do-list"><li>Set In-app Purchases to Don’t Allow.</li><li>Set Installing Apps and Deleting Apps according to the ages below.</li><li>Turn on Ask to Buy in Family Sharing so download requests come to your phone.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>7–11</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>11–12</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>13–15</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>16–17</td><td>Installing apps: Allow. In-app purchases: Ask to Buy.</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set content ratings and web filtering</h3></span></div><div class="step-body"><p class="why">The browser is the widest open door on the phone. Web content filtering closes most of it.</p><p class="path"><code>Content &amp; Privacy Restrictions → App Store, Media, Web &amp; Games</code></p><ol class="do-list"><li>Set age ratings for apps, films, TV and music.</li><li>Open Web Content and choose the level below.</li><li>For younger children, Allowed Websites lets you list the only sites that work.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>7–11</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>11–12</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>13–15</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>16–17</td><td>Limit Adult Websites</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set Downtime and App Limits</h3></span></div><div class="step-body"><p class="why">Downtime is the one that protects sleep, which is the change most families actually feel.</p><p class="path"><code>Settings → Screen Time → [your child] → Downtime / App Limits</code></p><ol class="do-list"><li>Set Downtime to cover overnight — school nights first if you want an easier start.</li><li>Add App Limits for the categories that run away with time, usually Social and Games.</li><li>Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>7–11</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>11–12</td><td>Downtime from 8:30pm</td></tr><tr><td>13–15</td><td>Downtime from 9:30pm on school nights</td></tr><tr><td>16–17</td><td>Agree a Downtime window together</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Require approval for downloads and purchases</h3></span></div><div class="step-body"><p class="why">Otherwise every setting you choose is one free app download away from irrelevant. Ask to Buy does mean a notification every time they want anything, free apps included, and that wears thin quickly. It is still worth it for the first few months, and you can loosen it once you can see what they actually ask for.</p><p class="path"><code>Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases</code></p><ol class="do-list"><li>Set In-app Purchases to Don’t Allow.</li><li>Set Installing Apps and Deleting Apps according to the ages below.</li><li>Turn on Ask to Buy in Family Sharing so download requests come to your phone.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>7–11</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>11–12</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>13–15</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>16–17</td><td>Installing apps: Allow. In-app purchases: Ask to Buy.</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set content ratings and web filtering</h3></span></div><div class="step-body"><p class="why">The browser is the widest open door on the phone, and web content filtering closes most of it. The cost is that automatic filtering also blocks school and research pages that look wrong to it, so expect to add a few addresses by hand rather than assuming the filter has broken.</p><p class="path"><code>Content &amp; Privacy Restrictions → App Store, Media, Web &amp; Games</code></p><ol class="do-list"><li>Set age ratings for apps, films, TV and music.</li><li>Open Web Content and choose the level below.</li><li>For younger children, Allowed Websites lets you list the only sites that work.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>7–11</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>11–12</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>13–15</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>16–17</td><td>Limit Adult Websites</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set Downtime and App Limits</h3></span></div><div class="step-body"><p class="why">Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple&#39;s own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.</p><p class="path"><code>Settings → Screen Time → [your child] → Downtime / App Limits</code></p><ol class="do-list"><li>Set Downtime to cover overnight — school nights first if you want an easier start.</li><li>Add App Limits for the categories that run away with time, usually Social and Games.</li><li>Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>7–11</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>11–12</td><td>Downtime from 8:30pm</td></tr><tr><td>13–15</td><td>Downtime from 9:30pm on school nights</td></tr><tr><td>16–17</td><td>Agree a Downtime window together</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Lock down privacy and location changes</h3></span></div><div class="step-body"><p class="why">Stops apps quietly gaining location or contacts access later.</p><p class="path"><code>Content &amp; Privacy Restrictions → Privacy</code></p><ol class="do-list"><li>Open Location Services and set it to Don’t Allow Changes after you’ve set it how you want.</li><li>Do the same for Contacts and Photos.</li><li>Turn on Communication Limits so contact during Downtime is restricted to known contacts.</li></ol></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -2322,7 +2341,8 @@ function renderPlanStep(item, num) {
   ]));
 
   var body = el("div", { class: "step-body" });
-  if (state.helpMode !== "quick" && s.why) body.appendChild(el("p", { class: "why", text: s.why }));
+  var w = whyNode(s);
+  if (w) body.appendChild(w);
   if (s.path) body.appendChild(el("p", { class: "path" }, [el("code", { text: s.path })]));
 
   if (s.do && s.do.length) {
@@ -2630,11 +2650,8 @@ function renderStep(step, num) {
 
   var body = el("div", { class: "step-body" });
 
-  if (state.helpMode === "learn" && step.why) {
-    body.appendChild(el("p", { class: "why" }, [
-      el("b", { text: "Why: " }), document.createTextNode(step.why)
-    ]));
-  }
+  var pw = whyNode(step);
+  if (pw) body.appendChild(pw);
 
   if (step.path) body.appendChild(el("p", { class: "path", text: step.path }));
 
@@ -2726,6 +2743,24 @@ function renderChecklist(g) {
   }
 
   return card;
+}
+
+/* The reason a step exists. In "Learn as we go" it is open, because that is what
+   the mode is for. Everywhere else it is one closed line, because a parent who is
+   told to tap something with no reason given is the parent most likely to switch
+   it back a week later. Hiding the reason entirely is what sent a reader to the
+   chat to ask why you would pause YouTube history. */
+function whyNode(step) {
+  if (!step.why) return null;
+  if (state.helpMode === "learn") {
+    return el("p", { class: "why" }, [
+      el("b", { text: "Why: " }), document.createTextNode(step.why)
+    ]);
+  }
+  var d = el("details", { class: "why-toggle" });
+  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("p", { class: "why", text: step.why }));
+  return d;
 }
 
 function labelForBand(id) {
