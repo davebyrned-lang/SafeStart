@@ -127,6 +127,8 @@
   --paper: #FFFFFF;
   --signal: #FFD23F;
 
+  --on-blue: #FFFFFF;
+  --control-line: #7C8CBB;
   --hl-ink: var(--blue);
   --hl-rule: #C9D4FB;
 
@@ -154,21 +156,23 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #060F2B;
-    --surface: #0E1E47;
-    --surface-2: #142559;
-    --line: #23356E;
-    --blue: #7D93F5;
-    --blue-tint: #16265C;
-    --blue-tint-2: #1D3070;
-    --navy-tint: #16265C;
-    --heading: #EEF1FB;
+    --bg: #131E3D;
+    --surface: #1C2A4E;
+    --surface-2: #26355C;
+    --line: #3A4A76;
+    --control-line: #6879AD;
+    --blue: #8AA0FF;
+    --on-blue: #0B1330;
+    --blue-tint: #24355F;
+    --blue-tint-2: #324472;
+    --navy-tint: #324472;
+    --heading: #F2F5FD;
     --hl-ink: #A8BCFF;
     --hl-rule: rgba(168,188,255,.32);
-    --body: #DDE3F5;
-    --muted: #94A0C0;
-    --mist: #16265C;
-    --paper: #0E1E47;
+    --body: #E3E9F8;
+    --muted: #A6B2CE;
+    --mist: #24355F;
+    --paper: #1C2A4E;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 26px rgba(0,0,0,.35);
     --shadow-lg: 0 2px 8px rgba(0,0,0,.5), 0 24px 60px rgba(0,0,0,.55);
   }
@@ -318,13 +322,17 @@ button { font: inherit; cursor: pointer; }
 /* chips */
 .chips { display: flex; flex-wrap: wrap; gap: 9px; }
 .chip {
-  background: var(--surface-2); border: 2px solid transparent; color: var(--body);
+  background: var(--surface-2); border: 2px solid var(--control-line); color: var(--body);
   border-radius: 999px; padding: 11px 19px; font-size: .97rem; font-weight: 600;
   transition: transform .18s var(--ease), background .15s, color .15s;
 }
 .chip:hover { border-color: var(--blue); transform: translateY(-2px); }
 .chip:active { transform: translateY(0) scale(.97); }
-.chip[aria-pressed="true"] { background: var(--blue); color: #fff; border-color: var(--blue); }
+.chip[aria-pressed="true"] {
+  background: var(--blue); color: var(--on-blue); border-color: var(--blue);
+  box-shadow: 0 2px 10px rgba(31,63,226,.28);
+}
+.chip[aria-pressed="true"] .chip-sub { opacity: .88; }
 .chip .chip-sub { display: block; font-weight: 400; font-size: .77rem; opacity: .75; margin-top: -3px; }
 
 /* tiles */
@@ -427,13 +435,13 @@ button { font: inherit; cursor: pointer; }
 
 .build-cta {
   width: 100%; margin-top: 16px; padding: 16px 18px;
-  background: var(--blue); color: #fff; border: 0; border-radius: var(--radius);
+  background: var(--blue); color: var(--on-blue); border: 0; border-radius: var(--radius);
   display: flex; align-items: center; gap: 12px; text-align: left;
   transition: transform .16s var(--ease);
 }
 .build-cta:hover { transform: translateY(-1px); }
 .bc-title { font-weight: 700; font-size: 1.05rem; }
-.bc-sub { font-size: .86rem; color: rgba(255,255,255,.82); }
+.bc-sub { font-size: .86rem; color: var(--on-blue); opacity: .8; }
 .build-cta .dc-arrow { margin-left: auto; }
 .build-cta svg { width: 18px; height: 18px; }
 .pick-note.dim { color: var(--muted); font-style: italic; }
@@ -517,7 +525,7 @@ button { font: inherit; cursor: pointer; }
 .modal-box p:last-of-type { color: var(--muted); }
 .modal-actions { display: flex; gap: 9px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap; }
 .modal-go {
-  background: var(--blue); color: #fff; border: 0; border-radius: 999px;
+  background: var(--blue); color: var(--on-blue); border: 0; border-radius: 999px;
   padding: 9px 18px; font-size: .89rem; font-weight: 650;
 }
 .modal-go:hover { background: var(--navy); }
@@ -856,7 +864,7 @@ button { font: inherit; cursor: pointer; }
 /* ---------------- chat ---------------- */
 .ask-fab {
   position: fixed; right: 16px; bottom: 16px; z-index: 50;
-  background: var(--blue); color: #fff; border: 0; border-radius: 999px;
+  background: var(--blue); color: var(--on-blue); border: 0; border-radius: 999px;
   padding: 14px 22px; font-weight: 650; font-size: .95rem; box-shadow: var(--shadow-lg);
   display: inline-flex; align-items: center; gap: 9px;
   transition: transform .2s var(--ease);
@@ -928,7 +936,7 @@ button { font: inherit; cursor: pointer; }
 }
 .chat-form textarea:focus { outline: none; border-color: var(--blue); }
 .chat-send {
-  background: var(--blue); color: #fff; border: 0; border-radius: 12px;
+  background: var(--blue); color: var(--on-blue); border: 0; border-radius: 12px;
   width: 44px; height: 44px; display: grid; place-items: center; flex: none;
 }
 .chat-send:disabled { opacity: .4; cursor: default; }
