@@ -218,6 +218,27 @@
    ],
    "steps": [
     {
+     "id": "accounttype",
+     "title": "Check which account they are on",
+     "why": "Since June 2026 the account type decides what your child can see and who can reach them, before any setting you change.",
+     "path": "Settings → Parental Controls → [your child]",
+     "do": [
+      "Look at the account type shown for your child.",
+      "Roblox Kids is for 5 to 8. It shows only pre-screened Minimal and Mild experiences, and chat is off until you switch it on from your linked account.",
+      "Roblox Select is for 9 to 15 and goes up to Moderate.",
+      "If the type looks wrong for their age, verify yourself as a parent so Roblox can place them properly."
+     ],
+     "recommended": {
+      "0-6": "Roblox Kids",
+      "7-11": "Roblox Kids to age 8, then Roblox Select",
+      "11-12": "Roblox Select",
+      "13-15": "Roblox Select",
+      "16-17": "The standard account"
+     },
+     "note": "Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.",
+     "mins": 2
+    },
+    {
      "id": "link",
      "title": "Link your account and set a Parent PIN",
      "why": "Without a PIN, your child can undo everything you’re about to set in about ten seconds.",
@@ -369,7 +390,22 @@
      "url": "https://en.help.roblox.com/hc/en-us/articles/8862768451604-Content-Maturity-Labels"
     }
    ],
-   "priority": 3
+   "priority": 3,
+   "kidsAlt": {
+    "name": "Roblox Kids and Roblox Select",
+    "form": "account types inside Roblox",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12",
+     "13-15"
+    ],
+    "what": "New in June 2026. Roblox Kids is for 5 to 8 and shows only pre-screened Minimal and Mild experiences, with chat off unless you switch it on from a linked parent account. Roblox Select covers 9 to 15 and goes up to Moderate.",
+    "watchOut": "Which one they get is decided by Roblox's age check or by you verifying yourself as a parent. Control loosens in stages: at 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically.",
+    "countryNote": "Worldwide, though Roblox says the exact ages and features vary by region.",
+    "confidence": "high",
+    "link": "https://en.help.roblox.com/hc/en-us/articles/48163847200532-What-are-Roblox-Kids-and-Roblox-Select"
+   }
   },
   "tiktok": {
    "id": "tiktok",
@@ -516,7 +552,23 @@
      "url": "https://www.internetmatters.org/parental-controls/social-media/tiktok-privacy-and-safety-settings/"
     }
    ],
-   "priority": 8
+   "priority": 8,
+   "kidsAlt": {
+    "name": "The Under 13 Experience",
+    "form": "a separate version of TikTok",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "countries": [
+     "US"
+    ],
+    "what": "In the United States only, TikTok runs a separate under-13 version that collects less and adds extra protections. Everywhere else, including the UK, Ireland and Canada, TikTok's terms say the service is for 13 and over and there is no younger option.",
+    "watchOut": "We could not read TikTok's children's privacy page to confirm what it does and does not let a child do, so treat the detail as unconfirmed and check it yourself.",
+    "confidence": "low",
+    "link": "https://www.tiktok.com/legal/page/us/terms-of-service/en"
+   }
   },
   "instagram": {
    "id": "instagram",
@@ -665,7 +717,8 @@
      "url": "https://familycenter.meta.com/"
     }
    ],
-   "priority": 7
+   "priority": 7,
+   "noKidsAlt": "Instagram Kids was announced in 2021, paused, and never launched. Teen Accounts start at 13, so there is nothing here for a younger child."
   },
   "snapchat": {
    "id": "snapchat",
@@ -799,7 +852,8 @@
      "url": "https://www.internetmatters.org/parental-controls/social-media/snapchat/"
     }
    ],
-   "priority": 4
+   "priority": 4,
+   "noKidsAlt": "Snapchat's minimum is 13 and there is no younger version. Family Center is for 13 to 17 and the teenager has to accept the invite."
   },
   "discord": {
    "id": "discord",
@@ -941,7 +995,8 @@
      "url": "https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally"
     }
    ],
-   "priority": 1
+   "priority": 1,
+   "noKidsAlt": "Discord's minimum is 13 and there is no younger version. Family Center is built for teenagers, the teen has to agree to it, and they can disconnect it."
   },
   "youtube": {
    "id": "youtube",
@@ -1075,7 +1130,21 @@
      "url": "https://support.google.com/youtube/answer/13877231?hl=en"
     }
    ],
-   "priority": 10
+   "priority": 10,
+   "kidsAlt": {
+    "name": "YouTube Kids",
+    "form": "a separate app",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "A separate app with its own content levels for preschool, younger and older children, or a list you approve yourself. A child under 13 on a supervised Google account can only use this one, not the main YouTube.",
+    "watchOut": "Search is switched on by default. Turn it off and they are limited to channels YouTube Kids has verified. Supervision also ends automatically on their 13th birthday.",
+    "countryNote": "Available in all four countries here, though not in Quebec.",
+    "confidence": "high",
+    "link": "https://support.google.com/youtubekids/answer/6172308"
+   }
   },
   "fortnite": {
    "id": "fortnite",
@@ -1233,7 +1302,20 @@
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/fortnite-battle-royale-parental-controls/"
     }
    ],
-   "priority": 6
+   "priority": 6,
+   "kidsAlt": {
+    "name": "A Cabined Account",
+    "form": "an account type in Epic Games",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "Epic switches this on when a player gives an age under 13, or under the local age of digital consent where that is higher. Voice and text chat with other players, real-money purchases, custom display names and account linking are all off.",
+    "watchOut": "It gates the account, not the game. The content they see is the same. It lifts on its own when they reach the local age, or sooner if you give consent by email.",
+    "confidence": "high",
+    "link": "https://www.epicgames.com/site/cabinedaccounts"
+   }
   },
   "minecraft": {
    "id": "minecraft",
@@ -1379,7 +1461,21 @@
      "url": "https://family.microsoft.com/"
     }
    ],
-   "priority": 9
+   "priority": 9,
+   "kidsAlt": {
+    "name": "A Microsoft child account",
+    "form": "an account type in your family group",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12",
+     "13-15"
+    ],
+    "what": "Minecraft treats any account under 16 in the US and EU as a child account. From the family group you control multiplayer, Realms, friends, and who can talk to them by voice or text.",
+    "watchOut": "The controls live in Microsoft Family Safety rather than in Minecraft, which is why they get missed. They also do not apply to versions before 1.16.4, or to modded installs.",
+    "confidence": "high",
+    "link": "https://www.minecraft.net/en-us/article/parental-controls"
+   }
   },
   "iphone": {
    "id": "iphone",
@@ -1832,7 +1928,19 @@
      "url": "https://support.google.com/families/answer/10495678?hl=en"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "kidsAlt": {
+    "name": "Google Kids Space",
+    "form": "a home screen for children",
+    "bands": [
+     "0-6",
+     "7-11"
+    ],
+    "what": "A child home screen with Play, Read, Watch and Make tabs, drawing on teacher-approved apps, chosen books and YouTube Kids. It sits on top of a supervised Google account made through Family Link.",
+    "watchOut": "It only comes pre-installed on certain tablets, among them Pixel Tablet, Lenovo, onn., Nokia, Medion and Multilaser. You cannot add it to any Android tablet, which is what catches most parents out.",
+    "confidence": "medium",
+    "link": "https://support.google.com/kidsspace/answer/9990724"
+   }
   },
   "windows": {
    "id": "windows",
@@ -2728,7 +2836,20 @@
      "label": "Amazon — approving child app requests (official)",
      "url": "https://www.aboutamazon.com/news/devices/amazon-helps-kids-access-parent-approved-games-and-apps"
     }
-   ]
+   ],
+   "kidsAlt": {
+    "name": "A child profile with Amazon Kids",
+    "form": "a profile on the tablet",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "Amazon Kids is free and gives you the Parent Dashboard: child profiles, age filters, time limits, and adding your own content. Amazon Kids+ is the paid subscription that adds the curated library of books, games and video. Fire Kids tablets come with a subscription in the box.",
+    "watchOut": "Amazon lists Kids+ for Canada, Germany, Japan, the UK and the US. Ireland is not on that list, so check before buying a tablet on the strength of it.",
+    "confidence": "medium",
+    "link": "https://www.aboutamazon.com/news/devices/set-up-fire-tablet-kids"
+   }
   },
   "whatsapp": {
    "id": "whatsapp",
@@ -2911,7 +3032,20 @@
      "label": "WhatsApp — minimum age (official)",
      "url": "https://faq.whatsapp.com/695318248185629"
     }
-   ]
+   ],
+   "kidsAlt": {
+    "name": "A parent-managed account",
+    "form": "an account type in WhatsApp",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "Announced in March 2026 for under-13s. The account can message and call but not use AI, Channels or Status. You approve who can contact them and which groups they can join, behind a parent PIN. Setting it up means confirming you are an adult with a selfie.",
+    "watchOut": "Messages stay end to end encrypted, so you cannot read them. This controls who reaches your child, not what is said. WhatsApp is still rolling it out and has published no country list, so it may not have reached you yet.",
+    "confidence": "low",
+    "link": "https://www.whatsapp.com/security/parent-managed-accounts"
+   }
   },
   "twitch": {
    "id": "twitch",
@@ -3091,7 +3225,8 @@
      "label": "Twitch — how whispers work (official)",
      "url": "https://help.twitch.tv/s/article/how-to-use-whispers"
     }
-   ]
+   ],
+   "noKidsAlt": "Twitch's terms say the service is not available under 13 at all, so there is no younger version to move to."
   },
   "netflix": {
    "id": "netflix",
@@ -3253,7 +3388,20 @@
      "label": "Netflix — create a kids profile (official)",
      "url": "https://help.netflix.com/en/node/114275"
     }
-   ]
+   ],
+   "kidsAlt": {
+    "name": "A Kids profile",
+    "form": "a profile setting in Netflix",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "Tick “For Kids” when you add a profile. It has a simpler layout, blocks access to account settings, and has no email of its own, so nobody can sign in with it directly.",
+    "watchOut": "Setting a maturity rating above the kids level quietly switches the kid-safe features off. Put a profile lock PIN on your own profile too, or they will just tap across to it.",
+    "confidence": "high",
+    "link": "https://help.netflix.com/en/node/114275"
+   }
   },
   "disneyplus": {
    "id": "disneyplus",
@@ -3424,7 +3572,20 @@
      "label": "Disney+ — content ratings (official)",
      "url": "https://help.disneyplus.com/article/disneyplus-content-ratings"
     }
-   ]
+   ],
+   "kidsAlt": {
+    "name": "Junior Mode",
+    "form": "a profile setting in Disney+",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "A simpler profile that only shows content suitable for all ages. The ceiling is fixed, so there is no rating to adjust and nothing to get wrong.",
+    "watchOut": "Kid-Proof Exit is a challenge, not a lock, so add a profile PIN to the adult profiles as well. Parents of 10 to 12 year olds often find Junior Mode too limited and switch it off, which leaves nothing in its place.",
+    "confidence": "high",
+    "link": "https://www.disneyplus.com/explore/articles/parental-controls-guide-disney-plus"
+   }
   },
   "primevideo": {
    "id": "primevideo",
@@ -3589,7 +3750,20 @@
      "label": "Prime Video — kids profiles (official)",
      "url": "https://www.primevideo.com/help?nodeId=GD6ARQYPV5H7RYA4"
     }
-   ]
+   ],
+   "kidsAlt": {
+    "name": "A Kids profile",
+    "form": "a profile setting in Prime Video",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "Shows only content rated 12 and under, filters search results and suggestions, and blocks purchases.",
+    "watchOut": "Downloads leak through. Anything downloaded on an adult profile can still be reached from the Kids profile, so PIN-lock the adult profiles too.",
+    "confidence": "high",
+    "link": "https://www.primevideo.com/help?nodeId=GD6ARQYPV5H7RYA4"
+   }
   }
  },
  "_new": {}

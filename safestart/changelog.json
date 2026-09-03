@@ -5,6 +5,24 @@
   {
    "date": "2026-09-03",
    "kind": "site",
+   "title": "Where a platform runs a version for younger children, we now say so",
+   "body": "Eleven of the guides now name the version built for under-13s and link the official page for it: YouTube Kids, Roblox Kids and Roblox Select, Fortnite's Cabined Accounts, Microsoft child accounts for Minecraft, WhatsApp's new parent-managed accounts, kids profiles on Netflix, Disney+ and Prime Video, Amazon Kids on Fire tablets, and Google Kids Space. Each one also carries the catch, because most of them have one. Netflix quietly switches off the kid-safe features if you raise the maturity rating. Prime Video downloads from an adult profile are still reachable from the Kids profile. YouTube Kids has search on by default. Where a platform has nothing for under-13s, which is Discord, Instagram, Snapchat and Twitch, the guide says that plainly instead of implying a setting exists."
+  },
+  {
+   "date": "2026-09-03",
+   "kind": "correction",
+   "title": "The Roblox guide predated Roblox Kids and Roblox Select",
+   "body": "Roblox introduced age-based account types in April 2026 and made them available worldwide in June. Our guide was written before that and started at Content Maturity, which is now the second decision rather than the first. There is a step ahead of it on checking which account type your child is on. For years it was true that Roblox had no child account type, and that has stopped being true."
+  },
+  {
+   "date": "2026-09-03",
+   "kind": "site",
+   "title": "The age warning now covers under-7s, and tells you something useful",
+   "body": "Picking an app built for 13 and over always warned you, except for the Under 7 band, where it was switched off on the assumption it would fire on every tile. It would not: six of the thirteen apps carry a 13 minimum, not all of them. The warning is back for under-7s, and where a younger version of the app exists it now offers that instead of just recording your decision."
+  },
+  {
+   "date": "2026-09-03",
+   "kind": "site",
    "title": "Six new guides: Fire tablet, WhatsApp, Twitch, Netflix, Disney+ and Prime Video",
    "body": "Amazon Fire tablets are often a child's first device and were missing entirely. Two of the new guides also correct things widely got wrong elsewhere: WhatsApp's minimum age is 13 in the UK and EU, not the 16 most parenting sites still print, and both WhatsApp and Twitch added real parental controls in 2026 that older guidance predates. Twitch's is opt-in and can be switched off by the teen, which the guide says plainly."
   },

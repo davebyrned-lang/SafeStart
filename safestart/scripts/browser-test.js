@@ -176,6 +176,69 @@ function check(name, condition, detail) {
     check('"add anyway" respects the parent\'s call',
       (await page.locator('.card.selectable.on').count()) === 1);
 
+    // Under 7 used to be exempt from the warning entirely. It is not any more,
+    // because only six of the thirteen apps carry a 13 minimum, so this is a
+    // handful of dialogs and not the every-tile noise it was assumed to be.
+    console.log('\nunder 7');
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.locator('.card', { hasText: 'iPhone' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.chip', { hasText: 'Under 7' }).first().click();
+    await page.waitForTimeout(150);
+    await page.locator('.card.selectable', { hasText: 'Snapchat' }).first().click();
+    await page.waitForTimeout(250);
+    check('an under-7 gets the warning too', await page.locator('.modal-box').isVisible());
+    const snapBody = await page.locator('.modal-box').textContent();
+    check('and is told plainly that there is no younger version',
+      /no younger version|nothing here for a younger|is 13 and there is no/.test(snapBody), snapBody.slice(0, 160));
+    await page.locator('.modal-actions .ghost-btn').click();
+    await page.waitForTimeout(200);
+
+    // WhatsApp is the case where the warning is worth having: there is now a
+    // parent-managed account for under-13s, so the dialog changes the decision
+    // rather than just recording it.
+    await page.locator('.card.selectable', { hasText: 'WhatsApp' }).first().click();
+    await page.waitForTimeout(250);
+    const waBody = await page.locator('.modal-box').textContent();
+    check('where a younger version exists, the warning offers it',
+      /parent-managed account/i.test(waBody), waBody.slice(0, 160));
+    check('and links the official page', await page.locator('.modal-box .alt-link').isVisible());
+    await page.locator('.modal-actions .ghost-btn').click();
+    await page.waitForTimeout(200);
+
+    check('tiles flag which apps have a kids version',
+      (await page.locator('.card .c-flag.kid').count()) > 0);
+    check('and the ones that are simply too old carry the minimum age',
+      (await page.locator('.card .c-flag.over').count()) > 0);
+    const kidNote = await page.locator('.kid-note').textContent();
+    check('the kids versions are also named once above the grid',
+      kidNote.includes('YouTube') && kidNote.includes('Netflix'), kidNote.slice(0, 120));
+    check('and the under-7 band is described in English, not as a label',
+      kidNote.startsWith('For a child under 7,'), kidNote.slice(0, 40));
+
+    // TikTok's under-13 version is US-only, which the country switcher has to
+    // respect. Telling a UK parent to go and find it would send them looking
+    // for a setting that does not exist.
+    const tikTile = page.locator('.card.selectable', { hasText: 'TikTok' }).first();
+    await tikTile.click();
+    await page.waitForTimeout(250);
+    const usTok = await page.locator('.modal-box').textContent();
+    check('US visitor is told about the Under 13 Experience',
+      /Under 13 Experience/.test(usTok), usTok.slice(0, 140));
+    await page.locator('.modal-actions .ghost-btn').click();
+    await page.waitForTimeout(200);
+    await page.selectOption('#countrySel', 'UK');
+    await page.waitForTimeout(250);
+    await page.locator('.card.selectable', { hasText: 'TikTok' }).first().click();
+    await page.waitForTimeout(250);
+    const ukTok = await page.locator('.modal-box').textContent();
+    check('UK visitor is told it is not available where they are',
+      /not in the country you have set|not available/.test(ukTok), ukTok.slice(0, 200));
+    await page.locator('.modal-actions .ghost-btn').click();
+    await page.waitForTimeout(200);
+
+    console.log('\nover-age warning, continued');
     await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
     await page.locator('.card', { hasText: 'iPhone' }).first().click();
@@ -228,7 +291,9 @@ function check(name, condition, detail) {
     check('profile card appears', (await page.locator('.profile-card h3').textContent()).includes('Maximum Protection'));
     const steps711 = await page.locator('.step').count();
     check('age filtering changes the step list', steps711 <= stepsAll, `${steps711} vs ${stepsAll}`);
-    const recText = await page.locator('.rec').first().textContent();
+    // Scoped to the step it belongs to, so inserting a step above it does not
+    // silently start testing a different recommendation.
+    const recText = await page.locator('.step', { hasText: 'Content Maturity' }).locator('.rec').first().textContent();
     check('single recommendation shown for the chosen age', recText.includes('Minimal'), recText.slice(0, 80));
     check('url carries the age', page.url().includes('age=7-11'));
     check('controls collapse once the age is known', await page.locator('.ctl-summary').isVisible());

@@ -640,6 +640,39 @@ button { font: inherit; cursor: pointer; }
 .profile-card h3 { margin: 0 0 6px; font-size: 1.02rem; letter-spacing: -.015em; font-weight: 650; }
 .profile-card p { margin: 0; font-size: .94rem; opacity: .84; }
 
+/* The younger-child alternative. Given its own card rather than a line of body
+   text, because for an under-7 it is usually the whole answer and the rest of
+   the guide is the fallback. */
+.kid-card {
+  border-radius: var(--radius); padding: 17px 19px; margin-bottom: 22px;
+  background: var(--blue-tint); border: 1px solid var(--control-line);
+}
+.kid-card h3 {
+  margin: 0 0 9px; font-size: .97rem; font-weight: 650; letter-spacing: -.01em;
+  color: var(--heading); display: flex; align-items: center; gap: 8px;
+}
+.kid-card h3 svg { width: 17px; height: 17px; flex: none; color: var(--blue); }
+.kid-card p { margin: 0 0 8px; font-size: .94rem; color: var(--body); line-height: 1.5; }
+.kid-card .kid-watch { color: var(--muted); font-size: .9rem; }
+.kid-card.muted-card { background: var(--surface); }
+.alt-link {
+  display: inline-flex; align-items: center; gap: 6px; font-size: .88rem;
+  font-weight: 600; color: var(--blue); text-decoration: none;
+}
+.alt-link:hover { text-decoration: underline; }
+.alt-link svg { width: 14px; height: 14px; }
+.pick-note.kid-note { display: flex; align-items: flex-start; gap: 9px; color: var(--body); }
+.pick-note.kid-note svg { width: 16px; height: 16px; flex: none; margin-top: 2px; color: var(--blue); }
+
+/* A tile flag. "Kids version" is the useful one; the bare minimum age is the
+   honest one where no kids version exists. */
+.card .c-flag {
+  margin-top: 5px; font-size: .71rem; font-weight: 700; letter-spacing: .02em;
+  padding: 2px 7px; border-radius: 999px; align-self: flex-start;
+}
+.card .c-flag.kid { background: var(--blue); color: var(--on-blue); }
+.card .c-flag.over { background: var(--surface-2); color: var(--muted); border: 1px solid var(--control-line); }
+
 .callout {
   border-radius: var(--radius); padding: 17px 19px; margin-bottom: 22px;
   background: var(--surface);
@@ -1052,6 +1085,12 @@ button { font: inherit; cursor: pointer; }
 <div class="guide-head"><h1 class="guide-title">Prime Video</h1></div>
 <p class="guide-blurb">The controls are good, but two things trip parents up: viewing restrictions apply only to the device you set them on, and downloads from your profile stay visible in a kids profile.</p>
 <div class="meta-row"><span class="pill">Video</span><span class="pill">About 12 minutes</span><span class="pill conf-high">Source confidence: high</span><span class="pill">Checked 3 September 2026</span></div>
+<div class="kid-card">
+<h3>There is a version built for younger children</h3>
+<p>A Kids profile, a profile setting in Prime Video. Shows only content rated 12 and under, filters search results and suggestions, and blocks purchases.</p>
+<p class="kid-watch">Worth knowing: Downloads leak through. Anything downloaded on an adult profile can still be reached from the Kids profile, so PIN-lock the adult profiles too.</p>
+<a class="alt-link" href="https://www.primevideo.com/help?nodeId=GD6ARQYPV5H7RYA4" target="_blank" rel="noopener">The official page for a Kids profile</a>
+</div>
 <div class="check-card"><h2>What to watch for</h2><ul>
 <li>Viewing restrictions apply per device, so setting them on the laptop does nothing to the TV or tablet</li>
 <li>Downloads made on an adult profile are still reachable from a kids profile</li>
@@ -1692,9 +1731,8 @@ function stepAge() {
           keepPlace(function () { renderHome(true); });
         };
         if (!clashes.length) return apply();
-        var names = clashes.map(function (id) { return DATA.guides[id].name; });
         var minAge = Math.max.apply(null, clashes.map(function (id) { return DATA.guides[id].minAge; }));
-        warnOverAge(names, minAge, next, apply, function () {
+        warnOverAge(clashes, minAge, next, apply, function () {
           // They chose to drop the apps rather than the age.
           state.ageBand = next;
           state.apps = state.apps.filter(function (id) { return clashes.indexOf(id) === -1; });
@@ -1743,7 +1781,7 @@ function stepApps() {
           saveProgress();
           keepPlace(function () { renderHome(true); });
         };
-        if (overAgeApps(state.ageBand, [g.id]).length) warnOverAge([g.name], g.minAge, state.ageBand, add);
+        if (overAgeApps(state.ageBand, [g.id]).length) warnOverAge([g.id], g.minAge, state.ageBand, add);
         else add();
       },
       "data-focus-key": "app:" + g.id
@@ -1751,10 +1789,26 @@ function stepApps() {
       el("span", { class: "card-tick" }, [icon("check")]),
       el("span", { class: "card-ico" }, [guideIcon(g)]),
       el("span", { class: "c-name", text: g.name }),
-      el("span", { class: "c-kind", text: g.kind })
+      el("span", { class: "c-kind", text: g.kind }),
+      kidsAltFor(g) ? el("span", { class: "c-flag kid", text: "Kids version" })
+        : (state.ageBand && g.minAge && bandFloor(state.ageBand) < g.minAge)
+          ? el("span", { class: "c-flag over", text: g.minAge + "+" })
+          : null
     ]));
   });
   body.push(grid);
+
+  /* An under-7 sees "13+" on roughly half these tiles. Saying it once above the
+     grid is calmer than letting them discover it one dialog at a time. */
+  var altNames = apps.filter(function (g) { return kidsAltFor(g); }).map(function (g) { return g.name; });
+  if (state.ageBand && altNames.length) {
+    body.push(el("p", { class: "pick-note kid-note" }, [
+      icon("info"),
+      document.createTextNode("For " + ageDescription(state.ageBand) + ", " +
+        listSentence(altNames) + (altNames.length === 1 ? " has" : " have") +
+        " a version built for younger children. Tick the app and I'll set that up instead.")
+    ]));
+  }
 
   body.push(el("p", { class: "pick-note", text: "Tick everything they actually use. Overlapping steps get merged, so three apps is nowhere near three times the work." }));
 
@@ -1909,6 +1963,7 @@ function confirmDialog(opts) {
   box.appendChild(el("span", { class: "modal-icon" }, [icon("alert")]));
   box.appendChild(el("h2", { text: opts.title }));
   (opts.body || []).forEach(function (para) { box.appendChild(el("p", { text: para })); });
+  if (opts.extra) box.appendChild(opts.extra);
 
   var row = el("div", { class: "modal-actions" });
   var cancel = el("button", { class: "ghost-btn" }, [document.createTextNode(opts.cancelLabel || "Cancel")]);
@@ -1928,29 +1983,85 @@ function confirmDialog(opts) {
    parent picked. We use the bottom of the band, so 11-12 counts as 11. */
 function bandFloor(bandId) { return parseInt(bandId, 10) || 0; }
 
-/* Every social app's minimum is 13, so for an under-7 the per-app warning would
-   fire on almost every tile and become noise. The guides themselves carry the
-   under-age notice, which is the right place for it. */
-function suppressAgeWarning() { return state.ageBand === "0-6"; }
-
 function overAgeApps(bandId, appIds) {
-  if (!bandId || bandId === "0-6") return [];
+  if (!bandId) return [];
   return appIds.filter(function (id) {
     var g = DATA.guides[id];
     return g && g.minAge && bandFloor(bandId) < g.minAge;
   });
 }
 
-function warnOverAge(names, minAge, bandId, onConfirm, onCancel) {
+/* Some platforms run a real product for younger children: a separate app, a
+   child account type, or a kids profile. Where one exists it is almost always
+   the better answer than tightening settings on the adult version, so it has to
+   surface at the moment the parent is choosing, not three screens later.
+   Availability is not universal, so an alternative can be limited to certain
+   countries and carries its own source confidence. */
+function kidsAltFor(g, bandId) {
+  if (!g || !g.kidsAlt) return null;
+  var alt = g.kidsAlt;
+  var band = bandId || state.ageBand;
+  if (!band || alt.bands.indexOf(band) === -1) return null;
+  if (alt.countries && alt.countries.indexOf(state.country) === -1) return null;
+  return alt;
+}
+
+/* The alternative exists but not where this parent is. Worth saying out loud,
+   because "TikTok has an under-13 version" is true in the US and false in the
+   UK, and a parent who reads the American answer will go looking for a setting
+   that is not there. */
+function kidsAltElsewhere(g, bandId) {
+  if (!g || !g.kidsAlt) return null;
+  var alt = g.kidsAlt;
+  var band = bandId || state.ageBand;
+  if (!band || alt.bands.indexOf(band) === -1) return null;
+  if (!alt.countries || alt.countries.indexOf(state.country) !== -1) return null;
+  return alt;
+}
+
+/* Names like "A Kids profile" and "A parent-managed account" are written to
+   start a sentence, because that is where they usually sit. Dropped into the
+   middle of one they need their article lowercased, and a proper name like
+   YouTube Kids must be left alone. */
+function midSentence(name) {
+  return /^(A|An|The) /.test(name) ? name.charAt(0).toLowerCase() + name.slice(1) : name;
+}
+
+function altLink(alt) {
+  return el("a", { class: "alt-link", href: alt.link, target: "_blank", rel: "noopener" },
+    [document.createTextNode("The official page for " + midSentence(alt.name)), icon("link")]);
+}
+
+function warnOverAge(ids, minAge, bandId, onConfirm, onCancel) {
+  var names = ids.map(function (id) { return DATA.guides[id].name; });
   var who = names.length === 1 ? names[0] : listSentence(names);
   var isAre = names.length === 1 ? " is " : " are ";
+  var only = ids.length === 1 ? DATA.guides[ids[0]] : null;
+  var alt = only ? kidsAltFor(only, bandId) : null;
+  var elsewhere = only ? kidsAltElsewhere(only, bandId) : null;
+
+  var body = ["Your child is in the " + labelForBand(bandId) + " band, which is below that minimum."];
+
+  if (alt) {
+    body.push("There is a version made for this age: " + midSentence(alt.name) + ", " + alt.form + ". " + alt.what);
+    body.push("Worth knowing: " + alt.watchOut);
+    body.push("If you go with that instead, add it here and the plan will set it up. If you want the ordinary version anyway, that is the decision of the parent.");
+  } else if (elsewhere) {
+    body.push(elsewhere.name + " exists, but not in the country you have set. " + elsewhere.what);
+    body.push("So for you there is no account type designed for this age, and the settings can only do so much.");
+  } else if (only && only.noKidsAlt) {
+    body.push(only.noKidsAlt);
+    body.push("So there is no account type designed for them, and the settings can only do so much. Whether they use it at all is the decision of the parent, and it is better made now than halfway through a setup.");
+  } else {
+    body.push("Below the minimum age there is no account type designed for them, so the settings can only do so much. Whether they use it at all is the decision of the parent, and it is better made now than halfway through a setup.");
+  }
+
+  body.push("Either way, the conversation with your child about it will do more than any setting can.");
+
   confirmDialog({
     title: who + isAre + "built for " + minAge + " and over",
-    body: [
-      "Your child is in the " + labelForBand(bandId) + " band, which is below that minimum.",
-      "Below the minimum age there is no account type designed for them, so the settings can only do so much. Whether they use it at all is the parent's decision, and it is better made now than halfway through a setup.",
-      "Either way, the conversation with your child about it will do more than any setting can."
-    ],
+    body: body,
+    extra: alt ? altLink(alt) : null,
     cancelLabel: names.length === 1 ? "Don't add it" : "Remove them",
     confirmLabel: "Add anyway",
     onConfirm: onConfirm,
@@ -2100,10 +2211,10 @@ function renderPlan(skipUrl) {
 
   app.appendChild(el("p", { class: "guide-blurb", text:
     state.includeDevice
-      ? "For a " + labelForBand(state.ageBand) + " year old" +
+      ? "For " + ageDescription(state.ageBand) +
         (appNames.length ? ", covering " + listSentence(appNames) : "") + "."
-      : "On " + devLabel + ", for a " + labelForBand(state.ageBand) +
-        " year old. The device's own settings are left alone, as you said they're already done." }));
+      : "On " + devLabel + ", for " + ageDescription(state.ageBand) +
+        ". The device's own settings are left alone, as you said they're already done." }));
 
   var meta = [
     el("span", { class: "pill", text: "Part 1 takes about " + (plan.sessions[0] ? plan.sessions[0].mins : plan.totalMins) + " minutes" }),
@@ -2302,6 +2413,29 @@ function renderGuide() {
   app.appendChild(head);
 
   app.appendChild(buildControls(g));
+
+  var gAlt = kidsAltFor(g);
+  var gElsewhere = kidsAltElsewhere(g);
+  if (gAlt) {
+    app.appendChild(el("div", { class: "kid-card" }, [
+      el("h3", {}, [icon("info"), document.createTextNode("There is a version built for younger children")]),
+      el("p", { text: gAlt.name + ", " + gAlt.form + ". " + gAlt.what }),
+      el("p", { class: "kid-watch", text: "Worth knowing: " + gAlt.watchOut }),
+      gAlt.countryNote ? el("p", { class: "kid-watch", text: gAlt.countryNote }) : null,
+      altLink(gAlt)
+    ]));
+  } else if (gElsewhere) {
+    app.appendChild(el("div", { class: "kid-card muted-card" }, [
+      el("h3", {}, [icon("info"), document.createTextNode(gElsewhere.name + " is not available where you are")]),
+      el("p", { text: gElsewhere.what }),
+      el("p", { class: "kid-watch", text: "Change the country setting at the top if that is wrong." })
+    ]));
+  } else if (g.noKidsAlt && state.ageBand && g.minAge && bandFloor(state.ageBand) < g.minAge) {
+    app.appendChild(el("div", { class: "kid-card muted-card" }, [
+      el("h3", {}, [icon("info"), document.createTextNode("There is no younger version of " + g.name)]),
+      el("p", { text: g.noKidsAlt })
+    ]));
+  }
 
   if (!state.ageBand) {
     app.appendChild(el("div", { class: "age-nudge" }, [
@@ -2602,6 +2736,13 @@ function renderChecklist(g) {
 function labelForBand(id) {
   var b = DATA.ageBands.filter(function (x) { return x.id === id; })[0];
   return b ? b.label : id;
+}
+
+/* "a 7-11 year old" reads fine. "a Under 7 year old" does not, so the bottom
+   band gets its own phrasing rather than being forced through the pattern. */
+function ageDescription(id) {
+  if (id === "0-6") return "a child under 7";
+  return "a " + labelForBand(id) + " year old";
 }
 
 function formatDate(iso) {

@@ -149,6 +149,27 @@ function renderGuideStatic(g) {
   if (g.lastVerified) meta.push('<span class="pill">Checked ' + esc(niceDate(g.lastVerified)) + "</span>");
   if (meta.length) out.push('<div class="meta-row">' + meta.join("") + "</div>");
 
+  /* The younger-child alternative goes into the markup, not just the app, so a
+     parent who lands here from a search engine sees it without running any JS.
+     Country-limited ones still render: the copy itself names where they apply. */
+  if (g.kidsAlt) {
+    const a = g.kidsAlt;
+    out.push('<div class="kid-card">');
+    out.push("<h3>There is a version built for younger children</h3>");
+    out.push("<p>" + esc(a.name + ", " + a.form + ". " + a.what) + "</p>");
+    out.push('<p class="kid-watch">' + esc("Worth knowing: " + a.watchOut) + "</p>");
+    if (a.countryNote) out.push('<p class="kid-watch">' + esc(a.countryNote) + "</p>");
+    const midName = /^(A|An|The) /.test(a.name) ? a.name.charAt(0).toLowerCase() + a.name.slice(1) : a.name;
+    out.push('<a class="alt-link" href="' + esc(a.link) + '" target="_blank" rel="noopener">' +
+      esc("The official page for " + midName) + "</a>");
+    out.push("</div>");
+  } else if (g.noKidsAlt) {
+    out.push('<div class="kid-card muted-card">');
+    out.push("<h3>" + esc("There is no younger version of " + g.name) + "</h3>");
+    out.push("<p>" + esc(g.noKidsAlt) + "</p>");
+    out.push("</div>");
+  }
+
   if (g.risks && g.risks.length) {
     out.push('<div class="check-card"><h2>What to watch for</h2><ul>');
     g.risks.forEach((r) => out.push("<li>" + esc(r) + "</li>"));

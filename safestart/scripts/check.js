@@ -80,6 +80,42 @@ Object.entries(data.guides).forEach(([id, g]) => {
 });
 ok(`${stepCount} steps validated`);
 
+// A kids alternative is a claim a parent will act on, so the shape is enforced:
+// it has to name itself, say what it is and what to watch for, and cite a page.
+console.log('\nyounger-child alternatives');
+const altCountryIds = (data.countries || []).map((c) => c.id);
+let altCount = 0;
+Object.keys(data.guides).forEach((id) => {
+  const a = data.guides[id].kidsAlt;
+  if (!a) return;
+  altCount++;
+  ['name', 'form', 'what', 'watchOut', 'link', 'confidence'].forEach((k) => {
+    if (!a[k]) fail(`${id}: kidsAlt is missing ${k}`);
+  });
+  if (!Array.isArray(a.bands) || !a.bands.length) fail(`${id}: kidsAlt has no bands`);
+  (a.bands || []).forEach((b) => {
+    if (!bandIds.includes(b)) fail(`${id}: kidsAlt names unknown band "${b}"`);
+  });
+  (a.countries || []).forEach((c) => {
+    if (!altCountryIds.includes(c)) fail(`${id}: kidsAlt names unknown country "${c}"`);
+  });
+  if (a.link && !/^https:\/\//.test(a.link)) fail(`${id}: kidsAlt link is not https`);
+  if (!['high', 'medium', 'low'].includes(a.confidence)) {
+    fail(`${id}: kidsAlt confidence "${a.confidence}" is not high, medium or low`);
+  }
+  if (data.guides[id].noKidsAlt) fail(`${id}: has both a kidsAlt and a noKidsAlt`);
+});
+ok(`${altCount} younger-child alternatives validated`);
+
+// Anything with a 13+ minimum and no alternative must say so, otherwise the
+// warning dialog falls back to generic copy and the parent learns nothing.
+Object.keys(data.guides).forEach((id) => {
+  const g = data.guides[id];
+  if (g.type !== 'app' || !g.minAge || g.kidsAlt || g.noKidsAlt) return;
+  fail(`${id}: minimum age ${g.minAge} but no kidsAlt and no noKidsAlt explaining why`);
+});
+ok('every age-restricted app either offers an alternative or says there is none');
+
 console.log('\napi handlers');
 ['guide', 'ask'].forEach((name) => {
   const file = path.join(ROOT, 'api', name + '.js');
