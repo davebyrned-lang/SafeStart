@@ -163,6 +163,9 @@
   --paper: #FFFFFF;
   --signal: #FFD23F;
 
+  --hl-ink: var(--blue);
+  --hl-rule: #C9D4FB;
+
   --blue-tint: #E9EDFD;
   --blue-tint-2: #D6DDFB;
   --navy-tint: #E4E8F2;
@@ -196,6 +199,8 @@
     --blue-tint-2: #1D3070;
     --navy-tint: #16265C;
     --heading: #EEF1FB;
+    --hl-ink: #A8BCFF;
+    --hl-rule: rgba(168,188,255,.32);
     --body: #DDE3F5;
     --muted: #94A0C0;
     --mist: #16265C;
@@ -314,9 +319,12 @@ button { font: inherit; cursor: pointer; }
   line-height: 1.08; letter-spacing: -.035em; margin: 0 0 14px;
   color: var(--heading); font-weight: 700;
 }
+/* The old yellow block put near-white heading text on Signal yellow in dark
+   mode, which is unreadable. Colour the word instead and underline it softly:
+   works in both themes, and keeps Signal for the one place it earns its keep. */
 .hero h1 .hl {
-  background: linear-gradient(transparent 62%, var(--signal) 62%, var(--signal) 92%, transparent 92%);
-  padding: 0 2px;
+  color: var(--hl-ink);
+  background: linear-gradient(transparent 76%, var(--hl-rule) 76%, var(--hl-rule) 93%, transparent 93%);
 }
 .hero p { color: var(--muted); margin: 0; font-size: 1.09rem; max-width: 44ch; }
 
@@ -466,6 +474,16 @@ button { font: inherit; cursor: pointer; }
 .build-cta svg { width: 18px; height: 18px; }
 .pick-note.dim { color: var(--muted); font-style: italic; }
 
+/* A follow-up question inside a picker step, for the choice that only makes
+   sense once the device is known. */
+.sub-q {
+  margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--line);
+}
+.sub-q-label {
+  display: block; font-size: .82rem; font-weight: 650; color: var(--muted);
+  text-transform: uppercase; letter-spacing: .05em; margin-bottom: 9px;
+}
+
 .escape-hatch { text-align: center; color: var(--muted); font-size: .9rem; margin: 26px 0 60px; }
 .escape-hatch button, .link-btn {
   background: none; border: 0; padding: 0; color: var(--blue);
@@ -512,6 +530,33 @@ button { font: inherit; cursor: pointer; }
 }
 .session-guide svg { width: 17px; height: 17px; color: var(--blue); }
 .sg-link { margin-left: auto; font-size: .8rem; font-weight: 500; color: var(--blue); }
+
+/* ---------------- dialogs ---------------- */
+
+.modal-scrim {
+  position: fixed; inset: 0; z-index: 90; background: rgba(11,27,77,.5);
+  display: grid; place-items: center; padding: 20px;
+  backdrop-filter: blur(3px);
+}
+.modal-box {
+  background: var(--surface); border-radius: var(--radius-lg);
+  padding: 26px 26px 22px; max-width: 440px; width: 100%;
+  box-shadow: var(--shadow-lg);
+}
+.modal-icon {
+  width: 36px; height: 36px; border-radius: 11px; margin-bottom: 13px;
+  background: var(--signal); display: grid; place-items: center;
+}
+.modal-icon svg { width: 19px; height: 19px; color: #4a3c00; }
+.modal-box h2 { font-size: 1.22rem; color: var(--heading); margin: 0 0 10px; letter-spacing: -.02em; }
+.modal-box p { font-size: .92rem; line-height: 1.6; color: var(--body); margin: 0 0 11px; }
+.modal-box p:last-of-type { color: var(--muted); }
+.modal-actions { display: flex; gap: 9px; justify-content: flex-end; margin-top: 18px; flex-wrap: wrap; }
+.modal-go {
+  background: var(--blue); color: #fff; border: 0; border-radius: 999px;
+  padding: 9px 18px; font-size: .89rem; font-weight: 650;
+}
+.modal-go:hover { background: var(--navy); }
 
 /* ---------------- QR dialog ---------------- */
 
@@ -1079,7 +1124,8 @@ var state = {
   device: null,
   helpMode: "quick",
   country: "US",
-  apps: [],        // the apps picked for a merged plan
+  apps: [],              // the apps picked for a merged plan
+  includeDevice: true,   // false when the device is already locked down
   planDone: {},    // step keys already ticked off in the plan
   done: {},
   checked: {}
@@ -1250,7 +1296,7 @@ function saveProgress() {
     }
     localStorage.setItem("safestart:prefs", JSON.stringify({
       ageBand: state.ageBand, device: state.device, helpMode: state.helpMode,
-      country: state.country, apps: state.apps
+      country: state.country, apps: state.apps, includeDevice: state.includeDevice
     }));
   } catch (e) { /* private browsing, quota, embedded preview */ }
 }
@@ -1293,6 +1339,7 @@ function loadPrefs() {
     if (p.helpMode) state.helpMode = p.helpMode;
     if (p.country) state.country = p.country;
     if (Array.isArray(p.apps)) state.apps = p.apps;
+    if (typeof p.includeDevice === "boolean") state.includeDevice = p.includeDevice;
   } catch (e) { /* ignore */ }
 }
 
@@ -1335,6 +1382,8 @@ function readUrl() {
   if (q.get("device")) state.device = q.get("device");
   if (q.get("mode")) state.helpMode = q.get("mode");
   if (q.get("country")) state.country = q.get("country");
+  if (q.get("setup") === "0") state.includeDevice = false;
+  if (q.get("setup") === "1") state.includeDevice = true;
   if (q.get("apps")) {
     state.apps = q.get("apps").split(",").map(function (s) { return s.trim(); })
       .filter(function (id) { return DATA && DATA.guides[id] && DATA.guides[id].type === "app"; });
@@ -1351,6 +1400,7 @@ function planUrl(absolute) {
   if (state.device) q.set("device", state.device);
   if (state.ageBand) q.set("age", state.ageBand);
   if (state.apps.length) q.set("apps", state.apps.join(","));
+  if (!state.includeDevice) q.set("setup", "0");
   if (state.country) q.set("country", state.country);
   return (absolute ? location.origin : "") + "/plan/?" + q.toString();
 }
@@ -1488,10 +1538,48 @@ function stepDevice() {
   });
 
   var dev = state.device && DATA.devices.filter(function (x) { return x.id === state.device; })[0];
-  return pickCard(1, "Which device are we setting up?", dev ? dev.label : null, [
-    grid,
-    el("p", { class: "pick-note", text: "Pick the one they use most. You can do another afterwards." })
-  ]);
+  var body = [grid];
+
+  if (dev) {
+    /* Not everyone is starting from a fresh device. Plenty of parents have the
+       iPad locked down already and just want the Roblox part, so the device
+       setup is a choice rather than an assumption. */
+    var chips = el("div", { class: "chips" });
+    [
+      { on: true,  label: "Set it up too", sub: "Catches the app they install next" },
+      { on: false, label: "Already done",  sub: "Skip to the apps" }
+    ].forEach(function (opt) {
+      chips.appendChild(el("button", {
+        class: "chip",
+        "aria-pressed": state.includeDevice === opt.on ? "true" : "false",
+        "data-focus-key": "setup:" + opt.on,
+        onclick: function () {
+          state.includeDevice = opt.on;
+          saveProgress();
+          keepPlace(function () { renderHome(true); });
+        }
+      }, [
+        document.createTextNode(opt.label),
+        el("span", { class: "chip-sub", text: opt.sub })
+      ]));
+    });
+
+    body.push(el("div", { class: "sub-q" }, [
+      el("span", { class: "sub-q-label", text: "The " + (dev.short || dev.label) + " itself" }),
+      chips
+    ]));
+
+    body.push(el("p", { class: "pick-note" }, [
+      document.createTextNode("Only here for the device settings? "),
+      el("button", { onclick: function () { openGuide(state.device); } },
+        [document.createTextNode("Open the " + (dev.short || dev.label) + " guide on its own")]),
+      document.createTextNode(".")
+    ]));
+  } else {
+    body.push(el("p", { class: "pick-note", text: "Pick the one they use most. You can do another afterwards." }));
+  }
+
+  return pickCard(1, "Which device are we setting up?", dev ? dev.label : null, body);
 }
 
 function stepAge() {
@@ -1501,9 +1589,23 @@ function stepAge() {
       class: "chip",
       "aria-pressed": state.ageBand === b.id ? "true" : "false",
       onclick: function () {
-        state.ageBand = state.ageBand === b.id ? null : b.id;
-        saveProgress();
-        keepPlace(function () { renderHome(true); });
+        var next = state.ageBand === b.id ? null : b.id;
+        var clashes = overAgeApps(next, state.apps);
+        var apply = function () {
+          state.ageBand = next;
+          saveProgress();
+          keepPlace(function () { renderHome(true); });
+        };
+        if (!clashes.length) return apply();
+        var names = clashes.map(function (id) { return DATA.guides[id].name; });
+        var minAge = Math.max.apply(null, clashes.map(function (id) { return DATA.guides[id].minAge; }));
+        warnOverAge(names, minAge, next, apply, function () {
+          // They chose to drop the apps rather than the age.
+          state.ageBand = next;
+          state.apps = state.apps.filter(function (id) { return clashes.indexOf(id) === -1; });
+          saveProgress();
+          keepPlace(function () { renderHome(true); });
+        });
       },
       "data-focus-key": "age:" + b.id
     }, [
@@ -1536,9 +1638,18 @@ function stepApps() {
       "aria-pressed": on ? "true" : "false",
       onclick: function () {
         var i = state.apps.indexOf(g.id);
-        if (i === -1) state.apps.push(g.id); else state.apps.splice(i, 1);
-        saveProgress();
-        keepPlace(function () { renderHome(true); });
+        if (i !== -1) {
+          state.apps.splice(i, 1);
+          saveProgress();
+          return keepPlace(function () { renderHome(true); });
+        }
+        var add = function () {
+          state.apps.push(g.id);
+          saveProgress();
+          keepPlace(function () { renderHome(true); });
+        };
+        if (overAgeApps(state.ageBand, [g.id]).length) warnOverAge([g.name], g.minAge, state.ageBand, add);
+        else add();
       },
       "data-focus-key": "app:" + g.id
     }, [
@@ -1580,7 +1691,8 @@ function stepApps() {
 
   /* The build button lives outside the numbered steps, because it is the
      outcome rather than another question. */
-  if (state.device && state.ageBand) {
+  var somethingToDo = state.includeDevice || state.apps.length;
+  if (state.device && state.ageBand && somethingToDo) {
     var plan = buildPlan();
     card.appendChild(el("button", { class: "build-cta", onclick: function () { renderPlan(); } }, [
       el("span", {}, [
@@ -1591,6 +1703,9 @@ function stepApps() {
       ]),
       el("span", { class: "dc-arrow" }, [icon("arrow")])
     ]));
+  } else if (state.device && state.ageBand && !somethingToDo) {
+    card.appendChild(el("p", { class: "pick-note dim", text:
+      "The device setup is skipped, so pick at least one app for me to build a plan from." }));
   } else {
     card.appendChild(el("p", { class: "pick-note dim", text: "Pick a device and an age and I'll build the plan." }));
   }
@@ -1681,6 +1796,68 @@ function showQr() {
   });
 }
 
+/* ---------------- confirm dialog ----------------
+   Used for the age warning. A parent should find out that Snapchat is a 13+ app
+   at the moment they tick it, not four screens later when they are already
+   halfway through a setup they may not want to do. */
+
+function confirmDialog(opts) {
+  var scrim = el("div", { class: "modal-scrim" });
+  var box = el("div", { class: "modal-box", role: "alertdialog", "aria-modal": "true", "aria-label": opts.title });
+  var close = function () { scrim.remove(); document.removeEventListener("keydown", onKey); };
+  var onKey = function (e) { if (e.key === "Escape") { close(); if (opts.onCancel) opts.onCancel(); } };
+  document.addEventListener("keydown", onKey);
+  scrim.addEventListener("click", function (e) {
+    if (e.target === scrim) { close(); if (opts.onCancel) opts.onCancel(); }
+  });
+
+  box.appendChild(el("span", { class: "modal-icon" }, [icon("alert")]));
+  box.appendChild(el("h2", { text: opts.title }));
+  (opts.body || []).forEach(function (para) { box.appendChild(el("p", { text: para })); });
+
+  var row = el("div", { class: "modal-actions" });
+  var cancel = el("button", { class: "ghost-btn" }, [document.createTextNode(opts.cancelLabel || "Cancel")]);
+  cancel.addEventListener("click", function () { close(); if (opts.onCancel) opts.onCancel(); });
+  var go = el("button", { class: "modal-go" }, [document.createTextNode(opts.confirmLabel || "Continue")]);
+  go.addEventListener("click", function () { close(); if (opts.onConfirm) opts.onConfirm(); });
+  row.appendChild(cancel);
+  row.appendChild(go);
+  box.appendChild(row);
+
+  scrim.appendChild(box);
+  document.body.appendChild(scrim);
+  setTimeout(function () { cancel.focus({ preventScroll: true }); }, 0);
+}
+
+/* An app is "over age" when the platform's own minimum sits above the band the
+   parent picked. We use the bottom of the band, so 11-12 counts as 11. */
+function bandFloor(bandId) { return parseInt(bandId, 10) || 0; }
+
+function overAgeApps(bandId, appIds) {
+  if (!bandId) return [];
+  return appIds.filter(function (id) {
+    var g = DATA.guides[id];
+    return g && g.minAge && bandFloor(bandId) < g.minAge;
+  });
+}
+
+function warnOverAge(names, minAge, bandId, onConfirm, onCancel) {
+  var who = names.length === 1 ? names[0] : listSentence(names);
+  var isAre = names.length === 1 ? " is " : " are ";
+  confirmDialog({
+    title: who + isAre + "built for " + minAge + " and over",
+    body: [
+      "Your child is in the " + labelForBand(bandId) + " band, which is below that minimum.",
+      "Below the minimum age there is no account type designed for them, so the settings can only do so much. Whether they use it at all is the parent's decision, and it is better made now than halfway through a setup.",
+      "Either way, the conversation with your child about it will do more than any setting can."
+    ],
+    cancelLabel: names.length === 1 ? "Don't add it" : "Remove them",
+    confirmLabel: "Add anyway",
+    onConfirm: onConfirm,
+    onCancel: onCancel
+  });
+}
+
 /* ---------------- the merged plan ----------------
    The job a parent actually has is "make this iPad safe", not "configure
    Roblox". So we take the device guide plus whatever apps they picked, drop the
@@ -1693,7 +1870,7 @@ function stepAppliesToAge(s) {
 
 function planOrder() {
   var order = [];
-  if (state.device && DATA.guides[state.device]) order.push(state.device);
+  if (state.includeDevice && state.device && DATA.guides[state.device]) order.push(state.device);
   state.apps.slice()
     .filter(function (id) { return DATA.guides[id]; })
     .sort(function (a, b) { return (DATA.guides[a].priority || 9) - (DATA.guides[b].priority || 9); })
@@ -1763,6 +1940,7 @@ function listSentence(arr) {
 
 function renderPlan(skipUrl) {
   if (!state.device || !state.ageBand) return renderHome(true);
+  if (!state.includeDevice && !state.apps.length) return renderHome(true);
   state.view = "plan";
   state.guideId = null;
   state.guide = null;
@@ -1775,21 +1953,26 @@ function renderPlan(skipUrl) {
   var plan = buildPlan();
   var dev = DATA.devices.filter(function (d) { return d.id === state.device; })[0];
   var devLabel = dev ? dev.label : state.device;
-  document.title = "Your plan for " + devLabel + " — SafeStart";
+  var appNames = state.apps.filter(function (id) { return DATA.guides[id]; })
+                           .map(function (id) { return DATA.guides[id].name; });
+  var heading = state.includeDevice ? "Your plan for " + devLabel
+              : "Your plan for " + listSentence(appNames);
+  document.title = heading + " — SafeStart";
 
   clear(app);
   app.appendChild(el("button", { class: "back-link", onclick: function () { renderHome(); } },
     [document.createTextNode("Change my picks")]));
 
   app.appendChild(el("div", { class: "guide-head" }, [
-    el("h1", { class: "guide-title", text: "Your plan for " + devLabel })
+    el("h1", { class: "guide-title", text: heading })
   ]));
 
-  var appNames = state.apps.filter(function (id) { return DATA.guides[id]; })
-                           .map(function (id) { return DATA.guides[id].name; });
   app.appendChild(el("p", { class: "guide-blurb", text:
-    "For a " + labelForBand(state.ageBand) + " year old" +
-    (appNames.length ? ", covering " + listSentence(appNames) : "") + "." }));
+    state.includeDevice
+      ? "For a " + labelForBand(state.ageBand) + " year old" +
+        (appNames.length ? ", covering " + listSentence(appNames) : "") + "."
+      : "On " + devLabel + ", for a " + labelForBand(state.ageBand) +
+        " year old. The device's own settings are left alone, as you said they're already done." }));
 
   var meta = [
     el("span", { class: "pill", text: plan.totalMins + " minutes total" }),

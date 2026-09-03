@@ -84,6 +84,92 @@ function check(name, condition, detail) {
     check('device-only plan is allowed',
       (await page.locator('.build-cta').textContent()).includes('sitting'));
 
+    console.log('\nthe device setup is optional');
+    check('offers to skip a device that is already done',
+      (await page.locator('.sub-q').textContent()).includes('Already done'));
+    // Roblox has no minimum age, so this exercises the device toggle without
+    // tripping the over-age warning tested further down. Measure with the app
+    // already added, so the only difference between the two is the device.
+    await page.locator('.card.selectable', { hasText: 'Roblox' }).first().click();
+    await page.waitForTimeout(150);
+    const withDevice = await page.locator('.build-cta').textContent();
+    await page.locator('.chip', { hasText: 'Already done' }).first().click();
+    await page.waitForTimeout(200);
+    const withoutDevice = await page.locator('.build-cta').textContent();
+    check('skipping the device makes the plan shorter', withoutDevice !== withDevice,
+      `${withDevice.trim()} vs ${withoutDevice.trim()}`);
+    await page.locator('.card.selectable.on').first().click();
+    await page.waitForTimeout(200);
+    check('no apps and no device setup leaves nothing to build',
+      (await page.locator('.build-cta').count()) === 0);
+    check('and says why', (await page.locator('.pick-note.dim').textContent()).includes('at least one app'));
+    await page.locator('.chip', { hasText: 'Set it up too' }).first().click();
+    await page.waitForTimeout(200);
+    check('device-only plan is buildable again', await page.locator('.build-cta').isVisible());
+
+    console.log('\nheadline highlight is readable in both themes');
+    for (const scheme of ['light', 'dark']) {
+      await page.emulateMedia({ colorScheme: scheme });
+      await page.waitForTimeout(120);
+      const hl = await page.evaluate(() => {
+        const e = document.querySelector('.hero h1 .hl');
+        const cs = getComputedStyle(e);
+        return { colour: cs.color, hasYellowFill: /255,\s*210,\s*63/.test(cs.backgroundImage) };
+      });
+      check(`${scheme}: highlight is not a yellow fill behind the heading`, !hl.hasYellowFill, hl.colour);
+    }
+    await page.emulateMedia({ colorScheme: 'light' });
+
+    console.log('\nover-age warning');
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.locator('.card', { hasText: 'iPhone' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.chip', { hasText: '7\u201311' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.card.selectable', { hasText: 'TikTok' }).first().click();
+    await page.waitForTimeout(250);
+    check('warns the moment a 13+ app is ticked for a younger child',
+      await page.locator('.modal-box').isVisible());
+    check('the warning names the app and the minimum',
+      /TikTok.*13/.test(await page.locator('.modal-box h2').textContent()));
+    await page.locator('.modal-actions .ghost-btn').click();
+    await page.waitForTimeout(200);
+    check('declining does not add the app', (await page.locator('.card.selectable.on').count()) === 0);
+
+    await page.locator('.card.selectable', { hasText: 'TikTok' }).first().click();
+    await page.waitForTimeout(200);
+    await page.locator('.modal-go').click();
+    await page.waitForTimeout(200);
+    check('"add anyway" respects the parent\'s call',
+      (await page.locator('.card.selectable.on').count()) === 1);
+
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.locator('.card', { hasText: 'iPhone' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.chip', { hasText: '13\u201315' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.card.selectable', { hasText: 'Snapchat' }).first().click();
+    await page.waitForTimeout(150);
+    check('no warning when the age is fine', (await page.locator('.modal-box').count()) === 0);
+    await page.locator('.chip', { hasText: '7\u201311' }).first().click();
+    await page.waitForTimeout(250);
+    check('dropping the age below a picked app warns too',
+      await page.locator('.modal-box').isVisible());
+    await page.locator('.modal-actions .ghost-btn').click();
+    await page.waitForTimeout(250);
+    check('choosing to remove them clears the app but keeps the new age',
+      (await page.locator('.card.selectable.on').count()) === 0 &&
+      (await page.locator('.pick-answer').nth(1).textContent()).includes('7'));
+
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.locator('.card', { hasText: 'iPhone' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.chip', { hasText: '11\u201312' }).first().click();
+    await page.waitForTimeout(120);
+
     console.log('\nsearch');
     await page.fill('#homeSearch', 'rob');
     await page.waitForSelector('.search-hit');
@@ -301,10 +387,15 @@ function check(name, condition, detail) {
     await driftOnClick('ticking a plan step',
       page.locator('.session.open .step-done-btn').nth(1));
 
+    // Start clean, and use an app with no minimum age, so this measures scrolling
+    // rather than accidentally triggering the over-age dialog.
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.locator('.card', { hasText: 'iPhone' }).first().click();
+    await page.waitForTimeout(150);
     await page.waitForSelector('.card.selectable');
-    await driftOnClick('picking an app', page.locator('.card.selectable').nth(3));
-    await driftOnClick('changing the age', page.locator('.chip').nth(2));
+    await driftOnClick('picking an app', page.locator('.card.selectable', { hasText: 'Roblox' }).first());
+    await driftOnClick('changing the age', page.locator('.chip', { hasText: '13\u201315' }).first());
 
     await page.goto(BASE + '/roblox/?age=11-12', { waitUntil: 'networkidle' });
     await page.waitForSelector('.check-item');
