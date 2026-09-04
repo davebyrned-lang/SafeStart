@@ -87,7 +87,7 @@ const DEFAULT_COUNTRY = (DATA.countries && DATA.countries[0]) || { id: "US", cur
 /* ---------------- guide pages ---------------- */
 
 function guideDescription(g) {
-  const what = g.type === "device" ? "on " + g.name : "for " + g.name;
+  const what = g.type === "device" ? "on " + g.name : g.type === "start" ? "before the device" : "for " + g.name;
   return (
     "Step-by-step parental controls " + what +
     ", with the recommended setting for your child's age. " +
@@ -168,6 +168,12 @@ function renderGuideStatic(g) {
     out.push("<h3>" + esc("There is no younger version of " + g.name) + "</h3>");
     out.push("<p>" + esc(g.noKidsAlt) + "</p>");
     out.push("</div>");
+  }
+
+  if (g.preinstalled && g.preinstalled.length) {
+    out.push('<div class="check-card"><h2>What is already on it</h2><ul>');
+    g.preinstalled.forEach((x) => out.push("<li>" + esc(x) + "</li>"));
+    out.push("</ul></div>");
   }
 
   if (g.risks && g.risks.length) {
@@ -269,7 +275,8 @@ function renderHomeStatic() {
   const guides = DATA.guides;
   const ids = Object.keys(guides);
   const apps = ids.filter((id) => guides[id].type === "app");
-  const devices = ids.filter((id) => guides[id].type !== "app");
+  const devices = ids.filter((id) => guides[id].type === "device");
+  const starts = ids.filter((id) => guides[id].type === "start");
 
   const list = (title, arr) => {
     const items = arr
@@ -288,9 +295,10 @@ function renderHomeStatic() {
   return [
     '<section class="hero">',
     "<h1>Let's set this up <span class=\"hl\">together</span>.</h1>",
-    "<p>Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short sittings rather than one long evening.</p>",
+    "<p>Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short parts rather than one long evening.</p>",
     "</section>",
     helpCardStatic(),
+    list("Start here", starts),
     list("Apps and games", apps),
     list("Phones, computers and consoles", devices)
   ].join("\n");

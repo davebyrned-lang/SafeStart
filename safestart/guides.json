@@ -1546,9 +1546,9 @@
      "why": "Otherwise every setting you choose is one free app download away from irrelevant. Ask to Buy does mean a notification every time they want anything, free apps included, and that wears thin quickly. It is still worth it for the first few months, and you can loosen it once you can see what they actually ask for.",
      "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
      "do": [
-      "Set In-app Purchases to Don’t Allow.",
-      "Set Installing Apps and Deleting Apps according to the ages below.",
-      "Turn on Ask to Buy in Family Sharing so download requests come to your phone."
+      "Set iTunes & App Store Purchases according to the ages below. This is the one that also covers redownloads.",
+      "Set In-app Purchases to Don't Allow.",
+      "Then turn on Ask to Buy in Family Sharing, so new downloads come to your phone as a request."
      ],
      "recommended": {
       "0-6": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
@@ -1557,7 +1557,8 @@
       "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
      },
-     "mins": 2
+     "mins": 2,
+     "note": "The hole worth knowing about, in Apple's own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes & App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not."
     },
     {
      "id": "content",
@@ -1638,7 +1639,12 @@
      "url": "https://support.apple.com/en-us/HT208982"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "Messages and FaceTime, with no minimum age of their own",
+    "Safari",
+    "The App Store"
+   ]
   },
   "ipad": {
    "id": "ipad",
@@ -1707,9 +1713,9 @@
      "why": "iPads are where 'free' games with aggressive in-app purchases tend to land.",
      "path": "Content & Privacy Restrictions → iTunes & App Store Purchases",
      "do": [
-      "Set In-app Purchases to Don’t Allow.",
-      "Set Installing Apps to match the ages below.",
-      "Turn on Ask to Buy so requests come to your phone."
+      "Set iTunes & App Store Purchases according to the ages below. This is the one that also covers redownloads.",
+      "Set In-app Purchases to Don't Allow.",
+      "Then turn on Ask to Buy in Family Sharing, so new downloads come to your phone as a request."
      ],
      "recommended": {
       "0-6": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
@@ -1718,7 +1724,8 @@
       "13-15": "Installing apps: Ask to Buy. In-app purchases: Don’t Allow.",
       "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
      },
-     "mins": 2
+     "mins": 2,
+     "note": "The hole worth knowing about, in Apple's own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes & App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not."
     },
     {
      "id": "content",
@@ -1782,7 +1789,12 @@
      "url": "https://support.apple.com/en-us/HT201060"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "Messages and FaceTime, with no minimum age of their own",
+    "Safari",
+    "The App Store"
+   ]
   },
   "android": {
    "id": "android",
@@ -1841,7 +1853,8 @@
       "13-15": "Approval required for paid apps, ratings PEGI 12 / ESRB T",
       "16-17": "Notifications rather than approvals"
      },
-     "mins": 2
+     "mins": 2,
+     "note": "Google has the same hole and states it plainly: previous downloads, and content shared through Family Library, will not require your approval. So anything installed once can come back without a request reaching you. Set approval to All content rather than Paid content only, because the free apps are the ones that matter here."
     },
     {
      "id": "web",
@@ -1940,7 +1953,13 @@
     "watchOut": "It only comes pre-installed on certain tablets, among them Pixel Tablet, Lenovo, onn., Nokia, Medion and Multilaser. You cannot add it to any Android tablet, which is what catches most parents out.",
     "confidence": "medium",
     "link": "https://support.google.com/kidsspace/answer/9990724"
-   }
+   },
+   "preinstalled": [
+    "YouTube, and it is the full version rather than YouTube Kids. The Kids app is a separate download",
+    "Chrome",
+    "Google Play",
+    "Google Messages"
+   ]
   },
   "windows": {
    "id": "windows",
@@ -2058,7 +2077,12 @@
      "url": "https://support.microsoft.com/en-us/topic/what-is-microsoft-family-safety-b1b0b9c8-8de4-4e5e-9b7b-2b1cf5e4f9a5"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "Edge",
+    "The Microsoft Store",
+    "The Xbox app, including party chat"
+   ]
   },
   "mac": {
    "id": "mac",
@@ -2167,7 +2191,12 @@
      "url": "https://support.apple.com/guide/mac-help/screen-time-mchl8bd1release/mac"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "Messages and FaceTime",
+    "Safari",
+    "The App Store"
+   ]
   },
   "chromebook": {
    "id": "chromebook",
@@ -2273,7 +2302,12 @@
      "url": "https://support.google.com/families/answer/7680868?hl=en"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "Chrome, which on this device is more or less the whole machine",
+    "YouTube",
+    "Google Play on most models"
+   ]
   },
   "playstation": {
    "id": "playstation",
@@ -2409,7 +2443,11 @@
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "The PlayStation Store",
+    "Party voice chat"
+   ]
   },
   "xbox": {
    "id": "xbox",
@@ -2539,7 +2577,11 @@
      "url": "https://www.xbox.com/en-US/apps/xbox-family-settings-app"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "The Microsoft Store",
+    "Party chat"
+   ]
   },
   "switch": {
    "id": "switch",
@@ -2668,7 +2710,11 @@
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/nintendo-switch/"
     }
    ],
-   "priority": 0
+   "priority": 0,
+   "preinstalled": [
+    "The eShop",
+    "The album, which can post screenshots publicly"
+   ]
   },
   "firetablet": {
    "id": "firetablet",
@@ -2849,7 +2895,12 @@
     "watchOut": "Amazon lists Kids+ for Canada, Germany, Japan, the UK and the US. Ireland is not on that list, so check before buying a tablet on the strength of it.",
     "confidence": "medium",
     "link": "https://www.aboutamazon.com/news/devices/set-up-fire-tablet-kids"
-   }
+   },
+   "preinstalled": [
+    "The Silk browser",
+    "The Amazon Appstore",
+    "Alexa, which can lead out of the child profile"
+   ]
   },
   "whatsapp": {
    "id": "whatsapp",
@@ -3763,6 +3814,405 @@
     "watchOut": "Downloads leak through. Anything downloaded on an adult profile can still be reached from the Kids profile, so PIN-lock the adult profiles too.",
     "confidence": "high",
     "link": "https://www.primevideo.com/help?nodeId=GD6ARQYPV5H7RYA4"
+   }
+  },
+  "accounts": {
+   "id": "accounts",
+   "name": "Accounts and email",
+   "type": "start",
+   "kind": "Start here",
+   "blurb": "Before the device comes the account, and this is where most of the surprises live. Including whether your child needs an email address at all, which on Apple they do not.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch",
+    "firetablet"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-04",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "priority": 0,
+   "risks": [
+    "A child on your account gets your messages and your call history. Apple says so on its own support page",
+    "An account created with an adult birthday cannot be supervised, and correcting it later is simple on some platforms and impossible on others",
+    "The account quietly decides what they can reach. On Android it decides which YouTube they get"
+   ],
+   "beforeYouStart": [
+    "Know their real date of birth. Every control on every platform hangs off it.",
+    "Have your own account password to hand, because you will be asked for it more than once."
+   ],
+   "steps": [
+    {
+     "id": "own",
+     "title": "Give them their own account, not yours",
+     "why": "Sharing yours is the fastest setup and the one that causes the most trouble later. Apple's own words: you might receive text messages and voicemails intended for your family member, and your call history will include their calls. It runs the other way too, which is the part parents do not expect. And if family sharing ever stops, whoever owns the account keeps everything bought on it.",
+     "do": [
+      "Check whose account is actually signed in on the device.",
+      "If it is yours, plan on giving them their own before you set anything else up.",
+      "On Apple, everything below assumes a Child Account inside your Family Sharing group."
+     ],
+     "note": "Apple publishes a page recommending you do not share an Apple Account, and it lists exactly what leaks: messages, voicemails, call history, music recommendations, book and podcast bookmarks, and health data.",
+     "mins": 2,
+     "provides": [
+      "own-account"
+     ]
+    },
+    {
+     "id": "email",
+     "title": "Decide whether they need an email address",
+     "why": "Parents keep asking us this, and the honest answer is that it depends on the platform. On Apple you can skip it entirely, which surprises almost everyone.",
+     "do": [
+      "Apple: creating a Child Account lets you choose their own email address, a suggested @icloud.com address, or just a Game Center nickname. The nickname route means no email address at all.",
+      "Google: a supervised account normally needs a Gmail address. The one documented exception is a child under 9 on a Pixel Tablet, who gets an auto-generated @glimitedaccount.com that is not a working address.",
+      "Microsoft: you add a child to your family group by email or phone number, so an address they already have will do."
+     ],
+     "recommended": {
+      "0-6": "No email address. Use the Game Center nickname on Apple",
+      "7-11": "No email address unless something specific needs one",
+      "11-12": "An address, if school or an app requires it",
+      "13-15": "Their own address, and you know what it is",
+      "16-17": "Their own address"
+     },
+     "note": "Google warns you may need to add a Gmail address later anyway for certain apps and services. Microsoft does not publish whether a brand new child account has to use an Outlook address, so treat that one as unconfirmed.",
+     "mins": 3
+    },
+    {
+     "id": "create",
+     "title": "Create it with their real date of birth",
+     "why": "The account type is set at creation and is not equally fixable afterwards. Apple and Microsoft let you correct a birthday, Google gives you a fourteen-day window, and PlayStation does not let you change it at all.",
+     "path": "Apple: Settings → Family → Add Member → Create Child Account",
+     "do": [
+      "Apple: Settings, then Family, then Add Member, then Create Child Account.",
+      "Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.",
+      "Microsoft: add them at family.microsoft.com, then give parental consent when prompted."
+     ],
+     "note": "The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.",
+     "mins": 3,
+     "provides": [
+      "own-account"
+     ]
+    },
+    {
+     "id": "switchedon",
+     "title": "Look at what the account switched on",
+     "why": "Creating the account turns things on that you never chose. Apple does not publish a list of what is on by default, so the only reliable move is to look rather than assume.",
+     "do": [
+      "On Apple, open the child's iCloud settings and go through what is on: Mail, Messages, FaceTime, Find My, shared photos.",
+      "On Android, check which YouTube they have. A supervised account gets a supervised version of ordinary YouTube, which is not the same as the separate YouTube Kids app.",
+      "Turn off whatever they do not need yet. Adding something back later is easier than taking it away."
+     ],
+     "note": "Apple does publish the safety defaults: web content restriction and Communication Safety are on for under-18s, and in many countries Ask to Buy is on and cannot be switched off for an under-18.",
+     "mins": 2
+    },
+    {
+     "id": "record",
+     "title": "Write down what you set",
+     "why": "In six months you will not remember which address you used, which birthday you entered, or where the passcode went. The passcode is the one families actually lose, and on some platforms losing it means a factory reset.",
+     "do": [
+      "Note the account address or nickname, the date of birth you entered, and where the passcode is kept.",
+      "Keep it somewhere your child will not come across."
+     ],
+     "mins": 1
+    }
+   ],
+   "checklist": [
+    "Your child is on their own account, not yours",
+    "The date of birth on it is their real one",
+    "You know whether they have an email address, and why",
+    "You have looked at what the account switched on",
+    "The passcode is written down somewhere they cannot see"
+   ],
+   "talkAboutIt": [
+    "Tell them the account is theirs. Having their own is the reason your messages do not land on their screen.",
+    "Agree now what happens when they want something the account will not allow, so it becomes a request rather than a workaround.",
+    "If they are old enough to have an email address, agree what it is for before it exists."
+   ],
+   "links": [
+    {
+     "label": "Apple — create a Child Account (official)",
+     "url": "https://support.apple.com/en-us/102617"
+    },
+    {
+     "label": "Apple — why not to share an Apple Account (official)",
+     "url": "https://support.apple.com/en-us/109040"
+    },
+    {
+     "label": "Google — create a Google Account for your child (official)",
+     "url": "https://support.google.com/families/answer/7103338"
+    },
+    {
+     "label": "Microsoft — add people to your family group (official)",
+     "url": "https://support.microsoft.com/en-us/family-safety/add-people-to-your-family-group"
+    }
+   ]
+  },
+  "imessage": {
+   "id": "imessage",
+   "name": "iMessage and FaceTime",
+   "type": "app",
+   "kind": "Messaging",
+   "blurb": "Already on every iPhone and iPad, with no minimum age of its own. For a lot of children it is the first place a stranger can reach them, and it is the app parents forget to look at because nobody chose to install it.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "mac"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-04",
+   "sourceConfidence": "high",
+   "minutes": 8,
+   "priority": 4,
+   "risks": [
+    "There is no age gate. If they have the device, they have this",
+    "Communication Safety is a nudge, not an alert. It does not tell you when it finds something",
+    "Screening unknown senders sorts messages into another folder rather than stopping them"
+   ],
+   "beforeYouStart": [
+    "Turn on Contacts in iCloud first, because Communication Limits will not work without it.",
+    "Have your Screen Time passcode, not your device passcode."
+   ],
+   "steps": [
+    {
+     "id": "limits",
+     "title": "Set Communication Limits",
+     "why": "This is the real control here, and unlike most filters it blocks rather than warns. Apple's wording: if someone blocked by your limits tries to call or message, their communication will not go through, and it works in both directions.",
+     "path": "Settings → Screen Time → [your child] → Communication Limits",
+     "do": [
+      "Turn on Contacts in iCloud first, or the setting has nothing to work from.",
+      "Set During Screen Time to the level below.",
+      "Set During Downtime, which can be narrowed further to specific contacts."
+     ],
+     "recommended": {
+      "0-6": "Contacts Only, and Specific Contacts during downtime",
+      "7-11": "Contacts Only",
+      "11-12": "Contacts Only",
+      "13-15": "Contacts & Groups with at Least One Contact",
+      "16-17": "Agree it together. Everyone is a reasonable landing point by this age"
+     },
+     "note": "The middle option is called Contacts & Groups with at Least One Contact. It allows one-to-one chats with people in their contacts, plus group chats where at least one member is a contact. Emergency numbers your carrier recognises always get through, whatever you set.",
+     "mins": 3
+    },
+    {
+     "id": "safety",
+     "title": "Check Communication Safety is on, and know what it will not do",
+     "why": "It spots nudity in photos and videos on the device itself, both arriving and about to be sent. What it does not do is tell you. Parents assume this one alerts them, and it does not, so it is worth knowing before you rely on it.",
+     "path": "Settings → Screen Time → [your child] → Communication Safety",
+     "do": [
+      "Confirm it is on. For under-18s it is on by default on current software.",
+      "For an under-13, viewing the blurred photo needs your Screen Time passcode, so that gate is real."
+     ],
+     "note": "It covers Messages, AirDrop, FaceTime, contact posters, shared albums and some third-party apps. The detection happens on the device: Apple never sees the photo and never learns that anything was found. For under-13s it prompts the child to start a conversation with you, which is the design. It points them at you rather than reporting to you.",
+     "mins": 2
+    },
+    {
+     "id": "unknown",
+     "title": "Turn on Screen Unknown Senders",
+     "why": "It moves messages from numbers they do not know into a separate list, so they stop arriving as notifications. It sorts rather than blocks, so treat it as tidying up rather than a wall.",
+     "path": "Messages → the icon at the top right of the conversation list → Manage Filtering",
+     "do": [
+      "Open Messages and tap the icon at the top right of the conversation list.",
+      "Open Manage Filtering and turn on Screen Unknown Senders."
+     ],
+     "note": "This setting moved. It used to live in Settings, then Messages, and it was called Filter Unknown Senders. One documented hole: filtering stops applying to anyone they have replied to three times or more.",
+     "mins": 2
+    },
+    {
+     "id": "off",
+     "title": "Turn it off entirely if they are too young for it",
+     "why": "For a young child on a hand-me-down iPad, the honest answer is often that they do not need messaging at all. Turning the app off hides it rather than deleting it, so nothing is lost when you turn it back on.",
+     "path": "Content & Privacy Restrictions → Allowed Apps & Features",
+     "do": [
+      "Open Allowed Apps & Features.",
+      "Turn off what they do not need yet."
+     ],
+     "recommended": {
+      "0-6": "Messages and FaceTime off",
+      "7-11": "FaceTime on for family, Messages limited to contacts",
+      "11-12": "Both on, contacts only",
+      "13-15": "Both on",
+      "16-17": "Both on"
+     },
+     "note": "Apple documents how this screen works but does not publish the full list of what appears on it, so check what is actually there on the device rather than expecting a particular name.",
+     "mins": 1
+    },
+    {
+     "id": "device",
+     "title": "Add a device-level backstop",
+     "why": "These settings cover Messages and FaceTime. A device-level control catches whatever they install next.",
+     "do": [
+      "Set the device controls too, from the guide for their iPhone, iPad or Mac."
+     ],
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 2
+    }
+   ],
+   "checklist": [
+    "Contacts in iCloud on, and Communication Limits set",
+    "Communication Safety confirmed on",
+    "Screen Unknown Senders on",
+    "You know Communication Safety will not notify you"
+   ],
+   "talkAboutIt": [
+    "Tell them what Communication Safety does before they meet it, so a blurred photo is not a fright.",
+    "Agree that a message from someone they do not know is something to show you, not something they are in trouble for.",
+    "Show them how to block a number, and that blocking someone is not rude."
+   ],
+   "links": [
+    {
+     "label": "Apple — block calls and messages with Screen Time (official)",
+     "url": "https://support.apple.com/guide/iphone/block-calls-and-messages-with-screen-time-iph4df1c0dad/ios"
+    },
+    {
+     "label": "Apple — about Communication Safety (official)",
+     "url": "https://support.apple.com/en-us/105069"
+    },
+    {
+     "label": "Apple — screen and filter texts (official)",
+     "url": "https://support.apple.com/guide/iphone/screen-and-filter-texts-iph203ab0be4/ios"
+    },
+    {
+     "label": "Apple — Screen Time content and privacy restrictions (official)",
+     "url": "https://support.apple.com/en-us/105121"
+    }
+   ],
+   "noKidsAlt": "There is no younger version of Messages or FaceTime, and no minimum age either. They come with the device, so the only lever is the settings below, or turning them off until your child is ready."
+  },
+  "hbomax": {
+   "id": "hbomax",
+   "name": "HBO Max",
+   "type": "app",
+   "kind": "Video",
+   "blurb": "Strong for younger children once you turn two things on. Out of the box the Kids profile is a suggestion rather than a lock, because a child can tap the profile switcher and land in an adult one.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "switch",
+    "firetablet"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-04",
+   "sourceConfidence": "high",
+   "minutes": 8,
+   "priority": 14,
+   "risks": [
+    "Kid-Proof Exit is off by default, so nothing stops a child leaving the Kids profile",
+    "Adult profiles have no PIN until you add one, and a new adult profile can watch everything",
+    "On phones, tablets and computers the app reopens on the last profile used, with no Who's Watching screen"
+   ],
+   "beforeYouStart": [
+    "Not available in Canada. It launched in the UK and Ireland in March 2026, and Sky and NOW customers there often already have the ad-supported tier included without realising.",
+    "If you are subscribing for Sesame Street, read the note on the first step before you pay."
+   ],
+   "steps": [
+    {
+     "id": "kidsprofile",
+     "title": "Make them a Kids profile",
+     "why": "A Kids profile filters the home screen and search as well as playback, so things they should not see never appear. It can never reach R or TV-MA whatever else you set.",
+     "do": [
+      "Add a profile, mark it as a Kids profile, and enter their date of birth.",
+      "Pick the rating group for their age."
+     ],
+     "recommended": {
+      "0-6": "G, TV-Y (up to age 5)",
+      "7-11": "G, TV-Y7, TV-G (ages 6+)",
+      "11-12": "PG, TV-PG (ages 10+)",
+      "13-15": "PG-13, TV-14 (ages 13+), which is as high as a Kids profile goes",
+      "16-17": "An adult profile with a rating you agree together"
+     },
+     "note": "New accounts arrive with a default Kids profile already set to PG and TV-PG, which is aimed at ages 10 and up. If your child is younger, change it rather than assuming a Kids profile means young. Kids Mode cannot be switched off on a profile whose birthdate is under 18. On content: Sesame Street moved to Netflix in 2025 with worldwide premiere rights, so do not subscribe here for new episodes. Studio Ghibli is on HBO Max in the United States, where GKIDS holds exclusive US streaming rights. We could not confirm Ghibli for the UK and Ireland, so check before counting on it.",
+     "mins": 2
+    },
+    {
+     "id": "parentcode",
+     "title": "Set the Parent Code and turn on Kid-Proof Exit",
+     "why": "This is the step that turns the Kids profile from a suggestion into a control, and it is off until you do it. It is the thing most parents are caught by, because the profile looks locked and is not.",
+     "path": "play.hbomax.com/parent-code",
+     "do": [
+      "Set the four-digit Parent Code at play.hbomax.com/parent-code.",
+      "Turn on Kid-Proof Exit for the Kids profile."
+     ],
+     "note": "There is one Parent Code for the whole account, and it applies to every Kids profile on it.",
+     "mins": 2
+    },
+    {
+     "id": "adultpin",
+     "title": "Put a PIN on every adult profile",
+     "why": "Kid-Proof Exit stops them leaving. A profile PIN stops them arriving. You need both, because by default a new adult profile can watch everything and the app reopens wherever it was last.",
+     "do": [
+      "Add a four-digit Profile PIN to your own profile.",
+      "Do the same on every other adult profile, not just yours."
+     ],
+     "mins": 2
+    },
+    {
+     "id": "device",
+     "title": "Let the device do the rest",
+     "why": "HBO Max follows the device's own parental controls when those are stricter, which makes the device a genuine backstop here. It does not follow controls you set with a TV provider.",
+     "do": [
+      "Set the device controls too, from the guide for that device."
+     ],
+     "redundantWith": [
+      "device-controls"
+     ],
+     "mins": 2
+    }
+   ],
+   "checklist": [
+    "Kids profile created with the right rating group for their age",
+    "Parent Code set and Kid-Proof Exit on",
+    "Every adult profile has a PIN",
+    "Device-level controls set as well"
+   ],
+   "talkAboutIt": [
+    "Show them their profile so it feels like theirs rather than a restriction.",
+    "Agree what happens when they want to watch something outside it, so it becomes a request."
+   ],
+   "links": [
+    {
+     "label": "HBO Max — parental controls (official)",
+     "url": "https://help.hbomax.com/us/answer/detail/000002540"
+    },
+    {
+     "label": "HBO Max — set ratings for a profile (official)",
+     "url": "https://help.hbomax.com/us/Answer/Detail/000002574"
+    },
+    {
+     "label": "HBO Max — profiles and Kids Mode (official)",
+     "url": "https://help.hbomax.com/us/Answer/Detail/000002586"
+    },
+    {
+     "label": "HBO Max — where it is available (official)",
+     "url": "https://help.hbomax.com/us/Answer/Detail/000002543"
+    }
+   ],
+   "kidsAlt": {
+    "name": "A Kids profile",
+    "form": "a profile setting in HBO Max",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "Filters the home screen and search as well as playback, with four rating groups running from up-to-age-5 through 13+. It can never reach R or TV-MA.",
+    "watchOut": "Kid-Proof Exit is off by default and adult profiles have no PIN until you add one, so out of the box the profile switcher is one tap from the full library.",
+    "countryNote": "Available in the US, the UK and Ireland. Not available in Canada.",
+    "confidence": "high",
+    "link": "https://help.hbomax.com/us/answer/detail/000002540"
    }
   }
  },

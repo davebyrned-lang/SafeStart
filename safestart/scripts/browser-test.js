@@ -110,9 +110,15 @@ function check(name, condition, detail) {
     check('device-only plan is buildable again', await page.locator('.build-cta').isVisible());
 
     console.log('\nappearance toggle');
-    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    // Order matters here. Flipping the emulated colour scheme fires a change
+    // event on whatever page is already loaded, and the app's "follow the device"
+    // handler responds by writing an explicit "auto" preference. So switch the
+    // scheme first, then clear storage, then reload, or the test is really
+    // measuring its own side effect.
     await page.emulateMedia({ colorScheme: 'dark' });
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.evaluate(() => { try { localStorage.clear(); } catch (e) {} });
+    await page.reload({ waitUntil: 'networkidle' });
     const themeAttr = () => page.evaluate(() => document.documentElement.getAttribute('data-theme'));
     const themePref = () => page.evaluate(() => { try { return localStorage.getItem('safestart:theme'); } catch (e) { return null; } });
     check('follows the device when nothing is chosen', (await themeAttr()) === 'dark' && (await themePref()) === null);
@@ -462,7 +468,10 @@ function check(name, condition, detail) {
     const subs = await page.locator('.st-sub').allTextContents();
     check('every part is roughly ten minutes',
       subs.every((t) => { const m = t.match(/About (\d+) minutes/); return m && +m[1] <= 13; }), subs.join(' | '));
-    check('device guide comes first', subs[0].includes('iPad'), subs[0]);
+    // Accounts lead, then the device, then the apps by risk. The account decides
+    // what every later setting can reach, so it cannot come second.
+    check('accounts come first, then the device',
+      subs[0].includes('Accounts') && subs.join(' ').indexOf('iPad') > 0, subs.slice(0, 2).join(' | '));
 
     const planText = await page.locator('#app').textContent();
     check('the redundant device-backstop step is gone',

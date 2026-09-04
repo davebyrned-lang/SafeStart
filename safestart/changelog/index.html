@@ -1012,7 +1012,27 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">12 entries</span><span class="pill">4 corrections</span></div>
+<div class="meta-row"><span class="pill">16 entries</span><span class="pill">5 corrections</span></div>
+<article class="log-entry log-correction">
+<div class="log-head"><span class="log-kind">Correction</span><time>4 September 2026</time></div>
+<h2>Ask to Buy does not stop a child re-downloading an app, and nor does Google&#39;s version</h2>
+<p>A reader told us her sister got apps from the App Store for a long time before their parents noticed. There is a documented reason. Apple&#39;s own wording: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not receive a request. So an app approved once, or installed before Ask to Buy was switched on, can be deleted and pulled back from their purchase history any time, silently. Google has the same hole and states it just as plainly: previous downloads and content shared through Family Library will not require your approval. Neither company mentions this anywhere near the setting itself. The iPhone, iPad and Android guides now lead with it, and point at the separate control that does cover redownloads.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>4 September 2026</time></div>
+<h2>A guide for the accounts, because everything here used to start too late</h2>
+<p>Two readers asked the same question a week apart: children end up with their own iCloud account, so does that mean a child needs an email address? Every guide on this site started after the account already existed, which is too late. There is now an Accounts and email guide, and it leads every plan. The answer to the question, from Apple&#39;s own page: no. Creating a Child Account lets you pick their own email address, a suggested @icloud.com one, or just a Game Center nickname, and the nickname route means no email at all. Google is different: a supervised account normally needs a Gmail address, with one narrow exception for an under-9 on a Pixel Tablet. The guide also covers what the account switches on without asking, and why a child on a parent&#39;s account receives the parent&#39;s messages and call history, which Apple documents itself.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>4 September 2026</time></div>
+<h2>iMessage and FaceTime have a guide, and every device says what is already on it</h2>
+<p>iMessage is on every iPhone and iPad, has no minimum age of its own, and for a lot of children is the first place a stranger can reach them. Nobody installs it, so nobody thinks to set it up. It now has its own guide, covering Communication Limits, which genuinely block rather than warn, and Communication Safety, which parents widely assume will alert them and does not. It detects nudity on the device, blurs it, and for under-13s prompts the child to talk to you. It never tells you anything. The same blind spot applies elsewhere, so every device guide now lists what ships on it. On Android that includes YouTube, and it is the full version rather than YouTube Kids, which is a separate download.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>4 September 2026</time></div>
+<h2>HBO Max added, with the thing that catches people out</h2>
+<p>Asked for by a reader who uses it for younger children. The catch is worth stating up front: a Kids profile is not a lock. Kid-Proof Exit is off by default, adult profiles have no PIN until you add one, and on phones, tablets and computers the app reopens on the last profile used with no Who&#39;s Watching screen. So out of the box the profile switcher is one tap from the full library, and it takes two separate opt-ins to close that. Two content notes, because they change whether it is worth subscribing: Sesame Street moved to Netflix in 2025 with worldwide premiere rights, and Studio Ghibli is on HBO Max in the United States, where GKIDS holds exclusive US streaming rights. HBO Max is not available in Canada. It launched in the UK and Ireland in March 2026, where Sky and NOW customers often already have the ad-supported tier included.</p>
+</article>
 <article class="log-entry log-correction">
 <div class="log-head"><span class="log-kind">Correction</span><time>3 September 2026</time></div>
 <h2>Quick setup was hiding the reason for every single step</h2>
@@ -1215,12 +1235,14 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld"
+  switch: "handheld", firetablet: "tablet",
+  imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
 var KIND_ICON = {
   Game: "gamepad", Social: "people", Chat: "bubbles",
-  Video: "play", Device: "monitor", Other: "shield"
+  Video: "play", Device: "monitor", Messaging: "bubbles",
+  "Start here": "people", Other: "shield"
 };
 
 function icon(name, cls) {
@@ -1538,6 +1560,15 @@ function renderHome(skipUrl) {
   picker.appendChild(stepApps());
   app.appendChild(picker);
 
+  if (DATA.guides.accounts) {
+    app.appendChild(el("p", { class: "escape-hatch" }, [
+      document.createTextNode("Not made their account yet? "),
+      el("button", { onclick: function () { openGuide("accounts"); } },
+        [document.createTextNode("Start with accounts and email")]),
+      document.createTextNode(". It decides what everything below can reach.")
+    ]));
+  }
+
   app.appendChild(el("p", { class: "escape-hatch" }, [
     document.createTextNode("Just after one app? "),
     el("button", { onclick: function () { renderOneApp(); } }, [document.createTextNode("Browse the guides")]),
@@ -1560,11 +1591,18 @@ function renderOneApp() {
   );
   app.querySelector(".hero p").appendChild(document.createTextNode(" instead."));
 
-  ["app", "device"].forEach(function (kind) {
+  var SECTIONS = [
+    ["start", "Start here"],
+    ["app", "Apps and games"],
+    ["device", "Phones, computers and consoles"]
+  ];
+  SECTIONS.forEach(function (pair) {
+    var kind = pair[0];
     var ids = Object.keys(DATA.guides).filter(function (id) {
-      return (DATA.guides[id].type === "app") === (kind === "app");
+      return DATA.guides[id].type === kind;
     });
-    app.appendChild(el("h2", { class: "section-h", text: kind === "app" ? "Apps and games" : "Phones, computers and consoles" }));
+    if (!ids.length) return;
+    app.appendChild(el("h2", { class: "section-h", text: pair[1] }));
     var grid = el("div", { class: "card-grid" });
     ids.forEach(function (id) {
       var g = DATA.guides[id];
@@ -1702,7 +1740,7 @@ function stepApps() {
   var apps = [];
   Object.keys(DATA.guides).forEach(function (id) {
     var g = DATA.guides[id];
-    if (g.type === "device") return;
+    if (g.type !== "app") return;
     if (state.device && g.devices && g.devices.indexOf(state.device) === -1) return;
     apps.push(g);
   });
@@ -2024,9 +2062,16 @@ function stepAppliesToAge(s) {
   return !s.ages || !state.ageBand || s.ages.indexOf(state.ageBand) !== -1;
 }
 
+/* The accounts guide goes first when there is a device to set up, because the
+   account decides what every later setting can even reach, and because a child
+   on a parent's account gets the parent's messages. If the parent has told us
+   the device is already done, the account is part of what they mean. */
 function planOrder() {
   var order = [];
-  if (state.includeDevice && state.device && DATA.guides[state.device]) order.push(state.device);
+  if (state.includeDevice && state.device && DATA.guides[state.device]) {
+    if (DATA.guides.accounts) order.push("accounts");
+    order.push(state.device);
+  }
   state.apps.slice()
     .filter(function (id) { return DATA.guides[id]; })
     .sort(function (a, b) { return (DATA.guides[a].priority || 9) - (DATA.guides[b].priority || 9); })
@@ -2381,6 +2426,16 @@ function renderGuide() {
       el("h3", {}, [icon("info"), document.createTextNode("There is no younger version of " + g.name)]),
       el("p", { text: g.noKidsAlt })
     ]));
+  }
+
+  if (g.preinstalled && g.preinstalled.length) {
+    // Nobody installs YouTube on an Android tablet. It is simply there, which is
+    // exactly why it never occurs to anyone to set it up.
+    var pre = el("div", { class: "callout" }, [el("h3", { text: "What is already on it" })]);
+    var pul = el("ul");
+    g.preinstalled.forEach(function (x) { pul.appendChild(el("li", { text: x })); });
+    pre.appendChild(pul);
+    app.appendChild(pre);
   }
 
   if (!state.ageBand) {

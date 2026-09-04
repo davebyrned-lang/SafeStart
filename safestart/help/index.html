@@ -1173,12 +1173,14 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld"
+  switch: "handheld", firetablet: "tablet",
+  imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
 var KIND_ICON = {
   Game: "gamepad", Social: "people", Chat: "bubbles",
-  Video: "play", Device: "monitor", Other: "shield"
+  Video: "play", Device: "monitor", Messaging: "bubbles",
+  "Start here": "people", Other: "shield"
 };
 
 function icon(name, cls) {
@@ -1496,6 +1498,15 @@ function renderHome(skipUrl) {
   picker.appendChild(stepApps());
   app.appendChild(picker);
 
+  if (DATA.guides.accounts) {
+    app.appendChild(el("p", { class: "escape-hatch" }, [
+      document.createTextNode("Not made their account yet? "),
+      el("button", { onclick: function () { openGuide("accounts"); } },
+        [document.createTextNode("Start with accounts and email")]),
+      document.createTextNode(". It decides what everything below can reach.")
+    ]));
+  }
+
   app.appendChild(el("p", { class: "escape-hatch" }, [
     document.createTextNode("Just after one app? "),
     el("button", { onclick: function () { renderOneApp(); } }, [document.createTextNode("Browse the guides")]),
@@ -1518,11 +1529,18 @@ function renderOneApp() {
   );
   app.querySelector(".hero p").appendChild(document.createTextNode(" instead."));
 
-  ["app", "device"].forEach(function (kind) {
+  var SECTIONS = [
+    ["start", "Start here"],
+    ["app", "Apps and games"],
+    ["device", "Phones, computers and consoles"]
+  ];
+  SECTIONS.forEach(function (pair) {
+    var kind = pair[0];
     var ids = Object.keys(DATA.guides).filter(function (id) {
-      return (DATA.guides[id].type === "app") === (kind === "app");
+      return DATA.guides[id].type === kind;
     });
-    app.appendChild(el("h2", { class: "section-h", text: kind === "app" ? "Apps and games" : "Phones, computers and consoles" }));
+    if (!ids.length) return;
+    app.appendChild(el("h2", { class: "section-h", text: pair[1] }));
     var grid = el("div", { class: "card-grid" });
     ids.forEach(function (id) {
       var g = DATA.guides[id];
@@ -1660,7 +1678,7 @@ function stepApps() {
   var apps = [];
   Object.keys(DATA.guides).forEach(function (id) {
     var g = DATA.guides[id];
-    if (g.type === "device") return;
+    if (g.type !== "app") return;
     if (state.device && g.devices && g.devices.indexOf(state.device) === -1) return;
     apps.push(g);
   });
@@ -1982,9 +2000,16 @@ function stepAppliesToAge(s) {
   return !s.ages || !state.ageBand || s.ages.indexOf(state.ageBand) !== -1;
 }
 
+/* The accounts guide goes first when there is a device to set up, because the
+   account decides what every later setting can even reach, and because a child
+   on a parent's account gets the parent's messages. If the parent has told us
+   the device is already done, the account is part of what they mean. */
 function planOrder() {
   var order = [];
-  if (state.includeDevice && state.device && DATA.guides[state.device]) order.push(state.device);
+  if (state.includeDevice && state.device && DATA.guides[state.device]) {
+    if (DATA.guides.accounts) order.push("accounts");
+    order.push(state.device);
+  }
   state.apps.slice()
     .filter(function (id) { return DATA.guides[id]; })
     .sort(function (a, b) { return (DATA.guides[a].priority || 9) - (DATA.guides[b].priority || 9); })
@@ -2339,6 +2364,16 @@ function renderGuide() {
       el("h3", {}, [icon("info"), document.createTextNode("There is no younger version of " + g.name)]),
       el("p", { text: g.noKidsAlt })
     ]));
+  }
+
+  if (g.preinstalled && g.preinstalled.length) {
+    // Nobody installs YouTube on an Android tablet. It is simply there, which is
+    // exactly why it never occurs to anyone to set it up.
+    var pre = el("div", { class: "callout" }, [el("h3", { text: "What is already on it" })]);
+    var pul = el("ul");
+    g.preinstalled.forEach(function (x) { pul.appendChild(el("li", { text: x })); });
+    pre.appendChild(pul);
+    app.appendChild(pre);
   }
 
   if (!state.ageBand) {

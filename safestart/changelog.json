@@ -1,7 +1,31 @@
 {
- "updated": "2026-09-03",
+ "updated": "2026-09-04",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-04",
+   "kind": "correction",
+   "title": "Ask to Buy does not stop a child re-downloading an app, and nor does Google's version",
+   "body": "A reader told us her sister got apps from the App Store for a long time before their parents noticed. There is a documented reason. Apple's own wording: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not receive a request. So an app approved once, or installed before Ask to Buy was switched on, can be deleted and pulled back from their purchase history any time, silently. Google has the same hole and states it just as plainly: previous downloads and content shared through Family Library will not require your approval. Neither company mentions this anywhere near the setting itself. The iPhone, iPad and Android guides now lead with it, and point at the separate control that does cover redownloads."
+  },
+  {
+   "date": "2026-09-04",
+   "kind": "site",
+   "title": "A guide for the accounts, because everything here used to start too late",
+   "body": "Two readers asked the same question a week apart: children end up with their own iCloud account, so does that mean a child needs an email address? Every guide on this site started after the account already existed, which is too late. There is now an Accounts and email guide, and it leads every plan. The answer to the question, from Apple's own page: no. Creating a Child Account lets you pick their own email address, a suggested @icloud.com one, or just a Game Center nickname, and the nickname route means no email at all. Google is different: a supervised account normally needs a Gmail address, with one narrow exception for an under-9 on a Pixel Tablet. The guide also covers what the account switches on without asking, and why a child on a parent's account receives the parent's messages and call history, which Apple documents itself."
+  },
+  {
+   "date": "2026-09-04",
+   "kind": "site",
+   "title": "iMessage and FaceTime have a guide, and every device says what is already on it",
+   "body": "iMessage is on every iPhone and iPad, has no minimum age of its own, and for a lot of children is the first place a stranger can reach them. Nobody installs it, so nobody thinks to set it up. It now has its own guide, covering Communication Limits, which genuinely block rather than warn, and Communication Safety, which parents widely assume will alert them and does not. It detects nudity on the device, blurs it, and for under-13s prompts the child to talk to you. It never tells you anything. The same blind spot applies elsewhere, so every device guide now lists what ships on it. On Android that includes YouTube, and it is the full version rather than YouTube Kids, which is a separate download."
+  },
+  {
+   "date": "2026-09-04",
+   "kind": "site",
+   "title": "HBO Max added, with the thing that catches people out",
+   "body": "Asked for by a reader who uses it for younger children. The catch is worth stating up front: a Kids profile is not a lock. Kid-Proof Exit is off by default, adult profiles have no PIN until you add one, and on phones, tablets and computers the app reopens on the last profile used with no Who's Watching screen. So out of the box the profile switcher is one tap from the full library, and it takes two separate opt-ins to close that. Two content notes, because they change whether it is worth subscribing: Sesame Street moved to Netflix in 2025 with worldwide premiere rights, and Studio Ghibli is on HBO Max in the United States, where GKIDS holds exclusive US streaming rights. HBO Max is not available in Canada. It launched in the UK and Ireland in March 2026, where Sky and NOW customers often already have the ad-supported tier included."
+  },
   {
    "date": "2026-09-03",
    "kind": "correction",

@@ -29,7 +29,7 @@ Object.entries(data.guides).forEach(([id, g]) => {
   if (g.id !== id) fail(`${id}: id field is "${g.id}"`);
   if (!g.name) fail(`${id}: no name`);
   if (!g.kind) fail(`${id}: no kind`);
-  if (!['app', 'device'].includes(g.type)) fail(`${id}: type is "${g.type}"`);
+  if (!['app', 'device', 'start'].includes(g.type)) fail(`${id}: type is "${g.type}"`);
   if (!g.lastVerified || !/^\d{4}-\d{2}-\d{2}$/.test(g.lastVerified)) fail(`${id}: bad lastVerified`);
   if (!['high', 'medium', 'limited'].includes(g.sourceConfidence)) fail(`${id}: bad sourceConfidence`);
   if (!Array.isArray(g.steps) || !g.steps.length) fail(`${id}: no steps`);
@@ -116,6 +116,30 @@ Object.keys(data.guides).forEach((id) => {
 });
 ok('every age-restricted app either offers an alternative or says there is none');
 
+// Every device guide should say what already ships on it. A parent does not
+// install YouTube on an Android tablet, so it never occurs to them to set it up.
+console.log('\nwhat ships on the device');
+let preCount = 0;
+Object.keys(data.guides).forEach((id) => {
+  const g = data.guides[id];
+  if (g.type !== 'device') {
+    if (g.preinstalled) fail(`${id}: only device guides should list preinstalled apps`);
+    return;
+  }
+  if (!Array.isArray(g.preinstalled) || !g.preinstalled.length) {
+    fail(`${id}: device guide with no preinstalled list`);
+    return;
+  }
+  preCount += g.preinstalled.length;
+});
+ok(`${preCount} preinstalled apps listed across the device guides`);
+
+// Exactly one "start here" guide, and it must lead every plan.
+const starts = Object.keys(data.guides).filter((id) => data.guides[id].type === 'start');
+if (starts.length !== 1) fail(`expected exactly one start guide, found ${starts.length}`);
+else if (data.guides[starts[0]].priority !== 0) fail(`${starts[0]}: start guide must be priority 0`);
+else ok(`start guide is ${starts[0]}`);
+
 console.log('\napi handlers');
 ['guide', 'ask'].forEach((name) => {
   const file = path.join(ROOT, 'api', name + '.js');
@@ -201,7 +225,7 @@ if (unverified.length) {
 // --- plan metadata -----------------------------------------------------------
 console.log('\nplan merging');
 const apps = Object.keys(data.guides).filter((id) => data.guides[id].type === 'app');
-const devices = Object.keys(data.guides).filter((id) => data.guides[id].type !== 'app');
+const devices = Object.keys(data.guides).filter((id) => data.guides[id].type === 'device');
 const noPriority = apps.filter((id) => typeof data.guides[id].priority !== 'number');
 if (noPriority.length) fail('apps with no priority, so plan ordering is arbitrary: ' + noPriority.join(', '));
 else ok(apps.length + ' apps have an ordering priority');
