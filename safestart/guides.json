@@ -2158,8 +2158,8 @@
      "url": "https://family.microsoft.com/"
     },
     {
-     "label": "Microsoft: family safety features (official)",
-     "url": "https://support.microsoft.com/en-us/topic/what-is-microsoft-family-safety-b1b0b9c8-8de4-4e5e-9b7b-2b1cf5e4f9a5"
+     "label": "Microsoft: set up Family Safety (official)",
+     "url": "https://support.microsoft.com/en-us/family"
     }
    ],
    "priority": 0,
@@ -2523,8 +2523,8 @@
    ],
    "links": [
     {
-     "label": "PlayStation: Family Management (official)",
-     "url": "https://www.playstation.com/en-us/support/account/set-up-parental-controls-ps5/"
+     "label": "PlayStation: parental controls and spending limits (official)",
+     "url": "https://www.playstation.com/en-us/support/account/ps5-parental-controls-spending-limits/"
     },
     {
      "label": "PlayStation: family account management",
@@ -2672,8 +2672,8 @@
      "url": "https://family.microsoft.com/"
     },
     {
-     "label": "Xbox: family settings app (official)",
-     "url": "https://www.xbox.com/en-US/apps/xbox-family-settings-app"
+     "label": "Xbox: Family Settings app (official)",
+     "url": "https://www.xbox.com/en-US/apps/family-settings-app"
     }
    ],
    "priority": 0,
@@ -4058,11 +4058,12 @@
    "name": "iMessage and FaceTime",
    "type": "app",
    "kind": "Messaging",
-   "blurb": "Already on every iPhone and iPad, with no minimum age of its own. For a lot of children it is the first place a stranger can reach them, and it is the app parents forget to look at because nobody chose to install it.",
+   "blurb": "Already on every iPhone, iPad and Apple Watch, with no minimum age of its own. For a lot of children it is the first place a stranger can reach them, and it is the app parents forget to look at because nobody chose to install it.",
    "devices": [
     "iphone",
     "ipad",
-    "mac"
+    "mac",
+    "applewatch"
    ],
    "minAge": 0,
    "lastVerified": "2026-09-04",
@@ -4104,7 +4105,10 @@
       "11-12": "approved",
       "13-15": "approved",
       "16-17": "open"
-     }
+     },
+     "redundantWith": [
+      "apple-comms"
+     ]
     },
     {
      "id": "safety",
@@ -4127,7 +4131,7 @@
       "Open Messages and tap the icon at the top right of the conversation list.",
       "Open Manage Filtering and turn on Screen Unknown Senders."
      ],
-     "note": "This setting moved. It used to live in Settings, then Messages, and it was called Filter Unknown Senders. One documented hole: filtering stops applying to anyone they have replied to three times or more.",
+     "note": "This setting moved. It used to live in Settings, then Messages, and it was called Filter Unknown Senders. One documented hole: filtering stops applying to anyone they have replied to three times or more. On a child's Apple Watch there is no equivalent setting, because there is no Messages app to open on your behalf. Communication Limits is the control that does the work there.",
      "mins": 2
     },
     {
@@ -4146,7 +4150,7 @@
       "13-15": "Both on",
       "16-17": "Both on"
      },
-     "note": "Apple documents how this screen works but does not publish the full list of what appears on it, so check what is actually there on the device rather than expecting a particular name.",
+     "note": "Apple documents how this screen works but does not publish the full list of what appears on it, so check what is actually there on the device rather than expecting a particular name. This works for the watch too, from the same Screen Time screen.",
      "mins": 1
     },
     {
@@ -4429,6 +4433,9 @@
      "mins": 4,
      "redundantWith": [
       "apple-family"
+     ],
+     "provides": [
+      "apple-comms"
      ]
     },
     {

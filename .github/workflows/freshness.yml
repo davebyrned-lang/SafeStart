@@ -64,6 +64,14 @@ jobs:
           echo "checked=$(node -p "require('./freshness/summary.json').checked")" >> "$GITHUB_OUTPUT"
           rm -f run.log
 
+      # A different question from the freshness check, and one that works even on
+      # the platforms no automated reader can get at. A 404 is a 404 whether or not
+      # the page needs JavaScript. Runs before the rebuild so a dead source link
+      # shows up in the same weekly review.
+      - name: Check the official source links still resolve
+        continue-on-error: true
+        run: node scripts/links.js
+
       - name: Rebuild the pages
         run: node scripts/build.js
 
