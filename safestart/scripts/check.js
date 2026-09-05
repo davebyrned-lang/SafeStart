@@ -215,6 +215,9 @@ else ok('calls /api/ask');
   if (html.indexOf(tok) === -1) fail('app template is missing the ' + tok + ' placeholder');
   else ok('has ' + tok);
 });
+if (!/name="google-site-verification"/.test(html)) {
+  fail('the Google Search Console verification tag is missing from the template');
+} else ok('carries the Search Console verification tag');
 if (/(?:src|href)="assets\//.test(html)) {
   fail('app template has relative asset paths, which break on nested URLs like /roblox/');
 } else ok('asset paths are absolute');
