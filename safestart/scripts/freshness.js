@@ -172,28 +172,99 @@ async function checkGuide(guide) {
   };
 }
 
+/* ---------------- what a machine cannot read ----------------
+
+   Six platforms cannot be checked automatically, and this is stable rather than
+   flaky. Two of them say Disallow: / in robots.txt, which we respect; two reject
+   anything that looks automated; two render entirely in JavaScript. Counting them
+   as "needs a human look" every single week is what turns a weekly review into
+   something nobody opens by week three, so they are held out of that number and
+   rotated instead. One per week, so each gets a pair of eyes roughly monthly. */
+let DATA_LINKS = {};
+
+const UNREADABLE = {
+  tiktok:      "support.tiktok.com sends Disallow: / in robots.txt, so we do not crawl it",
+  playstation: "playstation.com sends Disallow: / in robots.txt, so we do not crawl it",
+  fortnite:    "epicgames.com returns 403 to anything automated",
+  whatsapp:    "faq.whatsapp.com returns 400 to anything automated",
+  twitch:      "help.twitch.tv is a JavaScript-only portal with no text in the HTML",
+  disneyplus:  "help.disneyplus.com serves an app shell with no text in the HTML",
+};
+
+function weekNumber(d) {
+  const t = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  t.setUTCDate(t.getUTCDate() + 4 - (t.getUTCDay() || 7));
+  const jan1 = new Date(Date.UTC(t.getUTCFullYear(), 0, 1));
+  return Math.ceil(((t - jan1) / 86400000 + 1) / 7);
+}
+
+/* This week's hand-check. Returns the guide and the exact things to eyeball, so
+   the job is "open this page, are these three sentences still true", not "go and
+   research TikTok". */
+function rotationFor(data) {
+  const ids = Object.keys(UNREADABLE).filter((id) => data.guides[id]);
+  if (!ids.length) return null;
+  const id = ids[weekNumber(new Date()) % ids.length];
+  const g = data.guides[id];
+  // The claims most likely to go stale, and most costly if they do: the menu
+  // paths and the recommended values. Three is a two-minute job; ten is not.
+  const claims = [];
+  for (const st of g.steps || []) {
+    if (st.path) claims.push({ step: st.title, kind: "menu path", text: st.path });
+    else if (st.do && st.do[0]) claims.push({ step: st.title, kind: "first instruction", text: st.do[0] });
+    if (claims.length >= 3) break;
+  }
+  return {
+    id,
+    name: g.name,
+    why: UNREADABLE[id],
+    lastVerified: g.lastVerified,
+    links: (g.links || []).slice(0, 2),
+    claims,
+  };
+}
+
 /* ---------------- report ---------------- */
 
-function writeReport(results) {
+function writeReport(results, rotation) {
   const changed = results.filter((r) => r.status === "changed");
   const unclear = results.filter((r) => r.status === "unclear");
   const unchanged = results.filter((r) => r.status === "unchanged");
   const unreachable = results.filter((r) => r.status === "unreachable" || r.status === "no-sources");
+  // A check that threw is not a verdict of any kind. It has to be louder than a
+  // clean result, not quieter, or a broken key produces a confident all-clear.
+  const errored = results.filter((r) => r.status === "error");
+
+  // Only genuine differences go in the queue. "Unclear" nearly always means the
+  // official page simply does not discuss the step, and absence is not evidence.
+  // Putting it in the review count buries the handful of things that matter.
+  const queue = changed;
+  const surprises = unreachable.filter((r) => !UNREADABLE[r.id]);
+  const expected = unreachable.filter((r) => UNREADABLE[r.id]);
 
   const L = [];
   L.push("# Freshness check — " + TODAY);
   L.push("");
-  L.push(`${results.length} guides checked. **${changed.length} look changed**, ${unclear.length} unclear, ` +
-         `${unchanged.length} unchanged, ${unreachable.length} could not be read.`);
+  L.push(`${results.length} guides checked. **${queue.length} need a decision.** ` +
+         `${unchanged.length} unchanged, ${unclear.length} unclear, ${expected.length} not machine-readable.`);
   L.push("");
   L.push("Nothing in `guides.json` has been rewritten by this job. Confirmed-unchanged guides had their " +
-         "`lastVerified` date bumped, because that is a fact this run established. Everything below needs a human.");
+         "`lastVerified` date bumped, because that is a fact this run established rather than a judgement.");
   L.push("");
 
-  if (changed.length) {
-    L.push("## Looks changed");
+  if (errored.length) {
+    L.push("## The check itself failed on these");
     L.push("");
-    for (const r of changed) {
+    L.push("No verdict was reached. Do not read the rest of this as an all-clear for them.");
+    L.push("");
+    for (const r of errored) L.push(`- **${r.id}** — ${r.notes}`);
+    L.push("");
+  }
+
+  if (queue.length) {
+    L.push("## Needs a decision");
+    L.push("");
+    for (const r of queue) {
       L.push(`### ${r.id} _(confidence: ${r.confidence})_`);
       for (const c of r.changes || []) {
         L.push(`- **${c.stepId}** — ${c.what}`);
@@ -206,20 +277,42 @@ function writeReport(results) {
     }
   }
 
+  if (rotation) {
+    L.push("## This week's hand-check: " + rotation.name);
+    L.push("");
+    L.push(rotation.why + ". Last checked by a person on " + (rotation.lastVerified || "unknown") + ".");
+    L.push("");
+    for (const c of rotation.claims) L.push(`- **${c.step}** (${c.kind}): \`${c.text}\``);
+    L.push("");
+    for (const l of rotation.links) L.push(`- ${l.label}: ${l.url}`);
+    L.push("");
+  }
+
   if (unclear.length) {
-    L.push("## Unclear");
+    L.push("## Unclear, no action expected");
+    L.push("");
+    L.push("The sources did not settle it, usually because the official page does not cover the step at all.");
     L.push("");
     for (const r of unclear) L.push(`- **${r.id}** — ${r.notes || "sources did not settle it"}`);
     L.push("");
   }
 
-  if (unreachable.length) {
-    L.push("## Could not be read");
+  if (surprises.length) {
+    L.push("## Newly unreadable, worth knowing");
     L.push("");
-    for (const r of unreachable) {
+    L.push("These are not on the known-unreadable list, so something changed at their end.");
+    L.push("");
+    for (const r of surprises) {
       const why = (r.sources || []).filter((s) => !s.ok).map((s) => `${s.url} (${s.reason})`);
       L.push(`- **${r.id}** — ${why.join("; ") || "no sources listed"}`);
     }
+    L.push("");
+  }
+
+  if (expected.length) {
+    L.push("## Known unreadable, on rotation");
+    L.push("");
+    for (const r of expected) L.push(`- **${r.id}** — ${UNREADABLE[r.id]}`);
     L.push("");
   }
 
@@ -233,7 +326,86 @@ function writeReport(results) {
   fs.mkdirSync(REPORT_DIR, { recursive: true });
   const file = path.join(REPORT_DIR, "report-" + TODAY + ".md");
   fs.writeFileSync(file, L.join("\n"), "utf8");
-  return { file, changed, unclear, unchanged, unreachable, markdown: L.join("\n") };
+
+  writePrBody({ results, queue, unclear, unchanged, expected, surprises, errored, rotation });
+
+  return { file, changed, unclear, unchanged, unreachable, queue, surprises, expected, errored, markdown: L.join("\n") };
+}
+
+/* The pull request body IS the review. If it sends you off to open a report file
+   to find out what is being asked, the five-minute job has already become a
+   twenty-minute one. Everything needed to say yes or no is in here, as a
+   checklist, with the evidence side by side. */
+function writePrBody(o) {
+  const minutes = Math.min(15, o.queue.length * 2 + (o.rotation ? 3 : 0) + (o.surprises.length ? 2 : 0));
+  const L = [];
+
+  if (o.errored.length) {
+    L.push(`### The check failed on ${o.errored.length} guide(s). Do not treat this as an all-clear.`);
+    L.push("");
+    L.push("These threw before reaching a verdict, so nothing is known about them either way:");
+    L.push("");
+    for (const r of o.errored) L.push(`- **${r.id}** — ${r.notes}`);
+    L.push("");
+    L.push("A run of these usually means the API key has expired or hit a limit.");
+    L.push("");
+  }
+
+  if (!o.queue.length && !o.surprises.length && !o.errored.length) {
+    L.push("### Nothing needs a decision this week.");
+    L.push("");
+    L.push(`All ${o.results.length} guides were re-read. Nothing in any of them has changed, so the only edits ` +
+           "here are dates moving forward. Safe to merge without reading further.");
+    L.push("");
+  } else if (o.queue.length || o.surprises.length) {
+    L.push(`### ${o.queue.length + o.surprises.length} thing(s) need you. About ${minutes} minutes.`);
+    L.push("");
+    L.push("Tick each box once you have looked. Nothing below has been changed for you.");
+    L.push("");
+  }
+
+  for (const r of o.queue) {
+    for (const c of r.changes || []) {
+      L.push(`- [ ] **${r.id} / ${c.stepId}** — ${c.what}`);
+      if (c.current) L.push(`  - we currently say: _${c.current}_`);
+      if (c.nowSays) L.push(`  - the official page now says: _${c.nowSays}_`);
+      if (c.quote) L.push(`  - their words: "${c.quote}"`);
+      const src = ((DATA_LINKS[r.id] || [])[0] || {}).url;
+      if (src) L.push(`  - check it: ${src}`);
+    }
+  }
+
+  for (const r of o.surprises) {
+    L.push(`- [ ] **${r.id}** — sources stopped being readable, and this one is not on the known list. ` +
+           "Either they changed something or a link is dead.");
+  }
+
+  if (o.rotation) {
+    L.push("");
+    L.push(`#### Hand-check on rotation: ${o.rotation.name}`);
+    L.push("");
+    L.push(`${o.rotation.why}. That makes it impossible to check automatically, so one of the six comes ` +
+           `up by hand each week and each gets looked at about monthly. Last done ${o.rotation.lastVerified || "unknown"}.`);
+    L.push("");
+    L.push("Open the page and confirm these are still true. If they are, tick the box and merge:");
+    L.push("");
+    for (const c of o.rotation.claims) L.push(`  - ${c.step} — ${c.kind}: \`${c.text}\``);
+    L.push("");
+    for (const l of o.rotation.links) L.push(`  - ${l.label}: ${l.url}`);
+    L.push("");
+    L.push(`- [ ] **${o.rotation.name}** still matches its official page`);
+  }
+
+  L.push("");
+  L.push("---");
+  L.push("");
+  L.push(`<sub>${o.unchanged.length} guides confirmed unchanged and had their date bumped. ` +
+         `${o.unclear.length} came back unclear, which nearly always means the official page does not ` +
+         `mention the step at all, so no action is expected. Full detail in \`safestart/freshness/\`. ` +
+         `This job never rewrites a guide's instructions.</sub>`);
+
+  fs.mkdirSync(REPORT_DIR, { recursive: true });
+  fs.writeFileSync(path.join(REPORT_DIR, "pr-body.md"), L.join("\n"), "utf8");
 }
 
 /* ---------------- applying the safe part ---------------- */
@@ -305,12 +477,15 @@ function appendChangelog(results, bumped) {
                   : r.unreadable ? ` (${r.unreadable} source${r.unreadable === 1 ? "" : "s"} unreadable)` : "";
       console.log(r.status + extra);
     } catch (err) {
-      results.push({ id: id, status: "unclear", notes: String((err && err.message) || err), sources: [] });
+      results.push({ id: id, status: "error", notes: String((err && err.message) || err), sources: [] });
       console.log("error — " + ((err && err.message) || err));
     }
   }
 
-  const report = writeReport(results);
+  DATA_LINKS = {};
+  Object.keys(data.guides).forEach((k) => { DATA_LINKS[k] = data.guides[k].links || []; });
+  const rotation = rotationFor(data);
+  const report = writeReport(results, rotation);
   console.log("\nReport: " + path.relative(ROOT, report.file));
 
   if (WRITE) {
@@ -322,17 +497,38 @@ function appendChangelog(results, bumped) {
     console.log("Report only. Pass --write to bump confirmed dates and update the changelog.");
   }
 
-  // A non-zero-but-not-failing signal the workflow can branch on.
-  const needsHuman = report.changed.length + report.unclear.length;
-  console.log(needsHuman ? `\n${needsHuman} guide(s) need a human look.` : "\nNothing needs a human this week.");
+  /* The number in the PR title is the number of decisions, not the number of
+     things the machine found interesting. Unclear and known-unreadable are both
+     excluded, because a title that always says 16 is a title nobody reads. */
+  const decisions = report.queue.length + report.surprises.length + report.errored.length;
+  const minutes = Math.min(15, report.queue.length * 2 + (rotation ? 3 : 0) + (report.surprises.length ? 2 : 0));
+  console.log(decisions
+    ? `\n${decisions} decision(s) for a human, about ${minutes} minutes.`
+    : "\nNo decisions needed. Dates only.");
+  if (rotation) console.log("Hand-check on rotation this week: " + rotation.name);
+  if (report.errored.length) {
+    console.error(`\n${report.errored.length} guide(s) errored before reaching a verdict.`);
+  }
   fs.writeFileSync(path.join(REPORT_DIR, "summary.json"), JSON.stringify({
     date: TODAY,
     checked: results.length,
     changed: report.changed.map((r) => r.id),
     unclear: report.unclear.map((r) => r.id),
     unreachable: report.unreachable.map((r) => r.id),
-    needsHuman: needsHuman,
+    knownUnreadable: report.expected.map((r) => r.id),
+    newlyUnreadable: report.surprises.map((r) => r.id),
+    rotation: rotation ? rotation.id : null,
+    decisions: decisions,
+    minutes: minutes,
+    needsHuman: decisions,
   }, null, 1), "utf8");
+
+  /* If most of the run threw, this was not a check. Fail the job rather than
+     opening a reassuring pull request that moved a few dates. */
+  if (report.errored.length && report.errored.length >= Math.ceil(results.length / 2)) {
+    console.error("More than half the guides errored. Treating this run as a failure.");
+    process.exit(1);
+  }
 })().catch((err) => {
   console.error("Freshness check failed:", (err && err.message) || err);
   process.exit(1);
