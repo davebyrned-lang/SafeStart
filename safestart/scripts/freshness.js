@@ -336,7 +336,56 @@ function writeReport(results, rotation) {
    to find out what is being asked, the five-minute job has already become a
    twenty-minute one. Everything needed to say yes or no is in here, as a
    checklist, with the evidence side by side. */
+/* Which run is this. The changelog already records every freshness run, so it is
+   the honest count and there is no extra state file to drift. */
+function runNumber() {
+  try {
+    const log = JSON.parse(fs.readFileSync(CHANGELOG, "utf8"));
+    return (log.entries || []).filter((e) => e.kind === "freshness-check").length + 1;
+  } catch (e) { return 1; }
+}
+
+/* The first few land in an inbox on a Monday morning, months apart from whoever
+   set this up. They have to explain themselves. After three runs the drill is
+   familiar and the explanation is just noise in the way of the decision, so it
+   stops. */
+function howThisWorks(run) {
+  const L = [];
+  L.push(`<sub>Run ${run} of this check. These instructions appear on the first three, then stop.</sub>`);
+  L.push("");
+  L.push("**What this is.** Every Monday at 07:00 UTC a job re-reads the official documentation behind " +
+         "every guide on SafeStart and compares it against what the site publishes. This pull request is " +
+         "the result. It runs on GitHub, not on your machine, so nothing needs to be open.");
+  L.push("");
+  L.push("**What it has already done, on its own.** Moved the `lastVerified` date forward on guides whose " +
+         "sources it could read and where nothing had changed. That is a fact it established, not an " +
+         "opinion it formed. It has not edited a single word of any guide's instructions, and it never will. " +
+         "A model quietly rewriting safety advice is how a wrong menu path reaches every reader at once.");
+  L.push("");
+  L.push("**What to do.**");
+  L.push("");
+  L.push("1. Read the heading above. If it says nothing needs a decision, hit Merge and you are done.");
+  L.push("2. If there are checkboxes, work down them. Each one shows what we currently say, what the " +
+         "official page says now, and a link. Open the link and decide who is right.");
+  L.push("3. Tick the box for anything you have looked at. The tick is a note to yourself, nothing depends on it.");
+  L.push("4. If a guide genuinely needs changing, do not do it here. Say so in a comment, or bring it to " +
+         "Claude, and it gets fixed properly with the source cited.");
+  L.push("5. Merge when you are done looking.");
+  L.push("");
+  L.push("**What happens when you merge.** The updated dates go live on the site within a minute or so, " +
+         "and the changelog page publishes what this run found, including anything it flagged. That public " +
+         "record is the point: a verification date nobody can check is just a claim.");
+  L.push("");
+  L.push("**What happens if you ignore it.** Nothing breaks. Next Monday's run replaces this pull request " +
+         "with a fresh one. The only cost is that the dates on the site stay older than they need to be.");
+  L.push("");
+  L.push("**What happens if you close it without merging.** Same thing. The branch is rebuilt next week.");
+  L.push("");
+  return L;
+}
+
 function writePrBody(o) {
+  const run = runNumber();
   const minutes = Math.min(15, o.queue.length * 2 + (o.rotation ? 3 : 0) + (o.surprises.length ? 2 : 0));
   const L = [];
 
@@ -361,6 +410,14 @@ function writePrBody(o) {
     L.push(`### ${o.queue.length + o.surprises.length} thing(s) need you. About ${minutes} minutes.`);
     L.push("");
     L.push("Tick each box once you have looked. Nothing below has been changed for you.");
+    L.push("");
+  }
+
+  if (run <= 3) {
+    L.push("---");
+    L.push("");
+    howThisWorks(run).forEach((line) => L.push(line));
+    L.push("---");
     L.push("");
   }
 
