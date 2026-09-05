@@ -51,6 +51,13 @@ const server = http.createServer(async (req, res) => {
   const parsed = url.parse(req.url, true);
   let pathname = decodeURIComponent(parsed.pathname);
 
+  // Vercel serves the Web Analytics script from our own domain in production.
+  // Stub it locally so a 404 doesn't show up as a console error in the tests.
+  if (pathname.startsWith('/_vercel/insights/')) {
+    res.writeHead(200, { 'content-type': 'text/javascript; charset=utf-8' });
+    return res.end('/* dev stub for Vercel Web Analytics */\n');
+  }
+
   if (pathname.startsWith('/api/')) {
     const name = pathname.slice(5).replace(/[^a-z0-9-]/gi, '');
     const file = path.join(ROOT, 'api', name + '.js');

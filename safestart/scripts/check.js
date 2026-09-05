@@ -184,7 +184,7 @@ if (!/\/api\/guide\?/.test(html)) fail('app template does not call /api/guide');
 else ok('calls /api/guide');
 if (!/\/api\/ask/.test(html)) fail('app template does not call /api/ask');
 else ok('calls /api/ask');
-['@TITLE@', '@DESC@', '@CANON@', '@HEADEXTRA@', '@MAIN@'].forEach((tok) => {
+['@TITLE@', '@DESC@', '@CANON@', '@HEADEXTRA@', '@MAIN@', '@ANALYTICS@'].forEach((tok) => {
   if (html.indexOf(tok) === -1) fail('app template is missing the ' + tok + ' placeholder');
   else ok('has ' + tok);
 });

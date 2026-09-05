@@ -556,6 +556,18 @@ function check(name, condition, detail) {
     check('/plan/ is noindex', /noindex/.test(planShell));
     check('/plan/ tells a no-JS visitor where to go', /noscript/.test(planShell));
 
+    console.log('\nanalytics');
+    // The plan URL carries a real child's age, device and app list in its query
+    // string, and Vercel stores the URL with every data point. So the script goes
+    // everywhere except there, and that has to stay true.
+    const homeShell = await (await page.request.get(BASE + '/')).text();
+    const guideShell = await (await page.request.get(BASE + '/roblox/')).text();
+    check('the analytics script is on the home page', /_vercel\/insights/.test(homeShell));
+    check('and on the guides', /_vercel\/insights/.test(guideShell));
+    check('and never on /plan/', !/_vercel\/insights/.test(planShell));
+    check('it is served from our own domain, not a third party',
+      !/src="https?:\/\/[^"]*insights/.test(homeShell));
+
     console.log('\nrobots and sitemap');
     const sm = await page.request.get(BASE + '/sitemap.xml');
     check('sitemap serves', sm.status() === 200, 'status ' + sm.status());

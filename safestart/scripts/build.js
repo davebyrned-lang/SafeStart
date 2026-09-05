@@ -53,6 +53,20 @@ function write(relPath, html) {
   written.push(relPath);
 }
 
+/* Vercel Web Analytics, script-tag install, because this site has no build step
+   and no bundler. Served from our own domain, so the page still makes zero
+   third-party requests.
+
+   Deliberately omitted from /plan/. Those URLs carry the child's age, device and
+   app list in the query string, and Vercel stores the URL with every data point.
+   Aggregated and anonymous is still not a reason to send it. */
+const ANALYTICS = [
+  "<script>",
+  "  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };",
+  "<\/script>",
+  '<script defer src="/_vercel/insights/script.js"><\/script>'
+].join("\n");
+
 function page(opts) {
   const canon = SITE + opts.url;
   return TEMPLATE
@@ -62,7 +76,8 @@ function page(opts) {
     .replace(/@CANON@/g, esc(canon))
     .replace(/@OGTYPE@/g, esc(opts.ogType || "website"))
     .replace(/@HEADEXTRA@/g, () => (opts.noindex ? '<meta name="robots" content="noindex,follow">\n' : "") + (opts.head || ""))
-    .replace(/@MAIN@/g, () => opts.main || "");
+    .replace(/@MAIN@/g, () => opts.main || "")
+    .replace(/@ANALYTICS@/g, () => (opts.noAnalytics ? "" : ANALYTICS));
 }
 
 function jsonLd(obj) {
@@ -570,6 +585,8 @@ function build() {
     title: "Your setup plan — SafeStart",
     description: "A merged parental control plan for one child's device and the apps they use.",
     noindex: true,
+    // No analytics here. The query string on this page describes a real child.
+    noAnalytics: true,
     main: '<div class="loading"><div class="spinner"></div></div>' +
           '<noscript><p class="disclaimer">Building a plan needs JavaScript. ' +
           'Every individual guide works without it — <a href="/">browse them here</a>.</p></noscript>'

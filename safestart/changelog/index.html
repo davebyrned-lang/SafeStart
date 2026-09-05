@@ -1012,7 +1012,12 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">16 entries</span><span class="pill">5 corrections</span></div>
+<div class="meta-row"><span class="pill">17 entries</span><span class="pill">5 corrections</span></div>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>5 September 2026</time></div>
+<h2>We turned on visitor counting, and left it off the one page that matters</h2>
+<p>SafeStart now counts page views using Vercel&#39;s analytics. It is worth saying exactly what that means, since a site about other people&#39;s privacy should be straight about its own. No cookies are set. Visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What gets recorded is the page, the referrer, a rough location, and the browser and device type. The script is served from this domain, so the site still makes no third-party requests at all. One deliberate exception: the plan page is excluded. Its address contains the age you picked, the device, and the list of apps, which together describe a specific child. That is aggregated and anonymous either way, and it still is not a good enough reason to send it anywhere. The build refuses to put the script on that page, and a test fails if anyone changes that.</p>
+</article>
 <article class="log-entry log-correction">
 <div class="log-head"><span class="log-kind">Correction</span><time>4 September 2026</time></div>
 <h2>Ask to Buy does not stop a child re-downloading an app, and nor does Google&#39;s version</h2>
@@ -3220,5 +3225,9 @@ function boot() {
 
 boot();
 </script>
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

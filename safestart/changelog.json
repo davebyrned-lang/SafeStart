@@ -1,7 +1,13 @@
 {
- "updated": "2026-09-04",
+ "updated": "2026-09-05",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-05",
+   "kind": "site",
+   "title": "We turned on visitor counting, and left it off the one page that matters",
+   "body": "SafeStart now counts page views using Vercel's analytics. It is worth saying exactly what that means, since a site about other people's privacy should be straight about its own. No cookies are set. Visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What gets recorded is the page, the referrer, a rough location, and the browser and device type. The script is served from this domain, so the site still makes no third-party requests at all. One deliberate exception: the plan page is excluded. Its address contains the age you picked, the device, and the list of apps, which together describe a specific child. That is aggregated and anonymous either way, and it still is not a good enough reason to send it anywhere. The build refuses to put the script on that page, and a test fails if anyone changes that."
+  },
   {
    "date": "2026-09-04",
    "kind": "correction",
