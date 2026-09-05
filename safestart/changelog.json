@@ -4,6 +4,30 @@
  "entries": [
   {
    "date": "2026-09-05",
+   "kind": "correction",
+   "title": "Our Roblox chat step never mentioned voice, and used the old names for everything else",
+   "body": "A reader put a plan side by side with Roblox's own parental controls page and found voice chat missing from our guide entirely. Checking that turned up a second problem: Roblox's Safety Center and its Help Center use different names for the same settings, and we had followed the Help Center. So Experience chat was Game chat here, and Chat and party with friends was three separate items. Both are fixed, with the old names in brackets so readers of either page can follow along. Voice now has its own step, because there are two voice features with two separate off switches and turning one off does nothing to the other. Also added: the age check, which since 2026 is the gate on all chat at any age, and Gameplay Coordination, which almost no guide covers. Two things we now say plainly that we did not before. None of these settings reach chat that a game's creator built themselves, which Roblox states twice on its own page. And at 13 your child takes over their own chat and voice settings."
+  },
+  {
+   "date": "2026-09-05",
+   "kind": "site",
+   "title": "Every recommendation now says what it means, in the same words every time",
+   "body": "From a reader: set Roblox chat to 'All chat off', then meet PlayStation's 'Restricted, no messaging or chat', and you have to work out for yourself that these are the same thing. Every platform names its settings differently and the translation is left to the parent. So the platform's exact wording stays, because that is what is on your screen, and underneath it sits one sentence that is word for word identical across every app. 'Only people already on their friends list can reach them. Strangers cannot.' means the same on Roblox as it does on Xbox, Snapchat or an iPhone. Twelve settings carry it so far, and the build fails if two apps ever drift to different wording for the same thing."
+  },
+  {
+   "date": "2026-09-05",
+   "kind": "site",
+   "title": "Apple Watch guide added, including the thing Apple buries",
+   "body": "Asked for by a reader. The feature is called Apple Watch For Your Kids now, renamed from Family Setup, which is why older guidance uses a different name. The guide leads with checking it will work at all, because Apple's own pages disagree about which models qualify and the carrier list is short. In the UK that is EE. Ireland is not on Apple's list at all. The buried detail worth knowing before you buy: Fall Detection does not work for anyone under 18, and Apple says so only in a list at the bottom of the setup page. A lot of people buy these for a child partly on the strength of that feature. Crash Detection does work. Sleep tracking, cycle tracking, blood oxygen and international roaming do not."
+  },
+  {
+   "date": "2026-09-05",
+   "kind": "site",
+   "title": "The em dashes are gone",
+   "body": "Ninety-one of them, mostly in the source links. Small thing, but house style is house style."
+  },
+  {
+   "date": "2026-09-05",
    "kind": "site",
    "title": "We turned on visitor counting, and left it off the one page that matters",
    "body": "SafeStart now counts page views using Vercel's analytics. It is worth saying exactly what that means, since a site about other people's privacy should be straight about its own. No cookies are set. Visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What gets recorded is the page, the referrer, a rough location, and the browser and device type. The script is served from this domain, so the site still makes no third-party requests at all. One deliberate exception: the plan page is excluded. Its address contains the age you picked, the device, and the list of apps, which together describe a specific child. That is aggregated and anonymous either way, and it still is not a good enough reason to send it anywhere. The build refuses to put the script on that page, and a test fails if anyone changes that."

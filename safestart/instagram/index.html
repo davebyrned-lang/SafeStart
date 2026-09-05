@@ -752,6 +752,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1121,7 +1128,7 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Check the birthday on the account is correct</h3></span></div><div class="step-body"><p class="why">This is the step most people skip, and it undoes everything else. Teen Accounts are applied based on the stated age.</p><p class="path"><code>Profile → ☰ → Settings and privacy → Accounts Center → Personal details</code></p><ol class="do-list"><li>Open their profile and check the date of birth on the account.</li><li>If it’s wrong, correct it. Instagram may ask for verification.</li></ol><p class="result">With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set up parental supervision</h3></span></div><div class="step-body"><p class="why">Teen Accounts protect. Supervision gives you visibility, and for under-16s, approval rights over setting changes.</p><p class="path"><code>Settings and privacy → Supervision (or Family Center)</code></p><ol class="do-list"><li>On your account, open Settings and privacy, then Supervision.</li><li>Tap Set up supervision and send the invitation to your teen.</li><li>Your teen opens the invitation and accepts it.</li><li>Either of you can start the invite, and sometimes it’s easier if they invite you.</li></ol><p class="note">You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Know what needs your approval (under 16)</h3></span></div><div class="step-body"><p class="why">For under-16s, loosening a safety setting sends you a request. Expect a few, and treat each one as a conversation rather than a yes/no.</p><ol class="do-list"><li>Watch for approval requests in Supervision.</li><li>When one comes in, ask why they want the change before deciding.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Tighten messaging and comments</h3></span></div><div class="step-body"><p class="why">DMs are the main route strangers use. Teen Accounts already restrict this, but it’s worth confirming.</p><p class="path"><code>Settings and privacy → Messages and story replies / Comments</code></p><ol class="do-list"><li>Confirm messages are limited to people they follow.</li><li>Turn on Hidden Words to filter offensive comments and message requests.</li><li>Set story replies to People you follow.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>People you follow only</td></tr><tr><td>16–17</td><td>People you follow only</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Tighten messaging and comments</h3></span></div><div class="step-body"><p class="why">DMs are the main route strangers use. Teen Accounts already restrict this, but it’s worth confirming.</p><p class="path"><code>Settings and privacy → Messages and story replies / Comments</code></p><ol class="do-list"><li>Confirm messages are limited to people they follow.</li><li>Turn on Hidden Words to filter offensive comments and message requests.</li><li>Set story replies to People you follow.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>People you follow only<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>16–17</td><td>People you follow only<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Confirm the account is private and location is off</h3></span></div><div class="step-body"><p class="why">A private account plus no location tags is most of the privacy job done. Expect some pushback, because private costs them reach and followers, and that is a real loss to a teenager rather than an imagined one. Better to name it than to pretend the setting is free.</p><p class="path"><code>Settings and privacy → Account privacy</code></p><ol class="do-list"><li>Confirm Private account is on.</li><li>Turn off location tags when posting.</li><li>Check their bio doesn’t name their school or team.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Check screen time and Sleep Mode</h3></span></div><div class="step-body"><p class="why">Sleep Mode mutes notifications and auto-replies to DMs overnight. It’s the setting most likely to actually improve things.</p><p class="path"><code>Settings and privacy → Time management</code></p><ol class="do-list"><li>Confirm Sleep Mode is on (default is 10pm to 8am).</li><li>Set a daily time limit if you want a firmer stop.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Scroll the follower list together</h3></span></div><div class="step-body"><p class="why">Follower lists are where the surprises live. Do this one together rather than behind their back.</p><ol class="do-list"><li>Open their followers list and scroll it with them.</li><li>Remove or block anyone they can’t place.</li><li>Show them how to block and report while you’re there.</li></ol></div></li>
@@ -1141,9 +1148,9 @@ button { font: inherit; cursor: pointer; }
 <li>Talk about how edited and filtered the feed is, without lecturing.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://about.instagram.com/blog/announcements/instagram-teen-accounts" target="_blank" rel="noopener noreferrer">Instagram — Teen Accounts (official)</a></li>
-<li><a href="https://help.instagram.com/1119754640225545" target="_blank" rel="noopener noreferrer">Instagram — Parental supervision (official help)</a></li>
-<li><a href="https://familycenter.meta.com/" target="_blank" rel="noopener noreferrer">Meta — Family Center</a></li>
+<li><a href="https://about.instagram.com/blog/announcements/instagram-teen-accounts" target="_blank" rel="noopener noreferrer">Instagram: Teen Accounts (official)</a></li>
+<li><a href="https://help.instagram.com/1119754640225545" target="_blank" rel="noopener noreferrer">Instagram: Parental supervision (official help)</a></li>
+<li><a href="https://familycenter.meta.com/" target="_blank" rel="noopener noreferrer">Meta: Family Center</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
@@ -1288,7 +1295,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2386,6 +2393,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2709,6 +2718,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2800,6 +2811,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

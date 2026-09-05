@@ -56,7 +56,7 @@
    "@type": "HowToStep",
    "position": 4,
    "name": "Prefer a private Realm over public servers",
-   "text": "A Realm is invite-only and controlled by whoever owns it, where public servers are open to anyone. It is a paid subscription, which is the honest reason most families end up on public servers instead, so it is worth pricing before you promise it. If they want to play with friends, set up or join a Realm rather than a public server. As the Realm owner, you control the invite list. Talk about third-party servers — those sit entirely outside these controls.",
+   "text": "A Realm is invite-only and controlled by whoever owns it, where public servers are open to anyone. It is a paid subscription, which is the honest reason most families end up on public servers instead, so it is worth pricing before you promise it. If they want to play with friends, set up or join a Realm rather than a public server. As the Realm owner, you control the invite list. Talk about third-party servers, which sit entirely outside these controls.",
    "url": "https://safestart.trust-raise.com/minecraft/#step-4"
   },
   {
@@ -745,6 +745,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1114,9 +1121,9 @@ button { font: inherit; cursor: pointer; }
 </ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Put them on a child Microsoft account inside your family</h3></span></div><div class="step-body"><p class="why">Nothing else works without this. An adult account can’t be supervised.</p><p class="path"><code>family.microsoft.com</code></p><ol class="do-list"><li>Go to family.microsoft.com and sign in with your own Microsoft account.</li><li>Add your child as a family member, with their correct date of birth.</li><li>Make sure Minecraft is signed in with that account.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set multiplayer and communication in Xbox privacy settings</h3></span></div><div class="step-body"><p class="why">These three toggles control who can reach your child inside Minecraft, on every platform.</p><p class="path"><code>account.xbox.com/settings → [your child] → Privacy &amp; online safety → Xbox Series X|S, Xbox One, and Windows 10 devices</code></p><ol class="do-list"><li>Go to account.xbox.com/settings and sign in with your parent account.</li><li>Select your child’s profile, then the Privacy &amp; online safety tab.</li><li>Choose the Xbox and Windows devices section.</li><li>Set &#39;You can join multiplayer games&#39;, &#39;Others can communicate with voice, text, or invites&#39; and &#39;You can add friends&#39; to the levels below.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.</td></tr><tr><td>7–11</td><td>Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.</td></tr><tr><td>11–12</td><td>Multiplayer: Allow. Communicate: Friends only. Add friends: Block.</td></tr><tr><td>13–15</td><td>Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.</td></tr><tr><td>16–17</td><td>Multiplayer: Allow. Communicate: Friends only.</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set multiplayer and communication in Xbox privacy settings</h3></span></div><div class="step-body"><p class="why">These three toggles control who can reach your child inside Minecraft, on every platform.</p><p class="path"><code>account.xbox.com/settings → [your child] → Privacy &amp; online safety → Xbox Series X|S, Xbox One, and Windows 10 devices</code></p><ol class="do-list"><li>Go to account.xbox.com/settings and sign in with your parent account.</li><li>Select your child’s profile, then the Privacy &amp; online safety tab.</li><li>Choose the Xbox and Windows devices section.</li><li>Set &#39;You can join multiplayer games&#39;, &#39;Others can communicate with voice, text, or invites&#39; and &#39;You can add friends&#39; to the levels below.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>7–11</td><td>Multiplayer: Allow (for Realms with known friends). Communicate: Friends only. Add friends: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>11–12</td><td>Multiplayer: Allow. Communicate: Friends only. Add friends: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>13–15</td><td>Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Multiplayer: Allow. Communicate: Friends only.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn chat off inside the game as well</h3></span></div><div class="step-body"><p class="why">Two layers beats one, and the in-game setting covers cases the account setting does not. Worth knowing that chat off also means they cannot coordinate with the friends they are building with. On a private Realm with people you know, leaving it on is a reasonable call.</p><ol class="do-list"><li>In Minecraft, open Settings and look for the chat option in the profile or general settings.</li><li>Turn chat off, or set it to show only commands, for younger children.</li></ol><p class="note">The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters. Check the official Minecraft help link below.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Prefer a private Realm over public servers</h3></span></div><div class="step-body"><p class="why">A Realm is invite-only and controlled by whoever owns it, where public servers are open to anyone. It is a paid subscription, which is the honest reason most families end up on public servers instead, so it is worth pricing before you promise it.</p><ol class="do-list"><li>If they want to play with friends, set up or join a Realm rather than a public server.</li><li>As the Realm owner, you control the invite list.</li><li>Talk about third-party servers — those sit entirely outside these controls.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Prefer a private Realm over public servers</h3></span></div><div class="step-body"><p class="why">A Realm is invite-only and controlled by whoever owns it, where public servers are open to anyone. It is a paid subscription, which is the honest reason most families end up on public servers instead, so it is worth pricing before you promise it.</p><ol class="do-list"><li>If they want to play with friends, set up or join a Realm rather than a public server.</li><li>As the Realm owner, you control the invite list.</li><li>Talk about third-party servers, which sit entirely outside these controls.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Require approval for purchases</h3></span></div><div class="step-body"><p class="why">The Minecraft Marketplace sells skins and worlds for Minecoins, and children are the target market.</p><p class="path"><code>family.microsoft.com → [your child] → Spending</code></p><ol class="do-list"><li>Turn on &#39;Needs organizer approval to buy things&#39;.</li><li>Turn on purchase notification emails.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set screen time in Microsoft Family Safety</h3></span></div><div class="step-body"><p class="why">Covers Minecraft across Xbox and Windows in one place.</p><p class="path"><code>family.microsoft.com → [your child] → Screen time</code></p><ol class="do-list"><li>Set daily limits or a schedule, per device.</li></ol></div></li>
 </ol>
@@ -1131,11 +1138,11 @@ button { font: inherit; cursor: pointer; }
 <div class="check-card"><h2>Worth talking about</h2><ul class="talk-list">
 <li>Ask them to give you a tour of what they’ve built. It’s an easy in.</li>
 <li>Agree that public servers get checked with you first.</li>
-<li>Talk about mods and downloads — where they come from matters.</li>
+<li>Talk about mods and downloads, because where they come from matters.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://help.minecraft.net/hc/en-us/articles/4408968616845" target="_blank" rel="noopener noreferrer">Minecraft — parental controls and safety (official)</a></li>
-<li><a href="https://account.xbox.com/settings" target="_blank" rel="noopener noreferrer">Xbox — privacy and online safety settings (official)</a></li>
+<li><a href="https://help.minecraft.net/hc/en-us/articles/4408968616845" target="_blank" rel="noopener noreferrer">Minecraft: parental controls and safety (official)</a></li>
+<li><a href="https://account.xbox.com/settings" target="_blank" rel="noopener noreferrer">Xbox: privacy and online safety settings (official)</a></li>
 <li><a href="https://family.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft Family Safety (official)</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
@@ -1281,7 +1288,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2379,6 +2386,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2702,6 +2711,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2793,6 +2804,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

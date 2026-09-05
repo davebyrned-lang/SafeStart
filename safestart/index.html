@@ -196,6 +196,12 @@
    "position": 26,
    "name": "HBO Max",
    "url": "https://safestart.trust-raise.com/hbomax/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 27,
+   "name": "Apple Watch",
+   "url": "https://safestart.trust-raise.com/applewatch/"
   }
  ]
 }</script>
@@ -835,6 +841,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1190,7 +1203,7 @@ button { font: inherit; cursor: pointer; }
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <div class="check-card"><h2>Start here</h2><ul class="link-list"><li><a href="/accounts/"><strong>Accounts and email</strong> <span>About 10 minutes</span></a></li></ul></div>
 <div class="check-card"><h2>Apps and games</h2><ul class="link-list"><li><a href="/roblox/"><strong>Roblox</strong> <span>About 12 minutes</span></a></li><li><a href="/tiktok/"><strong>TikTok</strong> <span>About 10 minutes</span></a></li><li><a href="/instagram/"><strong>Instagram</strong> <span>About 10 minutes</span></a></li><li><a href="/snapchat/"><strong>Snapchat</strong> <span>About 10 minutes</span></a></li><li><a href="/discord/"><strong>Discord</strong> <span>About 12 minutes</span></a></li><li><a href="/youtube/"><strong>YouTube</strong> <span>About 10 minutes</span></a></li><li><a href="/fortnite/"><strong>Fortnite</strong> <span>About 12 minutes</span></a></li><li><a href="/minecraft/"><strong>Minecraft</strong> <span>About 12 minutes</span></a></li><li><a href="/whatsapp/"><strong>WhatsApp</strong> <span>About 10 minutes</span></a></li><li><a href="/twitch/"><strong>Twitch</strong> <span>About 12 minutes</span></a></li><li><a href="/netflix/"><strong>Netflix</strong> <span>About 10 minutes</span></a></li><li><a href="/disneyplus/"><strong>Disney+</strong> <span>About 10 minutes</span></a></li><li><a href="/primevideo/"><strong>Prime Video</strong> <span>About 12 minutes</span></a></li><li><a href="/imessage/"><strong>iMessage and FaceTime</strong> <span>About 8 minutes</span></a></li><li><a href="/hbomax/"><strong>HBO Max</strong> <span>About 8 minutes</span></a></li></ul></div>
-<div class="check-card"><h2>Phones, computers and consoles</h2><ul class="link-list"><li><a href="/iphone/"><strong>iPhone</strong> <span>About 15 minutes</span></a></li><li><a href="/ipad/"><strong>iPad</strong> <span>About 15 minutes</span></a></li><li><a href="/android/"><strong>Android phone or tablet</strong> <span>About 15 minutes</span></a></li><li><a href="/windows/"><strong>Windows PC</strong> <span>About 15 minutes</span></a></li><li><a href="/mac/"><strong>Mac</strong> <span>About 12 minutes</span></a></li><li><a href="/chromebook/"><strong>Chromebook</strong> <span>About 12 minutes</span></a></li><li><a href="/playstation/"><strong>PlayStation</strong> <span>About 15 minutes</span></a></li><li><a href="/xbox/"><strong>Xbox</strong> <span>About 15 minutes</span></a></li><li><a href="/switch/"><strong>Nintendo Switch</strong> <span>About 10 minutes</span></a></li><li><a href="/firetablet/"><strong>Amazon Fire tablet</strong> <span>About 15 minutes</span></a></li></ul></div></main>
+<div class="check-card"><h2>Phones, computers and consoles</h2><ul class="link-list"><li><a href="/iphone/"><strong>iPhone</strong> <span>About 15 minutes</span></a></li><li><a href="/ipad/"><strong>iPad</strong> <span>About 15 minutes</span></a></li><li><a href="/android/"><strong>Android phone or tablet</strong> <span>About 15 minutes</span></a></li><li><a href="/windows/"><strong>Windows PC</strong> <span>About 15 minutes</span></a></li><li><a href="/mac/"><strong>Mac</strong> <span>About 12 minutes</span></a></li><li><a href="/chromebook/"><strong>Chromebook</strong> <span>About 12 minutes</span></a></li><li><a href="/playstation/"><strong>PlayStation</strong> <span>About 15 minutes</span></a></li><li><a href="/xbox/"><strong>Xbox</strong> <span>About 15 minutes</span></a></li><li><a href="/switch/"><strong>Nintendo Switch</strong> <span>About 10 minutes</span></a></li><li><a href="/firetablet/"><strong>Amazon Fire tablet</strong> <span>About 15 minutes</span></a></li><li><a href="/applewatch/"><strong>Apple Watch</strong> <span>About 20 minutes</span></a></li></ul></div></main>
 
 <footer class="site-foot">
   <div class="wrap foot-inner">
@@ -1332,7 +1345,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2430,6 +2443,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2753,6 +2768,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2844,6 +2861,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

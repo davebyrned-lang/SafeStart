@@ -556,6 +556,38 @@ function check(name, condition, detail) {
     check('/plan/ is noindex', /noindex/.test(planShell));
     check('/plan/ tells a no-JS visitor where to go', /noscript/.test(planShell));
 
+    console.log('\ncross-app wording');
+    // A reader: parents set Roblox chat to "All chat off", then meet PlayStation's
+    // "Restricted, so no messaging or chat", and have to translate. The platform's
+    // own words stay, and the sentence underneath has to be identical.
+    await page.goto(BASE + '/roblox/?age=7-11', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const robloxChat = page.locator('.step', { hasText: 'Control who can talk to them' });
+    check('the platform\'s own wording is still shown',
+      (await robloxChat.locator('.rec').textContent()).includes('All chat off'));
+    const robloxPlain = (await robloxChat.locator('.plain-terms').first().textContent()).trim();
+    check('and a plain-English line sits under it', robloxPlain.length > 30, robloxPlain.slice(0, 70));
+
+    await page.goto(BASE + '/playstation/?age=7-11', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const psComms = page.locator('.step', { hasText: 'Restrict communication' });
+    const psPlain = (await psComms.locator('.plain-terms').first().textContent()).trim();
+    check('a different app saying the same thing uses the identical sentence',
+      psPlain === robloxPlain, `roblox: ${robloxPlain.slice(0, 50)} | ps: ${psPlain.slice(0, 50)}`);
+    check('while keeping its own platform wording',
+      (await psComms.locator('.rec').textContent()).includes('Restricted'));
+
+    console.log('\nroblox voice');
+    // The gap a reader found by cross-checking us against Roblox's own page.
+    await page.goto(BASE + '/roblox/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const robloxText = await page.locator('#app').textContent();
+    check('voice chat is covered at all', /[Vv]oice [Cc]hat/.test(robloxText));
+    check('and both voice surfaces are distinguished',
+      /Voice Chat with friends/.test(robloxText) && /in-experience/i.test(robloxText));
+    check('the age check gate is stated', /age check/i.test(robloxText));
+    check('creator-built chat is flagged as out of reach', /creator/i.test(robloxText));
+
     console.log('\nanalytics');
     // The plan URL carries a real child's age, device and app list in its query
     // string, and Vercel stores the URL with every data point. So the script goes

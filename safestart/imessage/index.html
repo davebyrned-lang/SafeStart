@@ -738,6 +738,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1104,7 +1111,7 @@ button { font: inherit; cursor: pointer; }
 <li>Have your Screen Time passcode, not your device passcode.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set Communication Limits</h3></span></div><div class="step-body"><p class="why">This is the real control here, and unlike most filters it blocks rather than warns. Apple&#39;s wording: if someone blocked by your limits tries to call or message, their communication will not go through, and it works in both directions.</p><p class="path"><code>Settings → Screen Time → [your child] → Communication Limits</code></p><ol class="do-list"><li>Turn on Contacts in iCloud first, or the setting has nothing to work from.</li><li>Set During Screen Time to the level below.</li><li>Set During Downtime, which can be narrowed further to specific contacts.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Contacts Only, and Specific Contacts during downtime</td></tr><tr><td>7–11</td><td>Contacts Only</td></tr><tr><td>11–12</td><td>Contacts Only</td></tr><tr><td>13–15</td><td>Contacts &amp; Groups with at Least One Contact</td></tr><tr><td>16–17</td><td>Agree it together. Everyone is a reasonable landing point by this age</td></tr></tbody></table></div><p class="note">The middle option is called Contacts &amp; Groups with at Least One Contact. It allows one-to-one chats with people in their contacts, plus group chats where at least one member is a contact. Emergency numbers your carrier recognises always get through, whatever you set.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set Communication Limits</h3></span></div><div class="step-body"><p class="why">This is the real control here, and unlike most filters it blocks rather than warns. Apple&#39;s wording: if someone blocked by your limits tries to call or message, their communication will not go through, and it works in both directions.</p><p class="path"><code>Settings → Screen Time → [your child] → Communication Limits</code></p><ol class="do-list"><li>Turn on Contacts in iCloud first, or the setting has nothing to work from.</li><li>Set During Screen Time to the level below.</li><li>Set During Downtime, which can be narrowed further to specific contacts.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Contacts Only, and Specific Contacts during downtime<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>7–11</td><td>Contacts Only<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>11–12</td><td>Contacts Only<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>13–15</td><td>Contacts &amp; Groups with at Least One Contact<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>16–17</td><td>Agree it together. Everyone is a reasonable landing point by this age<span class="plain-terms">Anyone on the platform can reach them.</span></td></tr></tbody></table></div><p class="note">The middle option is called Contacts &amp; Groups with at Least One Contact. It allows one-to-one chats with people in their contacts, plus group chats where at least one member is a contact. Emergency numbers your carrier recognises always get through, whatever you set.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Check Communication Safety is on, and know what it will not do</h3></span></div><div class="step-body"><p class="why">It spots nudity in photos and videos on the device itself, both arriving and about to be sent. What it does not do is tell you. Parents assume this one alerts them, and it does not, so it is worth knowing before you rely on it.</p><p class="path"><code>Settings → Screen Time → [your child] → Communication Safety</code></p><ol class="do-list"><li>Confirm it is on. For under-18s it is on by default on current software.</li><li>For an under-13, viewing the blurred photo needs your Screen Time passcode, so that gate is real.</li></ol><p class="note">It covers Messages, AirDrop, FaceTime, contact posters, shared albums and some third-party apps. The detection happens on the device: Apple never sees the photo and never learns that anything was found. For under-13s it prompts the child to start a conversation with you, which is the design. It points them at you rather than reporting to you.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Screen Unknown Senders</h3></span></div><div class="step-body"><p class="why">It moves messages from numbers they do not know into a separate list, so they stop arriving as notifications. It sorts rather than blocks, so treat it as tidying up rather than a wall.</p><p class="path"><code>Messages → the icon at the top right of the conversation list → Manage Filtering</code></p><ol class="do-list"><li>Open Messages and tap the icon at the top right of the conversation list.</li><li>Open Manage Filtering and turn on Screen Unknown Senders.</li></ol><p class="note">This setting moved. It used to live in Settings, then Messages, and it was called Filter Unknown Senders. One documented hole: filtering stops applying to anyone they have replied to three times or more.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Turn it off entirely if they are too young for it</h3></span></div><div class="step-body"><p class="why">For a young child on a hand-me-down iPad, the honest answer is often that they do not need messaging at all. Turning the app off hides it rather than deleting it, so nothing is lost when you turn it back on.</p><p class="path"><code>Content &amp; Privacy Restrictions → Allowed Apps &amp; Features</code></p><ol class="do-list"><li>Open Allowed Apps &amp; Features.</li><li>Turn off what they do not need yet.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Messages and FaceTime off</td></tr><tr><td>7–11</td><td>FaceTime on for family, Messages limited to contacts</td></tr><tr><td>11–12</td><td>Both on, contacts only</td></tr><tr><td>13–15</td><td>Both on</td></tr><tr><td>16–17</td><td>Both on</td></tr></tbody></table></div><p class="note">Apple documents how this screen works but does not publish the full list of what appears on it, so check what is actually there on the device rather than expecting a particular name.</p></div></li>
@@ -1122,10 +1129,10 @@ button { font: inherit; cursor: pointer; }
 <li>Show them how to block a number, and that blocking someone is not rude.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://support.apple.com/guide/iphone/block-calls-and-messages-with-screen-time-iph4df1c0dad/ios" target="_blank" rel="noopener noreferrer">Apple — block calls and messages with Screen Time (official)</a></li>
-<li><a href="https://support.apple.com/en-us/105069" target="_blank" rel="noopener noreferrer">Apple — about Communication Safety (official)</a></li>
-<li><a href="https://support.apple.com/guide/iphone/screen-and-filter-texts-iph203ab0be4/ios" target="_blank" rel="noopener noreferrer">Apple — screen and filter texts (official)</a></li>
-<li><a href="https://support.apple.com/en-us/105121" target="_blank" rel="noopener noreferrer">Apple — Screen Time content and privacy restrictions (official)</a></li>
+<li><a href="https://support.apple.com/guide/iphone/block-calls-and-messages-with-screen-time-iph4df1c0dad/ios" target="_blank" rel="noopener noreferrer">Apple: block calls and messages with Screen Time (official)</a></li>
+<li><a href="https://support.apple.com/en-us/105069" target="_blank" rel="noopener noreferrer">Apple: about Communication Safety (official)</a></li>
+<li><a href="https://support.apple.com/guide/iphone/screen-and-filter-texts-iph203ab0be4/ios" target="_blank" rel="noopener noreferrer">Apple: screen and filter texts (official)</a></li>
+<li><a href="https://support.apple.com/en-us/105121" target="_blank" rel="noopener noreferrer">Apple: Screen Time content and privacy restrictions (official)</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
@@ -1270,7 +1277,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2368,6 +2375,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2691,6 +2700,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2782,6 +2793,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

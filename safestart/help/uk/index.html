@@ -661,6 +661,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1270,7 +1277,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2368,6 +2375,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2691,6 +2700,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2782,6 +2793,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

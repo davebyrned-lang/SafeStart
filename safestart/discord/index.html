@@ -745,6 +745,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1113,7 +1120,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Turn on Family Center and link your accounts</h3></span></div><div class="step-body"><p class="why">It gives you a weekly picture of who they’re talking to and which servers they’ve joined.</p><p class="path"><code>User Settings → Family Center</code></p><ol class="do-list"><li>Both of you: open User Settings and find the Family Center tab (on mobile, tap your profile icon first).</li><li>Turn on Enable Family Center tab.</li><li>Your teen opens Family Center and chooses Connect with Guardian to generate a QR code.</li><li>Scan that code with the Discord mobile app on your phone.</li><li>Your teen accepts the connection.</li></ol><p class="result">You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days, plus a weekly email. You won’t see message content.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the sensitive content filter</h3></span></div><div class="step-body"><p class="why">Direct messages and server messages can contain images your child didn’t ask for.</p><p class="path"><code>User Settings → Privacy &amp; Safety</code></p><ol class="do-list"><li>Open Privacy &amp; Safety.</li><li>Set sensitive content in direct messages to Block.</li><li>Set sensitive content in servers to Block.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Block everywhere</td></tr><tr><td>16–17</td><td>Block or Blur</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Close down direct messages from strangers</h3></span></div><div class="step-body"><p class="why">By default, sharing a server with someone can be enough for them to message your child privately. Closing this down does cut off people they met in a server and genuinely get on with, which is most of how friendships work on Discord, so friend requests from friends of friends is usually the setting that survives contact with a teenager.</p><p class="path"><code>User Settings → Privacy &amp; Safety</code></p><ol class="do-list"><li>Turn off Allow direct messages from server members.</li><li>Set who can send friend requests to Friends of Friends, or off entirely.</li><li>Turn off Message Requests if you’d rather nothing gets through at all.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Server DMs off, friend requests from friends of friends only</td></tr><tr><td>16–17</td><td>Server DMs off</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Close down direct messages from strangers</h3></span></div><div class="step-body"><p class="why">By default, sharing a server with someone can be enough for them to message your child privately. Closing this down does cut off people they met in a server and genuinely get on with, which is most of how friendships work on Discord, so friend requests from friends of friends is usually the setting that survives contact with a teenager.</p><p class="path"><code>User Settings → Privacy &amp; Safety</code></p><ol class="do-list"><li>Turn off Allow direct messages from server members.</li><li>Set who can send friend requests to Friends of Friends, or off entirely.</li><li>Turn off Message Requests if you’d rather nothing gets through at all.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Server DMs off, friend requests from friends of friends only<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Server DMs off<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Go through their server list together</h3></span></div><div class="step-body"><p class="why">This is the part that matters most and no setting can do it for you. Most risk on Discord comes from which rooms they’re in.</p><ol class="do-list"><li>Open their server list and ask about each one: what is it, who’s in it, how did you find it?</li><li>Leave any large public server they can’t explain.</li><li>Agree that new servers get mentioned to you.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a monthly spending cap</h3></span></div><div class="step-body"><p class="why">Nitro subscriptions and gifts are easy to rack up.</p><p class="path"><code>Family Center → spending settings</code></p><ol class="do-list"><li>Set a monthly limit on purchases.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>$0 unless agreed</td></tr><tr><td>16–17</td><td>A small agreed cap</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set screen time limits</h3></span></div><div class="step-body"><p class="why">Voice chat sessions run long, especially at night.</p><p class="path"><code>Family Center → Screen Time Limits</code></p><ol class="do-list"><li>Schedule downtime, particularly overnight.</li></ol></div></li>
@@ -1132,9 +1139,9 @@ button { font: inherit; cursor: pointer; }
 <li>Make sure they know how to block and report inside Discord.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://support.discord.com/hc/en-us/articles/14155043715735-Family-Center-for-Parents-and-Guardians" target="_blank" rel="noopener noreferrer">Discord — Family Center for parents (official)</a></li>
-<li><a href="https://discord.com/safety-family-center" target="_blank" rel="noopener noreferrer">Discord — Family Center hub (official)</a></li>
-<li><a href="https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally" target="_blank" rel="noopener noreferrer">Discord — teen-by-default settings</a></li>
+<li><a href="https://support.discord.com/hc/en-us/articles/14155043715735-Family-Center-for-Parents-and-Guardians" target="_blank" rel="noopener noreferrer">Discord: Family Center for parents (official)</a></li>
+<li><a href="https://discord.com/safety-family-center" target="_blank" rel="noopener noreferrer">Discord: Family Center hub (official)</a></li>
+<li><a href="https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally" target="_blank" rel="noopener noreferrer">Discord: teen-by-default settings</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
@@ -1279,7 +1286,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2377,6 +2384,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2700,6 +2709,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2791,6 +2802,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

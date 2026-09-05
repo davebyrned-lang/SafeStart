@@ -63,7 +63,7 @@
    "@type": "HowToStep",
    "position": 5,
    "name": "Decide on location sharing",
-   "text": "Useful for younger children. For teenagers, worth agreeing rather than imposing. Turn on location if you want it, and tell your child it’s on. For older teens, discuss it first — covert tracking damages trust more than it protects.",
+   "text": "Useful for younger children. For teenagers, worth agreeing rather than imposing. Turn on location if you want it, and tell your child it’s on. For older teens, discuss it first. Covert tracking damages trust more than it protects.",
    "url": "https://safestart.trust-raise.com/android/#step-5"
   },
   {
@@ -745,6 +745,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1123,7 +1130,7 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Control app downloads and approvals</h3></span></div><div class="step-body"><p class="why">The quickest way for controls to become irrelevant is a new app you didn’t know about.</p><p class="path"><code>Family Link → [your child] → Controls → Apps</code></p><ol class="do-list"><li>Turn on approval for all Play Store downloads, including free apps.</li><li>Set Play Store content ratings for apps, games, films and TV.</li><li>Review what’s already installed and block anything that shouldn’t be there.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Approval required for everything, apps rated PEGI 7 / ESRB E</td></tr><tr><td>7–11</td><td>Approval required for everything, apps rated PEGI 7 / ESRB E</td></tr><tr><td>11–12</td><td>Approval required for everything, apps rated PEGI 12 / ESRB E10+</td></tr><tr><td>13–15</td><td>Approval required for paid apps, ratings PEGI 12 / ESRB T</td></tr><tr><td>16–17</td><td>Notifications rather than approvals</td></tr></tbody></table></div><p class="note">Google has the same hole and states it plainly: previous downloads, and content shared through Family Library, will not require your approval. So anything installed once can come back without a request reaching you. Set approval to All content rather than Paid content only, because the free apps are the ones that matter here.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Filter web and search</h3></span></div><div class="step-body"><p class="why">Chrome is the widest opening on the device.</p><p class="path"><code>Family Link → [your child] → Controls → Content restrictions → Google Chrome / Google Search</code></p><ol class="do-list"><li>Set Chrome to Try to block explicit sites, or Only allow approved sites for younger children.</li><li>Turn SafeSearch on and lock it.</li><li>Add specific sites to allow or block as needed.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Only allow approved sites</td></tr><tr><td>7–11</td><td>Only allow approved sites</td></tr><tr><td>11–12</td><td>Try to block explicit sites</td></tr><tr><td>13–15</td><td>Try to block explicit sites</td></tr><tr><td>16–17</td><td>Try to block explicit sites</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set daily limits and bedtime</h3></span></div><div class="step-body"><p class="why">Bedtime is the setting that changes the most in practice. Family Link locks the device rather than nagging, so agree how they reach you after it kicks in before the first night rather than during it.</p><p class="path"><code>Family Link → [your child] → Controls → Daily limit / Bedtime</code></p><ol class="do-list"><li>Set daily limits, which can differ by day of the week.</li><li>Set a bedtime schedule that locks the device.</li><li>You can grant bonus time from your phone when it’s genuinely warranted.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Decide on location sharing</h3></span></div><div class="step-body"><p class="why">Useful for younger children. For teenagers, worth agreeing rather than imposing.</p><p class="path"><code>Family Link → [your child] → Location</code></p><ol class="do-list"><li>Turn on location if you want it, and tell your child it’s on.</li><li>For older teens, discuss it first — covert tracking damages trust more than it protects.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Decide on location sharing</h3></span></div><div class="step-body"><p class="why">Useful for younger children. For teenagers, worth agreeing rather than imposing.</p><p class="path"><code>Family Link → [your child] → Location</code></p><ol class="do-list"><li>Turn on location if you want it, and tell your child it’s on.</li><li>For older teens, discuss it first. Covert tracking damages trust more than it protects.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set YouTube separately</h3></span></div><div class="step-body"><p class="why">YouTube has its own content levels that sit inside Family Link.</p><p class="path"><code>Family Link → [your child] → Controls → Content restrictions → YouTube</code></p><ol class="do-list"><li>Choose the content setting: Explore (9+), Explore more (13+) or Most of YouTube.</li><li>Consider the YouTube Kids app instead for under-9s.</li></ol></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -1141,9 +1148,9 @@ button { font: inherit; cursor: pointer; }
 <li>Talk about sideloading if they’re technical enough to know the term.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://support.google.com/families/answer/7101025?hl=en" target="_blank" rel="noopener noreferrer">Google — Family Link setup (official)</a></li>
+<li><a href="https://support.google.com/families/answer/7101025?hl=en" target="_blank" rel="noopener noreferrer">Google: Family Link setup (official)</a></li>
 <li><a href="https://families.google/familylink/" target="_blank" rel="noopener noreferrer">Google Families help center (official)</a></li>
-<li><a href="https://support.google.com/families/answer/10495678?hl=en" target="_blank" rel="noopener noreferrer">Google — YouTube options for your child (official)</a></li>
+<li><a href="https://support.google.com/families/answer/10495678?hl=en" target="_blank" rel="noopener noreferrer">Google: YouTube options for your child (official)</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
@@ -1288,7 +1295,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2386,6 +2393,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2709,6 +2718,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2800,6 +2811,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

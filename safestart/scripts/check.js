@@ -140,6 +140,33 @@ if (starts.length !== 1) fail(`expected exactly one start guide, found ${starts.
 else if (data.guides[starts[0]].priority !== 0) fail(`${starts[0]}: start guide must be priority 0`);
 else ok(`start guide is ${starts[0]}`);
 
+// The whole point of the shared vocabulary is that it is shared. If two apps can
+// drift to different sentences for the same thing, it has stopped working.
+console.log('\nplain-English outcomes');
+const OUTCOME_KEYS = Object.keys(data.outcomes || {});
+if (!OUTCOME_KEYS.length) fail('guides.json has no outcomes vocabulary');
+let mapped = 0;
+Object.keys(data.guides).forEach((id) => {
+  (data.guides[id].steps || []).forEach((s) => {
+    if (!s.outcomeByAge) return;
+    mapped++;
+    Object.keys(s.outcomeByAge).forEach((band) => {
+      if (!bandIds.includes(band)) fail(`${id}/${s.id}: outcomeByAge has unknown band "${band}"`);
+      if (!OUTCOME_KEYS.includes(s.outcomeByAge[band])) {
+        fail(`${id}/${s.id}: outcome "${s.outcomeByAge[band]}" is not in the shared vocabulary`);
+      }
+    });
+    // A recommendation the parent reads with no plain-English twin is the exact
+    // problem this was built to solve, so the two have to stay in step.
+    if (s.recommended) {
+      Object.keys(s.recommended).forEach((band) => {
+        if (!s.outcomeByAge[band]) fail(`${id}/${s.id}: recommends something for ${band} with no plain-English outcome`);
+      });
+    }
+  });
+});
+ok(`${mapped} settings carry a shared plain-English outcome, from ${OUTCOME_KEYS.length} phrasings`);
+
 console.log('\napi handlers');
 ['guide', 'ask'].forEach((name) => {
   const file = path.join(ROOT, 'api', name + '.js');

@@ -132,9 +132,15 @@ function renderStepStatic(step, num, symbol) {
     out.push('<table class="rec-table"><tbody>');
     Object.keys(step.recommended).forEach((k) => {
       const band = (DATA.ageBands || []).filter((b) => b.id === k)[0];
+      // The platform's own words, then the sentence that means the same thing on
+      // every other app, so a parent stops having to translate between them.
+      const key = step.outcomeByAge && step.outcomeByAge[k];
+      const plain = key && DATA.outcomes && DATA.outcomes[key];
       out.push(
         "<tr><td>" + esc(band ? band.label : k) + "</td>" +
-        "<td>" + esc(cur(step.recommended[k], symbol)) + "</td></tr>"
+        "<td>" + esc(cur(step.recommended[k], symbol)) +
+        (plain ? '<span class="plain-terms">' + esc(plain) + "</span>" : "") +
+        "</td></tr>"
       );
     });
     out.push("</tbody></table></div>");

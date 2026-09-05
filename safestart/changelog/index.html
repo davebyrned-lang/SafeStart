@@ -661,6 +661,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1012,7 +1019,27 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">17 entries</span><span class="pill">5 corrections</span></div>
+<div class="meta-row"><span class="pill">21 entries</span><span class="pill">6 corrections</span></div>
+<article class="log-entry log-correction">
+<div class="log-head"><span class="log-kind">Correction</span><time>5 September 2026</time></div>
+<h2>Our Roblox chat step never mentioned voice, and used the old names for everything else</h2>
+<p>A reader put a plan side by side with Roblox&#39;s own parental controls page and found voice chat missing from our guide entirely. Checking that turned up a second problem: Roblox&#39;s Safety Center and its Help Center use different names for the same settings, and we had followed the Help Center. So Experience chat was Game chat here, and Chat and party with friends was three separate items. Both are fixed, with the old names in brackets so readers of either page can follow along. Voice now has its own step, because there are two voice features with two separate off switches and turning one off does nothing to the other. Also added: the age check, which since 2026 is the gate on all chat at any age, and Gameplay Coordination, which almost no guide covers. Two things we now say plainly that we did not before. None of these settings reach chat that a game&#39;s creator built themselves, which Roblox states twice on its own page. And at 13 your child takes over their own chat and voice settings.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>5 September 2026</time></div>
+<h2>Every recommendation now says what it means, in the same words every time</h2>
+<p>From a reader: set Roblox chat to &#39;All chat off&#39;, then meet PlayStation&#39;s &#39;Restricted, no messaging or chat&#39;, and you have to work out for yourself that these are the same thing. Every platform names its settings differently and the translation is left to the parent. So the platform&#39;s exact wording stays, because that is what is on your screen, and underneath it sits one sentence that is word for word identical across every app. &#39;Only people already on their friends list can reach them. Strangers cannot.&#39; means the same on Roblox as it does on Xbox, Snapchat or an iPhone. Twelve settings carry it so far, and the build fails if two apps ever drift to different wording for the same thing.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>5 September 2026</time></div>
+<h2>Apple Watch guide added, including the thing Apple buries</h2>
+<p>Asked for by a reader. The feature is called Apple Watch For Your Kids now, renamed from Family Setup, which is why older guidance uses a different name. The guide leads with checking it will work at all, because Apple&#39;s own pages disagree about which models qualify and the carrier list is short. In the UK that is EE. Ireland is not on Apple&#39;s list at all. The buried detail worth knowing before you buy: Fall Detection does not work for anyone under 18, and Apple says so only in a list at the bottom of the setup page. A lot of people buy these for a child partly on the strength of that feature. Crash Detection does work. Sleep tracking, cycle tracking, blood oxygen and international roaming do not.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>5 September 2026</time></div>
+<h2>The em dashes are gone</h2>
+<p>Ninety-one of them, mostly in the source links. Small thing, but house style is house style.</p>
+</article>
 <article class="log-entry log-site">
 <div class="log-head"><span class="log-kind">Change</span><time>5 September 2026</time></div>
 <h2>We turned on visitor counting, and left it off the one page that matters</h2>
@@ -1240,7 +1267,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2338,6 +2365,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2661,6 +2690,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2752,6 +2783,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

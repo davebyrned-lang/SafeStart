@@ -738,6 +738,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1106,7 +1113,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Management and a child account</h3></span></div><div class="step-body"><p class="why">Restrictions only apply to child accounts within your family.</p><p class="path"><code>playstation.com/acct/family</code></p><ol class="do-list"><li>Sign in at playstation.com/acct/family with your own account.</li><li>Add a family member and create a child account with their real date of birth.</li><li>Sign that account in on the console.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set age-level restrictions for games and content</h3></span></div><div class="step-body"><p class="why">Blocks games above their rating from launching, which is more reliable than hoping you notice.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Age level for games</code></p><ol class="do-list"><li>Set the age level for games to match their age.</li><li>Set the level for Blu-ray and DVD content.</li><li>Restrict or block the internet browser for younger children.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>7–11</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>11–12</td><td>PEGI 12 / ESRB E10+, browser blocked</td></tr><tr><td>13–15</td><td>PEGI 12–16 / ESRB T, browser restricted</td></tr><tr><td>16–17</td><td>PEGI 16–18 / ESRB T–M</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and user-generated content</h3></span></div><div class="step-body"><p class="why">This is the setting that governs voice chat, messages and shared content from strangers.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Communication and user-generated content</code></p><ol class="do-list"><li>Restrict messaging and chat with other players.</li><li>Restrict the ability to view or share videos and images made by other players.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Restricted — no messaging or chat</td></tr><tr><td>7–11</td><td>Restricted — no messaging or chat</td></tr><tr><td>11–12</td><td>Restricted</td></tr><tr><td>13–15</td><td>Allowed with friends only</td></tr><tr><td>16–17</td><td>Allowed, discussed together</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and user-generated content</h3></span></div><div class="step-body"><p class="why">This is the setting that governs voice chat, messages and shared content from strangers.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Communication and user-generated content</code></p><ol class="do-list"><li>Restrict messaging and chat with other players.</li><li>Restrict the ability to view or share videos and images made by other players.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>7–11</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>11–12</td><td>Restricted<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>13–15</td><td>Allowed with friends only<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Allowed, discussed together<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set play time limits</h3></span></div><div class="step-body"><p class="why">PlayStation lets you set both a daily amount and a window of hours, which is useful for school nights.</p><p class="path"><code>Family Management → [your child] → Play Time Settings</code></p><ol class="do-list"><li>Set the hours of the day they can play.</li><li>Set a daily duration.</li><li>Choose whether the console logs them out at the limit or just warns them.</li><li>Note these settings apply to both PS5 and PS4.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a monthly spending limit</h3></span></div><div class="step-body"><p class="why">Wallet top-ups and in-game currency are where console spending usually escapes.</p><p class="path"><code>Family Management → [your child] → Monthly spending limit</code></p><ol class="do-list"><li>Set a monthly limit, or zero.</li><li>Remove any saved payment card from the account.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>$0</td></tr><tr><td>7–11</td><td>$0</td></tr><tr><td>11–12</td><td>$0</td></tr><tr><td>13–15</td><td>A small agreed monthly cap</td></tr><tr><td>16–17</td><td>An agreed monthly cap</td></tr></tbody></table></div></div></li>
 </ol>
@@ -1124,9 +1131,9 @@ button { font: inherit; cursor: pointer; }
 <li>Set the play window together so the console isn’t the one saying no.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://www.playstation.com/en-us/support/account/set-up-parental-controls-ps5/" target="_blank" rel="noopener noreferrer">PlayStation — Family Management (official)</a></li>
-<li><a href="https://www.playstation.com/acct/family" target="_blank" rel="noopener noreferrer">PlayStation — family account management</a></li>
-<li><a href="https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/" target="_blank" rel="noopener noreferrer">Internet Matters — PS5 parental controls</a></li>
+<li><a href="https://www.playstation.com/en-us/support/account/set-up-parental-controls-ps5/" target="_blank" rel="noopener noreferrer">PlayStation: Family Management (official)</a></li>
+<li><a href="https://www.playstation.com/acct/family" target="_blank" rel="noopener noreferrer">PlayStation: family account management</a></li>
+<li><a href="https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/" target="_blank" rel="noopener noreferrer">Internet Matters: PS5 parental controls</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
@@ -1271,7 +1278,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2369,6 +2376,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2692,6 +2701,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2783,6 +2794,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

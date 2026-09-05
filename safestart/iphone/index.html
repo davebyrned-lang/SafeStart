@@ -70,7 +70,7 @@
    "@type": "HowToStep",
    "position": 6,
    "name": "Set Downtime and App Limits",
-   "text": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages. Set Downtime to cover overnight — school nights first if you want an easier start. Add App Limits for the categories that run away with time, usually Social and Games. Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).",
+   "text": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages. Set Downtime to cover overnight. School nights first, if you want an easier start. Add App Limits for the categories that run away with time, usually Social and Games. Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).",
    "url": "https://safestart.trust-raise.com/iphone/#step-6"
   },
   {
@@ -752,6 +752,13 @@ button { font: inherit; cursor: pointer; }
 .rec-table td { padding: 4px 0; vertical-align: top; }
 .rec-table td:first-child { width: 74px; color: var(--blue); font-weight: 650; white-space: nowrap; }
 
+.plain-terms {
+  margin: 9px 0 0; font-size: .87rem; color: var(--body); line-height: 1.5;
+  padding-top: 8px; border-top: 1px solid var(--control-line);
+}
+.plain-terms b { color: var(--heading); font-weight: 650; }
+.rec-table .plain-terms { display: block; border-top: 0; padding-top: 3px; margin: 3px 0 6px; color: var(--muted); font-size: .84rem; }
+
 .result, .note {
   margin: 13px 0 0; font-size: .89rem; color: var(--muted);
   display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
@@ -1124,7 +1131,7 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Content &amp; Privacy Restrictions</h3></span></div><div class="step-body"><p class="why">This is the master switch that unlocks everything else.</p><p class="path"><code>Settings → Screen Time → [your child] → Content &amp; Privacy Restrictions</code></p><ol class="do-list"><li>Open Content &amp; Privacy Restrictions.</li><li>Enter your Screen Time passcode.</li><li>Toggle Content &amp; Privacy Restrictions on.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Require approval for downloads and purchases</h3></span></div><div class="step-body"><p class="why">Otherwise every setting you choose is one free app download away from irrelevant. Ask to Buy does mean a notification every time they want anything, free apps included, and that wears thin quickly. It is still worth it for the first few months, and you can loosen it once you can see what they actually ask for.</p><p class="path"><code>Content &amp; Privacy Restrictions → iTunes &amp; App Store Purchases</code></p><ol class="do-list"><li>Set iTunes &amp; App Store Purchases according to the ages below. This is the one that also covers redownloads.</li><li>Set In-app Purchases to Don&#39;t Allow.</li><li>Then turn on Ask to Buy in Family Sharing, so new downloads come to your phone as a request.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>7–11</td><td>Installing apps: Don’t Allow. In-app purchases: Don’t Allow.</td></tr><tr><td>11–12</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>13–15</td><td>Installing apps: Ask to Buy. In-app purchases: Don’t Allow.</td></tr><tr><td>16–17</td><td>Installing apps: Allow. In-app purchases: Ask to Buy.</td></tr></tbody></table></div><p class="note">The hole worth knowing about, in Apple&#39;s own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes &amp; App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set content ratings and web filtering</h3></span></div><div class="step-body"><p class="why">The browser is the widest open door on the phone, and web content filtering closes most of it. The cost is that automatic filtering also blocks school and research pages that look wrong to it, so expect to add a few addresses by hand rather than assuming the filter has broken.</p><p class="path"><code>Content &amp; Privacy Restrictions → App Store, Media, Web &amp; Games</code></p><ol class="do-list"><li>Set age ratings for apps, films, TV and music.</li><li>Open Web Content and choose the level below.</li><li>For younger children, Allowed Websites lets you list the only sites that work.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>7–11</td><td>Allowed Websites Only, apps rated 9+</td></tr><tr><td>11–12</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>13–15</td><td>Limit Adult Websites, apps rated 12+</td></tr><tr><td>16–17</td><td>Limit Adult Websites</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set Downtime and App Limits</h3></span></div><div class="step-body"><p class="why">Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple&#39;s own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.</p><p class="path"><code>Settings → Screen Time → [your child] → Downtime / App Limits</code></p><ol class="do-list"><li>Set Downtime to cover overnight — school nights first if you want an easier start.</li><li>Add App Limits for the categories that run away with time, usually Social and Games.</li><li>Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>7–11</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>11–12</td><td>Downtime from 8:30pm</td></tr><tr><td>13–15</td><td>Downtime from 9:30pm on school nights</td></tr><tr><td>16–17</td><td>Agree a Downtime window together</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Set Downtime and App Limits</h3></span></div><div class="step-body"><p class="why">Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple&#39;s own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.</p><p class="path"><code>Settings → Screen Time → [your child] → Downtime / App Limits</code></p><ol class="do-list"><li>Set Downtime to cover overnight. School nights first, if you want an easier start.</li><li>Add App Limits for the categories that run away with time, usually Social and Games.</li><li>Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum).</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>7–11</td><td>Downtime from 7pm, Social and Games limited to 45 min</td></tr><tr><td>11–12</td><td>Downtime from 8:30pm</td></tr><tr><td>13–15</td><td>Downtime from 9:30pm on school nights</td></tr><tr><td>16–17</td><td>Agree a Downtime window together</td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Lock down privacy and location changes</h3></span></div><div class="step-body"><p class="why">Stops apps quietly gaining location or contacts access later.</p><p class="path"><code>Content &amp; Privacy Restrictions → Privacy</code></p><ol class="do-list"><li>Open Location Services and set it to Don’t Allow Changes after you’ve set it how you want.</li><li>Do the same for Contacts and Photos.</li><li>Turn on Communication Limits so contact during Downtime is restricted to known contacts.</li></ol></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -1142,9 +1149,9 @@ button { font: inherit; cursor: pointer; }
 <li>Show them how to report and block in the apps they use most.</li>
 </ul></div>
 <div class="check-card"><h2>Official sources</h2><ul class="link-list">
-<li><a href="https://support.apple.com/en-us/105121" target="_blank" rel="noopener noreferrer">Apple — Use parental controls on your child’s device (official)</a></li>
-<li><a href="https://support.apple.com/en-us/HT201060" target="_blank" rel="noopener noreferrer">Apple — Family Sharing (official)</a></li>
-<li><a href="https://support.apple.com/en-us/HT208982" target="_blank" rel="noopener noreferrer">Apple — Screen Time (official)</a></li>
+<li><a href="https://support.apple.com/en-us/105121" target="_blank" rel="noopener noreferrer">Apple: Use parental controls on your child’s device (official)</a></li>
+<li><a href="https://support.apple.com/en-us/HT201060" target="_blank" rel="noopener noreferrer">Apple: Family Sharing (official)</a></li>
+<li><a href="https://support.apple.com/en-us/HT208982" target="_blank" rel="noopener noreferrer">Apple: Screen Time (official)</a></li>
 </ul></div>
 <a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
@@ -1289,7 +1296,7 @@ var GUIDE_ICON = {
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
   iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
-  switch: "handheld", firetablet: "tablet",
+  switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
 };
 
@@ -2387,6 +2394,8 @@ function renderPlanStep(item, num) {
       el("div", { text: cur(s.recommended[state.ageBand]) })
     ]));
   }
+  var po = outcomeNode(s, state.ageBand);
+  if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
 
@@ -2710,6 +2719,8 @@ function renderStep(step, num) {
     ]);
     if (state.ageBand && step.recommended[state.ageBand]) {
       rec.appendChild(el("div", { text: cur(step.recommended[state.ageBand]) }));
+      var go = outcomeNode(step, state.ageBand);
+      if (go) rec.appendChild(go);
     } else {
       var table = el("table", { class: "rec-table" });
       Object.keys(step.recommended).forEach(function (k) {
@@ -2801,6 +2812,21 @@ function whyNode(step) {
   d.appendChild(el("summary", { text: "Why this one?" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
+}
+
+/* A reader: "Parents set Roblox chat to 'All chat off,' then encounter PlayStation's
+   'Restricted; no messaging or chat.' While these mean the same thing, different UI
+   language requires mental translation." So we keep the platform's exact wording,
+   because that is what they will see on the screen, and add one shared sentence that
+   is word for word the same on every app. */
+function outcomeNode(step, band) {
+  if (!step.outcomeByAge || !band) return null;
+  var key = step.outcomeByAge[band];
+  var text = DATA.outcomes && DATA.outcomes[key];
+  if (!text) return null;
+  return el("p", { class: "plain-terms" }, [
+    el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
 }
 
 function labelForBand(id) {

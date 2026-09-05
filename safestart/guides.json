@@ -126,6 +126,11 @@
    "label": "Amazon Fire tablet",
    "group": "Phones & tablets",
    "short": "Fire tablet"
+  },
+  {
+   "id": "applewatch",
+   "label": "Apple Watch",
+   "short": "Watch"
   }
  ],
  "helpModes": [
@@ -204,13 +209,13 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-05",
    "sourceConfidence": "high",
    "minutes": 12,
    "risks": [
-    "Open chat means adults can talk to your child inside games",
-    "Robux spending adds up fast, often through gift cards",
-    "Content ratings are set by creators, so some games slip through"
+    "Two separate voice features with two separate off switches. Turning one off does nothing to the other",
+    "None of the chat settings reach chat that a game's creator built themselves",
+    "At 13 your child takes over their own privacy and chat settings, including voice, unless you have restricted them"
    ],
    "beforeYouStart": [
     "You’ll need your own Roblox account, linked to your child’s, to change these settings.",
@@ -236,6 +241,19 @@
       "16-17": "The standard account"
      },
      "note": "Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.",
+     "mins": 2
+    },
+    {
+     "id": "agecheck",
+     "title": "Get the age check done",
+     "why": "Since 2026 this is the gate on everything else. Roblox's own words: users who have not completed an age check cannot chat, whatever their age. It also decides which account type your child lands in, and that decides what they can see.",
+     "path": "Settings → Account Info",
+     "do": [
+      "Complete the age check for your child, by facial age estimation or ID.",
+      "Age check yourself too. A parent needs to be 18 and age checked before parental controls will link.",
+      "Check the account type afterwards, and that it matches their real age."
+     ],
+     "note": "A useful thing almost no guide mentions: if you both age check and add each other as friends, you can become a trusted friend of your own child and chat with them on the platform.",
      "mins": 2
     },
     {
@@ -275,12 +293,14 @@
     {
      "id": "chat",
      "title": "Control who can talk to them",
-     "why": "Most of the real risk on Roblox is contact rather than content, so this is the step worth getting right. It is also the one children argue about most, because Roblox is something they play with friends and chat off can mean playing alone. Friends only is usually the setting that holds: it keeps the people they actually know and drops the rest.",
-     "path": "Settings → Parental Controls → Settings You Manage → Communication",
+     "why": "Most of the real risk on Roblox is contact rather than content, so this is the step worth getting right. It is also the one children argue about hardest, because Roblox is something they play with friends and chat off can mean playing alone. Friends only is usually the setting that holds.",
+     "path": "Settings → Parental Controls → [your child] → Settings You Manage → Communication",
      "do": [
-      "Open the Communication section.",
-      "Set each of Game chat, Direct chat, Friends chat and Party to the level below.",
-      "Confirm with your PIN."
+      "Complete the age check first. Without one there is no chat at any age, and none of these settings appear.",
+      "Set Experience chat, which is chat inside a game. Roblox's help pages still call this Game chat.",
+      "Set Direct chat, which is one to one inside a game.",
+      "Open Chat and party with friends, and set the chat level. Voice lives inside this same screen, so do not close it yet.",
+      "Set Gameplay Coordination, which controls Quick Words, the pre-approved phrases children use to coordinate in a game."
      ],
      "recommended": {
       "0-6": "All chat off",
@@ -289,8 +309,43 @@
       "13-15": "Friends only",
       "16-17": "Friends only"
      },
-     "note": "Direct chat needs a parent’s consent for under-13s, and game chat is restricted for under-9s by default. Party features are limited to age-checked 13+ users.",
-     "mins": 2
+     "note": "There is no Everyone option on any chat setting any more. Roblox replaced it with age-based matching: a 5 to 8 year old can only reach under-13s, 9 to 12 only under-16s, 13 to 15 only ages 9 to 17. The bigger catch is that none of these settings reach chat that a game's creator built themselves. Roblox says so twice on its own page. You can switch Roblox chat off and your child can still be talking inside a game.",
+     "mins": 2,
+     "outcomeByAge": {
+      "0-6": "none",
+      "7-11": "none",
+      "11-12": "friends",
+      "13-15": "friends",
+      "16-17": "friends"
+     }
+    },
+    {
+     "id": "voice",
+     "title": "Deal with voice chat, which is two separate things",
+     "why": "This is the one most guides miss, ours included until a reader caught it. There are two voice features with two different off switches, and turning one off does nothing to the other.",
+     "path": "Settings → Parental Controls → [your child] → Settings You Manage → Communication → Chat and party with friends",
+     "do": [
+      "Scroll to the Voice Chat with friends section and set it to Trusted friends or No one. This is calling friends on the platform.",
+      "Understand the other one: in-experience Voice Chat is an open mic to everyone in the same game. It is off by default for everyone and has to be switched on by the user.",
+      "In-experience voice needs the child to be 13 or over and to pass an age check by ID or facial age estimation. A phone number does not count.",
+      "Roblox says a parent can turn in-experience voice on for a 13 to 15 year old, but does not publish where that control lives. If you cannot find it, that is why."
+     ],
+     "recommended": {
+      "0-6": "No one",
+      "7-11": "No one",
+      "11-12": "No one",
+      "13-15": "Trusted friends only, and leave in-experience voice off",
+      "16-17": "Agree it together"
+     },
+     "outcomeByAge": {
+      "0-6": "none",
+      "7-11": "none",
+      "11-12": "none",
+      "13-15": "friends",
+      "16-17": "friends"
+     },
+     "note": "Roblox contradicts itself on whether 9 to 12 year olds can use voice with friends at all. Its parental controls page implies a parent can enable it, and two other official pages say voice is not available under 13. We have written this to the stricter reading. Also worth knowing: all voice is recorded for moderation and you cannot opt out of that, and voice only exists in games whose creator built it in.",
+     "mins": 3
     },
     {
      "id": "spend",
@@ -303,9 +358,9 @@
       "Turn on transaction notifications so you see purchases as they happen."
      ],
      "recommended": {
-      "0-6": "{cur}0 — no spending",
-      "7-11": "{cur}0 — no spending",
-      "11-12": "{cur}0 — no spending",
+      "0-6": "{cur}0, no spending",
+      "7-11": "{cur}0, no spending",
+      "11-12": "{cur}0, no spending",
       "13-15": "A small monthly cap you agree together",
       "16-17": "An agreed monthly cap"
      },
@@ -378,15 +433,15 @@
    ],
    "links": [
     {
-     "label": "Roblox — Parental Controls Overview (official)",
+     "label": "Roblox: Parental Controls Overview (official)",
      "url": "https://en.help.roblox.com/hc/en-us/articles/30428310121620-Parental-Controls-Overview"
     },
     {
-     "label": "Roblox — Parental Controls hub (official)",
+     "label": "Roblox: Parental Controls hub (official)",
      "url": "https://about.roblox.com/parental-controls"
     },
     {
-     "label": "Roblox — Content Maturity Labels (official)",
+     "label": "Roblox: Content Maturity Labels (official)",
      "url": "https://en.help.roblox.com/hc/en-us/articles/8862768451604-Content-Maturity-Labels"
     }
    ],
@@ -462,7 +517,7 @@
      ],
      "recommended": {
       "13-15": "Private, on",
-      "16-17": "Private — worth agreeing together"
+      "16-17": "Private, worth agreeing together"
      },
      "mins": 2
     },
@@ -481,7 +536,11 @@
       "16-17": "Friends"
      },
      "note": "Direct messaging is switched off entirely for accounts registered as under 16.",
-     "mins": 2
+     "mins": 2,
+     "outcomeByAge": {
+      "13-15": "friends",
+      "16-17": "friends"
+     }
     },
     {
      "id": "restricted",
@@ -540,15 +599,15 @@
    ],
    "links": [
     {
-     "label": "TikTok — Family Pairing (official support)",
+     "label": "TikTok: Family Pairing (official support)",
      "url": "https://support.tiktok.com/en/account-and-privacy/family-pairing"
     },
     {
-     "label": "TikTok — Guardian’s Guide (official)",
+     "label": "TikTok: Guardian’s Guide (official)",
      "url": "https://www.tiktok.com/safety/en/guardians-guide/"
     },
     {
-     "label": "Internet Matters — TikTok safety settings",
+     "label": "Internet Matters: TikTok safety settings",
      "url": "https://www.internetmatters.org/parental-controls/social-media/tiktok-privacy-and-safety-settings/"
     }
    ],
@@ -652,7 +711,11 @@
       "13-15": "People you follow only",
       "16-17": "People you follow only"
      },
-     "mins": 1
+     "mins": 1,
+     "outcomeByAge": {
+      "13-15": "approved",
+      "16-17": "approved"
+     }
     },
     {
      "id": "private",
@@ -705,15 +768,15 @@
    ],
    "links": [
     {
-     "label": "Instagram — Teen Accounts (official)",
+     "label": "Instagram: Teen Accounts (official)",
      "url": "https://about.instagram.com/blog/announcements/instagram-teen-accounts"
     },
     {
-     "label": "Instagram — Parental supervision (official help)",
+     "label": "Instagram: Parental supervision (official help)",
      "url": "https://help.instagram.com/1119754640225545"
     },
     {
-     "label": "Meta — Family Center",
+     "label": "Meta: Family Center",
      "url": "https://familycenter.meta.com/"
     }
    ],
@@ -783,7 +846,7 @@
       "7-11": "Ghost Mode on",
       "11-12": "Ghost Mode on",
       "13-15": "Ghost Mode on, or share with a small chosen list",
-      "16-17": "Agree together — at minimum, not 'My Friends'"
+      "16-17": "Agree together. At minimum, not 'My Friends'"
      },
      "mins": 2
     },
@@ -801,7 +864,11 @@
       "13-15": "Friends only, Quick Add off",
       "16-17": "Friends only, Quick Add off"
      },
-     "mins": 2
+     "mins": 2,
+     "outcomeByAge": {
+      "13-15": "friends",
+      "16-17": "friends"
+     }
     },
     {
      "id": "content",
@@ -840,15 +907,15 @@
    ],
    "links": [
     {
-     "label": "Snapchat — Family Center (official)",
+     "label": "Snapchat: Family Center (official)",
      "url": "https://parents.snapchat.com/"
     },
     {
-     "label": "Snap — Family Center announcement",
+     "label": "Snap: Family Center announcement",
      "url": "https://newsroom.snap.com/deeper-insights-with-family-center"
     },
     {
-     "label": "Internet Matters — Snapchat privacy settings",
+     "label": "Internet Matters: Snapchat privacy settings",
      "url": "https://www.internetmatters.org/parental-controls/social-media/snapchat/"
     }
    ],
@@ -930,7 +997,11 @@
       "13-15": "Server DMs off, friend requests from friends of friends only",
       "16-17": "Server DMs off"
      },
-     "mins": 2
+     "mins": 2,
+     "outcomeByAge": {
+      "13-15": "friends",
+      "16-17": "friends"
+     }
     },
     {
      "id": "servers",
@@ -983,15 +1054,15 @@
    ],
    "links": [
     {
-     "label": "Discord — Family Center for parents (official)",
+     "label": "Discord: Family Center for parents (official)",
      "url": "https://support.discord.com/hc/en-us/articles/14155043715735-Family-Center-for-Parents-and-Guardians"
     },
     {
-     "label": "Discord — Family Center hub (official)",
+     "label": "Discord: Family Center hub (official)",
      "url": "https://discord.com/safety-family-center"
     },
     {
-     "label": "Discord — teen-by-default settings",
+     "label": "Discord: teen-by-default settings",
      "url": "https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally"
     }
    ],
@@ -1118,15 +1189,15 @@
    ],
    "links": [
     {
-     "label": "YouTube — content settings for supervised accounts (official)",
+     "label": "YouTube: content settings for supervised accounts (official)",
      "url": "https://support.google.com/youtube/answer/10315823?hl=en"
     },
     {
-     "label": "Google — YouTube & YouTube Kids options for your child (official)",
+     "label": "Google: YouTube & YouTube Kids options for your child (official)",
      "url": "https://support.google.com/families/answer/10495678?hl=en"
     },
     {
-     "label": "YouTube — parental controls for supervised accounts (official)",
+     "label": "YouTube: parental controls for supervised accounts (official)",
      "url": "https://support.google.com/youtube/answer/13877231?hl=en"
     }
    ],
@@ -1206,7 +1277,14 @@
       "16-17": "Friends Only, or Friends & Teammates if agreed"
      },
      "note": "The options are Nobody, Friends Only, Friends & Teammates, and Everybody.",
-     "mins": 2
+     "mins": 2,
+     "outcomeByAge": {
+      "0-6": "none",
+      "7-11": "none",
+      "11-12": "friends",
+      "13-15": "friends",
+      "16-17": "teammates"
+     }
     },
     {
      "id": "language",
@@ -1290,15 +1368,15 @@
    ],
    "links": [
     {
-     "label": "Epic Games — parental controls (official)",
+     "label": "Epic Games: parental controls (official)",
      "url": "https://www.epicgames.com/help/en-US/epic-accounts-c5719348850459/parental-controls-c5719341581595"
     },
     {
-     "label": "Epic Games — Fortnite parental controls (official)",
+     "label": "Epic Games: Fortnite parental controls (official)",
      "url": "https://www.epicgames.com/site/en-US/parental-controls"
     },
     {
-     "label": "Internet Matters — Fortnite parental controls",
+     "label": "Internet Matters: Fortnite parental controls",
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/fortnite-battle-royale-parental-controls/"
     }
    ],
@@ -1382,7 +1460,14 @@
       "13-15": "Multiplayer: Allow. Communicate: Friends only. Add friends: Allow.",
       "16-17": "Multiplayer: Allow. Communicate: Friends only."
      },
-     "mins": 2
+     "mins": 2,
+     "outcomeByAge": {
+      "0-6": "friends",
+      "7-11": "friends",
+      "11-12": "friends",
+      "13-15": "friends",
+      "16-17": "friends"
+     }
     },
     {
      "id": "chat",
@@ -1408,7 +1493,7 @@
      "do": [
       "If they want to play with friends, set up or join a Realm rather than a public server.",
       "As the Realm owner, you control the invite list.",
-      "Talk about third-party servers — those sit entirely outside these controls."
+      "Talk about third-party servers, which sit entirely outside these controls."
      ],
      "mins": 2
     },
@@ -1445,15 +1530,15 @@
    "talkAboutIt": [
     "Ask them to give you a tour of what they’ve built. It’s an easy in.",
     "Agree that public servers get checked with you first.",
-    "Talk about mods and downloads — where they come from matters."
+    "Talk about mods and downloads, because where they come from matters."
    ],
    "links": [
     {
-     "label": "Minecraft — parental controls and safety (official)",
+     "label": "Minecraft: parental controls and safety (official)",
      "url": "https://help.minecraft.net/hc/en-us/articles/4408968616845"
     },
     {
-     "label": "Xbox — privacy and online safety settings (official)",
+     "label": "Xbox: privacy and online safety settings (official)",
      "url": "https://account.xbox.com/settings"
     },
     {
@@ -1585,7 +1670,7 @@
      "why": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.",
      "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
      "do": [
-      "Set Downtime to cover overnight — school nights first if you want an easier start.",
+      "Set Downtime to cover overnight. School nights first, if you want an easier start.",
       "Add App Limits for the categories that run away with time, usually Social and Games.",
       "Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum)."
      ],
@@ -1627,15 +1712,15 @@
    ],
    "links": [
     {
-     "label": "Apple — Use parental controls on your child’s device (official)",
+     "label": "Apple: Use parental controls on your child’s device (official)",
      "url": "https://support.apple.com/en-us/105121"
     },
     {
-     "label": "Apple — Family Sharing (official)",
+     "label": "Apple: Family Sharing (official)",
      "url": "https://support.apple.com/en-us/HT201060"
     },
     {
-     "label": "Apple — Screen Time (official)",
+     "label": "Apple: Screen Time (official)",
      "url": "https://support.apple.com/en-us/HT208982"
     }
    ],
@@ -1781,11 +1866,11 @@
    ],
    "links": [
     {
-     "label": "Apple — Use parental controls on your child’s device (official)",
+     "label": "Apple: Use parental controls on your child’s device (official)",
      "url": "https://support.apple.com/en-us/105121"
     },
     {
-     "label": "Apple — Family Sharing (official)",
+     "label": "Apple: Family Sharing (official)",
      "url": "https://support.apple.com/en-us/HT201060"
     }
    ],
@@ -1894,7 +1979,7 @@
      "path": "Family Link → [your child] → Location",
      "do": [
       "Turn on location if you want it, and tell your child it’s on.",
-      "For older teens, discuss it first — covert tracking damages trust more than it protects."
+      "For older teens, discuss it first. Covert tracking damages trust more than it protects."
      ],
      "mins": 2
     },
@@ -1929,7 +2014,7 @@
    ],
    "links": [
     {
-     "label": "Google — Family Link setup (official)",
+     "label": "Google: Family Link setup (official)",
      "url": "https://support.google.com/families/answer/7101025?hl=en"
     },
     {
@@ -1937,7 +2022,7 @@
      "url": "https://families.google/familylink/"
     },
     {
-     "label": "Google — YouTube options for your child (official)",
+     "label": "Google: YouTube options for your child (official)",
      "url": "https://support.google.com/families/answer/10495678?hl=en"
     }
    ],
@@ -2073,7 +2158,7 @@
      "url": "https://family.microsoft.com/"
     },
     {
-     "label": "Microsoft — family safety features (official)",
+     "label": "Microsoft: family safety features (official)",
      "url": "https://support.microsoft.com/en-us/topic/what-is-microsoft-family-safety-b1b0b9c8-8de4-4e5e-9b7b-2b1cf5e4f9a5"
     }
    ],
@@ -2183,11 +2268,11 @@
    ],
    "links": [
     {
-     "label": "Apple — Use parental controls on your child’s device (official)",
+     "label": "Apple: Use parental controls on your child’s device (official)",
      "url": "https://support.apple.com/en-us/105121"
     },
     {
-     "label": "Apple — Screen Time on Mac (official)",
+     "label": "Apple: Screen Time on Mac (official)",
      "url": "https://support.apple.com/guide/mac-help/screen-time-mchl8bd1release/mac"
     }
    ],
@@ -2294,11 +2379,11 @@
    ],
    "links": [
     {
-     "label": "Google — Family Link setup (official)",
+     "label": "Google: Family Link setup (official)",
      "url": "https://support.google.com/families/answer/7101025?hl=en"
     },
     {
-     "label": "Google — Chromebook supervision (official)",
+     "label": "Google: Chromebook supervision (official)",
      "url": "https://support.google.com/families/answer/7680868?hl=en"
     }
    ],
@@ -2376,13 +2461,20 @@
       "Restrict the ability to view or share videos and images made by other players."
      ],
      "recommended": {
-      "0-6": "Restricted — no messaging or chat",
-      "7-11": "Restricted — no messaging or chat",
+      "0-6": "Restricted, so no messaging or chat",
+      "7-11": "Restricted, so no messaging or chat",
       "11-12": "Restricted",
       "13-15": "Allowed with friends only",
       "16-17": "Allowed, discussed together"
      },
-     "mins": 3
+     "mins": 3,
+     "outcomeByAge": {
+      "0-6": "none",
+      "7-11": "none",
+      "11-12": "none",
+      "13-15": "friends",
+      "16-17": "friends"
+     }
     },
     {
      "id": "time",
@@ -2431,15 +2523,15 @@
    ],
    "links": [
     {
-     "label": "PlayStation — Family Management (official)",
+     "label": "PlayStation: Family Management (official)",
      "url": "https://www.playstation.com/en-us/support/account/set-up-parental-controls-ps5/"
     },
     {
-     "label": "PlayStation — family account management",
+     "label": "PlayStation: family account management",
      "url": "https://www.playstation.com/acct/family"
     },
     {
-     "label": "Internet Matters — PS5 parental controls",
+     "label": "Internet Matters: PS5 parental controls",
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/playstation-5-ps5/"
     }
    ],
@@ -2514,7 +2606,7 @@
      "do": [
       "Set 'You can join multiplayer games' according to what you’re comfortable with.",
       "Set 'Others can communicate with voice, text, or invites' to Friends only.",
-      "Set 'You can add friends' — block it for younger children so requests come through you.",
+      "Set 'You can add friends'. Block it for younger children so requests come through you.",
       "Decide on cross-network play, which allows players from other platforms."
      ],
      "recommended": {
@@ -2524,7 +2616,14 @@
       "13-15": "Communicate: Friends only. Add friends: Allow.",
       "16-17": "Communicate: Friends only."
      },
-     "mins": 3
+     "mins": 3,
+     "outcomeByAge": {
+      "0-6": "friends",
+      "7-11": "friends",
+      "11-12": "friends",
+      "13-15": "friends",
+      "16-17": "friends"
+     }
     },
     {
      "id": "time",
@@ -2565,7 +2664,7 @@
    ],
    "links": [
     {
-     "label": "Xbox — privacy and online safety settings (official)",
+     "label": "Xbox: privacy and online safety settings (official)",
      "url": "https://account.xbox.com/settings"
     },
     {
@@ -2573,7 +2672,7 @@
      "url": "https://family.microsoft.com/"
     },
     {
-     "label": "Xbox — family settings app (official)",
+     "label": "Xbox: family settings app (official)",
      "url": "https://www.xbox.com/en-US/apps/xbox-family-settings-app"
     }
    ],
@@ -2698,15 +2797,15 @@
    ],
    "links": [
     {
-     "label": "Nintendo — Parental Controls (official)",
+     "label": "Nintendo: Parental Controls (official)",
      "url": "https://www.nintendo.com/switch/parental-controls/"
     },
     {
-     "label": "Nintendo Account — family groups (official)",
+     "label": "Nintendo Account: family groups (official)",
      "url": "https://accounts.nintendo.com/"
     },
     {
-     "label": "Internet Matters — Nintendo Switch parental controls",
+     "label": "Internet Matters: Nintendo Switch parental controls",
      "url": "https://www.internetmatters.org/parental-controls/gaming-consoles/nintendo-switch/"
     }
    ],
@@ -2867,19 +2966,19 @@
    ],
    "links": [
     {
-     "label": "Amazon — set up a Fire tablet for kids (official)",
+     "label": "Amazon: set up a Fire tablet for kids (official)",
      "url": "https://www.aboutamazon.com/news/devices/set-up-fire-tablet-kids"
     },
     {
-     "label": "Amazon — Parent Dashboard parental controls (official)",
+     "label": "Amazon: Parent Dashboard parental controls (official)",
      "url": "https://www.aboutamazon.com/news/devices/set-parental-controls-using-amazon-parent-dashboard"
     },
     {
-     "label": "Amazon — web browsing controls on Fire Kids tablets (official)",
+     "label": "Amazon: web browsing controls on Fire Kids tablets (official)",
      "url": "https://www.aboutamazon.com/news/devices/amazon-explains-web-browsing-controls-on-fire-kids-tablets"
     },
     {
-     "label": "Amazon — approving child app requests (official)",
+     "label": "Amazon: approving child app requests (official)",
      "url": "https://www.aboutamazon.com/news/devices/amazon-helps-kids-access-parent-approved-games-and-apps"
     }
    ],
@@ -3064,23 +3163,23 @@
    ],
    "links": [
     {
-     "label": "WhatsApp — parent-managed accounts (official)",
+     "label": "WhatsApp: parent-managed accounts (official)",
      "url": "https://faq.whatsapp.com/899820539143195"
     },
     {
-     "label": "WhatsApp — parental controls for parent-managed accounts (official)",
+     "label": "WhatsApp: parental controls for parent-managed accounts (official)",
      "url": "https://faq.whatsapp.com/1201762518588626"
     },
     {
-     "label": "WhatsApp — how to change your privacy settings (official)",
+     "label": "WhatsApp: how to change your privacy settings (official)",
      "url": "https://faq.whatsapp.com/3307102709559968"
     },
     {
-     "label": "WhatsApp — group privacy settings (official)",
+     "label": "WhatsApp: group privacy settings (official)",
      "url": "https://faq.whatsapp.com/1131457590844955"
     },
     {
-     "label": "WhatsApp — minimum age (official)",
+     "label": "WhatsApp: minimum age (official)",
      "url": "https://faq.whatsapp.com/695318248185629"
     }
    ],
@@ -3261,19 +3360,19 @@
    ],
    "links": [
     {
-     "label": "Twitch — Parental Controls in the Family Center (official)",
+     "label": "Twitch: Parental Controls in the Family Center (official)",
      "url": "https://help.twitch.tv/s/article/family-center"
     },
     {
-     "label": "Twitch — guide for parents and educators (official)",
+     "label": "Twitch: guide for parents and educators (official)",
      "url": "https://safety.twitch.tv/s/article/Guide-Parents-Educators"
     },
     {
-     "label": "Twitch — viewer controls and content labels (official)",
+     "label": "Twitch: viewer controls and content labels (official)",
      "url": "https://safety.twitch.tv/s/article/Viewer-Controls"
     },
     {
-     "label": "Twitch — how whispers work (official)",
+     "label": "Twitch: how whispers work (official)",
      "url": "https://help.twitch.tv/s/article/how-to-use-whispers"
     }
    ],
@@ -3424,19 +3523,19 @@
    ],
    "links": [
     {
-     "label": "Netflix — parental controls (official)",
+     "label": "Netflix: parental controls (official)",
      "url": "https://help.netflix.com/en/node/264"
     },
     {
-     "label": "Netflix — maturity ratings and blocking titles (official)",
+     "label": "Netflix: maturity ratings and blocking titles (official)",
      "url": "https://help.netflix.com/en/node/114276"
     },
     {
-     "label": "Netflix — profile lock PIN (official)",
+     "label": "Netflix: profile lock PIN (official)",
      "url": "https://help.netflix.com/en/node/114277"
     },
     {
-     "label": "Netflix — create a kids profile (official)",
+     "label": "Netflix: create a kids profile (official)",
      "url": "https://help.netflix.com/en/node/114275"
     }
    ],
@@ -3612,15 +3711,15 @@
    ],
    "links": [
     {
-     "label": "Disney+ — parental controls (official)",
+     "label": "Disney+: parental controls (official)",
      "url": "https://help.disneyplus.com/article/disneyplus-parental-controls"
     },
     {
-     "label": "Disney+ — Junior Mode (official)",
+     "label": "Disney+: Junior Mode (official)",
      "url": "https://help.disneyplus.com/article/disneyplus-kids-profiles"
     },
     {
-     "label": "Disney+ — content ratings (official)",
+     "label": "Disney+: content ratings (official)",
      "url": "https://help.disneyplus.com/article/disneyplus-content-ratings"
     }
    ],
@@ -3786,19 +3885,19 @@
    ],
    "links": [
     {
-     "label": "Prime Video — parental controls (official)",
+     "label": "Prime Video: parental controls (official)",
      "url": "https://www.primevideo.com/help?nodeId=G26NRYUT8ATMMZRB"
     },
     {
-     "label": "Prime Video — maturity ratings by country (official)",
+     "label": "Prime Video: maturity ratings by country (official)",
      "url": "https://www.primevideo.com/help?nodeId=GFGQU3WYEG6FSJFJ"
     },
     {
-     "label": "Prime Video — lock your profile (official)",
+     "label": "Prime Video: lock your profile (official)",
      "url": "https://www.primevideo.com/help?nodeId=T2VYxsiqT2CP35ChTf"
     },
     {
-     "label": "Prime Video — kids profiles (official)",
+     "label": "Prime Video: kids profiles (official)",
      "url": "https://www.primevideo.com/help?nodeId=GD6ARQYPV5H7RYA4"
     }
    ],
@@ -3832,7 +3931,8 @@
     "playstation",
     "xbox",
     "switch",
-    "firetablet"
+    "firetablet",
+    "applewatch"
    ],
    "minAge": 0,
    "lastVerified": "2026-09-04",
@@ -3936,19 +4036,19 @@
    ],
    "links": [
     {
-     "label": "Apple — create a Child Account (official)",
+     "label": "Apple: create a Child Account (official)",
      "url": "https://support.apple.com/en-us/102617"
     },
     {
-     "label": "Apple — why not to share an Apple Account (official)",
+     "label": "Apple: why not to share an Apple Account (official)",
      "url": "https://support.apple.com/en-us/109040"
     },
     {
-     "label": "Google — create a Google Account for your child (official)",
+     "label": "Google: create a Google Account for your child (official)",
      "url": "https://support.google.com/families/answer/7103338"
     },
     {
-     "label": "Microsoft — add people to your family group (official)",
+     "label": "Microsoft: add people to your family group (official)",
      "url": "https://support.microsoft.com/en-us/family-safety/add-people-to-your-family-group"
     }
    ]
@@ -3997,7 +4097,14 @@
       "16-17": "Agree it together. Everyone is a reasonable landing point by this age"
      },
      "note": "The middle option is called Contacts & Groups with at Least One Contact. It allows one-to-one chats with people in their contacts, plus group chats where at least one member is a contact. Emergency numbers your carrier recognises always get through, whatever you set.",
-     "mins": 3
+     "mins": 3,
+     "outcomeByAge": {
+      "0-6": "approved",
+      "7-11": "approved",
+      "11-12": "approved",
+      "13-15": "approved",
+      "16-17": "open"
+     }
     },
     {
      "id": "safety",
@@ -4068,19 +4175,19 @@
    ],
    "links": [
     {
-     "label": "Apple — block calls and messages with Screen Time (official)",
+     "label": "Apple: block calls and messages with Screen Time (official)",
      "url": "https://support.apple.com/guide/iphone/block-calls-and-messages-with-screen-time-iph4df1c0dad/ios"
     },
     {
-     "label": "Apple — about Communication Safety (official)",
+     "label": "Apple: about Communication Safety (official)",
      "url": "https://support.apple.com/en-us/105069"
     },
     {
-     "label": "Apple — screen and filter texts (official)",
+     "label": "Apple: screen and filter texts (official)",
      "url": "https://support.apple.com/guide/iphone/screen-and-filter-texts-iph203ab0be4/ios"
     },
     {
-     "label": "Apple — Screen Time content and privacy restrictions (official)",
+     "label": "Apple: Screen Time content and privacy restrictions (official)",
      "url": "https://support.apple.com/en-us/105121"
     }
    ],
@@ -4184,19 +4291,19 @@
    ],
    "links": [
     {
-     "label": "HBO Max — parental controls (official)",
+     "label": "HBO Max: parental controls (official)",
      "url": "https://help.hbomax.com/us/answer/detail/000002540"
     },
     {
-     "label": "HBO Max — set ratings for a profile (official)",
+     "label": "HBO Max: set ratings for a profile (official)",
      "url": "https://help.hbomax.com/us/Answer/Detail/000002574"
     },
     {
-     "label": "HBO Max — profiles and Kids Mode (official)",
+     "label": "HBO Max: profiles and Kids Mode (official)",
      "url": "https://help.hbomax.com/us/Answer/Detail/000002586"
     },
     {
-     "label": "HBO Max — where it is available (official)",
+     "label": "HBO Max: where it is available (official)",
      "url": "https://help.hbomax.com/us/Answer/Detail/000002543"
     }
    ],
@@ -4214,7 +4321,217 @@
     "confidence": "high",
     "link": "https://help.hbomax.com/us/answer/detail/000002540"
    }
+  },
+  "applewatch": {
+   "id": "applewatch",
+   "name": "Apple Watch",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "A watch for a child who has no phone of their own, which is the whole appeal. Apple renamed the feature to Apple Watch For Your Kids, so older guides call it Family Setup.",
+   "devices": [
+    "applewatch"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-05",
+   "sourceConfidence": "high",
+   "minutes": 20,
+   "priority": 0,
+   "preinstalled": [
+    "Messages and FaceTime, with the contacts you choose",
+    "The App Store, on the watch itself",
+    "Emergency SOS",
+    "Walkie-Talkie and Memoji, neither of which Apple documents a parental control for"
+   ],
+   "risks": [
+    "Fall Detection does not work for under-18s. Parents buy these partly for that and Apple only says so in a footnote",
+    "The watch is tied to the one iPhone that set it up, and has to be within Bluetooth range of it to change any setting",
+    "International roaming does not work on a child's watch, which matters for holidays and cross-border trips"
+   ],
+   "beforeYouStart": [
+    "Check your carrier supports it. Apple lists EE in the UK and four carriers in Canada, and does not list Ireland at all.",
+    "Turn on Contacts in iCloud before you begin, or you cannot set up the child's contact list.",
+    "Have the child's Apple Account password. You will be asked for it during setup.",
+    "If the watch is not new, erase it first."
+   ],
+   "steps": [
+    {
+     "id": "check",
+     "title": "Check it will actually work first",
+     "why": "This is the step that saves a wasted evening. Apple's own pages disagree on which models qualify, and the carrier list is shorter than people expect. Ireland is not on it at all.",
+     "do": [
+      "Confirm the watch is a cellular model. Apple's pages variously say Series 4 and later, Series 6 and later, or SE and later, so Series 6 or SE or newer is the safe reading.",
+      "Check your carrier is on Apple's supported list. In the UK that is EE. Ireland is not listed.",
+      "Confirm you are the organiser or a parent in your Family Sharing group, with two-factor authentication on.",
+      "A plan is not needed to set the watch up, but without one it only works near your phone or Wi-Fi, which defeats the point."
+     ],
+     "note": "Some corporate cellular plans do not support it either. Apple also says the feature is unavailable in Italy, Korea and elsewhere.",
+     "mins": 4
+    },
+    {
+     "id": "pair",
+     "title": "Pair it to your iPhone",
+     "why": "The pairing decides which phone owns the watch, and that cannot be casually moved later. Use the phone that will actually be managing it day to day.",
+     "path": "Apple Watch app → All Watches → Add Watch → Set Up for a Family Member",
+     "do": [
+      "Put the watch on and hold it near your iPhone, then tap Continue.",
+      "Hold your iPhone over the animation on the watch to pair.",
+      "Accept the terms, pick a text size, and set a watch passcode.",
+      "Choose the family member, and enter their Apple Account password when asked."
+     ],
+     "mins": 5,
+     "provides": [
+      "apple-family"
+     ]
+    },
+    {
+     "id": "asktobuy",
+     "title": "Turn on Ask to Buy during setup",
+     "why": "The watch has its own App Store and a child can install from it directly. Setup offers you Ask to Buy at exactly the right moment, and it is easy to tap past.",
+     "do": [
+      "Turn on Ask to Buy when the setup flow offers it.",
+      "For a firmer block later, use Screen Time, Content & Privacy Restrictions, iTunes & App Store Purchases."
+     ],
+     "recommended": {
+      "0-6": "Ask to Buy on, and installing apps set to Don't Allow",
+      "7-11": "Ask to Buy on, and installing apps set to Don't Allow",
+      "11-12": "Ask to Buy on",
+      "13-15": "Ask to Buy on",
+      "16-17": "Ask to Buy on"
+     },
+     "note": "Same hole as everywhere else in Apple's world: Ask to Buy does not fire when they redownload something they already had. In many countries it is on by default for under-18s and cannot be switched off. Apple Pay with a card does not work on a child's watch at all, and Apple Cash Family is United States only.",
+     "mins": 2
+    },
+    {
+     "id": "contacts",
+     "title": "Choose who can reach them",
+     "why": "The watch's address book is a list you pick from your own contacts, not theirs, which is a genuinely good design. The limits themselves are the same Screen Time controls as on an iPhone.",
+     "path": "Screen Time → [your child] → Communication Limits",
+     "do": [
+      "During setup, pick the trusted people to share to the watch from your own Contacts.",
+      "Then open Communication Limits in Screen Time and set the level below.",
+      "Set During Downtime separately if you want a shorter list overnight."
+     ],
+     "recommended": {
+      "0-6": "Contacts Only, and Specific Contacts during downtime",
+      "7-11": "Contacts Only",
+      "11-12": "Contacts Only",
+      "13-15": "Contacts Only",
+      "16-17": "Agree it together"
+     },
+     "outcomeByAge": {
+      "0-6": "approved",
+      "7-11": "approved",
+      "11-12": "approved",
+      "13-15": "approved",
+      "16-17": "approved"
+     },
+     "note": "Emergency numbers your carrier recognises always get through, whatever you set. Two gaps worth knowing: Apple does not document whether a child can add or edit contacts on the watch itself, and it documents no parental control at all over Walkie-Talkie or Memoji.",
+     "mins": 4,
+     "redundantWith": [
+      "apple-family"
+     ]
+    },
+    {
+     "id": "schooltime",
+     "title": "Set up Schooltime",
+     "why": "It blocks apps and notifications during hours you choose, and unlike most controls of this kind it is honest with everyone: the child can leave it, you get told when they do, and there is a report of how long they were out. That makes it a conversation rather than a trap.",
+     "path": "Apple Watch app → Family Watches → [the watch] → Schooltime",
+     "do": [
+      "Turn Schooltime on and tap Edit Schedule.",
+      "Set the days and times. Use Add Time for a split day, such as a lunch break.",
+      "Check the unlock report later rather than reacting to each notification."
+     ],
+     "recommended": {
+      "0-6": "School hours, plus homework time",
+      "7-11": "School hours",
+      "11-12": "School hours",
+      "13-15": "School hours, agreed with them",
+      "16-17": "Their call, with the schedule agreed"
+     },
+     "note": "Your child can see the same unlock report on the watch, which is the right way round. Schooltime turns itself back on when they lower their wrist.",
+     "mins": 3
+    },
+    {
+     "id": "safety",
+     "title": "Set the safety features, and know which one is missing",
+     "why": "This is where the expectation gap sits. Fall Detection is 18 and over, so it does not work for your child. Apple states it only in a list at the bottom of the setup page, and a lot of parents buy the watch believing otherwise.",
+     "do": [
+      "Turn on Location Services for Find My during setup, or the watch cannot be located.",
+      "Add emergency contacts and fill in Medical ID.",
+      "Check Emergency SOS under Family Watches, including whether holding the side button calls emergency services.",
+      "Do not count on Fall Detection. It is unavailable to under-18s."
+     ],
+     "note": "Crash Detection is on by default on Series 8 and later and has no stated age limit, so that one does work. Emergency contact alerts silently fail if Messages is not the chosen texting app or has been deleted. Also unavailable on a child's watch: sleep tracking, cycle tracking, blood oxygen, ECG, and international roaming.",
+     "mins": 4
+    },
+    {
+     "id": "screentime",
+     "title": "Set Screen Time for the watch",
+     "why": "Screen Time treats the watch as one of the child's devices, so the limits follow the child rather than the hardware. If they also have an iPad, one set of settings covers both.",
+     "path": "Apple Watch app → Family Watches → [the watch] → Screen Time",
+     "do": [
+      "Open Screen Time, then Screen Time Settings, and set content, communication and downtime.",
+      "Set a Screen Time passcode that is different from the watch passcode and that your child does not know."
+     ],
+     "mins": 3,
+     "redundantWith": [
+      "device-controls"
+     ]
+    },
+    {
+     "id": "health",
+     "title": "Decide about health data and activity goals",
+     "why": "You only see their health data if they agree to share it, which is a request they can decline. Worth deciding together rather than assuming.",
+     "do": [
+      "Request health data from the Apple Watch app if you want it, and let them accept.",
+      "For an under-13, set the Move goal to use move minutes rather than active calories.",
+      "Talk about rings and streaks before they become a thing they chase."
+     ],
+     "note": "Apple publishes nothing on what activity goals are appropriate for a child, and nothing on streaks and young children, so the goal you set is your judgement rather than a recommendation. Rings can be paused for up to 90 days without breaking a streak, which is useful if they are ill.",
+     "mins": 3
+    }
+   ],
+   "checklist": [
+    "Carrier confirmed as supporting Apple Watch For Your Kids",
+    "Paired to the phone that will actually manage it",
+    "Ask to Buy on",
+    "Trusted contacts chosen and Communication Limits set",
+    "Schooltime scheduled",
+    "Find My on, emergency contacts added",
+    "Screen Time passcode set, and different from the watch passcode",
+    "You know Fall Detection will not work for them"
+   ],
+   "talkAboutIt": [
+    "Tell them you can see where the watch is, rather than letting them find out.",
+    "Agree what Schooltime is for. They can leave it and you will be told, so it works better as an agreement than a lock.",
+    "Show them Emergency SOS and when to use it, including that it makes a loud noise even on silent."
+   ],
+   "links": [
+    {
+     "label": "Apple: set up Apple Watch for a family member (official)",
+     "url": "https://support.apple.com/en-us/109036"
+    },
+    {
+     "label": "Apple: Apple Watch For Your Kids in the watchOS guide (official)",
+     "url": "https://support.apple.com/guide/watch/set-up-apple-watch-for-your-kids-apd54d0a51fb/watchos"
+    },
+    {
+     "label": "Apple: get started with Schooltime (official)",
+     "url": "https://support.apple.com/guide/watch/get-started-with-schooltime-apd160a958b7/watchos"
+    },
+    {
+     "label": "Apple: Fall Detection, including the 18 and over limit (official)",
+     "url": "https://support.apple.com/en-us/108896"
+    }
+   ]
   }
  },
- "_new": {}
+ "_new": {},
+ "outcomes": {
+  "none": "Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.",
+  "approved": "Only people you have approved can reach them. Nobody else can message, call or speak to them.",
+  "friends": "Only people already on their friends list can reach them. Strangers cannot.",
+  "teammates": "Their friends, plus whoever the game puts them with. That includes strangers, for as long as the match lasts.",
+  "open": "Anyone on the platform can reach them."
+ }
 }
