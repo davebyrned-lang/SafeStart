@@ -1,0 +1,33 @@
+{
+ "date": "2026-09-05",
+ "checked": 27,
+ "changed": [
+  "instagram",
+  "discord",
+  "youtube",
+  "iphone",
+  "ipad",
+  "mac",
+  "switch",
+  "accounts"
+ ],
+ "unclear": [
+  "roblox",
+  "minecraft",
+  "android",
+  "windows",
+  "chromebook",
+  "xbox",
+  "imessage",
+  "applewatch"
+ ],
+ "unreachable": [
+  "tiktok",
+  "fortnite",
+  "playstation",
+  "whatsapp",
+  "twitch",
+  "disneyplus"
+ ],
+ "needsHuman": 16
+}

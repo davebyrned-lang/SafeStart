@@ -4,6 +4,76 @@
  "entries": [
   {
    "date": "2026-09-05",
+   "kind": "freshness-check",
+   "checked": 27,
+   "reverified": [
+    "firetablet",
+    "netflix",
+    "primevideo",
+    "hbomax"
+   ],
+   "flagged": [
+    {
+     "guide": "instagram",
+     "summary": [
+      "Sleep Mode's default end time has changed from 8am to 7am according to Instagram's official announcement."
+     ]
+    },
+    {
+     "guide": "discord",
+     "summary": [
+      "Turning off or unblurring the sensitive-content filter now requires age-assured adult status, so a teen account cannot change this setting away from the default even if the guide suggests choosing between Block/Blur freely",
+      "Discord now routes DMs from people a user may not know into a separate Message Request inbox by default, and only age-assured adults can modify this setting, which changes the mechanism and who can act on the guide's advice"
+     ]
+    },
+    {
+     "guide": "youtube",
+     "summary": [
+      "The three content setting names have been renamed by YouTube; the guide's old names no longer appear in the app or Help Center."
+     ]
+    },
+    {
+     "guide": "iphone",
+     "summary": [
+      "The Web Content restriction option for whitelisting sites appears to have been renamed."
+     ]
+    },
+    {
+     "guide": "ipad",
+     "summary": [
+      "The strict web-filtering option has been renamed from 'Allowed Websites Only' to 'Only Approved Websites'."
+     ]
+    },
+    {
+     "guide": "mac",
+     "summary": [
+      "The strictest web-content restriction option appears to have been renamed from 'Allowed Websites Only' to 'Only Approved Websites'."
+     ]
+    },
+    {
+     "guide": "switch",
+     "summary": [
+      "The 'Posting to Social Media' restriction no longer exists on Nintendo Switch 2, since direct social media posting is not possible on that console"
+     ]
+    },
+    {
+     "guide": "accounts",
+     "summary": [
+      "The Microsoft family sign-in URL for adding a child appears to have changed from family.microsoft.com to account.microsoft.com/family."
+     ]
+    }
+   ],
+   "unreadable": [
+    "tiktok",
+    "fortnite",
+    "playstation",
+    "whatsapp",
+    "twitch",
+    "disneyplus"
+   ]
+  },
+  {
+   "date": "2026-09-05",
    "kind": "correction",
    "title": "Our Roblox chat step never mentioned voice, and used the old names for everything else",
    "body": "A reader put a plan side by side with Roblox's own parental controls page and found voice chat missing from our guide entirely. Checking that turned up a second problem: Roblox's Safety Center and its Help Center use different names for the same settings, and we had followed the Help Center. So Experience chat was Game chat here, and Chat and party with friends was three separate items. Both are fixed, with the old names in brackets so readers of either page can follow along. Voice now has its own step, because there are two voice features with two separate off switches and turning one off does nothing to the other. Also added: the age check, which since 2026 is the gate on all chat at any age, and Gameplay Coordination, which almost no guide covers. Two things we now say plainly that we did not before. None of these settings reach chat that a game's creator built themselves, which Roblox states twice on its own page. And at 13 your child takes over their own chat and voice settings."
