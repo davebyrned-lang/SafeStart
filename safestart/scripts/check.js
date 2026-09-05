@@ -266,7 +266,7 @@ const noMins = [];
 Object.keys(data.guides).forEach((id) => {
   (data.guides[id].steps || []).forEach((s) => { if (!s.mins) noMins.push(id + ':' + s.id); });
 });
-if (noMins.length) fail(noMins.length + ' steps have no minute estimate, so sittings cannot be sized');
+if (noMins.length) fail(noMins.length + ' steps have no minute estimate, so parts cannot be sized');
 else ok('every step carries a minute estimate');
 
 // A redundantWith tag that nothing provides is a silent no-op: the step never

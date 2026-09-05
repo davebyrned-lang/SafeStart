@@ -1625,7 +1625,7 @@ function renderHome(skipUrl) {
       el("span", { class: "hl", text: "together" }),
       document.createTextNode(".")
     ]),
-    el("p", { text: "Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short sittings rather than one long evening." }),
+    el("p", { text: "Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short parts rather than one long evening." }),
     countryPick()
   ]));
 
@@ -2131,7 +2131,7 @@ function warnOverAge(ids, minAge, bandId, onConfirm, onCancel) {
    The job a parent actually has is "make this iPad safe", not "configure
    Roblox". So we take the device guide plus whatever apps they picked, drop the
    steps that duplicate each other, order by how much risk each step removes,
-   and cut the result into sittings short enough that someone might finish one. */
+   and cut the result into parts short enough that someone might finish one. */
 
 function stepAppliesToAge(s) {
   return !s.ages || !state.ageBand || s.ages.indexOf(state.ageBand) !== -1;
