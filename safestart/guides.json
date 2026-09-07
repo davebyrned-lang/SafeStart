@@ -1,6 +1,6 @@
 {
  "version": "2026.08.20",
- "verifiedOn": "2026-09-03",
+ "verifiedOn": "2026-09-07",
  "ageBands": [
   {
    "id": "0-6",
@@ -2056,7 +2056,7 @@
     "windows"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "high",
    "minutes": 15,
    "risks": [
@@ -2404,7 +2404,7 @@
     "playstation"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "high",
    "minutes": 15,
    "risks": [
@@ -2825,7 +2825,7 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-03",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "medium",
    "minutes": 15,
    "priority": 0,
@@ -3397,7 +3397,7 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-03",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "high",
    "minutes": 10,
    "priority": 11,
@@ -3756,7 +3756,7 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-03",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "high",
    "minutes": 12,
    "priority": 12,
@@ -4216,7 +4216,7 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-04",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "high",
    "minutes": 8,
    "priority": 14,
