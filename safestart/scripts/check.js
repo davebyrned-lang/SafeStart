@@ -134,6 +134,61 @@ Object.keys(data.guides).forEach((id) => {
 });
 ok(`${preCount} preinstalled apps listed across the device guides`);
 
+/* Fixing a bad setup.
+ *
+ * Two rules here, and both exist because this content is more dangerous than
+ * the rest of the site. A one-way warning that reads like ordinary advice will
+ * get skimmed, and an undo note that quietly guesses will get a child's account
+ * deleted. So: every platform we know has an irreversible step must carry a
+ * oneWay entry, and anything we could not confirm has to say so in the text
+ * rather than sound certain. */
+console.log('\nfixing a bad setup');
+const MUST_WARN = ['playstation', 'switch', 'tiktok', 'firetablet', 'iphone', 'ipad', 'android'];
+MUST_WARN.forEach((id) => {
+  const g = data.guides[id];
+  if (!g) { fail(`${id}: guide missing, but it is on the one-way warning list`); return; }
+  if (!Array.isArray(g.oneWay) || !g.oneWay.length) {
+    fail(`${id}: has an irreversible step and must carry a oneWay warning`);
+  }
+});
+
+let undoCount = 0;
+let oneWayCount = 0;
+const HEDGES = /could not confirm|we could not|our reading|does not state|cannot confirm/i;
+Object.keys(data.guides).forEach((id) => {
+  const g = data.guides[id];
+  (g.oneWay || []).forEach((t) => {
+    oneWayCount++;
+    if (t.length < 40) fail(`${id}: oneWay entry is too short to be a real warning`);
+  });
+  if (g.oneWay && !Array.isArray(g.oneWay)) fail(`${id}: oneWay must be an array`);
+  (g.steps || []).forEach((s) => {
+    if (!s.undo) return;
+    undoCount++;
+    if (typeof s.undo !== 'string' || s.undo.length < 40) {
+      fail(`${id}/${s.id}: undo note is too short to be useful`);
+    }
+  });
+});
+ok(`${undoCount} undo notes and ${oneWayCount} one-way warnings`);
+
+/* The four things we could not verify against an official page. If any of these
+ * ever reads as a flat statement of fact, someone has edited out the hedge and
+ * the guide is now asserting something no source backs. */
+[
+  ['xbox', 'content'],       // Xbox PIN reset, script-loaded page we cannot read
+  ['instagram', 'birthday'], // how many birthday changes Instagram allows
+  ['whatsapp', 'managed'],   // whether an existing account can be converted
+  ['iphone', 'passcode'],    // Screen Time passcode reset on a Mac
+].forEach(([id, stepId]) => {
+  const s = (data.guides[id]?.steps || []).filter((x) => x.id === stepId)[0];
+  if (!s || !s.undo) { fail(`${id}/${stepId}: expected an undo note here`); return; }
+  if (!HEDGES.test(s.undo)) {
+    fail(`${id}/${stepId}: this one is unverified and the note must say so, not assert it`);
+  }
+});
+ok('every unverified claim still says it is unverified');
+
 // Exactly one "start here" guide, and it must lead every plan.
 const starts = Object.keys(data.guides).filter((id) => data.guides[id].type === 'start');
 if (starts.length !== 1) fail(`expected exactly one start guide, found ${starts.length}`);

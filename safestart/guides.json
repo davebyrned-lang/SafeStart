@@ -241,7 +241,8 @@
       "16-17": "The standard account"
      },
      "note": "Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.",
-     "mins": 2
+     "mins": 2,
+     "undo": "If the birthday on the account is wrong, you can fix it from your linked parent account, but read this first. Roblox allows it once and only once: linked parents can only update a child's birthday once. And it becomes impossible entirely if the child has already verified with a government ID. Correcting it downward moves them into Roblox Kids for 5 to 8 or Select for 9 to 15, and you then have to complete the age check or, in Roblox's words, all communication will be unavailable."
     },
     {
      "id": "agecheck",
@@ -504,7 +505,8 @@
       "Your teen reviews the permissions and taps Link accounts."
      ],
      "result": "Everything below is now set from your phone.",
-     "mins": 2
+     "mins": 2,
+     "undo": "If the account was opened with a false adult birthday, Family Pairing will not fix it, because the age on the account is what drives every default. There is no self-serve correction. The appeal only opens once TikTok has restricted the account, and confirmation is by ID selfie, a parent's credit card with a small refunded charge, or a photo with an adult over 25. Download the data first."
     },
     {
      "id": "private",
@@ -627,7 +629,11 @@
     "watchOut": "We could not read TikTok's children's privacy page to confirm what it does and does not let a child do, so treat the detail as unconfirmed and check it yourself.",
     "confidence": "low",
     "link": "https://www.tiktok.com/legal/page/us/terms-of-service/en"
-   }
+   },
+   "oneWay": [
+    "There is no self-serve way to correct a TikTok birthday. The only official route is the age appeal, and it is reactive: TikTok has to restrict or ban the account first, and then you appeal within 180 days.",
+    "If the true age is under 13, the account is deleted on day 120, or day 30 in the United States. Download the account data before you touch anything."
+   ]
   },
   "instagram": {
    "id": "instagram",
@@ -668,7 +674,8 @@
       "If it’s wrong, correct it. Instagram may ask for verification."
      ],
      "result": "With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically.",
-     "mins": 1
+     "mins": 1,
+     "undo": "If the birthday is wrong you can change it, in Accounts Center under Profiles and personal details. Instagram may ask for a video selfie or an ID check to allow it. The line that matters is 16, not 13: under-16s need your permission to loosen Teen Account settings, while 16 and 17 year olds can loosen them on their own unless supervision is set up. So if the true age is 16 or 17, correcting the birthday is not enough on its own, set up supervision as well. We could not confirm how many times a birthday can be changed or how long you wait between changes."
     },
     {
      "id": "supervision",
@@ -965,7 +972,8 @@
       "Your teen accepts the connection."
      ],
      "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days, plus a weekly email. You won’t see message content.",
-     "mins": 2
+     "mins": 2,
+     "undo": "If your teen has refused to link, or linked and then disconnected, there is no parental override to fall back on. Discord's words: both parents/guardians and teens must voluntarily opt into connecting. The teen generates the QR code, can disconnect at any time, and re-linking starts from scratch. It ends by itself the month they turn 18. If they will not link, your leverage is at the device level rather than inside Discord."
     },
     {
      "id": "content",
@@ -1670,7 +1678,8 @@
      "provides": [
       "device-controls",
       "apple-family"
-     ]
+     ],
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
     },
     {
      "id": "passcode",
@@ -1682,7 +1691,8 @@
       "Set a Screen Time passcode.",
       "Use a different code from the phone unlock, and don’t use a birthday."
      ],
-     "mins": 2
+     "mins": 2,
+     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac."
     },
     {
      "id": "restrictions",
@@ -1800,6 +1810,10 @@
     "Messages and FaceTime, with no minimum age of their own",
     "Safari",
     "The App Store"
+   ],
+   "oneWay": [
+    "You cannot remove a child under 13 from your Family Sharing group. Apple's words: there's no other way to remove a child from a family group if they're under 13. The only two routes are moving them to another family group, where the new organiser sends the invite and needs the child's Apple Account password, or deleting the child's Apple Account outright.",
+    "Changing an Apple Account's birthday to under 13 needs the Family Sharing organiser to approve it, and the account being changed cannot itself be the organiser. There is a 14-day window to undo it after that, and then only a support request."
    ]
   },
   "ipad": {
@@ -1839,7 +1853,8 @@
      "provides": [
       "device-controls",
       "apple-family"
-     ]
+     ],
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
     },
     {
      "id": "passcode",
@@ -1850,7 +1865,8 @@
       "Open Settings, then Screen Time.",
       "Set a Screen Time passcode that differs from the unlock code."
      ],
-     "mins": 2
+     "mins": 2,
+     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac."
     },
     {
      "id": "restrictions",
@@ -1950,6 +1966,10 @@
     "Messages and FaceTime, with no minimum age of their own",
     "Safari",
     "The App Store"
+   ],
+   "oneWay": [
+    "You cannot remove a child under 13 from your Family Sharing group. Apple's words: there's no other way to remove a child from a family group if they're under 13. The only two routes are moving them to another family group, where the new organiser sends the invite and needs the child's Apple Account password, or deleting the child's Apple Account outright.",
+    "Changing an Apple Account's birthday to under 13 needs the Family Sharing organiser to approve it, and the account being changed cannot itself be the organiser. There is a 14-day window to undo it after that, and then only a support request."
    ]
   },
   "android": {
@@ -1990,7 +2010,8 @@
      "provides": [
       "device-controls",
       "google-family"
-     ]
+     ],
+     "undo": "If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google's rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone."
     },
     {
      "id": "apps",
@@ -2115,6 +2136,10 @@
     "Chrome",
     "Google Play",
     "Google Messages"
+   ],
+   "oneWay": [
+    "Correcting a Google birthday downward to under 13 starts a 14-day clock. Set up supervision or verify an adult age inside that window, or the account is disabled and then deleted 30 days later. Act inside the 14 days.",
+    "The minimum age is 16 rather than 13 in Ireland, Germany and Poland, so the same correction lands differently depending on where you are."
    ]
   },
   "windows": {
@@ -2154,7 +2179,8 @@
      "provides": [
       "device-controls",
       "microsoft-family"
-     ]
+     ],
+     "undo": "If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I'm a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth."
     },
     {
      "id": "content",
@@ -2277,7 +2303,8 @@
      "provides": [
       "device-controls",
       "apple-family"
-     ]
+     ],
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
     },
     {
      "id": "passcode",
@@ -2289,7 +2316,8 @@
       "Select your child under Family.",
       "Turn on Lock Screen Time Settings and set a passcode they don’t know."
      ],
-     "mins": 3
+     "mins": 3,
+     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac."
     },
     {
      "id": "content",
@@ -2352,6 +2380,10 @@
     "Messages and FaceTime",
     "Safari",
     "The App Store"
+   ],
+   "oneWay": [
+    "You cannot remove a child under 13 from your Family Sharing group. Apple's words: there's no other way to remove a child from a family group if they're under 13. The only two routes are moving them to another family group, where the new organiser sends the invite and needs the child's Apple Account password, or deleting the child's Apple Account outright.",
+    "Changing an Apple Account's birthday to under 13 needs the Family Sharing organiser to approve it, and the account being changed cannot itself be the organiser. There is a 14-day window to undo it after that, and then only a support request."
    ]
   },
   "chromebook": {
@@ -2391,7 +2423,8 @@
      "provides": [
       "device-controls",
       "google-family"
-     ]
+     ],
+     "undo": "If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google's rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone."
     },
     {
      "id": "web",
@@ -2463,6 +2496,10 @@
     "Chrome, which on this device is more or less the whole machine",
     "YouTube",
     "Google Play on most models"
+   ],
+   "oneWay": [
+    "Correcting a Google birthday downward to under 13 starts a 14-day clock. Set up supervision or verify an adult age inside that window, or the account is disabled and then deleted 30 days later. Act inside the 14 days.",
+    "The minimum age is 16 rather than 13 in Ireland, Germany and Poland, so the same correction lands differently depending on where you are."
    ]
   },
   "playstation": {
@@ -2501,7 +2538,8 @@
      "mins": 3,
      "provides": [
       "device-controls"
-     ]
+     ],
+     "undo": "If they are already on an adult account, a new child account is the only route and nothing carries across. Before you make the switch, go into the console restrictions and set User Creation and Guest Login to Not Allowed, otherwise they will simply sign back into the old account and none of this will have mattered."
     },
     {
      "id": "age",
@@ -2520,7 +2558,8 @@
       "13-15": "PEGI 12–16 / ESRB T, browser restricted",
       "16-17": "PEGI 16–18 / ESRB T–M"
      },
-     "mins": 3
+     "mins": 3,
+     "undo": "If you never set a console restriction passcode, the default is 0000, so your child could have walked straight past it. If you did set one and cannot remember it, Sony's answer is to reset the console. Note that the login passcode is a separate setting from the restriction passcode. Set both."
     },
     {
      "id": "comms",
@@ -2610,6 +2649,11 @@
    "preinstalled": [
     "The PlayStation Store",
     "Party voice chat"
+   ],
+   "oneWay": [
+    "A PlayStation account's date of birth cannot be changed. Sony's words: make sure to enter your date of birth correctly, this can't be changed later. And you can't revert to a child account once upgraded.",
+    "Nothing transfers from an adult account to a new child account. Not games, not trophies, not the wallet.",
+    "Child members cannot be removed from a family once you create them, so create the child in the right family the first time."
    ]
   },
   "xbox": {
@@ -2649,7 +2693,8 @@
      "provides": [
       "device-controls",
       "microsoft-family"
-     ]
+     ],
+     "undo": "If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I'm a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth."
     },
     {
      "id": "content",
@@ -2667,7 +2712,8 @@
       "13-15": "Age 12–16",
       "16-17": "Age 16–18"
      },
-     "mins": 3
+     "mins": 3,
+     "undo": "If you set a parental controls passkey on the console and cannot remember it, we could not verify the reset steps. Microsoft's only readable article on a forgotten pass code covers the Xbox 360, and the current pages hide the answer behind a script we cannot read. Rather than guess, open Xbox support in a browser and look for Forgot your passkey before you reset anything."
     },
     {
      "id": "privacy",
@@ -2790,7 +2836,8 @@
      "mins": 2,
      "provides": [
       "device-controls"
-     ]
+     ],
+     "undo": "Forgotten the Parental Controls PIN? This one is fully recoverable and you keep your settings. Enter the wrong PIN, press + or minus for Help, and note the Inquiry Number without leaving that screen. Then get a master key from parentalcontrols.nintendo.com. Six wrong attempts inside 30 minutes locks you out for 30 minutes, so write the number down the first time."
     },
     {
      "id": "level",
@@ -2884,6 +2931,10 @@
    "preinstalled": [
     "The eShop",
     "The album, which can post screenshots publicly"
+   ],
+   "oneWay": [
+    "A Nintendo Account's date of birth cannot be changed. Nintendo's words: you cannot change the date of birth associated with your Nintendo Account. Contacting their support is the only route and we could not confirm whether they will amend it.",
+    "Console user links are permanent, and deleting a user deletes that user's local save data. The Nintendo Account itself and everything bought on it survive and can be linked again."
    ]
   },
   "firetablet": {
@@ -2924,7 +2975,8 @@
      "provides": [
       "device-controls"
      ],
-     "mins": 2
+     "mins": 2,
+     "undo": "Forgotten the lock screen PIN? Get it wrong five times, choose Reset Your PIN, and enter your Amazon password. Nothing is lost. This is the recoverable one. The separate Parental Controls password is not, so do not assume the same trick works there."
     },
     {
      "id": "profile",
@@ -3070,6 +3122,9 @@
     "The Silk browser",
     "The Amazon Appstore",
     "Alexa, which can lead out of the child profile"
+   ],
+   "oneWay": [
+    "There are two different secrets on a Fire tablet and they have very different answers. The lock screen PIN resets easily with your Amazon password. The Parental Controls password does not: Amazon's answer is that if you forget it, you have to reset your Fire tablet to factory defaults. Work out which one you have forgotten before you do anything."
    ]
   },
   "whatsapp": {
@@ -3118,7 +3173,8 @@
       "7-11",
       "11-12"
      ],
-     "mins": 1
+     "mins": 1,
+     "undo": "If they already have an ordinary WhatsApp account, our reading is that it cannot be converted, because parent-managed accounts are only set up during first-time registration. That means re-registering rather than converting. WhatsApp does not state this outright anywhere we could find, so treat it as our reading of their documented setup flow rather than something they have confirmed."
     },
     {
      "id": "age",
@@ -3513,7 +3569,8 @@
       "16-17": "Agree it together"
      },
      "note": "Rating names vary by country. These are the US names; in the UK and Ireland you'll see BBFC ratings in the same place.",
-     "mins": 2
+     "mins": 2,
+     "undo": "If a profile already has the wrong rating, lowering it works fine from Account, Profiles, Adjust parental controls. The one that catches people is narrower than it sounds: a default Kids profile that Netflix created when you first opened the account cannot be raised above the kids level. That one has to be deleted and remade. Viewing history can be hidden in bulk from the adult profile, but there is no official way to move history from one profile to another."
     },
     {
      "id": "lock",
@@ -4068,7 +4125,8 @@
      "mins": 3,
      "provides": [
       "own-account"
-     ]
+     ],
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
     },
     {
      "id": "switchedon",
@@ -4122,6 +4180,13 @@
      "label": "Microsoft: add people to your family group (official)",
      "url": "https://support.microsoft.com/en-us/family-safety/add-people-to-your-family-group"
     }
+   ],
+   "oneWay": [
+    "You cannot remove a child under 13 from your Family Sharing group. Apple's words: there's no other way to remove a child from a family group if they're under 13. The only two routes are moving them to another family group, where the new organiser sends the invite and needs the child's Apple Account password, or deleting the child's Apple Account outright.",
+    "Changing an Apple Account's birthday to under 13 needs the Family Sharing organiser to approve it, and the account being changed cannot itself be the organiser. There is a 14-day window to undo it after that, and then only a support request.",
+    "On Google, correcting a birthday to under 13 starts a 14-day clock. Set up supervision or verify an adult age inside that window or the account is disabled, then deleted 30 days later.",
+    "A PlayStation account's date of birth cannot be changed at all, and a child account cannot be recovered once it has been upgraded to an adult one.",
+    "A Nintendo Account's date of birth cannot be changed. Their support line is the only route and we could not confirm they will amend it."
    ]
   },
   "imessage": {

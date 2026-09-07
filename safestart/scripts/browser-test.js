@@ -588,6 +588,54 @@ function check(name, condition, detail) {
     check('the age check gate is stated', /age check/i.test(robloxText));
     check('creator-built chat is flagged as out of reach', /creator/i.test(robloxText));
 
+    console.log('\nfixing a bad setup');
+    // Parents told us they had already set devices up, badly, and wanted to start
+    // over. Starting over is usually the wrong answer and sometimes an
+    // unrecoverable one, so the mode has to lead with what cannot be undone.
+    const fixUrl = BASE + '/plan/?device=playstation&age=11-12&apps=roblox&setup=fix&country=US';
+    await page.goto(fixUrl, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('the plan survives setup=fix in the URL', await page.locator('.step').count() > 0);
+    check('the one-way warnings are shown', await page.locator('.one-way').count() === 1);
+    const owText = await page.locator('.one-way').textContent();
+    check('and they come from every guide in the plan, not just the device',
+      /date of birth cannot be changed/i.test(owText));
+    check('the warnings sit above the first step',
+      await page.evaluate(() => {
+        const w = document.querySelector('.one-way'), s = document.querySelector('.step');
+        return !!w && !!s && (w.compareDocumentPosition(s) & Node.DOCUMENT_POSITION_FOLLOWING) !== 0;
+      }));
+    check('per-step undo notes appear', await page.locator('.undo').count() > 0);
+
+    // On a full guide page these show to everyone, so the rendered page matches
+    // the markup we ship and a search engine can see them.
+    await page.goto(BASE + '/playstation/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('a guide page shows the warnings without asking',
+      await page.locator('.one-way').count() === 1);
+    check('and its undo notes too', await page.locator('.undo').count() > 0);
+    const psShell = await (await page.request.get(BASE + '/playstation/')).text();
+    check('the same content is in the markup, not only after JS',
+      /one-way/.test(psShell) && /undo-label/.test(psShell));
+
+    // The same plan without fix mode must look exactly as it did before.
+    await page.goto(BASE + '/plan/?device=playstation&age=11-12&apps=roblox&country=US',
+      { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('a normal plan shows none of it',
+      await page.locator('.one-way').count() === 0 && await page.locator('.undo').count() === 0);
+
+    // Three options now, and the third has to survive a reload like the others.
+    await page.goto(BASE + '/?device=ipad&age=7-11', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.chip[data-focus-key^="setup:"]');
+    check('the device chooser offers three options',
+      await page.locator('.chip[data-focus-key^="setup:"]').count() === 3);
+    await page.click('.chip[data-focus-key="setup:fix"]');
+    check('choosing it sticks',
+      await page.locator('.chip[data-focus-key="setup:fix"]').getAttribute('aria-pressed') === 'true');
+    check('and the other two let go',
+      await page.locator('.chip[data-focus-key="setup:new"]').getAttribute('aria-pressed') === 'false');
+
     console.log('\nyoutube parent controls');
     // Reported by YouTube themselves. We used to send parents to the autoplay
     // toggle inside the child's own settings, which the child can undo. The one

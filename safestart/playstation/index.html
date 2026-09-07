@@ -673,6 +673,38 @@ button { font: inherit; cursor: pointer; }
 .callout li:last-child { margin-bottom: 0; }
 .callout li::marker { color: var(--blue); }
 
+/* The one place Signal yellow earns its keep: the things that cannot be undone.
+   Single element, well under the 1% the palette allows, and it is the only
+   warning on the site a parent must read before acting rather than after. */
+.one-way {
+  border-radius: var(--radius); padding: 17px 19px 18px; margin-bottom: 22px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 4px solid var(--signal);
+}
+.one-way h3 {
+  margin: 0 0 8px; font-size: .95rem; color: var(--heading); font-weight: 650;
+  letter-spacing: -.01em; display: flex; gap: 8px; align-items: center;
+}
+.one-way h3 svg { width: 17px; height: 17px; flex: none; color: var(--heading); }
+.one-way-lede { margin: 0 0 11px; font-size: .92rem; color: var(--body); line-height: 1.55; }
+.one-way ul { margin: 0; padding-left: 20px; }
+.one-way li { margin-bottom: 7px; font-size: .92rem; color: var(--muted); line-height: 1.55; }
+.one-way li:last-child { margin-bottom: 0; }
+.one-way li::marker { color: var(--signal); }
+
+/* Per-step, and deliberately quieter than the block above. By the time a parent
+   reaches one of these they have already read the warnings. */
+.undo {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--surface-2); border-left: 3px solid var(--blue);
+}
+.undo-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.undo-label svg { width: 14px; height: 14px; flex: none; color: var(--blue); }
+.undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1114,9 +1146,15 @@ button { font: inherit; cursor: pointer; }
 <li>You need a PlayStation Network account in your own name to act as Family Manager.</li>
 <li>Create a child account for your child rather than letting them use an adult one. This is the step that makes everything else possible.</li>
 </ul></div>
+<div class="one-way"><h3>Check these before you undo anything</h3>
+<p class="one-way-lede">Most of a bad setup can be fixed in place, so do not start by deleting accounts. These are the parts that cannot be taken back.</p><ul>
+<li>A PlayStation account&#39;s date of birth cannot be changed. Sony&#39;s words: make sure to enter your date of birth correctly, this can&#39;t be changed later. And you can&#39;t revert to a child account once upgraded.</li>
+<li>Nothing transfers from an adult account to a new child account. Not games, not trophies, not the wallet.</li>
+<li>Child members cannot be removed from a family once you create them, so create the child in the right family the first time.</li>
+</ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Management and a child account</h3></span></div><div class="step-body"><p class="why">Restrictions only apply to child accounts within your family.</p><p class="path"><code>playstation.com/acct/family</code></p><ol class="do-list"><li>Sign in at playstation.com/acct/family with your own account.</li><li>Add a family member and create a child account with their real date of birth.</li><li>Sign that account in on the console.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set age-level restrictions for games and content</h3></span></div><div class="step-body"><p class="why">Blocks games above their rating from launching, which is more reliable than hoping you notice.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Age level for games</code></p><ol class="do-list"><li>Set the age level for games to match their age.</li><li>Set the level for Blu-ray and DVD content.</li><li>Restrict or block the internet browser for younger children.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>7–11</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>11–12</td><td>PEGI 12 / ESRB E10+, browser blocked</td></tr><tr><td>13–15</td><td>PEGI 12–16 / ESRB T, browser restricted</td></tr><tr><td>16–17</td><td>PEGI 16–18 / ESRB T–M</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Management and a child account</h3></span></div><div class="step-body"><p class="why">Restrictions only apply to child accounts within your family.</p><p class="path"><code>playstation.com/acct/family</code></p><ol class="do-list"><li>Sign in at playstation.com/acct/family with your own account.</li><li>Add a family member and create a child account with their real date of birth.</li><li>Sign that account in on the console.</li></ol><div class="undo"><span class="undo-label">Already done this?</span><p>If they are already on an adult account, a new child account is the only route and nothing carries across. Before you make the switch, go into the console restrictions and set User Creation and Guest Login to Not Allowed, otherwise they will simply sign back into the old account and none of this will have mattered.</p></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set age-level restrictions for games and content</h3></span></div><div class="step-body"><p class="why">Blocks games above their rating from launching, which is more reliable than hoping you notice.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Age level for games</code></p><ol class="do-list"><li>Set the age level for games to match their age.</li><li>Set the level for Blu-ray and DVD content.</li><li>Restrict or block the internet browser for younger children.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>7–11</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>11–12</td><td>PEGI 12 / ESRB E10+, browser blocked</td></tr><tr><td>13–15</td><td>PEGI 12–16 / ESRB T, browser restricted</td></tr><tr><td>16–17</td><td>PEGI 16–18 / ESRB T–M</td></tr></tbody></table></div><div class="undo"><span class="undo-label">Already done this?</span><p>If you never set a console restriction passcode, the default is 0000, so your child could have walked straight past it. If you did set one and cannot remember it, Sony&#39;s answer is to reset the console. Note that the login passcode is a separate setting from the restriction passcode. Set both.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and user-generated content</h3></span></div><div class="step-body"><p class="why">This is the setting that governs voice chat, messages and shared content from strangers.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Communication and user-generated content</code></p><ol class="do-list"><li>Restrict messaging and chat with other players.</li><li>Restrict the ability to view or share videos and images made by other players.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>7–11</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>11–12</td><td>Restricted<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>13–15</td><td>Allowed with friends only<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Allowed, discussed together<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set play time limits</h3></span></div><div class="step-body"><p class="why">PlayStation lets you set both a daily amount and a window of hours, which is useful for school nights.</p><p class="path"><code>Family Management → [your child] → Play Time Settings</code></p><ol class="do-list"><li>Set the hours of the day they can play.</li><li>Set a daily duration.</li><li>Choose whether the console logs them out at the limit or just warns them.</li><li>Note these settings apply to both PS5 and PS4.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a monthly spending limit</h3></span></div><div class="step-body"><p class="why">Wallet top-ups and in-game currency are where console spending usually escapes.</p><p class="path"><code>Family Management → [your child] → Monthly spending limit</code></p><ol class="do-list"><li>Set a monthly limit, or zero.</li><li>Remove any saved payment card from the account.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>$0</td></tr><tr><td>7–11</td><td>$0</td></tr><tr><td>11–12</td><td>$0</td></tr><tr><td>13–15</td><td>A small agreed monthly cap</td></tr><tr><td>16–17</td><td>An agreed monthly cap</td></tr></tbody></table></div></div></li>
@@ -1206,6 +1244,7 @@ var state = {
   country: "US",
   apps: [],              // the apps picked for a merged plan
   includeDevice: true,   // false when the device is already locked down
+  fixMode: false,        // true when they set it up already and got it wrong
   planDone: {},    // step keys already ticked off in the plan
   done: {},
   checked: {}
@@ -1436,7 +1475,8 @@ function saveProgress() {
     }
     localStorage.setItem("safestart:prefs", JSON.stringify({
       ageBand: state.ageBand, device: state.device, helpMode: state.helpMode,
-      country: state.country, apps: state.apps, includeDevice: state.includeDevice
+      country: state.country, apps: state.apps, includeDevice: state.includeDevice,
+      fixMode: state.fixMode
     }));
   } catch (e) { /* private browsing, quota, embedded preview */ }
 }
@@ -1480,6 +1520,7 @@ function loadPrefs() {
     if (p.country) state.country = p.country;
     if (Array.isArray(p.apps)) state.apps = p.apps;
     if (typeof p.includeDevice === "boolean") state.includeDevice = p.includeDevice;
+    if (typeof p.fixMode === "boolean") state.fixMode = p.fixMode;
   } catch (e) { /* ignore */ }
 }
 
@@ -1530,8 +1571,9 @@ function readUrl() {
   if (q.get("device")) state.device = q.get("device");
   if (q.get("mode")) state.helpMode = q.get("mode");
   if (q.get("country")) state.country = q.get("country");
-  if (q.get("setup") === "0") state.includeDevice = false;
-  if (q.get("setup") === "1") state.includeDevice = true;
+  if (q.get("setup") === "0") { state.includeDevice = false; state.fixMode = false; }
+  if (q.get("setup") === "1") { state.includeDevice = true;  state.fixMode = false; }
+  if (q.get("setup") === "fix") { state.includeDevice = true; state.fixMode = true; }
   if (q.get("apps")) {
     state.apps = q.get("apps").split(",").map(function (s) { return s.trim(); })
       .filter(function (id) { return DATA && DATA.guides[id] && DATA.guides[id].type === "app"; });
@@ -1549,6 +1591,7 @@ function planUrl(absolute) {
   if (state.ageBand) q.set("age", state.ageBand);
   if (state.apps.length) q.set("apps", state.apps.join(","));
   if (!state.includeDevice) q.set("setup", "0");
+  else if (state.fixMode) q.set("setup", "fix");
   if (state.country) q.set("country", state.country);
   return (absolute ? location.origin : "") + "/plan/?" + q.toString();
 }
@@ -1710,15 +1753,18 @@ function stepDevice() {
        setup is a choice rather than an assumption. */
     var chips = el("div", { class: "chips" });
     [
-      { on: true,  label: "Set it up too", sub: "Catches the app they install next" },
-      { on: false, label: "Already done",  sub: "Skip to the apps" }
+      { key: "new",  on: true,  fix: false, label: "Set it up too",  sub: "Catches the app they install next" },
+      { key: "fix",  on: true,  fix: true,  label: "I set it up wrong", sub: "Same steps, plus how to undo" },
+      { key: "done", on: false, fix: false, label: "Already done",   sub: "Skip to the apps" }
     ].forEach(function (opt) {
+      var current = state.includeDevice === opt.on && (!opt.on || state.fixMode === opt.fix);
       chips.appendChild(el("button", {
         class: "chip",
-        "aria-pressed": state.includeDevice === opt.on ? "true" : "false",
-        "data-focus-key": "setup:" + opt.on,
+        "aria-pressed": current ? "true" : "false",
+        "data-focus-key": "setup:" + opt.key,
         onclick: function () {
           state.includeDevice = opt.on;
+          state.fixMode = opt.fix;
           saveProgress();
           keepPlace(function () { renderHome(true); });
         }
@@ -2247,11 +2293,16 @@ function renderPlan(skipUrl) {
   ]));
 
   app.appendChild(el("p", { class: "guide-blurb", text:
-    state.includeDevice
+    !state.includeDevice
+      ? "On " + devLabel + ", for " + ageDescription(state.ageBand) +
+        ". The device's own settings are left alone, as you said they're already done."
+      : state.fixMode
       ? "For " + ageDescription(state.ageBand) +
-        (appNames.length ? ", covering " + listSentence(appNames) : "") + "."
-      : "On " + devLabel + ", for " + ageDescription(state.ageBand) +
-        ". The device's own settings are left alone, as you said they're already done." }));
+        (appNames.length ? ", covering " + listSentence(appNames) : "") +
+        ". These are the same steps as a fresh setup, with a note on each one that a " +
+        "previous attempt can block, saying how to undo it first."
+      : "For " + ageDescription(state.ageBand) +
+        (appNames.length ? ", covering " + listSentence(appNames) : "") + "." }));
 
   var meta = [
     el("span", { class: "pill", text: "Part 1 takes about " + (plan.sessions[0] ? plan.sessions[0].mins : plan.totalMins) + " minutes" }),
@@ -2262,6 +2313,14 @@ function renderPlan(skipUrl) {
       (plan.dropped === 1 ? "step" : "steps") + " merged" }));
   }
   app.appendChild(el("div", { class: "meta-row" }, meta));
+
+  /* One block for the whole plan rather than one per guide, because the parent
+     needs to have read all of it before they touch the first setting. */
+  var planGuides = [];
+  if (state.includeDevice && DATA.guides[state.device]) planGuides.push(DATA.guides[state.device]);
+  state.apps.forEach(function (id) { if (DATA.guides[id]) planGuides.push(DATA.guides[id]); });
+  var pow = oneWayNode(planGuides);
+  if (pow) app.appendChild(pow);
 
   var prog = planProgress(plan);
   app.appendChild(el("div", { class: "plan-progress" }, [
@@ -2384,6 +2443,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var pun = undoNode(s);
+  if (pun) body.appendChild(pun);
 
   var btn = el("button", { class: "step-done-btn", "data-focus-key": "plan:" + item.key }, [icon("check"),
     document.createTextNode(isDone ? "Done" : "Mark done")]);
@@ -2512,6 +2573,8 @@ function renderGuide() {
 
   if (g.risks && g.risks.length) app.appendChild(callout("What actually goes wrong here", g.risks));
   if (g.beforeYouStart && g.beforeYouStart.length) app.appendChild(callout("Before you start", g.beforeYouStart));
+  var gow = oneWayNode([g], true);
+  if (gow) app.appendChild(gow);
 
   var visible = (g.steps || []).filter(function (s) {
     if (!state.ageBand) return true;
@@ -2571,6 +2634,51 @@ function helpCard() {
       el("strong", { text: "Has something already happened?" }),
       el("span", { text: "If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell." })
     ])
+  ]);
+}
+
+/* Fixing a setup that went wrong is not the same job as doing it fresh, and the
+   dangerous part is not the fiddly bit, it is the confident bit. A parent who
+   has decided they need to "start over" will delete a child's account to fix
+   something that had an in-place answer, and on PlayStation, Nintendo and TikTok
+   that is unrecoverable. So fix mode leads with what cannot be undone, before
+   any instruction, and only then offers the per-step notes. */
+function oneWayNode(guides, always) {
+  /* On a guide page this shows to everyone. "You cannot change a PlayStation
+     date of birth" is worth reading before you create the account, not only
+     after you got it wrong, and it keeps the rendered page matching the markup
+     we ship. On a plan it appears only in fix mode, where it leads. */
+  if (!always && !state.fixMode) return null;
+  var items = [];
+  guides.forEach(function (g) {
+    (g && g.oneWay ? g.oneWay : []).forEach(function (t) {
+      if (items.indexOf(t) === -1) items.push(t);
+    });
+  });
+  if (!items.length) return null;
+
+  var box = el("div", { class: "one-way" }, [
+    el("h3", {}, [icon("alert"), document.createTextNode("Check these before you undo anything")]),
+    el("p", { class: "one-way-lede", text:
+      "Most of a bad setup can be fixed in place, so do not start by deleting accounts. " +
+      "These are the parts that cannot be taken back." })
+  ]);
+  var ul = el("ul");
+  items.forEach(function (t) { ul.appendChild(el("li", { text: t })); });
+  box.appendChild(ul);
+  return box;
+}
+
+function undoNode(step, always) {
+  /* Same split as the warnings above. The full guide carries these for
+     everyone, since only a step or two per guide has one and a parent reading
+     the whole thing benefits. The plan stays tight and only shows them when
+     the parent said they had already set this up. */
+  if (!always && !state.fixMode) return null;
+  if (!step.undo) return null;
+  return el("div", { class: "undo" }, [
+    el("span", { class: "undo-label" }, [icon("alert"), document.createTextNode("Already done this?")]),
+    el("p", { text: step.undo })
   ]);
 }
 
@@ -2726,6 +2834,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var gun = undoNode(step, true);
+  if (gun) body.appendChild(gun);
 
   body.appendChild(el("button", {
     class: "step-done-btn",

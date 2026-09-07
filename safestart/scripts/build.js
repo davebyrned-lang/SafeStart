@@ -148,6 +148,10 @@ function renderStepStatic(step, num, symbol) {
 
   if (step.result) out.push('<p class="result">' + esc(step.result) + "</p>");
   if (step.note) out.push('<p class="note">' + esc(step.note) + "</p>");
+  if (step.undo) {
+    out.push('<div class="undo"><span class="undo-label">Already done this?</span><p>' +
+      esc(step.undo) + "</p></div>");
+  }
 
   out.push("</div></li>");
   return out.join("");
@@ -206,6 +210,17 @@ function renderGuideStatic(g) {
   if (g.beforeYouStart && g.beforeYouStart.length) {
     out.push('<div class="check-card"><h2>Before you start</h2><ul>');
     g.beforeYouStart.forEach((b) => out.push("<li>" + esc(b) + "</li>"));
+    out.push("</ul></div>");
+  }
+
+  /* Same reasoning as the younger-child alternative above: this goes into the
+     markup rather than only into the app, so it is indexable and readable with
+     no JS. The app hides it again unless the parent asked for fix mode. */
+  if (g.oneWay && g.oneWay.length) {
+    out.push('<div class="one-way"><h3>Check these before you undo anything</h3>');
+    out.push('<p class="one-way-lede">Most of a bad setup can be fixed in place, ' +
+      "so do not start by deleting accounts. These are the parts that cannot be taken back.</p><ul>");
+    g.oneWay.forEach((t) => out.push("<li>" + esc(t) + "</li>"));
     out.push("</ul></div>");
   }
 

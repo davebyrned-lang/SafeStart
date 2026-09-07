@@ -673,6 +673,38 @@ button { font: inherit; cursor: pointer; }
 .callout li:last-child { margin-bottom: 0; }
 .callout li::marker { color: var(--blue); }
 
+/* The one place Signal yellow earns its keep: the things that cannot be undone.
+   Single element, well under the 1% the palette allows, and it is the only
+   warning on the site a parent must read before acting rather than after. */
+.one-way {
+  border-radius: var(--radius); padding: 17px 19px 18px; margin-bottom: 22px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 4px solid var(--signal);
+}
+.one-way h3 {
+  margin: 0 0 8px; font-size: .95rem; color: var(--heading); font-weight: 650;
+  letter-spacing: -.01em; display: flex; gap: 8px; align-items: center;
+}
+.one-way h3 svg { width: 17px; height: 17px; flex: none; color: var(--heading); }
+.one-way-lede { margin: 0 0 11px; font-size: .92rem; color: var(--body); line-height: 1.55; }
+.one-way ul { margin: 0; padding-left: 20px; }
+.one-way li { margin-bottom: 7px; font-size: .92rem; color: var(--muted); line-height: 1.55; }
+.one-way li:last-child { margin-bottom: 0; }
+.one-way li::marker { color: var(--signal); }
+
+/* Per-step, and deliberately quieter than the block above. By the time a parent
+   reaches one of these they have already read the warnings. */
+.undo {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--surface-2); border-left: 3px solid var(--blue);
+}
+.undo-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.undo-label svg { width: 14px; height: 14px; flex: none; color: var(--blue); }
+.undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1110,10 +1142,18 @@ button { font: inherit; cursor: pointer; }
 <li>Know their real date of birth. Every control on every platform hangs off it.</li>
 <li>Have your own account password to hand, because you will be asked for it more than once.</li>
 </ul></div>
+<div class="one-way"><h3>Check these before you undo anything</h3>
+<p class="one-way-lede">Most of a bad setup can be fixed in place, so do not start by deleting accounts. These are the parts that cannot be taken back.</p><ul>
+<li>You cannot remove a child under 13 from your Family Sharing group. Apple&#39;s words: there&#39;s no other way to remove a child from a family group if they&#39;re under 13. The only two routes are moving them to another family group, where the new organiser sends the invite and needs the child&#39;s Apple Account password, or deleting the child&#39;s Apple Account outright.</li>
+<li>Changing an Apple Account&#39;s birthday to under 13 needs the Family Sharing organiser to approve it, and the account being changed cannot itself be the organiser. There is a 14-day window to undo it after that, and then only a support request.</li>
+<li>On Google, correcting a birthday to under 13 starts a 14-day clock. Set up supervision or verify an adult age inside that window or the account is disabled, then deleted 30 days later.</li>
+<li>A PlayStation account&#39;s date of birth cannot be changed at all, and a child account cannot be recovered once it has been upgraded to an adult one.</li>
+<li>A Nintendo Account&#39;s date of birth cannot be changed. Their support line is the only route and we could not confirm they will amend it.</li>
+</ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Give them their own account, not yours</h3></span></div><div class="step-body"><p class="why">Sharing yours is the fastest setup and the one that causes the most trouble later. Apple&#39;s own words: you might receive text messages and voicemails intended for your family member, and your call history will include their calls. It runs the other way too, which is the part parents do not expect. And if family sharing ever stops, whoever owns the account keeps everything bought on it.</p><ol class="do-list"><li>Check whose account is actually signed in on the device.</li><li>If it is yours, plan on giving them their own before you set anything else up.</li><li>On Apple, everything below assumes a Child Account inside your Family Sharing group.</li></ol><p class="note">Apple publishes a page recommending you do not share an Apple Account, and it lists exactly what leaks: messages, voicemails, call history, music recommendations, book and podcast bookmarks, and health data.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Decide whether they need an email address</h3></span></div><div class="step-body"><p class="why">Parents keep asking us this, and the honest answer is that it depends on the platform. On Apple you can skip it entirely, which surprises almost everyone.</p><ol class="do-list"><li>Apple: creating a Child Account lets you choose their own email address, a suggested @icloud.com address, or just a Game Center nickname. The nickname route means no email address at all.</li><li>Google: a supervised account normally needs a Gmail address. The one documented exception is a child under 9 on a Pixel Tablet, who gets an auto-generated @glimitedaccount.com that is not a working address.</li><li>Microsoft: you add a child to your family group by email or phone number, so an address they already have will do.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>No email address. Use the Game Center nickname on Apple</td></tr><tr><td>7–11</td><td>No email address unless something specific needs one</td></tr><tr><td>11–12</td><td>An address, if school or an app requires it</td></tr><tr><td>13–15</td><td>Their own address, and you know what it is</td></tr><tr><td>16–17</td><td>Their own address</td></tr></tbody></table></div><p class="note">Google warns you may need to add a Gmail address later anyway for certain apps and services. Microsoft does not publish whether a brand new child account has to use an Outlook address, so treat that one as unconfirmed.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Create it with their real date of birth</h3></span></div><div class="step-body"><p class="why">The account type is set at creation and is not equally fixable afterwards. Apple and Microsoft let you correct a birthday, Google gives you a fourteen-day window, and PlayStation does not let you change it at all.</p><p class="path"><code>Apple: Settings → Family → Add Member → Create Child Account</code></p><ol class="do-list"><li>Apple: Settings, then Family, then Add Member, then Create Child Account.</li><li>Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.</li><li>Microsoft: add them at family.microsoft.com, then give parental consent when prompted.</li></ol><p class="note">The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Create it with their real date of birth</h3></span></div><div class="step-body"><p class="why">The account type is set at creation and is not equally fixable afterwards. Apple and Microsoft let you correct a birthday, Google gives you a fourteen-day window, and PlayStation does not let you change it at all.</p><p class="path"><code>Apple: Settings → Family → Add Member → Create Child Account</code></p><ol class="do-list"><li>Apple: Settings, then Family, then Add Member, then Create Child Account.</li><li>Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.</li><li>Microsoft: add them at family.microsoft.com, then give parental consent when prompted.</li></ol><p class="note">The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.</p><div class="undo"><span class="undo-label">Already done this?</span><p>If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple&#39;s rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Look at what the account switched on</h3></span></div><div class="step-body"><p class="why">Creating the account turns things on that you never chose. Apple does not publish a list of what is on by default, so the only reliable move is to look rather than assume.</p><ol class="do-list"><li>On Apple, open the child&#39;s iCloud settings and go through what is on: Mail, Messages, FaceTime, Find My, shared photos.</li><li>On Android, check which YouTube they have. A supervised account gets a supervised version of ordinary YouTube, which is not the same as the separate YouTube Kids app.</li><li>Turn off whatever they do not need yet. Adding something back later is easier than taking it away.</li></ol><p class="note">Apple does publish the safety defaults: web content restriction and Communication Safety are on for under-18s, and in many countries Ask to Buy is on and cannot be switched off for an under-18.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Write down what you set</h3></span></div><div class="step-body"><p class="why">In six months you will not remember which address you used, which birthday you entered, or where the passcode went. The passcode is the one families actually lose, and on some platforms losing it means a factory reset.</p><ol class="do-list"><li>Note the account address or nickname, the date of birth you entered, and where the passcode is kept.</li><li>Keep it somewhere your child will not come across.</li></ol></div></li>
 </ol>
@@ -1202,6 +1242,7 @@ var state = {
   country: "US",
   apps: [],              // the apps picked for a merged plan
   includeDevice: true,   // false when the device is already locked down
+  fixMode: false,        // true when they set it up already and got it wrong
   planDone: {},    // step keys already ticked off in the plan
   done: {},
   checked: {}
@@ -1432,7 +1473,8 @@ function saveProgress() {
     }
     localStorage.setItem("safestart:prefs", JSON.stringify({
       ageBand: state.ageBand, device: state.device, helpMode: state.helpMode,
-      country: state.country, apps: state.apps, includeDevice: state.includeDevice
+      country: state.country, apps: state.apps, includeDevice: state.includeDevice,
+      fixMode: state.fixMode
     }));
   } catch (e) { /* private browsing, quota, embedded preview */ }
 }
@@ -1476,6 +1518,7 @@ function loadPrefs() {
     if (p.country) state.country = p.country;
     if (Array.isArray(p.apps)) state.apps = p.apps;
     if (typeof p.includeDevice === "boolean") state.includeDevice = p.includeDevice;
+    if (typeof p.fixMode === "boolean") state.fixMode = p.fixMode;
   } catch (e) { /* ignore */ }
 }
 
@@ -1526,8 +1569,9 @@ function readUrl() {
   if (q.get("device")) state.device = q.get("device");
   if (q.get("mode")) state.helpMode = q.get("mode");
   if (q.get("country")) state.country = q.get("country");
-  if (q.get("setup") === "0") state.includeDevice = false;
-  if (q.get("setup") === "1") state.includeDevice = true;
+  if (q.get("setup") === "0") { state.includeDevice = false; state.fixMode = false; }
+  if (q.get("setup") === "1") { state.includeDevice = true;  state.fixMode = false; }
+  if (q.get("setup") === "fix") { state.includeDevice = true; state.fixMode = true; }
   if (q.get("apps")) {
     state.apps = q.get("apps").split(",").map(function (s) { return s.trim(); })
       .filter(function (id) { return DATA && DATA.guides[id] && DATA.guides[id].type === "app"; });
@@ -1545,6 +1589,7 @@ function planUrl(absolute) {
   if (state.ageBand) q.set("age", state.ageBand);
   if (state.apps.length) q.set("apps", state.apps.join(","));
   if (!state.includeDevice) q.set("setup", "0");
+  else if (state.fixMode) q.set("setup", "fix");
   if (state.country) q.set("country", state.country);
   return (absolute ? location.origin : "") + "/plan/?" + q.toString();
 }
@@ -1706,15 +1751,18 @@ function stepDevice() {
        setup is a choice rather than an assumption. */
     var chips = el("div", { class: "chips" });
     [
-      { on: true,  label: "Set it up too", sub: "Catches the app they install next" },
-      { on: false, label: "Already done",  sub: "Skip to the apps" }
+      { key: "new",  on: true,  fix: false, label: "Set it up too",  sub: "Catches the app they install next" },
+      { key: "fix",  on: true,  fix: true,  label: "I set it up wrong", sub: "Same steps, plus how to undo" },
+      { key: "done", on: false, fix: false, label: "Already done",   sub: "Skip to the apps" }
     ].forEach(function (opt) {
+      var current = state.includeDevice === opt.on && (!opt.on || state.fixMode === opt.fix);
       chips.appendChild(el("button", {
         class: "chip",
-        "aria-pressed": state.includeDevice === opt.on ? "true" : "false",
-        "data-focus-key": "setup:" + opt.on,
+        "aria-pressed": current ? "true" : "false",
+        "data-focus-key": "setup:" + opt.key,
         onclick: function () {
           state.includeDevice = opt.on;
+          state.fixMode = opt.fix;
           saveProgress();
           keepPlace(function () { renderHome(true); });
         }
@@ -2243,11 +2291,16 @@ function renderPlan(skipUrl) {
   ]));
 
   app.appendChild(el("p", { class: "guide-blurb", text:
-    state.includeDevice
+    !state.includeDevice
+      ? "On " + devLabel + ", for " + ageDescription(state.ageBand) +
+        ". The device's own settings are left alone, as you said they're already done."
+      : state.fixMode
       ? "For " + ageDescription(state.ageBand) +
-        (appNames.length ? ", covering " + listSentence(appNames) : "") + "."
-      : "On " + devLabel + ", for " + ageDescription(state.ageBand) +
-        ". The device's own settings are left alone, as you said they're already done." }));
+        (appNames.length ? ", covering " + listSentence(appNames) : "") +
+        ". These are the same steps as a fresh setup, with a note on each one that a " +
+        "previous attempt can block, saying how to undo it first."
+      : "For " + ageDescription(state.ageBand) +
+        (appNames.length ? ", covering " + listSentence(appNames) : "") + "." }));
 
   var meta = [
     el("span", { class: "pill", text: "Part 1 takes about " + (plan.sessions[0] ? plan.sessions[0].mins : plan.totalMins) + " minutes" }),
@@ -2258,6 +2311,14 @@ function renderPlan(skipUrl) {
       (plan.dropped === 1 ? "step" : "steps") + " merged" }));
   }
   app.appendChild(el("div", { class: "meta-row" }, meta));
+
+  /* One block for the whole plan rather than one per guide, because the parent
+     needs to have read all of it before they touch the first setting. */
+  var planGuides = [];
+  if (state.includeDevice && DATA.guides[state.device]) planGuides.push(DATA.guides[state.device]);
+  state.apps.forEach(function (id) { if (DATA.guides[id]) planGuides.push(DATA.guides[id]); });
+  var pow = oneWayNode(planGuides);
+  if (pow) app.appendChild(pow);
 
   var prog = planProgress(plan);
   app.appendChild(el("div", { class: "plan-progress" }, [
@@ -2380,6 +2441,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var pun = undoNode(s);
+  if (pun) body.appendChild(pun);
 
   var btn = el("button", { class: "step-done-btn", "data-focus-key": "plan:" + item.key }, [icon("check"),
     document.createTextNode(isDone ? "Done" : "Mark done")]);
@@ -2508,6 +2571,8 @@ function renderGuide() {
 
   if (g.risks && g.risks.length) app.appendChild(callout("What actually goes wrong here", g.risks));
   if (g.beforeYouStart && g.beforeYouStart.length) app.appendChild(callout("Before you start", g.beforeYouStart));
+  var gow = oneWayNode([g], true);
+  if (gow) app.appendChild(gow);
 
   var visible = (g.steps || []).filter(function (s) {
     if (!state.ageBand) return true;
@@ -2567,6 +2632,51 @@ function helpCard() {
       el("strong", { text: "Has something already happened?" }),
       el("span", { text: "If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell." })
     ])
+  ]);
+}
+
+/* Fixing a setup that went wrong is not the same job as doing it fresh, and the
+   dangerous part is not the fiddly bit, it is the confident bit. A parent who
+   has decided they need to "start over" will delete a child's account to fix
+   something that had an in-place answer, and on PlayStation, Nintendo and TikTok
+   that is unrecoverable. So fix mode leads with what cannot be undone, before
+   any instruction, and only then offers the per-step notes. */
+function oneWayNode(guides, always) {
+  /* On a guide page this shows to everyone. "You cannot change a PlayStation
+     date of birth" is worth reading before you create the account, not only
+     after you got it wrong, and it keeps the rendered page matching the markup
+     we ship. On a plan it appears only in fix mode, where it leads. */
+  if (!always && !state.fixMode) return null;
+  var items = [];
+  guides.forEach(function (g) {
+    (g && g.oneWay ? g.oneWay : []).forEach(function (t) {
+      if (items.indexOf(t) === -1) items.push(t);
+    });
+  });
+  if (!items.length) return null;
+
+  var box = el("div", { class: "one-way" }, [
+    el("h3", {}, [icon("alert"), document.createTextNode("Check these before you undo anything")]),
+    el("p", { class: "one-way-lede", text:
+      "Most of a bad setup can be fixed in place, so do not start by deleting accounts. " +
+      "These are the parts that cannot be taken back." })
+  ]);
+  var ul = el("ul");
+  items.forEach(function (t) { ul.appendChild(el("li", { text: t })); });
+  box.appendChild(ul);
+  return box;
+}
+
+function undoNode(step, always) {
+  /* Same split as the warnings above. The full guide carries these for
+     everyone, since only a step or two per guide has one and a parent reading
+     the whole thing benefits. The plan stays tight and only shows them when
+     the parent said they had already set this up. */
+  if (!always && !state.fixMode) return null;
+  if (!step.undo) return null;
+  return el("div", { class: "undo" }, [
+    el("span", { class: "undo-label" }, [icon("alert"), document.createTextNode("Already done this?")]),
+    el("p", { text: step.undo })
   ]);
 }
 
@@ -2722,6 +2832,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var gun = undoNode(step, true);
+  if (gun) body.appendChild(gun);
 
   body.appendChild(el("button", {
     class: "step-done-btn",

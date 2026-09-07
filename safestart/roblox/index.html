@@ -708,6 +708,38 @@ button { font: inherit; cursor: pointer; }
 .callout li:last-child { margin-bottom: 0; }
 .callout li::marker { color: var(--blue); }
 
+/* The one place Signal yellow earns its keep: the things that cannot be undone.
+   Single element, well under the 1% the palette allows, and it is the only
+   warning on the site a parent must read before acting rather than after. */
+.one-way {
+  border-radius: var(--radius); padding: 17px 19px 18px; margin-bottom: 22px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-left: 4px solid var(--signal);
+}
+.one-way h3 {
+  margin: 0 0 8px; font-size: .95rem; color: var(--heading); font-weight: 650;
+  letter-spacing: -.01em; display: flex; gap: 8px; align-items: center;
+}
+.one-way h3 svg { width: 17px; height: 17px; flex: none; color: var(--heading); }
+.one-way-lede { margin: 0 0 11px; font-size: .92rem; color: var(--body); line-height: 1.55; }
+.one-way ul { margin: 0; padding-left: 20px; }
+.one-way li { margin-bottom: 7px; font-size: .92rem; color: var(--muted); line-height: 1.55; }
+.one-way li:last-child { margin-bottom: 0; }
+.one-way li::marker { color: var(--signal); }
+
+/* Per-step, and deliberately quieter than the block above. By the time a parent
+   reaches one of these they have already read the warnings. */
+.undo {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--surface-2); border-left: 3px solid var(--blue);
+}
+.undo-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.undo-label svg { width: 14px; height: 14px; flex: none; color: var(--blue); }
+.undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1153,7 +1185,7 @@ button { font: inherit; cursor: pointer; }
 <li>Have your child’s login handy, and pick a Parent PIN they don’t know.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Check which account they are on</h3></span></div><div class="step-body"><p class="why">Since June 2026 the account type decides what your child can see and who can reach them, before any setting you change.</p><p class="path"><code>Settings → Parental Controls → [your child]</code></p><ol class="do-list"><li>Look at the account type shown for your child.</li><li>Roblox Kids is for 5 to 8. It shows only pre-screened Minimal and Mild experiences, and chat is off until you switch it on from your linked account.</li><li>Roblox Select is for 9 to 15 and goes up to Moderate.</li><li>If the type looks wrong for their age, verify yourself as a parent so Roblox can place them properly.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Roblox Kids</td></tr><tr><td>7–11</td><td>Roblox Kids to age 8, then Roblox Select</td></tr><tr><td>11–12</td><td>Roblox Select</td></tr><tr><td>13–15</td><td>Roblox Select</td></tr><tr><td>16–17</td><td>The standard account</td></tr></tbody></table></div><p class="note">Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Check which account they are on</h3></span></div><div class="step-body"><p class="why">Since June 2026 the account type decides what your child can see and who can reach them, before any setting you change.</p><p class="path"><code>Settings → Parental Controls → [your child]</code></p><ol class="do-list"><li>Look at the account type shown for your child.</li><li>Roblox Kids is for 5 to 8. It shows only pre-screened Minimal and Mild experiences, and chat is off until you switch it on from your linked account.</li><li>Roblox Select is for 9 to 15 and goes up to Moderate.</li><li>If the type looks wrong for their age, verify yourself as a parent so Roblox can place them properly.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Roblox Kids</td></tr><tr><td>7–11</td><td>Roblox Kids to age 8, then Roblox Select</td></tr><tr><td>11–12</td><td>Roblox Select</td></tr><tr><td>13–15</td><td>Roblox Select</td></tr><tr><td>16–17</td><td>The standard account</td></tr></tbody></table></div><p class="note">Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.</p><div class="undo"><span class="undo-label">Already done this?</span><p>If the birthday on the account is wrong, you can fix it from your linked parent account, but read this first. Roblox allows it once and only once: linked parents can only update a child&#39;s birthday once. And it becomes impossible entirely if the child has already verified with a government ID. Correcting it downward moves them into Roblox Kids for 5 to 8 or Select for 9 to 15, and you then have to complete the age check or, in Roblox&#39;s words, all communication will be unavailable.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Get the age check done</h3></span></div><div class="step-body"><p class="why">Since 2026 this is the gate on everything else. Roblox&#39;s own words: users who have not completed an age check cannot chat, whatever their age. It also decides which account type your child lands in, and that decides what they can see.</p><p class="path"><code>Settings → Account Info</code></p><ol class="do-list"><li>Complete the age check for your child, by facial age estimation or ID.</li><li>Age check yourself too. A parent needs to be 18 and age checked before parental controls will link.</li><li>Check the account type afterwards, and that it matches their real age.</li></ol><p class="note">A useful thing almost no guide mentions: if you both age check and add each other as friends, you can become a trusted friend of your own child and chat with them on the platform.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Link your account and set a Parent PIN</h3></span></div><div class="step-body"><p class="why">Without a PIN, your child can undo everything you’re about to set in about ten seconds.</p><p class="path"><code>Roblox → Settings → Parental Controls</code></p><ol class="do-list"><li>Sign in to your child’s Roblox account on a phone or at roblox.com.</li><li>Open Settings, then Parental Controls.</li><li>Add your own email as the parent email and verify it from your inbox.</li><li>Create a Parent PIN. Choose something your child won’t guess, and not a birthday.</li></ol><p class="result">Every setting below now requires your PIN to change.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set Content Maturity</h3></span></div><div class="step-body"><p class="why">This is the single biggest lever. It filters which games your child can even open.</p><p class="path"><code>Settings → Parental Controls → [your child] → Settings You Manage → Content restrictions → Content maturity</code></p><ol class="do-list"><li>Open Content restrictions, then Content maturity.</li><li>Pick the level for your child’s age from the table.</li><li>Confirm with your PIN.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Minimal</td></tr><tr><td>7–11</td><td>Minimal</td></tr><tr><td>11–12</td><td>Minimal</td></tr><tr><td>13–15</td><td>Mild</td></tr><tr><td>16–17</td><td>Moderate</td></tr></tbody></table></div><p class="note">The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood.</p></div></li>
@@ -1249,6 +1281,7 @@ var state = {
   country: "US",
   apps: [],              // the apps picked for a merged plan
   includeDevice: true,   // false when the device is already locked down
+  fixMode: false,        // true when they set it up already and got it wrong
   planDone: {},    // step keys already ticked off in the plan
   done: {},
   checked: {}
@@ -1479,7 +1512,8 @@ function saveProgress() {
     }
     localStorage.setItem("safestart:prefs", JSON.stringify({
       ageBand: state.ageBand, device: state.device, helpMode: state.helpMode,
-      country: state.country, apps: state.apps, includeDevice: state.includeDevice
+      country: state.country, apps: state.apps, includeDevice: state.includeDevice,
+      fixMode: state.fixMode
     }));
   } catch (e) { /* private browsing, quota, embedded preview */ }
 }
@@ -1523,6 +1557,7 @@ function loadPrefs() {
     if (p.country) state.country = p.country;
     if (Array.isArray(p.apps)) state.apps = p.apps;
     if (typeof p.includeDevice === "boolean") state.includeDevice = p.includeDevice;
+    if (typeof p.fixMode === "boolean") state.fixMode = p.fixMode;
   } catch (e) { /* ignore */ }
 }
 
@@ -1573,8 +1608,9 @@ function readUrl() {
   if (q.get("device")) state.device = q.get("device");
   if (q.get("mode")) state.helpMode = q.get("mode");
   if (q.get("country")) state.country = q.get("country");
-  if (q.get("setup") === "0") state.includeDevice = false;
-  if (q.get("setup") === "1") state.includeDevice = true;
+  if (q.get("setup") === "0") { state.includeDevice = false; state.fixMode = false; }
+  if (q.get("setup") === "1") { state.includeDevice = true;  state.fixMode = false; }
+  if (q.get("setup") === "fix") { state.includeDevice = true; state.fixMode = true; }
   if (q.get("apps")) {
     state.apps = q.get("apps").split(",").map(function (s) { return s.trim(); })
       .filter(function (id) { return DATA && DATA.guides[id] && DATA.guides[id].type === "app"; });
@@ -1592,6 +1628,7 @@ function planUrl(absolute) {
   if (state.ageBand) q.set("age", state.ageBand);
   if (state.apps.length) q.set("apps", state.apps.join(","));
   if (!state.includeDevice) q.set("setup", "0");
+  else if (state.fixMode) q.set("setup", "fix");
   if (state.country) q.set("country", state.country);
   return (absolute ? location.origin : "") + "/plan/?" + q.toString();
 }
@@ -1753,15 +1790,18 @@ function stepDevice() {
        setup is a choice rather than an assumption. */
     var chips = el("div", { class: "chips" });
     [
-      { on: true,  label: "Set it up too", sub: "Catches the app they install next" },
-      { on: false, label: "Already done",  sub: "Skip to the apps" }
+      { key: "new",  on: true,  fix: false, label: "Set it up too",  sub: "Catches the app they install next" },
+      { key: "fix",  on: true,  fix: true,  label: "I set it up wrong", sub: "Same steps, plus how to undo" },
+      { key: "done", on: false, fix: false, label: "Already done",   sub: "Skip to the apps" }
     ].forEach(function (opt) {
+      var current = state.includeDevice === opt.on && (!opt.on || state.fixMode === opt.fix);
       chips.appendChild(el("button", {
         class: "chip",
-        "aria-pressed": state.includeDevice === opt.on ? "true" : "false",
-        "data-focus-key": "setup:" + opt.on,
+        "aria-pressed": current ? "true" : "false",
+        "data-focus-key": "setup:" + opt.key,
         onclick: function () {
           state.includeDevice = opt.on;
+          state.fixMode = opt.fix;
           saveProgress();
           keepPlace(function () { renderHome(true); });
         }
@@ -2290,11 +2330,16 @@ function renderPlan(skipUrl) {
   ]));
 
   app.appendChild(el("p", { class: "guide-blurb", text:
-    state.includeDevice
+    !state.includeDevice
+      ? "On " + devLabel + ", for " + ageDescription(state.ageBand) +
+        ". The device's own settings are left alone, as you said they're already done."
+      : state.fixMode
       ? "For " + ageDescription(state.ageBand) +
-        (appNames.length ? ", covering " + listSentence(appNames) : "") + "."
-      : "On " + devLabel + ", for " + ageDescription(state.ageBand) +
-        ". The device's own settings are left alone, as you said they're already done." }));
+        (appNames.length ? ", covering " + listSentence(appNames) : "") +
+        ". These are the same steps as a fresh setup, with a note on each one that a " +
+        "previous attempt can block, saying how to undo it first."
+      : "For " + ageDescription(state.ageBand) +
+        (appNames.length ? ", covering " + listSentence(appNames) : "") + "." }));
 
   var meta = [
     el("span", { class: "pill", text: "Part 1 takes about " + (plan.sessions[0] ? plan.sessions[0].mins : plan.totalMins) + " minutes" }),
@@ -2305,6 +2350,14 @@ function renderPlan(skipUrl) {
       (plan.dropped === 1 ? "step" : "steps") + " merged" }));
   }
   app.appendChild(el("div", { class: "meta-row" }, meta));
+
+  /* One block for the whole plan rather than one per guide, because the parent
+     needs to have read all of it before they touch the first setting. */
+  var planGuides = [];
+  if (state.includeDevice && DATA.guides[state.device]) planGuides.push(DATA.guides[state.device]);
+  state.apps.forEach(function (id) { if (DATA.guides[id]) planGuides.push(DATA.guides[id]); });
+  var pow = oneWayNode(planGuides);
+  if (pow) app.appendChild(pow);
 
   var prog = planProgress(plan);
   app.appendChild(el("div", { class: "plan-progress" }, [
@@ -2427,6 +2480,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var pun = undoNode(s);
+  if (pun) body.appendChild(pun);
 
   var btn = el("button", { class: "step-done-btn", "data-focus-key": "plan:" + item.key }, [icon("check"),
     document.createTextNode(isDone ? "Done" : "Mark done")]);
@@ -2555,6 +2610,8 @@ function renderGuide() {
 
   if (g.risks && g.risks.length) app.appendChild(callout("What actually goes wrong here", g.risks));
   if (g.beforeYouStart && g.beforeYouStart.length) app.appendChild(callout("Before you start", g.beforeYouStart));
+  var gow = oneWayNode([g], true);
+  if (gow) app.appendChild(gow);
 
   var visible = (g.steps || []).filter(function (s) {
     if (!state.ageBand) return true;
@@ -2614,6 +2671,51 @@ function helpCard() {
       el("strong", { text: "Has something already happened?" }),
       el("span", { text: "If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell." })
     ])
+  ]);
+}
+
+/* Fixing a setup that went wrong is not the same job as doing it fresh, and the
+   dangerous part is not the fiddly bit, it is the confident bit. A parent who
+   has decided they need to "start over" will delete a child's account to fix
+   something that had an in-place answer, and on PlayStation, Nintendo and TikTok
+   that is unrecoverable. So fix mode leads with what cannot be undone, before
+   any instruction, and only then offers the per-step notes. */
+function oneWayNode(guides, always) {
+  /* On a guide page this shows to everyone. "You cannot change a PlayStation
+     date of birth" is worth reading before you create the account, not only
+     after you got it wrong, and it keeps the rendered page matching the markup
+     we ship. On a plan it appears only in fix mode, where it leads. */
+  if (!always && !state.fixMode) return null;
+  var items = [];
+  guides.forEach(function (g) {
+    (g && g.oneWay ? g.oneWay : []).forEach(function (t) {
+      if (items.indexOf(t) === -1) items.push(t);
+    });
+  });
+  if (!items.length) return null;
+
+  var box = el("div", { class: "one-way" }, [
+    el("h3", {}, [icon("alert"), document.createTextNode("Check these before you undo anything")]),
+    el("p", { class: "one-way-lede", text:
+      "Most of a bad setup can be fixed in place, so do not start by deleting accounts. " +
+      "These are the parts that cannot be taken back." })
+  ]);
+  var ul = el("ul");
+  items.forEach(function (t) { ul.appendChild(el("li", { text: t })); });
+  box.appendChild(ul);
+  return box;
+}
+
+function undoNode(step, always) {
+  /* Same split as the warnings above. The full guide carries these for
+     everyone, since only a step or two per guide has one and a parent reading
+     the whole thing benefits. The plan stays tight and only shows them when
+     the parent said they had already set this up. */
+  if (!always && !state.fixMode) return null;
+  if (!step.undo) return null;
+  return el("div", { class: "undo" }, [
+    el("span", { class: "undo-label" }, [icon("alert"), document.createTextNode("Already done this?")]),
+    el("p", { text: step.undo })
   ]);
 }
 
@@ -2769,6 +2871,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var gun = undoNode(step, true);
+  if (gun) body.appendChild(gun);
 
   body.appendChild(el("button", {
     class: "step-done-btn",
