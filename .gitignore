@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Local scratch that should never reach the repo
+_to_delete/
+Claude outputs/
+*.tar.gz
+
+# Node
+node_modules/
