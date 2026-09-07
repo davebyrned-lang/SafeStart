@@ -1,7 +1,13 @@
 {
- "updated": "2026-09-05",
+ "updated": "2026-09-07",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-07",
+   "kind": "correction",
+   "title": "We had the YouTube guide wrong in several places, and someone at YouTube told us so",
+   "body": "The specific complaint was autoplay. We sent parents to the autoplay switch inside the child's own YouTube settings, which the child can switch straight back. The one that holds is Disable autoplay in Family Center, on the parent's account, and YouTube's wording is explicit: your child can't turn on Autoplay when this setting is on. It also ships off on kid accounts already. Checking that turned up more. We said an under-13 can only use YouTube Kids, which has not been true for years. A supervised kid account is, in Google's words, a parent-managed version of regular YouTube for children under 13. In fairness to us one of Google's own live pages still says the old thing, and we followed it. We had missed supervised teen accounts entirely, which are a different feature with no content filter, needing the teen's agreement, and endable by either side. We said supervised accounts can read comments but not post them, which is right for the two higher content settings and wrong for the lowest, where they cannot read comments at all. The block-channels steps described the YouTube Kids route rather than the supervised one, which is a channel page, About, Report user, Block channel for kids, done from your own account. We said supervision ends automatically at 13, and nothing happens on the birthday by itself. And we said YouTube has no real time limit, which undersold the YouTube Kids timer that locks the app. The biggest gap was structural: Family Center is where nearly all of this lives and we never named it once. It now has its own step. Two things we are not going to pretend are tidy. Google uses two sets of names for the same three content settings, Older kids and Explore, Teens and Explore more, Older teens and Most of YouTube, and different Google pages use different ones, so the guide gives both. And adding supervision to an account a child already has deletes their subscriptions, playlists, comments and purchased videos, which Google states plainly and which no parent expects, so it is now the last thing you read before you start."
+  },
   {
    "date": "2026-09-05",
    "kind": "correction",

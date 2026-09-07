@@ -1074,7 +1074,7 @@
    "name": "YouTube",
    "type": "app",
    "kind": "Video",
-   "blurb": "The biggest video platform. Which version your child should use depends heavily on their age.",
+   "blurb": "The biggest video platform. Which version your child should be on depends on their age, and the controls sit in a place most parents never find.",
    "devices": [
     "iphone",
     "ipad",
@@ -1088,99 +1088,158 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-07",
    "sourceConfidence": "high",
-   "minutes": 10,
+   "minutes": 14,
    "risks": [
     "Autoplay and recommendations pull children well past what they set out to watch",
     "Comments sections are unmoderated in practice",
     "Content aimed at adults is often styled to look child-friendly"
    ],
    "beforeYouStart": [
-    "There are three options: YouTube Kids (young children), a supervised YouTube account through Family Link (roughly 9+), and a normal account (13+).",
-    "You’ll need the Family Link app, or access to families.google.com."
+    "There are four setups, not three. YouTube Kids for young children. A supervised kid account for under-13s, which is real YouTube with a filter on it. A supervised teen account for 13 and over, which both of you have to agree to. And a plain teen account, which 13-plus get automatically.",
+    "Almost every control lives in Family Center, on your own account: YouTube app, your profile picture, Settings, Family Center. You do not need the Family Link app for any of it.",
+    "One thing to know before you start. If you add supervision to an account your child already has, YouTube deletes their videos, comments, live chats, posts, playlists, stories, subscriptions and any purchased or rented videos. That is Google's own list. There is no way to keep them, so warn your child first."
    ],
    "steps": [
     {
      "id": "choose",
-     "title": "Choose the right version of YouTube",
-     "why": "Getting this right matters more than any individual toggle.",
+     "title": "Pick which version of YouTube they use",
+     "why": "This decides more than any single toggle, and the common belief here is wrong. Plenty of guidance still says an under-13 can only use YouTube Kids. That stopped being true a while ago. A supervised kid account is, in Google's words, a parent-managed version of regular YouTube for children under 13, and it works on phones, computers, TVs and consoles. So the real question is when to move them off YouTube Kids, not whether you are allowed to.",
      "do": [
-      "Under about 9: use the YouTube Kids app instead.",
-      "Roughly 9 to 12: use a supervised YouTube account via Family Link.",
-      "13 and over: a normal account, with the settings below applied."
+      "Young children: YouTube Kids, a separate app with its own content levels.",
+      "Under 13 and ready for more: a supervised kid account, set up from your own YouTube account.",
+      "13 and over: they get a teen account automatically. You can add supervision on top, but only if they agree to it.",
+      "Whichever you pick, do it from your account rather than theirs."
      ],
      "recommended": {
-      "0-6": "YouTube Kids, or a supervised account on Explore",
-      "7-11": "YouTube Kids, or a supervised account on Explore",
-      "11-12": "Supervised account",
-      "13-15": "Supervised account or normal account with limits",
-      "16-17": "Normal account, with a conversation about the feed"
+      "0-6": "YouTube Kids, Preschool level",
+      "7-11": "YouTube Kids, or a supervised kid account",
+      "11-12": "Supervised kid account",
+      "13-15": "Teen account, with supervision if they will agree",
+      "16-17": "Teen account, with a conversation about the feed"
      },
+     "note": "Supervised kid accounts are not available in Quebec. YouTube Kids is not either.",
+     "mins": 2
+    },
+    {
+     "id": "family",
+     "title": "Find Family Center",
+     "why": "Worth its own step because nearly every mistake with YouTube starts here. The controls that actually hold are on your account, not your child's, and the ones on your child's account are suggestions they can undo. If you only remember one thing from this guide, make it this path.",
+     "path": "YouTube app → your profile picture → Settings → Family Center",
+     "do": [
+      "Sign in as yourself, not as your child.",
+      "Tap your profile picture, then Settings, then Family Center.",
+      "Pick your child. Everything below happens from here."
+     ],
+     "result": "You are now on the parent side. Changes you make here your child cannot reverse.",
      "mins": 2
     },
     {
      "id": "level",
-     "title": "Set the content level",
-     "why": "This decides which slice of YouTube they can reach, and it is the main control on a supervised account. Pitch it tighter than they will accept and they watch on a friend's phone instead, where you can see nothing at all, so aim for the level they will actually live with.",
-     "path": "Family Link app → [your child] → Controls → Content restrictions → YouTube",
+     "title": "Set the content setting",
+     "why": "This is the main control on a supervised kid account and it decides which slice of YouTube they can reach. Pitch it tighter than they will accept and they end up watching on a friend's phone instead, where you can see nothing at all. Aim for the level they will actually live with.",
+     "path": "Family Center → [your child] → Content setting",
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
      "do": [
-      "Open Family Link and select your child.",
-      "Go to Controls, Content restrictions, then YouTube.",
-      "Pick the content setting for their age."
+      "Open Family Center and select your child.",
+      "Choose the content setting for their age.",
+      "It applies everywhere they are signed in, including the TV."
      ],
      "recommended": {
-      "0-6": "Explore (suggested 9+)",
-      "7-11": "Explore (suggested 9+)",
-      "11-12": "Explore (suggested 9+)",
-      "13-15": "Explore more (suggested 13+)",
-      "16-17": "Most of YouTube"
+      "0-6": "YouTube Kids instead of this",
+      "7-11": "Older kids, also shown as Explore (9+)",
+      "11-12": "Older kids, also shown as Explore (9+)"
      },
-     "note": "The three levels are Explore (9+), Explore more (13+) and Most of YouTube (older teens). Supervised accounts can read comments but not post them.",
+     "note": "Google uses two sets of names for the same three settings and has not finished switching over, so you may see either. Older kids is Explore (9+), Teens is Explore more (13+), Older teens is Most of YouTube. Comments differ by level and this catches people out: on Older kids your child cannot read comments at all, and on the two higher settings they can read them but not post. Live streams are off on Older kids only.",
      "mins": 2,
      "provides": [
       "youtube-detail"
      ]
     },
     {
-     "id": "autoplay",
-     "title": "Turn off autoplay and pause history",
-     "why": "Autoplay is what turns a ten-minute video into two hours. Pausing history is the one that looks wrong, because history is how you see what they have been watching. That is the trade: you give up your own record, and in exchange the recommendations stop chasing whatever they clicked once. If the record matters more to you, leave history on and turn off autoplay only.",
-     "path": "YouTube app → Profile → Settings",
+     "id": "teen",
+     "title": "Check what their teen account already does, and offer supervision",
+     "why": "At 13 YouTube moves them to a teen account whether anyone asks for it or not, and some protections come on by themselves. Supervision on top is a different thing from the under-13 version. There is no content filter in it. What you get is visibility and time controls, and both of you have to agree to it, which makes it a conversation rather than a setting.",
+     "path": "Family Center → invite your teen",
+     "ages": [
+      "13-15",
+      "16-17"
+     ],
      "do": [
-      "Turn Autoplay off.",
-      "Pause watch history and search history.",
-      "Clear the existing history if the recommendations have already drifted."
+      "Send the invitation from Family Center. Either of you can start it and you both have to accept.",
+      "If they say no, leave it. Either side can end it later anyway, so forcing it buys nothing.",
+      "Set take a break and bedtime reminders, and a daily limit on the Shorts feed."
+     ],
+     "result": "You can see the channels they own, what they have posted and commented, and what they subscribe to. You cannot filter what they watch.",
+     "recommended": {
+      "13-15": "Worth asking for",
+      "16-17": "Their call, mostly"
+     },
+     "mins": 2
+    },
+    {
+     "id": "autoplay",
+     "title": "Lock autoplay off from your account",
+     "why": "Autoplay is what turns a ten-minute video into two hours, and it is the setting most often explained wrongly, including by us until now. There is an autoplay switch inside your child's own YouTube settings, and it is not the one that matters, because they can switch it straight back. The parent version is in Family Center and it holds.",
+     "path": "Family Center → [your child] → Disable autoplay",
+     "do": [
+      "In Family Center, select your child and choose Disable autoplay.",
+      "Do not do this from your child's own settings screen. That toggle is theirs to undo."
+     ],
+     "result": "Autoplay is off and, in YouTube's words, your child can't turn on Autoplay when this setting is on.",
+     "note": "Kid accounts ship with autoplay already off. Worth opening anyway to confirm, since it is the one setting people assume is handled and often is not.",
+     "mins": 1
+    },
+    {
+     "id": "history",
+     "title": "Decide what to do about history",
+     "why": "This is the one that looks wrong, because history is how you see what they have been watching. That is the trade. You give up your own record, and in exchange the recommendations stop chasing whatever they clicked once. If the record matters more to you, leave history on and rely on the content setting instead. Either answer is defensible. Doing neither is not.",
+     "path": "Family Center → [your child] → history",
+     "do": [
+      "Pause watch history and search history if you want the feed to stop learning.",
+      "Clear the existing history if the recommendations have already drifted somewhere you do not like.",
+      "If you would rather keep the record, leave it on and check My Activity now and then."
      ],
      "mins": 2
     },
     {
      "id": "block",
-     "title": "Block channels you don’t want",
-     "why": "Faster than trying to filter by topic, and it sticks.",
+     "title": "Block channels you do not want",
+     "why": "Faster than trying to filter by topic, and it sticks. It is also the other step people do from the wrong place. There is a block option in YouTube Kids that sits behind the passcode, and a different one for supervised accounts that you do from an ordinary channel page while signed in as yourself.",
      "do": [
-      "On a video from a channel you want gone, open the menu and choose Block this channel.",
-      "You can also manage blocked channels from the parent settings."
+      "Signed in as yourself, open the channel page and go to About.",
+      "Choose Report user, then Block channel for kids.",
+      "Continue past the warning, pick your child, and block.",
+      "To undo one, repeat and choose Unblock."
      ],
-     "mins": 2
+     "note": "Two things worth knowing. Blocking a channel does not block the same video reuploaded elsewhere, or a near-identical channel. And Unblock videos in Family Center clears every block you have ever set, all at once, so avoid it unless that is what you mean. If your child uses the same Google Account for both, blocks carry across to YouTube Kids.",
+     "mins": 3
     },
     {
      "id": "time",
-     "title": "Set a time limit at the device level",
-     "why": "YouTube doesn’t have its own strong time limit, so use Screen Time or Family Link.",
+     "title": "Set a time limit",
+     "why": "YouTube has more of its own timing tools than it used to, so try those first and use the device as a backstop. The device limit is still the stronger one, because it does not depend on your child dismissing a reminder honestly.",
      "do": [
-      "iPhone/iPad: Settings → Screen Time → App Limits.",
-      "Android/Chromebook: Family Link → Controls → Daily limit."
+      "In Family Center: take a break reminders, bedtime reminders, and a daily limit on the Shorts feed.",
+      "In YouTube Kids: Settings, solve the sum or enter your passcode, Set Timer. When it runs out the app locks itself.",
+      "As a backstop: iPhone and iPad, Settings, Screen Time, App Limits. Android and Chromebook, Family Link, Controls, Daily limit."
      ],
+     "note": "The YouTube Kids timer locks the app. The reminders on a supervised account do not, they just interrupt.",
      "mins": 2
     }
    ],
    "checklist": [
     "Right version of YouTube for their age",
-    "Content level set",
-    "Autoplay off",
-    "Watch and search history paused",
-    "Time limit set at device level"
+    "You know where Family Center is",
+    "Content setting chosen, or teen account understood",
+    "Autoplay locked off from your account, not theirs",
+    "History decision made either way",
+    "Time limit set somewhere"
    ],
    "talkAboutIt": [
     "Watch a couple of their favorite creators with them and ask what they like.",
@@ -1189,16 +1248,28 @@
    ],
    "links": [
     {
-     "label": "YouTube: content settings for supervised accounts (official)",
+     "label": "YouTube: what a supervised kid account is, and what it turns off (official)",
+     "url": "https://support.google.com/youtube/answer/10314940?hl=en"
+    },
+    {
+     "label": "YouTube: parental controls and Family Center (official)",
+     "url": "https://support.google.com/youtube/answer/13877231?hl=en"
+    },
+    {
+     "label": "YouTube: content settings for supervised kid accounts (official)",
      "url": "https://support.google.com/youtube/answer/10315823?hl=en"
+    },
+    {
+     "label": "YouTube: block channels for supervised kid accounts (official)",
+     "url": "https://support.google.com/youtube/answer/13887963?hl=en"
+    },
+    {
+     "label": "YouTube: supervised teen accounts (official)",
+     "url": "https://support.google.com/youtube/answer/15253498?hl=en"
     },
     {
      "label": "Google: YouTube & YouTube Kids options for your child (official)",
      "url": "https://support.google.com/families/answer/10495678?hl=en"
-    },
-    {
-     "label": "YouTube: parental controls for supervised accounts (official)",
-     "url": "https://support.google.com/youtube/answer/13877231?hl=en"
     }
    ],
    "priority": 10,
@@ -1210,8 +1281,8 @@
      "7-11",
      "11-12"
     ],
-    "what": "A separate app with its own content levels for preschool, younger and older children, or a list you approve yourself. A child under 13 on a supervised Google account can only use this one, not the main YouTube.",
-    "watchOut": "Search is switched on by default. Turn it off and they are limited to channels YouTube Kids has verified. Supervision also ends automatically on their 13th birthday.",
+    "what": "A separate app with content levels for Preschool, Younger and Older, or a list you approve yourself. It has a timer that locks the app when time is up, which the main YouTube does not. Note that it is not the only option for an under-13. A supervised kid account gives them real YouTube with a filter on it, and plenty of guidance, including Google's own older pages, still says otherwise.",
+    "watchOut": "Search is on unless you turn it off. Turn it off and they are limited to channels YouTube Kids has verified. Nothing happens automatically on their 13th birthday either. They get an email and choose, and until they are 18 they need your approval to drop supervision. When they do move across, YouTube Kids stops working on that account and videos you had blocked may become watchable again.",
     "countryNote": "Available in all four countries here, though not in Quebec.",
     "confidence": "high",
     "link": "https://support.google.com/youtubekids/answer/6172308"

@@ -588,6 +588,31 @@ function check(name, condition, detail) {
     check('the age check gate is stated', /age check/i.test(robloxText));
     check('creator-built chat is flagged as out of reach', /creator/i.test(robloxText));
 
+    console.log('\nyoutube parent controls');
+    // Reported by YouTube themselves. We used to send parents to the autoplay
+    // toggle inside the child's own settings, which the child can undo. The one
+    // that holds is in Family Center on the parent's account. We also claimed an
+    // under-13 could only use YouTube Kids, which stopped being true years ago.
+    await page.goto(BASE + '/youtube/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const ytText = await page.locator('#app').textContent();
+    check('Family Center is named', /Family Center/.test(ytText));
+    check('autoplay is routed through the parent account, not the child\'s',
+      /Disable autoplay/.test(ytText));
+    // The outcome line only renders in learn mode, so read it from the page
+    // the server sends rather than from the hydrated DOM.
+    const ytShell = await (await page.request.get(BASE + '/youtube/')).text();
+    check('the child cannot undo it, and we say so',
+      /can&#39;t turn on Autoplay|can't turn on Autoplay/.test(ytShell));
+    check('supervised kid accounts are described as real YouTube',
+      /supervised kid account/i.test(ytText));
+    check('supervised teen accounts exist here', /supervised teen/i.test(ytText));
+    check('both sets of content setting names are given',
+      /Older kids/.test(ytText) && /Explore/.test(ytText));
+    check('the data deletion warning is before the steps',
+      /deletes their videos|will be deleted|deletes their/i.test(ytText));
+    check('blocking uses the supervised route', /Block channel for kids/.test(ytText));
+
     console.log('\nanalytics');
     // The plan URL carries a real child's age, device and app list in its query
     // string, and Vercel stores the URL with every data point. So the script goes
