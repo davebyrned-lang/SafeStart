@@ -1,7 +1,86 @@
 {
- "updated": "2026-09-05",
+ "updated": "2026-09-07",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-07",
+   "kind": "freshness-check",
+   "checked": 27,
+   "reverified": [
+    "windows",
+    "playstation",
+    "firetablet",
+    "netflix",
+    "primevideo",
+    "hbomax"
+   ],
+   "flagged": [
+    {
+     "guide": "instagram",
+     "summary": [
+      "Sleep Mode's default end time appears to be 7am, not 8am as stated in the guide."
+     ]
+    },
+    {
+     "guide": "discord",
+     "summary": [
+      "The sensitive-content filter can no longer be freely set to Blur or turned off by teens; doing so now requires the account to be age-assured as an adult.",
+      "Message request handling now routes unknown DMs to a separate inbox by default, and changing this setting is restricted to age-assured adult accounts, so a teen/guardian may not be able to simply toggle Message Requests off as described."
+     ]
+    },
+    {
+     "guide": "youtube",
+     "summary": [
+      "YouTube supervised account content settings have been renamed; the old names in the guide no longer exist.",
+      "The recommended content-level names cited for each age band use the retired setting names."
+     ]
+    },
+    {
+     "guide": "ipad",
+     "summary": [
+      "The most restrictive web content setting appears to have been renamed"
+     ]
+    },
+    {
+     "guide": "android",
+     "summary": [
+      "YouTube's supervised-account content level settings have been renamed from an 'age+' labeling scheme to different names, and the guide's set doesn't match current official terminology."
+     ]
+    },
+    {
+     "guide": "mac",
+     "summary": [
+      "The web content restriction option has been renamed from 'Allowed Websites Only' to 'Only Approved Websites'."
+     ]
+    },
+    {
+     "guide": "switch",
+     "summary": [
+      "The 'Posting to Social Media' restriction no longer exists on Nintendo Switch 2 because direct social posting from the console was removed",
+      "On Nintendo Switch 2, voice/video chat (GameChat) is now built into the console and is managed through the Parental Controls app, unlike the guide's blanket claim that voice chat sits outside these controls"
+     ]
+    },
+    {
+     "guide": "accounts",
+     "summary": [
+      "The Microsoft family sign-up URL in the guide does not match the URL Microsoft's own page currently uses."
+     ]
+    },
+    {
+     "guide": "imessage",
+     "summary": [
+      "Communication Safety now includes a 'report to Apple' option for sensitive content found in iMessage/FaceTime, which contradicts the guide's claim that Apple never sees or learns about detected content"
+     ]
+    }
+   ],
+   "unreadable": [
+    "tiktok",
+    "fortnite",
+    "whatsapp",
+    "twitch",
+    "disneyplus"
+   ]
+  },
   {
    "date": "2026-09-05",
    "kind": "correction",
