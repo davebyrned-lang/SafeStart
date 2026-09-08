@@ -4667,6 +4667,216 @@
      "url": "https://support.apple.com/en-us/108896"
     }
    ]
+  },
+  "spotify": {
+   "id": "spotify",
+   "name": "Spotify",
+   "type": "app",
+   "kind": "Music",
+   "blurb": "Music, podcasts and audiobooks in one app. The explicit filter everyone knows about covers the music and nothing else.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "windows",
+    "mac",
+    "chromebook",
+    "playstation",
+    "xbox",
+    "firetablet"
+   ],
+   "minAge": 13,
+   "lastVerified": "2026-09-08",
+   "sourceConfidence": "high",
+   "minutes": 10,
+   "priority": 15,
+   "risks": [
+    "The explicit filter reaches songs only, so podcasts and audiobooks stay wide open",
+    "On an ordinary account that filter sits in your child's own settings, and they can switch it back",
+    "Music videos and Canvas visuals are a separate control again, and most parents never find it"
+   ],
+   "beforeYouStart": [
+    "The thing worth knowing before anything else. Spotify's explicit filter applies to songs tagged explicit and, in Spotify's own words, not to podcasts, audiobooks, or videos tagged 18+ by rights holders. Turning it on is not the end of the job, it is about a third of it.",
+    "For an under-13 there is a much better answer than settings, called a managed account. Music only, so podcasts and audiobooks are gone rather than filtered, and the controls sit behind a parental controls PIN. It works on the free tier as well as Premium Family.",
+    "Managed accounts reached the United States and the UK on 15 July 2026, and Canada and Ireland on 28 July 2026, so all four countries here are covered."
+   ],
+   "steps": [
+    {
+     "id": "account",
+     "title": "Work out which of the two setups you need",
+     "why": "Worth two minutes because the gap between them is wide. A managed account is a genuine parental control: you hold a PIN, the child cannot undo it, and podcasts and audiobooks are not there at all. An ordinary account with the filter switched on is a request, and your child can decline it later from their own settings screen. There is no managed account for a teenager, so at 13 you move from one to the other whether you want to or not.",
+     "do": [
+      "Under 13: set up a managed account. Everything below is then mostly confirming.",
+      "13 and over: they get an ordinary account, and you work through the settings with them.",
+      "Either way, do it from your own account first if you are on a Family plan."
+     ],
+     "recommended": {
+      "0-6": "Managed account",
+      "7-11": "Managed account",
+      "11-12": "Managed account",
+      "13-15": "Ordinary account, settings agreed together",
+      "16-17": "Ordinary account, mostly their call"
+     },
+     "note": "Be straight with yourself about the 13 to 17 years. Apart from video on a Family plan, there is no Spotify setting a teenager cannot reverse. That is not a reason to skip the settings, it is a reason to set them with your child rather than behind them.",
+     "mins": 2
+    },
+    {
+     "id": "managed",
+     "title": "Create the managed account",
+     "why": "This is the step that does the real work. A new managed account starts with explicit content already blocked, and video and Canvas already off. The profile is private and cannot be searched or found by other people, there is no way to buy anything, and Spotify's social features including Messages and Jam are not available. You are not assembling protection setting by setting, you are choosing an account type that arrives with it.",
+     "path": "Profile picture → Settings and privacy → Parental controls → Create a managed account",
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
+     "do": [
+      "Open Spotify signed in as yourself, tap your profile picture, then Settings and privacy.",
+      "Tap Parental controls, then Create next to Create a managed account.",
+      "Give parental consent, choose a parental controls PIN, and enter your child's name and date of birth.",
+      "Set the parental controls, then log in to the managed account on their device.",
+      "You can also do all of this from spotify.com/account under Parental controls."
+     ],
+     "result": "An account that plays music only. No podcasts, no audiobooks, no video, no purchases, and a profile nobody can search for.",
+     "recommended": {
+      "0-6": "Yes, and it is the whole answer at this age",
+      "7-11": "Yes",
+      "11-12": "Yes, and expect a conversation about it"
+     },
+     "note": "It runs on the free tier too, with ads. Premium Family removes the ads and gives the managed account the Premium features. Note that it lasts a long time: a young listener graduates to a self-managed account at 18, not 13, and keeps their playlists, saved music, recommendations and their place on the plan.",
+     "mins": 3,
+     "undo": "If they already have an ordinary Spotify account, you can convert it rather than start again, but do it with them in the room. Spotify's warning is that the young listener will immediately lose access to some content and features, and that happens the moment you convert. So the podcasts they follow and anything else outside music will go without notice. We could not confirm from Spotify's pages whether converting back is possible, so treat it as a decision rather than an experiment."
+    },
+    {
+     "id": "pin",
+     "title": "Set the parental controls PIN, and put it somewhere you will find it",
+     "why": "The PIN is the difference between a setting and a control. It is also what gets asked for when someone switches between accounts on a shared device, which is the moment it usually matters, because the shared device is the family tablet or the kitchen speaker.",
+     "path": "Settings and privacy → Parental controls → Change PIN",
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
+     "do": [
+      "Choose it during setup, or change it later at Settings and privacy, Parental controls, Change PIN.",
+      "Do not use the same four digits as the device unlock code, which your child already knows.",
+      "Write it down somewhere that is not the device it protects."
+     ],
+     "mins": 1
+    },
+    {
+     "id": "explicit",
+     "title": "Turn off explicit content, and know what it does not reach",
+     "why": "This is the setting every article about Spotify tells you to flip, and it does work, on songs. Tagged tracks go grey, will not play, and get skipped automatically. What almost nobody mentions is the boundary. Spotify's own guidance for parents says the filter covers songs tagged explicit by creators and rightsholders, and does not cover podcasts, audiobooks, or videos tagged 18+. Podcasts are where most of the strong language on Spotify actually lives, and they are untouched by this switch.",
+     "path": "Settings and privacy → Content and display → Allow Explicit Content",
+     "do": [
+      "On phone or tablet: Settings and privacy, Content and display, then switch off Allow Explicit Content.",
+      "On desktop: Settings, Explicit Content, then switch off Allow playback of explicit-rated content.",
+      "On a managed account this is already on, so just confirm it.",
+      "Then decide separately what you are doing about podcasts and audiobooks, because this does nothing to them."
+     ],
+     "result": "Explicit-tagged songs go grey, will not play, and are skipped automatically.",
+     "recommended": {
+      "13-15": "Off, agreed together",
+      "16-17": "Their call, but have the conversation"
+     },
+     "note": "On an ordinary account this lives in your child's own settings, so it is theirs to switch back on. There is no parent-side lock for it outside a managed account.",
+     "mins": 2
+    },
+    {
+     "id": "video",
+     "title": "Turn off video and Canvas",
+     "why": "The other half of what the person asking about this usually means. Spotify is not audio-only any more: there are music videos, and there is Canvas, the short looping visual that plays behind a track. Neither is touched by the explicit filter. On a Family plan this is the one control a parent genuinely holds over a teenager's account, because Spotify extended it in April 2026 from under-13s to any account on the plan.",
+     "path": "Settings and privacy → Content and display → Videos and Canvas",
+     "do": [
+      "On phone or tablet: Settings and privacy, Content and display, then switch off what you want under Videos and Canvas.",
+      "On the web player: profile picture, Settings, then the same section.",
+      "On a Family plan, do it from your own account. Spotify's wording: Family plan managers can turn on or off video settings for plan members.",
+      "On a managed account both are already off."
+     ],
+     "recommended": {
+      "13-15": "Off, and it is a control you can actually keep",
+      "16-17": "Worth offering rather than imposing"
+     },
+     "mins": 2
+    },
+    {
+     "id": "block",
+     "title": "Block particular artists or songs",
+     "why": "Blunt, and the only tool that reaches something the explicit tag missed. Plenty of songs are not tagged explicit and are still not what you want a nine-year-old singing at school. This is where you deal with the specific one rather than arguing about the category.",
+     "path": "Settings and privacy → Parental controls",
+     "do": [
+      "From the parental controls page, turn off playback of specific tracks and artists.",
+      "Add them as they come up rather than trying to think of them in advance.",
+      "Ask your child what they are listening to first. A list built without them will be both wrong and resented."
+     ],
+     "mins": 1
+    },
+    {
+     "id": "device",
+     "title": "Cover the bit Spotify will not",
+     "why": "Two things sit outside anything Spotify offers. Podcasts and audiobooks on an ordinary account, which no filter reaches. And time, which Spotify has no control for at all. Both are device-level jobs.",
+     "do": [
+      "iPhone and iPad: Settings, Screen Time, App Limits for time. Content & Privacy Restrictions for the app itself.",
+      "Android and Chromebook: Family Link, Controls, Daily limit.",
+      "If podcasts are the real worry and they are 13 or over, a managed account is not available to you, so this is a conversation rather than a setting."
+     ],
+     "mins": 1
+    }
+   ],
+   "checklist": [
+    "Right account type for their age",
+    "Parental controls PIN set and written down",
+    "Explicit content off",
+    "You know the filter does not cover podcasts or audiobooks",
+    "Video and Canvas off",
+    "Time limit set at device level"
+   ],
+   "talkAboutIt": [
+    "Ask what they are actually listening to, then listen to one of them together.",
+    "Explicit tags are applied by the artist and label, not by Spotify, so the tag is inconsistent and plenty slips through untagged. Worth them knowing the filter is not a promise.",
+    "Agree what they do if a podcast turns out to be aimed at adults: stop it and tell you, rather than keep it to themselves."
+   ],
+   "links": [
+    {
+     "label": "Spotify: guidance for parents and caregivers (official)",
+     "url": "https://www.spotify.com/us/safetyandprivacy/parental-guide"
+    },
+    {
+     "label": "Spotify: managed accounts for young listeners (official)",
+     "url": "https://support.spotify.com/us/article/managed-accounts/"
+    },
+    {
+     "label": "Spotify: setting up a managed account (official)",
+     "url": "https://support.spotify.com/us/article/setting-up-a-managed-account-on-premium-family/"
+    },
+    {
+     "label": "Spotify: explicit content settings (official)",
+     "url": "https://support.spotify.com/us/article/explicit-content/"
+    },
+    {
+     "label": "Spotify: video and Canvas settings (official)",
+     "url": "https://support.spotify.com/us/article/video-settings/"
+    },
+    {
+     "label": "Spotify: graduating to a self-managed account (official)",
+     "url": "https://support.spotify.com/us/article/graduating-to-a-self-managed-account/"
+    }
+   ],
+   "kidsAlt": {
+    "name": "A managed account",
+    "form": "a different kind of account in the same app",
+    "bands": [
+     "0-6",
+     "7-11",
+     "11-12"
+    ],
+    "what": "For under-13s, and it is the real answer rather than a lighter version of one. Music only, so podcasts and audiobooks are absent rather than filtered. Explicit content is blocked automatically on every new managed account, video and Canvas are off by default, the profile cannot be searched or found by other people, there are no purchases, and Spotify's social features are unavailable. It sits behind a parental controls PIN, so unlike the ordinary explicit filter your child cannot reverse it. Works on the free tier, with ads, or on Premium Family without.",
+    "watchOut": "Converting an account they already have is possible, but Spotify says the young listener will immediately lose access to some content and features, so anything they follow outside music disappears at that moment. We could not confirm whether converting back is possible. One genuinely good surprise: they stay on it until 18, not 13, and keep playlists, saved music and recommendations when they graduate.",
+    "countryNote": "Reached the United States and the UK on 15 July 2026, and Canada and Ireland on 28 July 2026, so all four countries here are covered.",
+    "confidence": "high",
+    "link": "https://support.spotify.com/us/article/managed-accounts/"
+   }
   }
  },
  "_new": {},

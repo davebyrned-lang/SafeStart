@@ -588,6 +588,23 @@ function check(name, condition, detail) {
     check('the age check gate is stated', /age check/i.test(robloxText));
     check('creator-built chat is flagged as out of reach', /creator/i.test(robloxText));
 
+    console.log('\nspotify');
+    // A parent asked how to stop explicit lyrics and videos. The honest answer is
+    // that the switch everyone reaches for covers songs and nothing else, so the
+    // boundary has to be on the page, not buried.
+    await page.goto(BASE + '/spotify/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const spText = await page.locator('#app').textContent();
+    check('the filter boundary is stated, not implied',
+      /not to podcasts, audiobooks|does not cover podcasts|podcasts, audiobooks/i.test(spText));
+    check('video and Canvas are treated as a separate control', /Canvas/.test(spText));
+    check('managed accounts are the answer for under-13s', /managed account/i.test(spText));
+    check('and the PIN is named', /parental controls PIN/i.test(spText));
+    check('the teen gap is admitted rather than glossed',
+      /no Spotify setting a teenager cannot reverse|cannot reverse/i.test(spText));
+    const spShell = await (await page.request.get(BASE + '/spotify/')).text();
+    check('graduation is at 18, not 13', /18, not 13/.test(spShell));
+
     console.log('\nfixing a bad setup');
     // Parents told us they had already set devices up, badly, and wanted to start
     // over. Starting over is usually the wrong answer and sometimes an

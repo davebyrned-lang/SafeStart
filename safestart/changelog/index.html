@@ -1055,7 +1055,12 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">23 entries</span><span class="pill">7 corrections</span></div>
+<div class="meta-row"><span class="pill">24 entries</span><span class="pill">7 corrections</span></div>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>8 September 2026</time></div>
+<h2>Spotify added, and the explicit filter does less than everyone thinks</h2>
+<p>A parent asked how to stop explicit lyrics and videos. The short answer is that the switch every article points you at covers songs and stops there. Spotify&#39;s own guidance for parents says the filter applies to songs tagged explicit by creators and rightsholders, and not to podcasts, audiobooks, or videos tagged 18+ by rights holders. Podcasts are where most of the strong language on Spotify actually is, and that switch does nothing to them. Two more things worth saying plainly. On an ordinary account the filter lives in your child&#39;s own settings, so it is theirs to switch back, and there is no parent-side lock for it. And video is a separate control again, covering music videos and Canvas, the short looping visual behind a track, which is the other half of what the question was about. For an under-13 there is a much better answer than any of this, and it is fairly new. A managed account is music only, so podcasts and audiobooks are absent rather than filtered. Explicit content is blocked automatically on every new one, video and Canvas are off by default, the profile cannot be searched, there are no purchases, and it sits behind a parental controls PIN, so unlike the ordinary filter your child cannot undo it. It runs on the free tier with ads as well as on Premium Family. It reached the United States and the UK on 15 July 2026 and Canada and Ireland on 28 July, so all four countries here have it. One good surprise: a young listener stays on a managed account until 18, not 13, and keeps playlists, saved music and recommendations when they graduate. The uncomfortable part is the teenagers. There is no managed account for a 13 to 17 year old, and apart from video on a Family plan there is no Spotify setting they cannot reverse. The guide says so rather than pretending otherwise, and treats those years as a conversation instead of a control panel. One thing we could not confirm: whether converting an existing account to a managed one can be undone. Spotify says the young listener will immediately lose access to some content and features, and is silent on going back, so the guide calls it a decision rather than an experiment.</p>
+</article>
 <article class="log-entry log-site">
 <div class="log-head"><span class="log-kind">Change</span><time>7 September 2026</time></div>
 <h2>A third option for the parents who already set it up, badly</h2>
@@ -1321,7 +1326,7 @@ var GUIDE_ICON = {
 var KIND_ICON = {
   Game: "gamepad", Social: "people", Chat: "bubbles",
   Video: "play", Device: "monitor", Messaging: "bubbles",
-  "Start here": "people", Other: "shield"
+  Music: "music", "Start here": "people", Other: "shield"
 };
 
 function icon(name, cls) {

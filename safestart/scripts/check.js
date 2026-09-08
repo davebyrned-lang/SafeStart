@@ -134,6 +134,24 @@ Object.keys(data.guides).forEach((id) => {
 });
 ok(`${preCount} preinstalled apps listed across the device guides`);
 
+/* Adding a guide with a new kind silently falls back to the generic shield,
+ * which looks like a bug and nobody notices until a screenshot. Spotify shipped
+ * with one for about ten minutes. */
+console.log('\nkind icons');
+{
+  const appSrc = fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf8');
+  const map = appSrc.match(/var KIND_ICON\s*=\s*\{([\s\S]*?)\}/);
+  if (!map) fail('cannot find KIND_ICON in src/app.html');
+  else {
+    const named = new Set([...map[1].matchAll(/["']?([\w ]+)["']?\s*:/g)].map((m) => m[1].trim()));
+    const kinds = [...new Set(Object.values(data.guides).map((g) => g.kind))];
+    kinds.forEach((k) => {
+      if (!named.has(k)) fail(`kind "${k}" has no icon, so it falls back to the generic shield`);
+    });
+    ok(`${kinds.length} kinds, every one with its own icon`);
+  }
+}
+
 /* Fixing a bad setup.
  *
  * Two rules here, and both exist because this content is more dangerous than
