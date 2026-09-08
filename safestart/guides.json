@@ -676,7 +676,7 @@
     "firetablet"
    ],
    "minAge": 13,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 10,
    "risks": [
@@ -779,7 +779,7 @@
      "why": "Sleep Mode mutes notifications and auto-replies to DMs overnight. It’s the setting most likely to actually improve things.",
      "path": "Settings and privacy → Time management",
      "do": [
-      "Confirm Sleep Mode is on (default is 10pm to 8am).",
+      "Confirm Sleep Mode is on. It runs 10pm to 7am and is on by default on a Teen Account.",
       "Set a daily time limit if you want a firmer stop."
      ],
      "mins": 1,
@@ -787,7 +787,8 @@
      "heldByAge": {
       "13-15": "locked",
       "16-17": "child"
-     }
+     },
+     "result": "Overnight, notifications are muted and anyone who messages them gets an auto-reply."
     },
     {
      "id": "followers",
@@ -992,7 +993,7 @@
     "xbox"
    ],
    "minAge": 13,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 12,
    "risks": [
@@ -1034,10 +1035,11 @@
      ],
      "recommended": {
       "13-15": "Block everywhere",
-      "16-17": "Block or Blur"
+      "16-17": "Block, though Blur is the other half of the only real choice"
      },
      "mins": 2,
-     "heldBy": "locked"
+     "heldBy": "locked",
+     "note": "Worth knowing, because it is unusually strong for Discord: a teen cannot switch this off. Discord's answer is that teens cannot disable the filters entirely, and the Show option is not offered to them at all. What they can choose is whether sensitive content in direct messages is blurred or blocked. So the decision here is which of those two, not whether to have it."
     },
     {
      "id": "dms",
@@ -1717,7 +1719,7 @@
     "iphone"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 15,
    "risks": [
@@ -1804,17 +1806,18 @@
      "do": [
       "Set age ratings for apps, films, TV and music.",
       "Open Web Content and choose the level below.",
-      "For younger children, Allowed Websites lets you list the only sites that work."
+      "For younger children, Only Approved Websites lets you list the only sites that work."
      ],
      "recommended": {
-      "0-6": "Allowed Websites Only, apps rated 9+",
-      "7-11": "Allowed Websites Only, apps rated 9+",
+      "0-6": "Only Approved Websites, apps rated 9+",
+      "7-11": "Only Approved Websites, apps rated 9+",
       "11-12": "Limit Adult Websites, apps rated 12+",
       "13-15": "Limit Adult Websites, apps rated 12+",
       "16-17": "Limit Adult Websites"
      },
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
      "id": "downtime",
@@ -1899,7 +1902,7 @@
     "ipad"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 15,
    "risks": [
@@ -1984,17 +1987,18 @@
      "do": [
       "Set age ratings for apps, films, TV and music.",
       "Open Web Content and pick the level below.",
-      "For younger children, Allowed Websites Only is much stronger than the adult filter."
+      "For younger children, Only Approved Websites is much stronger than the adult filter."
      ],
      "recommended": {
-      "0-6": "Allowed Websites Only, apps rated 9+",
-      "7-11": "Allowed Websites Only, apps rated 9+",
+      "0-6": "Only Approved Websites, apps rated 9+",
+      "7-11": "Only Approved Websites, apps rated 9+",
       "11-12": "Limit Adult Websites, apps rated 12+",
       "13-15": "Limit Adult Websites, apps rated 12+",
       "16-17": "Limit Adult Websites"
      },
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
      "id": "downtime",
@@ -2061,7 +2065,7 @@
     "android"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 15,
    "risks": [
@@ -2165,14 +2169,15 @@
      "why": "YouTube has its own content levels that sit inside Family Link.",
      "path": "Family Link → [your child] → Controls → Content restrictions → YouTube",
      "do": [
-      "Choose the content setting: Explore (9+), Explore more (13+) or Most of YouTube.",
+      "Choose the content setting. Google uses two names for each: Older kids or Explore (9+), Teens or Explore more (13+), Older teens or Most of YouTube.",
       "Consider the YouTube Kids app instead for under-9s."
      ],
      "mins": 2,
      "redundantWith": [
       "youtube-detail"
      ],
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "note": "Google's own pages disagree on these names and neither set carries a change notice, so you may see either. They are the same three settings."
     }
    ],
    "checklist": [
@@ -2366,7 +2371,7 @@
     "mac"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "medium",
    "minutes": 12,
    "risks": [
@@ -2418,19 +2423,20 @@
      "path": "Screen Time → Content & Privacy",
      "do": [
       "Turn on Content & Privacy.",
-      "Under Content Restrictions, set web content to Limit Adult Websites, or Allowed Websites Only for younger children.",
+      "Under Content Restrictions, set web content to Limit Adult Websites, or Only Approved Websites for younger children.",
       "Set app and media age ratings.",
       "Under Store Restrictions, turn off in-app purchases and require a password for every purchase."
      ],
      "recommended": {
-      "0-6": "Allowed Websites Only",
-      "7-11": "Allowed Websites Only",
+      "0-6": "Only Approved Websites",
+      "7-11": "Only Approved Websites",
       "11-12": "Limit Adult Websites",
       "13-15": "Limit Adult Websites",
       "16-17": "Limit Adult Websites"
      },
      "mins": 3,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
      "id": "downtime",
@@ -2917,7 +2923,7 @@
     "switch"
    ],
    "minAge": 0,
-   "lastVerified": "2026-08-20",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 10,
    "risks": [
@@ -2973,9 +2979,9 @@
      "why": "Stops screenshots being posted publicly and limits in-game communication with strangers. It also stops them sending screenshots to friends, which for a lot of children is half the fun of the console, so this is worth deciding deliberately rather than taking whatever the age preset picked.",
      "path": "App → Console settings → Custom settings",
      "do": [
-      "Turn off Posting to Social Media.",
       "Restrict Communicating with Others.",
-      "Note that some games route voice chat through the Nintendo Switch Online phone app, which sits outside these controls, so check that separately."
+      "On the original Switch, also turn off Posting to Social Media.",
+      "On Switch 2 there is no such setting, because Nintendo removed posting to social media from the console itself."
      ],
      "ages": [
       "0-6",
@@ -2984,7 +2990,8 @@
       "13-15"
      ],
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "note": "Voice chat is two different things and they land differently. GameChat is built into Switch 2, and it is inside these controls: Nintendo requires a parent to be involved in setting it up and using it for anyone under 16 or on a supervised account, managed through the Parental Controls app, and permission is needed every time a younger player wants video chat. Separately, some games route voice through the Nintendo Switch App on a phone, for players 13 and over, and that genuinely does sit outside these controls. Check that one on the phone."
     },
     {
      "id": "time",
@@ -4208,7 +4215,7 @@
     "applewatch"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-04",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 10,
    "priority": 0,
@@ -4264,7 +4271,7 @@
      "do": [
       "Apple: Settings, then Family, then Add Member, then Create Child Account.",
       "Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.",
-      "Microsoft: add them at family.microsoft.com, then give parental consent when prompted."
+      "Microsoft: sign in at account.microsoft.com/family, choose Add a family member, pick Member for a child, then give parental consent when prompted."
      ],
      "note": "The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.",
      "mins": 3,
@@ -4348,7 +4355,7 @@
     "applewatch"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-04",
+   "lastVerified": "2026-09-08",
    "sourceConfidence": "high",
    "minutes": 8,
    "priority": 4,
@@ -4402,7 +4409,7 @@
       "Confirm it is on. For under-18s it is on by default on current software.",
       "For an under-13, viewing the blurred photo needs your Screen Time passcode, so that gate is real."
      ],
-     "note": "It covers Messages, AirDrop, FaceTime, contact posters, shared albums and some third-party apps. The detection happens on the device: Apple never sees the photo and never learns that anything was found. For under-13s it prompts the child to start a conversation with you, which is the design. It points them at you rather than reporting to you.",
+     "note": "It covers Messages, AirDrop, FaceTime, contact posters, shared albums and some third-party apps. Detection happens on the device, and Apple's words are that it does not receive an indication that nudity was detected and does not get access to the photos or videos. There is one route by which Apple does see it, and it is worth knowing rather than being a footnote: your child can choose to report the content in iMessage or FaceTime, and then the sensitive content is sent to Apple for review. Apple may pass reports to law enforcement and act on the sender's account. For under-13s the feature also prompts the child to start a conversation with you, which is the design. It points them at you rather than reporting to you.",
      "mins": 2,
      "heldBy": "parent"
     },
