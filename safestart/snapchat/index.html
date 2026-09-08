@@ -699,6 +699,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1155,10 +1169,10 @@ button { font: inherit; cursor: pointer; }
 </ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Add each other as friends</h3></span></div><div class="step-body"><p class="why">Family Center only works between accounts that are already friends.</p><ol class="do-list"><li>On your account, tap Add Friends and search your child’s username.</li><li>Have them accept.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set up Family Center</h3></span></div><div class="step-body"><p class="why">It shows you their contacts from the last week and lets you report accounts directly to Snapchat.</p><p class="path"><code>Profile → ⚙️ Settings → Privacy Control → Family Center</code></p><ol class="do-list"><li>Open your profile, tap the gear icon, then Privacy Control, then Family Center.</li><li>Select your child’s name and send the invitation.</li><li>On their phone, they tap View Invitation, then Accept.</li></ol><p class="result">You’ll see who they’ve messaged in the last seven days and their friends list.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Ghost Mode</h3></span></div><div class="step-body"><p class="why">Snap Map shows live location to everyone on their friends list, which for most children makes this the single most important setting on Snapchat. One thing to expect: Ghost Mode hides them from everyone on that list, and if you are on it, that includes you.</p><p class="path"><code>Map screen → ⚙️ (top right) → Ghost Mode</code></p><ol class="do-list"><li>From the camera screen, tap the location pin at the bottom left to open the Map.</li><li>Tap the gear icon in the top right.</li><li>Turn on Ghost Mode.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Ghost Mode on</td></tr><tr><td>7–11</td><td>Ghost Mode on</td></tr><tr><td>11–12</td><td>Ghost Mode on</td></tr><tr><td>13–15</td><td>Ghost Mode on, or share with a small chosen list</td></tr><tr><td>16–17</td><td>Agree together. At minimum, not &#39;My Friends&#39;</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Limit who can contact them and see their story</h3></span></div><div class="step-body"><p class="why">Default settings are more open than most parents expect.</p><p class="path"><code>Profile → ⚙️ Settings → Privacy Controls</code></p><ol class="do-list"><li>Open Contact Me and set it to Friends.</li><li>Open View My Story and set it to My Friends, or a Custom list.</li><li>Turn off Quick Add so they stop being suggested to strangers.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends only, Quick Add off<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Friends only, Quick Add off<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Restrict sensitive content in Stories and Spotlight</h3></span></div><div class="step-body"><p class="why">Discover and Spotlight are public feeds, and they’re where most of the age-inappropriate content sits.</p><p class="path"><code>Family Center → Content Controls</code></p><ol class="do-list"><li>In Family Center, open Content Controls.</li><li>Turn on the restriction for sensitive content.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set up Family Center</h3></span></div><div class="step-body"><p class="why">It shows you their contacts from the last week and lets you report accounts directly to Snapchat.</p><p class="path"><code>Profile → ⚙️ Settings → Privacy Control → Family Center</code></p><ol class="do-list"><li>Open your profile, tap the gear icon, then Privacy Control, then Family Center.</li><li>Select your child’s name and send the invitation.</li><li>On their phone, they tap View Invitation, then Accept.</li></ol><p class="result">You’ll see who they’ve messaged in the last seven days and their friends list.</p><p class="held-by held-shared"><span><b>Who holds this: </b>Either of you can change this, and neither of you is told when the other does.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn on Ghost Mode</h3></span></div><div class="step-body"><p class="why">Snap Map shows live location to everyone on their friends list, which for most children makes this the single most important setting on Snapchat. One thing to expect: Ghost Mode hides them from everyone on that list, and if you are on it, that includes you.</p><p class="path"><code>Map screen → ⚙️ (top right) → Ghost Mode</code></p><ol class="do-list"><li>From the camera screen, tap the location pin at the bottom left to open the Map.</li><li>Tap the gear icon in the top right.</li><li>Turn on Ghost Mode.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Ghost Mode on</td></tr><tr><td>7–11</td><td>Ghost Mode on</td></tr><tr><td>11–12</td><td>Ghost Mode on</td></tr><tr><td>13–15</td><td>Ghost Mode on, or share with a small chosen list</td></tr><tr><td>16–17</td><td>Agree together. At minimum, not &#39;My Friends&#39;</td></tr></tbody></table></div><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Limit who can contact them and see their story</h3></span></div><div class="step-body"><p class="why">Default settings are more open than most parents expect.</p><p class="path"><code>Profile → ⚙️ Settings → Privacy Controls</code></p><ol class="do-list"><li>Open Contact Me and set it to Friends.</li><li>Open View My Story and set it to My Friends, or a Custom list.</li><li>Turn off Quick Add so they stop being suggested to strangers.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends only, Quick Add off<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Friends only, Quick Add off<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Restrict sensitive content in Stories and Spotlight</h3></span></div><div class="step-body"><p class="why">Discover and Spotlight are public feeds, and they’re where most of the age-inappropriate content sits.</p><p class="path"><code>Family Center → Content Controls</code></p><ol class="do-list"><li>In Family Center, open Content Controls.</li><li>Turn on the restriction for sensitive content.</li></ol><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Talk about the disappearing part</h3></span></div><div class="step-body"><p class="why">Children often believe a snap is gone forever. It isn’t. Anyone can screenshot or photograph the screen with another phone.</p><ol class="do-list"><li>Explain that anything sent can be saved by the person receiving it.</li><li>Agree that if they’re ever sent something upsetting, they screenshot it before it disappears and show you.</li></ol></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -2445,6 +2459,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2836,6 +2852,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2924,6 +2942,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

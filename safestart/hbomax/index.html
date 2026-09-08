@@ -685,6 +685,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1144,7 +1158,7 @@ button { font: inherit; cursor: pointer; }
 </ul></div>
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Make them a Kids profile</h3></span></div><div class="step-body"><p class="why">A Kids profile filters the home screen and search as well as playback, so things they should not see never appear. It can never reach R or TV-MA whatever else you set.</p><ol class="do-list"><li>Add a profile, mark it as a Kids profile, and enter their date of birth.</li><li>Pick the rating group for their age.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>G, TV-Y (up to age 5)</td></tr><tr><td>7–11</td><td>G, TV-Y7, TV-G (ages 6+)</td></tr><tr><td>11–12</td><td>PG, TV-PG (ages 10+)</td></tr><tr><td>13–15</td><td>PG-13, TV-14 (ages 13+), which is as high as a Kids profile goes</td></tr><tr><td>16–17</td><td>An adult profile with a rating you agree together</td></tr></tbody></table></div><p class="note">New accounts arrive with a default Kids profile already set to PG and TV-PG, which is aimed at ages 10 and up. If your child is younger, change it rather than assuming a Kids profile means young. Kids Mode cannot be switched off on a profile whose birthdate is under 18. On content: Sesame Street moved to Netflix in 2025 with worldwide premiere rights, so do not subscribe here for new episodes. Studio Ghibli is on HBO Max in the United States, where GKIDS holds exclusive US streaming rights. We could not confirm Ghibli for the UK and Ireland, so check before counting on it.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the Parent Code and turn on Kid-Proof Exit</h3></span></div><div class="step-body"><p class="why">This is the step that turns the Kids profile from a suggestion into a control, and it is off until you do it. It is the thing most parents are caught by, because the profile looks locked and is not.</p><p class="path"><code>play.hbomax.com/parent-code</code></p><ol class="do-list"><li>Set the four-digit Parent Code at play.hbomax.com/parent-code.</li><li>Turn on Kid-Proof Exit for the Kids profile.</li></ol><p class="note">There is one Parent Code for the whole account, and it applies to every Kids profile on it.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the Parent Code and turn on Kid-Proof Exit</h3></span></div><div class="step-body"><p class="why">This is the step that turns the Kids profile from a suggestion into a control, and it is off until you do it. It is the thing most parents are caught by, because the profile looks locked and is not.</p><p class="path"><code>play.hbomax.com/parent-code</code></p><ol class="do-list"><li>Set the four-digit Parent Code at play.hbomax.com/parent-code.</li><li>Turn on Kid-Proof Exit for the Kids profile.</li></ol><p class="note">There is one Parent Code for the whole account, and it applies to every Kids profile on it.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Put a PIN on every adult profile</h3></span></div><div class="step-body"><p class="why">Kid-Proof Exit stops them leaving. A profile PIN stops them arriving. You need both, because by default a new adult profile can watch everything and the app reopens wherever it was last.</p><ol class="do-list"><li>Add a four-digit Profile PIN to your own profile.</li><li>Do the same on every other adult profile, not just yours.</li></ol></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Let the device do the rest</h3></span></div><div class="step-body"><p class="why">HBO Max follows the device&#39;s own parental controls when those are stricter, which makes the device a genuine backstop here. It does not follow controls you set with a TV provider.</p><ol class="do-list"><li>Set the device controls too, from the guide for that device.</li></ol></div></li>
 </ol>
@@ -2430,6 +2444,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2821,6 +2837,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2909,6 +2927,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

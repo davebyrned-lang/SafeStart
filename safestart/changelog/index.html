@@ -615,6 +615,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1055,7 +1069,12 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">24 entries</span><span class="pill">7 corrections</span></div>
+<div class="meta-row"><span class="pill">25 entries</span><span class="pill">8 corrections</span></div>
+<article class="log-entry log-correction">
+<div class="log-head"><span class="log-kind">Correction</span><time>8 September 2026</time></div>
+<h2>Every setting now says whether your child can just switch it back</h2>
+<p>This one started with YouTube telling us we had autoplay wrong. We had sent parents to the autoplay switch inside the child&#39;s own YouTube settings, which the child can undo, when the one that holds is on the parent&#39;s account. Then building the Spotify guide turned up exactly the same thing: the explicit filter everyone points at lives in your child&#39;s settings, and there is no parent-side lock for it. Two is a pattern worth checking, so we checked. Across the site, 53 steps send a parent into an app&#39;s own settings screen. We sampled fourteen of the ones most likely to be affected, and all fourteen were silent on whether the child could reverse them. Discord&#39;s privacy settings. WhatsApp&#39;s four privacy controls. Snapchat&#39;s Ghost Mode and contact settings. Twitch chat filters. Instagram&#39;s messages, privacy and time settings. Roblox&#39;s age check. TikTok&#39;s privacy and contact settings. Every one of them left the most important question unanswered, which is the failure that actually matters here: a parent works down the list, ticks the checklist, and believes they are finished, when some of what they set will be gone by the weekend. So every settings step on the site now carries one line saying who holds it, in the same words on every app, the way the chat settings already do. There are five answers. You set this and your child cannot change it back. Your child cannot loosen this without proving to the platform that they are an adult. This lives in your child&#39;s own settings, so they can change it back. Either of you can change it and neither is told when the other does. And it is held by the device passcode rather than the app. The count across 136 settings steps: 110 you hold, 20 your child holds, 4 shared, 1 the platform locks, 1 the device. Two of them change hands at a birthday, and those are the ones worth knowing about most. Roblox hands chat and voice to your child at 13. Instagram lets a 16 year old loosen what a 15 year old needs your permission for. Those now give a different answer depending on the age you have picked. The reassuring answers matter as much as the warnings. Most of this site describes controls that genuinely hold, and until now we never said so. One thing verified on the way: Discord teens cannot turn the sensitive content filter off at all, only choose whether it blurs or blocks. The build now fails if anyone adds a settings step without answering the question.</p>
+</article>
 <article class="log-entry log-site">
 <div class="log-head"><span class="log-kind">Change</span><time>8 September 2026</time></div>
 <h2>Spotify added, and the explicit filter does less than everyone thinks</h2>
@@ -2441,6 +2460,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2832,6 +2853,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2920,6 +2943,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

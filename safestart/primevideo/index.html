@@ -706,6 +706,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1163,11 +1177,11 @@ button { font: inherit; cursor: pointer; }
 <li>Make a list of every device the household watches on. You will need to repeat one step on each.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Create the Account PIN</h3></span></div><div class="step-body"><p class="why">This one PIN sits above everything. It locks purchases, overrides any profile PIN, and controls who can add or remove profiles.</p><p class="path"><code>Your Profiles → Edit profile → Account PIN and locks</code></p><ol class="do-list"><li>Go to Your Profiles, then Edit profile, and pick the account holder&#39;s profile.</li><li>Choose Manage next to Account PIN and locks.</li><li>Enter your Amazon details.</li><li>Choose Create next to Prime Video Account PIN, set it, and continue.</li></ol><p class="note">Creating the PIN is not the same as switching restrictions on. On Android in particular they are two separate actions, so do the next steps as well.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Make them a kids profile</h3></span></div><div class="step-body"><p class="why">A kids profile only shows titles rated 12 and under, filters search, and blocks purchases outright.</p><p class="path"><code>Profile icon → Add new</code></p><ol class="do-list"><li>Hover over your profile icon and choose Add new, or use Edit profiles on mobile.</li><li>Name it and set it up as a kids profile.</li><li>You can have up to six profiles in total.</li></ol><p class="note">Be aware of one real hole: downloads made on an adult profile, including an 18-rated film, stay accessible from the kids profile.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set viewing restrictions, then repeat on every device</h3></span></div><div class="step-body"><p class="why">This is the trap. Prime Video&#39;s own help pages say it plainly: viewing restrictions only apply to the device that set them up. The settings screen does not look like that.</p><p class="path"><code>Account &amp; Settings → Permissions</code></p><ol class="do-list"><li>On a computer, go to Account &amp; Settings, then Permissions.</li><li>Choose the age restriction and tick the devices you want it to apply to.</li><li>Save.</li><li>Now do the same on the TV, the tablet and any phone they watch on.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Kids (All) or Older Kids (7+)</td></tr><tr><td>7–11</td><td>Kids (All) or Older Kids (7+)</td></tr><tr><td>11–12</td><td>Older Kids (7+)</td></tr><tr><td>13–15</td><td>Teens (13+)</td></tr><tr><td>16–17</td><td>Young Adults (16+), or agree it together</td></tr></tbody></table></div><p class="result">Only content at or below that level plays on the devices you ticked.</p><p class="note">The five levels are Kids (All), Older Kids (7+), Teens (13+), Young Adults (16+) and Adults (18+). They map to local ratings, so in the UK and Ireland they line up with U, PG, 12, 15 and 18.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Lock purchases</h3></span></div><div class="step-body"><p class="why">Rentals and purchases are one tap from the same screen they watch on.</p><p class="path"><code>Account &amp; Settings → Permissions → purchase restrictions</code></p><ol class="do-list"><li>From the same Permissions screen, turn on purchase restrictions.</li><li>On Android this lives under Settings, then Parental Controls, then Purchase Restrictions.</li></ol><p class="result">Buying or renting now needs your Account PIN.</p><p class="note">Purchase restrictions do apply to every profile and every device, unlike viewing restrictions.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Lock your own profile and stop new ones</h3></span></div><div class="step-body"><p class="why">Otherwise your child watches from your profile instead of theirs.</p><p class="path"><code>Your Profiles → Edit profile → Profile / Account PIN and locks</code></p><ol class="do-list"><li>Go to Your Profiles, Edit profile, then your own profile.</li><li>Choose Manage next to Profile / Account PIN and locks, enter your password and PIN.</li><li>Switch Profile lock on and save.</li><li>On the same screen, switch Creation and removal lock on.</li></ol></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Create the Account PIN</h3></span></div><div class="step-body"><p class="why">This one PIN sits above everything. It locks purchases, overrides any profile PIN, and controls who can add or remove profiles.</p><p class="path"><code>Your Profiles → Edit profile → Account PIN and locks</code></p><ol class="do-list"><li>Go to Your Profiles, then Edit profile, and pick the account holder&#39;s profile.</li><li>Choose Manage next to Account PIN and locks.</li><li>Enter your Amazon details.</li><li>Choose Create next to Prime Video Account PIN, set it, and continue.</li></ol><p class="note">Creating the PIN is not the same as switching restrictions on. On Android in particular they are two separate actions, so do the next steps as well.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Make them a kids profile</h3></span></div><div class="step-body"><p class="why">A kids profile only shows titles rated 12 and under, filters search, and blocks purchases outright.</p><p class="path"><code>Profile icon → Add new</code></p><ol class="do-list"><li>Hover over your profile icon and choose Add new, or use Edit profiles on mobile.</li><li>Name it and set it up as a kids profile.</li><li>You can have up to six profiles in total.</li></ol><p class="note">Be aware of one real hole: downloads made on an adult profile, including an 18-rated film, stay accessible from the kids profile.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set viewing restrictions, then repeat on every device</h3></span></div><div class="step-body"><p class="why">This is the trap. Prime Video&#39;s own help pages say it plainly: viewing restrictions only apply to the device that set them up. The settings screen does not look like that.</p><p class="path"><code>Account &amp; Settings → Permissions</code></p><ol class="do-list"><li>On a computer, go to Account &amp; Settings, then Permissions.</li><li>Choose the age restriction and tick the devices you want it to apply to.</li><li>Save.</li><li>Now do the same on the TV, the tablet and any phone they watch on.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Kids (All) or Older Kids (7+)</td></tr><tr><td>7–11</td><td>Kids (All) or Older Kids (7+)</td></tr><tr><td>11–12</td><td>Older Kids (7+)</td></tr><tr><td>13–15</td><td>Teens (13+)</td></tr><tr><td>16–17</td><td>Young Adults (16+), or agree it together</td></tr></tbody></table></div><p class="result">Only content at or below that level plays on the devices you ticked.</p><p class="note">The five levels are Kids (All), Older Kids (7+), Teens (13+), Young Adults (16+) and Adults (18+). They map to local ratings, so in the UK and Ireland they line up with U, PG, 12, 15 and 18.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Lock purchases</h3></span></div><div class="step-body"><p class="why">Rentals and purchases are one tap from the same screen they watch on.</p><p class="path"><code>Account &amp; Settings → Permissions → purchase restrictions</code></p><ol class="do-list"><li>From the same Permissions screen, turn on purchase restrictions.</li><li>On Android this lives under Settings, then Parental Controls, then Purchase Restrictions.</li></ol><p class="result">Buying or renting now needs your Account PIN.</p><p class="note">Purchase restrictions do apply to every profile and every device, unlike viewing restrictions.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Lock your own profile and stop new ones</h3></span></div><div class="step-body"><p class="why">Otherwise your child watches from your profile instead of theirs.</p><p class="path"><code>Your Profiles → Edit profile → Profile / Account PIN and locks</code></p><ol class="do-list"><li>Go to Your Profiles, Edit profile, then your own profile.</li><li>Choose Manage next to Profile / Account PIN and locks, enter your password and PIN.</li><li>Switch Profile lock on and save.</li><li>On the same screen, switch Creation and removal lock on.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>If you watch on a Fire TV, set that separately</h3></span></div><div class="step-body"><p class="why">Fire TV has its own parental controls, and nothing in Prime Video&#39;s settings covers them.</p><ol class="do-list"><li>On the Fire TV device itself, open Settings, then Preferences, then Parental Controls.</li><li>Turn them on and set a PIN.</li></ol><p class="note">Amazon states this outright: Fire TV parental controls have to be managed on the device.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Add a device-level backstop</h3></span></div><div class="step-body"><p class="why">These settings only cover this one service. A device-level control catches the app they download next.</p><ol class="do-list"><li>Set up Screen Time, Family Link, Microsoft Family Safety or your console&#39;s own controls.</li><li>Require your approval for new app downloads.</li></ol><p class="note">SafeStart has a separate guide for each of these. Pick your device on the home screen.</p></div></li>
 </ol>
@@ -2455,6 +2469,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2846,6 +2862,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2934,6 +2952,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

@@ -692,6 +692,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1153,7 +1167,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Give them their own account, not yours</h3></span></div><div class="step-body"><p class="why">Sharing yours is the fastest setup and the one that causes the most trouble later. Apple&#39;s own words: you might receive text messages and voicemails intended for your family member, and your call history will include their calls. It runs the other way too, which is the part parents do not expect. And if family sharing ever stops, whoever owns the account keeps everything bought on it.</p><ol class="do-list"><li>Check whose account is actually signed in on the device.</li><li>If it is yours, plan on giving them their own before you set anything else up.</li><li>On Apple, everything below assumes a Child Account inside your Family Sharing group.</li></ol><p class="note">Apple publishes a page recommending you do not share an Apple Account, and it lists exactly what leaks: messages, voicemails, call history, music recommendations, book and podcast bookmarks, and health data.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Decide whether they need an email address</h3></span></div><div class="step-body"><p class="why">Parents keep asking us this, and the honest answer is that it depends on the platform. On Apple you can skip it entirely, which surprises almost everyone.</p><ol class="do-list"><li>Apple: creating a Child Account lets you choose their own email address, a suggested @icloud.com address, or just a Game Center nickname. The nickname route means no email address at all.</li><li>Google: a supervised account normally needs a Gmail address. The one documented exception is a child under 9 on a Pixel Tablet, who gets an auto-generated @glimitedaccount.com that is not a working address.</li><li>Microsoft: you add a child to your family group by email or phone number, so an address they already have will do.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>No email address. Use the Game Center nickname on Apple</td></tr><tr><td>7–11</td><td>No email address unless something specific needs one</td></tr><tr><td>11–12</td><td>An address, if school or an app requires it</td></tr><tr><td>13–15</td><td>Their own address, and you know what it is</td></tr><tr><td>16–17</td><td>Their own address</td></tr></tbody></table></div><p class="note">Google warns you may need to add a Gmail address later anyway for certain apps and services. Microsoft does not publish whether a brand new child account has to use an Outlook address, so treat that one as unconfirmed.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Create it with their real date of birth</h3></span></div><div class="step-body"><p class="why">The account type is set at creation and is not equally fixable afterwards. Apple and Microsoft let you correct a birthday, Google gives you a fourteen-day window, and PlayStation does not let you change it at all.</p><p class="path"><code>Apple: Settings → Family → Add Member → Create Child Account</code></p><ol class="do-list"><li>Apple: Settings, then Family, then Add Member, then Create Child Account.</li><li>Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.</li><li>Microsoft: add them at family.microsoft.com, then give parental consent when prompted.</li></ol><p class="note">The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.</p><div class="undo"><span class="undo-label">Already done this?</span><p>If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple&#39;s rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.</p></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Create it with their real date of birth</h3></span></div><div class="step-body"><p class="why">The account type is set at creation and is not equally fixable afterwards. Apple and Microsoft let you correct a birthday, Google gives you a fourteen-day window, and PlayStation does not let you change it at all.</p><p class="path"><code>Apple: Settings → Family → Add Member → Create Child Account</code></p><ol class="do-list"><li>Apple: Settings, then Family, then Add Member, then Create Child Account.</li><li>Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.</li><li>Microsoft: add them at family.microsoft.com, then give parental consent when prompted.</li></ol><p class="note">The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple&#39;s rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Look at what the account switched on</h3></span></div><div class="step-body"><p class="why">Creating the account turns things on that you never chose. Apple does not publish a list of what is on by default, so the only reliable move is to look rather than assume.</p><ol class="do-list"><li>On Apple, open the child&#39;s iCloud settings and go through what is on: Mail, Messages, FaceTime, Find My, shared photos.</li><li>On Android, check which YouTube they have. A supervised account gets a supervised version of ordinary YouTube, which is not the same as the separate YouTube Kids app.</li><li>Turn off whatever they do not need yet. Adding something back later is easier than taking it away.</li></ol><p class="note">Apple does publish the safety defaults: web content restriction and Communication Safety are on for under-18s, and in many countries Ask to Buy is on and cannot be switched off for an under-18.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Write down what you set</h3></span></div><div class="step-body"><p class="why">In six months you will not remember which address you used, which birthday you entered, or where the passcode went. The passcode is the one families actually lose, and on some platforms losing it means a factory reset.</p><ol class="do-list"><li>Note the account address or nickname, the date of birth you entered, and where the passcode is kept.</li><li>Keep it somewhere your child will not come across.</li></ol></div></li>
 </ol>
@@ -2441,6 +2455,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2832,6 +2848,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2920,6 +2938,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

@@ -134,6 +134,55 @@ Object.keys(data.guides).forEach((id) => {
 });
 ok(`${preCount} preinstalled apps listed across the device guides`);
 
+/* Who holds the setting.
+ *
+ * The defect this exists to stop: describing a control that lives in the child's
+ * own settings as though the parent held it. It got past us on YouTube's
+ * autoplay, which YouTube reported, and on Spotify's explicit filter. A sample
+ * of fourteen more steps was silent on the question in all fourteen cases, so
+ * this is systematic rather than unlucky.
+ *
+ * Any step with a menu path is a settings step, and every settings step has to
+ * answer. The answer is often reassuring, which is the point. */
+console.log('\nwho holds the setting');
+{
+  const vocab = Object.keys(data.heldBy || {});
+  if (!vocab.length) fail('no heldBy vocabulary in guides.json');
+  const counts = {};
+  const missing = [];
+  Object.entries(data.guides).forEach(([id, g]) => {
+    (g.steps || []).forEach((s) => {
+      if (s.heldBy && !vocab.includes(s.heldBy)) {
+        fail(`${id}/${s.id}: heldBy "${s.heldBy}" is not in the vocabulary`);
+      }
+      // The age-banded form, for the settings that change hands at a birthday.
+      Object.entries(s.heldByAge || {}).forEach(([band, v]) => {
+        if (!bandIds.includes(band)) fail(`${id}/${s.id}: heldByAge has unknown band "${band}"`);
+        if (!vocab.includes(v)) fail(`${id}/${s.id}: heldByAge "${v}" is not in the vocabulary`);
+      });
+      if (!s.path) return;                       // not a settings step
+      const answer = s.heldBy || (s.heldByAge && Object.values(s.heldByAge)[0]);
+      if (!answer) { missing.push(`${id}/${s.id}`); return; }
+      // A step that changes hands must say so for every age it is shown to.
+      if (s.heldByAge && !s.heldBy) {
+        const need = (s.ages && s.ages.length ? s.ages : bandIds)
+          .filter((a) => parseInt(a, 10) >= (g.minAge || 0));
+        need.forEach((a) => {
+          if (!s.heldByAge[a]) fail(`${id}/${s.id}: heldByAge says nothing for ages ${a}`);
+        });
+      }
+      counts[answer] = (counts[answer] || 0) + 1;
+    });
+  });
+  if (missing.length) {
+    fail(`${missing.length} settings step(s) do not say who holds them:`);
+    missing.forEach((m) => console.error(`          ${m}`));
+  } else {
+    ok(Object.keys(counts).sort().map((k) => `${counts[k]} ${k}`).join(', '));
+    ok('every settings step says whether the child can reverse it');
+  }
+}
+
 /* Adding a guide with a new kind silently falls back to the generic shield,
  * which looks like a bug and nobody notices until a screenshot. Spotify shipped
  * with one for about ten minutes. */

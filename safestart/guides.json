@@ -242,7 +242,8 @@
      },
      "note": "Control loosens in stages, not all at once. At 13 they take over their own privacy and chat settings, and at 18 the account unlinks from you automatically. Roblox says the exact ages and features vary by region.",
      "mins": 2,
-     "undo": "If the birthday on the account is wrong, you can fix it from your linked parent account, but read this first. Roblox allows it once and only once: linked parents can only update a child's birthday once. And it becomes impossible entirely if the child has already verified with a government ID. Correcting it downward moves them into Roblox Kids for 5 to 8 or Select for 9 to 15, and you then have to complete the age check or, in Roblox's words, all communication will be unavailable."
+     "undo": "If the birthday on the account is wrong, you can fix it from your linked parent account, but read this first. Roblox allows it once and only once: linked parents can only update a child's birthday once. And it becomes impossible entirely if the child has already verified with a government ID. Correcting it downward moves them into Roblox Kids for 5 to 8 or Select for 9 to 15, and you then have to complete the age check or, in Roblox's words, all communication will be unavailable.",
+     "heldBy": "child"
     },
     {
      "id": "agecheck",
@@ -255,7 +256,8 @@
       "Check the account type afterwards, and that it matches their real age."
      ],
      "note": "A useful thing almost no guide mentions: if you both age check and add each other as friends, you can become a trusted friend of your own child and chat with them on the platform.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "link",
@@ -269,7 +271,8 @@
       "Create a Parent PIN. Choose something your child won’t guess, and not a birthday."
      ],
      "result": "Every setting below now requires your PIN to change.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "maturity",
@@ -289,7 +292,8 @@
       "16-17": "Moderate"
      },
      "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "chat",
@@ -318,6 +322,13 @@
       "11-12": "friends",
       "13-15": "friends",
       "16-17": "friends"
+     },
+     "heldByAge": {
+      "0-6": "parent",
+      "7-11": "parent",
+      "11-12": "parent",
+      "13-15": "child",
+      "16-17": "child"
      }
     },
     {
@@ -346,7 +357,14 @@
       "16-17": "friends"
      },
      "note": "Roblox contradicts itself on whether 9 to 12 year olds can use voice with friends at all. Its parental controls page implies a parent can enable it, and two other official pages say voice is not available under 13. We have written this to the stricter reading. Also worth knowing: all voice is recorded for moderation and you cannot opt out of that, and voice only exists in games whose creator built it in.",
-     "mins": 3
+     "mins": 3,
+     "heldByAge": {
+      "0-6": "parent",
+      "7-11": "parent",
+      "11-12": "parent",
+      "13-15": "child",
+      "16-17": "child"
+     }
     },
     {
      "id": "spend",
@@ -366,7 +384,8 @@
       "16-17": "An agreed monthly cap"
      },
      "note": "Roblox also sends high-spend alerts at $100, $250 and $500.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "screentime",
@@ -385,7 +404,8 @@
       "13-15": "Agree it together",
       "16-17": "Agree it together"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "friends",
@@ -506,7 +526,8 @@
      ],
      "result": "Everything below is now set from your phone.",
      "mins": 2,
-     "undo": "If the account was opened with a false adult birthday, Family Pairing will not fix it, because the age on the account is what drives every default. There is no self-serve correction. The appeal only opens once TikTok has restricted the account, and confirmation is by ID selfie, a parent's credit card with a small refunded charge, or a photo with an adult over 25. Download the data first."
+     "undo": "If the account was opened with a false adult birthday, Family Pairing will not fix it, because the age on the account is what drives every default. There is no self-serve correction. The appeal only opens once TikTok has restricted the account, and confirmation is by ID selfie, a parent's credit card with a small refunded charge, or a photo with an adult over 25. Download the data first.",
+     "heldBy": "parent"
     },
     {
      "id": "private",
@@ -521,7 +542,8 @@
       "13-15": "Private, on",
       "16-17": "Private, worth agreeing together"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "contact",
@@ -542,7 +564,8 @@
      "outcomeByAge": {
       "13-15": "friends",
       "16-17": "friends"
-     }
+     },
+     "heldBy": "parent"
     },
     {
      "id": "restricted",
@@ -553,7 +576,8 @@
       "Turn Restricted Mode on.",
       "Open Filter video keywords and add words relevant to your family. Diet and body-image terms are a common starting point."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "screentime",
@@ -568,7 +592,8 @@
       "13-15": "60 minutes, phone out of the bedroom overnight",
       "16-17": "Agree a limit together, keep the overnight block"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "reset",
@@ -675,7 +700,8 @@
      ],
      "result": "With a correct under-18 birthday, sensitive content filters, restricted DMs, a 60-minute daily reminder and overnight Sleep Mode all switch on automatically.",
      "mins": 1,
-     "undo": "If the birthday is wrong you can change it, in Accounts Center under Profiles and personal details. Instagram may ask for a video selfie or an ID check to allow it. The line that matters is 16, not 13: under-16s need your permission to loosen Teen Account settings, while 16 and 17 year olds can loosen them on their own unless supervision is set up. So if the true age is 16 or 17, correcting the birthday is not enough on its own, set up supervision as well. We could not confirm how many times a birthday can be changed or how long you wait between changes."
+     "undo": "If the birthday is wrong you can change it, in Accounts Center under Profiles and personal details. Instagram may ask for a video selfie or an ID check to allow it. The line that matters is 16, not 13: under-16s need your permission to loosen Teen Account settings, while 16 and 17 year olds can loosen them on their own unless supervision is set up. So if the true age is 16 or 17, correcting the birthday is not enough on its own, set up supervision as well. We could not confirm how many times a birthday can be changed or how long you wait between changes.",
+     "heldBy": "child"
     },
     {
      "id": "supervision",
@@ -689,7 +715,8 @@
       "Either of you can start the invite, and sometimes it’s easier if they invite you."
      ],
      "note": "You’ll see who they follow, who follows them, accounts they’ve interacted with recently, and daily screen time. You won’t see the content of their messages.",
-     "mins": 1
+     "mins": 1,
+     "heldBy": "shared"
     },
     {
      "id": "approvals",
@@ -722,6 +749,11 @@
      "outcomeByAge": {
       "13-15": "approved",
       "16-17": "approved"
+     },
+     "heldBy": "child",
+     "heldByAge": {
+      "13-15": "locked",
+      "16-17": "child"
      }
     },
     {
@@ -734,7 +766,12 @@
       "Turn off location tags when posting.",
       "Check their bio doesn’t name their school or team."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "child",
+     "heldByAge": {
+      "13-15": "locked",
+      "16-17": "child"
+     }
     },
     {
      "id": "time",
@@ -745,7 +782,12 @@
       "Confirm Sleep Mode is on (default is 10pm to 8am).",
       "Set a daily time limit if you want a firmer stop."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "child",
+     "heldByAge": {
+      "13-15": "locked",
+      "16-17": "child"
+     }
     },
     {
      "id": "followers",
@@ -836,7 +878,8 @@
       "On their phone, they tap View Invitation, then Accept."
      ],
      "result": "You’ll see who they’ve messaged in the last seven days and their friends list.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "shared"
     },
     {
      "id": "location",
@@ -855,7 +898,8 @@
       "13-15": "Ghost Mode on, or share with a small chosen list",
       "16-17": "Agree together. At minimum, not 'My Friends'"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "contact",
@@ -875,7 +919,8 @@
      "outcomeByAge": {
       "13-15": "friends",
       "16-17": "friends"
-     }
+     },
+     "heldBy": "child"
     },
     {
      "id": "content",
@@ -886,7 +931,8 @@
       "In Family Center, open Content Controls.",
       "Turn on the restriction for sensitive content."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "screenshots",
@@ -973,7 +1019,8 @@
      ],
      "result": "You’ll see new friends added, users messaged, servers joined and call durations for the last 7 days, plus a weekly email. You won’t see message content.",
      "mins": 2,
-     "undo": "If your teen has refused to link, or linked and then disconnected, there is no parental override to fall back on. Discord's words: both parents/guardians and teens must voluntarily opt into connecting. The teen generates the QR code, can disconnect at any time, and re-linking starts from scratch. It ends by itself the month they turn 18. If they will not link, your leverage is at the device level rather than inside Discord."
+     "undo": "If your teen has refused to link, or linked and then disconnected, there is no parental override to fall back on. Discord's words: both parents/guardians and teens must voluntarily opt into connecting. The teen generates the QR code, can disconnect at any time, and re-linking starts from scratch. It ends by itself the month they turn 18. If they will not link, your leverage is at the device level rather than inside Discord.",
+     "heldBy": "shared"
     },
     {
      "id": "content",
@@ -989,7 +1036,8 @@
       "13-15": "Block everywhere",
       "16-17": "Block or Blur"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "locked"
     },
     {
      "id": "dms",
@@ -1009,7 +1057,8 @@
      "outcomeByAge": {
       "13-15": "friends",
       "16-17": "friends"
-     }
+     },
+     "heldBy": "child"
     },
     {
      "id": "servers",
@@ -1034,7 +1083,8 @@
       "13-15": "{cur}0 unless agreed",
       "16-17": "A small agreed cap"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "screentime",
@@ -1044,7 +1094,8 @@
      "do": [
       "Schedule downtime, particularly overnight."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     }
    ],
    "checklist": [
@@ -1141,7 +1192,8 @@
       "Pick your child. Everything below happens from here."
      ],
      "result": "You are now on the parent side. Changes you make here your child cannot reverse.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "level",
@@ -1167,7 +1219,8 @@
      "mins": 2,
      "provides": [
       "youtube-detail"
-     ]
+     ],
+     "heldBy": "parent"
     },
     {
      "id": "teen",
@@ -1188,7 +1241,8 @@
       "13-15": "Worth asking for",
       "16-17": "Their call, mostly"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "shared"
     },
     {
      "id": "autoplay",
@@ -1201,7 +1255,8 @@
      ],
      "result": "Autoplay is off and, in YouTube's words, your child can't turn on Autoplay when this setting is on.",
      "note": "Kid accounts ship with autoplay already off. Worth opening anyway to confirm, since it is the one setting people assume is handled and often is not.",
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "history",
@@ -1213,7 +1268,8 @@
       "Clear the existing history if the recommendations have already drifted somewhere you do not like.",
       "If you would rather keep the record, leave it on and check My Activity now and then."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "block",
@@ -1337,7 +1393,8 @@
       "Create a 6-digit PIN. Don’t reuse a PIN your child already knows.",
       "Confirm the email address that receives reports."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "voice",
@@ -1363,7 +1420,8 @@
       "11-12": "friends",
       "13-15": "friends",
       "16-17": "teammates"
-     }
+     },
+     "heldBy": "parent"
     },
     {
      "id": "language",
@@ -1373,7 +1431,8 @@
      "do": [
       "Toggle Filter Mature Language on."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "friends",
@@ -1389,7 +1448,8 @@
       "11-12",
       "13-15"
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -1401,7 +1461,8 @@
       "Set a different schedule for weekends if that suits you.",
       "Turn on Weekly Playtime Reports so you get an email summary."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "spend",
@@ -1412,7 +1473,8 @@
       "In the Epic Games Store parental controls, turn on the requirement for a PIN on all purchases.",
       "Remove any saved payment card if your child plays unsupervised."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "platform",
@@ -1519,7 +1581,8 @@
      "mins": 2,
      "redundantWith": [
       "microsoft-family"
-     ]
+     ],
+     "heldBy": "parent"
     },
     {
      "id": "multiplayer",
@@ -1546,7 +1609,8 @@
       "11-12": "friends",
       "13-15": "friends",
       "16-17": "friends"
-     }
+     },
+     "heldBy": "parent"
     },
     {
      "id": "chat",
@@ -1585,7 +1649,8 @@
       "Turn on 'Needs organizer approval to buy things'.",
       "Turn on purchase notification emails."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -1595,7 +1660,8 @@
      "do": [
       "Set daily limits or a schedule, per device."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -1679,7 +1745,8 @@
       "device-controls",
       "apple-family"
      ],
-     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.",
+     "heldBy": "parent"
     },
     {
      "id": "passcode",
@@ -1692,7 +1759,8 @@
       "Use a different code from the phone unlock, and don’t use a birthday."
      ],
      "mins": 2,
-     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac."
+     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac.",
+     "heldBy": "parent"
     },
     {
      "id": "restrictions",
@@ -1704,7 +1772,8 @@
       "Enter your Screen Time passcode.",
       "Toggle Content & Privacy Restrictions on."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "purchases",
@@ -1724,7 +1793,8 @@
       "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
      },
      "mins": 2,
-     "note": "The hole worth knowing about, in Apple's own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes & App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not."
+     "note": "The hole worth knowing about, in Apple's own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes & App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not.",
+     "heldBy": "parent"
     },
     {
      "id": "content",
@@ -1743,7 +1813,8 @@
       "13-15": "Limit Adult Websites, apps rated 12+",
       "16-17": "Limit Adult Websites"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "downtime",
@@ -1762,7 +1833,8 @@
       "13-15": "Downtime from 9:30pm on school nights",
       "16-17": "Agree a Downtime window together"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "privacy",
@@ -1774,7 +1846,8 @@
       "Do the same for Contacts and Photos.",
       "Turn on Communication Limits so contact during Downtime is restricted to known contacts."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -1854,7 +1927,8 @@
       "device-controls",
       "apple-family"
      ],
-     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.",
+     "heldBy": "parent"
     },
     {
      "id": "passcode",
@@ -1866,7 +1940,8 @@
       "Set a Screen Time passcode that differs from the unlock code."
      ],
      "mins": 2,
-     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac."
+     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac.",
+     "heldBy": "parent"
     },
     {
      "id": "restrictions",
@@ -1877,7 +1952,8 @@
       "Open Content & Privacy Restrictions and enter your passcode.",
       "Toggle it on."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "purchases",
@@ -1897,7 +1973,8 @@
       "16-17": "Installing apps: Allow. In-app purchases: Ask to Buy."
      },
      "mins": 2,
-     "note": "The hole worth knowing about, in Apple's own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes & App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not."
+     "note": "The hole worth knowing about, in Apple's own words: if a child redownloads their own purchase, installs an update, or uses a redemption code, you will not get a request. So an app approved once, or installed before you turned Ask to Buy on, can be deleted and pulled back from their purchase history any time, silently. The setting that closes it is this one, iTunes & App Store Purchases, which Apple describes as covering purchases and redownloads. Ask to Buy alone does not.",
+     "heldBy": "parent"
     },
     {
      "id": "content",
@@ -1916,7 +1993,8 @@
       "13-15": "Limit Adult Websites, apps rated 12+",
       "16-17": "Limit Adult Websites"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "downtime",
@@ -1935,7 +2013,8 @@
       "13-15": "Downtime from 9:30pm on school nights",
       "16-17": "Agree a window together"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2011,7 +2090,8 @@
       "device-controls",
       "google-family"
      ],
-     "undo": "If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google's rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone."
+     "undo": "If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google's rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone.",
+     "heldBy": "parent"
     },
     {
      "id": "apps",
@@ -2031,7 +2111,8 @@
       "16-17": "Notifications rather than approvals"
      },
      "mins": 2,
-     "note": "Google has the same hole and states it plainly: previous downloads, and content shared through Family Library, will not require your approval. So anything installed once can come back without a request reaching you. Set approval to All content rather than Paid content only, because the free apps are the ones that matter here."
+     "note": "Google has the same hole and states it plainly: previous downloads, and content shared through Family Library, will not require your approval. So anything installed once can come back without a request reaching you. Set approval to All content rather than Paid content only, because the free apps are the ones that matter here.",
+     "heldBy": "parent"
     },
     {
      "id": "web",
@@ -2050,7 +2131,8 @@
       "13-15": "Try to block explicit sites",
       "16-17": "Try to block explicit sites"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -2062,7 +2144,8 @@
       "Set a bedtime schedule that locks the device.",
       "You can grant bonus time from your phone when it’s genuinely warranted."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "location",
@@ -2073,7 +2156,8 @@
       "Turn on location if you want it, and tell your child it’s on.",
       "For older teens, discuss it first. Covert tracking damages trust more than it protects."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "youtube",
@@ -2087,7 +2171,8 @@
      "mins": 2,
      "redundantWith": [
       "youtube-detail"
-     ]
+     ],
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2180,7 +2265,8 @@
       "device-controls",
       "microsoft-family"
      ],
-     "undo": "If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I'm a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth."
+     "undo": "If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I'm a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth.",
+     "heldBy": "parent"
     },
     {
      "id": "content",
@@ -2199,7 +2285,8 @@
       "13-15": "Age rating 12–16, adult sites blocked",
       "16-17": "Age rating 16–18, adult sites blocked"
      },
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -2210,7 +2297,8 @@
       "Set a schedule for the Windows device.",
       "Add separate app limits if a specific game is the problem rather than the PC itself."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "spend",
@@ -2222,7 +2310,8 @@
       "Turn on email notifications for purchases.",
       "Remove any saved card, or use a balance instead."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "reports",
@@ -2233,7 +2322,8 @@
       "Turn on activity reporting and weekly email summaries.",
       "Tell your child it’s on. Reports work better as a shared thing."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2304,7 +2394,8 @@
       "device-controls",
       "apple-family"
      ],
-     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.",
+     "heldBy": "parent"
     },
     {
      "id": "passcode",
@@ -2317,7 +2408,8 @@
       "Turn on Lock Screen Time Settings and set a passcode they don’t know."
      ],
      "mins": 3,
-     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac."
+     "undo": "If your child already knows the passcode, or you never set one, you can reset it without losing your settings. Do it from your device, not theirs: Settings, Screen Time, your child's name, Manage Screen Time, Change Screen Time Passcode. When this fails it is almost always because you are signed in to the wrong Apple Account. Apple's article covers iPhone and iPad only, so we cannot confirm the steps on a Mac.",
+     "heldBy": "parent"
     },
     {
      "id": "content",
@@ -2337,7 +2429,8 @@
       "13-15": "Limit Adult Websites",
       "16-17": "Limit Adult Websites"
      },
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "downtime",
@@ -2349,7 +2442,8 @@
       "Add App Limits for Games and Social rather than everything.",
       "Add anything they need for schoolwork to Always Allowed."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2424,7 +2518,8 @@
       "device-controls",
       "google-family"
      ],
-     "undo": "If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google's rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone."
+     "undo": "If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google's rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone.",
+     "heldBy": "parent"
     },
     {
      "id": "web",
@@ -2443,7 +2538,8 @@
       "13-15": "Try to block explicit sites",
       "16-17": "Try to block explicit sites"
      },
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "apps",
@@ -2455,7 +2551,8 @@
       "Review installed extensions and remove anything unfamiliar.",
       "Decide whether they can install extensions at all."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -2466,7 +2563,8 @@
       "Set daily limits that vary by day if homework needs differ.",
       "Set a bedtime that locks the device."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2539,7 +2637,8 @@
      "provides": [
       "device-controls"
      ],
-     "undo": "If they are already on an adult account, a new child account is the only route and nothing carries across. Before you make the switch, go into the console restrictions and set User Creation and Guest Login to Not Allowed, otherwise they will simply sign back into the old account and none of this will have mattered."
+     "undo": "If they are already on an adult account, a new child account is the only route and nothing carries across. Before you make the switch, go into the console restrictions and set User Creation and Guest Login to Not Allowed, otherwise they will simply sign back into the old account and none of this will have mattered.",
+     "heldBy": "parent"
     },
     {
      "id": "age",
@@ -2559,7 +2658,8 @@
       "16-17": "PEGI 16–18 / ESRB T–M"
      },
      "mins": 3,
-     "undo": "If you never set a console restriction passcode, the default is 0000, so your child could have walked straight past it. If you did set one and cannot remember it, Sony's answer is to reset the console. Note that the login passcode is a separate setting from the restriction passcode. Set both."
+     "undo": "If you never set a console restriction passcode, the default is 0000, so your child could have walked straight past it. If you did set one and cannot remember it, Sony's answer is to reset the console. Note that the login passcode is a separate setting from the restriction passcode. Set both.",
+     "heldBy": "parent"
     },
     {
      "id": "comms",
@@ -2584,7 +2684,8 @@
       "11-12": "none",
       "13-15": "friends",
       "16-17": "friends"
-     }
+     },
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -2597,7 +2698,8 @@
       "Choose whether the console logs them out at the limit or just warns them.",
       "Note these settings apply to both PS5 and PS4."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "spend",
@@ -2615,7 +2717,8 @@
       "13-15": "A small agreed monthly cap",
       "16-17": "An agreed monthly cap"
      },
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2694,7 +2797,8 @@
       "device-controls",
       "microsoft-family"
      ],
-     "undo": "If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I'm a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth."
+     "undo": "If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I'm a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth.",
+     "heldBy": "parent"
     },
     {
      "id": "content",
@@ -2713,7 +2817,8 @@
       "16-17": "Age 16–18"
      },
      "mins": 3,
-     "undo": "If you set a parental controls passkey on the console and cannot remember it, we could not verify the reset steps. Microsoft's only readable article on a forgotten pass code covers the Xbox 360, and the current pages hide the answer behind a script we cannot read. Rather than guess, open Xbox support in a browser and look for Forgot your passkey before you reset anything."
+     "undo": "If you set a parental controls passkey on the console and cannot remember it, we could not verify the reset steps. Microsoft's only readable article on a forgotten pass code covers the Xbox 360, and the current pages hide the answer behind a script we cannot read. Rather than guess, open Xbox support in a browser and look for Forgot your passkey before you reset anything.",
+     "heldBy": "parent"
     },
     {
      "id": "privacy",
@@ -2740,7 +2845,8 @@
       "11-12": "friends",
       "13-15": "friends",
       "16-17": "friends"
-     }
+     },
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -2751,7 +2857,8 @@
       "Set a schedule for the Xbox.",
       "Add multiple time slots in a day if that fits your routine better than one block."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "spend",
@@ -2763,7 +2870,8 @@
       "Turn on purchase notifications.",
       "Consider adding money to their balance rather than leaving a card on the account."
      ],
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2837,7 +2945,8 @@
      "provides": [
       "device-controls"
      ],
-     "undo": "Forgotten the Parental Controls PIN? This one is fully recoverable and you keep your settings. Enter the wrong PIN, press + or minus for Help, and note the Inquiry Number without leaving that screen. Then get a master key from parentalcontrols.nintendo.com. Six wrong attempts inside 30 minutes locks you out for 30 minutes, so write the number down the first time."
+     "undo": "Forgotten the Parental Controls PIN? This one is fully recoverable and you keep your settings. Enter the wrong PIN, press + or minus for Help, and note the Inquiry Number without leaving that screen. Then get a master key from parentalcontrols.nintendo.com. Six wrong attempts inside 30 minutes locks you out for 30 minutes, so write the number down the first time.",
+     "heldBy": "parent"
     },
     {
      "id": "level",
@@ -2855,7 +2964,8 @@
       "13-15": "Teen level",
       "16-17": "Custom, agreed together"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "comms",
@@ -2873,7 +2983,8 @@
       "11-12",
       "13-15"
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -2885,7 +2996,8 @@
       "Set a bedtime alarm.",
       "Turn on Suspend Software if you want the limit to be firm rather than advisory."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "spend",
@@ -2897,7 +3009,8 @@
       "Select your child and turn on the eShop purchase restriction.",
       "Remove any saved card."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     }
    ],
    "checklist": [
@@ -2976,7 +3089,8 @@
       "device-controls"
      ],
      "mins": 2,
-     "undo": "Forgotten the lock screen PIN? Get it wrong five times, choose Reset Your PIN, and enter your Amazon password. Nothing is lost. This is the recoverable one. The separate Parental Controls password is not, so do not assume the same trick works there."
+     "undo": "Forgotten the lock screen PIN? Get it wrong five times, choose Reset Your PIN, and enter your Amazon password. Nothing is lost. This is the recoverable one. The separate Parental Controls password is not, so do not assume the same trick works there.",
+     "heldBy": "device"
     },
     {
      "id": "profile",
@@ -3008,7 +3122,8 @@
       "16-17": "Their real age"
      },
      "note": "Setting it above their age to 'give them more choice' is the most common way this gets undone.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "web",
@@ -3028,7 +3143,8 @@
       "16-17": "Filtered"
      },
      "note": "Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -3047,7 +3163,8 @@
       "13-15": "Agree it together",
       "16-17": "Agree it together"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "store",
@@ -3060,7 +3177,8 @@
       "Leave in-app purchases requiring approval, which is the default."
      ],
      "note": "You'll get an email or text when they ask, and the app only arrives once you approve.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "talk",
@@ -3174,7 +3292,8 @@
       "11-12"
      ],
      "mins": 1,
-     "undo": "If they already have an ordinary WhatsApp account, our reading is that it cannot be converted, because parent-managed accounts are only set up during first-time registration. That means re-registering rather than converting. WhatsApp does not state this outright anywhere we could find, so treat it as our reading of their documented setup flow rather than something they have confirmed."
+     "undo": "If they already have an ordinary WhatsApp account, our reading is that it cannot be converted, because parent-managed accounts are only set up during first-time registration. That means re-registering rather than converting. WhatsApp does not state this outright anywhere we could find, so treat it as our reading of their documented setup flow rather than something they have confirmed.",
+     "heldBy": "parent"
     },
     {
      "id": "age",
@@ -3204,7 +3323,8 @@
       "13-15": "My contacts for all four",
       "16-17": "Agree it together, My contacts is still the sensible floor"
      },
-     "mins": 1
+     "mins": 1,
+     "heldBy": "child"
     },
     {
      "id": "groups",
@@ -3223,7 +3343,8 @@
       "16-17": "My contacts"
      },
      "note": "Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.",
-     "mins": 1
+     "mins": 1,
+     "heldBy": "child"
     },
     {
      "id": "calls",
@@ -3234,7 +3355,8 @@
       "Open Settings, then Privacy, then Calls.",
       "Turn on Silence unknown callers."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "child"
     },
     {
      "id": "location",
@@ -3246,7 +3368,8 @@
       "If anything is listed, tap Stop sharing.",
       "Agree that live location is for family only."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "child"
     },
     {
      "id": "blocking",
@@ -3368,7 +3491,8 @@
       "You can link up to ten teen accounts. They can link to only one parent."
      ],
      "note": "You'll be emailed if they unlink, but by then the controls are already off. Twitch says these controls are not mandatory for 13 to 17 year olds, so this is a weaker arrangement than Screen Time or Family Link.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "live",
@@ -3388,7 +3512,8 @@
       "13-15",
       "16-17"
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "dms",
@@ -3400,7 +3525,8 @@
       "On your child's own account, also check Security and Privacy Settings for Block Whispers from Strangers."
      ],
      "note": "Twitch's own help pages disagree about whether Block Whispers from Strangers is on by default, so check the toggle rather than assume. Also worth knowing: if your child whispers a stranger, that person can reply for the next 48 hours.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "sensitive",
@@ -3412,7 +3538,8 @@
       "Leave the restrictions on."
      ],
      "note": "Be clear with yourself about what this does. Hiding a category removes it from browsing and recommendations. If your child follows a streamer, or goes straight to a channel page, they still see everything.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "time",
@@ -3431,7 +3558,8 @@
       "13-15",
       "16-17"
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "filters",
@@ -3443,7 +3571,8 @@
       "Turn on filters for Discrimination, Sexually Explicit Language, Hostility and Profanity."
      ],
      "note": "Filters catch categories of language. They do not catch someone being friendly with bad intentions, which is the thing that actually matters.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "report",
@@ -3549,7 +3678,8 @@
       "On a TV the label may read Kids Profile rather than For Kids."
      ],
      "note": "The main account profile cannot be turned into a kids profile, and there is a limit of five profiles.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "rating",
@@ -3570,7 +3700,8 @@
      },
      "note": "Rating names vary by country. These are the US names; in the UK and Ireland you'll see BBFC ratings in the same place.",
      "mins": 2,
-     "undo": "If a profile already has the wrong rating, lowering it works fine from Account, Profiles, Adjust parental controls. The one that catches people is narrower than it sounds: a default Kids profile that Netflix created when you first opened the account cannot be raised above the kids level. That one has to be deleted and remade. Viewing history can be hidden in bulk from the adult profile, but there is no official way to move history from one profile to another."
+     "undo": "If a profile already has the wrong rating, lowering it works fine from Account, Profiles, Adjust parental controls. The one that catches people is narrower than it sounds: a default Kids profile that Netflix created when you first opened the account cannot be raised above the kids level. That one has to be deleted and remade. Viewing history can be hidden in bulk from the adult profile, but there is no official way to move history from one profile to another.",
+     "heldBy": "parent"
     },
     {
      "id": "lock",
@@ -3585,7 +3716,8 @@
      ],
      "result": "Your child can no longer switch into an unrestricted profile.",
      "note": "On the main profile you can also turn on Require a PIN to add a new profile, which stops them making a fresh unrestricted one. Note that Extra Member accounts cannot use profile locks at all.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "titles",
@@ -3603,7 +3735,8 @@
       "11-12",
       "13-15"
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "autoplay",
@@ -3621,7 +3754,8 @@
       "13-15": "Previews off at least",
       "16-17": "Their call"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "device",
@@ -3731,7 +3865,8 @@
       "7-11",
       "11-12"
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "rating",
@@ -3754,7 +3889,8 @@
       "13-15",
       "16-17"
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "unrated",
@@ -3767,7 +3903,8 @@
      ],
      "result": "Unrated live content and its ads no longer appear on that profile.",
      "note": "Turning it back on later needs your password. Turning it off does not.",
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "pin",
@@ -3780,7 +3917,8 @@
       "Enter your password, set a 4-digit PIN, and save."
      ],
      "result": "Your profile can no longer be opened without the PIN.",
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "newprofiles",
@@ -3792,7 +3930,8 @@
       "Under Settings, turn Restrict profile creation on.",
       "Enter your password and continue."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "exit",
@@ -3809,7 +3948,8 @@
       "7-11",
       "11-12"
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "device",
@@ -3910,7 +4050,8 @@
       "Choose Create next to Prime Video Account PIN, set it, and continue."
      ],
      "note": "Creating the PIN is not the same as switching restrictions on. On Android in particular they are two separate actions, so do the next steps as well.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "kids",
@@ -3923,7 +4064,8 @@
       "You can have up to six profiles in total."
      ],
      "note": "Be aware of one real hole: downloads made on an adult profile, including an 18-rated film, stay accessible from the kids profile.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "restrictions",
@@ -3945,7 +4087,8 @@
      },
      "result": "Only content at or below that level plays on the devices you ticked.",
      "note": "The five levels are Kids (All), Older Kids (7+), Teens (13+), Young Adults (16+) and Adults (18+). They map to local ratings, so in the UK and Ireland they line up with U, PG, 12, 15 and 18.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "purchase",
@@ -3958,7 +4101,8 @@
      ],
      "result": "Buying or renting now needs your Account PIN.",
      "note": "Purchase restrictions do apply to every profile and every device, unlike viewing restrictions.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "lockprofile",
@@ -3971,7 +4115,8 @@
       "Switch Profile lock on and save.",
       "On the same screen, switch Creation and removal lock on."
      ],
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "firetv",
@@ -4126,7 +4271,8 @@
      "provides": [
       "own-account"
      ],
-     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive."
+     "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.",
+     "heldBy": "parent"
     },
     {
      "id": "switchedon",
@@ -4244,7 +4390,8 @@
      },
      "redundantWith": [
       "apple-comms"
-     ]
+     ],
+     "heldBy": "parent"
     },
     {
      "id": "safety",
@@ -4256,7 +4403,8 @@
       "For an under-13, viewing the blurred photo needs your Screen Time passcode, so that gate is real."
      ],
      "note": "It covers Messages, AirDrop, FaceTime, contact posters, shared albums and some third-party apps. The detection happens on the device: Apple never sees the photo and never learns that anything was found. For under-13s it prompts the child to start a conversation with you, which is the design. It points them at you rather than reporting to you.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "unknown",
@@ -4268,7 +4416,8 @@
       "Open Manage Filtering and turn on Screen Unknown Senders."
      ],
      "note": "This setting moved. It used to live in Settings, then Messages, and it was called Filter Unknown Senders. One documented hole: filtering stops applying to anyone they have replied to three times or more. On a child's Apple Watch there is no equivalent setting, because there is no Messages app to open on your behalf. Communication Limits is the control that does the work there.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "off",
@@ -4287,7 +4436,8 @@
       "16-17": "Both on"
      },
      "note": "Apple documents how this screen works but does not publish the full list of what appears on it, so check what is actually there on the device rather than expecting a particular name. This works for the watch too, from the same Screen Time screen.",
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "device",
@@ -4394,7 +4544,8 @@
       "Turn on Kid-Proof Exit for the Kids profile."
      ],
      "note": "There is one Parent Code for the whole account, and it applies to every Kids profile on it.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "parent"
     },
     {
      "id": "adultpin",
@@ -4521,7 +4672,8 @@
      "mins": 5,
      "provides": [
       "apple-family"
-     ]
+     ],
+     "heldBy": "parent"
     },
     {
      "id": "asktobuy",
@@ -4572,7 +4724,8 @@
      ],
      "provides": [
       "apple-comms"
-     ]
+     ],
+     "heldBy": "parent"
     },
     {
      "id": "schooltime",
@@ -4592,7 +4745,8 @@
       "16-17": "Their call, with the schedule agreed"
      },
      "note": "Your child can see the same unlock report on the watch, which is the right way round. Schooltime turns itself back on when they lower their wrist.",
-     "mins": 3
+     "mins": 3,
+     "heldBy": "parent"
     },
     {
      "id": "safety",
@@ -4619,7 +4773,8 @@
      "mins": 3,
      "redundantWith": [
       "device-controls"
-     ]
+     ],
+     "heldBy": "parent"
     },
     {
      "id": "health",
@@ -4745,7 +4900,8 @@
      },
      "note": "It runs on the free tier too, with ads. Premium Family removes the ads and gives the managed account the Premium features. Note that it lasts a long time: a young listener graduates to a self-managed account at 18, not 13, and keeps their playlists, saved music, recommendations and their place on the plan.",
      "mins": 3,
-     "undo": "If they already have an ordinary Spotify account, you can convert it rather than start again, but do it with them in the room. Spotify's warning is that the young listener will immediately lose access to some content and features, and that happens the moment you convert. So the podcasts they follow and anything else outside music will go without notice. We could not confirm from Spotify's pages whether converting back is possible, so treat it as a decision rather than an experiment."
+     "undo": "If they already have an ordinary Spotify account, you can convert it rather than start again, but do it with them in the room. Spotify's warning is that the young listener will immediately lose access to some content and features, and that happens the moment you convert. So the podcasts they follow and anything else outside music will go without notice. We could not confirm from Spotify's pages whether converting back is possible, so treat it as a decision rather than an experiment.",
+     "heldBy": "parent"
     },
     {
      "id": "pin",
@@ -4762,7 +4918,8 @@
       "Do not use the same four digits as the device unlock code, which your child already knows.",
       "Write it down somewhere that is not the device it protects."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "explicit",
@@ -4781,7 +4938,8 @@
       "16-17": "Their call, but have the conversation"
      },
      "note": "On an ordinary account this lives in your child's own settings, so it is theirs to switch back on. There is no parent-side lock for it outside a managed account.",
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child"
     },
     {
      "id": "video",
@@ -4798,7 +4956,9 @@
       "13-15": "Off, and it is a control you can actually keep",
       "16-17": "Worth offering rather than imposing"
      },
-     "mins": 2
+     "mins": 2,
+     "heldBy": "child",
+     "note": "The Family plan is the exception worth knowing about. Off a Family plan this is your child's own setting and theirs to switch back. On one, you set it from your account and it holds."
     },
     {
      "id": "block",
@@ -4810,7 +4970,8 @@
       "Add them as they come up rather than trying to think of them in advance.",
       "Ask your child what they are listening to first. A list built without them will be both wrong and resented."
      ],
-     "mins": 1
+     "mins": 1,
+     "heldBy": "parent"
     },
     {
      "id": "device",
@@ -4886,5 +5047,13 @@
   "friends": "Only people already on their friends list can reach them. Strangers cannot.",
   "teammates": "Their friends, plus whoever the game puts them with. That includes strangers, for as long as the match lasts.",
   "open": "Anyone on the platform can reach them."
+ },
+ "heldBy": {
+  "parent": "You set this from your own account, and your child cannot change it back.",
+  "locked": "Your child cannot loosen this without proving to the platform that they are an adult.",
+  "child": "This lives in your child's own settings, so they can change it back. There is no parent-side lock for it.",
+  "shared": "Either of you can change this, and neither of you is told when the other does.",
+  "device": "This is set on the device and held by your device passcode, not by the app.",
+  "varies": "Who holds this changes as your child gets older. Pick an age above to see which applies."
  }
 }

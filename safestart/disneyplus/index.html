@@ -706,6 +706,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1163,12 +1177,12 @@ button { font: inherit; cursor: pointer; }
 <li>Have your Disney+ password ready. Most of these steps ask for it.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Turn on Junior Mode for younger children</h3></span></div><div class="step-body"><p class="why">This is the kids profile, renamed. If you go looking for Kids Profile in the app you won&#39;t find it.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Junior Mode</code></p><ol class="do-list"><li>Go to your profiles and choose Add Profile, or Edit Profiles for one that exists.</li><li>Pick an avatar and name it.</li><li>Under Parental Controls, switch Junior Mode on.</li><li>Save.</li></ol><p class="note">Junior Mode profiles see no ads. The main profile cannot be put into Junior Mode, and turning Junior Mode off needs your password.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the content rating for an older child</h3></span></div><div class="step-body"><p class="why">For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode has nothing to adjust. This is where families tend to give up: Junior Mode feels babyish to a 10 or 11 year old, so it gets switched off and nothing takes its place. A rating on an ordinary profile is the middle option that actually survives.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Content rating</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select the profile.</li><li>Under Parental Controls choose Content rating.</li><li>Enter your password, pick the rating, and save.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>11–12</td><td>TV-PG / PG</td></tr><tr><td>13–15</td><td>TV-14 / PG-13</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div><p class="note">Rating names vary by country. These are the US names; in the UK and Ireland you&#39;ll see BBFC ratings in the same place.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off unrated live content</h3></span></div><div class="step-body"><p class="why">This is the one that catches people out. It is on by default, and Disney&#39;s own warning is blunt: live content and live ads may feature adult themes, products and services. Setting a child&#39;s profile to a low rating and stopping there leaves live sports, live news and their ad breaks wide open.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → allow titles without ratings</code></p><ol class="do-list"><li>On the same Parental Controls screen for the profile, find the setting allowing titles without ratings, such as live sports and news.</li><li>Turn it off.</li></ol><p class="result">Unrated live content and its ads no longer appear on that profile.</p><p class="note">Turning it back on later needs your password. Turning it off does not.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Put a PIN on your own profile</h3></span></div><div class="step-body"><p class="why">The main profile defaults to the highest rating, so without a PIN your child switches into it in two taps.</p><p class="path"><code>Edit Profiles → [your profile] → Parental Controls → Profile PIN</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select your own profile.</li><li>Under Parental Controls choose Profile PIN.</li><li>Enter your password, set a 4-digit PIN, and save.</li></ol><p class="result">Your profile can no longer be opened without the PIN.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Stop new profiles being created</h3></span></div><div class="step-body"><p class="why">Otherwise a child simply makes themselves a fresh unrestricted one.</p><p class="path"><code>Account → Settings → Restrict profile creation</code></p><ol class="do-list"><li>Open Account.</li><li>Under Settings, turn Restrict profile creation on.</li><li>Enter your password and continue.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Turn on Kid-Proof Exit</h3></span></div><div class="step-body"><p class="why">Makes leaving Junior Mode deliberate rather than accidental.</p><p class="path"><code>Edit Profiles → Kid-Proof Exit</code></p><ol class="do-list"><li>Go to Edit Profiles and switch Kid-Proof Exit on.</li><li>Enter your password.</li></ol><p class="note">This only slows the exit from Junior Mode. It does not lock where they land, which is what the profile PIN above is for.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Turn on Junior Mode for younger children</h3></span></div><div class="step-body"><p class="why">This is the kids profile, renamed. If you go looking for Kids Profile in the app you won&#39;t find it.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Junior Mode</code></p><ol class="do-list"><li>Go to your profiles and choose Add Profile, or Edit Profiles for one that exists.</li><li>Pick an avatar and name it.</li><li>Under Parental Controls, switch Junior Mode on.</li><li>Save.</li></ol><p class="note">Junior Mode profiles see no ads. The main profile cannot be put into Junior Mode, and turning Junior Mode off needs your password.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the content rating for an older child</h3></span></div><div class="step-body"><p class="why">For a child too old for the all-ages walled garden, the rating is the only content lever, because Junior Mode has nothing to adjust. This is where families tend to give up: Junior Mode feels babyish to a 10 or 11 year old, so it gets switched off and nothing takes its place. A rating on an ordinary profile is the middle option that actually survives.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → Content rating</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select the profile.</li><li>Under Parental Controls choose Content rating.</li><li>Enter your password, pick the rating, and save.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>11–12</td><td>TV-PG / PG</td></tr><tr><td>13–15</td><td>TV-14 / PG-13</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div><p class="note">Rating names vary by country. These are the US names; in the UK and Ireland you&#39;ll see BBFC ratings in the same place.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off unrated live content</h3></span></div><div class="step-body"><p class="why">This is the one that catches people out. It is on by default, and Disney&#39;s own warning is blunt: live content and live ads may feature adult themes, products and services. Setting a child&#39;s profile to a low rating and stopping there leaves live sports, live news and their ad breaks wide open.</p><p class="path"><code>Edit Profiles → [profile] → Parental Controls → allow titles without ratings</code></p><ol class="do-list"><li>On the same Parental Controls screen for the profile, find the setting allowing titles without ratings, such as live sports and news.</li><li>Turn it off.</li></ol><p class="result">Unrated live content and its ads no longer appear on that profile.</p><p class="note">Turning it back on later needs your password. Turning it off does not.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Put a PIN on your own profile</h3></span></div><div class="step-body"><p class="why">The main profile defaults to the highest rating, so without a PIN your child switches into it in two taps.</p><p class="path"><code>Edit Profiles → [your profile] → Parental Controls → Profile PIN</code></p><ol class="do-list"><li>Go to your profiles, choose Edit Profiles, and select your own profile.</li><li>Under Parental Controls choose Profile PIN.</li><li>Enter your password, set a 4-digit PIN, and save.</li></ol><p class="result">Your profile can no longer be opened without the PIN.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Stop new profiles being created</h3></span></div><div class="step-body"><p class="why">Otherwise a child simply makes themselves a fresh unrestricted one.</p><p class="path"><code>Account → Settings → Restrict profile creation</code></p><ol class="do-list"><li>Open Account.</li><li>Under Settings, turn Restrict profile creation on.</li><li>Enter your password and continue.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Turn on Kid-Proof Exit</h3></span></div><div class="step-body"><p class="why">Makes leaving Junior Mode deliberate rather than accidental.</p><p class="path"><code>Edit Profiles → Kid-Proof Exit</code></p><ol class="do-list"><li>Go to Edit Profiles and switch Kid-Proof Exit on.</li><li>Enter your password.</li></ol><p class="note">This only slows the exit from Junior Mode. It does not lock where they land, which is what the profile PIN above is for.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Add a device-level backstop</h3></span></div><div class="step-body"><p class="why">These settings only cover this one service. A device-level control catches the app they download next.</p><ol class="do-list"><li>Set up Screen Time, Family Link, Microsoft Family Safety or your console&#39;s own controls.</li><li>Require your approval for new app downloads.</li></ol><p class="note">SafeStart has a separate guide for each of these. Pick your device on the home screen.</p></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -2453,6 +2467,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2844,6 +2860,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2932,6 +2950,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

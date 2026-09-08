@@ -588,6 +588,39 @@ function check(name, condition, detail) {
     check('the age check gate is stated', /age check/i.test(robloxText));
     check('creator-built chat is flagged as out of reach', /creator/i.test(robloxText));
 
+    console.log('\nwho holds the setting');
+    // The defect YouTube reported, generalised. Every settings step now says
+    // whether the child can put it back, in the same words on every app.
+    await page.goto(BASE + '/whatsapp/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('a child-held setting is flagged as reversible',
+      await page.locator('.held-by.held-child').count() > 0);
+    await page.goto(BASE + '/playstation/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('a parent-held one says so too, which is the reassuring half',
+      await page.locator('.held-by.held-parent').count() > 0);
+
+    // Roblox hands chat and voice over at 13, and that is the case a parent
+    // most needs told, so the answer has to move with the age.
+    await page.goto(BASE + '/roblox/?age=11-12', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const under13 = await page.locator('#app').textContent();
+    await page.goto(BASE + '/roblox/?age=13-15', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const over13 = await page.locator('#app').textContent();
+    check('under 13 on Roblox, the parent holds chat',
+      /cannot change it back/.test(under13));
+    check('at 13 it becomes theirs, and the guide says so',
+      /theirs to change|no parent-side lock/.test(over13));
+    check('so the two ages genuinely differ', under13 !== over13);
+
+    // Same sentence on every app, or the whole point is lost.
+    const waShell = await (await page.request.get(BASE + '/whatsapp/')).text();
+    const spShell2 = await (await page.request.get(BASE + '/spotify/')).text();
+    const phrase = 'lives in your child&#39;s own settings';
+    check('and two different apps use identical wording for it',
+      waShell.includes(phrase) && spShell2.includes(phrase));
+
     console.log('\nspotify');
     // A parent asked how to stop explicit lyrics and videos. The honest answer is
     // that the switch everyone reaches for covers songs and nothing else, so the

@@ -713,6 +713,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1168,12 +1182,12 @@ button { font: inherit; cursor: pointer; }
 <li>Your child starts the link from their side, so you&#39;ll need them with you.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Link your account to theirs in the Family Center</h3></span></div><div class="step-body"><p class="why">Everything else depends on this. Note that your teen starts it, not you, and either of you can unlink later.</p><p class="path"><code>Teen: Settings → Family Center → sharable link → Parent accepts</code></p><ol class="do-list"><li>Ask your child to open Settings, then Family Center, and send you the sharable link.</li><li>Open the link on your own Twitch account and accept.</li><li>You can link up to ten teen accounts. They can link to only one parent.</li></ol><p class="note">You&#39;ll be emailed if they unlink, but by then the controls are already off. Twitch says these controls are not mandatory for 13 to 17 year olds, so this is a weaker arrangement than Screen Time or Family Link.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Stop them going live</h3></span></div><div class="step-body"><p class="why">This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat attached, is the thing worth stopping first. Wanting to stream is not automatically a no, though. It is a conversation about doing it somewhere other than a bedroom, with someone keeping an eye on the chat.</p><p class="path"><code>Family Center → Streaming &amp; Video Uploads</code></p><ol class="do-list"><li>In the Family Center, open Streaming &amp; Video Uploads.</li><li>Turn off the ability to go live.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Off</td></tr><tr><td>16–17</td><td>Off unless you&#39;ve talked it through properly</td></tr></tbody></table></div><p class="note">Twitch documents viewers daring minors into things on stream, and warns that a full name, school or town said out loud on a live stream cannot be taken back.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off direct messages</h3></span></div><div class="step-body"><p class="why">Whispers are Twitch&#39;s DMs and are the main private contact route from a stranger.</p><p class="path"><code>Family Center → Disable DMs</code></p><ol class="do-list"><li>In the Family Center, open Disable DMs and turn whispers off.</li><li>On your child&#39;s own account, also check Security and Privacy Settings for Block Whispers from Strangers.</li></ol><p class="note">Twitch&#39;s own help pages disagree about whether Block Whispers from Strangers is on by default, so check the toggle rather than assume. Also worth knowing: if your child whispers a stranger, that person can reply for the next 48 hours.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Restrict sensitive content from the parent side</h3></span></div><div class="step-body"><p class="why">Under-18 accounts hide some categories by default, but the teen can turn their own protections back off. Setting it from the Family Center is what puts it in your hands instead.</p><p class="path"><code>Family Center → Protect from Sensitive Content</code></p><ol class="do-list"><li>In the Family Center, open Protect from Sensitive Content.</li><li>Leave the restrictions on.</li></ol><p class="note">Be clear with yourself about what this does. Hiding a category removes it from browsing and recommendations. If your child follows a streamer, or goes straight to a channel page, they still see everything.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a daily time limit</h3></span></div><div class="step-body"><p class="why">Live content has no episode ending. The limit applies across every device they watch on.</p><p class="path"><code>Family Center → Enact Time Limits</code></p><ol class="do-list"><li>In the Family Center, open Enact Time Limits.</li><li>Set a daily limit.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Agree it together</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Turn on chat filters on their account</h3></span></div><div class="step-body"><p class="why">These are the most under-used control on Twitch. They follow your child from channel to channel rather than depending on each streamer&#39;s moderation.</p><p class="path"><code>Any channel → Chat settings → Chat Filters</code></p><ol class="do-list"><li>On your child&#39;s account, open Chat settings on any channel.</li><li>Turn on filters for Discrimination, Sexually Explicit Language, Hostility and Profanity.</li></ol><p class="note">Filters catch categories of language. They do not catch someone being friendly with bad intentions, which is the thing that actually matters.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Link your account to theirs in the Family Center</h3></span></div><div class="step-body"><p class="why">Everything else depends on this. Note that your teen starts it, not you, and either of you can unlink later.</p><p class="path"><code>Teen: Settings → Family Center → sharable link → Parent accepts</code></p><ol class="do-list"><li>Ask your child to open Settings, then Family Center, and send you the sharable link.</li><li>Open the link on your own Twitch account and accept.</li><li>You can link up to ten teen accounts. They can link to only one parent.</li></ol><p class="note">You&#39;ll be emailed if they unlink, but by then the controls are already off. Twitch says these controls are not mandatory for 13 to 17 year olds, so this is a weaker arrangement than Screen Time or Family Link.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Stop them going live</h3></span></div><div class="step-body"><p class="why">This is the highest-value control on Twitch. A live feed from a bedroom to strangers, with a chat attached, is the thing worth stopping first. Wanting to stream is not automatically a no, though. It is a conversation about doing it somewhere other than a bedroom, with someone keeping an eye on the chat.</p><p class="path"><code>Family Center → Streaming &amp; Video Uploads</code></p><ol class="do-list"><li>In the Family Center, open Streaming &amp; Video Uploads.</li><li>Turn off the ability to go live.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Off</td></tr><tr><td>16–17</td><td>Off unless you&#39;ve talked it through properly</td></tr></tbody></table></div><p class="note">Twitch documents viewers daring minors into things on stream, and warns that a full name, school or town said out loud on a live stream cannot be taken back.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Turn off direct messages</h3></span></div><div class="step-body"><p class="why">Whispers are Twitch&#39;s DMs and are the main private contact route from a stranger.</p><p class="path"><code>Family Center → Disable DMs</code></p><ol class="do-list"><li>In the Family Center, open Disable DMs and turn whispers off.</li><li>On your child&#39;s own account, also check Security and Privacy Settings for Block Whispers from Strangers.</li></ol><p class="note">Twitch&#39;s own help pages disagree about whether Block Whispers from Strangers is on by default, so check the toggle rather than assume. Also worth knowing: if your child whispers a stranger, that person can reply for the next 48 hours.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Restrict sensitive content from the parent side</h3></span></div><div class="step-body"><p class="why">Under-18 accounts hide some categories by default, but the teen can turn their own protections back off. Setting it from the Family Center is what puts it in your hands instead.</p><p class="path"><code>Family Center → Protect from Sensitive Content</code></p><ol class="do-list"><li>In the Family Center, open Protect from Sensitive Content.</li><li>Leave the restrictions on.</li></ol><p class="note">Be clear with yourself about what this does. Hiding a category removes it from browsing and recommendations. If your child follows a streamer, or goes straight to a channel page, they still see everything.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a daily time limit</h3></span></div><div class="step-body"><p class="why">Live content has no episode ending. The limit applies across every device they watch on.</p><p class="path"><code>Family Center → Enact Time Limits</code></p><ol class="do-list"><li>In the Family Center, open Enact Time Limits.</li><li>Set a daily limit.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Agree it together</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Turn on chat filters on their account</h3></span></div><div class="step-body"><p class="why">These are the most under-used control on Twitch. They follow your child from channel to channel rather than depending on each streamer&#39;s moderation.</p><p class="path"><code>Any channel → Chat settings → Chat Filters</code></p><ol class="do-list"><li>On your child&#39;s account, open Chat settings on any channel.</li><li>Turn on filters for Discrimination, Sexually Explicit Language, Hostility and Profanity.</li></ol><p class="note">Filters catch categories of language. They do not catch someone being friendly with bad intentions, which is the thing that actually matters.</p><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Agree what to report, and read the weekly email</h3></span></div><div class="step-body"><p class="why">You&#39;ll get a weekly summary of who they whispered, who they blocked, which channels they watched and what they spent.</p><ol class="do-list"><li>Read the weekly email when it arrives, and ask about anything you don&#39;t recognise.</li><li>Agree that any request to do something on camera gets shown to you.</li><li>Show them how to report a channel or a user.</li></ol><p class="note">If an adult makes a sexually suggestive request to your child, report it under Child Endangerment. Twitch escalates those to NCMEC and law enforcement.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">8</span><span class="num-text"><h3>Add a device-level backstop</h3></span></div><div class="step-body"><p class="why">These settings only cover this one service. A device-level control catches the app they download next.</p><ol class="do-list"><li>Set up Screen Time, Family Link, Microsoft Family Safety or your console&#39;s own controls.</li><li>Require your approval for new app downloads.</li></ol><p class="note">SafeStart has a separate guide for each of these. Pick your device on the home screen.</p></div></li>
 </ol>
@@ -2462,6 +2476,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2853,6 +2869,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2941,6 +2959,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

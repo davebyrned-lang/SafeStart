@@ -699,6 +699,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1161,11 +1175,11 @@ button { font: inherit; cursor: pointer; }
 <li>If the true age is under 13, the account is deleted on day 120, or day 30 in the United States. Download the account data before you touch anything.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Pairing</h3></span></div><div class="step-body"><p class="why">Family Pairing lets you change your teen’s safety settings from your own phone, and stops them changing them back.</p><p class="path"><code>Profile → ☰ (top right) → Settings and privacy → Family Pairing</code></p><ol class="do-list"><li>On your phone: open your profile, tap the three lines top right, then Settings and privacy.</li><li>Scroll to Family Pairing and tap Continue.</li><li>Choose Parent. You’ll get a QR code.</li><li>On your teen’s phone: go to the same Family Pairing screen, choose Teen, and scan your QR code.</li><li>Your teen reviews the permissions and taps Link accounts.</li></ol><p class="result">Everything below is now set from your phone.</p><div class="undo"><span class="undo-label">Already done this?</span><p>If the account was opened with a false adult birthday, Family Pairing will not fix it, because the age on the account is what drives every default. There is no self-serve correction. The appeal only opens once TikTok has restricted the account, and confirmation is by ID selfie, a parent&#39;s credit card with a small refunded charge, or a photo with an adult over 25. Download the data first.</p></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Make the account private</h3></span></div><div class="step-body"><p class="why">A public account means anyone can see their videos, comment, and work out where they go to school from the background. Going private does cost them views, which for a lot of teenagers is the entire point of the app, so this one lands better agreed than announced.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety</code></p><ol class="do-list"><li>Turn Private account on.</li><li>Turn off Suggest your teen’s account to others.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Private, on</td></tr><tr><td>16–17</td><td>Private, worth agreeing together</td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Limit messages, comments and mentions</h3></span></div><div class="step-body"><p class="why">This is where strangers actually reach teenagers. Content filters don’t help with contact.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety → Safety</code></p><ol class="do-list"><li>Set who can send direct messages.</li><li>Set who can comment on their videos.</li><li>Set who can mention or tag them.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends, or No one for DMs<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Friends<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="note">Direct messaging is switched off entirely for accounts registered as under 16.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Turn on Restricted Mode and keyword filters</h3></span></div><div class="step-body"><p class="why">Restricted Mode filters out content that isn’t appropriate for younger viewers. Keyword filters let you name the specific things you’re worried about.</p><p class="path"><code>Family Pairing → Content preferences</code></p><ol class="do-list"><li>Turn Restricted Mode on.</li><li>Open Filter video keywords and add words relevant to your family. Diet and body-image terms are a common starting point.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set daily screen time and a Time away schedule</h3></span></div><div class="step-body"><p class="why">TikTok’s feed has no end. The sleep effect is the most reliably harmful part for most teenagers.</p><p class="path"><code>Family Pairing → [your teen] → Screen time</code></p><ol class="do-list"><li>Set a Daily screen time limit (the minimum TikTok allows is 40 minutes).</li><li>Add a Time away schedule covering school hours and bedtime.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>60 minutes, phone out of the bedroom overnight</td></tr><tr><td>16–17</td><td>Agree a limit together, keep the overnight block</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Pairing</h3></span></div><div class="step-body"><p class="why">Family Pairing lets you change your teen’s safety settings from your own phone, and stops them changing them back.</p><p class="path"><code>Profile → ☰ (top right) → Settings and privacy → Family Pairing</code></p><ol class="do-list"><li>On your phone: open your profile, tap the three lines top right, then Settings and privacy.</li><li>Scroll to Family Pairing and tap Continue.</li><li>Choose Parent. You’ll get a QR code.</li><li>On your teen’s phone: go to the same Family Pairing screen, choose Teen, and scan your QR code.</li><li>Your teen reviews the permissions and taps Link accounts.</li></ol><p class="result">Everything below is now set from your phone.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If the account was opened with a false adult birthday, Family Pairing will not fix it, because the age on the account is what drives every default. There is no self-serve correction. The appeal only opens once TikTok has restricted the account, and confirmation is by ID selfie, a parent&#39;s credit card with a small refunded charge, or a photo with an adult over 25. Download the data first.</p></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Make the account private</h3></span></div><div class="step-body"><p class="why">A public account means anyone can see their videos, comment, and work out where they go to school from the background. Going private does cost them views, which for a lot of teenagers is the entire point of the app, so this one lands better agreed than announced.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety</code></p><ol class="do-list"><li>Turn Private account on.</li><li>Turn off Suggest your teen’s account to others.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Private, on</td></tr><tr><td>16–17</td><td>Private, worth agreeing together</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Limit messages, comments and mentions</h3></span></div><div class="step-body"><p class="why">This is where strangers actually reach teenagers. Content filters don’t help with contact.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety → Safety</code></p><ol class="do-list"><li>Set who can send direct messages.</li><li>Set who can comment on their videos.</li><li>Set who can mention or tag them.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends, or No one for DMs<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Friends<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="note">Direct messaging is switched off entirely for accounts registered as under 16.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Turn on Restricted Mode and keyword filters</h3></span></div><div class="step-body"><p class="why">Restricted Mode filters out content that isn’t appropriate for younger viewers. Keyword filters let you name the specific things you’re worried about.</p><p class="path"><code>Family Pairing → Content preferences</code></p><ol class="do-list"><li>Turn Restricted Mode on.</li><li>Open Filter video keywords and add words relevant to your family. Diet and body-image terms are a common starting point.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set daily screen time and a Time away schedule</h3></span></div><div class="step-body"><p class="why">TikTok’s feed has no end. The sleep effect is the most reliably harmful part for most teenagers.</p><p class="path"><code>Family Pairing → [your teen] → Screen time</code></p><ol class="do-list"><li>Set a Daily screen time limit (the minimum TikTok allows is 40 minutes).</li><li>Add a Time away schedule covering school hours and bedtime.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>60 minutes, phone out of the bedroom overnight</td></tr><tr><td>16–17</td><td>Agree a limit together, keep the overnight block</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Show them how to reset the feed</h3></span></div><div class="step-body"><p class="why">If the algorithm goes somewhere dark, they can fix it themselves. Teaching this beats monitoring it.</p><ol class="do-list"><li>Show them the &#39;not interested&#39; option on a long-press of any video.</li><li>Show them Settings and privacy → Content preferences → Refresh your For You feed.</li><li>Agree that if the feed gets strange, they tell you and you fix it together, with no blame.</li></ol></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -2452,6 +2466,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2843,6 +2859,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2931,6 +2949,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

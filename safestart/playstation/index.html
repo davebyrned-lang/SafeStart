@@ -692,6 +692,20 @@ button { font: inherit; cursor: pointer; }
 .one-way li:last-child { margin-bottom: 0; }
 .one-way li::marker { color: var(--signal); }
 
+/* Colour carries meaning here, so it is doubled with an icon and with the words
+   themselves. "Your child can change it back" is a warning; "they cannot" is a
+   reassurance, and both are worth reading. */
+.held-by {
+  margin: 13px 0 0; padding: 9px 12px; border-radius: var(--radius-sm);
+  background: var(--surface-2); font-size: .88rem; color: var(--muted);
+  display: flex; gap: 8px; align-items: flex-start; line-height: 1.5;
+  border-left: 3px solid var(--blue);
+}
+.held-by svg { width: 15px; height: 15px; flex: none; margin-top: 2px; color: var(--blue); }
+.held-by b { color: var(--heading); font-weight: 650; }
+.held-by.held-child, .held-by.held-shared { border-left-color: var(--signal); }
+.held-by.held-child svg, .held-by.held-shared svg { color: var(--heading); }
+
 /* Per-step, and deliberately quieter than the block above. By the time a parent
    reaches one of these they have already read the warnings. */
 .undo {
@@ -1153,11 +1167,11 @@ button { font: inherit; cursor: pointer; }
 <li>Child members cannot be removed from a family once you create them, so create the child in the right family the first time.</li>
 </ul></div>
 <ol class="steps">
-<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Management and a child account</h3></span></div><div class="step-body"><p class="why">Restrictions only apply to child accounts within your family.</p><p class="path"><code>playstation.com/acct/family</code></p><ol class="do-list"><li>Sign in at playstation.com/acct/family with your own account.</li><li>Add a family member and create a child account with their real date of birth.</li><li>Sign that account in on the console.</li></ol><div class="undo"><span class="undo-label">Already done this?</span><p>If they are already on an adult account, a new child account is the only route and nothing carries across. Before you make the switch, go into the console restrictions and set User Creation and Guest Login to Not Allowed, otherwise they will simply sign back into the old account and none of this will have mattered.</p></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set age-level restrictions for games and content</h3></span></div><div class="step-body"><p class="why">Blocks games above their rating from launching, which is more reliable than hoping you notice.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Age level for games</code></p><ol class="do-list"><li>Set the age level for games to match their age.</li><li>Set the level for Blu-ray and DVD content.</li><li>Restrict or block the internet browser for younger children.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>7–11</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>11–12</td><td>PEGI 12 / ESRB E10+, browser blocked</td></tr><tr><td>13–15</td><td>PEGI 12–16 / ESRB T, browser restricted</td></tr><tr><td>16–17</td><td>PEGI 16–18 / ESRB T–M</td></tr></tbody></table></div><div class="undo"><span class="undo-label">Already done this?</span><p>If you never set a console restriction passcode, the default is 0000, so your child could have walked straight past it. If you did set one and cannot remember it, Sony&#39;s answer is to reset the console. Note that the login passcode is a separate setting from the restriction passcode. Set both.</p></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and user-generated content</h3></span></div><div class="step-body"><p class="why">This is the setting that governs voice chat, messages and shared content from strangers.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Communication and user-generated content</code></p><ol class="do-list"><li>Restrict messaging and chat with other players.</li><li>Restrict the ability to view or share videos and images made by other players.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>7–11</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>11–12</td><td>Restricted<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>13–15</td><td>Allowed with friends only<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Allowed, discussed together<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set play time limits</h3></span></div><div class="step-body"><p class="why">PlayStation lets you set both a daily amount and a window of hours, which is useful for school nights.</p><p class="path"><code>Family Management → [your child] → Play Time Settings</code></p><ol class="do-list"><li>Set the hours of the day they can play.</li><li>Set a daily duration.</li><li>Choose whether the console logs them out at the limit or just warns them.</li><li>Note these settings apply to both PS5 and PS4.</li></ol></div></li>
-<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a monthly spending limit</h3></span></div><div class="step-body"><p class="why">Wallet top-ups and in-game currency are where console spending usually escapes.</p><p class="path"><code>Family Management → [your child] → Monthly spending limit</code></p><ol class="do-list"><li>Set a monthly limit, or zero.</li><li>Remove any saved payment card from the account.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>$0</td></tr><tr><td>7–11</td><td>$0</td></tr><tr><td>11–12</td><td>$0</td></tr><tr><td>13–15</td><td>A small agreed monthly cap</td></tr><tr><td>16–17</td><td>An agreed monthly cap</td></tr></tbody></table></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Management and a child account</h3></span></div><div class="step-body"><p class="why">Restrictions only apply to child accounts within your family.</p><p class="path"><code>playstation.com/acct/family</code></p><ol class="do-list"><li>Sign in at playstation.com/acct/family with your own account.</li><li>Add a family member and create a child account with their real date of birth.</li><li>Sign that account in on the console.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If they are already on an adult account, a new child account is the only route and nothing carries across. Before you make the switch, go into the console restrictions and set User Creation and Guest Login to Not Allowed, otherwise they will simply sign back into the old account and none of this will have mattered.</p></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set age-level restrictions for games and content</h3></span></div><div class="step-body"><p class="why">Blocks games above their rating from launching, which is more reliable than hoping you notice.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Age level for games</code></p><ol class="do-list"><li>Set the age level for games to match their age.</li><li>Set the level for Blu-ray and DVD content.</li><li>Restrict or block the internet browser for younger children.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>7–11</td><td>PEGI 7 / ESRB E, browser blocked</td></tr><tr><td>11–12</td><td>PEGI 12 / ESRB E10+, browser blocked</td></tr><tr><td>13–15</td><td>PEGI 12–16 / ESRB T, browser restricted</td></tr><tr><td>16–17</td><td>PEGI 16–18 / ESRB T–M</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If you never set a console restriction passcode, the default is 0000, so your child could have walked straight past it. If you did set one and cannot remember it, Sony&#39;s answer is to reset the console. Note that the login passcode is a separate setting from the restriction passcode. Set both.</p></div></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and user-generated content</h3></span></div><div class="step-body"><p class="why">This is the setting that governs voice chat, messages and shared content from strangers.</p><p class="path"><code>Family Management → [your child] → Parental Controls → Communication and user-generated content</code></p><ol class="do-list"><li>Restrict messaging and chat with other players.</li><li>Restrict the ability to view or share videos and images made by other players.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>7–11</td><td>Restricted, so no messaging or chat<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>11–12</td><td>Restricted<span class="plain-terms">Nobody can message, call or speak to them on this app. Not strangers, and not their friends either.</span></td></tr><tr><td>13–15</td><td>Allowed with friends only<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Allowed, discussed together<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set play time limits</h3></span></div><div class="step-body"><p class="why">PlayStation lets you set both a daily amount and a window of hours, which is useful for school nights.</p><p class="path"><code>Family Management → [your child] → Play Time Settings</code></p><ol class="do-list"><li>Set the hours of the day they can play.</li><li>Set a daily duration.</li><li>Choose whether the console logs them out at the limit or just warns them.</li><li>Note these settings apply to both PS5 and PS4.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set a monthly spending limit</h3></span></div><div class="step-body"><p class="why">Wallet top-ups and in-game currency are where console spending usually escapes.</p><p class="path"><code>Family Management → [your child] → Monthly spending limit</code></p><ol class="do-list"><li>Set a monthly limit, or zero.</li><li>Remove any saved payment card from the account.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>$0</td></tr><tr><td>7–11</td><td>$0</td></tr><tr><td>11–12</td><td>$0</td></tr><tr><td>13–15</td><td>A small agreed monthly cap</td></tr><tr><td>16–17</td><td>An agreed monthly cap</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
 <li class="check-item">Family Manager set up</li>
@@ -2443,6 +2457,8 @@ function renderPlanStep(item, num) {
   if (po) body.appendChild(po);
   if (s.result) body.appendChild(el("p", { class: "result", text: s.result }));
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
+  var phb = heldByNode(s);
+  if (phb) body.appendChild(phb);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -2834,6 +2850,8 @@ function renderStep(step, num) {
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
   }
+  var ghb = heldByNode(step);
+  if (ghb) body.appendChild(ghb);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 
@@ -2922,6 +2940,28 @@ function outcomeNode(step, band) {
   if (!text) return null;
   return el("p", { class: "plain-terms" }, [
     el("b", { text: "In plain terms: " }), document.createTextNode(text)
+  ]);
+}
+
+/* The question a parent never thinks to ask, and the one that decides whether
+   any of this survives the week: whose account is the setting on, and can the
+   child put it back? Twice now we have described a control that lives in the
+   child's own settings as though the parent held it. So every settings step
+   declares an answer, the build fails if one does not, and the answer is the
+   same sentence on every app, the way the chat outcomes are. */
+function heldByNode(step) {
+  /* Several of these flip at a birthday. Roblox hands chat and voice to the
+     child at 13; Instagram lets a 16 year old loosen what a 15 year old cannot.
+     Those are the cases a parent most needs the answer to, so the age-banded
+     form wins wherever it is set. */
+  var key = (step.heldByAge && state.ageBand && step.heldByAge[state.ageBand]) || step.heldBy;
+  if (!key && step.heldByAge) key = "varies";
+  if (!key) return null;
+  var text = DATA.heldBy && DATA.heldBy[key];
+  if (!text) return null;
+  return el("p", { class: "held-by held-" + key }, [
+    icon(key === "child" || key === "shared" ? "alert" : "shield"),
+    el("span", {}, [el("b", { text: "Who holds this: " }), document.createTextNode(text)])
   ]);
 }
 

@@ -148,6 +148,13 @@ function renderStepStatic(step, num, symbol) {
 
   if (step.result) out.push('<p class="result">' + esc(step.result) + "</p>");
   if (step.note) out.push('<p class="note">' + esc(step.note) + "</p>");
+  // No age is chosen in the static page, so a setting that changes hands at a
+  // birthday says that rather than picking one answer and being wrong half the time.
+  const held = step.heldBy || (step.heldByAge ? "varies" : null);
+  if (held && DATA.heldBy && DATA.heldBy[held]) {
+    out.push('<p class="held-by held-' + esc(held) + '"><span><b>Who holds this: </b>' +
+      esc(DATA.heldBy[held]) + "</span></p>");
+  }
   if (step.undo) {
     out.push('<div class="undo"><span class="undo-label">Already done this?</span><p>' +
       esc(step.undo) + "</p></div>");
