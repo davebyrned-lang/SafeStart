@@ -496,6 +496,84 @@ if (!missing.length) {
   if (!leaks) ok('no country-specific agency names leak into the shared advice');
 }
 
+/* Contrast, in both themes.
+ *
+ * The palette is warm now, and warm palettes are easy to drift into unreadable:
+ * a clay that looks lovely as a border fails as text, and nobody notices until a
+ * parent with older eyes cannot read a warning. So the tokens are parsed straight
+ * out of the stylesheet and every pair that ends up as text somewhere is checked
+ * against WCAG AA. Change a colour and this tells you before a reader does.
+ */
+console.log('\ncolour contrast');
+{
+  const app = fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf8');
+
+  const block = (sel) => {
+    const m = app.match(new RegExp(sel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\s*\\{([\\s\\S]*?)\\n\\}'));
+    if (!m) return null;
+    const out = {};
+    m[1].replace(/(--[\w-]+)\s*:\s*([^;]+);/g, (_, k, v) => { out[k] = v.trim(); return ''; });
+    return out;
+  };
+  const light = block(':root');
+  const dark = block(':root[data-theme="dark"]');
+  if (!light || !dark) { fail('cannot parse the palette out of src/app.html'); }
+  else {
+    // Resolve one level of var() indirection, which is how the voices are defined.
+    const val = (vars, name, seen = 0) => {
+      let v = vars[name];
+      if (!v && vars !== light) v = light[name];
+      if (!v || seen > 4) return v;
+      const ref = v.match(/^var\((--[\w-]+)\)$/);
+      return ref ? val(vars, ref[1], seen + 1) : v;
+    };
+    const lum = (hex) => {
+      const h = (hex || '').trim().replace('#', '');
+      if (!/^[0-9a-f]{6}$/i.test(h)) return null;
+      const c = h.match(/../g).map((x) => {
+        const n = parseInt(x, 16) / 255;
+        return n <= 0.03928 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+    };
+    const ratio = (a, b) => {
+      const [x, y] = [lum(a), lum(b)];
+      if (x === null || y === null) return null;
+      const [hi, lo] = [x, y].sort((m, n) => n - m);
+      return (hi + 0.05) / (lo + 0.05);
+    };
+
+    // [label, foreground token, background token, minimum]
+    const PAIRS = [
+      ['body on a card', '--body', '--surface', 4.5],
+      ['heading on a card', '--heading', '--surface', 4.5],
+      ['muted on a card', '--muted', '--surface', 4.5],
+      ['muted on the ground', '--muted', '--bg', 4.5],
+      ['a link', '--action', '--paper', 4.5],
+      ['a button label', '--on-action', '--action', 4.5],
+      ['caution as text', '--caution', '--paper', 4.5],
+      ['info as text', '--info', '--paper', 4.5],
+      ['text on the sun fill', '--on-fill', '--fill-sun', 4.5],
+      ['text on the warm fill', '--on-fill', '--fill-warm', 4.5],
+      ['caution on its tint', '--caution', '--caution-tint', 4.5],
+      ['info on its tint', '--info', '--info-tint', 4.5],
+    ];
+    let worst = { r: Infinity };
+    [['light', light], ['dark', dark]].forEach(([theme, vars]) => {
+      PAIRS.forEach(([label, fg, bg, min]) => {
+        const a = val(vars, fg), b = val(vars, bg);
+        const r = ratio(a, b);
+        if (r === null) { fail(`${theme}: cannot resolve ${fg} on ${bg} (${a} / ${b})`); return; }
+        if (r < min) fail(`${theme}: ${label} is ${r.toFixed(2)}:1, AA needs ${min}`);
+        if (r < worst.r) worst = { r, label, theme };
+      });
+    });
+    if (worst.r < Infinity) {
+      ok(`${PAIRS.length * 2} pairs across both themes, tightest is ${worst.label} in ${worst.theme} at ${worst.r.toFixed(2)}:1`);
+    }
+  }
+}
+
 console.log(
   `\n${failures ? 'FAILED' : 'PASSED'} — ${failures} failure(s), ${warnings} warning(s)\n`
 );

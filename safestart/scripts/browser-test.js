@@ -57,9 +57,18 @@ function check(name, condition, detail) {
     check('footer carries the tagline', footer.includes('Building Trust. Driving Revenue. Scaling Responsibly.'));
     const logoResp = await page.request.get(BASE + '/assets/trustraise-logo.png');
     check('logo asset serves', logoResp.status() === 200, 'status ' + logoResp.status());
-    const blue = await page.evaluate(() =>
-      getComputedStyle(document.documentElement).getPropertyValue('--blue').trim());
-    check('TrustRaise Blue is the primary', blue.toUpperCase() === '#1F3FE2', blue);
+    /* SafeStart deliberately does not use TrustRaise Blue. Readers kept saying the
+       site felt unwelcoming and the cause was that every colour on it was cool.
+       The family resemblance is carried by the shield, Inter and the byline, all
+       checked above, rather than by the palette. */
+    const voices = await page.evaluate(() => {
+      const s = getComputedStyle(document.documentElement);
+      return ['--action', '--caution', '--info'].map((v) => s.getPropertyValue(v).trim().toUpperCase());
+    });
+    check('the palette is SafeStart\'s own, not TrustRaise Blue',
+      !voices.includes('#1F3FE2'), voices.join(' '));
+    check('and it speaks with three distinct voices',
+      new Set(voices).size === 3 && voices.every(Boolean), voices.join(' '));
     const fontResp = await page.request.get(BASE + '/assets/fonts/inter-600.woff2');
     check('Inter is self-hosted', fontResp.status() === 200, 'status ' + fontResp.status());
     check('Inter actually renders',
