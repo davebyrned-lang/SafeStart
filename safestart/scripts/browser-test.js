@@ -97,14 +97,16 @@ function check(name, condition, detail) {
 
     console.log('\nthe device setup is optional');
     check('offers to skip a device that is already done',
-      (await page.locator('.sub-q').textContent()).includes('Already done'));
+      await page.locator('.chip[data-focus-key="setup:done"]').isVisible());
+    check('and the question above the buttons actually asks something',
+      (await page.locator('.sub-q-label').textContent()).includes('?'));
     // Roblox has no minimum age, so this exercises the device toggle without
     // tripping the over-age warning tested further down. Measure with the app
     // already added, so the only difference between the two is the device.
     await page.locator('.card.selectable', { hasText: 'Roblox' }).first().click();
     await page.waitForTimeout(150);
     const withDevice = await page.locator('.build-cta').textContent();
-    await page.locator('.chip', { hasText: 'Already done' }).first().click();
+    await page.locator('.chip[data-focus-key="setup:done"]').click();
     await page.waitForTimeout(200);
     const withoutDevice = await page.locator('.build-cta').textContent();
     check('skipping the device makes the plan shorter', withoutDevice !== withDevice,
@@ -114,7 +116,7 @@ function check(name, condition, detail) {
     check('no apps and no device setup leaves nothing to build',
       (await page.locator('.build-cta').count()) === 0);
     check('and says why', (await page.locator('.pick-note.dim').textContent()).includes('at least one app'));
-    await page.locator('.chip', { hasText: 'Set it up too' }).first().click();
+    await page.locator('.chip[data-focus-key="setup:new"]').click();
     await page.waitForTimeout(200);
     check('device-only plan is buildable again', await page.locator('.build-cta').isVisible());
 
@@ -548,7 +550,34 @@ function check(name, condition, detail) {
     await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox,youtube,minecraft', { waitUntil: 'networkidle' });
     await page.waitForSelector('.session');
 
+    console.log('\ngetting back to the chat');
+    // A reader lost the Ask button for the rest of their session by opening the
+    // chat from a plan page and closing it. closeChat only restored the button on
+    // a guide, and nothing tested the plan. It was the worst thing on the site.
+    for (const [where, url] of [['plan', '/plan/?device=ipad&age=7-11&apps=roblox&country=US'],
+                                ['guide', '/roblox/?age=7-11']]) {
+      await page.goto(BASE + url, { waitUntil: 'networkidle' });
+      await page.waitForSelector('.step');
+      check(`the Ask button is there on a ${where}`, await page.locator('#askFab').isVisible());
+      await page.click('#askFab');
+      await page.waitForTimeout(350);
+      check(`it opens on a ${where}`, await page.locator('#chatPanel').isVisible());
+      await page.click('#chatClose');
+      await page.waitForTimeout(400);
+      check(`and comes back after closing on a ${where}`, await page.locator('#askFab').isVisible());
+      await page.click('#askFab');
+      await page.waitForTimeout(350);
+      await page.click('#chatMin');
+      await page.waitForTimeout(400);
+      check(`minimising gives it back too on a ${where}`, await page.locator('#askFab').isVisible());
+      check(`and the page is readable again on a ${where}`,
+        !(await page.locator('#chatScrim').isVisible()));
+    }
+
     console.log('\nQR handoff');
+    await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox&country=US',
+      { waitUntil: 'networkidle' });
+    await page.waitForSelector('.plan-tools .ghost-btn');
     check('encoder is not loaded until asked for',
       (await page.locator('script[src*="qrcode"]').count()) === 0);
     await page.locator('.plan-tools .ghost-btn').first().click();

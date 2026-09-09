@@ -52,15 +52,15 @@
   {
    "@type": "HowToStep",
    "position": 3,
-   "name": "Set the age filter",
-   "text": "This is what decides which books, videos and apps your child sees at all. Go to parents.amazon.com or open the Parent Dashboard app. Click the gear icon next to your child's name. Choose Adjust Age Filter and set it to their actual age.",
+   "name": "Set the content maturity filter",
+   "text": "This is what decides which books, videos and apps your child sees at all. Go to parents.amazon.com or open the Parent Dashboard app. Click the gear icon next to your child’s name. Open Content Maturity Filter & Languages. Set the range under \"Only show content with a maturity rating up to\", and check the language while you are there.",
    "url": "https://safestart.trust-raise.com/firetablet/#step-3"
   },
   {
    "@type": "HowToStep",
    "position": 4,
    "name": "Decide about the browser",
-   "text": "The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last. In the Parent Dashboard, open Settings, then Fire Tablet Web Browser. Turn the browser off entirely, or pick Hand-Selected Websites & Videos, or Filtered Websites & Videos. You can add your own allowed or blocked addresses either way.",
+   "text": "The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last. In the Parent Dashboard, open your child’s settings from the gear icon next to their name. Find the web browsing controls in there. Turn the browser off entirely, or pick Hand-Selected Websites & Videos, or Filtered Websites & Videos. You can add your own allowed or blocked addresses either way.",
    "url": "https://safestart.trust-raise.com/firetablet/#step-4"
   },
   {
@@ -529,9 +529,15 @@ button { font: inherit; cursor: pointer; }
 .sub-q {
   margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--line);
 }
+.sub-q-help {
+  display: block; font-size: .84rem; color: var(--muted); line-height: 1.45;
+  margin: 3px 0 10px; max-width: 60ch;
+}
+/* It reads as a question now, so it is set as one rather than as a shouted
+   section label. */
 .sub-q-label {
-  display: block; font-size: .82rem; font-weight: 650; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .05em; margin-bottom: 9px;
+  display: block; font-size: .95rem; font-weight: 650; color: var(--heading);
+  letter-spacing: -.01em; margin-bottom: 2px;
 }
 
 .escape-hatch { text-align: center; color: var(--muted); font-size: .9rem; margin: 26px 0 60px; }
@@ -1072,7 +1078,10 @@ button { font: inherit; cursor: pointer; }
 .chat-head { display: flex; align-items: center; gap: 11px; padding: 16px 19px; border-bottom: 1px solid var(--line); }
 .chat-head h2 { margin: 0; font-size: 1.05rem; letter-spacing: -.02em; color: var(--heading); font-weight: 650; }
 .chat-head .chat-ctx { font-size: .8rem; color: var(--muted); }
-.chat-close { margin-left: auto; background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
+.chat-min { margin-left: auto; background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
+.chat-min:hover { background: var(--surface-2); color: var(--heading); }
+.chat-min svg { width: 19px; height: 19px; }
+.chat-close { background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
 .chat-close:hover { background: var(--surface-2); color: var(--heading); }
 .chat-close svg { width: 19px; height: 19px; }
 
@@ -1213,7 +1222,7 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">All guides</a>
 <div class="guide-head"><h1 class="guide-title">Amazon Fire tablet</h1></div>
 <p class="guide-blurb">Often a child&#39;s first tablet. Amazon Kids builds a walled garden with genuinely good controls inside it, and almost none outside it. The lock screen PIN is the whole wall.</p>
-<div class="meta-row"><span class="pill">Device</span><span class="pill">About 15 minutes</span><span class="pill conf-medium">Source confidence: medium</span><span class="pill">Checked 5 September 2026</span></div>
+<div class="meta-row"><span class="pill">Device</span><span class="pill">About 15 minutes</span><span class="pill conf-medium">Source confidence: medium</span><span class="pill">Checked 9 September 2026</span></div>
 <div class="kid-card">
 <h3>There is a version built for younger children</h3>
 <p>A child profile with Amazon Kids, a profile on the tablet. Amazon Kids is free and gives you the Parent Dashboard: child profiles, age filters, time limits, and adding your own content. Amazon Kids+ is the paid subscription that adds the curated library of books, games and video. Fire Kids tablets come with a subscription in the box.</p>
@@ -1241,8 +1250,8 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set a lock screen PIN first</h3></span></div><div class="step-body"><p class="why">This is the one that matters. Amazon&#39;s own setup guide says it plainly: the PIN is what stops your child getting out of their profile and into yours. Without it everything below is decoration.</p><p class="path"><code>Settings → Security &amp; Privacy → Lock Screen Passcode</code></p><ol class="do-list"><li>Open Settings on the tablet, then Security &amp; Privacy.</li><li>Set a lock screen PIN or password.</li><li>Use something your child hasn&#39;t seen you type, and not a birthday.</li></ol><p class="result">Switching out of a child profile now needs your PIN.</p><p class="held-by held-device"><span><b>Who holds this: </b>This is set on the device and held by your device passcode, not by the app.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>Forgotten the lock screen PIN? Get it wrong five times, choose Reset Your PIN, and enter your Amazon password. Nothing is lost. This is the recoverable one. The separate Parental Controls password is not, so do not assume the same trick works there.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Create a child profile</h3></span></div><div class="step-body"><p class="why">The child profile is the sandbox. Age filters, time limits and the safer browser all live inside it and apply nowhere else.</p><ol class="do-list"><li>Open the Amazon Kids app, or follow the setup prompts on a new tablet.</li><li>Tap Add Child.</li><li>Enter their name, date of birth and pick an avatar. You can add up to four children.</li></ol><p class="note">Amazon Kids is free. Amazon Kids+ is a paid content library on top of it, and buying it adds no extra controls.</p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set the age filter</h3></span></div><div class="step-body"><p class="why">This is what decides which books, videos and apps your child sees at all.</p><p class="path"><code>parents.amazon.com → gear icon next to your child → Adjust Age Filter</code></p><ol class="do-list"><li>Go to parents.amazon.com or open the Parent Dashboard app.</li><li>Click the gear icon next to your child&#39;s name.</li><li>Choose Adjust Age Filter and set it to their actual age.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Their real age, not older</td></tr><tr><td>7–11</td><td>Their real age, not older</td></tr><tr><td>11–12</td><td>Their real age</td></tr><tr><td>13–15</td><td>Their real age</td></tr><tr><td>16–17</td><td>Their real age</td></tr></tbody></table></div><p class="note">Setting it above their age to &#39;give them more choice&#39; is the most common way this gets undone.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Decide about the browser</h3></span></div><div class="step-body"><p class="why">The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last.</p><p class="path"><code>Parent Dashboard → Settings → Fire Tablet Web Browser</code></p><ol class="do-list"><li>In the Parent Dashboard, open Settings, then Fire Tablet Web Browser.</li><li>Turn the browser off entirely, or pick Hand-Selected Websites &amp; Videos, or Filtered Websites &amp; Videos.</li><li>You can add your own allowed or blocked addresses either way.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Browser off, or Hand-Selected</td></tr><tr><td>7–11</td><td>Browser off, or Hand-Selected</td></tr><tr><td>11–12</td><td>Hand-Selected</td></tr><tr><td>13–15</td><td>Filtered</td></tr><tr><td>16–17</td><td>Filtered</td></tr></tbody></table></div><p class="note">Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set the content maturity filter</h3></span></div><div class="step-body"><p class="why">This is what decides which books, videos and apps your child sees at all.</p><p class="path"><code>parents.amazon.com → gear icon next to your child → Content Maturity Filter &amp; Languages</code></p><ol class="do-list"><li>Go to parents.amazon.com or open the Parent Dashboard app.</li><li>Click the gear icon next to your child’s name.</li><li>Open Content Maturity Filter &amp; Languages.</li><li>Set the range under &quot;Only show content with a maturity rating up to&quot;, and check the language while you are there.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Top of the range at their real age, not older</td></tr><tr><td>7–11</td><td>Top of the range at their real age, not older</td></tr><tr><td>11–12</td><td>Top of the range at their real age</td></tr><tr><td>13–15</td><td>Top of the range at their real age</td></tr><tr><td>16–17</td><td>Top of the range at their real age</td></tr></tbody></table></div><p class="note">Two things catch people out. Amazon renamed this: older guidance, ours included until a reader corrected it, calls it Adjust Age Filter. And it is a range with a lower and an upper age, not a single age, so set the top of the range to their actual age rather than nudging it up to give them more choice. Nudging it up is the most common way this gets undone.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Decide about the browser</h3></span></div><div class="step-body"><p class="why">The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last.</p><p class="path"><code>parents.amazon.com → gear icon next to your child → Child Settings</code></p><ol class="do-list"><li>In the Parent Dashboard, open your child’s settings from the gear icon next to their name.</li><li>Find the web browsing controls in there.</li><li>Turn the browser off entirely, or pick Hand-Selected Websites &amp; Videos, or Filtered Websites &amp; Videos.</li><li>You can add your own allowed or blocked addresses either way.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Browser off, or Hand-Selected</td></tr><tr><td>7–11</td><td>Browser off, or Hand-Selected</td></tr><tr><td>11–12</td><td>Hand-Selected</td></tr><tr><td>13–15</td><td>Filtered</td></tr><tr><td>16–17</td><td>Filtered</td></tr></tbody></table></div><p class="note">We had this in the wrong place until a reader went looking and could not find it, on desktop or in the app. Amazon’s own wording is that web-browsing controls can be customized for each child in the free Amazon Kids Parent Dashboard, under that child’s settings. Separately, Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set time limits and a bedtime</h3></span></div><div class="step-body"><p class="why">A tablet has no natural stopping point, and a scheduled limit avoids the nightly negotiation.</p><p class="path"><code>Parent Dashboard → Settings → Daily Screen Time</code></p><ol class="do-list"><li>In the Parent Dashboard, open Settings, then Daily Screen Time.</li><li>Set a daily limit under Screen time, and a window under Schedule.</li><li>If you want reading before games, set goals under Learn First.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>45–60 minutes, off an hour before bed</td></tr><tr><td>7–11</td><td>45–60 minutes, off an hour before bed</td></tr><tr><td>11–12</td><td>60–90 minutes</td></tr><tr><td>13–15</td><td>Agree it together</td></tr><tr><td>16–17</td><td>Agree it together</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Make app downloads a request</h3></span></div><div class="step-body"><p class="why">Children ask rather than install, and you get a say without having to police it.</p><p class="path"><code>Parent Dashboard → Content → Store Access</code></p><ol class="do-list"><li>In the Parent Dashboard, open Content, then Store Access.</li><li>Turn on approval for third-party apps and games.</li><li>Leave in-app purchases requiring approval, which is the default.</li></ol><p class="note">You&#39;ll get an email or text when they ask, and the app only arrives once you approve.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Check what&#39;s outside the sandbox</h3></span></div><div class="step-body"><p class="why">Amazon Kids is strong inside the profile and absent outside it. Ten minutes on your own profile is worth more than another setting inside theirs.</p><ol class="do-list"><li>Open your own adult profile and look at what&#39;s installed and signed in.</li><li>Remove or sign out of anything you&#39;d rather they didn&#39;t find if the PIN ever slips.</li><li>Tell your child the PIN exists and why, rather than letting them discover it.</li></ol></div></li>
@@ -1285,7 +1294,7 @@ button { font: inherit; cursor: pointer; }
 
 <button class="ask-fab" id="askFab" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
-  Ask SafeStart
+  <span id="askFabLabel">Ask SafeStart</span>
 </button>
 
 <div class="chat-scrim" id="chatScrim" hidden></div>
@@ -1296,6 +1305,9 @@ button { font: inherit; cursor: pointer; }
       <h2>Ask SafeStart</h2>
       <div class="chat-ctx" id="chatCtx"></div>
     </div>
+    <button class="chat-min" id="chatMin" aria-label="Minimise, keeping this conversation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
     <button class="chat-close" id="chatClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
@@ -1715,9 +1727,9 @@ function renderHome(skipUrl) {
   state.view = "home";
   state.guideId = null;
   state.guide = null;
-  document.getElementById("askFab").hidden = true;
   document.getElementById("printBtn").hidden = true;
   closeChat();
+  syncAskFab();
   if (!skipUrl) writeUrl(false);
 
   clear(app);
@@ -1842,9 +1854,9 @@ function stepDevice() {
        setup is a choice rather than an assumption. */
     var chips = el("div", { class: "chips" });
     [
-      { key: "new",  on: true,  fix: false, label: "Set it up too",  sub: "Catches the app they install next" },
-      { key: "fix",  on: true,  fix: true,  label: "I set it up wrong", sub: "Same steps, plus how to undo" },
-      { key: "done", on: false, fix: false, label: "Already done",   sub: "Skip to the apps" }
+      { key: "new",  on: true,  fix: false, label: "Yes, include them",   sub: "I have not set this device up yet" },
+      { key: "fix",  on: true,  fix: true,  label: "Yes, and I got it wrong", sub: "Same steps, plus how to undo" },
+      { key: "done", on: false, fix: false, label: "No, already done",     sub: "Skip straight to the apps" }
     ].forEach(function (opt) {
       var current = state.includeDevice === opt.on && (!opt.on || state.fixMode === opt.fix);
       chips.appendChild(el("button", {
@@ -1864,7 +1876,11 @@ function stepDevice() {
     });
 
     body.push(el("div", { class: "sub-q" }, [
-      el("span", { class: "sub-q-label", text: "The " + (dev.short || dev.label) + " itself" }),
+      el("span", { class: "sub-q-label",
+        text: "Do you want the " + (dev.short || dev.label) + "'s own settings in your plan?" }),
+      el("span", { class: "sub-q-help",
+        text: "Separate from the apps on it. The device settings are the ones that catch whatever " +
+              "they install next, so most people want them." }),
       chips
     ]));
 
@@ -2359,8 +2375,8 @@ function renderPlan(skipUrl) {
   state.guideId = null;
   state.guide = null;
   loadPlanProgress();
-  document.getElementById("askFab").hidden = false;
   document.getElementById("printBtn").hidden = false;
+  syncAskFab();
   updateChatContext();
   if (!skipUrl) writeUrl(false);
 
@@ -2577,8 +2593,8 @@ function renderGuide() {
   var g = state.guide;
   clear(app);
   document.title = g.name + " parental controls — SafeStart";
-  document.getElementById("askFab").hidden = false;
   document.getElementById("printBtn").hidden = false;
+  syncAskFab();
   updateChatContext();
 
   var head = el("section", { class: "guide-head" }, [
@@ -2998,7 +3014,7 @@ function whyNode(step) {
     ]);
   }
   var d = el("details", { class: "why-toggle" });
-  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("summary", { text: "Why this matters" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
 }
@@ -3066,8 +3082,8 @@ function generateGuide(name) {
   state.guideId = null;
   clear(app);
   window.scrollTo(0, 0);
-  document.getElementById("askFab").hidden = true;
   document.getElementById("printBtn").hidden = true;
+  syncAskFab();
 
   app.appendChild(el("div", { class: "loading" }, [
     el("div", { class: "spinner" }),
@@ -3123,6 +3139,7 @@ var chatSuggest = document.getElementById("chatSuggest");
 
 document.getElementById("askFab").addEventListener("click", function () { openChat(); });
 document.getElementById("chatClose").addEventListener("click", closeChat);
+document.getElementById("chatMin").addEventListener("click", minimiseChat);
 chatScrim.addEventListener("click", closeChat);
 document.addEventListener("keydown", function (e) { if (e.key === "Escape" && chat.open) closeChat(); });
 
@@ -3139,11 +3156,32 @@ function updateChatContext() {
   document.getElementById("chatCtx").textContent = bits.join("  ·  ");
 }
 
+/* Whether the Ask button belongs on screen is a property of where you are, not
+   something each render should remember to set. It used to be set by hand in six
+   places, and closeChat only put it back on a guide page, so a reader who opened
+   the chat from a plan lost the button for the rest of the session with no way
+   to get it back. Reported as the worst thing on the site, and fairly. One
+   function decides now, and everything calls it. */
+function syncAskFab() {
+  var wanted = !chat.open && (state.view === "guide" || state.view === "plan") &&
+    !/^\/help(\/|$)/.test(location.pathname);
+  document.getElementById("askFab").hidden = !wanted;
+  // Once there is a conversation, the button is a way back to it rather than a
+  // way to start one, and it should not read like starting over.
+  var label = document.getElementById("askFabLabel");
+  if (label) label.textContent = chat.messages.length ? "Back to your question" : "Ask SafeStart";
+}
+
+/* Minimise keeps the conversation and drops the scrim, so the reader can read
+   the step the answer was about and then come back to it. Asked for directly:
+   "once I had the chat open everything else was blurred out." */
+function minimiseChat() { closeChat(); }
+
 function openChat(prefill) {
   chat.open = true;
   chatPanel.hidden = false;
   chatScrim.hidden = false;
-  document.getElementById("askFab").hidden = true;
+  syncAskFab();
   updateChatContext();
   requestAnimationFrame(function () {
     chatPanel.classList.add("open");
@@ -3173,7 +3211,7 @@ function closeChat() {
   chat.open = false;
   chatPanel.classList.remove("open");
   chatScrim.classList.remove("open");
-  if (state.view === "guide" && state.guide) document.getElementById("askFab").hidden = false;
+  syncAskFab();
   setTimeout(function () {
     if (!chat.open) { chatPanel.hidden = true; chatScrim.hidden = true; }
   }, 260);
@@ -3473,8 +3511,8 @@ function boot() {
   initTheme();
 
   if (/^\/help(\/|$)/.test(location.pathname)) {
-    document.getElementById("askFab").hidden = true;
     document.getElementById("printBtn").hidden = false;
+    syncAskFab();
     return;
   }
 

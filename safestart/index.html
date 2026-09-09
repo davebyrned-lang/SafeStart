@@ -624,9 +624,15 @@ button { font: inherit; cursor: pointer; }
 .sub-q {
   margin-top: 16px; padding-top: 15px; border-top: 1px solid var(--line);
 }
+.sub-q-help {
+  display: block; font-size: .84rem; color: var(--muted); line-height: 1.45;
+  margin: 3px 0 10px; max-width: 60ch;
+}
+/* It reads as a question now, so it is set as one rather than as a shouted
+   section label. */
 .sub-q-label {
-  display: block; font-size: .82rem; font-weight: 650; color: var(--muted);
-  text-transform: uppercase; letter-spacing: .05em; margin-bottom: 9px;
+  display: block; font-size: .95rem; font-weight: 650; color: var(--heading);
+  letter-spacing: -.01em; margin-bottom: 2px;
 }
 
 .escape-hatch { text-align: center; color: var(--muted); font-size: .9rem; margin: 26px 0 60px; }
@@ -1167,7 +1173,10 @@ button { font: inherit; cursor: pointer; }
 .chat-head { display: flex; align-items: center; gap: 11px; padding: 16px 19px; border-bottom: 1px solid var(--line); }
 .chat-head h2 { margin: 0; font-size: 1.05rem; letter-spacing: -.02em; color: var(--heading); font-weight: 650; }
 .chat-head .chat-ctx { font-size: .8rem; color: var(--muted); }
-.chat-close { margin-left: auto; background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
+.chat-min { margin-left: auto; background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
+.chat-min:hover { background: var(--surface-2); color: var(--heading); }
+.chat-min svg { width: 19px; height: 19px; }
+.chat-close { background: none; border: 0; color: var(--muted); padding: 7px; border-radius: 9px; display: grid; place-items: center; }
 .chat-close:hover { background: var(--surface-2); color: var(--heading); }
 .chat-close svg { width: 19px; height: 19px; }
 
@@ -1330,7 +1339,7 @@ button { font: inherit; cursor: pointer; }
 
 <button class="ask-fab" id="askFab" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
-  Ask SafeStart
+  <span id="askFabLabel">Ask SafeStart</span>
 </button>
 
 <div class="chat-scrim" id="chatScrim" hidden></div>
@@ -1341,6 +1350,9 @@ button { font: inherit; cursor: pointer; }
       <h2>Ask SafeStart</h2>
       <div class="chat-ctx" id="chatCtx"></div>
     </div>
+    <button class="chat-min" id="chatMin" aria-label="Minimise, keeping this conversation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </button>
     <button class="chat-close" id="chatClose" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
@@ -1760,9 +1772,9 @@ function renderHome(skipUrl) {
   state.view = "home";
   state.guideId = null;
   state.guide = null;
-  document.getElementById("askFab").hidden = true;
   document.getElementById("printBtn").hidden = true;
   closeChat();
+  syncAskFab();
   if (!skipUrl) writeUrl(false);
 
   clear(app);
@@ -1887,9 +1899,9 @@ function stepDevice() {
        setup is a choice rather than an assumption. */
     var chips = el("div", { class: "chips" });
     [
-      { key: "new",  on: true,  fix: false, label: "Set it up too",  sub: "Catches the app they install next" },
-      { key: "fix",  on: true,  fix: true,  label: "I set it up wrong", sub: "Same steps, plus how to undo" },
-      { key: "done", on: false, fix: false, label: "Already done",   sub: "Skip to the apps" }
+      { key: "new",  on: true,  fix: false, label: "Yes, include them",   sub: "I have not set this device up yet" },
+      { key: "fix",  on: true,  fix: true,  label: "Yes, and I got it wrong", sub: "Same steps, plus how to undo" },
+      { key: "done", on: false, fix: false, label: "No, already done",     sub: "Skip straight to the apps" }
     ].forEach(function (opt) {
       var current = state.includeDevice === opt.on && (!opt.on || state.fixMode === opt.fix);
       chips.appendChild(el("button", {
@@ -1909,7 +1921,11 @@ function stepDevice() {
     });
 
     body.push(el("div", { class: "sub-q" }, [
-      el("span", { class: "sub-q-label", text: "The " + (dev.short || dev.label) + " itself" }),
+      el("span", { class: "sub-q-label",
+        text: "Do you want the " + (dev.short || dev.label) + "'s own settings in your plan?" }),
+      el("span", { class: "sub-q-help",
+        text: "Separate from the apps on it. The device settings are the ones that catch whatever " +
+              "they install next, so most people want them." }),
       chips
     ]));
 
@@ -2404,8 +2420,8 @@ function renderPlan(skipUrl) {
   state.guideId = null;
   state.guide = null;
   loadPlanProgress();
-  document.getElementById("askFab").hidden = false;
   document.getElementById("printBtn").hidden = false;
+  syncAskFab();
   updateChatContext();
   if (!skipUrl) writeUrl(false);
 
@@ -2622,8 +2638,8 @@ function renderGuide() {
   var g = state.guide;
   clear(app);
   document.title = g.name + " parental controls — SafeStart";
-  document.getElementById("askFab").hidden = false;
   document.getElementById("printBtn").hidden = false;
+  syncAskFab();
   updateChatContext();
 
   var head = el("section", { class: "guide-head" }, [
@@ -3043,7 +3059,7 @@ function whyNode(step) {
     ]);
   }
   var d = el("details", { class: "why-toggle" });
-  d.appendChild(el("summary", { text: "Why this one?" }));
+  d.appendChild(el("summary", { text: "Why this matters" }));
   d.appendChild(el("p", { class: "why", text: step.why }));
   return d;
 }
@@ -3111,8 +3127,8 @@ function generateGuide(name) {
   state.guideId = null;
   clear(app);
   window.scrollTo(0, 0);
-  document.getElementById("askFab").hidden = true;
   document.getElementById("printBtn").hidden = true;
+  syncAskFab();
 
   app.appendChild(el("div", { class: "loading" }, [
     el("div", { class: "spinner" }),
@@ -3168,6 +3184,7 @@ var chatSuggest = document.getElementById("chatSuggest");
 
 document.getElementById("askFab").addEventListener("click", function () { openChat(); });
 document.getElementById("chatClose").addEventListener("click", closeChat);
+document.getElementById("chatMin").addEventListener("click", minimiseChat);
 chatScrim.addEventListener("click", closeChat);
 document.addEventListener("keydown", function (e) { if (e.key === "Escape" && chat.open) closeChat(); });
 
@@ -3184,11 +3201,32 @@ function updateChatContext() {
   document.getElementById("chatCtx").textContent = bits.join("  ·  ");
 }
 
+/* Whether the Ask button belongs on screen is a property of where you are, not
+   something each render should remember to set. It used to be set by hand in six
+   places, and closeChat only put it back on a guide page, so a reader who opened
+   the chat from a plan lost the button for the rest of the session with no way
+   to get it back. Reported as the worst thing on the site, and fairly. One
+   function decides now, and everything calls it. */
+function syncAskFab() {
+  var wanted = !chat.open && (state.view === "guide" || state.view === "plan") &&
+    !/^\/help(\/|$)/.test(location.pathname);
+  document.getElementById("askFab").hidden = !wanted;
+  // Once there is a conversation, the button is a way back to it rather than a
+  // way to start one, and it should not read like starting over.
+  var label = document.getElementById("askFabLabel");
+  if (label) label.textContent = chat.messages.length ? "Back to your question" : "Ask SafeStart";
+}
+
+/* Minimise keeps the conversation and drops the scrim, so the reader can read
+   the step the answer was about and then come back to it. Asked for directly:
+   "once I had the chat open everything else was blurred out." */
+function minimiseChat() { closeChat(); }
+
 function openChat(prefill) {
   chat.open = true;
   chatPanel.hidden = false;
   chatScrim.hidden = false;
-  document.getElementById("askFab").hidden = true;
+  syncAskFab();
   updateChatContext();
   requestAnimationFrame(function () {
     chatPanel.classList.add("open");
@@ -3218,7 +3256,7 @@ function closeChat() {
   chat.open = false;
   chatPanel.classList.remove("open");
   chatScrim.classList.remove("open");
-  if (state.view === "guide" && state.guide) document.getElementById("askFab").hidden = false;
+  syncAskFab();
   setTimeout(function () {
     if (!chat.open) { chatPanel.hidden = true; chatScrim.hidden = true; }
   }, 260);
@@ -3518,8 +3556,8 @@ function boot() {
   initTheme();
 
   if (/^\/help(\/|$)/.test(location.pathname)) {
-    document.getElementById("askFab").hidden = true;
     document.getElementById("printBtn").hidden = false;
+    syncAskFab();
     return;
   }
 

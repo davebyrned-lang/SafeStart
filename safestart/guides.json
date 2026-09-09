@@ -3067,7 +3067,7 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-09",
    "sourceConfidence": "medium",
    "minutes": 15,
    "priority": 0,
@@ -3113,22 +3113,23 @@
     },
     {
      "id": "age",
-     "title": "Set the age filter",
+     "title": "Set the content maturity filter",
      "why": "This is what decides which books, videos and apps your child sees at all.",
-     "path": "parents.amazon.com → gear icon next to your child → Adjust Age Filter",
+     "path": "parents.amazon.com → gear icon next to your child → Content Maturity Filter & Languages",
      "do": [
       "Go to parents.amazon.com or open the Parent Dashboard app.",
-      "Click the gear icon next to your child's name.",
-      "Choose Adjust Age Filter and set it to their actual age."
+      "Click the gear icon next to your child’s name.",
+      "Open Content Maturity Filter & Languages.",
+      "Set the range under \"Only show content with a maturity rating up to\", and check the language while you are there."
      ],
      "recommended": {
-      "0-6": "Their real age, not older",
-      "7-11": "Their real age, not older",
-      "11-12": "Their real age",
-      "13-15": "Their real age",
-      "16-17": "Their real age"
+      "0-6": "Top of the range at their real age, not older",
+      "7-11": "Top of the range at their real age, not older",
+      "11-12": "Top of the range at their real age",
+      "13-15": "Top of the range at their real age",
+      "16-17": "Top of the range at their real age"
      },
-     "note": "Setting it above their age to 'give them more choice' is the most common way this gets undone.",
+     "note": "Two things catch people out. Amazon renamed this: older guidance, ours included until a reader corrected it, calls it Adjust Age Filter. And it is a range with a lower and an upper age, not a single age, so set the top of the range to their actual age rather than nudging it up to give them more choice. Nudging it up is the most common way this gets undone.",
      "mins": 2,
      "heldBy": "parent"
     },
@@ -3136,9 +3137,10 @@
      "id": "web",
      "title": "Decide about the browser",
      "why": "The browser reaches everything the app filters do not, so for younger children this is the single biggest decision on the tablet. Off entirely is the cleanest answer and also the one most likely to be reversed at the first piece of homework. Hand-Selected costs you ten minutes of setup and tends to last.",
-     "path": "Parent Dashboard → Settings → Fire Tablet Web Browser",
+     "path": "parents.amazon.com → gear icon next to your child → Child Settings",
      "do": [
-      "In the Parent Dashboard, open Settings, then Fire Tablet Web Browser.",
+      "In the Parent Dashboard, open your child’s settings from the gear icon next to their name.",
+      "Find the web browsing controls in there.",
       "Turn the browser off entirely, or pick Hand-Selected Websites & Videos, or Filtered Websites & Videos.",
       "You can add your own allowed or blocked addresses either way."
      ],
@@ -3149,7 +3151,7 @@
       "13-15": "Filtered",
       "16-17": "Filtered"
      },
-     "note": "Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.",
+     "note": "We had this in the wrong place until a reader went looking and could not find it, on desktop or in the app. Amazon’s own wording is that web-browsing controls can be customized for each child in the free Amazon Kids Parent Dashboard, under that child’s settings. Separately, Amazon describes the filtered mode as filtering things like pornography. That is a deliberately narrow claim, so treat it as a filter and not a wall.",
      "mins": 2,
      "heldBy": "parent"
     },
