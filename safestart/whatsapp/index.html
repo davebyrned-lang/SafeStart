@@ -294,7 +294,7 @@ button { font: inherit; cursor: pointer; }
 .site-head.scrolled { border-bottom-color: var(--line); }
 .site-head .wrap { display: flex; align-items: center; gap: 12px; height: 66px; }
 
-.brand { display: flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; color: inherit; }
+.brand { display: flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; color: inherit; text-decoration: none; }
 .brand-mark {
   width: 32px; height: 32px; border-radius: 9px; background: var(--anchor);
   display: grid; place-items: center; flex: none;
@@ -1265,7 +1265,7 @@ button { font: inherit; cursor: pointer; }
 
 <header class="site-head" id="siteHead">
   <div class="wrap">
-    <button class="brand" id="brandBtn" aria-label="SafeStart home">
+    <a class="brand" id="brandBtn" href="/" aria-label="SafeStart home">
       <span class="brand-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
           <path d="M12 2.6l7.4 3.1v6.1c0 4.6-3.1 8.7-7.4 9.9-4.3-1.2-7.4-5.3-7.4-9.9V5.7z"/>
@@ -1273,7 +1273,7 @@ button { font: inherit; cursor: pointer; }
         </svg>
       </span>
       <span class="brand-name">SafeStart</span>
-    </button>
+    </a>
     <div class="head-spacer"></div>
     <a class="help-btn" href="/help/">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
@@ -1808,6 +1808,10 @@ window.addEventListener("popstate", function () {
 /* ---------------- home: the picker ---------------- */
 
 function renderHome(skipUrl) {
+  /* Without guides.json there is nothing to build a picker from, and clearing the
+     page first would leave a header, a footer and a hole. Hand it to the browser
+     instead, which will load the home page properly. */
+  if (!DATA) { location.href = "/"; return; }
   state.view = "home";
   state.guideId = null;
   state.guide = null;
@@ -3615,7 +3619,14 @@ function markdown(src) {
 
 /* ---------------- boot ---------------- */
 
-document.getElementById("brandBtn").addEventListener("click", function () { renderHome(); });
+document.getElementById("brandBtn").addEventListener("click", function (e) {
+  // Modified clicks belong to the browser, and so does any page where the app is
+  // not running or has no data to render with.
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+  if (isStaticPage() || !DATA) return;
+  e.preventDefault();
+  renderHome();
+});
 document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
 
 window.addEventListener("scroll", function () {

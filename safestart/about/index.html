@@ -196,7 +196,7 @@ button { font: inherit; cursor: pointer; }
 .site-head.scrolled { border-bottom-color: var(--line); }
 .site-head .wrap { display: flex; align-items: center; gap: 12px; height: 66px; }
 
-.brand { display: flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; color: inherit; }
+.brand { display: flex; align-items: center; gap: 9px; background: none; border: 0; padding: 0; color: inherit; text-decoration: none; }
 .brand-mark {
   width: 32px; height: 32px; border-radius: 9px; background: var(--anchor);
   display: grid; place-items: center; flex: none;
@@ -1167,7 +1167,7 @@ button { font: inherit; cursor: pointer; }
 
 <header class="site-head" id="siteHead">
   <div class="wrap">
-    <button class="brand" id="brandBtn" aria-label="SafeStart home">
+    <a class="brand" id="brandBtn" href="/" aria-label="SafeStart home">
       <span class="brand-mark">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">
           <path d="M12 2.6l7.4 3.1v6.1c0 4.6-3.1 8.7-7.4 9.9-4.3-1.2-7.4-5.3-7.4-9.9V5.7z"/>
@@ -1175,7 +1175,7 @@ button { font: inherit; cursor: pointer; }
         </svg>
       </span>
       <span class="brand-name">SafeStart</span>
-    </button>
+    </a>
     <div class="head-spacer"></div>
     <a class="help-btn" href="/help/">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
@@ -1195,7 +1195,7 @@ button { font: inherit; cursor: pointer; }
   </div>
 </header>
 
-<main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a><div class="guide-head"><h1 class="guide-title">About SafeStart</h1></div><p class="guide-blurb">A free guide to the parental controls already built into your child's phone, tablet, console and apps. Made by TrustRaise and given away, because a parent should not need a consultant to set up a tablet.</p><div class="meta-row"><span class="pill">28 guides</span><span class="pill">4 countries</span><span class="pill">10 corrections published</span></div><div class="check-card"><h2>What it is</h2><p>You tell us which device your child uses and roughly how old they are. You get one ordered list of what to change, most important first, split into short parts so it is an evening job rather than a weekend one. Every step says what to tap, why it matters, and links to the platform's own page so you can check us.</p><p>It covers the settings that already exist on things you own. Nothing here is ours.</p></div><div class="check-card"><h2>What it is not</h2><p><strong>It is not monitoring software.</strong> Nothing keeps running after you finish. We cannot see your child's phone, and no alert is ever coming from us. If you want alerts, that is a different kind of product and worth choosing deliberately rather than by accident.</p><p><strong>It does not read anyone's messages.</strong> Neither does Apple's or Google's parental control, whatever you may have been told. What they let you do is decide who can reach your child, which is the part that prevents harm rather than discovering it later.</p><p><strong>There is nothing to install and no account.</strong> Your child never visits this site and needs nothing from it. You read it on your own device and change settings on theirs.</p></div><div class="check-card"><h2>What we collect</h2><p>We count page views. No cookies are set, visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What is recorded is the page, the referrer, a rough location and the browser type.</p><p>The plan page is deliberately excluded from that. Its address contains your child's age, their device and the apps they use, which together describe a specific child, and that is not something to send anywhere. The build refuses to put the counter on that page and a test fails if anyone changes it.</p><p>If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not stored by us. If you send us <a href="/feedback/">feedback</a>, the message is emailed to us and not kept on this site, and an email address you give there is used to reply to you and nothing else. Do not put your child's name in either.</p></div><div class="check-card"><h2>How to check we are right</h2><p>Do not take our word for any of it. Every guide shows the date it was last checked and links to the platform's own page for each step, so you can read the source yourself. A date you cannot verify is only a claim, which is why the <a href="/changelog/">changelog</a> publishes every change we have made, including the things we got wrong. There are 10 corrections in it so far.</p><p>A weekly job re-reads the official sources for every guide and flags what has moved. Some platforms block automated readers, so those are checked by hand on a rota. Readers correct us too, and those corrections are named in the changelog rather than quietly patched.</p></div><div class="check-card"><h2>Who made it</h2><p>TrustRaise is the advisory practice of Dave Byrne, after sixteen years in Responsible Media and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. TrustRaise works with platforms and advertisers on trust and safety. SafeStart is free, has no ads, and sells you nothing. <a href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p></div><div class="check-card"><h2>Found something wrong?</h2><p>That is the most useful thing you can send us. Menus move, and a guide is only worth anything if it matches what is actually on your screen. Tell us what you saw and it gets checked against the platform's own page, corrected, and written up in the changelog.</p><p><a class="cta-link" href="/feedback/">Tell us what is wrong</a></p></div></main>
+<main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a><div class="guide-head"><h1 class="guide-title">About SafeStart</h1></div><p class="guide-blurb">A free guide to the parental controls already built into your child's phone, tablet, console and apps. Made by TrustRaise and given away, because a parent should not need a consultant to set up a tablet.</p><div class="meta-row"><span class="pill">28 guides</span><span class="pill">4 countries</span><span class="pill">11 corrections published</span></div><div class="check-card"><h2>What it is</h2><p>You tell us which device your child uses and roughly how old they are. You get one ordered list of what to change, most important first, split into short parts so it is an evening job rather than a weekend one. Every step says what to tap, why it matters, and links to the platform's own page so you can check us.</p><p>It covers the settings that already exist on things you own. Nothing here is ours.</p></div><div class="check-card"><h2>What it is not</h2><p><strong>It is not monitoring software.</strong> Nothing keeps running after you finish. We cannot see your child's phone, and no alert is ever coming from us. If you want alerts, that is a different kind of product and worth choosing deliberately rather than by accident.</p><p><strong>It does not read anyone's messages.</strong> Neither does Apple's or Google's parental control, whatever you may have been told. What they let you do is decide who can reach your child, which is the part that prevents harm rather than discovering it later.</p><p><strong>There is nothing to install and no account.</strong> Your child never visits this site and needs nothing from it. You read it on your own device and change settings on theirs.</p></div><div class="check-card"><h2>What we collect</h2><p>We count page views. No cookies are set, visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What is recorded is the page, the referrer, a rough location and the browser type.</p><p>The plan page is deliberately excluded from that. Its address contains your child's age, their device and the apps they use, which together describe a specific child, and that is not something to send anywhere. The build refuses to put the counter on that page and a test fails if anyone changes it.</p><p>If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not stored by us. If you send us <a href="/feedback/">feedback</a>, the message is emailed to us and not kept on this site, and an email address you give there is used to reply to you and nothing else. Do not put your child's name in either.</p></div><div class="check-card"><h2>How to check we are right</h2><p>Do not take our word for any of it. Every guide shows the date it was last checked and links to the platform's own page for each step, so you can read the source yourself. A date you cannot verify is only a claim, which is why the <a href="/changelog/">changelog</a> publishes every change we have made, including the things we got wrong. There are 11 corrections in it so far.</p><p>A weekly job re-reads the official sources for every guide and flags what has moved. Some platforms block automated readers, so those are checked by hand on a rota. Readers correct us too, and those corrections are named in the changelog rather than quietly patched.</p></div><div class="check-card"><h2>Who made it</h2><p>TrustRaise is the advisory practice of Dave Byrne, after sixteen years in Responsible Media and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. TrustRaise works with platforms and advertisers on trust and safety. SafeStart is free, has no ads, and sells you nothing. <a href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p></div><div class="check-card"><h2>Found something wrong?</h2><p>That is the most useful thing you can send us. Menus move, and a guide is only worth anything if it matches what is actually on your screen. Tell us what you saw and it gets checked against the platform's own page, corrected, and written up in the changelog.</p><p><a class="cta-link" href="/feedback/">Tell us what is wrong</a></p></div></main>
 
 <footer class="site-foot">
   <div class="wrap foot-inner">
@@ -1660,6 +1660,10 @@ window.addEventListener("popstate", function () {
 /* ---------------- home: the picker ---------------- */
 
 function renderHome(skipUrl) {
+  /* Without guides.json there is nothing to build a picker from, and clearing the
+     page first would leave a header, a footer and a hole. Hand it to the browser
+     instead, which will load the home page properly. */
+  if (!DATA) { location.href = "/"; return; }
   state.view = "home";
   state.guideId = null;
   state.guide = null;
@@ -3467,7 +3471,14 @@ function markdown(src) {
 
 /* ---------------- boot ---------------- */
 
-document.getElementById("brandBtn").addEventListener("click", function () { renderHome(); });
+document.getElementById("brandBtn").addEventListener("click", function (e) {
+  // Modified clicks belong to the browser, and so does any page where the app is
+  // not running or has no data to render with.
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+  if (isStaticPage() || !DATA) return;
+  e.preventDefault();
+  renderHome();
+});
 document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
 
 window.addEventListener("scroll", function () {

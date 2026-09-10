@@ -705,6 +705,23 @@ function check(name, condition, detail) {
     await page.waitForTimeout(300);
     check('but the home page does not need one', !(await page.locator('#fbFab').isVisible()));
 
+    console.log('\ngetting home from anywhere');
+    /* The SafeStart mark was a button that called renderHome(). On the crisis and
+       static pages the app deliberately never boots, so guides.json is not loaded;
+       renderHome cleared <main> and then threw, leaving a header, a footer and a
+       hole that only a reload would fix. It is a real link now. */
+    for (const from of ['/help/', '/about/', '/changelog/', '/feedback/', '/roblox/', '/plan/?device=ipad&age=7-11&apps=roblox']) {
+      await page.goto(BASE + from, { waitUntil: 'networkidle' });
+      await page.waitForTimeout(400);
+      await page.click('#brandBtn');
+      await page.waitForTimeout(700);
+      const main = (await page.locator('#app').textContent()).trim();
+      check(`the mark gets you home from ${from}`,
+        main.includes('Which device does your child use'), main.slice(0, 70) || '(empty)');
+    }
+    check('and it is a real link, so it survives no JavaScript',
+      (await page.locator('#brandBtn').getAttribute('href')) === '/');
+
     console.log('\nQR handoff');
     await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox&country=US',
       { waitUntil: 'networkidle' });
