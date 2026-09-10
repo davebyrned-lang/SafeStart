@@ -504,6 +504,12 @@ button { font: inherit; cursor: pointer; }
 .card.selectable.on .card-tick { background: var(--action); border-color: var(--action); }
 .card.selectable.on .card-tick svg { opacity: 1; }
 
+.hero-more { font-size: .9rem; color: var(--muted); margin: -6px 0 22px; max-width: 60ch; }
+.hero-more a { font-weight: 600; }
+
+.what-next h3 { margin-bottom: 8px; }
+.what-next li { margin-bottom: 9px; }
+
 .build-cta {
   width: 100%; margin-top: 16px; padding: 16px 18px;
   background: var(--action); color: var(--on-action); border: 0; border-radius: var(--radius);
@@ -1268,6 +1274,7 @@ button { font: inherit; cursor: pointer; }
     <div class="foot-tag">Building Trust. Driving Revenue. Scaling Responsibly.</div>
     <p><strong>SafeStart is a free tool from <a class="foot-link" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">TrustRaise</a>.</strong> We are working toward a safer internet. The way we get there is by showing technology platforms that safety, child safety included, is a growth engine. Parents shouldn't need a consultant to lock down a tablet, so we built this and gave it away.</p>
     <p><a class="foot-link" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p>
+    <p><a class="foot-link" href="/about/">About SafeStart</a> · what it is, what it is not, and how it is kept current</p>
     <p><a class="foot-link" href="/changelog/">What has changed</a> · every correction and source check, with dates</p>
     <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
   </div>
@@ -1647,6 +1654,16 @@ function pathGuideId() {
 
 function isPlanPath() { return /^\/plan\/?$/.test(location.pathname); }
 
+/* Pages that are fully written into their own HTML and have no app behaviour.
+   The router used to know only about /help/, so every other static page fell
+   through to renderHome, which clears <main> and paints the picker over it.
+   /changelog/ had been doing that silently since it was built: a crawler saw the
+   changelog, a reader with JavaScript saw the front page. Adding /about/ is what
+   finally surfaced it. Anything listed here the app leaves alone. */
+function isStaticPage() {
+  return /^\/(help|about|changelog)(\/|$)/.test(location.pathname);
+}
+
 function readUrl() {
   var q = new URLSearchParams(location.search);
   if (q.get("age")) state.ageBand = q.get("age");
@@ -1696,6 +1713,7 @@ function writeUrl(replace) {
 }
 
 window.addEventListener("popstate", function () {
+  if (isStaticPage()) { location.reload(); return; }
   var g = readUrl();
   if (isPlanPath()) renderPlan(true);
   else if (g) openGuide(g, true);
@@ -1722,7 +1740,12 @@ function renderHome(skipUrl) {
       el("span", { class: "hl", text: "together" }),
       document.createTextNode(".")
     ]),
-    el("p", { text: "Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short parts rather than one long evening." }),
+    el("p", { text: "SafeStart is a free guide to the parental controls already built into your child's phone, tablet, console and apps. Tell us what your child uses and roughly how old they are, and you get one ordered list of what to change, most important first, broken into short parts rather than one long evening." }),
+    el("p", { class: "hero-more" }, [
+      document.createTextNode("Nothing to install, no account, and your child never touches this site. "),
+      el("a", { href: "/about/", text: "More about SafeStart" }),
+      document.createTextNode(".")
+    ]),
     countryPick()
   ]));
 
@@ -1858,10 +1881,12 @@ function stepDevice() {
 
     body.push(el("div", { class: "sub-q" }, [
       el("span", { class: "sub-q-label",
-        text: "Do you want the " + (dev.short || dev.label) + "'s own settings in your plan?" }),
+        text: "Should we include the " + (dev.short || dev.label) + " itself?" }),
       el("span", { class: "sub-q-help",
-        text: "Separate from the apps on it. The device settings are the ones that catch whatever " +
-              "they install next, so most people want them." }),
+        text: "There are two separate jobs here. The " + (dev.short || dev.label) + " itself covers " +
+              "screen time, age ratings and what can be installed. The apps on it, like Roblox or " +
+              "YouTube, each have their own settings. Doing the device is what catches whatever your " +
+              "child installs next, so most people want both." }),
       chips
     ]));
 
@@ -1875,7 +1900,7 @@ function stepDevice() {
     body.push(el("p", { class: "pick-note", text: "Pick the one they use most. You can do another afterwards." }));
   }
 
-  return pickCard(1, "Which device are we setting up?", dev ? dev.label : null, body);
+  return pickCard(1, "Which device does your child use?", dev ? dev.label : null, body);
 }
 
 function stepAge() {
@@ -1910,7 +1935,7 @@ function stepAge() {
   });
 
   var answer = state.ageBand ? labelForBand(state.ageBand) : null;
-  return pickCard(2, "How old are they?", answer, [chips]);
+  return pickCard(2, "How old is your child?", answer, [chips]);
 }
 
 function stepApps() {
@@ -1998,7 +2023,7 @@ function stepApps() {
   }, 0);
 
   var answer = state.apps.length ? state.apps.length + " picked" : null;
-  var card = pickCard(3, "What do they use on it?", answer, body);
+  var card = pickCard(3, "Which apps do they use on it?", answer, body);
 
   /* The build button lives outside the numbered steps, because it is the
      outcome rather than another question. */
@@ -2333,7 +2358,7 @@ function refreshPlanProgress() {
   });
 
   var finished = document.querySelector(".all-done");
-  if (prog.total && prog.done === prog.total && !finished) renderPlan(true);
+  if (prog.total && prog.done === prog.total && !finished) renderPlan(true, true);
   else if (finished && prog.done !== prog.total) finished.remove();
 }
 
@@ -2349,7 +2374,7 @@ function listSentence(arr) {
   return arr.slice(0, -1).join(", ") + " and " + arr[arr.length - 1];
 }
 
-function renderPlan(skipUrl) {
+function renderPlan(skipUrl, keepScroll) {
   if (!state.device || !state.ageBand) return renderHome(true);
   if (!state.includeDevice && !state.apps.length) return renderHome(true);
   state.view = "plan";
@@ -2369,6 +2394,9 @@ function renderPlan(skipUrl) {
   var heading = state.includeDevice ? "Your plan for " + devLabel
               : "Your plan for " + listSentence(appNames);
   document.title = heading + " — SafeStart";
+  // The exception is the re-render that fires when the last step is ticked: that
+  // one happens under the reader's finger and must not move the page.
+  if (!keepScroll) jumpTo(0);
 
   clear(app);
   app.appendChild(el("button", { class: "back-link", onclick: function () { renderHome(); } },
@@ -2432,10 +2460,29 @@ function renderPlan(skipUrl) {
     ]));
   }
 
+  app.appendChild(whatNext());
   app.appendChild(helpCard());
   app.appendChild(el("p", { class: "disclaimer", text:
     "Menus move. If something on screen does not match, tap Ask SafeStart and describe what you can see." }));
   app.appendChild(el("div", { style: "height:80px" }));
+}
+
+/* The plan used to stop dead at the last step. A reader asked what happens next,
+   and whether finishing meant they would be told if something went wrong. It does
+   not, and pretending otherwise would be worse than saying so. */
+function whatNext() {
+  var box = el("div", { class: "callout what-next" }, [
+    el("h3", { text: "When you have finished, what then?" })
+  ]);
+  var ul = el("ul");
+  [
+    "Nothing here runs in the background, so no alert is coming. This is a set of settings you change once, not a service watching your child's phone. If you want alerts, that is a different kind of product and you would be choosing it knowingly.",
+    "Settings do drift. Apps update, menus move, and a birthday can hand a control over to your child. Coming back every few months is worth more than getting today perfect.",
+    "Tell your child what you set and why. Explained controls get worked around far less than ones they discover by accident.",
+    "The single most useful thing you can do now is check one setting actually worked. Try to install an app on their device and see whether the request reaches you."
+  ].forEach(function (t) { ul.appendChild(el("li", { text: t })); });
+  box.appendChild(ul);
+  return box;
 }
 
 function planToolbar() {
@@ -2567,7 +2614,7 @@ function openGuide(id, skipUrl) {
   controlsOpen = false;
   if (!skipUrl) writeUrl(false);
   renderGuide();
-  window.scrollTo(0, 0);
+  jumpTo(0);
 }
 
 function renderGuide() {
@@ -3062,7 +3109,7 @@ function generateGuide(name) {
   state.view = "guide";
   state.guideId = null;
   clear(app);
-  window.scrollTo(0, 0);
+  jumpTo(0);
   document.getElementById("printBtn").hidden = true;
   syncAskFab();
 
@@ -3144,8 +3191,7 @@ function updateChatContext() {
    to get it back. Reported as the worst thing on the site, and fairly. One
    function decides now, and everything calls it. */
 function syncAskFab() {
-  var wanted = !chat.open && (state.view === "guide" || state.view === "plan") &&
-    !/^\/help(\/|$)/.test(location.pathname);
+  var wanted = !chat.open && (state.view === "guide" || state.view === "plan") && !isStaticPage();
   document.getElementById("askFab").hidden = !wanted;
   // Once there is a conversation, the button is a way back to it rather than a
   // way to start one, and it should not read like starting over.
@@ -3491,7 +3537,7 @@ function boot() {
      so the app leaves them alone entirely. */
   initTheme();
 
-  if (/^\/help(\/|$)/.test(location.pathname)) {
+  if (isStaticPage()) {
     document.getElementById("printBtn").hidden = false;
     syncAskFab();
     return;

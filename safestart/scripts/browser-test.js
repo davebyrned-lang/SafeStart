@@ -574,6 +574,69 @@ function check(name, condition, detail) {
         !(await page.locator('#chatScrim').isVisible()));
     }
 
+    console.log('\nsaying what this is, and where a plan opens');
+    // Three readers arriving cold asked what SafeStart was, whether their child
+    // needed an account, and whether they would be alerted afterwards. All the
+    // same gap: the page never said.
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.hero-more');
+    const intro = await page.locator('.hero').textContent();
+    check('the hero says what SafeStart is', /free guide/i.test(intro));
+    check('and names the child rather than saying "they" first', /your child/i.test(intro));
+    check('it says nothing is installed', /[Nn]othing to install/.test(intro));
+    check('and points at a page that answers the rest',
+      await page.locator('.hero-more a[href="/about/"]').isVisible());
+    check('the picker asks about your child, not an undefined they',
+      (await page.locator('.pick-q').first().textContent()).includes('your child'));
+
+    // Build my plan sits at the foot of a long picker. The plan used to open
+    // wherever the picker had been left, so readers landed at the bottom of
+    // their own plan and had to scroll up.
+    await page.locator('.card', { hasText: 'iPad' }).first().click();
+    await page.waitForTimeout(120);
+    await page.locator('.chip', { hasText: '7\u201311' }).first().click();
+    await page.waitForTimeout(150);
+    await page.locator('.build-cta').scrollIntoViewIfNeeded();
+    await page.locator('.build-cta').click();
+    await page.waitForSelector('.step');
+    await page.waitForTimeout(250);
+    check('a new plan opens at the top, not where the picker was',
+      (await page.evaluate(() => window.pageYOffset)) < 30);
+    check('and it ends by saying what happens next',
+      await page.locator('.what-next').isVisible());
+
+    console.log('\nabout page');
+    // "Would my child need a browser to use their account?" is the question that
+    // proved the site never said what it was.
+    await page.goto(BASE + '/about/', { waitUntil: 'networkidle' });
+    const about = await page.locator('#app').textContent();
+    check('it says plainly it is not monitoring software', /not monitoring software/i.test(about));
+    check('and that no alert is coming', /no alert is ever coming/i.test(about));
+    check('and that the child needs nothing from it', /needs nothing from it/i.test(about));
+    check('it owns up to what is collected', /discarded after 24 hours/i.test(about));
+    check('and that the plan page is left out of it', /plan page is deliberately excluded/i.test(about));
+    check('it links to the changelog rather than asking for trust',
+      await page.locator('#app a[href="/changelog/"]').first().isVisible());
+    const aboutShell = await (await page.request.get(BASE + '/about/')).text();
+    check('the page is real HTML, not built by JS', /About SafeStart/.test(aboutShell));
+    const smAbout = await (await page.request.get(BASE + '/sitemap.xml')).text();
+    check('and it is in the sitemap', smAbout.includes('/about/'));
+
+    // The router only knew about /help/, so every other static page fell through
+    // to renderHome and got the picker painted over it. /changelog/ had been doing
+    // that silently since it was built. Both are checked now, and so is a guide,
+    // so nobody "fixes" this by making the app skip real pages too.
+    for (const [path, want] of [['/changelog/', 'What has changed'], ['/about/', 'About SafeStart']]) {
+      await page.goto(BASE + path, { waitUntil: 'networkidle' });
+      await page.waitForTimeout(500);
+      const shown = await page.locator('#app').textContent();
+      check(`${path} survives the app booting`, shown.includes(want), shown.slice(0, 60));
+      check(`and is not the picker`, !shown.includes("Which device does your child use"));
+    }
+    await page.goto(BASE + '/roblox/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('a real guide still hydrates', await page.locator('.pick-row, .step').first().isVisible());
+
     console.log('\nQR handoff');
     await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox&country=US',
       { waitUntil: 'networkidle' });

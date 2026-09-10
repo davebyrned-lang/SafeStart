@@ -373,6 +373,89 @@ function homeJsonLd() {
 }
 
 
+/* ---------------- about ----------------
+   Three readers arriving from a link asked, in different words, the same thing:
+   what is this and why would I use it. One asked whether their child would need
+   a browser to "use their account", which is the clearest sign the site had never
+   said what it was. The home page now says it in a sentence; this page answers
+   the rest, including the ones we would rather not be asked. */
+
+function renderAboutStatic() {
+  const guides = Object.keys(DATA.guides).length;
+  const corrections = (LOG.entries || []).filter((e) => e.kind === "correction").length;
+  const out = [];
+  out.push('<a class="back-link" href="/">Back to SafeStart</a>');
+  out.push('<div class="guide-head"><h1 class="guide-title">About SafeStart</h1></div>');
+  out.push('<p class="guide-blurb">A free guide to the parental controls already built into ' +
+    "your child's phone, tablet, console and apps. Made by TrustRaise and given away, " +
+    'because a parent should not need a consultant to set up a tablet.</p>');
+  out.push('<div class="meta-row"><span class="pill">' + guides + " guides</span>" +
+    '<span class="pill">4 countries</span><span class="pill">' + corrections +
+    (corrections === 1 ? " correction published" : " corrections published") + "</span></div>");
+
+  const section = (h, paras) => {
+    out.push('<div class="check-card"><h2>' + esc(h) + "</h2>");
+    paras.forEach((t) => out.push("<p>" + t + "</p>"));
+    out.push("</div>");
+  };
+
+  section("What it is", [
+    "You tell us which device your child uses and roughly how old they are. You get one " +
+    "ordered list of what to change, most important first, split into short parts so it is " +
+    "an evening job rather than a weekend one. Every step says what to tap, why it matters, " +
+    "and links to the platform's own page so you can check us.",
+    "It covers the settings that already exist on things you own. Nothing here is ours."
+  ]);
+
+  section("What it is not", [
+    "<strong>It is not monitoring software.</strong> Nothing keeps running after you finish. " +
+    "We cannot see your child's phone, and no alert is ever coming from us. If you want alerts, " +
+    "that is a different kind of product and worth choosing deliberately rather than by accident.",
+    "<strong>It does not read anyone's messages.</strong> Neither does Apple's or Google's " +
+    "parental control, whatever you may have been told. What they let you do is decide who can " +
+    "reach your child, which is the part that prevents harm rather than discovering it later.",
+    "<strong>There is nothing to install and no account.</strong> Your child never visits this " +
+    "site and needs nothing from it. You read it on your own device and change settings on theirs."
+  ]);
+
+  section("What we collect", [
+    "We count page views. No cookies are set, visitors are identified by a hash of the request " +
+    "rather than anything stored on your device, and that is discarded after 24 hours. What is " +
+    "recorded is the page, the referrer, a rough location and the browser type.",
+    "The plan page is deliberately excluded from that. Its address contains your child's age, " +
+    "their device and the apps they use, which together describe a specific child, and that is " +
+    "not something to send anywhere. The build refuses to put the counter on that page and a " +
+    "test fails if anyone changes it.",
+    "If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not " +
+    "stored by us. Do not put your child's name in it."
+  ]);
+
+  section("Why you should not just trust us", [
+    "Every guide carries the date it was last checked and links to the official page for each " +
+    "step. A verification date you cannot check is only a claim, so the <a href=\"/changelog/\">" +
+    "changelog</a> publishes every change, including the things we got wrong. There are " +
+    corrections + " corrections in it so far.",
+    "A weekly job re-reads the official sources for every guide and flags what has moved. Some " +
+    "platforms block automated readers, so those are checked by hand on a rota. Readers correct " +
+    "us too, and those corrections are named in the changelog rather than quietly patched."
+  ]);
+
+  section("Who made it", [
+    "TrustRaise is the advisory practice of Dave Byrne, after sixteen years in Responsible Media " +
+    "and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. TrustRaise works with " +
+    "platforms and advertisers on trust and safety. SafeStart is free, has no ads, and sells you " +
+    'nothing. <a href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a>'
+  ]);
+
+  section("Found something wrong?", [
+    "That is the most useful thing you can send us. Menus move, and the guides are only worth " +
+    "anything if they match what is on your screen. Tell us what you saw and it gets checked " +
+    "against the platform's own page, corrected, and written up."
+  ]);
+
+  return out.join("");
+}
+
 /* ---------------- changelog ----------------
    Anyone can put a "last checked" date on a page. Publishing the record of what
    actually changed, including the corrections, is the part that can be checked.
@@ -596,6 +679,14 @@ function build() {
     }));
     urls.push({ loc: SITE + "/" + id + "/", priority: "0.9", lastmod: g.lastVerified });
   });
+
+  write("about/index.html", page({
+    url: "/about/",
+    title: "About SafeStart — what it is, and what it is not",
+    description: "SafeStart is a free guide to the parental controls already built into your child's devices and apps. Nothing to install, no account, and it is not monitoring software.",
+    main: renderAboutStatic()
+  }));
+  urls.push({ loc: SITE + "/about/", priority: "0.6", lastmod: LOG.updated });
 
   write("changelog/index.html", page({
     url: "/changelog/",

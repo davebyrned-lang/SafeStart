@@ -2065,9 +2065,9 @@
     "android"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-08",
+   "lastVerified": "2026-09-10",
    "sourceConfidence": "high",
-   "minutes": 15,
+   "minutes": 18,
    "risks": [
     "Apps sideloaded outside the Play Store bypass Play’s age ratings",
     "The browser reaches everything app controls don’t",
@@ -2117,6 +2117,36 @@
      "mins": 2,
      "note": "Google has the same hole and states it plainly: previous downloads, and content shared through Family Library, will not require your approval. So anything installed once can come back without a request reaching you. Set approval to All content rather than Paid content only, because the free apps are the ones that matter here.",
      "heldBy": "parent"
+    },
+    {
+     "id": "contacts",
+     "title": "Control who can call and text them",
+     "why": "The closest Android has to the iPhone's communication limits, and the step most parents do not know exists. Worth being straight about what it is and is not: no parental control on Android or iPhone lets you read your child's messages. Google's does not offer it and neither does Apple's. What you can do is decide who is able to reach them in the first place, which is the part that actually prevents harm rather than discovering it afterwards.",
+     "path": "Family Link → [your child] → Controls → Contacts",
+     "do": [
+      "Open Family Link, choose your child, then Controls, then Contacts.",
+      "Add the people they should be able to reach. You can add up to 100.",
+      "Set who can call and text them: Anyone, Contacts I add and limited groups, or Only contacts I add.",
+      "Leave requests on, so when they want to add a number it comes to you to approve."
+     ],
+     "result": "Calls and texts from anyone outside your list do not get through, and adding someone new needs your approval.",
+     "recommended": {
+      "0-6": "Only contacts I add",
+      "7-11": "Only contacts I add",
+      "11-12": "Only contacts I add",
+      "13-15": "Contacts I add and limited groups",
+      "16-17": "Anyone, with a conversation about who gets through"
+     },
+     "outcomeByAge": {
+      "0-6": "approved",
+      "7-11": "approved",
+      "11-12": "approved",
+      "13-15": "approved",
+      "16-17": "open"
+     },
+     "note": "The limit worth knowing before you rely on this. Google says contact limitations only apply to communications through certain apps including Google Messages, Samsung Messages, and Google Dialer. WhatsApp, Snapchat, Discord and the rest are untouched by it, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides.",
+     "heldBy": "parent",
+     "mins": 3
     },
     {
      "id": "web",
@@ -2183,6 +2213,7 @@
    "checklist": [
     "Family Link supervision active",
     "Download approval on",
+    "Who can call and text them is set",
     "Play content ratings set",
     "SafeSearch on and locked",
     "Chrome filtering set",
