@@ -977,6 +977,60 @@ button { font: inherit; cursor: pointer; }
 .ask-fab svg { width: 18px; height: 18px; }
 .ask-fab[hidden] { display: none; }
 
+/* Sits above the Ask button rather than beside it, so neither has to shrink, and
+   in surface colours rather than the action colour so it reads as the secondary
+   of the two. */
+.wrong-fab {
+  position: fixed; right: 16px; bottom: 74px; z-index: 49;
+  background: var(--surface); color: var(--muted); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 9px 15px; font-weight: 600; font-size: .84rem; box-shadow: var(--shadow);
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: transform .2s var(--ease), color .2s;
+}
+.wrong-fab:hover { transform: translateY(-2px); color: var(--caution); text-decoration: none; }
+.wrong-fab svg { width: 15px; height: 15px; flex: none; }
+.wrong-fab[hidden] { display: none; }
+@media (max-width: 460px) {
+  .wrong-fab-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .wrong-fab { padding: 10px; }
+}
+
+/* ---------------- feedback form ---------------- */
+.fb-form { margin: 4px 0 26px; display: grid; gap: 0; }
+.fb-label {
+  display: block; font-size: .95rem; font-weight: 650; color: var(--heading);
+  letter-spacing: -.01em; margin-top: 18px;
+}
+.fb-hint { margin: 3px 0 9px; font-size: .87rem; color: var(--muted); line-height: 1.45; max-width: 60ch; }
+.fb-from { margin: 0 0 4px; font-size: .87rem; color: var(--muted); }
+.fb-from code { font-size: .85em; }
+.fb-form textarea, .fb-form input[type="email"] {
+  width: 100%; font: inherit; font-size: .97rem; color: var(--body);
+  background: var(--surface); border: 1px solid var(--control-line);
+  border-radius: var(--radius-sm); padding: 12px 14px; resize: vertical;
+}
+.fb-form textarea:focus, .fb-form input[type="email"]:focus {
+  outline: 2px solid var(--action); outline-offset: 1px; border-color: var(--action);
+}
+.fb-form textarea::placeholder, .fb-form input::placeholder { color: var(--muted); opacity: .75; }
+.fb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.fb-send {
+  justify-self: start; margin-top: 20px;
+  background: var(--action); color: var(--on-action); border: 0; border-radius: 999px;
+  padding: 13px 26px; font-weight: 650; font-size: .95rem;
+  transition: transform .18s var(--ease);
+}
+.fb-send:hover { transform: translateY(-1px); }
+.fb-send:disabled { opacity: .6; transform: none; }
+.fb-status { margin: 14px 0 0; font-size: .92rem; line-height: 1.55; min-height: 1.2em; }
+.fb-status.fb-good { color: var(--action); font-weight: 600; }
+.fb-status.fb-warn { color: var(--caution); font-weight: 600; }
+.fb-status a { font-weight: 700; }
+.cta-link {
+  display: inline-block; margin-top: 4px; font-weight: 650; font-size: .95rem;
+}
+
 .chat-panel {
   position: fixed; inset: auto 0 0 0; z-index: 60;
   background: var(--surface);
@@ -1137,7 +1191,12 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">29 entries</span><span class="pill">10 corrections</span></div>
+<div class="meta-row"><span class="pill">30 entries</span><span class="pill">10 corrections</span></div>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>10 September 2026</time></div>
+<h2>There is a way to tell us we are wrong now, and one heading has stopped being clever</h2>
+<p>The About page had a section called &#39;Why you should not just trust us&#39;, which was a line that sounded good and told you nothing. A reader said as much. It is &#39;How to check we are right&#39; now, and it says what it means: every guide shows when it was last checked and links to the platform&#39;s own page, so you can read the source yourself rather than taking a date on faith. The more useful change is that &#39;Found something wrong?&#39; now goes somewhere. There is a feedback form at /feedback/, and a button on every guide and plan that opens it carrying the page you were on, so you do not have to describe where you were. A message is required, an email address is optional and only used to reply to you, and the page says plainly that your message is emailed to us rather than stored here. Please leave your child&#39;s name out of it. Two things about how it is built, since a form that quietly fails is worse than no form. If sending is not configured, the page says so and hands you a prefilled draft in your own mail app instead of pretending to work. And there is a hidden field on the form that people never see and automated scripts fill in every time; anything that arrives with it filled is dropped, and answered as though it succeeded so the sender learns nothing. The whole route is tested, including that a newline cannot be smuggled into a mail header. Reader corrections are the single most valuable thing this site gets. Three of the last four changelog entries started with someone writing in.</p>
+</article>
 <article class="log-entry log-site">
 <div class="log-head"><span class="log-kind">Change</span><time>10 September 2026</time></div>
 <h2>A reader asked what this actually is, and they were right that we never said</h2>
@@ -1299,6 +1358,11 @@ button { font: inherit; cursor: pointer; }
     <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
   </div>
 </footer>
+
+<a class="wrong-fab" id="wrongFab" href="/feedback/" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+  <span class="wrong-fab-label">Something wrong?</span>
+</a>
 
 <button class="ask-fab" id="askFab" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
@@ -1681,7 +1745,7 @@ function isPlanPath() { return /^\/plan\/?$/.test(location.pathname); }
    changelog, a reader with JavaScript saw the front page. Adding /about/ is what
    finally surfaced it. Anything listed here the app leaves alone. */
 function isStaticPage() {
-  return /^\/(help|about|changelog)(\/|$)/.test(location.pathname);
+  return /^\/(help|about|changelog|feedback)(\/|$)/.test(location.pathname);
 }
 
 function readUrl() {
@@ -3217,6 +3281,12 @@ function syncAskFab() {
   // way to start one, and it should not read like starting over.
   var label = document.getElementById("askFabLabel");
   if (label) label.textContent = chat.messages.length ? "Back to your question" : "Ask SafeStart";
+
+  var wrong = document.getElementById("wrongFab");
+  if (wrong) {
+    wrong.hidden = !wanted;
+    wrong.href = "/feedback/?from=" + encodeURIComponent(location.pathname + location.search);
+  }
 }
 
 /* Minimise keeps the conversation and drops the scrim, so the reader can read
@@ -3551,6 +3621,88 @@ window.addEventListener("scroll", function () {
   document.getElementById("siteHead").classList.toggle("scrolled", window.scrollY > 4);
 }, { passive: true });
 
+/* ---------------- feedback form ----------------
+   Posts to /api/feedback. Everything it can get wrong it says out loud, and if
+   sending is not configured it hands the reader a prefilled mail draft instead,
+   so the page is never a dead end. */
+
+function wireFeedbackForm() {
+  var form = document.getElementById("fbForm");
+  if (!form) return;
+  var msg = document.getElementById("fbMessage");
+  var email = document.getElementById("fbEmail");
+  var page = document.getElementById("fbPage");
+  var send = document.getElementById("fbSend");
+  var status = document.getElementById("fbStatus");
+
+  // ?from=/roblox/ arrives when they came from a guide, so we know what they were
+  // looking at without asking them to remember.
+  var from = new URLSearchParams(location.search).get("from") || "";
+  if (page) page.value = from;
+  if (from) {
+    var note = el("p", { class: "fb-from" }, [
+      document.createTextNode("You came from "),
+      el("code", { text: from }),
+      document.createTextNode(". We will include that so you do not have to describe it.")
+    ]);
+    form.insertBefore(note, form.firstChild);
+  }
+
+  function say(text, kind) {
+    status.textContent = text;
+    status.className = "fb-status" + (kind ? " fb-" + kind : "");
+  }
+
+  function mailFallback(to, text) {
+    var subject = "SafeStart feedback" + (from ? ": " + from : "");
+    var href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(msg.value);
+    clear(status);
+    status.className = "fb-status fb-warn";
+    status.appendChild(document.createTextNode(text + " "));
+    status.appendChild(el("a", { href: href, text: "Open it in your mail app instead" }));
+    status.appendChild(document.createTextNode("."));
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!msg.value.trim()) { say("Tell us what you saw first.", "warn"); msg.focus(); return; }
+
+    send.disabled = true;
+    var label = send.textContent;
+    send.textContent = "Sending";
+    say("");
+
+    fetch("/api/feedback", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        message: msg.value,
+        email: email.value,
+        page: page ? page.value : "",
+        website: (document.getElementById("fbWebsite") || {}).value || ""
+      })
+    })
+      .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
+      .then(function (r) {
+        send.disabled = false;
+        send.textContent = label;
+        if (r.ok) {
+          form.reset();
+          say("Thank you, that has been sent. If it turns out we had it wrong, the fix gets written up in the changelog.", "good");
+          return;
+        }
+        if (r.body && r.body.mailto) { mailFallback(r.body.mailto, r.body.message || "That did not send."); return; }
+        say((r.body && r.body.message) || "That did not send. Try again in a moment.", "warn");
+      })
+      .catch(function () {
+        send.disabled = false;
+        send.textContent = label;
+        mailFallback("dave@trust-raise.com", "That did not send, which is usually the connection.");
+      });
+  });
+}
+
 function boot() {
   /* The crisis pages under /help/ are fully static on purpose. They must not
      depend on this script, on guides.json, or on anything else being healthy,
@@ -3560,6 +3712,7 @@ function boot() {
   if (isStaticPage()) {
     document.getElementById("printBtn").hidden = false;
     syncAskFab();
+    wireFeedbackForm();
     return;
   }
 

@@ -154,6 +154,83 @@ function sseResponse(events) {
   await askHandler({ method: 'GET', headers: {}, socket: {}, query: {} }, res);
   check('rejects GET', res.statusCode === 405, 'status ' + res.statusCode);
 
+  console.log('\n/api/feedback');
+  const fbHandler = require(path.join(ROOT, 'api/feedback.js'));
+  const fbReq = (body, ip) => ({
+    method: 'POST', headers: { 'x-forwarded-for': ip || '9.9.9.' + Math.random() },
+    socket: {}, body,
+  });
+
+  // Without a key the page must still work, so the reply carries the address to
+  // fall back to rather than just failing.
+  delete process.env.RESEND_API_KEY;
+  res = mockRes();
+  await fbHandler(fbReq({ message: 'Step 3 does not match my screen' }), res);
+  check('says so when sending is not configured', res.statusCode === 503, 'status ' + res.statusCode);
+  check('and hands back an address to fall back to', Boolean(res.body && res.body.mailto));
+
+  process.env.RESEND_API_KEY = 'test-key';
+
+  res = mockRes();
+  await fbHandler(fbReq({ message: '  ' }), res);
+  check('rejects an empty message', res.statusCode === 400, 'status ' + res.statusCode);
+
+  res = mockRes();
+  await fbHandler(fbReq({ message: 'hello there', email: 'not-an-email' }), res);
+  check('rejects an email address that cannot work', res.statusCode === 400, 'status ' + res.statusCode);
+
+  // The honeypot is answered as though it succeeded, so a bot learns nothing.
+  let sent = false;
+  nextResponse = () => { sent = true; return jsonResponse({ id: 'x' }); };
+  res = mockRes();
+  await fbHandler(fbReq({ message: 'buy things', website: 'http://spam' }), res);
+  check('swallows the honeypot without complaint', res.statusCode === 200, 'status ' + res.statusCode);
+  check('and sends nothing', !sent);
+
+  let captured = null;
+  nextResponse = () => jsonResponse({ id: 'ok' });
+  const realFetch2 = global.fetch;
+  global.fetch = async (url, opts) => { captured = { url, opts }; return jsonResponse({ id: 'ok' }); };
+  res = mockRes();
+  await fbHandler(fbReq({
+    message: 'The Fire tablet step is wrong',
+    email: 'parent@example.com',
+    page: '/firetablet/',
+  }), res);
+  check('sends a good one', res.statusCode === 200, 'status ' + res.statusCode);
+  check('to Resend', Boolean(captured && /api\.resend\.com/.test(captured.url)));
+  const body = captured ? JSON.parse(captured.opts.body) : {};
+  check('addressed to Dave', String(body.to) === 'dave@trust-raise.com', String(body.to));
+  check('with the message in it', /Fire tablet step is wrong/.test(body.text || ''));
+  check('the page they were on', /\/firetablet\//.test(body.text || ''));
+  check('and reply-to set so hitting reply reaches them',
+    body.reply_to === 'parent@example.com', String(body.reply_to));
+
+  // Newlines in a header field are how mail injection works.
+  captured = null;
+  res = mockRes();
+  await fbHandler(fbReq({
+    message: 'hi', email: 'a@b.co',
+    page: 'x\nBcc: someone@else.com',
+  }), res);
+  const injected = captured ? JSON.parse(captured.opts.body) : {};
+  check('strips newlines out of anything that reaches a header',
+    !/\n/.test(String(injected.subject || '')), String(injected.subject));
+  global.fetch = realFetch2;
+
+  res = mockRes();
+  await fbHandler({ method: 'GET', headers: {}, socket: {} }, res);
+  check('rejects GET', res.statusCode === 405, 'status ' + res.statusCode);
+
+  // Same IP, over and over.
+  let fbBlocked = false;
+  for (let i = 0; i < 9; i++) {
+    const r2 = mockRes();
+    await fbHandler(fbReq({ message: 'again ' + i }, '7.7.7.7'), r2);
+    if (r2.statusCode === 429) fbBlocked = true;
+  }
+  check('rate limits a flood from one address', fbBlocked);
+
   console.log('\nrate limiting');
   const rl = require(path.join(ROOT, 'api/_lib/ratelimit.js'));
   const fakeReq = { headers: { 'x-forwarded-for': '1.2.3.4' }, socket: {} };

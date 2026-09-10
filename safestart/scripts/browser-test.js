@@ -637,6 +637,64 @@ function check(name, condition, detail) {
     await page.waitForSelector('.step');
     check('a real guide still hydrates', await page.locator('.pick-row, .step').first().isVisible());
 
+    console.log('\nfeedback');
+    await page.goto(BASE + '/about/', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(400);
+    const aboutTxt = await page.locator('#app').textContent();
+    check('the trust heading says what it means now',
+      /How to check we are right/.test(aboutTxt) && !/not just trust us/i.test(aboutTxt));
+    check('and Found something wrong leads somewhere',
+      await page.locator('#app a[href="/feedback/"]').first().isVisible());
+
+    await page.goto(BASE + '/feedback/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('#fbForm');
+    check('the form is there', await page.locator('#fbMessage').isVisible());
+    check('the email field is optional and says so',
+      (await page.locator('#app').textContent()).includes('only if you want a reply'));
+    // Positioned off-screen rather than display:none on purpose: bots skip fields
+    // that are hidden outright, so the test is that a person cannot reach it.
+    const hpBox = await page.locator('#fbWebsite').boundingBox();
+    check('the honeypot sits off-screen where no reader will find it',
+      !hpBox || hpBox.x < -1000, JSON.stringify(hpBox));
+    check('and is marked hidden for anyone using a screen reader',
+      (await page.locator('.fb-hp').getAttribute('aria-hidden')) === 'true');
+    check('it says what happens to the message',
+      (await page.locator('#app').textContent()).includes('not stored on this site'));
+
+    // Empty submit must not post anything.
+    let posted = 0;
+    page.on('request', (r) => { if (r.url().includes('/api/feedback')) posted++; });
+    await page.click('#fbSend');
+    await page.waitForTimeout(250);
+    check('an empty message is refused before it is sent',
+      posted === 0 && (await page.locator('#fbStatus').textContent()).length > 0);
+
+    // With no RESEND_API_KEY the server says so and the form offers the mail app,
+    // which is the state the site ships in until the key is added.
+    await page.fill('#fbMessage', 'Step 3 on the Fire tablet guide does not match my screen.');
+    await page.click('#fbSend');
+    await page.waitForTimeout(900);
+    check('a real message posts to the API', posted === 1, 'posted ' + posted);
+    check('and an unconfigured server offers the mail app rather than failing',
+      await page.locator('#fbStatus a[href^="mailto:"]').isVisible());
+
+    // Arriving from a guide carries the page with it.
+    await page.goto(BASE + '/feedback/?from=%2Ffiretablet%2F', { waitUntil: 'networkidle' });
+    await page.waitForSelector('#fbForm');
+    check('it remembers which page you came from',
+      (await page.locator('#fbPage').inputValue()) === '/firetablet/');
+    check('and says so rather than making you describe it',
+      await page.locator('.fb-from').isVisible());
+
+    await page.goto(BASE + '/roblox/?age=7-11', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('guides carry a button for it', await page.locator('#wrongFab').isVisible());
+    check('and it passes the page along',
+      (await page.locator('#wrongFab').getAttribute('href')).includes('from=%2Froblox%2F'));
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.waitForTimeout(300);
+    check('but the home page does not need one', !(await page.locator('#wrongFab').isVisible()));
+
     console.log('\nQR handoff');
     await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox&country=US',
       { waitUntil: 'networkidle' });

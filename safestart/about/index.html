@@ -977,6 +977,60 @@ button { font: inherit; cursor: pointer; }
 .ask-fab svg { width: 18px; height: 18px; }
 .ask-fab[hidden] { display: none; }
 
+/* Sits above the Ask button rather than beside it, so neither has to shrink, and
+   in surface colours rather than the action colour so it reads as the secondary
+   of the two. */
+.wrong-fab {
+  position: fixed; right: 16px; bottom: 74px; z-index: 49;
+  background: var(--surface); color: var(--muted); text-decoration: none;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 9px 15px; font-weight: 600; font-size: .84rem; box-shadow: var(--shadow);
+  display: inline-flex; align-items: center; gap: 7px;
+  transition: transform .2s var(--ease), color .2s;
+}
+.wrong-fab:hover { transform: translateY(-2px); color: var(--caution); text-decoration: none; }
+.wrong-fab svg { width: 15px; height: 15px; flex: none; }
+.wrong-fab[hidden] { display: none; }
+@media (max-width: 460px) {
+  .wrong-fab-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .wrong-fab { padding: 10px; }
+}
+
+/* ---------------- feedback form ---------------- */
+.fb-form { margin: 4px 0 26px; display: grid; gap: 0; }
+.fb-label {
+  display: block; font-size: .95rem; font-weight: 650; color: var(--heading);
+  letter-spacing: -.01em; margin-top: 18px;
+}
+.fb-hint { margin: 3px 0 9px; font-size: .87rem; color: var(--muted); line-height: 1.45; max-width: 60ch; }
+.fb-from { margin: 0 0 4px; font-size: .87rem; color: var(--muted); }
+.fb-from code { font-size: .85em; }
+.fb-form textarea, .fb-form input[type="email"] {
+  width: 100%; font: inherit; font-size: .97rem; color: var(--body);
+  background: var(--surface); border: 1px solid var(--control-line);
+  border-radius: var(--radius-sm); padding: 12px 14px; resize: vertical;
+}
+.fb-form textarea:focus, .fb-form input[type="email"]:focus {
+  outline: 2px solid var(--action); outline-offset: 1px; border-color: var(--action);
+}
+.fb-form textarea::placeholder, .fb-form input::placeholder { color: var(--muted); opacity: .75; }
+.fb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.fb-send {
+  justify-self: start; margin-top: 20px;
+  background: var(--action); color: var(--on-action); border: 0; border-radius: 999px;
+  padding: 13px 26px; font-weight: 650; font-size: .95rem;
+  transition: transform .18s var(--ease);
+}
+.fb-send:hover { transform: translateY(-1px); }
+.fb-send:disabled { opacity: .6; transform: none; }
+.fb-status { margin: 14px 0 0; font-size: .92rem; line-height: 1.55; min-height: 1.2em; }
+.fb-status.fb-good { color: var(--action); font-weight: 600; }
+.fb-status.fb-warn { color: var(--caution); font-weight: 600; }
+.fb-status a { font-weight: 700; }
+.cta-link {
+  display: inline-block; margin-top: 4px; font-weight: 650; font-size: .95rem;
+}
+
 .chat-panel {
   position: fixed; inset: auto 0 0 0; z-index: 60;
   background: var(--surface);
@@ -1134,7 +1188,7 @@ button { font: inherit; cursor: pointer; }
   </div>
 </header>
 
-<main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a><div class="guide-head"><h1 class="guide-title">About SafeStart</h1></div><p class="guide-blurb">A free guide to the parental controls already built into your child's phone, tablet, console and apps. Made by TrustRaise and given away, because a parent should not need a consultant to set up a tablet.</p><div class="meta-row"><span class="pill">28 guides</span><span class="pill">4 countries</span><span class="pill">10 corrections published</span></div><div class="check-card"><h2>What it is</h2><p>You tell us which device your child uses and roughly how old they are. You get one ordered list of what to change, most important first, split into short parts so it is an evening job rather than a weekend one. Every step says what to tap, why it matters, and links to the platform's own page so you can check us.</p><p>It covers the settings that already exist on things you own. Nothing here is ours.</p></div><div class="check-card"><h2>What it is not</h2><p><strong>It is not monitoring software.</strong> Nothing keeps running after you finish. We cannot see your child's phone, and no alert is ever coming from us. If you want alerts, that is a different kind of product and worth choosing deliberately rather than by accident.</p><p><strong>It does not read anyone's messages.</strong> Neither does Apple's or Google's parental control, whatever you may have been told. What they let you do is decide who can reach your child, which is the part that prevents harm rather than discovering it later.</p><p><strong>There is nothing to install and no account.</strong> Your child never visits this site and needs nothing from it. You read it on your own device and change settings on theirs.</p></div><div class="check-card"><h2>What we collect</h2><p>We count page views. No cookies are set, visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What is recorded is the page, the referrer, a rough location and the browser type.</p><p>The plan page is deliberately excluded from that. Its address contains your child's age, their device and the apps they use, which together describe a specific child, and that is not something to send anywhere. The build refuses to put the counter on that page and a test fails if anyone changes it.</p><p>If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not stored by us. Do not put your child's name in it.</p></div><div class="check-card"><h2>Why you should not just trust us</h2><p>Every guide carries the date it was last checked and links to the official page for each step. A verification date you cannot check is only a claim, so the <a href="/changelog/">changelog</a> publishes every change, including the things we got wrong. There are 10 corrections in it so far.</p><p>A weekly job re-reads the official sources for every guide and flags what has moved. Some platforms block automated readers, so those are checked by hand on a rota. Readers correct us too, and those corrections are named in the changelog rather than quietly patched.</p></div><div class="check-card"><h2>Who made it</h2><p>TrustRaise is the advisory practice of Dave Byrne, after sixteen years in Responsible Media and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. TrustRaise works with platforms and advertisers on trust and safety. SafeStart is free, has no ads, and sells you nothing. <a href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p></div><div class="check-card"><h2>Found something wrong?</h2><p>That is the most useful thing you can send us. Menus move, and the guides are only worth anything if they match what is on your screen. Tell us what you saw and it gets checked against the platform's own page, corrected, and written up.</p></div></main>
+<main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a><div class="guide-head"><h1 class="guide-title">About SafeStart</h1></div><p class="guide-blurb">A free guide to the parental controls already built into your child's phone, tablet, console and apps. Made by TrustRaise and given away, because a parent should not need a consultant to set up a tablet.</p><div class="meta-row"><span class="pill">28 guides</span><span class="pill">4 countries</span><span class="pill">10 corrections published</span></div><div class="check-card"><h2>What it is</h2><p>You tell us which device your child uses and roughly how old they are. You get one ordered list of what to change, most important first, split into short parts so it is an evening job rather than a weekend one. Every step says what to tap, why it matters, and links to the platform's own page so you can check us.</p><p>It covers the settings that already exist on things you own. Nothing here is ours.</p></div><div class="check-card"><h2>What it is not</h2><p><strong>It is not monitoring software.</strong> Nothing keeps running after you finish. We cannot see your child's phone, and no alert is ever coming from us. If you want alerts, that is a different kind of product and worth choosing deliberately rather than by accident.</p><p><strong>It does not read anyone's messages.</strong> Neither does Apple's or Google's parental control, whatever you may have been told. What they let you do is decide who can reach your child, which is the part that prevents harm rather than discovering it later.</p><p><strong>There is nothing to install and no account.</strong> Your child never visits this site and needs nothing from it. You read it on your own device and change settings on theirs.</p></div><div class="check-card"><h2>What we collect</h2><p>We count page views. No cookies are set, visitors are identified by a hash of the request rather than anything stored on your device, and that is discarded after 24 hours. What is recorded is the page, the referrer, a rough location and the browser type.</p><p>The plan page is deliberately excluded from that. Its address contains your child's age, their device and the apps they use, which together describe a specific child, and that is not something to send anywhere. The build refuses to put the counter on that page and a test fails if anyone changes it.</p><p>If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not stored by us. If you send us <a href="/feedback/">feedback</a>, the message is emailed to us and not kept on this site, and an email address you give there is used to reply to you and nothing else. Do not put your child's name in either.</p></div><div class="check-card"><h2>How to check we are right</h2><p>Do not take our word for any of it. Every guide shows the date it was last checked and links to the platform's own page for each step, so you can read the source yourself. A date you cannot verify is only a claim, which is why the <a href="/changelog/">changelog</a> publishes every change we have made, including the things we got wrong. There are 10 corrections in it so far.</p><p>A weekly job re-reads the official sources for every guide and flags what has moved. Some platforms block automated readers, so those are checked by hand on a rota. Readers correct us too, and those corrections are named in the changelog rather than quietly patched.</p></div><div class="check-card"><h2>Who made it</h2><p>TrustRaise is the advisory practice of Dave Byrne, after sixteen years in Responsible Media and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. TrustRaise works with platforms and advertisers on trust and safety. SafeStart is free, has no ads, and sells you nothing. <a href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p></div><div class="check-card"><h2>Found something wrong?</h2><p>That is the most useful thing you can send us. Menus move, and a guide is only worth anything if it matches what is actually on your screen. Tell us what you saw and it gets checked against the platform's own page, corrected, and written up in the changelog.</p><p><a class="cta-link" href="/feedback/">Tell us what is wrong</a></p></div></main>
 
 <footer class="site-foot">
   <div class="wrap foot-inner">
@@ -1150,6 +1204,11 @@ button { font: inherit; cursor: pointer; }
     <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
   </div>
 </footer>
+
+<a class="wrong-fab" id="wrongFab" href="/feedback/" hidden>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+  <span class="wrong-fab-label">Something wrong?</span>
+</a>
 
 <button class="ask-fab" id="askFab" hidden>
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
@@ -1532,7 +1591,7 @@ function isPlanPath() { return /^\/plan\/?$/.test(location.pathname); }
    changelog, a reader with JavaScript saw the front page. Adding /about/ is what
    finally surfaced it. Anything listed here the app leaves alone. */
 function isStaticPage() {
-  return /^\/(help|about|changelog)(\/|$)/.test(location.pathname);
+  return /^\/(help|about|changelog|feedback)(\/|$)/.test(location.pathname);
 }
 
 function readUrl() {
@@ -3068,6 +3127,12 @@ function syncAskFab() {
   // way to start one, and it should not read like starting over.
   var label = document.getElementById("askFabLabel");
   if (label) label.textContent = chat.messages.length ? "Back to your question" : "Ask SafeStart";
+
+  var wrong = document.getElementById("wrongFab");
+  if (wrong) {
+    wrong.hidden = !wanted;
+    wrong.href = "/feedback/?from=" + encodeURIComponent(location.pathname + location.search);
+  }
 }
 
 /* Minimise keeps the conversation and drops the scrim, so the reader can read
@@ -3402,6 +3467,88 @@ window.addEventListener("scroll", function () {
   document.getElementById("siteHead").classList.toggle("scrolled", window.scrollY > 4);
 }, { passive: true });
 
+/* ---------------- feedback form ----------------
+   Posts to /api/feedback. Everything it can get wrong it says out loud, and if
+   sending is not configured it hands the reader a prefilled mail draft instead,
+   so the page is never a dead end. */
+
+function wireFeedbackForm() {
+  var form = document.getElementById("fbForm");
+  if (!form) return;
+  var msg = document.getElementById("fbMessage");
+  var email = document.getElementById("fbEmail");
+  var page = document.getElementById("fbPage");
+  var send = document.getElementById("fbSend");
+  var status = document.getElementById("fbStatus");
+
+  // ?from=/roblox/ arrives when they came from a guide, so we know what they were
+  // looking at without asking them to remember.
+  var from = new URLSearchParams(location.search).get("from") || "";
+  if (page) page.value = from;
+  if (from) {
+    var note = el("p", { class: "fb-from" }, [
+      document.createTextNode("You came from "),
+      el("code", { text: from }),
+      document.createTextNode(". We will include that so you do not have to describe it.")
+    ]);
+    form.insertBefore(note, form.firstChild);
+  }
+
+  function say(text, kind) {
+    status.textContent = text;
+    status.className = "fb-status" + (kind ? " fb-" + kind : "");
+  }
+
+  function mailFallback(to, text) {
+    var subject = "SafeStart feedback" + (from ? ": " + from : "");
+    var href = "mailto:" + to + "?subject=" + encodeURIComponent(subject) +
+      "&body=" + encodeURIComponent(msg.value);
+    clear(status);
+    status.className = "fb-status fb-warn";
+    status.appendChild(document.createTextNode(text + " "));
+    status.appendChild(el("a", { href: href, text: "Open it in your mail app instead" }));
+    status.appendChild(document.createTextNode("."));
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!msg.value.trim()) { say("Tell us what you saw first.", "warn"); msg.focus(); return; }
+
+    send.disabled = true;
+    var label = send.textContent;
+    send.textContent = "Sending";
+    say("");
+
+    fetch("/api/feedback", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        message: msg.value,
+        email: email.value,
+        page: page ? page.value : "",
+        website: (document.getElementById("fbWebsite") || {}).value || ""
+      })
+    })
+      .then(function (r) { return r.json().then(function (b) { return { ok: r.ok, body: b }; }); })
+      .then(function (r) {
+        send.disabled = false;
+        send.textContent = label;
+        if (r.ok) {
+          form.reset();
+          say("Thank you, that has been sent. If it turns out we had it wrong, the fix gets written up in the changelog.", "good");
+          return;
+        }
+        if (r.body && r.body.mailto) { mailFallback(r.body.mailto, r.body.message || "That did not send."); return; }
+        say((r.body && r.body.message) || "That did not send. Try again in a moment.", "warn");
+      })
+      .catch(function () {
+        send.disabled = false;
+        send.textContent = label;
+        mailFallback("dave@trust-raise.com", "That did not send, which is usually the connection.");
+      });
+  });
+}
+
 function boot() {
   /* The crisis pages under /help/ are fully static on purpose. They must not
      depend on this script, on guides.json, or on anything else being healthy,
@@ -3411,6 +3558,7 @@ function boot() {
   if (isStaticPage()) {
     document.getElementById("printBtn").hidden = false;
     syncAskFab();
+    wireFeedbackForm();
     return;
   }
 

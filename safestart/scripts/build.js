@@ -427,14 +427,17 @@ function renderAboutStatic() {
     "not something to send anywhere. The build refuses to put the counter on that page and a " +
     "test fails if anyone changes it.",
     "If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not " +
-    "stored by us. Do not put your child's name in it."
+    "stored by us. If you send us <a href=\"/feedback/\">feedback</a>, the message is emailed " +
+    "to us and not kept on this site, and an email address you give there is used to reply to " +
+    "you and nothing else. Do not put your child's name in either."
   ]);
 
-  section("Why you should not just trust us", [
-    "Every guide carries the date it was last checked and links to the official page for each " +
-    "step. A verification date you cannot check is only a claim, so the <a href=\"/changelog/\">" +
-    "changelog</a> publishes every change, including the things we got wrong. There are " +
-    corrections + " corrections in it so far.",
+  section("How to check we are right", [
+    "Do not take our word for any of it. Every guide shows the date it was last checked " +
+    "and links to the platform's own page for each step, so you can read the source " +
+    "yourself. A date you cannot verify is only a claim, which is why the " +
+    "<a href=\"/changelog/\">changelog</a> publishes every change we have made, including " +
+    "the things we got wrong. There are " + corrections + " corrections in it so far.",
     "A weekly job re-reads the official sources for every guide and flags what has moved. Some " +
     "platforms block automated readers, so those are checked by hand on a rota. Readers correct " +
     "us too, and those corrections are named in the changelog rather than quietly patched."
@@ -448,10 +451,59 @@ function renderAboutStatic() {
   ]);
 
   section("Found something wrong?", [
-    "That is the most useful thing you can send us. Menus move, and the guides are only worth " +
-    "anything if they match what is on your screen. Tell us what you saw and it gets checked " +
-    "against the platform's own page, corrected, and written up."
+    "That is the most useful thing you can send us. Menus move, and a guide is only worth " +
+    "anything if it matches what is actually on your screen. Tell us what you saw and it gets " +
+    "checked against the platform's own page, corrected, and written up in the changelog.",
+    '<a class="cta-link" href="/feedback/">Tell us what is wrong</a>'
   ]);
+
+  return out.join("");
+}
+
+/* ---------------- feedback ----------------
+   A reader who spots that a menu has moved is worth more than any automated check,
+   so saying so has to be one tap from the page they are looking at. The form posts
+   to /api/feedback. If sending is not configured the page still works and falls
+   back to the reader's own mail app, because a form that silently fails is worse
+   than no form. */
+
+function renderFeedbackStatic() {
+  const out = [];
+  out.push('<a class="back-link" href="/">Back to SafeStart</a>');
+  out.push('<div class="guide-head"><h1 class="guide-title">Tell us what is wrong</h1></div>');
+  out.push('<p class="guide-blurb">Menus move, and a guide is only worth anything if it ' +
+    "matches what is actually on your screen. If something here does not match, or is " +
+    "confusing, or is just plain wrong, this is the fastest way to tell us.</p>");
+
+  out.push('<form class="fb-form" id="fbForm" novalidate>');
+  out.push('<label class="fb-label" for="fbMessage">What did you see?</label>');
+  out.push('<p class="fb-hint">The more specific the better. Which guide, which step, and ' +
+    "what your screen actually said.</p>");
+  out.push('<textarea id="fbMessage" name="message" rows="7" maxlength="4000" required ' +
+    'placeholder="On the Fire tablet guide, step 3 says Adjust Age Filter but mine says something else..."></textarea>');
+
+  out.push('<label class="fb-label" for="fbEmail">Your email, only if you want a reply</label>');
+  out.push('<p class="fb-hint">Optional. We use it to answer you and nothing else. No list, ' +
+    "no newsletter.</p>");
+  out.push('<input id="fbEmail" name="email" type="email" maxlength="200" autocomplete="email" placeholder="you@example.com">');
+
+  // Hidden from people, irresistible to bots.
+  out.push('<div class="fb-hp" aria-hidden="true"><label>Leave this empty' +
+    '<input type="text" id="fbWebsite" name="website" tabindex="-1" autocomplete="off"></label></div>');
+  out.push('<input type="hidden" id="fbPage" name="page">');
+
+  out.push('<button type="submit" class="fb-send" id="fbSend">Send it</button>');
+  out.push('<p class="fb-status" id="fbStatus" role="status" aria-live="polite"></p>');
+  out.push("</form>");
+
+  out.push('<div class="check-card"><h2>What happens to it</h2>');
+  out.push("<p>It goes to a person, not a queue. Anything about a guide gets checked against " +
+    "the platform's own page before we change a word, and if we did have it wrong the " +
+    'correction is written up in the <a href="/changelog/">changelog</a> with what we got ' +
+    "wrong and why.</p>");
+  out.push("<p>Your message is emailed to us and not stored on this site. If you leave an " +
+    "email address it is used to reply to you and for nothing else. Please do not include " +
+    "your child's name.</p></div>");
 
   return out.join("");
 }
@@ -687,6 +739,14 @@ function build() {
     main: renderAboutStatic()
   }));
   urls.push({ loc: SITE + "/about/", priority: "0.6", lastmod: LOG.updated });
+
+  write("feedback/index.html", page({
+    url: "/feedback/",
+    title: "Tell us what is wrong — SafeStart",
+    description: "Found a step on SafeStart that does not match your screen? Tell us and it gets checked against the platform's own page, corrected, and written up.",
+    main: renderFeedbackStatic()
+  }));
+  urls.push({ loc: SITE + "/feedback/", priority: "0.4", lastmod: LOG.updated });
 
   write("changelog/index.html", page({
     url: "/changelog/",
