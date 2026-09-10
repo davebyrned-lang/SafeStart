@@ -688,12 +688,22 @@ function check(name, condition, detail) {
 
     await page.goto(BASE + '/roblox/?age=7-11', { waitUntil: 'networkidle' });
     await page.waitForSelector('.step');
-    check('guides carry a button for it', await page.locator('#wrongFab').isVisible());
+    check('guides carry a feedback button', await page.locator('#fbFab').isVisible());
     check('and it passes the page along',
-      (await page.locator('#wrongFab').getAttribute('href')).includes('from=%2Froblox%2F'));
+      (await page.locator('#fbFab').getAttribute('href')).includes('from=%2Froblox%2F'));
+    /* The crisis button and the feedback button must never look like the same kind
+       of thing. One is for a child in danger, the other for a renamed menu. The
+       warning triangle belongs to the first and nothing else. */
+    const triangle = (sel) => page.locator(sel + ' svg path').first().getAttribute('d');
+    const crisisIcon = await triangle('.help-btn');
+    const fbIcon = await triangle('#fbFab');
+    check('the feedback button does not borrow the crisis icon', crisisIcon !== fbIcon);
+    check('and does not borrow its urgency in words either',
+      !/wrong|urgent|help/i.test(await page.locator('#fbFab').textContent()),
+      await page.locator('#fbFab').textContent());
     await page.goto(BASE + '/', { waitUntil: 'networkidle' });
     await page.waitForTimeout(300);
-    check('but the home page does not need one', !(await page.locator('#wrongFab').isVisible()));
+    check('but the home page does not need one', !(await page.locator('#fbFab').isVisible()));
 
     console.log('\nQR handoff');
     await page.goto(BASE + '/plan/?device=ipad&age=7-11&apps=roblox&country=US',
