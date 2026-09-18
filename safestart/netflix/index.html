@@ -650,6 +650,14 @@ button { font: inherit; cursor: pointer; }
 .guide-blurb { color: var(--muted); margin: 0 0 16px; }
 
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+/* An aside, not a warning. It sits under the checked-on date because that is
+   where a parent is already asking "is this current?", and it should answer
+   that question without looking like something went wrong. */
+.version-note {
+  margin: -8px 0 22px; padding-left: 12px;
+  border-left: 2px solid var(--line);
+  color: var(--muted); font-size: .86rem; line-height: 1.55; max-width: 62ch;
+}
 .pill {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: .79rem; font-weight: 600; padding: 5px 12px; border-radius: 999px;
@@ -1283,6 +1291,7 @@ button { font: inherit; cursor: pointer; }
 <div class="guide-head"><h1 class="guide-title">Netflix</h1></div>
 <p class="guide-blurb">A kids profile is easy to make and does very little on its own. What matters is locking the adult profiles, because otherwise your child is two taps away from all of them.</p>
 <div class="meta-row"><span class="pill">Video</span><span class="pill">About 10 minutes</span><span class="pill conf-high">Source confidence: high</span><span class="pill">Checked 5 September 2026</span></div>
+<p class="version-note">Menu names shift between software versions and between phone makers. If a name here does not match what you see, look for something close by rather than assuming the setting is gone.</p>
 <div class="kid-card">
 <h3>There is a version built for younger children</h3>
 <p>A Kids profile, a profile setting in Netflix. Tick “For Kids” when you add a profile. It has a simpler layout, blocks access to account settings, and has no email of its own, so nobody can sign in with it directly.</p>
@@ -1474,7 +1483,7 @@ var ICONS = {
 var GUIDE_ICON = {
   roblox: "blocks", tiktok: "music", instagram: "camera", snapchat: "bubbleShot",
   discord: "bubbles", youtube: "play", fortnite: "target", minecraft: "gridcube",
-  iphone: "phone", ipad: "tablet", android: "phoneDot", windows: "monitor",
+  iphone: "phone", ipad: "tablet", android: "phoneDot", samsung: "phoneDot", windows: "monitor",
   mac: "laptop", chromebook: "browser", playstation: "gamepad", xbox: "gamepad",
   switch: "handheld", firetablet: "tablet", applewatch: "clock",
   imessage: "bubbles", hbomax: "play", accounts: "people"
@@ -1906,8 +1915,7 @@ function stepDevice() {
         // Drop any picked app that doesn't run on the new device, rather than
         // silently building a plan with steps the parent can't follow.
         state.apps = state.apps.filter(function (id) {
-          var g = DATA.guides[id];
-          return !state.device || !g.devices || g.devices.indexOf(state.device) !== -1;
+          return guideRunsOn(DATA.guides[id], state.device);
         });
         saveProgress();
         keepPlace(function () { renderHome(true); });
@@ -2015,7 +2023,7 @@ function stepApps() {
   Object.keys(DATA.guides).forEach(function (id) {
     var g = DATA.guides[id];
     if (g.type !== "app") return;
-    if (state.device && g.devices && g.devices.indexOf(state.device) === -1) return;
+    if (!guideRunsOn(g, state.device)) return;
     apps.push(g);
   });
   apps.sort(function (a, b) { return (a.priority || 9) - (b.priority || 9); });
@@ -2336,6 +2344,26 @@ function stepAppliesToAge(s) {
   return !s.ages || !state.ageBand || s.ages.indexOf(state.ageBand) !== -1;
 }
 
+/* Some devices are a flavour of another one. A Samsung Galaxy is an Android
+   phone, and everything written for Android applies to it unchanged, so the
+   Galaxy does not get a second copy of every app guide. It declares an alias
+   instead and this follows the pointer.
+
+   The alternative was adding "samsung" to the devices array of every guide that
+   already lists "android", which works until the next Android app guide is
+   written and quietly forgets one of them. */
+function deviceAlias(id) {
+  var d = id && DATA.devices.filter(function (x) { return x.id === id; })[0];
+  return (d && d.alias) || null;
+}
+
+function guideRunsOn(g, deviceId) {
+  if (!deviceId || !g.devices) return true;
+  if (g.devices.indexOf(deviceId) !== -1) return true;
+  var alias = deviceAlias(deviceId);
+  return Boolean(alias && g.devices.indexOf(alias) !== -1);
+}
+
 /* The accounts guide goes first when there is a device to set up, because the
    account decides what every later setting can even reach, and because a child
    on a parent's account gets the parent's messages. If the parent has told us
@@ -2344,6 +2372,13 @@ function planOrder() {
   var order = [];
   if (state.includeDevice && state.device && DATA.guides[state.device]) {
     if (DATA.guides.accounts) order.push("accounts");
+    /* A guide built on another one brings its foundation with it. A Galaxy owner
+       needs the Android steps and then the Samsung ones, in that order, because
+       the Samsung guide's first instruction is "you have done the Android guide,
+       haven't you". Doing it here rather than in the data means the plan and the
+       guide agree without either knowing about the other. */
+    var base = DATA.guides[state.device] && DATA.guides[state.device].builtOn;
+    if (base && DATA.guides[base] && order.indexOf(base) === -1) order.push(base);
     order.push(state.device);
   }
   state.apps.slice()
@@ -2713,9 +2748,17 @@ function renderGuide() {
     : conf === "limited" ? "Official guidance unverified"
     : "Partly third-party sources";
   meta.appendChild(el("span", { class: "pill conf-" + conf }, [icon("shield"), document.createTextNode(confText)]));
-  if (g.lastVerified) meta.appendChild(el("span", { class: "pill", text: "Verified " + formatDate(g.lastVerified) }));
+  if (g.lastVerified) meta.appendChild(el("span", { class: "pill", text: "Checked " + formatDate(g.lastVerified) }));
   if (g.generated) meta.appendChild(el("span", { class: "pill conf-medium", text: "Researched just now" }));
   head.appendChild(meta);
+  /* Sits with the checked-on date on purpose. The date says when someone looked;
+     this says what "looked" is worth on a device running something older. We
+     deliberately name no version numbers: a number here is a promise that goes
+     stale on its own, and a parent on last year's phone would read it as
+     "this guide is not for me" when the setting is nearly always still there. */
+  if (DATA && DATA.versionNote) {
+    head.appendChild(el("p", { class: "version-note", text: DATA.versionNote }));
+  }
   app.appendChild(head);
 
   app.appendChild(buildControls(g));

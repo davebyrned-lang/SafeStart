@@ -180,6 +180,9 @@ function renderGuideStatic(g) {
   }
   if (g.lastVerified) meta.push('<span class="pill">Checked ' + esc(niceDate(g.lastVerified)) + "</span>");
   if (meta.length) out.push('<div class="meta-row">' + meta.join("") + "</div>");
+  /* Prerendered so it is there for a reader with no JS and for a search engine,
+     which is the reader most likely to arrive on an older device. */
+  if (DATA.versionNote) out.push('<p class="version-note">' + esc(DATA.versionNote) + "</p>");
 
   /* The younger-child alternative goes into the markup, not just the app, so a
      parent who lands here from a search engine sees it without running any JS.

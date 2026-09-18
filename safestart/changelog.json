@@ -1,7 +1,19 @@
 {
- "updated": "2026-09-10",
+ "updated": "2026-09-17",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-17",
+   "kind": "site",
+   "title": "Every guide now says what happens when the menu names do not match",
+   "body": "A reader asked which version of Android or iOS the steps were written for, and the honest answer was that nothing on the site said. Every guide carries one line about it now, sitting with the checked-on date because that is where a parent is already asking whether this is current. It deliberately names no version number. A number reads as precision but it is a promise with an expiry date, and the moment it is stale a parent on a newer phone decides the guide is abandoned while a parent on an older one decides it was never meant for them. Both would be wrong, because the setting almost always survives the rename. So the line says menus move between versions and between phone makers, and that a name which does not match is a reason to look nearby rather than to assume the setting is gone. It is in the markup as well as the app, so a reader with no JavaScript gets it too. The build now fails if a version number or a year ever gets added to that line, which is the sort of decision that quietly erodes otherwise."
+  },
+  {
+   "date": "2026-09-17",
+   "kind": "site",
+   "title": "A Samsung Galaxy guide, because a Galaxy has two app stores and two browsers",
+   "body": "A Galaxy is an Android phone and Family Link supervises it exactly as it supervises a Pixel, so the Android guide was never wrong. It was incomplete. A Galaxy ships with the Galaxy Store alongside Google Play and Samsung Internet alongside Chrome, and Family Link reaches neither of them. A parent who set up download approval in Family Link and filtered Chrome has a child who can install from the other store and browse in the other browser. Samsung has its own controls that do cover both, through a Samsung child account, and they are what this guide sets up: Galaxy Store age ratings and download approval, and Samsung Internet web content. There is a genuine win in there. Samsung states that secret mode is not available while using a Samsung child account, so the private browsing everyone assumes cannot be switched off is switched off by the account itself. The guide also covers Samsung Kids for younger children, including the documented route back in when you have forgotten the PIN, and it ends with Secure Folder, which is the one thing here with no parent-side control at all. That step says so rather than pretending. Picking Samsung Galaxy in the device list now gives you the Android steps and then the Samsung ones, in that order."
+  },
   {
    "date": "2026-09-10",
    "kind": "correction",

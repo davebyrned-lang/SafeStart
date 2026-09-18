@@ -824,6 +824,82 @@ function check(name, condition, detail) {
     const spShell = await (await page.request.get(BASE + '/spotify/')).text();
     check('graduation is at 18, not 13', /18, not 13/.test(spShell));
 
+    console.log('\nsaying which software this was checked on');
+    // Readers kept asking which version of Android or iOS the steps describe. The
+    // answer is deliberately not a version number: a number is a promise with an
+    // expiry date, and the moment it is stale a parent on a newer phone concludes
+    // the guide is abandoned while a parent on an older one concludes it was never
+    // for them. Both are wrong, because the setting almost always survives the
+    // rename. So the stamp says menus move and to look nearby, and says it on
+    // every guide, in the markup as well as the app.
+    const stampShell = await (await page.request.get(BASE + '/android/')).text();
+    check('the stamp is prerendered, so a reader with no JS sees it',
+      /class="version-note"/.test(stampShell));
+    check('and it tells them what to do when a name does not match',
+      /look for something close by/.test(stampShell));
+    check('it names no OS version, which is the whole point',
+      !/(iOS|iPadOS|macOS|Android|One UI|Fire OS)\s*v?\d/i.test(
+        (stampShell.match(/class="version-note">([^<]*)/) || [, ''])[1]));
+    await page.goto(BASE + '/android/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('it survives the app hydrating over the static page',
+      await page.locator('.version-note').count() === 1);
+    check('and it sits with the checked-on date, where the question gets asked',
+      await page.evaluate(() => {
+        const note = document.querySelector('.version-note');
+        const meta = document.querySelector('.meta-row');
+        return Boolean(note && meta &&
+          (meta.compareDocumentPosition(note) & Node.DOCUMENT_POSITION_FOLLOWING));
+      }));
+    check('the date pill and the static build agree on the word "Checked"',
+      /Checked /.test(await page.locator('.meta-row').textContent()));
+    const stampCount = await page.evaluate(async () => {
+      const r = await fetch('/guides.json');
+      const d = await r.json();
+      return Object.keys(d.guides).length;
+    });
+    check('every guide gets it, not just the device ones', stampCount === 29);
+
+    console.log('\nsamsung');
+    // A Galaxy is an Android phone, so Family Link supervises it normally. What a
+    // Galaxy adds is a second app store and a second browser, both preinstalled
+    // and both outside what Family Link reaches. A parent who did the Android
+    // guide and stopped has filtered Chrome and left Samsung Internet open.
+    await page.goto(BASE + '/samsung/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const smText = await page.locator('#app').textContent();
+    check('the second app store is named as the gap it is',
+      /two app stores|second app store/i.test(smText));
+    check('and the second browser too', /second browser/i.test(smText));
+    check('it sends the parent to the Android guide rather than replacing it',
+      /Android guide/.test(smText));
+    check('Samsung\'s own words on secret mode are quoted, not paraphrased',
+      /Secret Mode is not available while using a Samsung Child Account/.test(smText));
+    check('the One UI floor is given as a disagreement, not a fact we invented',
+      /5\.1[\s\S]{0,40}6\.1/.test(smText));
+    check('the forgotten-PIN route is on the page',
+      /kidshome\.pin@samsung\.com/.test(smText));
+    check('Secure Folder is admitted to have no parent-side lock',
+      await page.evaluate(() => {
+        const s = [...document.querySelectorAll('.step')]
+          .find((n) => /Secure Folder/.test(n.textContent));
+        return Boolean(s && s.querySelector('.held-child'));
+      }));
+    check('and the Galaxy Store password toggle is honest about being a speed bump',
+      await page.evaluate(() => {
+        const s = [...document.querySelectorAll('.step')]
+          .find((n) => /Galaxy Store purchases/.test(n.textContent));
+        return Boolean(s && s.querySelector('.held-child'));
+      }));
+    check('the blurb lets a Pixel owner skip it in one line',
+      /Only if the device is a Samsung Galaxy/.test(
+        await (await page.request.get(BASE + '/samsung/')).text()));
+    const smPlan = BASE + '/plan/?device=samsung&age=11-12&apps=roblox&country=US';
+    await page.goto(smPlan, { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('a Galaxy plan carries the Samsung steps',
+      /Samsung Galaxy/.test(await page.locator('#app').textContent()));
+
     console.log('\nfixing a bad setup');
     // Parents told us they had already set devices up, badly, and wanted to start
     // over. Starting over is usually the wrong answer and sometimes an

@@ -24,6 +24,44 @@ data.ageBands.forEach((b) => {
   if (!data.profiles[b.profile]) fail(`age band ${b.id} points at missing profile "${b.profile}"`);
 });
 
+/* A device can alias another one. A Samsung Galaxy is an Android phone, so
+   picking Galaxy has to match every guide written for Android without those
+   guides having to list "samsung" as well. A broken alias is invisible in the
+   worst way: the parent picks their device and the app list quietly empties. */
+data.devices.forEach((d) => {
+  if (!d.alias) return;
+  if (!deviceIds.includes(d.alias)) fail(`device ${d.id}: alias "${d.alias}" is not a device`);
+  if (d.alias === d.id) fail(`device ${d.id}: alias points at itself`);
+  const aliased = data.devices.filter((x) => x.id === d.alias)[0];
+  if (aliased && aliased.alias) fail(`device ${d.id}: aliases ${d.alias}, which is itself an alias`);
+});
+
+/* The version stamp.
+ *
+ * Every guide carries one shared sentence saying the steps were checked on
+ * current software and that menu names move around. It is deliberately vague,
+ * and that is a decision worth defending in code rather than in a comment
+ * somebody will paint over.
+ *
+ * A hard version number ("iOS 26", "One UI 7") reads as precision but is a
+ * promise with an expiry date. The moment it is wrong it is worse than nothing,
+ * because a parent on a newer phone concludes the whole guide is stale and a
+ * parent on an older one concludes it was never for them. Neither is true: the
+ * settings almost always survive the rename. So the stamp names no version, and
+ * this fails the build if one ever creeps in.
+ */
+if (!data.versionNote || data.versionNote.length < 40) {
+  fail('versionNote: missing or too short to be useful');
+} else {
+  const versionClaim = /\b(iOS|iPadOS|macOS|watchOS|tvOS|Android|One UI|Windows|Fire OS|Chrome ?OS)\s*v?\d/i;
+  if (versionClaim.test(data.versionNote)) {
+    fail('versionNote: names a specific OS version. It is shown on every guide and cannot be kept true; keep it version-free.');
+  }
+  if (/\b(19|20)\d{2}\b/.test(data.versionNote)) {
+    fail('versionNote: contains a year. The checked-on date sits next to it already.');
+  }
+}
+
 let stepCount = 0;
 Object.entries(data.guides).forEach(([id, g]) => {
   if (g.id !== id) fail(`${id}: id field is "${g.id}"`);
@@ -39,6 +77,15 @@ Object.entries(data.guides).forEach(([id, g]) => {
   (g.devices || []).forEach((d) => {
     if (!deviceIds.includes(d)) fail(`${id}: unknown device "${d}"`);
   });
+
+  /* A guide can be built on another one, the way the Samsung guide is built on
+     Android. The plan pushes the foundation in ahead of it, so a pointer at a
+     guide that is not there would silently drop the foundation and leave a
+     parent with the Galaxy-only steps and none of the ones they sit on. */
+  if (g.builtOn && !data.guides[g.builtOn]) {
+    fail(`${id}: builtOn "${g.builtOn}" is not a guide`);
+  }
+  if (g.builtOn === id) fail(`${id}: builtOn points at itself`);
 
   const seen = new Set();
   (g.steps || []).forEach((s, i) => {
@@ -198,6 +245,19 @@ console.log('\nkind icons');
       if (!named.has(k)) fail(`kind "${k}" has no icon, so it falls back to the generic shield`);
     });
     ok(`${kinds.length} kinds, every one with its own icon`);
+  }
+
+  /* Device guides fall back to the generic monitor when they have no icon of
+     their own, which is how the Samsung guide first shipped a desktop monitor
+     next to "Samsung Galaxy phone or tablet". It renders, so nothing complains,
+     and a parent scanning the list reads the wrong picture. */
+  const guideMap = appSrc.match(/var GUIDE_ICON\s*=\s*\{([\s\S]*?)\}/);
+  if (!guideMap) fail('cannot find GUIDE_ICON in src/app.html');
+  else {
+    const iconed = new Set([...guideMap[1].matchAll(/["']?([\w]+)["']?\s*:/g)].map((m) => m[1]));
+    const bare = Object.keys(data.guides).filter((id) => data.guides[id].type === 'device' && !iconed.has(id));
+    if (bare.length) fail(`device guide(s) with no icon of their own, so they show the generic monitor: ${bare.join(', ')}`);
+    else ok('every device guide has its own icon');
   }
 }
 

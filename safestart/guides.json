@@ -1,6 +1,7 @@
 {
  "version": "2026.08.20",
  "verifiedOn": "2026-09-03",
+ "versionNote": "Menu names shift between software versions and between phone makers. If a name here does not match what you see, look for something close by rather than assuming the setting is gone.",
  "ageBands": [
   {
    "id": "0-6",
@@ -84,6 +85,13 @@
    "label": "Android phone or tablet",
    "group": "Phones & tablets",
    "short": "Android"
+  },
+  {
+   "id": "samsung",
+   "label": "Samsung Galaxy phone or tablet",
+   "group": "Phones & tablets",
+   "short": "Galaxy",
+   "alias": "android"
   },
   {
    "id": "windows",
@@ -2262,6 +2270,191 @@
     "Correcting a Google birthday downward to under 13 starts a 14-day clock. Set up supervision or verify an adult age inside that window, or the account is disabled and then deleted 30 days later. Act inside the 14 days.",
     "The minimum age is 16 rather than 13 in Ireland, Germany and Poland, so the same correction lands differently depending on where you are."
    ]
+  },
+  "samsung": {
+   "id": "samsung",
+   "name": "Samsung Galaxy phone or tablet",
+   "type": "device",
+   "kind": "Device",
+   "blurb": "Only if the device is a Samsung Galaxy. A Galaxy carries a second app store and a second browser that Family Link does not reach, and this covers those.",
+   "devices": [
+    "samsung"
+   ],
+   "minAge": 0,
+   "lastVerified": "2026-09-17",
+   "sourceConfidence": "high",
+   "minutes": 14,
+   "risks": [
+    "Galaxy Store is a second app store, and Play Store approvals do not apply to it",
+    "Samsung Internet is a second browser, and Chrome’s filters do not apply to it",
+    "Secure Folder is a passcode-locked space on the phone with no parent-side control"
+   ],
+   "beforeYouStart": [
+    "Do the Android guide first. Family Link is the foundation and everything here sits on top of it.",
+    "Creating a Samsung child account asks for the security code from your credit card, which Samsung uses to confirm you are an adult.",
+    "Samsung states a minimum One UI version for child-account controls, and their own regional pages name different versions for it. If an option below is missing on the device, that is usually why."
+   ],
+   "steps": [
+    {
+     "id": "familylink",
+     "title": "Start with Family Link, which does most of the work",
+     "why": "A Galaxy is an Android phone, so Family Link supervises it the same way it supervises any other. This guide only covers the parts of a Samsung that Family Link cannot reach.",
+     "path": "Settings → Digital Wellbeing and parental controls → Parental controls",
+     "do": [
+      "On your child’s Galaxy, open Settings, then Digital Wellbeing and parental controls, then Parental controls.",
+      "Follow the prompts to supervise their Google account. Samsung’s own wizard hands off to Google’s Family Link at this point.",
+      "Work through the Android guide for the settings themselves, then come back here for the Samsung-specific steps."
+     ],
+     "note": "Samsung says this needs One UI 2.0 or later. Samsung also says that if your child is using Samsung Kids, you get additional parental control settings on top of the usual ones.",
+     "mins": 3,
+     "heldBy": "parent"
+    },
+    {
+     "id": "childaccount",
+     "title": "Create a Samsung child account",
+     "why": "This is the Samsung half of the phone. Without it the Samsung-side controls below have nothing to apply to, and they are the ones that cover the Galaxy Store and Samsung Internet.",
+     "path": "Settings → Samsung account → Family → Add family member → Create child account",
+     "do": [
+      "On your own Galaxy, open Settings and tap your Samsung account name, then Family.",
+      "Tap Add family member, then Create child account.",
+      "Confirm you are an adult with the security code from your credit card, then finish your child’s details and enter the code sent to your email."
+     ],
+     "note": "It is made from your device rather than theirs. Samsung states that these controls only apply to Galaxy devices at or above a minimum One UI version, and their US and UK pages give different numbers for it, 5.1 on one and 6.1 on the other. If the controls are not there, an older device is the likeliest reason.",
+     "mins": 4,
+     "heldBy": "parent"
+    },
+    {
+     "id": "store",
+     "title": "Set Galaxy Store age ratings and approval",
+     "why": "A Galaxy has two app stores. Family Link’s download approval covers the Play Store and does not cover the Galaxy Store, so a child who cannot install something in one can often find it in the other.",
+     "path": "Settings → Samsung account → Family → [your child]",
+     "do": [
+      "Open your child’s profile in the Family menu.",
+      "Set the age rating for apps and games. The choices are All ages, 12+, 16+ and 18+.",
+      "Turn on approval for downloads and purchases, and set it to all downloads and purchases rather than paid content only. The free apps are the ones that matter here."
+     ],
+     "recommended": {
+      "0-6": "All ages, approval for everything",
+      "7-11": "All ages, approval for everything",
+      "11-12": "12+, approval for everything",
+      "13-15": "16+, approval for everything",
+      "16-17": "16+, approval for paid content"
+     },
+     "note": "Samsung’s wording is that a child trying to download a restricted app \"will see a message informing them that the app is restricted\", so they know it was blocked rather than broken. Worth telling them in advance so the first one is not a surprise.",
+     "mins": 3,
+     "heldBy": "parent"
+    },
+    {
+     "id": "browser",
+     "title": "Filter Samsung Internet",
+     "why": "The same problem on the browser side. The Chrome filtering and locked SafeSearch you set in the Android guide do nothing to Samsung Internet, which ships on the phone and is often the browser they actually use.",
+     "path": "Settings → Samsung account → Family → [your child] → Web Content",
+     "do": [
+      "Open your child’s profile in the Family menu, then Web Content.",
+      "Pick one of the three settings: allow all sites, try to block explicit sites, or allow only sites you choose.",
+      "For younger children, allowing only sites you choose is the one that actually holds. Blocking explicit sites is a filter, and filters miss things."
+     ],
+     "recommended": {
+      "0-6": "Allow only sites you choose",
+      "7-11": "Allow only sites you choose",
+      "11-12": "Try to block explicit sites",
+      "13-15": "Try to block explicit sites",
+      "16-17": "Try to block explicit sites"
+     },
+     "note": "One real win here, and it is worth knowing about. Samsung states that \"Secret Mode is not available while using a Samsung Child Account\". Private browsing in Samsung Internet is switched off by the child account itself, which is the sort of thing most parents assume cannot be done.",
+     "mins": 2,
+     "heldBy": "parent"
+    },
+    {
+     "id": "purchases",
+     "title": "Put a password on Galaxy Store purchases",
+     "why": "A fallback, and the only thing available at all if you are not going to create a child account.",
+     "path": "Galaxy Store → menu → settings → Require password or biometrics to buy",
+     "do": [
+      "On your child’s Galaxy, open the Galaxy Store.",
+      "Tap the menu, the three lines at the bottom right, then the settings cog.",
+      "Turn on the option to require a password or biometrics to buy."
+     ],
+     "note": "Be clear with yourself about what this is. It is a toggle inside an app on their device rather than something held by your account, so anyone holding the phone can turn it off again. The child account in the earlier step is the thing that actually holds.",
+     "mins": 1,
+     "heldBy": "child"
+    },
+    {
+     "id": "kids",
+     "title": "Set up Samsung Kids for a younger child",
+     "why": "A sealed home screen with only the apps, contacts and media you allow. For a young child with their own Galaxy, or borrowing yours, it is a much bigger step than filtering the normal home screen.",
+     "path": "Two-finger swipe down from the top of the screen → Samsung Kids",
+     "do": [
+      "Swipe down from the top with two fingers to open the full Quick settings panel, then tap Samsung Kids and Continue twice.",
+      "If the Samsung Kids button is not there, tap the pencil to edit the panel, find Kids in the list and add it.",
+      "Set a PIN when it asks. That PIN is what stops them leaving Kids mode.",
+      "Tap More options, then Parental controls, and set the daily playtime for each day of the week, a bedtime, and the allowed apps, contacts, media and music."
+     ],
+     "ages": [
+      "0-6",
+      "7-11",
+      "11-12"
+     ],
+     "note": "Samsung says it needs Android 9.0 or above and that availability varies by carrier, so it is not on every Galaxy. You can create up to six profiles. The same Parental controls menu shows usage time by day and by app, which is the plainest activity view on the phone.",
+     "undo": "To leave Kids mode normally, tap More options, then Close Samsung Kids, and enter the PIN. If you have forgotten the PIN, five wrong attempts opens Samsung’s documented reset: send a blank email to kidshome.pin@samsung.com from the address the account is registered to, and they send back a temporary password.",
+     "mins": 4,
+     "heldBy": "parent"
+    },
+    {
+     "id": "securefolder",
+     "title": "Know that Secure Folder exists",
+     "why": "Every other step here is a setting. This one is a conversation, because there is no parent-side control for it and saying otherwise would be the wrong kind of reassurance.",
+     "path": "Settings → Security and privacy → More security settings → Secure Folder",
+     "do": [
+      "Look in Settings, then Security and privacy, then More security settings, to see whether Secure Folder is set up on the device.",
+      "If it is there, know what it is. A second space on the phone with its own passcode, holding its own separate copies of apps and photos.",
+      "Talk about it rather than removing it. Removing it deletes everything inside, which turns a conversation into a fight you did not need to have."
+     ],
+     "note": "Samsung publishes no parental control over Secure Folder and no age restriction on it. Do not assume Family Link covers it either. Google’s own rule is that \"some apps can't be blocked because they're required for parent supervision settings to work, or for your child's device to work\", and that \"system apps can't have app limits placed on them\".",
+     "mins": 2,
+     "heldBy": "child"
+    }
+   ],
+   "checklist": [
+    "Family Link supervision active, from the Android guide",
+    "Samsung child account created",
+    "Galaxy Store age rating set",
+    "Approval on for Galaxy Store downloads",
+    "Samsung Internet web content set",
+    "Samsung Kids set up, if they are young enough for it",
+    "You know whether Secure Folder is on the device"
+   ],
+   "talkAboutIt": [
+    "Tell them the Galaxy Store is covered too, so finding it is not a loophole worth hunting for.",
+    "Agree what happens when they want an app from either store, so it becomes a request rather than a standoff.",
+    "Ask about Secure Folder directly rather than going looking for it."
+   ],
+   "links": [
+    {
+     "label": "Samsung: Samsung Kids on your Galaxy phone or tablet (official)",
+     "url": "https://www.samsung.com/us/support/answer/ANS10003300/"
+    },
+    {
+     "label": "Samsung: family groups and parental controls with your Samsung account (official)",
+     "url": "https://www.samsung.com/us/support/answer/ANS10002400/"
+    },
+    {
+     "label": "Samsung: using Google’s Family Link on a Galaxy (official)",
+     "url": "https://www.samsung.com/us/support/answer/ANS10003399/"
+    },
+    {
+     "label": "Google: apps that cannot be blocked with Family Link (official)",
+     "url": "https://support.google.com/families/answer/7103028?hl=en"
+    }
+   ],
+   "priority": 0,
+   "preinstalled": [
+    "Samsung Internet, a second browser alongside Chrome",
+    "Galaxy Store, a second app store alongside Google Play",
+    "Samsung Kids, on most Galaxy devices but not all of them",
+    "Secure Folder"
+   ],
+   "builtOn": "android"
   },
   "windows": {
    "id": "windows",
