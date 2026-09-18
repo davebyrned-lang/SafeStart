@@ -116,16 +116,34 @@
 <link rel="icon" href="/assets/favicon-64.png" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
-<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/atkinson-latin.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
-/* Inter is self-hosted rather than loaded from Google Fonts. A child-safety
-   site shouldn't send a parent's browser to a third party just to render text. */
-@font-face { font-family: Inter; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/inter-400.woff2") format("woff2"); }
-@font-face { font-family: Inter; font-style: normal; font-weight: 500; font-display: swap; src: url("/assets/fonts/inter-500.woff2") format("woff2"); }
-@font-face { font-family: Inter; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonts/inter-600.woff2") format("woff2"); }
-@font-face { font-family: Inter; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/inter-700.woff2") format("woff2"); }
+/* Atkinson Hyperlegible Next, self-hosted rather than loaded from Google Fonts.
+   A child-safety site shouldn't send a parent's browser to a third party just to
+   render text.
+
+   It replaced Inter in September 2026. Readers kept describing the site as
+   corporate, and Inter is the typeface of roughly every piece of software they
+   meet at work, so it was arriving before the words did. Atkinson was drawn by
+   the Braille Institute to be read by people with low vision: every letter is
+   shaped so it cannot be mistaken for another, which is why the lowercase l has
+   a tail and the capital I has serifs. That makes it warmer and a little odder
+   than Inter without being soft, and on a site read in a hurry by worried people
+   on phones, legibility is worth choosing on its own terms.
+
+   One variable file per subset covers 400 to 700, which is 53KB against the 97KB
+   of the four static Inter weights it replaced. */
+@font-face {
+  font-family: Atkinson; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("/assets/fonts/atkinson-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Atkinson; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("/assets/fonts/atkinson-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
 /* ============================================================
    SafeStart — a free tool from TrustRaise
    Palette, type and proportions follow the TrustRaise brand:
@@ -159,6 +177,8 @@
   --info: var(--bluebell);
   --fill-warm: var(--blush);
   --fill-sun: var(--butter);
+  /* The spot drawings. Deliberately not one of the three voices: see .spot. */
+  --spot: #B07249;
 
   --anchor: #2A3F31;
   --ink: #272620;
@@ -194,7 +214,7 @@
      felt cold even where the hues were right. */
   --shadow: 0 1px 2px rgba(70,60,50,.07), 0 10px 26px rgba(70,60,50,.09);
   --shadow-lg: 0 2px 8px rgba(70,60,50,.10), 0 24px 60px rgba(70,60,50,.18);
-  --font: Inter, Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font: Atkinson, "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --maxw: 800px;
   --ease: cubic-bezier(.34,1.4,.5,1);
 }
@@ -222,6 +242,7 @@
     --info: var(--bluebell);
     --fill-warm: var(--blush);
     --fill-sun: var(--butter);
+    --spot: #D09B6E;
     --on-action: #12241B;
     --on-fill: #F0E7DC;
     --signal: var(--clay);
@@ -353,6 +374,24 @@ button { font: inherit; cursor: pointer; }
 
 /* ---------------- hero ---------------- */
 .hero { padding: 40px 0 8px; }
+/* The hero drawing sits beside the headline on a wide screen and above it on a
+   phone, where horizontal space is the scarce thing. It is decoration, so it is
+   aria-hidden and it is the first thing to go when the screen gets small. */
+.hero-row { display: flex; gap: 26px; align-items: flex-start; }
+.hero-row .hero-txt { min-width: 0; flex: 1; }
+/* The drawings take a token of their own rather than borrowing one of the three
+   voices. --caution means "be careful" everywhere else on this site, and a
+   friendly picture wearing the warning colour quietly weakens the warnings. This
+   is decoration, so it says nothing and gets a colour that says nothing. */
+.spot { flex: none; color: var(--spot); }
+.hero-row .spot { width: 104px; height: 104px; margin-top: 6px; }
+@media (max-width: 720px) {
+  .hero-row { flex-direction: column-reverse; gap: 10px; }
+  .hero-row .spot { width: 68px; height: 68px; margin: 0 0 2px; }
+}
+.plan-progress .spot { width: 44px; height: 44px; color: var(--action); }
+.about-spot { display: flex; justify-content: center; padding: 6px 0 2px; }
+.about-spot .spot { width: 108px; height: 108px; }
 .hero h1 {
   font-size: clamp(2rem, 7vw, 3.1rem);
   line-height: 1.08; letter-spacing: -.035em; margin: 0 0 14px;
@@ -846,12 +885,16 @@ button { font: inherit; cursor: pointer; }
 .why-toggle > summary:hover { text-decoration: underline; }
 .why-toggle .why { margin-top: 8px; }
 
+/* The route through the menus. It used to be set in monospace, which made it look
+   like a line of code rather than a set of taps, and a parent who does not write
+   software reads a code block as "this bit is not for me". Same information,
+   ordinary type, with the arrows carrying the sense of travel instead. */
 .path {
-  margin: 13px 0 0; font-size: .86rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  background: var(--surface-2); border-radius: 10px; padding: 10px 13px; color: var(--muted);
-  overflow-wrap: anywhere;
+  margin: 13px 0 0; font-size: .88rem; font-weight: 500;
+  background: var(--fill-warm); border-radius: 10px; padding: 10px 13px;
+  color: var(--heading); overflow-wrap: anywhere;
 }
+.path code { font-family: inherit; font-size: inherit; }
 
 .do-list { margin: 13px 0 0; padding-left: 21px; }
 .do-list li { margin-bottom: 6px; }
@@ -1275,7 +1318,7 @@ button { font: inherit; cursor: pointer; }
       <span class="help-btn-short">Get help</span>
     </a>
     <button class="ghost-btn" id="printBtn" hidden>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.1 9.1c-.2-2.4-.2-4.8 0-7.1 4-.2 7.9-.2 11.9 0 .2 2.3.2 4.7 0 7.1"/><path d="M6.2 18c-1.1.05-2 .05-2.7 0-1-.1-1.4-.5-1.5-1.5-.25-2.3-.25-4.6 0-6.9.1-1 .5-1.4 1.5-1.5 5.7-.35 11.4-.3 17.1.05.9.1 1.3.5 1.4 1.45.25 2.3.25 4.6 0 6.9-.1 1-.5 1.4-1.5 1.5-.7.05-1.6.05-2.7 0"/><path d="M7 14.4c-.2 2.5-.2 5 0 7.5 3.3.2 6.7.2 10 0 .2-2.5.2-5 0-7.5-3.3-.2-6.7-.2-10 0Z"/></svg>
       Print
     </button>
     <button class="theme-btn" id="themeBtn" type="button"></button>
@@ -1331,7 +1374,7 @@ button { font: inherit; cursor: pointer; }
 <li><a href="https://discord.com/safety-family-center" target="_blank" rel="noopener noreferrer">Discord: Family Center hub (official)</a></li>
 <li><a href="https://discord.com/press-releases/discord-launches-teen-by-default-settings-globally" target="_blank" rel="noopener noreferrer">Discord: teen-by-default settings</a></li>
 </ul></div>
-<a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
+<a class="help-card" href="/help/"><span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.1 3.3C8.9 8.8 5.7 14.4 2.6 20c6.3.3 12.6.25 18.9-.1-3.1-5.5-6.2-11-9.4-16.6Z"/><path d="M12 10c-.05 1.4-.05 2.8 0 4.1"/><path d="M12 17h.02"/></svg></span><span><strong>Has something already happened?</strong><span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span></span></a>
 <p class="disclaimer">Menus move. If something on screen does not match these steps, check the official link above.</p></main>
 
 <footer class="site-foot">
@@ -1440,43 +1483,53 @@ function el(tag, attrs, kids) {
 function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
 
 /* ---------------- icon set ----------------
-   Generic symbols rather than platform logos: no trademarks
-   reproduced, and one consistent line style throughout.        */
+   Generic symbols rather than platform logos: no trademarks reproduced, and one
+   consistent line style throughout.
+
+   Redrawn September 2026. The old set was struck from rects and circles with an
+   even 1.9 stroke, which is the visual signature of every developer tool built in
+   the last decade, and readers were reading it before they read a word. These are
+   drawn instead: no rectangles, no perfect circles, every straight run is a
+   shallow curve and no two corners share a radius. Small filled dots stay circles
+   because a dot reads as a dot either way.
+
+   Keep that rule if you add one. A single ruler-straight icon in this set looks
+   like a mistake rather than a style.                                          */
 
 var ICONS = {
-  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/>',
-  back: '<path d="M19 12H5M12 19l-7-7 7-7"/>',
-  arrow: '<path d="M5 12h14M12 5l7 7-7 7"/>',
-  check: '<path d="M20 6 9 17l-5-5"/>',
-  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
-  shield: '<path d="M12 2.6l7.4 3.1v6.1c0 4.6-3.1 8.7-7.4 9.9-4.3-1.2-7.4-5.3-7.4-9.9V5.7z"/>',
-  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
-  alert: '<path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/>',
-  link: '<path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>',
-  chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/>',
-  sparkle: '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>',
+  search: '<path d="M11.2 4.1C7.4 4 4.5 6.8 4.4 10.7c-.1 4 2.7 6.9 6.6 7 3.9.1 6.8-2.7 6.9-6.6.1-3.9-2.7-6.9-6.7-7Z"/><path d="M16.6 16.7c1.2 1 2.3 2.1 3.3 3.2"/>',
+  back: '<path d="M19.2 11.9c-4.7-.3-9.4-.25-14.1.1"/><path d="M12.2 18.9c-2.4-2.2-4.7-4.5-6.9-6.9 2.1-2.4 4.4-4.7 6.8-6.9"/>',
+  arrow: '<path d="M4.8 12.1c4.7.3 9.4.25 14.1-.1"/><path d="M11.8 5.1c2.4 2.2 4.7 4.5 6.9 6.9-2.1 2.4-4.4 4.7-6.8 6.9"/>',
+  check: '<path d="M20.3 5.7c-3.8 3.7-7.6 7.5-11.3 11.4-1.8-1.5-3.5-3.1-5.1-4.8"/>',
+  clock: '<path d="M12.3 3.1C7.6 3 4.1 6.2 3.2 10.6c-.9 4 1.9 8.7 6.4 9.9 4.6 1.2 9.3-1.4 10.8-5.9 1.5-4.4-1-9.3-5.5-10.9-.9-.3-1.8-.5-2.6-.6Z"/><path d="M12 7.2c-.1 1.7-.15 3.4-.1 5.1 1.1.75 2.2 1.4 3.3 2"/>',
+  shield: '<path d="M12.1 2.7C9.6 3.6 7.1 4.5 4.6 5.4c-.25 2.6-.2 4.9.1 7 .65 4.4 3.3 7.2 7.3 8.8 4.1-1.5 6.6-4.3 7.35-8.6.35-2.1.4-4.5.15-7.2-2.5-.95-4.95-1.85-7.4-2.7Z"/>',
+  info: '<path d="M12.2 3.1C7.5 3 4 6.2 3.1 10.6c-.85 4 2 8.7 6.5 9.9 4.6 1.2 9.3-1.4 10.8-5.9 1.5-4.4-1-9.3-5.5-10.9-.9-.3-1.8-.5-2.7-.6Z"/><path d="M12 11c-.1 1.7-.1 3.4 0 5"/><path d="M12 7.9h.02"/>',
+  alert: '<path d="M12.1 3.3C8.9 8.8 5.7 14.4 2.6 20c6.3.3 12.6.25 18.9-.1-3.1-5.5-6.2-11-9.4-16.6Z"/><path d="M12 10c-.05 1.4-.05 2.8 0 4.1"/><path d="M12 17h.02"/>',
+  link: '<path d="M10 13.1c2 1.9 4.7 1.9 6.9-.1 1-.9 1.9-1.9 2.8-2.9 1.8-2.1 1.7-4.6-.3-6.5-1.9-1.8-4.4-1.8-6.4 0-.4.35-.8.7-1.1 1.1"/><path d="M14 10.9c-2-1.9-4.7-1.9-6.9.1-1 .9-1.9 1.9-2.8 2.9-1.8 2.1-1.7 4.6.3 6.5 1.9 1.8 4.4 1.8 6.4 0 .4-.35.8-.7 1.1-1.1"/>',
+  chat: '<path d="M12.1 3.1C7 3 3.2 6.5 3.1 11.5c-.05 1.7.4 3.2 1.3 4.5-.65 1.7-1.25 3.4-1.8 5.1 1.8-.6 3.5-1.25 5.2-1.9 1.3.6 2.7.9 4.3.9 5.1.05 8.9-3.5 9-8.5.05-4.9-3.8-8.4-9-8.5Z"/>',
+  sparkle: '<path d="M12.1 3.2c.5 1.8 1.2 3.5 2 5.1 1.7.6 3.4 1.2 5.1 1.7-1.8.6-3.5 1.2-5.2 1.9-.6 1.7-1.2 3.4-1.9 5.1-.6-1.8-1.2-3.5-2-5.2-1.7-.6-3.4-1.1-5.1-1.7 1.8-.6 3.5-1.2 5.2-1.8.6-1.7 1.2-3.4 1.9-5.1Z"/>',
 
-  blocks: '<rect x="3" y="3" width="8.5" height="8.5" rx="2"/><rect x="12.5" y="12.5" width="8.5" height="8.5" rx="2"/><rect x="12.5" y="3" width="8.5" height="8.5" rx="2" opacity=".45"/>',
-  music: '<path d="M9 17.5V5.8l10-2.1v11.4"/><ellipse cx="6.6" cy="18" rx="2.6" ry="2.2"/><ellipse cx="16.6" cy="15.6" rx="2.6" ry="2.2"/>',
-  camera: '<rect x="2.6" y="6.5" width="18.8" height="14" rx="3.5"/><circle cx="12" cy="13.5" r="3.6"/><path d="M8.4 6.5 9.7 4h4.6l1.3 2.5"/>',
-  bubbleShot: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/><circle cx="12" cy="11.2" r="2.6"/>',
-  bubbles: '<path d="M14.6 11.2a5.8 5.8 0 0 1-6.2 5.8 6.1 6.1 0 0 1-2.6-.6L2 18l1.3-3.6a5.8 5.8 0 0 1 5.5-8.6 5.8 5.8 0 0 1 5.8 5.4z"/><path d="M17 8.4A5.9 5.9 0 0 1 22 14a5.7 5.7 0 0 1-.9 3l.9 2.8-3.1-1a6 6 0 0 1-4.6-.4"/>',
-  play: '<rect x="2" y="4.8" width="20" height="14.4" rx="4.5"/><path d="M10.3 9.2v5.6l4.6-2.8z"/>',
-  target: '<circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="3.4"/><path d="M12 1.4v4.2M12 18.4v4.2M1.4 12h4.2M18.4 12h4.2"/>',
-  gridcube: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>',
+  blocks: '<path d="M4.2 3.3c-.9.1-1.25.55-1.3 1.4-.15 2.1-.15 4.3 0 6.4.05.85.45 1.25 1.3 1.3 2.1.15 4.3.15 6.4 0 .85-.05 1.25-.5 1.3-1.35.15-2.1.1-4.2-.05-6.3-.05-.85-.45-1.25-1.3-1.3-2.1-.15-4.2-.15-6.35-.15Z"/><path d="M13.7 12.8c-.9.1-1.25.55-1.3 1.4-.15 2.1-.15 4.3 0 6.4.05.85.45 1.25 1.3 1.3 2.1.15 4.3.15 6.4 0 .85-.05 1.25-.5 1.3-1.35.15-2.1.1-4.2-.05-6.3-.05-.85-.45-1.25-1.3-1.3-2.1-.15-4.2-.15-6.35-.15Z"/><path d="M13.7 3.3c-.9.1-1.25.55-1.3 1.4-.15 2.1-.15 4.3 0 6.4.05.85.45 1.25 1.3 1.3 2.1.15 4.3.15 6.4 0 .85-.05 1.25-.5 1.3-1.35.15-2.1.1-4.2-.05-6.3-.05-.85-.45-1.25-1.3-1.3-2.1-.15-4.2-.15-6.35-.15Z" opacity=".45"/>',
+  music: '<path d="M9 17.4c-.15-3.9-.1-7.8.1-11.7 3.3-.7 6.6-1.4 9.9-2-.1 3.8-.05 7.6.05 11.4"/><path d="M6.7 15.8c-1.6 0-2.7.9-2.75 2.2-.05 1.3 1.05 2.2 2.65 2.25 1.65.05 2.75-.85 2.8-2.15.05-1.3-1.05-2.25-2.7-2.3Z"/><path d="M16.7 13.4c-1.6 0-2.7.9-2.75 2.2-.05 1.3 1.05 2.2 2.65 2.25 1.65.05 2.75-.85 2.8-2.15.05-1.3-1.05-2.25-2.7-2.3Z"/>',
+  camera: '<path d="M4 6.7c-1 .15-1.45.6-1.5 1.6-.25 3.3-.25 7-.05 10.3.05 1 .5 1.45 1.5 1.55 5.4.35 10.9.3 16.3-.05.95-.1 1.4-.55 1.45-1.55.2-3.3.15-6.9-.1-10.2-.05-1-.5-1.45-1.5-1.55-5.35-.35-10.7-.3-16.1-.1Z"/><path d="M12.1 9.9c-2.1-.05-3.5 1.3-3.55 3.4-.05 2.1 1.35 3.5 3.45 3.55 2.1.05 3.5-1.35 3.55-3.4.05-2.1-1.35-3.5-3.45-3.55Z"/><path d="M8.4 6.6c.5-.9 1-1.8 1.5-2.6 1.5-.15 3-.15 4.4 0 .5.85 1 1.7 1.4 2.6"/>',
+  bubbleShot: '<path d="M12.1 3.1C7 3 3.2 6.5 3.1 11.5c-.05 1.7.4 3.2 1.3 4.5-.65 1.7-1.25 3.4-1.8 5.1 1.8-.6 3.5-1.25 5.2-1.9 1.3.6 2.7.9 4.3.9 5.1.05 8.9-3.5 9-8.5.05-4.9-3.8-8.4-9-8.5Z"/><path d="M12.1 8.7c-1.5 0-2.5 1-2.55 2.5-.05 1.5.95 2.5 2.45 2.55 1.5.05 2.5-.95 2.55-2.45.05-1.5-.95-2.55-2.45-2.6Z"/>',
+  bubbles: '<path d="M8.7 5.6C5.2 5.5 2.6 8 2.5 11.3c-.05 1.2.3 2.3.95 3.2-.45 1.2-.9 2.4-1.3 3.6 1.3-.45 2.6-.9 3.9-1.3.9.4 1.9.6 3 .6 3.5.05 6.1-2.4 6.2-5.7.05-3.3-2.5-6-6.05-6.1Z"/><path d="M17 8.4c2.9.5 4.8 2.6 4.9 5.5.05 1.1-.2 2.1-.7 3 .3.9.6 1.9.85 2.8-1-.35-2-.7-3-1-1.5.55-3.1.65-4.6.2"/>',
+  play: '<path d="M4.6 4.9c-1.1.1-1.7.6-1.8 1.65-.3 3.7-.3 7.7 0 11.3.1 1.05.7 1.55 1.8 1.65 5 .3 9.9.25 14.8-.05 1.05-.1 1.6-.6 1.7-1.65.3-3.6.25-7.5-.05-11.2-.1-1-.65-1.5-1.75-1.6-4.9-.3-9.8-.3-14.7-.1Z"/><path d="M10.4 9.2c-.1 1.9-.1 3.9 0 5.8 1.7-.9 3.3-1.9 4.9-2.9-1.6-1-3.2-2-4.9-2.9Z"/>',
+  target: '<path d="M12.2 3.5C7.3 3.4 3.7 6.9 3.5 11.9c-.2 4.9 3.3 8.5 8.2 8.6 4.9.1 8.5-3.4 8.7-8.3.15-4.9-3.3-8.6-8.2-8.7Z"/><path d="M12.1 8.5c-2 0-3.3 1.3-3.35 3.3-.05 2 1.25 3.35 3.25 3.4 2 .05 3.35-1.25 3.4-3.25.05-2-1.3-3.4-3.3-3.45Z"/><path d="M12 1.5c.05 1.4.05 2.8 0 4.1M12 18.4c.05 1.4.05 2.8 0 4.1M1.5 12c1.4-.05 2.8-.05 4.1 0M18.4 12c1.4-.05 2.8-.05 4.1 0"/>',
+  gridcube: '<path d="M4.2 3.3c-1 .1-1.4.55-1.45 1.5-.25 4.8-.25 9.6 0 14.4.05.95.45 1.4 1.45 1.5 5.2.3 10.4.25 15.6-.05 1-.1 1.4-.55 1.45-1.5.25-4.8.2-9.5-.05-14.3-.05-.95-.45-1.4-1.45-1.5-5.2-.3-10.4-.3-15.55-.05Z"/><path d="M9 3.2c-.2 5.9-.2 11.8 0 17.6M15 3.2c-.2 5.9-.2 11.8 0 17.6"/><path d="M3.2 9c5.9-.2 11.8-.2 17.6 0M3.2 15c5.9-.2 11.8-.2 17.6 0"/>',
 
-  phone: '<rect x="6" y="2" width="12" height="20" rx="3.5"/><path d="M10.4 5.4h3.2"/><path d="M9.8 18.6h4.4"/>',
-  tablet: '<rect x="4" y="2" width="16" height="20" rx="3"/><path d="M10.4 18.8h3.2"/>',
-  phoneDot: '<rect x="6" y="2" width="12" height="20" rx="3.5"/><path d="M9.6 5.2h4.8"/><circle cx="12" cy="18.4" r="1.2"/>',
-  monitor: '<rect x="2" y="3.6" width="20" height="13.2" rx="2.6"/><path d="M8.4 21h7.2M12 16.8V21"/>',
-  laptop: '<rect x="4" y="4" width="16" height="11" rx="2.4"/><path d="M1.8 18.6h20.4"/>',
-  browser: '<rect x="4" y="4" width="16" height="11" rx="2.4"/><path d="M4 7.8h16"/><path d="M1.8 18.6h20.4"/><circle cx="6.4" cy="5.9" r=".55" fill="currentColor" stroke="none"/>',
-  gamepad: '<path d="M7.4 7.6h9.2a4.8 4.8 0 0 1 4.7 3.9l.6 3.7a2.5 2.5 0 0 1-4.5 1.9l-1.6-2.1H8.2l-1.6 2.1a2.5 2.5 0 0 1-4.5-1.9l.6-3.7a4.8 4.8 0 0 1 4.7-3.9z"/><path d="M6.6 11v2.6M5.3 12.3h2.6"/><circle cx="16.4" cy="11.5" r=".95" fill="currentColor" stroke="none"/><circle cx="18.5" cy="13.4" r=".95" fill="currentColor" stroke="none"/>',
-  handheld: '<rect x="2.4" y="4" width="19.2" height="16" rx="3.4"/><path d="M8.8 4v16M15.2 4v16"/><circle cx="5.6" cy="9" r="1.1"/><circle cx="18.4" cy="14.4" r="1.1"/>',
-  sun: '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.4M12 19v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.6 12h2.4M19 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"/>',
-  moon: '<path d="M20.5 14.5A8.6 8.6 0 0 1 9.5 3.5a8.6 8.6 0 1 0 11 11z"/>',
-  autoTheme: '<circle cx="12" cy="12" r="8.6"/><path d="M12 3.4a8.6 8.6 0 0 1 0 17.2z" fill="currentColor" stroke="none"/>',
-  people: '<circle cx="9.2" cy="8" r="3.3"/><path d="M2.6 20a6.6 6.6 0 0 1 13.2 0"/><path d="M16 5.2a3.3 3.3 0 0 1 0 5.6"/><path d="M17.6 14.4A6.6 6.6 0 0 1 21.6 20"/>'
+  phone: '<path d="M8.3 2.7c-1 .1-1.4.6-1.5 1.6-.3 3.7-.3 12.3 0 15.9.1 1 .6 1.4 1.6 1.5 2.5.2 4.9.2 7.4 0 1-.1 1.4-.6 1.5-1.6.3-3.6.25-12.2-.05-15.8-.1-1-.55-1.45-1.55-1.55-2.4-.2-4.9-.2-7.4-.05Z"/><path d="M10.4 5.4c1.1.15 2.2.1 3.2-.05"/><path d="M9.8 18.6c1.5.2 3 .15 4.4-.05"/>',
+  tablet: '<path d="M5.1 2.9c-1 .15-1.5.6-1.6 1.6-.3 3.6-.3 11.5 0 15.1.1 1 .6 1.45 1.6 1.55 4.6.3 9.3.25 13.9-.05.95-.1 1.4-.55 1.5-1.55.3-3.6.25-11.4-.05-15-.1-1-.55-1.45-1.55-1.55-4.6-.3-9.2-.3-13.8-.1Z"/><path d="M10.4 18.8c1.1.15 2.2.1 3.2-.05"/>',
+  phoneDot: '<path d="M8.3 2.7c-1 .1-1.4.6-1.5 1.6-.3 3.7-.3 12.3 0 15.9.1 1 .6 1.4 1.6 1.5 2.5.2 4.9.2 7.4 0 1-.1 1.4-.6 1.5-1.6.3-3.6.25-12.2-.05-15.8-.1-1-.55-1.45-1.55-1.55-2.4-.2-4.9-.2-7.4-.05Z"/><path d="M9.7 5.3c1.6.2 3.2.15 4.7-.05"/><path d="M12 17.2c-.75 0-1.25.5-1.25 1.25s.5 1.3 1.25 1.3 1.3-.5 1.3-1.25-.55-1.3-1.3-1.3Z"/>',
+  monitor: '<path d="M3.2 3.9c-.9.1-1.2.5-1.25 1.35-.2 3.2-.2 6.9 0 10.1.05.85.4 1.25 1.25 1.35 5.9.35 11.8.3 17.6-.05.85-.1 1.2-.5 1.25-1.35.2-3.2.15-6.8-.05-10-.05-.85-.4-1.25-1.25-1.35-5.85-.35-11.7-.3-17.5-.05Z"/><path d="M8.5 21c2.4.15 4.7.15 7 0"/><path d="M12 17c.1 1.35.1 2.7 0 4"/>',
+  laptop: '<path d="M5.2 4.2c-.9.1-1.3.55-1.35 1.45-.15 3-.15 6.6 0 9.6"/><path d="M20.2 15.2c.15-3 .15-6.5 0-9.5-.05-.9-.45-1.35-1.35-1.45-4.5-.3-9-.3-13.5-.05"/><path d="M1.9 18.6c.4.5 1.1.8 2 .85 5.5.3 11 .25 16.5-.05.85-.05 1.5-.35 1.9-.85"/><path d="M4.1 15.2c5.4.3 10.8.25 16.1-.05"/>',
+  browser: '<path d="M5.1 4.1c-.95.1-1.35.55-1.4 1.45-.2 2.8-.2 6 0 8.8.05.9.45 1.35 1.4 1.45 4.6.3 9.2.25 13.8-.05.9-.1 1.3-.55 1.35-1.45.2-2.8.15-5.9-.05-8.7-.05-.9-.45-1.35-1.35-1.45-4.6-.3-9.15-.3-13.75-.05Z"/><path d="M3.9 7.9c5.4.25 10.8.2 16.2-.05"/><path d="M1.9 18.7c6.7.35 13.5.3 20.2-.05"/><circle cx="6.4" cy="5.95" r=".6" fill="currentColor" stroke="none"/>',
+  gamepad: '<path d="M8.2 7.7c-2.6-.05-4.4 1.2-4.9 3.5-.4 1.9-.6 3.3-.5 4.4.15 1.9 2.2 2.8 3.7 1.6L8.6 15.1c2.2.2 4.5.2 6.7 0l2.2 2.3c1.5 1.15 3.5.2 3.6-1.7.05-1.1-.15-2.5-.55-4.4-.5-2.25-2.3-3.5-4.85-3.5-2.5-.05-5-.05-7.5-.1Z"/><path d="M6.6 11.1c.05.8.05 1.6 0 2.4M5.3 12.3c.9.1 1.8.1 2.6 0"/><circle cx="16.4" cy="11.5" r=".95" fill="currentColor" stroke="none"/><circle cx="18.5" cy="13.4" r=".95" fill="currentColor" stroke="none"/>',
+  handheld: '<path d="M3.4 4.2c-.9.1-1.3.55-1.35 1.45-.2 4-.2 8.6 0 12.6.05.9.45 1.35 1.35 1.45 5.6.3 11.2.25 16.8-.05.9-.1 1.3-.55 1.35-1.45.2-4 .15-8.5-.05-12.5-.05-.9-.45-1.35-1.35-1.45-5.55-.3-11.1-.3-16.75-.05Z"/><path d="M8.8 4.1c-.2 5.3-.2 10.6 0 15.9M15.2 4.1c-.2 5.3-.2 10.6 0 15.9"/><path d="M5.6 7.8c-1.1 0-1.8.7-1.8 1.7s.7 1.75 1.7 1.75 1.75-.7 1.75-1.7-.65-1.75-1.65-1.75Z"/><path d="M18.4 13.2c-1.1 0-1.8.7-1.8 1.7s.7 1.75 1.7 1.75 1.75-.7 1.75-1.7-.65-1.75-1.65-1.75Z"/>',
+  sun: '<path d="M12.1 7.7c-2.5 0-4.2 1.6-4.25 4.1-.05 2.5 1.6 4.25 4.1 4.3 2.5.05 4.25-1.6 4.3-4.1.05-2.5-1.65-4.25-4.15-4.3Z"/><path d="M12 2.5c.05.9.05 1.7 0 2.5M12 18.9c.05.9.05 1.7 0 2.6M4.3 4.3c.65.5 1.25 1.1 1.8 1.8M17.9 17.8c.65.5 1.25 1.1 1.8 1.8M2.5 12c.9.05 1.7.05 2.5 0M18.9 12c.9.05 1.7.05 2.6 0M4.3 19.7c.5-.65 1.1-1.25 1.8-1.8M17.9 6.2c.5-.65 1.1-1.25 1.8-1.8"/>',
+  moon: '<path d="M20.4 14.4c-4.9 1.5-9.4-.7-10.8-5.2-.55-1.8-.5-3.8.1-5.7C4.9 4.8 2.2 8.9 3 13.5c.85 4.7 5.3 7.7 10 6.8 3.4-.65 6-3 7.4-5.9Z"/>',
+  autoTheme: '<path d="M12.2 3.4C7.5 3.3 4 6.6 3.1 11c-.85 4 2 8.7 6.5 9.9 4.6 1.2 9.3-1.4 10.8-5.9 1.5-4.4-1-9.3-5.5-10.9-.9-.3-1.8-.5-2.7-.7Z"/><path d="M12 3.4c4.9.05 8.5 3.8 8.5 8.6 0 4.9-3.6 8.6-8.5 8.6Z" fill="currentColor" stroke="none"/>',
+  people: '<path d="M9.2 4.9C7.3 4.85 6 6.1 5.95 8c-.05 1.9 1.2 3.2 3.15 3.25C11.05 11.3 12.35 10 12.4 8.1 12.45 6.2 11.15 4.95 9.2 4.9Z"/><path d="M2.7 20.1c-.15-3.6 2.3-5.9 6.2-5.95 3.95-.05 6.4 2.2 6.3 5.8"/><path d="M16.4 5.6c1.9.4 2.85 1.5 2.75 3.2-.1 1.65-1.05 2.65-2.8 2.9"/><path d="M17.3 14.3c2.75.55 4.15 2.3 4.1 5.2"/>'
 };
 
 var GUIDE_ICON = {
@@ -1494,12 +1547,58 @@ var KIND_ICON = {
   Music: "music", "Start here": "people", Other: "shield"
 };
 
+/* ---------------- spot illustrations ----------------
+   Three drawings, in the same hand as the icons and at four times the size, so
+   the line weight reads as deliberate rather than as a scaled-up icon.
+
+   They exist because readers kept calling the site corporate and the sharpest
+   version of that was that there was nobody in it. Every surface was interface.
+   These are the only place on the site where a person appears, which is why they
+   are figures rather than objects, and why they are drawn at all.
+
+   No faces. A drawn face is a specific child, and the parent reading this has
+   their own.                                                                   */
+
+var SPOTS = {
+  together:
+    '<path d="M26 16.5c-3.6-.1-6 2.3-6.1 6-.1 3.7 2.2 6.2 5.9 6.3 3.8.1 6.2-2.3 6.3-6 .1-3.7-2.3-6.2-6.1-6.3Z"/>' +
+    '<path d="M14.5 56c-.4-10.6 3.7-16.9 11.6-17.1 8-.2 12.2 5.8 12 16.4"/>' +
+    '<path d="M50.5 30c-2.7-.1-4.5 1.7-4.6 4.4-.1 2.8 1.7 4.6 4.4 4.7 2.8.1 4.6-1.7 4.7-4.4.1-2.7-1.7-4.6-4.5-4.7Z"/>' +
+    '<path d="M42.5 56c-.3-7.6 2.6-12.1 8.2-12.2 5.7-.1 8.7 4.1 8.5 11.7"/>' +
+    '<path d="M9 62.5c15.5 1.1 31.2 1 46.8-.2 3-.2 5.7-.4 8.2-.6" opacity=".55"/>',
+
+  done:
+    '<path d="M35.5 13.5C23 13.3 13.4 22 12.9 34.2c-.5 12.4 9.1 23.6 21.8 24.3 12.9.7 23.4-8.9 23.9-21.3.5-12.6-9.1-23.5-23.1-23.7Z"/>' +
+    '<path d="M24.8 36.2c3.2 2.9 6.2 6 9 9.3 5.1-6.6 10.4-12.8 16-18.8"/>' +
+    '<path d="M62.5 17.5c1.5-1 3-1.9 4.5-2.7M60.5 8.5c.4 1.6.7 3.1.9 4.7M67 26.5c1.6.1 3.1.3 4.6.6" opacity=".55"/>',
+
+  handset:
+    '<path d="M29.6 20.5c-2.6.3-3.7 1.7-3.9 4.2-.6 8.2-.6 17.7 0 25.9.2 2.5 1.4 3.8 4 4.1 4.2.5 8.4.5 12.6 0 2.6-.3 3.8-1.7 4-4.2.6-8.2.5-17.6-.1-25.8-.2-2.5-1.4-3.8-4-4.1-4.1-.5-8.3-.5-12.6-.1Z"/>' +
+    '<path d="M34.1 49.5c2 .3 3.9.25 5.7-.1"/>' +
+    '<path d="M32.1 30c1.9 1.7 3.5 3.4 4.9 5.1 2-2.6 4.1-5 6.3-7.2" opacity=".7"/>' +
+    '<path d="M15 59.5c11.6.9 23.3.85 34.9-.15 2.6-.25 5-.5 7.3-.8" opacity=".5"/>'
+};
+
+function spotArt(name, cls) {
+  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 72 72");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", "2.6");
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("class", "spot" + (cls ? " " + cls : ""));
+  svg.innerHTML = SPOTS[name] || SPOTS.together;
+  return svg;
+}
+
 function icon(name, cls) {
   var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 24 24");
   svg.setAttribute("fill", "none");
   svg.setAttribute("stroke", "currentColor");
-  svg.setAttribute("stroke-width", "1.9");
+  svg.setAttribute("stroke-width", "2.15");
   svg.setAttribute("stroke-linecap", "round");
   svg.setAttribute("stroke-linejoin", "round");
   svg.setAttribute("aria-hidden", "true");
@@ -1813,16 +1912,21 @@ function renderHome(skipUrl) {
   document.title = "SafeStart — parental controls made simple";
 
   app.appendChild(el("section", { class: "hero" }, [
-    el("h1", {}, [
-      document.createTextNode("Let's set this up "),
-      el("span", { class: "hl", text: "together" }),
-      document.createTextNode(".")
-    ]),
-    el("p", { text: "SafeStart is a free guide to the parental controls already built into your child's phone, tablet, console and apps. Tell us what your child uses and roughly how old they are, and you get one ordered list of what to change, most important first, broken into short parts rather than one long evening." }),
-    el("p", { class: "hero-more" }, [
-      document.createTextNode("Nothing to install, no account, and your child never touches this site. "),
-      el("a", { href: "/about/", text: "More about SafeStart" }),
-      document.createTextNode(".")
+    el("div", { class: "hero-row" }, [
+      el("div", { class: "hero-txt" }, [
+        el("h1", {}, [
+          document.createTextNode("Let's set this up "),
+          el("span", { class: "hl", text: "together" }),
+          document.createTextNode(".")
+        ]),
+        el("p", { text: "SafeStart is a free guide to the parental controls already built into your child's phone, tablet, console and apps. Tell us what your child uses and roughly how old they are, and you get one ordered list of what to change, most important first, broken into short parts rather than one long evening." }),
+        el("p", { class: "hero-more" }, [
+          document.createTextNode("Nothing to install, no account, and your child never touches this site. "),
+          el("a", { href: "/about/", text: "More about SafeStart" }),
+          document.createTextNode(".")
+        ])
+      ]),
+      spotArt("together")
     ]),
     countryPick()
   ]));
@@ -2541,10 +2645,14 @@ function renderPlan(skipUrl, keepScroll) {
   if (pow) app.appendChild(pow);
 
   var prog = planProgress(plan);
+  /* The drawing only appears at the end. A parent who has just finished a plan is
+     the one moment on this site worth marking, and marking it earlier would be
+     decoration rather than a reward for anything. */
   app.appendChild(el("div", { class: "plan-progress" }, [
     el("div", { class: "progress-bar" + (prog.pct === 100 ? " complete" : "") },
       [el("span", { style: "width:" + prog.pct + "%" })]),
-    el("span", { class: "plan-progress-text", text: prog.done + " of " + prog.total + " done" })
+    el("span", { class: "plan-progress-text", text: prog.done + " of " + prog.total + " done" }),
+    prog.pct === 100 ? spotArt("done") : null
   ]));
 
   app.appendChild(planToolbar());

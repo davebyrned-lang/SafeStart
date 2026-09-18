@@ -97,6 +97,26 @@ function niceDate(iso) {
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 }
 
+/* The spot illustrations live in src/app.html next to the icon set, because that
+   is where anyone changing the drawing style will be looking. Rather than keeping
+   a second copy here and letting the two drift, the build lifts the object out of
+   the template and renders the same paths into the prerendered markup. A name
+   that does not exist throws, so a typo fails the build rather than silently
+   shipping a page with a hole in it. */
+const SPOTS = (function () {
+  const m = TEMPLATE.match(/var SPOTS = \{[\s\S]*?\n\};/);
+  if (!m) throw new Error("build: cannot find SPOTS in src/app.html");
+  return new Function(m[0] + "; return SPOTS;")();
+})();
+
+function spotStatic(name, cls) {
+  const body = SPOTS[name];
+  if (!body) throw new Error('build: no spot illustration named "' + name + '"');
+  return '<svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.6" ' +
+    'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="spot' +
+    (cls ? " " + cls : "") + '">' + body + "</svg>";
+}
+
 const DEFAULT_COUNTRY = (DATA.countries && DATA.countries[0]) || { id: "US", currency: "$", emergency: "911" };
 
 /* ---------------- guide pages ---------------- */
@@ -269,7 +289,7 @@ function renderGuideStatic(g) {
 function helpCardStatic() {
   return (
     '<a class="help-card" href="/help/">' +
-    '<span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/></svg></span>' +
+    '<span class="help-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.1 3.3C8.9 8.8 5.7 14.4 2.6 20c6.3.3 12.6.25 18.9-.1-3.1-5.5-6.2-11-9.4-16.6Z"/><path d="M12 10c-.05 1.4-.05 2.8 0 4.1"/><path d="M12 17h.02"/></svg></span>' +
     "<span><strong>Has something already happened?</strong>" +
     "<span>If your child has been contacted by an adult, is being threatened over an image, or is being bullied, settings are not the first thing to deal with. Here is what to do, and who to tell.</span>" +
     "</span></a>"
@@ -339,10 +359,10 @@ function renderHomeStatic() {
   };
 
   return [
-    '<section class="hero">',
+    '<section class="hero"><div class="hero-row"><div class="hero-txt">',
     "<h1>Let's set this up <span class=\"hl\">together</span>.</h1>",
     "<p>Tell me whose device it is and what they use. You get one plan, in the order that removes the most risk first, broken into short parts rather than one long evening.</p>",
-    "</section>",
+    "</div>" + spotStatic("together") + "</div></section>",
     helpCardStatic(),
     list("Start here", starts),
     list("Apps and games", apps),
@@ -395,6 +415,7 @@ function renderAboutStatic() {
   out.push('<div class="meta-row"><span class="pill">' + guides + " guides</span>" +
     '<span class="pill">4 countries</span><span class="pill">' + corrections +
     (corrections === 1 ? " correction published" : " corrections published") + "</span></div>");
+  out.push('<div class="about-spot">' + spotStatic("handset") + "</div>");
 
   const section = (h, paras) => {
     out.push('<div class="check-card"><h2>' + esc(h) + "</h2>");

@@ -1,7 +1,13 @@
 {
- "updated": "2026-09-17",
+ "updated": "2026-09-18",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-18",
+   "kind": "site",
+   "title": "New typeface, redrawn icons, and the first people on the site",
+   "body": "Readers kept describing SafeStart as corporate, and pushed on it the answer came back as two things rather than a vague feeling. The first was the typeface. Inter is the face of roughly every piece of software a parent meets at work, so it was arriving before the words did. It has been replaced by Atkinson Hyperlegible Next, drawn by the Braille Institute so that no letter can be mistaken for another, which is why the lowercase l has a tail and the capital I has serifs. It is warmer and a little odder than Inter without being soft, and on a site read in a hurry by worried people on phones, picking a typeface for legibility is a decision that stands up on its own. One variable file covers every weight, which is 53KB against the 97KB it replaced, so the site also got slightly faster. The second was that everything on the page was interface. Every icon has been redrawn: no rectangles, no perfect circles, every straight run is now a shallow curve and no two corners share a radius, on a slightly heavier stroke. The settings paths were set in monospace, which made a list of taps look like a line of code, and a parent who does not write software reads a code block as not being for them. Same words, ordinary type, arrows doing the work. And three drawings have been added, which are the only place on the site a person appears: two figures on the home page, a phone on the About page, and one that shows up on a finished plan and nowhere else. They have no faces, because a drawn face is a specific child and the parent reading this has their own. Not a single word of guidance changed anywhere on the site, which was checked page by page rather than assumed."
+  },
   {
    "date": "2026-09-17",
    "kind": "site",

@@ -57,10 +57,12 @@ function check(name, condition, detail) {
     check('footer carries the tagline', footer.includes('Building Trust. Driving Revenue. Scaling Responsibly.'));
     const logoResp = await page.request.get(BASE + '/assets/trustraise-logo.png');
     check('logo asset serves', logoResp.status() === 200, 'status ' + logoResp.status());
-    /* SafeStart deliberately does not use TrustRaise Blue. Readers kept saying the
-       site felt unwelcoming and the cause was that every colour on it was cool.
-       The family resemblance is carried by the shield, Inter and the byline, all
-       checked above, rather than by the palette. */
+    /* SafeStart deliberately does not use TrustRaise Blue, and since September
+       2026 it does not use TrustRaise's typeface either. Readers kept saying the
+       site felt unwelcoming and then that it felt corporate, and the causes were
+       that every colour on it was cool and that Inter is the face of every piece
+       of software they meet at work. The family resemblance is carried by the
+       shield and the byline, both checked above, rather than by either. */
     const voices = await page.evaluate(() => {
       const s = getComputedStyle(document.documentElement);
       return ['--action', '--caution', '--info'].map((v) => s.getPropertyValue(v).trim().toUpperCase());
@@ -69,10 +71,19 @@ function check(name, condition, detail) {
       !voices.includes('#1F3FE2'), voices.join(' '));
     check('and it speaks with three distinct voices',
       new Set(voices).size === 3 && voices.every(Boolean), voices.join(' '));
-    const fontResp = await page.request.get(BASE + '/assets/fonts/inter-600.woff2');
-    check('Inter is self-hosted', fontResp.status() === 200, 'status ' + fontResp.status());
-    check('Inter actually renders',
-      await page.evaluate(() => document.fonts.check('600 16px Inter')));
+    const fontResp = await page.request.get(BASE + '/assets/fonts/atkinson-latin.woff2');
+    check('the typeface is self-hosted', fontResp.status() === 200, 'status ' + fontResp.status());
+    check('and it actually renders',
+      await page.evaluate(() => document.fonts.check('600 16px Atkinson')));
+    // The whole point of choosing this one was legibility, so the page has to be
+    // using it rather than quietly falling back to whatever the device has.
+    check('the page is set in it, not in a fallback',
+      await page.evaluate(() => {
+        const f = getComputedStyle(document.body).fontFamily;
+        return /Atkinson/i.test(f) && !/\bInter\b/i.test(f);
+      }));
+    check('no Inter file is left behind to be requested',
+      (await page.request.get(BASE + '/assets/fonts/inter-600.woff2')).status() === 404);
     // rel=canonical and rel=alternate are metadata for crawlers, not resources the
     // browser fetches, so they don't count as a third-party request.
     const external = await page.evaluate(() =>
@@ -394,7 +405,7 @@ function check(name, condition, detail) {
     const ld = await page.locator('script[type="application/ld+json"]').first().textContent();
     check('HowTo structured data is valid JSON', JSON.parse(ld)['@type'] === 'HowTo');
     check('fonts load on a nested URL',
-      await page.evaluate(() => document.fonts.check('600 16px Inter')));
+      await page.evaluate(() => document.fonts.check('600 16px Atkinson')));
 
     console.log('\nworks without javascript');
     const noJs = await browser.newContext({ javaScriptEnabled: false });
@@ -823,6 +834,65 @@ function check(name, condition, detail) {
       /no Spotify setting a teenager cannot reverse|cannot reverse/i.test(spText));
     const spShell = await (await page.request.get(BASE + '/spotify/')).text();
     check('graduation is at 18, not 13', /18, not 13/.test(spShell));
+
+    console.log('\nthe drawing style');
+    /* Readers called the site corporate, and the sharpest version of it was that
+       everything on the page was interface. Two things came out of that: the
+       icons stopped being struck from rectangles and circles, and a person
+       appears on the page for the first time. Both are easy to undo by accident,
+       because a stray <rect> renders perfectly well and a missing illustration
+       leaves no hole, so both are asserted rather than eyeballed. */
+    await page.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.card-grid .card');
+    const geometry = await page.evaluate(() => {
+      const svgs = [...document.querySelectorAll('svg')];
+      return {
+        total: svgs.length,
+        rects: svgs.reduce((n, s) => n + s.querySelectorAll('rect').length, 0),
+        // Small filled dots stay as circles on purpose; outlines must not.
+        strokedCircles: svgs.reduce((n, s) => n + [...s.querySelectorAll('circle')]
+          .filter((c) => c.getAttribute('stroke') !== 'none').length, 0),
+      };
+    });
+    check('no icon is built from a rectangle any more', geometry.rects === 0,
+      geometry.rects + ' rect(s) left');
+    check('and no outline is a perfect circle', geometry.strokedCircles === 0,
+      geometry.strokedCircles + ' stroked circle(s) left');
+    check('the stroke is the heavier drawn weight',
+      await page.evaluate(() => {
+        const s = document.querySelector('.card .card-ico svg');
+        return s && s.getAttribute('stroke-width') === '2.15';
+      }));
+    check('somebody is on the home page',
+      await page.locator('.hero .spot').count() === 1);
+    check('and they are there before the JavaScript runs',
+      /class="spot"/.test(await (await page.request.get(BASE + '/')).text()));
+    check('the drawing is hidden from screen readers, being decoration',
+      await page.locator('.hero .spot').getAttribute('aria-hidden') === 'true');
+    check('the About page has one too',
+      /class="about-spot"/.test(await (await page.request.get(BASE + '/about/')).text()));
+    /* One source of truth: the build lifts the paths out of src/app.html rather
+       than keeping its own copy, so the two cannot drift. Compared on a distinctive
+       run of the path data rather than the whole string, because the browser
+       reserialises markup when it renders it and the two would never match
+       character for character even when they came from the same place. */
+    const heroShell = await (await page.request.get(BASE + '/')).text();
+    const marker = 'M14.5 56c-.4-10.6 3.7-16.9 11.6-17.1';
+    check('the prerendered drawing came from the same source as the app\'s',
+      heroShell.includes(marker) &&
+      (await page.evaluate((m) => document.querySelector('.hero .spot').innerHTML.includes(m), marker)));
+
+    console.log('\nthe menu route is not a code block');
+    // A parent who does not write software reads monospace as "this bit is not
+    // for me". Same words, ordinary type.
+    await page.goto(BASE + '/iphone/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    check('the settings path is set in the body typeface',
+      await page.evaluate(() => {
+        const p = document.querySelector('.path');
+        return p && /Atkinson/i.test(getComputedStyle(p).fontFamily)
+          && !/mono/i.test(getComputedStyle(p).fontFamily);
+      }));
 
     console.log('\nsaying which software this was checked on');
     // Readers kept asking which version of Android or iOS the steps describe. The
