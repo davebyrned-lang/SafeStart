@@ -852,6 +852,21 @@ button { font: inherit; cursor: pointer; }
 .undo-label svg { width: 14px; height: 14px; flex: none; color: var(--info); }
 .undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
 
+/* Bullying. Its own token rather than sharing with .undo, because the two say
+   different things and a parent scanning a page should be able to tell them
+   apart without reading. Caution rather than info: nearly every one of these
+   lines names something the setting does not reach. */
+.bully {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--caution-tint); border-left: 3px solid var(--caution);
+}
+.bully-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.bully-label svg { width: 14px; height: 14px; flex: none; color: var(--caution); }
+.bully p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1368,10 +1383,10 @@ button { font: inherit; cursor: pointer; }
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>If they are under 13, use a parent-managed account</h3></span></div><div class="step-body"><p class="why">This is new, and it is the only real supervision WhatsApp offers. Only saved contacts can message them, messages from unknown numbers go to you for approval, and location sharing and disappearing messages are removed entirely.</p><p class="path"><code>Child&#39;s phone: install and register → Parent&#39;s phone: scan QR → create parent PIN</code></p><ol class="do-list"><li>Install WhatsApp on your child&#39;s phone and register their number, entering their real birthday.</li><li>On your own phone, scan the QR code shown on theirs.</li><li>Create a 6-digit parent PIN. Do not share it with your child.</li><li>Enter that PIN on your child&#39;s device to finish.</li></ol><p class="note">Still rolling out by country, so it may not appear yet. It also cannot be applied to an account that already exists, and it switches itself off on their 13th birthday.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If they already have an ordinary WhatsApp account, our reading is that it cannot be converted, because parent-managed accounts are only set up during first-time registration. That means re-registering rather than converting. WhatsApp does not state this outright anywhere we could find, so treat it as our reading of their documented setup flow rather than something they have confirmed.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Check the minimum age, and what most guides get wrong</h3></span></div><div class="step-body"><p class="why">WhatsApp&#39;s minimum is 13, including in the EU and UK. It was raised to 16 in Europe in 2018 and has since gone back to 13, so a lot of parenting advice you&#39;ll find is out of date.</p><ol class="do-list"><li>If your child is under 13, the parent-managed account above is the supported route.</li><li>If they are 13 or over, there is no supervision available and the steps below are the whole toolkit.</li></ol><p class="note">From 13 there is no activity reporting, no contact approval and no way for you to see anything. Personal chats are end-to-end encrypted, so WhatsApp cannot read them either.</p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Tighten the four privacy settings</h3></span></div><div class="step-body"><p class="why">The defaults are more open than parents expect. By default anyone can see their profile photo and when they are online, and anyone can add them to a group. One thing to know before you change Last seen: WhatsApp applies it both ways, so once they stop sharing theirs, they stop seeing everyone else&#39;s too.</p><p class="path"><code>Settings → Privacy</code></p><ol class="do-list"><li>Open Settings, then Privacy.</li><li>Set Last seen and online, Profile photo, About, and Status one at a time.</li><li>Choose My contacts, or My contacts except, rather than Everyone.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>My contacts for all four</td></tr><tr><td>7–11</td><td>My contacts for all four</td></tr><tr><td>11–12</td><td>My contacts for all four</td></tr><tr><td>13–15</td><td>My contacts for all four</td></tr><tr><td>16–17</td><td>Agree it together, My contacts is still the sensible floor</td></tr></tbody></table></div><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Restrict who can add them to groups</h3></span></div><div class="step-body"><p class="why">Group invites are the main way strangers reach a child on WhatsApp.</p><p class="path"><code>Settings → Privacy → Groups</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Groups.</li><li>Set it to My contacts, or My contacts except.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>My contacts</td></tr><tr><td>7–11</td><td>My contacts</td></tr><tr><td>11–12</td><td>My contacts</td></tr><tr><td>13–15</td><td>My contacts</td></tr><tr><td>16–17</td><td>My contacts</td></tr></tbody></table></div><p class="note">Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.</p><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Restrict who can add them to groups</h3></span></div><div class="step-body"><p class="why">Group invites are the main way strangers reach a child on WhatsApp.</p><p class="path"><code>Settings → Privacy → Groups</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Groups.</li><li>Set it to My contacts, or My contacts except.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>My contacts</td></tr><tr><td>7–11</td><td>My contacts</td></tr><tr><td>11–12</td><td>My contacts</td></tr><tr><td>13–15</td><td>My contacts</td></tr><tr><td>16–17</td><td>My contacts</td></tr></tbody></table></div><p class="note">Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.</p><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p><div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>Being added to a group in order to be mocked is common, and this is the setting that stops it happening silently. It does not get them out of a group they are already in, and it does not block an invite link, so it stops the ambush rather than the bullying.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Silence unknown callers</h3></span></div><div class="step-body"><p class="why">Cuts out cold calls from numbers they don&#39;t know, which is a common scam and contact route.</p><p class="path"><code>Settings → Privacy → Calls → Silence unknown callers</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Calls.</li><li>Turn on Silence unknown callers.</li></ol><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Check live location sharing</h3></span></div><div class="step-body"><p class="why">Live location can be shared into a group, which shares it with every member including people your child has never met.</p><p class="path"><code>Settings → Privacy → Live location</code></p><ol class="do-list"><li>Open Settings, then Privacy, then Live location.</li><li>If anything is listed, tap Stop sharing.</li><li>Agree that live location is for family only.</li></ol><p class="held-by held-child"><span><b>Who holds this: </b>This lives in your child&#39;s own settings, so they can change it back. There is no parent-side lock for it.</span></p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Show them how to block and report</h3></span></div><div class="step-body"><p class="why">The most useful thing on this app is a child who knows what to do without asking first.</p><ol class="do-list"><li>Open any chat, tap the contact name, and show them Block and Report.</li><li>Explain that the person is not told they have been reported.</li><li>Agree that anything odd gets screenshotted and shown to you before they block.</li></ol><p class="note">One real limit worth explaining: blocking someone does not hide their messages inside a group you both belong to, and a group chat cannot be blocked at all.</p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">7</span><span class="num-text"><h3>Show them how to block and report</h3></span></div><div class="step-body"><p class="why">The most useful thing on this app is a child who knows what to do without asking first.</p><ol class="do-list"><li>Open any chat, tap the contact name, and show them Block and Report.</li><li>Explain that the person is not told they have been reported.</li><li>Agree that anything odd gets screenshotted and shown to you before they block.</li></ol><p class="note">One real limit worth explaining: blocking someone does not hide their messages inside a group you both belong to, and a group chat cannot be blocked at all.</p><div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>The screenshot rule matters more here than anywhere else. WhatsApp blocks screenshots of View Once messages entirely, so anything sent that way is gone the moment it is opened, and blocking can put the rest out of reach.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">8</span><span class="num-text"><h3>Add a device-level backstop</h3></span></div><div class="step-body"><p class="why">These settings only cover this one service. A device-level control catches the app they download next.</p><ol class="do-list"><li>Set up Screen Time, Family Link, Microsoft Family Safety or your console&#39;s own controls.</li><li>Require your approval for new app downloads.</li></ol><p class="note">SafeStart has a separate guide for each of these. Pick your device on the home screen.</p></div></li>
 </ol>
 <div class="check-card"><h2>Safety check</h2><ul class="check-list">
@@ -2810,6 +2825,8 @@ function renderPlanStep(item, num) {
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
   var phb = heldByNode(s);
   if (phb) body.appendChild(phb);
+  var pbl = bullyingNode(s);
+  if (pbl) body.appendChild(pbl);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -3057,6 +3074,23 @@ function undoNode(step, always) {
   ]);
 }
 
+/* Parental controls cannot stop a classmate being cruel. What they can change
+   is who is able to reach a child and what gets through, and only some steps
+   bear on that at all. So this is deliberately on a handful of steps rather
+   than every one: a line on all 190 would be wallpaper, and the point is that
+   a parent notices it on the four or five that matter.
+
+   Every one of these names a limit. That is the rule. A bullying note that only
+   says "this helps" is worse than none, because the parent walks away thinking
+   the setting did something it did not. */
+function bullyingNode(step) {
+  if (!step.bullying) return null;
+  return el("div", { class: "bully" }, [
+    el("span", { class: "bully-label" }, [icon("alert"), document.createTextNode("If someone is being cruel to them")]),
+    el("p", { text: step.bullying })
+  ]);
+}
+
 function callout(title, items) {
   var box = el("div", { class: "callout" }, [el("h3", { text: title })]);
   var ul = el("ul");
@@ -3211,6 +3245,8 @@ function renderStep(step, num) {
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);
+  var gbl = bullyingNode(step);
+  if (gbl) body.appendChild(gbl);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 

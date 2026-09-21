@@ -175,6 +175,12 @@ function renderStepStatic(step, num, symbol) {
     out.push('<p class="held-by held-' + esc(held) + '"><span><b>Who holds this: </b>' +
       esc(DATA.heldBy[held]) + "</span></p>");
   }
+  // Only on the handful of steps that decide who can reach a child. See the
+  // note beside bullyingNode() in src/app.html for why it is not on all of them.
+  if (step.bullying) {
+    out.push('<div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>' +
+      esc(step.bullying) + "</p></div>");
+  }
   if (step.undo) {
     out.push('<div class="undo"><span class="undo-label">Already done this?</span><p>' +
       esc(step.undo) + "</p></div>");

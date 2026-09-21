@@ -845,6 +845,21 @@ button { font: inherit; cursor: pointer; }
 .undo-label svg { width: 14px; height: 14px; flex: none; color: var(--info); }
 .undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
 
+/* Bullying. Its own token rather than sharing with .undo, because the two say
+   different things and a parent scanning a page should be able to tell them
+   apart without reading. Caution rather than info: nearly every one of these
+   lines names something the setting does not reach. */
+.bully {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--caution-tint); border-left: 3px solid var(--caution);
+}
+.bully-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.bully-label svg { width: 14px; height: 14px; flex: none; color: var(--caution); }
+.bully p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1371,7 +1386,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Link supervision</h3></span></div><div class="step-body"><p class="why">It’s the foundation. Nothing else in this guide works without it.</p><p class="path"><code>Family Link app, or familylink.google.com</code></p><ol class="do-list"><li>Install the Family Link app on your phone.</li><li>Create a Google Account for your child if they’re under 13, or add supervision to their existing account.</li><li>Follow the prompts on their device to link it. You’ll need the device in your hands.</li></ol><p class="note">Family Link can supervise Android devices and Chromebooks. It cannot supervise iPhones or iPads.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If they already have an ordinary unsupervised Google account, you do not need to create a new one. Supervision can be added to the account they already have. Two conditions: the child has to agree, and they have to be physically present with their device. Once it is on, Google&#39;s rule is that children need parent approval to stop supervision until they turn 18, so a 13-year-old can no longer switch it off alone.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Control app downloads and approvals</h3></span></div><div class="step-body"><p class="why">The quickest way for controls to become irrelevant is a new app you didn’t know about.</p><p class="path"><code>Family Link → [your child] → Controls → Apps</code></p><ol class="do-list"><li>Turn on approval for all Play Store downloads, including free apps.</li><li>Set Play Store content ratings for apps, games, films and TV.</li><li>Review what’s already installed and block anything that shouldn’t be there.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Approval required for everything, apps rated PEGI 7 / ESRB E</td></tr><tr><td>7–11</td><td>Approval required for everything, apps rated PEGI 7 / ESRB E</td></tr><tr><td>11–12</td><td>Approval required for everything, apps rated PEGI 12 / ESRB E10+</td></tr><tr><td>13–15</td><td>Approval required for paid apps, ratings PEGI 12 / ESRB T</td></tr><tr><td>16–17</td><td>Notifications rather than approvals</td></tr></tbody></table></div><p class="note">Google has the same hole and states it plainly: previous downloads, and content shared through Family Library, will not require your approval. So anything installed once can come back without a request reaching you. Set approval to All content rather than Paid content only, because the free apps are the ones that matter here.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Control who can call and text them</h3></span></div><div class="step-body"><p class="why">The closest Android has to the iPhone&#39;s communication limits, and the step most parents do not know exists. Worth being straight about what it is and is not: no parental control on Android or iPhone lets you read your child&#39;s messages. Google&#39;s does not offer it and neither does Apple&#39;s. What you can do is decide who is able to reach them in the first place, which is the part that actually prevents harm rather than discovering it afterwards.</p><p class="path"><code>Family Link → [your child] → Controls → Contacts</code></p><ol class="do-list"><li>Open Family Link, choose your child, then Controls, then Contacts.</li><li>Add the people they should be able to reach. You can add up to 100.</li><li>Set who can call and text them: Anyone, Contacts I add and limited groups, or Only contacts I add.</li><li>Leave requests on, so when they want to add a number it comes to you to approve.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Only contacts I add<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>7–11</td><td>Only contacts I add<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>11–12</td><td>Only contacts I add<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>13–15</td><td>Contacts I add and limited groups<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>16–17</td><td>Anyone, with a conversation about who gets through<span class="plain-terms">Anyone on the platform can reach them.</span></td></tr></tbody></table></div><p class="result">Calls and texts from anyone outside your list do not get through, and adding someone new needs your approval.</p><p class="note">The limit worth knowing before you rely on this. Google says contact limitations only apply to communications through certain apps including Google Messages, Samsung Messages, and Google Dialer. WhatsApp, Snapchat, Discord and the rest are untouched by it, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Control who can call and text them</h3></span></div><div class="step-body"><p class="why">The closest Android has to the iPhone&#39;s communication limits, and the step most parents do not know exists. Worth being straight about what it is and is not: no parental control on Android or iPhone lets you read your child&#39;s messages. Google&#39;s does not offer it and neither does Apple&#39;s. What you can do is decide who is able to reach them in the first place, which is the part that actually prevents harm rather than discovering it afterwards.</p><p class="path"><code>Family Link → [your child] → Controls → Contacts</code></p><ol class="do-list"><li>Open Family Link, choose your child, then Controls, then Contacts.</li><li>Add the people they should be able to reach. You can add up to 100.</li><li>Set who can call and text them: Anyone, Contacts I add and limited groups, or Only contacts I add.</li><li>Leave requests on, so when they want to add a number it comes to you to approve.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Only contacts I add<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>7–11</td><td>Only contacts I add<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>11–12</td><td>Only contacts I add<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>13–15</td><td>Contacts I add and limited groups<span class="plain-terms">Only people you have approved can reach them. Nobody else can message, call or speak to them.</span></td></tr><tr><td>16–17</td><td>Anyone, with a conversation about who gets through<span class="plain-terms">Anyone on the platform can reach them.</span></td></tr></tbody></table></div><p class="result">Calls and texts from anyone outside your list do not get through, and adding someone new needs your approval.</p><p class="note">The limit worth knowing before you rely on this. Google says contact limitations only apply to communications through certain apps including Google Messages, Samsung Messages, and Google Dialer. WhatsApp, Snapchat, Discord and the rest are untouched by it, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>Which is also why this helps less with bullying than it looks like it should. The apps it does not reach are the ones where it usually happens.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Filter web and search</h3></span></div><div class="step-body"><p class="why">Chrome is the widest opening on the device.</p><p class="path"><code>Family Link → [your child] → Controls → Content restrictions → Google Chrome / Google Search</code></p><ol class="do-list"><li>Set Chrome to Try to block explicit sites, or Only allow approved sites for younger children.</li><li>Turn SafeSearch on and lock it.</li><li>Add specific sites to allow or block as needed.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Only allow approved sites</td></tr><tr><td>7–11</td><td>Only allow approved sites</td></tr><tr><td>11–12</td><td>Try to block explicit sites</td></tr><tr><td>13–15</td><td>Try to block explicit sites</td></tr><tr><td>16–17</td><td>Try to block explicit sites</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set daily limits and bedtime</h3></span></div><div class="step-body"><p class="why">Bedtime is the setting that changes the most in practice. Family Link locks the device rather than nagging, so agree how they reach you after it kicks in before the first night rather than during it.</p><p class="path"><code>Family Link → [your child] → Controls → Daily limit / Bedtime</code></p><ol class="do-list"><li>Set daily limits, which can differ by day of the week.</li><li>Set a bedtime schedule that locks the device.</li><li>You can grant bonus time from your phone when it’s genuinely warranted.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Decide on location sharing</h3></span></div><div class="step-body"><p class="why">Useful for younger children. For teenagers, worth agreeing rather than imposing.</p><p class="path"><code>Family Link → [your child] → Location</code></p><ol class="do-list"><li>Turn on location if you want it, and tell your child it’s on.</li><li>For older teens, discuss it first. Covert tracking damages trust more than it protects.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
@@ -2813,6 +2828,8 @@ function renderPlanStep(item, num) {
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
   var phb = heldByNode(s);
   if (phb) body.appendChild(phb);
+  var pbl = bullyingNode(s);
+  if (pbl) body.appendChild(pbl);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -3060,6 +3077,23 @@ function undoNode(step, always) {
   ]);
 }
 
+/* Parental controls cannot stop a classmate being cruel. What they can change
+   is who is able to reach a child and what gets through, and only some steps
+   bear on that at all. So this is deliberately on a handful of steps rather
+   than every one: a line on all 190 would be wallpaper, and the point is that
+   a parent notices it on the four or five that matter.
+
+   Every one of these names a limit. That is the rule. A bullying note that only
+   says "this helps" is worse than none, because the parent walks away thinking
+   the setting did something it did not. */
+function bullyingNode(step) {
+  if (!step.bullying) return null;
+  return el("div", { class: "bully" }, [
+    el("span", { class: "bully-label" }, [icon("alert"), document.createTextNode("If someone is being cruel to them")]),
+    el("p", { text: step.bullying })
+  ]);
+}
+
 function callout(title, items) {
   var box = el("div", { class: "callout" }, [el("h3", { text: title })]);
   var ul = el("ul");
@@ -3214,6 +3248,8 @@ function renderStep(step, num) {
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);
+  var gbl = bullyingNode(step);
+  if (gbl) body.appendChild(gbl);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 

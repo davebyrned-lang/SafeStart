@@ -337,7 +337,8 @@
       "11-12": "parent",
       "13-15": "child",
       "16-17": "child"
-     }
+     },
+     "bullying": "Most Roblox bullying comes from people your child already plays with, so these settings reduce the surface rather than the source. Being shut out of a private server is the version parents hear about most, and no setting here touches it."
     },
     {
      "id": "voice",
@@ -573,7 +574,8 @@
       "13-15": "friends",
       "16-17": "friends"
      },
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "bullying": "Comments are where most of it happens, not messages, so the comment setting is the one that matters here. A second account gets around it, which is worth knowing before you lean on it."
     },
     {
      "id": "restricted",
@@ -762,7 +764,8 @@
      "heldByAge": {
       "13-15": "locked",
       "16-17": "child"
-     }
+     },
+     "bullying": "Hidden Words is the one that matters most and the easiest to skip past. It does not delete anything, it keeps it out of your child’s view, which is usually the point. Worth switching on before anything happens rather than after."
     },
     {
      "id": "private",
@@ -807,7 +810,8 @@
       "Remove or block anyone they can’t place.",
       "Show them how to block and report while you’re there."
      ],
-     "mins": 1
+     "mins": 1,
+     "bullying": "Doing this together is also how you learn who is actually in their life. A follower list will not show you the group chats, though, and that is usually where it happens."
     }
    ],
    "checklist": [
@@ -929,7 +933,8 @@
       "13-15": "friends",
       "16-17": "friends"
      },
-     "heldBy": "child"
+     "heldBy": "child",
+     "bullying": "Snapchat is the hardest place to collect evidence, because the messages delete themselves. If something is happening, capture it before you do anything else, and know that Snapchat tells the sender when you screenshot a chat, not just a snap."
     },
     {
      "id": "content",
@@ -1068,7 +1073,8 @@
       "13-15": "friends",
       "16-17": "friends"
      },
-     "heldBy": "child"
+     "heldBy": "child",
+     "bullying": "This handles strangers. It does nothing about a server full of classmates, which is where most of it actually happens. Leaving a server is often faster than any setting, and worth agreeing as an option in advance."
     },
     {
      "id": "servers",
@@ -2154,7 +2160,8 @@
      },
      "note": "The limit worth knowing before you rely on this. Google says contact limitations only apply to communications through certain apps including Google Messages, Samsung Messages, and Google Dialer. WhatsApp, Snapchat, Discord and the rest are untouched by it, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides.",
      "heldBy": "parent",
-     "mins": 3
+     "mins": 3,
+     "bullying": "Which is also why this helps less with bullying than it looks like it should. The apps it does not reach are the ones where it usually happens."
     },
     {
      "id": "web",
@@ -2915,7 +2922,8 @@
       "13-15": "friends",
       "16-17": "friends"
      },
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "bullying": "This limits contact from strangers. Party voice chat with people they already know is the more common route, and it is not something a setting fixes."
     },
     {
      "id": "time",
@@ -3076,7 +3084,8 @@
       "13-15": "friends",
       "16-17": "friends"
      },
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "bullying": "This is where you limit who can message them and who can see their profile. If something does need keeping, get it off the console rather than leaving it there, because captures do not stay forever."
     },
     {
      "id": "time",
@@ -3215,7 +3224,8 @@
      ],
      "mins": 2,
      "heldBy": "parent",
-     "note": "Voice chat is two different things and they land differently. GameChat is built into Switch 2, and it is inside these controls: Nintendo requires a parent to be involved in setting it up and using it for anyone under 16 or on a supervised account, managed through the Parental Controls app, and permission is needed every time a younger player wants video chat. Separately, some games route voice through the Nintendo Switch App on a phone, for players 13 and over, and that genuinely does sit outside these controls. Check that one on the phone."
+     "note": "Voice chat is two different things and they land differently. GameChat is built into Switch 2, and it is inside these controls: Nintendo requires a parent to be involved in setting it up and using it for anyone under 16 or on a supervised account, managed through the Parental Controls app, and permission is needed every time a younger player wants video chat. Separately, some games route voice through the Nintendo Switch App on a phone, for players 13 and over, and that genuinely does sit outside these controls. Check that one on the phone.",
+     "bullying": "Same pattern as the other consoles. This limits strangers and does nothing about the friends list, and most console bullying happens between people who already know each other."
     },
     {
      "id": "time",
@@ -3577,7 +3587,8 @@
      },
      "note": "Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.",
      "mins": 1,
-     "heldBy": "child"
+     "heldBy": "child",
+     "bullying": "Being added to a group in order to be mocked is common, and this is the setting that stops it happening silently. It does not get them out of a group they are already in, and it does not block an invite link, so it stops the ambush rather than the bullying."
     },
     {
      "id": "calls",
@@ -3614,7 +3625,8 @@
       "Agree that anything odd gets screenshotted and shown to you before they block."
      ],
      "note": "One real limit worth explaining: blocking someone does not hide their messages inside a group you both belong to, and a group chat cannot be blocked at all.",
-     "mins": 1
+     "mins": 1,
+     "bullying": "The screenshot rule matters more here than anywhere else. WhatsApp blocks screenshots of View Once messages entirely, so anything sent that way is gone the moment it is opened, and blocking can put the rest out of reach."
     },
     {
      "id": "device",
@@ -3759,7 +3771,8 @@
      ],
      "note": "Twitch's own help pages disagree about whether Block Whispers from Strangers is on by default, so check the toggle rather than assume. Also worth knowing: if your child whispers a stranger, that person can reply for the next 48 hours.",
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "bullying": "Whispers are the private route and this closes them. Chat during someone else’s stream is moderated by that streamer rather than by you, which is worth knowing before your child starts watching regularly."
     },
     {
      "id": "sensitive",
@@ -4624,7 +4637,8 @@
      "redundantWith": [
       "apple-comms"
      ],
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "bullying": "Communication Limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying usually comes from someone who is."
     },
     {
      "id": "safety",

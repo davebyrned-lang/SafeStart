@@ -3,9 +3,7 @@
  "verifiedOn": "2026-09-02",
  "title": "Something has happened",
  "lede": "If something has already gone wrong, this page is the fastest route to the right help. Take a breath first. You have more time than it feels like, and the things that matter most take about five minutes.",
-
  "provenance": "The advice on this page is the same in every country. It is what child protection agencies in the US, UK, Canada and Ireland all tell parents, and where they differ we say so. Only the reporting routes change depending on where you are, and those are set by the country you picked above.",
-
  "firstThings": {
   "title": "Do these first",
   "steps": [
@@ -18,13 +16,11 @@
     "body": "Block the person, but leave the messages, the images and the account exactly where they are. Deleting destroys what investigators need to identify them. If you want the account gone, deactivate it rather than deleting it, because deactivated data can still be recovered."
    },
    {
-    "title": "Screenshot before you block"
-    ,
+    "title": "Screenshot before you block",
     "body": "Capture the conversation, the profile and anything they sent. Then block. Doing it in that order costs two extra minutes and is the difference between a report that goes somewhere and one that doesn't."
    }
   ]
  },
-
  "evidence": {
   "title": "What to save before you block",
   "intro": "The first four are what an investigator will ask you for. The last two are SafeStart's own advice, and they make a report much easier to act on.",
@@ -40,7 +36,6 @@
   ],
   "note": "Save screenshots somewhere outside the app itself, so a deleted account doesn't take them with it. Your own photo library or an email to yourself is fine."
  },
-
  "situations": [
   {
    "id": "sextortion",
@@ -105,7 +100,9 @@
     },
     {
      "title": "Report Remove is built for this",
-     "countries": ["UK"],
+     "countries": [
+      "UK"
+     ],
      "body": "In the UK, under-18s can use Report Remove, run jointly by Childline and the Internet Watch Foundation. The young person reports it themselves, verifies their age, and gets updates and counsellor support through their Childline account."
     }
    ],
@@ -126,6 +123,10 @@
      "body": "A single message rarely gets acted on. A run of them over days does. Capture dates wherever you can."
     },
     {
+     "title": "Save it before you block",
+     "body": "Blocking can put the whole conversation out of reach, and some of it deletes itself anyway. Snapchat messages go on their own, and WhatsApp blocks screenshots of View Once messages entirely. Photographing the screen with a second phone is the one method no app can block or notify about, and it works on a console too."
+    },
+    {
      "title": "Report inside the platform first",
      "body": "For bullying the platform genuinely is the right first stop, and most have a specific bullying or harassment category that routes faster than a general report."
     },
@@ -134,7 +135,7 @@
      "body": "Most online bullying between classmates is a school matter with an online surface. Schools have a duty here and are usually better placed to stop it than any platform is."
     }
    ],
-   "context": "Bullying is generally outside the remit of the child exploitation hotlines, which handle abuse and grooming. That is a routing decision rather than a brush-off, and the school plus the platform is the faster route.",
+   "context": "Bullying is generally outside the remit of the child exploitation hotlines, which handle abuse and grooming. That is a routing decision rather than a brush-off, and the school plus the platform is the faster route. Once it has calmed down, the guides mark the settings that decide who can reach your child, which is the part worth revisiting.",
    "countryNotes": {
     "UK": "CEOP does not take bullying reports and will point you to Childline, which is the better service for it."
    }
@@ -161,7 +162,6 @@
    "context": "Do not go looking for the content yourself to see how bad it was. If it is illegal material, viewing and saving it creates problems for you and for any investigation."
   }
  ],
-
  "byCountry": {
   "US": {
    "police": {
@@ -294,7 +294,6 @@
    ]
   }
  },
-
  "platforms": [
   {
    "id": "roblox",
@@ -365,9 +364,7 @@
    "confidence": "medium"
   }
  ],
-
  "platformsNote": "Platform reporting routes move often, and several of these companies have deliberately pushed reporting inside the app and behind a login. Where we could not confirm a working web form we say so rather than guessing. If a link here fails, the in-app route described alongside it still works.",
-
  "talking": {
   "title": "What to say",
   "lines": [
@@ -389,8 +386,6 @@
    }
   ]
  },
-
  "standingLine": "Reporting to a hotline does not replace reporting to the police. If your child is in immediate danger, call the emergency number first.",
-
  "disclaimer": "SafeStart is not an emergency service and cannot take reports. This page points you to the organizations that can. Every link and phone number here was checked against the organization's own website on the date shown."
 }

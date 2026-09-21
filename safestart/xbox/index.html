@@ -831,6 +831,21 @@ button { font: inherit; cursor: pointer; }
 .undo-label svg { width: 14px; height: 14px; flex: none; color: var(--info); }
 .undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
 
+/* Bullying. Its own token rather than sharing with .undo, because the two say
+   different things and a parent scanning a page should be able to tell them
+   apart without reading. Caution rather than info: nearly every one of these
+   lines names something the setting does not reach. */
+.bully {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--caution-tint); border-left: 3px solid var(--caution);
+}
+.bully-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.bully-label svg { width: 14px; height: 14px; flex: none; color: var(--caution); }
+.bully p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1344,7 +1359,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Create a child account in your family group</h3></span></div><div class="step-body"><p class="why">The base layer. Without it, none of the controls apply.</p><p class="path"><code>family.microsoft.com, or the Xbox Family Settings app</code></p><ol class="do-list"><li>Sign in at family.microsoft.com with your Microsoft account.</li><li>Add your child as a family member with their correct date of birth.</li><li>Sign them in on the Xbox with that account.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If the account has an adult birthday on it, you can convert it and lose nothing. Edit the date of birth at account.microsoft.com while it is still classed as an adult, then a family organiser adds them at family.microsoft.com as a Member, then you give consent at login.live.com by choosing I&#39;m a parent or guardian. It stays the same account, so the gamertag, game licences, Game Pass and any Minecraft entitlements all carry over. The one thing that trips people: they have to leave any existing family group first. And Microsoft is explicit that a child cannot edit their own date of birth.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set access to content by age</h3></span></div><div class="step-body"><p class="why">Blocks games and apps above their rating.</p><p class="path"><code>family.microsoft.com → [your child] → Content filters → Apps and games</code></p><ol class="do-list"><li>Set the age limit for apps and games.</li><li>Turn on web filtering if they use the Xbox browser.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Age 7</td></tr><tr><td>7–11</td><td>Age 7</td></tr><tr><td>11–12</td><td>Age 12</td></tr><tr><td>13–15</td><td>Age 12–16</td></tr><tr><td>16–17</td><td>Age 16–18</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If you set a parental controls passkey on the console and cannot remember it, we could not verify the reset steps. Microsoft&#39;s only readable article on a forgotten pass code covers the Xbox 360, and the current pages hide the answer behind a script we cannot read. Rather than guess, open Xbox support in a browser and look for Forgot your passkey before you reset anything.</p></div></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set privacy and online safety</h3></span></div><div class="step-body"><p class="why">This is where multiplayer and who can talk to your child is actually decided. Blocking communication outright also blocks party chat with the friends they see at school every day, which is usually what makes a parent switch the whole thing off a week later. Friends-only is the setting that lasts.</p><p class="path"><code>account.xbox.com/settings → [your child] → Privacy &amp; online safety → Xbox Series X|S, Xbox One, and Windows 10 devices</code></p><ol class="do-list"><li>Set &#39;You can join multiplayer games&#39; according to what you’re comfortable with.</li><li>Set &#39;Others can communicate with voice, text, or invites&#39; to Friends only.</li><li>Set &#39;You can add friends&#39;. Block it for younger children so requests come through you.</li><li>Decide on cross-network play, which allows players from other platforms.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Communicate: Friends only. Add friends: Block. Cross-network: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>7–11</td><td>Communicate: Friends only. Add friends: Block. Cross-network: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>11–12</td><td>Communicate: Friends only. Add friends: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>13–15</td><td>Communicate: Friends only. Add friends: Allow.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Communicate: Friends only.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Set privacy and online safety</h3></span></div><div class="step-body"><p class="why">This is where multiplayer and who can talk to your child is actually decided. Blocking communication outright also blocks party chat with the friends they see at school every day, which is usually what makes a parent switch the whole thing off a week later. Friends-only is the setting that lasts.</p><p class="path"><code>account.xbox.com/settings → [your child] → Privacy &amp; online safety → Xbox Series X|S, Xbox One, and Windows 10 devices</code></p><ol class="do-list"><li>Set &#39;You can join multiplayer games&#39; according to what you’re comfortable with.</li><li>Set &#39;Others can communicate with voice, text, or invites&#39; to Friends only.</li><li>Set &#39;You can add friends&#39;. Block it for younger children so requests come through you.</li><li>Decide on cross-network play, which allows players from other platforms.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Communicate: Friends only. Add friends: Block. Cross-network: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>7–11</td><td>Communicate: Friends only. Add friends: Block. Cross-network: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>11–12</td><td>Communicate: Friends only. Add friends: Block.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>13–15</td><td>Communicate: Friends only. Add friends: Allow.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Communicate: Friends only.<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>This is where you limit who can message them and who can see their profile. If something does need keeping, get it off the console rather than leaving it there, because captures do not stay forever.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set screen time</h3></span></div><div class="step-body"><p class="why">You can set separate schedules per device, so Xbox and PC don’t share one budget.</p><p class="path"><code>family.microsoft.com → [your child] → Screen time</code></p><ol class="do-list"><li>Set a schedule for the Xbox.</li><li>Add multiple time slots in a day if that fits your routine better than one block.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Control spending</h3></span></div><div class="step-body"><p class="why">Stops in-game currency purchases turning into a monthly surprise.</p><p class="path"><code>family.microsoft.com → [your child] → Spending</code></p><ol class="do-list"><li>Turn on &#39;Needs organizer approval to buy things&#39;.</li><li>Turn on purchase notifications.</li><li>Consider adding money to their balance rather than leaving a card on the account.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 </ol>
@@ -2782,6 +2797,8 @@ function renderPlanStep(item, num) {
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
   var phb = heldByNode(s);
   if (phb) body.appendChild(phb);
+  var pbl = bullyingNode(s);
+  if (pbl) body.appendChild(pbl);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -3029,6 +3046,23 @@ function undoNode(step, always) {
   ]);
 }
 
+/* Parental controls cannot stop a classmate being cruel. What they can change
+   is who is able to reach a child and what gets through, and only some steps
+   bear on that at all. So this is deliberately on a handful of steps rather
+   than every one: a line on all 190 would be wallpaper, and the point is that
+   a parent notices it on the four or five that matter.
+
+   Every one of these names a limit. That is the rule. A bullying note that only
+   says "this helps" is worse than none, because the parent walks away thinking
+   the setting did something it did not. */
+function bullyingNode(step) {
+  if (!step.bullying) return null;
+  return el("div", { class: "bully" }, [
+    el("span", { class: "bully-label" }, [icon("alert"), document.createTextNode("If someone is being cruel to them")]),
+    el("p", { text: step.bullying })
+  ]);
+}
+
 function callout(title, items) {
   var box = el("div", { class: "callout" }, [el("h3", { text: title })]);
   var ul = el("ul");
@@ -3183,6 +3217,8 @@ function renderStep(step, num) {
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);
+  var gbl = bullyingNode(step);
+  if (gbl) body.appendChild(gbl);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 

@@ -835,6 +835,44 @@ function check(name, condition, detail) {
     const spShell = await (await page.request.get(BASE + '/spotify/')).text();
     check('graduation is at 18, not 13', /18, not 13/.test(spShell));
 
+    console.log('\nbullying');
+    /* A reader asked what the site says about cyberbullying and the honest
+       answer was: the crisis page covers reporting, and the guides said nothing
+       at all about prevention. The risk in fixing that is writing reassurance,
+       so every note names something the setting does not reach, and they stay
+       on the few steps that actually decide who can contact a child. */
+    await page.goto(BASE + '/whatsapp/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const wa = await page.locator('#app').textContent();
+    check('the guides now say something about it',
+      await page.locator('.bully').count() > 0);
+    check('and the note admits what the setting misses',
+      /stops the ambush rather than the bullying/.test(wa));
+    check('View Once is named as unrecoverable',
+      /View Once/.test(wa));
+    check('it is prerendered, not JS-only',
+      /class="bully"/.test(await (await page.request.get(BASE + '/whatsapp/')).text()));
+    check('it is visually distinct from the undo note',
+      await page.evaluate(() => {
+        const b = document.querySelector('.bully');
+        const u = document.querySelector('.undo');
+        if (!b || !u) return true;
+        return getComputedStyle(b).borderLeftColor !== getComputedStyle(u).borderLeftColor;
+      }));
+    // Snapchat is the one where evidence disappears on its own.
+    await page.goto(BASE + '/snapchat/', { waitUntil: 'networkidle' });
+    await page.waitForSelector('.step');
+    const sn = await page.locator('#app').textContent();
+    check('Snapchat warns that screenshotting notifies the sender',
+      /tells the sender when you screenshot/.test(sn));
+    // The crisis page is the main route and carries the capture advice. The
+    // situations render on the per-country pages; /help/ is the chooser.
+    const help = await (await page.request.get(BASE + '/help/uk/')).text();
+    check('the crisis page tells a parent to save before blocking',
+      /Save it before you block/.test(help));
+    check('and names the second-phone method',
+      /second phone/i.test(help));
+
     console.log('\nthe drawing style');
     /* Readers called the site corporate, and the sharpest version of it was that
        everything on the page was interface. Two things came out of that: the

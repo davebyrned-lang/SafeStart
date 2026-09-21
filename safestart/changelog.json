@@ -1,7 +1,13 @@
 {
- "updated": "2026-09-18",
+ "updated": "2026-09-21",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-21",
+   "kind": "site",
+   "title": "What the settings do, and do not do, about bullying",
+   "body": "Someone asked what the site says about cyberbullying and the honest answer was: less than it should. The crisis page has had a proper route for a while, with advice to use the platform’s own bullying category rather than a general report, and the point that bullying between classmates is a school matter with an online surface. But the guides themselves said almost nothing. One line in Snapchat’s risks, about messages disappearing taking the evidence with them, and that was it across twenty-nine guides. So fourteen steps now carry a note, and only the fourteen that genuinely decide who can reach a child: chat settings on Roblox, comments on TikTok and Instagram, direct messages on Discord and Twitch, group adds and blocking on WhatsApp, contact settings on Snapchat, the console communication settings, Android contacts and iMessage Communication Limits. Every one of them names something the setting does not reach, and that rule is enforced by the build rather than left to good intentions, because a note saying only that a setting helps is worse than no note at all. A parent who reads that and stops reading has been misled. None of these settings stop a classmate being cruel. What they change is who is able to reach a child and what gets through, and several of the notes exist specifically to say so: closing Discord DMs does nothing about a server full of classmates, Android’s contact controls miss every app where it actually happens, and Communication Limits only work on people who are not already in the contacts. The build also fails if these ever spread past a quarter of all steps, because at that point nobody reads them. The crisis page gained one thing too, and it is the part most people get wrong: save it before you block. Blocking can put the whole conversation out of reach, Snapchat messages delete themselves, and WhatsApp blocks screenshots of View Once entirely. Photographing the screen with a second phone is the only method no app can block or notify about, and it works on a console as well."
+  },
   {
    "date": "2026-09-18",
    "kind": "site",

@@ -831,6 +831,21 @@ button { font: inherit; cursor: pointer; }
 .undo-label svg { width: 14px; height: 14px; flex: none; color: var(--info); }
 .undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
 
+/* Bullying. Its own token rather than sharing with .undo, because the two say
+   different things and a parent scanning a page should be able to tell them
+   apart without reading. Caution rather than info: nearly every one of these
+   lines names something the setting does not reach. */
+.bully {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--caution-tint); border-left: 3px solid var(--caution);
+}
+.bully-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.bully-label svg { width: 14px; height: 14px; flex: none; color: var(--caution); }
+.bully p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1349,7 +1364,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Link the app to the console</h3></span></div><div class="step-body"><p class="why">Once linked, you manage everything from your phone without touching the console again.</p><p class="path"><code>Nintendo Switch Parental Controls app</code></p><ol class="do-list"><li>Install the Nintendo Switch Parental Controls app and sign in with your Nintendo Account.</li><li>The app gives you a registration code.</li><li>On the console, go to System Settings, then Parental Controls, and enter the code.</li><li>Set a PIN that your child doesn’t know.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>Forgotten the Parental Controls PIN? This one is fully recoverable and you keep your settings. Enter the wrong PIN, press + or minus for Help, and note the Inquiry Number without leaving that screen. Then get a master key from parentalcontrols.nintendo.com. Six wrong attempts inside 30 minutes locks you out for 30 minutes, so write the number down the first time.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Set the restriction level</h3></span></div><div class="step-body"><p class="why">The quickest way to match content to their age. You can fine-tune afterwards.</p><p class="path"><code>App → Console settings → Restriction Level</code></p><ol class="do-list"><li>Choose the age band that describes your child.</li><li>Or choose Custom to set software rating, posting to social media, and communication individually.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>Under 7</td><td>Child level</td></tr><tr><td>7–11</td><td>Child level</td></tr><tr><td>11–12</td><td>Pre-Teen level</td></tr><tr><td>13–15</td><td>Teen level</td></tr><tr><td>16–17</td><td>Custom, agreed together</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and social posting</h3></span></div><div class="step-body"><p class="why">Stops screenshots being posted publicly and limits in-game communication with strangers. It also stops them sending screenshots to friends, which for a lot of children is half the fun of the console, so this is worth deciding deliberately rather than taking whatever the age preset picked.</p><p class="path"><code>App → Console settings → Custom settings</code></p><ol class="do-list"><li>Restrict Communicating with Others.</li><li>On the original Switch, also turn off Posting to Social Media.</li><li>On Switch 2 there is no such setting, because Nintendo removed posting to social media from the console itself.</li></ol><p class="note">Voice chat is two different things and they land differently. GameChat is built into Switch 2, and it is inside these controls: Nintendo requires a parent to be involved in setting it up and using it for anyone under 16 or on a supervised account, managed through the Parental Controls app, and permission is needed every time a younger player wants video chat. Separately, some games route voice through the Nintendo Switch App on a phone, for players 13 and over, and that genuinely does sit outside these controls. Check that one on the phone.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Restrict communication and social posting</h3></span></div><div class="step-body"><p class="why">Stops screenshots being posted publicly and limits in-game communication with strangers. It also stops them sending screenshots to friends, which for a lot of children is half the fun of the console, so this is worth deciding deliberately rather than taking whatever the age preset picked.</p><p class="path"><code>App → Console settings → Custom settings</code></p><ol class="do-list"><li>Restrict Communicating with Others.</li><li>On the original Switch, also turn off Posting to Social Media.</li><li>On Switch 2 there is no such setting, because Nintendo removed posting to social media from the console itself.</li></ol><p class="note">Voice chat is two different things and they land differently. GameChat is built into Switch 2, and it is inside these controls: Nintendo requires a parent to be involved in setting it up and using it for anyone under 16 or on a supervised account, managed through the Parental Controls app, and permission is needed every time a younger player wants video chat. Separately, some games route voice through the Nintendo Switch App on a phone, for players 13 and over, and that genuinely does sit outside these controls. Check that one on the phone.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>Same pattern as the other consoles. This limits strangers and does nothing about the friends list, and most console bullying happens between people who already know each other.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Set a play-time limit and bedtime alarm</h3></span></div><div class="step-body"><p class="why">The console can suspend the game at the limit rather than just showing a message, which removes the argument.</p><p class="path"><code>App → Play-Time Limit</code></p><ol class="do-list"><li>Set a daily play-time limit, with different values for weekdays and weekends if you like.</li><li>Set a bedtime alarm.</li><li>Turn on Suspend Software if you want the limit to be firm rather than advisory.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Block eShop spending</h3></span></div><div class="step-body"><p class="why">Set up in a different place from everything else, which is why it gets missed.</p><p class="path"><code>accounts.nintendo.com → Family Group</code></p><ol class="do-list"><li>Sign in at accounts.nintendo.com and open your Family Group.</li><li>Select your child and turn on the eShop purchase restriction.</li><li>Remove any saved card.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 </ol>
@@ -2787,6 +2802,8 @@ function renderPlanStep(item, num) {
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
   var phb = heldByNode(s);
   if (phb) body.appendChild(phb);
+  var pbl = bullyingNode(s);
+  if (pbl) body.appendChild(pbl);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -3034,6 +3051,23 @@ function undoNode(step, always) {
   ]);
 }
 
+/* Parental controls cannot stop a classmate being cruel. What they can change
+   is who is able to reach a child and what gets through, and only some steps
+   bear on that at all. So this is deliberately on a handful of steps rather
+   than every one: a line on all 190 would be wallpaper, and the point is that
+   a parent notices it on the four or five that matter.
+
+   Every one of these names a limit. That is the rule. A bullying note that only
+   says "this helps" is worse than none, because the parent walks away thinking
+   the setting did something it did not. */
+function bullyingNode(step) {
+  if (!step.bullying) return null;
+  return el("div", { class: "bully" }, [
+    el("span", { class: "bully-label" }, [icon("alert"), document.createTextNode("If someone is being cruel to them")]),
+    el("p", { text: step.bullying })
+  ]);
+}
+
 function callout(title, items) {
   var box = el("div", { class: "callout" }, [el("h3", { text: title })]);
   var ul = el("ul");
@@ -3188,6 +3222,8 @@ function renderStep(step, num) {
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);
+  var gbl = bullyingNode(step);
+  if (gbl) body.appendChild(gbl);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 

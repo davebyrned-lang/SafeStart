@@ -838,6 +838,21 @@ button { font: inherit; cursor: pointer; }
 .undo-label svg { width: 14px; height: 14px; flex: none; color: var(--info); }
 .undo p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
 
+/* Bullying. Its own token rather than sharing with .undo, because the two say
+   different things and a parent scanning a page should be able to tell them
+   apart without reading. Caution rather than info: nearly every one of these
+   lines names something the setting does not reach. */
+.bully {
+  margin: 13px 0 0; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: var(--caution-tint); border-left: 3px solid var(--caution);
+}
+.bully-label {
+  display: flex; gap: 7px; align-items: center; margin-bottom: 5px;
+  font-size: .8rem; font-weight: 650; letter-spacing: .01em; color: var(--heading);
+}
+.bully-label svg { width: 14px; height: 14px; flex: none; color: var(--caution); }
+.bully p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
 .step {
@@ -1358,7 +1373,7 @@ button { font: inherit; cursor: pointer; }
 <ol class="steps">
 <li class="step"><div class="step-head"><span class="step-num">1</span><span class="num-text"><h3>Set up Family Pairing</h3></span></div><div class="step-body"><p class="why">Family Pairing lets you change your teen’s safety settings from your own phone, and stops them changing them back.</p><p class="path"><code>Profile → ☰ (top right) → Settings and privacy → Family Pairing</code></p><ol class="do-list"><li>On your phone: open your profile, tap the three lines top right, then Settings and privacy.</li><li>Scroll to Family Pairing and tap Continue.</li><li>Choose Parent. You’ll get a QR code.</li><li>On your teen’s phone: go to the same Family Pairing screen, choose Teen, and scan your QR code.</li><li>Your teen reviews the permissions and taps Link accounts.</li></ol><p class="result">Everything below is now set from your phone.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="undo"><span class="undo-label">Already done this?</span><p>If the account was opened with a false adult birthday, Family Pairing will not fix it, because the age on the account is what drives every default. There is no self-serve correction. The appeal only opens once TikTok has restricted the account, and confirmation is by ID selfie, a parent&#39;s credit card with a small refunded charge, or a photo with an adult over 25. Download the data first.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">2</span><span class="num-text"><h3>Make the account private</h3></span></div><div class="step-body"><p class="why">A public account means anyone can see their videos, comment, and work out where they go to school from the background. Going private does cost them views, which for a lot of teenagers is the entire point of the app, so this one lands better agreed than announced.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety</code></p><ol class="do-list"><li>Turn Private account on.</li><li>Turn off Suggest your teen’s account to others.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Private, on</td></tr><tr><td>16–17</td><td>Private, worth agreeing together</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
-<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Limit messages, comments and mentions</h3></span></div><div class="step-body"><p class="why">This is where strangers actually reach teenagers. Content filters don’t help with contact.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety → Safety</code></p><ol class="do-list"><li>Set who can send direct messages.</li><li>Set who can comment on their videos.</li><li>Set who can mention or tag them.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends, or No one for DMs<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Friends<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="note">Direct messaging is switched off entirely for accounts registered as under 16.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
+<li class="step"><div class="step-head"><span class="step-num">3</span><span class="num-text"><h3>Limit messages, comments and mentions</h3></span></div><div class="step-body"><p class="why">This is where strangers actually reach teenagers. Content filters don’t help with contact.</p><p class="path"><code>Family Pairing → [your teen] → Privacy and safety → Safety</code></p><ol class="do-list"><li>Set who can send direct messages.</li><li>Set who can comment on their videos.</li><li>Set who can mention or tag them.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>Friends, or No one for DMs<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr><tr><td>16–17</td><td>Friends<span class="plain-terms">Only people already on their friends list can reach them. Strangers cannot.</span></td></tr></tbody></table></div><p class="note">Direct messaging is switched off entirely for accounts registered as under 16.</p><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p><div class="bully"><span class="bully-label">If someone is being cruel to them</span><p>Comments are where most of it happens, not messages, so the comment setting is the one that matters here. A second account gets around it, which is worth knowing before you lean on it.</p></div></div></li>
 <li class="step"><div class="step-head"><span class="step-num">4</span><span class="num-text"><h3>Turn on Restricted Mode and keyword filters</h3></span></div><div class="step-body"><p class="why">Restricted Mode filters out content that isn’t appropriate for younger viewers. Keyword filters let you name the specific things you’re worried about.</p><p class="path"><code>Family Pairing → Content preferences</code></p><ol class="do-list"><li>Turn Restricted Mode on.</li><li>Open Filter video keywords and add words relevant to your family. Diet and body-image terms are a common starting point.</li></ol><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">5</span><span class="num-text"><h3>Set daily screen time and a Time away schedule</h3></span></div><div class="step-body"><p class="why">TikTok’s feed has no end. The sleep effect is the most reliably harmful part for most teenagers.</p><p class="path"><code>Family Pairing → [your teen] → Screen time</code></p><ol class="do-list"><li>Set a Daily screen time limit (the minimum TikTok allows is 40 minutes).</li><li>Add a Time away schedule covering school hours and bedtime.</li></ol><div class="rec"><span class="rec-label">Recommended by age</span><table class="rec-table"><tbody><tr><td>13–15</td><td>60 minutes, phone out of the bedroom overnight</td></tr><tr><td>16–17</td><td>Agree a limit together, keep the overnight block</td></tr></tbody></table></div><p class="held-by held-parent"><span><b>Who holds this: </b>You set this from your own account, and your child cannot change it back.</span></p></div></li>
 <li class="step"><div class="step-head"><span class="step-num">6</span><span class="num-text"><h3>Show them how to reset the feed</h3></span></div><div class="step-body"><p class="why">If the algorithm goes somewhere dark, they can fix it themselves. Teaching this beats monitoring it.</p><ol class="do-list"><li>Show them the &#39;not interested&#39; option on a long-press of any video.</li><li>Show them Settings and privacy → Content preferences → Refresh your For You feed.</li><li>Agree that if the feed gets strange, they tell you and you fix it together, with no blame.</li></ol></div></li>
@@ -2797,6 +2812,8 @@ function renderPlanStep(item, num) {
   if (s.note) body.appendChild(el("p", { class: "note", text: s.note }));
   var phb = heldByNode(s);
   if (phb) body.appendChild(phb);
+  var pbl = bullyingNode(s);
+  if (pbl) body.appendChild(pbl);
   var pun = undoNode(s);
   if (pun) body.appendChild(pun);
 
@@ -3044,6 +3061,23 @@ function undoNode(step, always) {
   ]);
 }
 
+/* Parental controls cannot stop a classmate being cruel. What they can change
+   is who is able to reach a child and what gets through, and only some steps
+   bear on that at all. So this is deliberately on a handful of steps rather
+   than every one: a line on all 190 would be wallpaper, and the point is that
+   a parent notices it on the four or five that matter.
+
+   Every one of these names a limit. That is the rule. A bullying note that only
+   says "this helps" is worse than none, because the parent walks away thinking
+   the setting did something it did not. */
+function bullyingNode(step) {
+  if (!step.bullying) return null;
+  return el("div", { class: "bully" }, [
+    el("span", { class: "bully-label" }, [icon("alert"), document.createTextNode("If someone is being cruel to them")]),
+    el("p", { text: step.bullying })
+  ]);
+}
+
 function callout(title, items) {
   var box = el("div", { class: "callout" }, [el("h3", { text: title })]);
   var ul = el("ul");
@@ -3198,6 +3232,8 @@ function renderStep(step, num) {
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);
+  var gbl = bullyingNode(step);
+  if (gbl) body.appendChild(gbl);
   var gun = undoNode(step, true);
   if (gun) body.appendChild(gun);
 

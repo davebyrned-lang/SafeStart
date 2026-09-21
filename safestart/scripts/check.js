@@ -191,6 +191,56 @@ ok(`${preCount} preinstalled apps listed across the device guides`);
  *
  * Any step with a menu path is a settings step, and every settings step has to
  * answer. The answer is often reassuring, which is the point. */
+/* Bullying notes.
+ *
+ * Two rules, and both exist because the failure mode here is worse than saying
+ * nothing. A parent who reads "this setting helps with bullying" and stops
+ * reading has been actively misled, because none of these settings stop a
+ * classmate being cruel. They change who can reach a child and what gets
+ * through, and that is all.
+ *
+ * So: every bullying note has to name something the setting does not do, and
+ * they stay on the handful of steps that genuinely bear on contact. A line on
+ * every step would be wallpaper and nobody would read the ones that matter.
+ */
+console.log('\nbullying notes');
+{
+  const LIMIT_WORDS = /\bdoes not\b|\bdo not\b|\bcannot\b|\bnot\b|\bnothing\b|\bgone\b|\bless\b|\brather than\b|\bgets around\b|\bonly\b/i;
+  const withNote = [];
+  const noLimit = [];
+  Object.entries(data.guides).forEach(([id, g]) => {
+    (g.steps || []).forEach((s) => {
+      if (!s.bullying) return;
+      withNote.push(id + '/' + s.id);
+      if (s.bullying.length < 60) fail(`${id}/${s.id}: bullying note is too short to say anything useful`);
+      if (!LIMIT_WORDS.test(s.bullying)) noLimit.push(id + '/' + s.id);
+    });
+  });
+  if (!withNote.length) fail('no bullying notes anywhere, so the guides say nothing about it');
+  if (noLimit.length) {
+    fail('bullying note(s) that only say what a setting helps with, and never what it misses: ' + noLimit.join(', '));
+  } else {
+    ok(`${withNote.length} bullying notes, every one naming a limit`);
+  }
+  // Wallpaper check. If this ever fires it means someone started adding them
+  // everywhere, at which point a parent stops seeing them at all.
+  const total = Object.values(data.guides).reduce((n, g) => n + (g.steps || []).length, 0);
+  if (withNote.length > total * 0.25) {
+    fail(`${withNote.length} of ${total} steps carry a bullying note. Past about a quarter they stop being read.`);
+  } else {
+    ok(`on ${withNote.length} of ${total} steps, which is few enough to be noticed`);
+  }
+  // The crisis page is the main route and has to keep the capture advice.
+  // safeguarding.json is loaded properly further down; this block runs first,
+  // so it reads its own copy rather than reordering the file.
+  const sgEarly = JSON.parse(fs.readFileSync(path.join(ROOT, 'safeguarding.json'), 'utf8'));
+  const bully = (sgEarly.situations || []).find((x) => x.id === 'bullying');
+  if (!bully) fail('no bullying situation on the crisis page');
+  else if (!(bully.keyAdvice || []).some((a) => /before you block/i.test(a.title))) {
+    fail('the bullying situation no longer tells a parent to save evidence before blocking');
+  } else ok('the crisis page still leads with saving evidence before blocking');
+}
+
 console.log('\nwho holds the setting');
 {
   const vocab = Object.keys(data.heldBy || {});
