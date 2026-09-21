@@ -1,7 +1,36 @@
 {
- "updated": "2026-09-18",
+ "updated": "2026-09-21",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-21",
+   "kind": "freshness-check",
+   "checked": 29,
+   "reverified": [
+    "instagram",
+    "playstation",
+    "netflix",
+    "primevideo",
+    "accounts",
+    "hbomax"
+   ],
+   "flagged": [
+    {
+     "guide": "chromebook",
+     "summary": [
+      "The official path to the Chrome web filter no longer shows a 'Content restrictions' submenu; the setting is reached directly under Controls > Google Chrome and Web.",
+      "Daily limits and bedtime are now managed via a separate 'Screen time' section rather than under 'Controls'."
+     ]
+    }
+   ],
+   "unreadable": [
+    "tiktok",
+    "fortnite",
+    "whatsapp",
+    "twitch",
+    "disneyplus"
+   ]
+  },
   {
    "date": "2026-09-18",
    "kind": "site",
