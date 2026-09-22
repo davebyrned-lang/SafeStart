@@ -5,7 +5,7 @@
       "namespace": "android_app",
       "package_name": "com.trustraise.safestart",
       "sha256_cert_fingerprints": [
-        "REPLACE_WITH_YOUR_SIGNING_CERT_SHA256_FINGERPRINT"
+        "42:84:B7:92:9C:3D:F3:E6:4A:74:C2:97:2F:6F:C1:D5:71:C6:82:CD:52:92:F9:98:39:A6:AF:99:5A:06:D1:C7"
       ]
     }
   }
