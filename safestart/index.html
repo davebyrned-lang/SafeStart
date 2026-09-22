@@ -16,7 +16,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SafeStart — parental controls made simple</title>
 <meta name="description" content="Free step-by-step parental control setup for the apps, games and devices your child uses. Pick their age, pick the device, get a clear checklist. A free tool from TrustRaise.">
-<meta name="theme-color" content="#0B1B4D">
+<!-- Was the TrustRaise navy long after the site stopped being navy, which the
+     browser paints behind the status bar. Installed on Android that meant a dark
+     blue strip sitting on top of a cream page. Two values so the bar matches
+     whichever theme the reader is actually in. -->
+<meta name="theme-color" content="#FBF0E9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#241C1A" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://safestart.trust-raise.com/">
 <meta property="og:title" content="SafeStart — parental controls made simple">
 <meta property="og:description" content="Free step-by-step parental control setup for the apps, games and devices your child uses. Pick their age, pick the device, get a clear checklist. A free tool from TrustRaise.">
@@ -1430,7 +1435,10 @@ button { font: inherit; cursor: pointer; }
   .back-link, .site-foot { display: none !important; }
   body { background: #fff; font-size: 11.5pt; }
   .step, .check-card, .profile-card { break-inside: avoid; box-shadow: none; border: 1px solid #ddd; }
-  .profile-card { background: #f4f6fc !important; color: #0B1B4D !important; }
+  /* Hardcoded rather than tokens because print forces the light theme whatever
+     the reader is in. These were the old TrustRaise navy on pale blue, which
+     printed a cold box in the middle of a warm page. */
+  .profile-card { background: #FBF0E9 !important; color: #2E513C !important; }
 }
 
 @media (max-width: 500px) {
@@ -1494,6 +1502,7 @@ button { font: inherit; cursor: pointer; }
     <p><a class="foot-link" href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a></p>
     <p><a class="foot-link" href="/about/">About SafeStart</a> · what it is, what it is not, and how it is kept current</p>
     <p><a class="foot-link" href="/changelog/">What has changed</a> · every correction and source check, with dates</p>
+    <p><a class="foot-link" href="/privacy/">Privacy</a> · no account, no cookies, and what the page counter does and does not see</p>
     <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
   </div>
 </footer>
@@ -1940,7 +1949,7 @@ function isPlanPath() { return /^\/plan\/?$/.test(location.pathname); }
    changelog, a reader with JavaScript saw the front page. Adding /about/ is what
    finally surfaced it. Anything listed here the app leaves alone. */
 function isStaticPage() {
-  return /^\/(help|about|changelog|feedback)(\/|$)/.test(location.pathname);
+  return /^\/(help|about|changelog|feedback|privacy)(\/|$)/.test(location.pathname);
 }
 
 function readUrl() {

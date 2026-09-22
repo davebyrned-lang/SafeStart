@@ -623,7 +623,8 @@ ok(curCount + ' {cur} tokens, substituted per country at render time');
 // --- build output ------------------------------------------------------------
 console.log('\nbuild output');
 const expected = ['index.html', 'sitemap.xml', 'robots.txt', 'help/index.html',
-                  'changelog/index.html', 'plan/index.html']
+                  'changelog/index.html', 'plan/index.html', 'about/index.html',
+                  'feedback/index.html', 'privacy/index.html']
   .concat(countryIds.map((c) => 'help/' + c.toLowerCase() + '/index.html'))
   .concat(Object.keys(data.guides).map((id) => id + '/index.html'));
 const missing = expected.filter((f) => !fs.existsSync(path.join(ROOT, f)));
@@ -764,6 +765,65 @@ console.log('\ncolour contrast');
     if (worst.r < Infinity) {
       ok(`${PAIRS.length * 2} pairs across both themes, tightest is ${worst.label} in ${worst.theme} at ${worst.r.toFixed(2)}:1`);
     }
+  }
+}
+
+/* The privacy policy.
+ *
+ * Play will not accept a listing without a live privacy policy URL, and it
+ * rechecks it. A 404 there is not a broken link, it is a suspended app, and it
+ * would break silently because nothing else on the site links to that page from
+ * a path a reader is likely to walk.
+ *
+ * The page also has to stay true. Every claim on it maps to something in this
+ * repo, so the two things most likely to falsify it are checked here: that the
+ * page counter really is kept off /plan/, and that the page has not started
+ * promising there is no analytics at all.
+ */
+console.log('\nprivacy policy');
+{
+  const privPath = path.join(ROOT, 'privacy', 'index.html');
+  if (!fs.existsSync(privPath)) {
+    fail('no privacy/index.html; Play suspends a listing whose policy URL 404s');
+  } else {
+    const html = fs.readFileSync(privPath, 'utf8');
+
+    // The page has to be reachable without knowing the URL, or nobody but Play
+    // ever sees it.
+    const foot = fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf8');
+    if (!/href="\/privacy\/"/.test(foot)) {
+      fail('src/app.html does not link to /privacy/, so only Play would ever find it');
+    } else ok('linked from the footer on every page');
+
+    const sitemap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+    if (sitemap.indexOf('/privacy/') === -1) fail('/privacy/ is missing from sitemap.xml');
+    else ok('in the sitemap');
+
+    // The strongest claim on the page. If someone drops noAnalytics from the
+    // plan route, the policy becomes a false statement rather than a stale one.
+    const build = fs.readFileSync(path.join(ROOT, 'scripts', 'build.js'), 'utf8');
+    const planBlock = build.slice(build.indexOf('url: "/plan/"'), build.indexOf('url: "/plan/"') + 600);
+    if (!/noAnalytics:\s*true/.test(planBlock)) {
+      fail('/plan/ no longer sets noAnalytics, and /privacy/ tells parents it does');
+    } else ok('the plan page is still excluded from the counter, as the policy says');
+
+    const planHtml = path.join(ROOT, 'plan', 'index.html');
+    if (fs.existsSync(planHtml) && /_vercel\/insights/.test(fs.readFileSync(planHtml, 'utf8'))) {
+      fail('the built plan page carries the analytics script; the policy says it does not');
+    }
+
+    // Named processors. If a fourth one is added the page needs to say so.
+    ['Vercel', 'Anthropic', 'Resend'].forEach((p) => {
+      if (html.indexOf(p) === -1) fail(`/privacy/ no longer names ${p} as a processor`);
+    });
+
+    // GDPR wants the controller identified by more than an email box, and Play's
+    // reviewers look for a real entity behind the policy.
+    if (!/mailto:/.test(html)) fail('/privacy/ has no contact address, which GDPR requires');
+    else if (!/Alexandria/.test(html)) fail('/privacy/ no longer names the controller postal address');
+    else ok('names the controller, a postal address, a contact address and all three processors');
+
+    if (!/Updated \d/.test(html)) warn('/privacy/ shows no updated date');
   }
 }
 

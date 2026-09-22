@@ -46,36 +46,6 @@ normal build.
 
 ---
 
-## 1a. Choose the account type first, because one path has a 30-day wait
-
-This is the decision that decides your timeline, and it is made at signup.
-
-**Organisation account (what TrustRaise should use).** Needs a D-U-N-S number,
-which is a free nine-digit identifier from Dun & Bradstreet. If TrustRaise does
-not already have one, applying can take **up to 30 days**, so start this before
-anything else on this page. In exchange you skip the testing requirement below
-entirely.
-
-**Personal account.** No D-U-N-S, so you can register today. But Google requires
-personal accounts created after 13 November 2023 to run a closed test with **at
-least 12 testers opted in continuously for 14 days** before the app can go to
-production. Their wording is explicit that the 14 days must be consecutive, and
-that someone who opts in, tests briefly and opts out does not count.
-
-For SafeStart the organisation route is clearly right: TrustRaise is a real
-business, and twelve people holding an opted-in test for a fortnight is real
-friction for something nobody is being paid to test.
-
-Check for an existing D-U-N-S number at Dun & Bradstreet's lookup before
-applying for a new one. Plenty of registered companies already have one without
-knowing.
-
-Sources:
-- https://support.google.com/googleplay/android-developer/answer/14151465
-- https://support.google.com/googleplay/android-developer/answer/13628312
-
----
-
 ## 2. Create the signing key
 
 Somewhere outside this repo:
@@ -160,20 +130,26 @@ Things they will ask for that are worth deciding now rather than at upload:
 - **Target audience.** Declare it as for adults, not children. It is a tool for
   parents. Declaring a child audience pulls you into Play's Families policy and
   a much heavier review, for no benefit.
-- **Privacy policy URL.** Play requires one. There isn't one on the site yet.
-  This is the one genuine blocker in this list.
+- **Privacy policy URL.** `https://safestart.trust-raise.com/privacy/`. Written,
+  linked from the footer of every page, and in the sitemap. `check.js` fails the
+  build if it goes missing, drops a processor, or if `/plan/` ever starts
+  carrying the analytics script the policy says it does not, because Play
+  rechecks the URL after the listing is live and a 404 there suspends the app.
 
 ---
 
 ## What is missing before you can submit
 
-1. A privacy policy page. Play will not accept the listing without a URL.
-2. The two fingerprints in `assetlinks.json`.
-3. Feature graphic (1024x500) and at least two phone screenshots.
+1. The two fingerprints in `assetlinks.json`.
+2. Feature graphic (1024x500) and at least two phone screenshots.
 
-The privacy policy is the real work, and the site is in an unusually good
-position to write a short honest one, since the answer to most of it is "we
-don't".
+The privacy policy is done and live at `/privacy/`.
+
+One thing on it worth a decision rather than a default: it names TrustRaise and
+`dave@trust-raise.com` as the contact, which is enough for Play. UK and Irish
+data protection law expects a controller's postal address too. If TrustRaise is
+a registered entity, add its registered address to the "Asking us something"
+section. That is a one-line edit in `renderPrivacyStatic` in `scripts/build.js`.
 
 ---
 

@@ -460,7 +460,9 @@ function renderAboutStatic() {
     "If you use Ask SafeStart, your question goes to Anthropic's API to be answered and is not " +
     "stored by us. If you send us <a href=\"/feedback/\">feedback</a>, the message is emailed " +
     "to us and not kept on this site, and an email address you give there is used to reply to " +
-    "you and nothing else. Do not put your child's name in either."
+    "you and nothing else. Do not put your child's name in either.",
+    "The full <a href=\"/privacy/\">privacy policy</a> goes through all of it line by line, " +
+    "including what is kept on your own device and who processes what."
   ]);
 
   section("How to check we are right", [
@@ -486,6 +488,168 @@ function renderAboutStatic() {
     "anything if it matches what is actually on your screen. Tell us what you saw and it gets " +
     "checked against the platform's own page, corrected, and written up in the changelog.",
     '<a class="cta-link" href="/feedback/">Tell us what is wrong</a>'
+  ]);
+
+  return out.join("");
+}
+
+
+/* ---------------- privacy ----------------
+   Play Console will not accept a listing without a privacy policy URL, which is
+   what forced this page into existence. It is worth writing properly anyway.
+
+   The rule followed here: every claim is checkable against something in this
+   repo. Analytics against the ANALYTICS block and the noAnalytics flag on
+   /plan/. The Ask paragraph against api/ask.js. Feedback against
+   api/feedback.js. The IP paragraph against api/_lib/ratelimit.js. Local
+   storage against the safestart: keys in src/app.html, and the offline copies
+   against src/sw.js. A policy that says more than the code does is the ordinary
+   way these end up false, so if a route changes, this page changes with it.
+
+   Dated by hand rather than from the changelog. A policy's date should move when
+   the policy moves, not when a guide is corrected. */
+
+const PRIVACY_UPDATED = "22 September 2026";
+
+function renderPrivacyStatic() {
+  const out = [];
+  out.push('<a class="back-link" href="/">Back to SafeStart</a>');
+  out.push('<div class="guide-head"><h1 class="guide-title">Privacy</h1></div>');
+  out.push('<p class="guide-blurb">SafeStart has no accounts, sets no cookies, and does not ' +
+    "want to know who your child is. This page says exactly what does happen, in the order " +
+    "you are most likely to care about.</p>");
+  out.push('<div class="meta-row"><span class="pill">No account</span>' +
+    '<span class="pill">No cookies</span><span class="pill">No ads or trackers</span>' +
+    '<span class="pill">Updated ' + PRIVACY_UPDATED + "</span></div>");
+
+  const section = (h, paras) => {
+    out.push('<div class="check-card"><h2>' + esc(h) + "</h2>");
+    paras.forEach((t) => out.push("<p>" + t + "</p>"));
+    out.push("</div>");
+  };
+
+  section("The short version", [
+    "You do not sign in, so we do not know who you are. We count page views and nothing " +
+    "else is collected unless you type it into one of two boxes: the question box in Ask " +
+    "SafeStart, or the feedback form. Both of those are described below, and neither needs " +
+    "your child's name.",
+    "Your child never visits this site. Nothing here reaches their device, and nothing on " +
+    "their device reaches us. You read the guides on your own phone and change settings on " +
+    "theirs, by hand."
+  ]);
+
+  section("Page views", [
+    "We count page views using Vercel Web Analytics. It sets no cookies. Instead of storing " +
+    "anything on your device it identifies a visit by a hash of the request, and that hash is " +
+    "discarded within 24 hours, so there is nothing that follows you from one day to the next.",
+    "What is recorded is the page, the page that referred you, a rough location no finer than " +
+    "a country or region, and the browser and device type. The script is served from this " +
+    "domain rather than someone else's, so reading SafeStart makes no third-party requests at " +
+    "all. No advertising network, no social pixel, no tag manager.",
+    "<strong>Your plan page is deliberately left out of this.</strong> Its address contains " +
+    "your child's age, their device and the apps they use, and together those describe one " +
+    "specific child. The build refuses to put the counter on that page and a test fails if " +
+    "anyone changes it."
+  ]);
+
+  section("Ask SafeStart", [
+    "If you ask a follow-up question, your question and the guide you are looking at are sent " +
+    "to Anthropic's API to be answered, and the answer streams back to you. To check that an " +
+    "answer is current it may run a web search. Nothing about the conversation is stored on " +
+    "this site, and there is no account for it to be attached to.",
+    "Please do not put your child's name, your address, or anything else identifying into the " +
+    "box. It is not needed to get a useful answer and it is the one way this feature could " +
+    "carry something personal off the page."
+  ]);
+
+  section("The feedback form", [
+    "If you tell us something is wrong, we receive your message, the page you were on, and " +
+    "your email address if you chose to give one. It is delivered to us as email through " +
+    "Resend. The message is not stored on this site, and an email address you give is used to " +
+    "reply to you and for nothing else. It goes on no list.",
+    "The same request applies here: describe what you saw on the screen, not who was using it."
+  ]);
+
+  section("IP addresses", [
+    "The two routes above are rate limited so that one bored visitor cannot run up a bill. " +
+    "That check holds your IP address in the server's memory for ten minutes to count " +
+    "requests. It is never written to a database, never logged by us, and disappears when the " +
+    "server instance is recycled, which happens constantly. Our host, Vercel, keeps its own " +
+    "operational request logs, as any host does."
+  ]);
+
+  section("What stays on your own device", [
+    "Your theme choice, your country and age settings, and any plan you have built are saved " +
+    "in your browser's local storage, under names beginning <span class=\"path\">safestart:</span>. " +
+    "That is on your device only. None of it is sent to us and we cannot read it. Clearing " +
+    "your browsing data removes it.",
+    "If you install SafeStart as an app, or your browser caches it, copies of the pages are " +
+    "stored on your device so the guides still open with no signal. Those are copies of public " +
+    "pages and contain nothing about you. Uninstalling the app or clearing site data removes " +
+    "them."
+  ]);
+
+  section("What we never do", [
+    "We do not sell data, and there is no one to sell it to. There are no ads on this site and " +
+    "no advertising or analytics company other than the page counter described above. We do " +
+    "not build a profile of you, we do not track you across other sites, and we send you no " +
+    "marketing.",
+    "We do not ask for your child's name, age to the year, school, or location, and you should " +
+    "not give them to us. The age bands exist so a guide can be the right one, and they live " +
+    "in your browser."
+  ]);
+
+  section("Children", [
+    "SafeStart is written for the adult setting up a device. It is not aimed at children and " +
+    "has no account to create, so there is nothing for a child to sign up to. If you believe a " +
+    "child has sent us something through the feedback form, email us and we will delete it."
+  ]);
+
+  section("Who processes what", [
+    "Three companies are involved, and only these three. <strong>Vercel</strong> hosts the " +
+    "site and provides the page counter. <strong>Anthropic</strong> answers Ask SafeStart " +
+    "questions. <strong>Resend</strong> delivers feedback messages to us as email. Each is " +
+    "used only for the job named here."
+  ]);
+
+  section("Your rights, and why there is usually nothing to hand over", [
+    "If you are in the UK or the EU you have the right to ask what we hold about you, to have " +
+    "it corrected, and to have it deleted. In practice the honest answer to almost every such " +
+    "request is that we hold nothing, because there is no account and the page counter cannot " +
+    "be traced back to a person. The exception is an email you sent us through the feedback " +
+    "form, which sits in our mailbox and can be deleted on request.",
+    "Our lawful basis for the page counter is legitimate interests: knowing which guides are " +
+    "read is what tells us which ones to keep current. It is cookieless and cannot identify " +
+    "you. For Ask SafeStart and the feedback form the basis is your request, since nothing is " +
+    "sent until you choose to send it."
+  ]);
+
+  section("Who runs this, and where", [
+    "SafeStart is run by TrustRaise, the advisory practice of Dave Byrne, at 324 N Payne " +
+    "Street, Alexandria, VA 22314, United States. TrustRaise is the data controller for " +
+    "anything described on this page.",
+    "The site is hosted in the United States and the two things you can send us, an Ask " +
+    "SafeStart question and a feedback message, are handled there. If you are reading this " +
+    "from the UK, Ireland or Canada, that means what little there is crosses a border. The " +
+    "page counter is the only thing that happens without you choosing it, and it cannot " +
+    "identify you."
+  ]);
+
+  section("Asking us something, or complaining", [
+    "Email <a href=\"mailto:dave@trust-raise.com\">dave@trust-raise.com</a>, or write to the " +
+    "address above. That email reaches a person rather than a queue.",
+    "If you are in the UK and you are not satisfied with how we have handled something, you " +
+    "can complain to the Information Commissioner's Office at " +
+    '<a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>. ' +
+    "In Ireland it is the Data Protection Commission at " +
+    '<a href="https://dataprotection.ie" target="_blank" rel="noopener noreferrer">dataprotection.ie</a>.'
+  ]);
+
+  section("If this page changes", [
+    "The date at the top moves when the policy moves. Anything that changes what is collected " +
+    "rather than how it is worded is also written up in the " +
+    '<a href="/changelog/">changelog</a>, alongside the guide corrections, so it is on the ' +
+    "record rather than quietly swapped."
   ]);
 
   return out.join("");
@@ -770,6 +934,14 @@ function build() {
     main: renderAboutStatic()
   }));
   urls.push({ loc: SITE + "/about/", priority: "0.6", lastmod: LOG.updated });
+
+  write("privacy/index.html", page({
+    url: "/privacy/",
+    title: "Privacy — SafeStart",
+    description: "What SafeStart collects, which is almost nothing. No account, no cookies, no ads or trackers, and the plan page deliberately excluded from the page counter.",
+    main: renderPrivacyStatic()
+  }));
+  urls.push({ loc: SITE + "/privacy/", priority: "0.4", lastmod: LOG.updated });
 
   write("feedback/index.html", page({
     url: "/feedback/",

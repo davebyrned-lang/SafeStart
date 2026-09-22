@@ -1178,6 +1178,37 @@ function check(name, condition, detail) {
     check('it is served from our own domain, not a third party',
       !/src="https?:\/\/[^"]*insights/.test(homeShell));
 
+    /* The privacy policy.
+     *
+     * Play rechecks the policy URL after the listing is live, so a 404 here is a
+     * suspended app rather than a broken link. It is also the page most likely to
+     * drift away from the truth, so the two claims a parent would most want to
+     * rely on are asserted against the page's own text. */
+    console.log('\nprivacy policy');
+    const priv = await page.request.get(BASE + '/privacy/');
+    check('privacy page serves', priv.status() === 200, 'status ' + priv.status());
+    const privHtml = await priv.text();
+    check('it says there are no cookies', /no cookies/i.test(privHtml));
+    check('it names all three processors',
+      ['Vercel', 'Anthropic', 'Resend'].every((p) => privHtml.includes(p)));
+    check('it gives a contact address', /mailto:/.test(privHtml));
+    check('it carries no analytics claim it cannot keep',
+      privHtml.includes('deliberately left out') && !/_vercel\/insights/.test(planShell));
+    check('the footer links it from an ordinary page', /href="\/privacy\/"/.test(homeShell));
+    check('it renders as its own page rather than falling through to the picker',
+      !/class="loading"/.test(privHtml) && privHtml.includes('Privacy'));
+
+    /* The status bar colour.
+     *
+     * Installed on Android this paints the strip above the page. It was still the
+     * old TrustRaise navy long after the site went cream, so the app opened with a
+     * dark blue band across the top of a warm page. */
+    check('theme-color matches the site rather than the old navy',
+      /<meta name="theme-color" content="#FBF0E9"/.test(homeShell) &&
+      !/<meta name="theme-color" content="#0B1B4D"/.test(homeShell));
+    check('and offers a dark variant, so the bar is not cream over a dark page',
+      /<meta name="theme-color" content="#241C1A"[^>]*prefers-color-scheme: dark/.test(homeShell));
+
     console.log('\nrobots and sitemap');
     const sm = await page.request.get(BASE + '/sitemap.xml');
     check('sitemap serves', sm.status() === 200, 'status ' + sm.status());
