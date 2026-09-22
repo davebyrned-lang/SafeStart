@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.trustraise.safestart",
       "sha256_cert_fingerprints": [
-        "42:84:B7:92:9C:3D:F3:E6:4A:74:C2:97:2F:6F:C1:D5:71:C6:82:CD:52:92:F9:98:39:A6:AF:99:5A:06:D1:C7"
+        "42:84:B7:92:9C:3D:F3:E6:4A:74:C2:97:2F:6F:C1:D5:71:C6:82:CD:52:92:F9:98:39:A6:AF:99:5A:06:D1:C7",
+        "50:A8:91:33:22:9A:96:08:A7:DD:95:01:A5:AC:32:6B:11:E5:FE:5B:3E:D1:AD:F8:3E:9A:4C:9E:0A:82:43:D8"
       ]
     }
   }

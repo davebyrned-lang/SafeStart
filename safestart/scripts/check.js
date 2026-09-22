@@ -291,7 +291,22 @@ console.log('\ninstallable app');
     if (!fps.length) fail('assetlinks.json lists no signing fingerprints');
     else if (fps.some((f) => /REPLACE|PLACEHOLDER|XX:XX/i.test(f))) {
       warn('assetlinks.json still holds a placeholder fingerprint. The app will show an address bar until the real one from the Play Console goes in.');
-    } else ok('assetlinks.json carries a real fingerprint');
+    } else {
+      /* Two fingerprints, not one.
+       *
+       * Play strips the upload signature and re-signs every release with a key
+       * Google holds, so the signature reaching a parent's phone is Google's,
+       * not ours. Listing only one of the two is the commonest Trusted Web
+       * Activity mistake there is, and it fails in the worst way: the app works
+       * perfectly on the machine that built it, and opens with a Chrome address
+       * bar on every phone that installed it from the store. */
+      const BAD = fps.filter((f) => !/^([0-9A-F]{2}:){31}[0-9A-F]{2}$/.test(f));
+      if (BAD.length) fail(`assetlinks.json has ${BAD.length} malformed fingerprint(s); Play prints them as 32 colon-separated uppercase hex pairs`);
+      else if (new Set(fps).size !== fps.length) fail('assetlinks.json lists the same fingerprint twice');
+      else if (fps.length < 2) {
+        fail('assetlinks.json has only the upload key. Play re-signs every release with its own key, so the store build will show an address bar until that fingerprint is here too (Protected with Play, Play Store protection, Play app signing).');
+      } else ok(`assetlinks.json carries ${fps.length} well-formed fingerprints, upload key and Play's`);
+    }
   }
 }
 
