@@ -120,8 +120,11 @@
   }
  ]
 }</script>
-<link rel="icon" href="/assets/favicon-64.png" sizes="64x64">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" href="/assets/favicon-64-v2.png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon-v2.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <link rel="preload" href="/assets/fonts/atkinson-latin.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -859,6 +862,24 @@ button { font: inherit; cursor: pointer; }
 }
 .bully-label svg { width: 14px; height: 14px; flex: none; color: var(--caution); }
 .bully p { margin: 0; font-size: .89rem; color: var(--muted); line-height: 1.55; }
+
+/* The new-version prompt. Sits at the bottom so it never covers the header or
+   the crisis button, and it is a prompt rather than an automatic reload because
+   a parent halfway through a child's phone should not lose their place. */
+.sw-update {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 60; display: flex; align-items: center; gap: 12px;
+  background: var(--anchor); color: #fff;
+  padding: 10px 12px 10px 16px; border-radius: 999px;
+  font-size: .88rem; box-shadow: 0 6px 24px rgba(0,0,0,.22);
+  max-width: calc(100vw - 32px);
+}
+.sw-update-btn {
+  background: #fff; color: var(--anchor); border: 0; cursor: pointer;
+  font: inherit; font-weight: 650; padding: 6px 14px; border-radius: 999px;
+}
+.sw-update-btn:hover { background: var(--fill-sun); }
 
 /* steps */
 .steps { list-style: none; margin: 0 0 28px; padding: 0; }
@@ -3938,6 +3959,62 @@ function boot() {
 }
 
 boot();
+
+/* ---------------- installable app ----------------
+
+   Registering the worker is what makes SafeStart installable, and it is also
+   what the Play Store listing runs inside: a Trusted Web Activity is this site
+   in a window with no address bar.
+
+   The update prompt is the part worth being careful about. A service worker
+   will happily keep serving the version a parent installed months ago, which on
+   a site whose whole claim is that corrections ship the same day is the wrong
+   behaviour. So when a new worker is waiting, we say so and let them take it.
+   We do not reload underneath them: someone halfway through setting up a
+   child's phone should not lose their place because we shipped a typo fix. */
+function offerUpdate(reg) {
+  if (document.getElementById("swUpdate")) return;
+  var bar = el("div", { class: "sw-update", id: "swUpdate" }, [
+    el("span", { text: "There's a newer version of these guides." }),
+    el("button", {
+      class: "sw-update-btn",
+      onclick: function () {
+        if (reg.waiting) reg.waiting.postMessage("skip-waiting");
+      }
+    }, [document.createTextNode("Update")])
+  ]);
+  document.body.appendChild(bar);
+}
+
+/* isSecureContext rather than a protocol check. Both mean https in production,
+   but isSecureContext is also true on localhost, and a protocol check quietly
+   disables the worker for anyone running the dev server, including the test
+   that proves offline works. */
+if ("serviceWorker" in navigator && window.isSecureContext) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/sw.js").then(function (reg) {
+      if (reg.waiting) offerUpdate(reg);
+      reg.addEventListener("updatefound", function () {
+        var sw = reg.installing;
+        if (!sw) return;
+        sw.addEventListener("statechange", function () {
+          // controller means this is a replacement rather than a first install,
+          // and only a replacement is worth interrupting anyone about.
+          if (sw.state === "installed" && navigator.serviceWorker.controller) offerUpdate(reg);
+        });
+      });
+    }).catch(function () {
+      /* No worker means no offline support and nothing else. The site works. */
+    });
+
+    var reloading = false;
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (reloading) return;
+      reloading = true;
+      location.reload();
+    });
+  });
+}
 </script>
 <script>
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };

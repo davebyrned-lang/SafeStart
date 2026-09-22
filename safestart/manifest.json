@@ -1,0 +1,53 @@
+{
+ "id": "/",
+ "name": "SafeStart: parental controls made simple",
+ "short_name": "SafeStart",
+ "description": "Step-by-step guides to the parental controls already built into your child's phone, tablet, console and apps. Free, no account, and nothing to install.",
+ "start_url": "/?source=app",
+ "scope": "/",
+ "display": "standalone",
+ "orientation": "any",
+ "background_color": "#FBF0E9",
+ "theme_color": "#FBF0E9",
+ "lang": "en",
+ "dir": "ltr",
+ "categories": [
+  "education",
+  "lifestyle",
+  "utilities"
+ ],
+ "icons": [
+  {
+   "src": "/assets/icon-192-v2.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/assets/icon-512-v2.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "/assets/icon-maskable-512-v2.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ],
+ "shortcuts": [
+  {
+   "name": "Get help now",
+   "short_name": "Get help",
+   "description": "For a parent who has found something rather than prevented it",
+   "url": "/help/",
+   "icons": [
+    {
+     "src": "/assets/icon-192-v2.png",
+     "sizes": "192x192"
+    }
+   ]
+  }
+ ]
+}

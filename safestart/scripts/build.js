@@ -17,6 +17,7 @@
  */
 
 const fs = require("fs");
+const crypto = require("crypto");
 const path = require("path");
 
 const ROOT = path.join(__dirname, "..");
@@ -842,6 +843,62 @@ function build() {
     "robots.txt",
     ["User-agent: *", "Allow: /", "Disallow: /api/", "", "Sitemap: " + SITE + "/sitemap.xml", ""].join("\n")
   );
+
+  /* ---------------- installable app ----------------
+
+     The manifest is generated rather than hand-written so the name, the colours
+     and the icon list cannot drift from the site. A Trusted Web Activity on the
+     Play Store reads this file, so a field quietly going missing here is a
+     rejected release rather than a cosmetic bug, and check.js guards it.
+
+     start_url carries a query parameter purely so analytics can tell an
+     installed launch from a browser visit. It changes nothing about the page. */
+  write("manifest.json", JSON.stringify({
+    id: "/",
+    name: "SafeStart: parental controls made simple",
+    short_name: "SafeStart",
+    description:
+      "Step-by-step guides to the parental controls already built into your child's phone, " +
+      "tablet, console and apps. Free, no account, and nothing to install.",
+    start_url: "/?source=app",
+    scope: "/",
+    display: "standalone",
+    orientation: "any",
+    background_color: "#FBF0E9",
+    theme_color: "#FBF0E9",
+    lang: "en",
+    dir: "ltr",
+    categories: ["education", "lifestyle", "utilities"],
+    icons: [
+      { src: "/assets/icon-192-v2.png", sizes: "192x192", type: "image/png", purpose: "any" },
+      { src: "/assets/icon-512-v2.png", sizes: "512x512", type: "image/png", purpose: "any" },
+      { src: "/assets/icon-maskable-512-v2.png", sizes: "512x512", type: "image/png", purpose: "maskable" }
+    ],
+    shortcuts: [
+      {
+        name: "Get help now",
+        short_name: "Get help",
+        description: "For a parent who has found something rather than prevented it",
+        url: "/help/",
+        icons: [{ src: "/assets/icon-192-v2.png", sizes: "192x192" }]
+      }
+    ]
+  }, null, 1) + "\n");
+
+  /* The cache name is derived from what actually shipped, so a content change
+     invalidates the old cache and a build that changes nothing does not. Using
+     a timestamp here would churn the cache on every deploy and defeat the point. */
+  const fingerprint = crypto
+    .createHash("sha1")
+    .update(TEMPLATE)
+    .update(JSON.stringify(DATA))
+    .update(JSON.stringify(SG))
+    .digest("hex")
+    .slice(0, 12);
+
+  const sw = fs.readFileSync(path.join(ROOT, "src", "sw.js"), "utf8")
+    .replace(/@CACHE_VERSION@/g, fingerprint);
+  write("sw.js", sw);
 
   console.log("SafeStart build");
   console.log("  site:   " + SITE);

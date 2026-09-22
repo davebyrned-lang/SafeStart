@@ -4,3 +4,10 @@ node_modules/
 .env.local
 .DS_Store
 *.log
+
+# Android signing. Losing this key means the app can never be updated again,
+# and committing it means anyone can ship as you. Keep it outside the repo.
+*.keystore
+*.jks
+*.p12
+android/

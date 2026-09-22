@@ -203,6 +203,89 @@ ok(`${preCount} preinstalled apps listed across the device guides`);
  * they stay on the handful of steps that genuinely bear on contact. A line on
  * every step would be wallpaper and nobody would read the ones that matter.
  */
+/* The installable app.
+ *
+ * SafeStart ships to the Play Store as a Trusted Web Activity, which is this
+ * same site running in a window with no address bar. That means the manifest
+ * and the service worker are not a nice-to-have any more: a missing manifest
+ * field is a rejected release, and a caching mistake reaches a parent's phone
+ * and stays there.
+ *
+ * The rule worth defending in code is the crisis one. /help/ must never be
+ * served from cache while a network exists. Everything else on this site can be
+ * a few days stale and a parent is still better off. A stale crisis page sends
+ * a frightened person to a reporting route that has moved.
+ */
+console.log('\ninstallable app');
+{
+  const manifestPath = path.join(ROOT, 'manifest.json');
+  if (!fs.existsSync(manifestPath)) fail('no manifest.json, so the site is not installable');
+  else {
+    const m = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    // Play rejects a TWA missing any of these.
+    ['name', 'short_name', 'start_url', 'scope', 'display', 'background_color', 'theme_color', 'icons']
+      .forEach((k) => { if (!m[k]) fail(`manifest.json has no ${k}, which Play requires`); });
+    if (m.display !== 'standalone' && m.display !== 'fullscreen') {
+      fail(`manifest display is "${m.display}"; a TWA needs standalone`);
+    }
+    if ((m.short_name || '').length > 12) {
+      fail(`short_name "${m.short_name}" is over 12 characters and gets truncated under the icon`);
+    }
+    const icons = m.icons || [];
+    const has = (size, purpose) => icons.some(
+      (i) => i.sizes === size + 'x' + size && (i.purpose || 'any').split(' ').includes(purpose)
+    );
+    if (!has(192, 'any')) fail('manifest has no 192px icon');
+    if (!has(512, 'any')) fail('manifest has no 512px icon');
+    // Without a maskable icon Android pads the square one inside a white circle,
+    // which looks like a mistake on every launcher that uses a round mask.
+    if (!has(512, 'maskable')) fail('manifest has no maskable icon, so Android will letterbox it');
+    icons.forEach((i) => {
+      const f = path.join(ROOT, i.src.replace(/^\//, ''));
+      if (!fs.existsSync(f)) fail(`manifest points at ${i.src}, which is not in the build`);
+    });
+    ok(`manifest.json complete, ${icons.length} icons, all present`);
+  }
+
+  const swPath = path.join(ROOT, 'sw.js');
+  if (!fs.existsSync(swPath)) fail('no sw.js, so there is no offline support');
+  else {
+    const sw = fs.readFileSync(swPath, 'utf8');
+    if (sw.includes('@CACHE_VERSION@')) {
+      fail('sw.js still has the @CACHE_VERSION@ placeholder, so every deploy reuses one cache');
+    } else if (!/var VERSION = "[0-9a-f]{12}"/.test(sw)) {
+      fail('sw.js has no content fingerprint, so an old cache is never invalidated');
+    } else ok('sw.js carries a content fingerprint, so a change invalidates the old cache');
+
+    // The rule. Written as a check rather than a comment because a future
+    // "make it faster" change is exactly how this gets broken.
+    if (!/isCrisis/.test(sw)) fail('sw.js no longer knows what a crisis page is');
+    if (/caches\.match\(req\)[\s\S]{0,120}\|\|[\s\S]{0,40}fetch/.test(
+      sw.slice(sw.indexOf('Network-first'))
+    )) {
+      fail('sw.js looks like it serves pages cache-first, which would let /help/ go stale');
+    }
+    if (!/\/api\\\//.test(sw) && !sw.includes('/^\\/api\\//')) {
+      warn('sw.js may no longer exclude /api/ from caching');
+    } else ok('the API is excluded from caching');
+    ok('the crisis pages are network-first, so they cannot be served stale online');
+  }
+
+  const alPath = path.join(ROOT, '.well-known', 'assetlinks.json');
+  if (!fs.existsSync(alPath)) {
+    fail('no .well-known/assetlinks.json, so the Android app would show an address bar');
+  } else {
+    const al = JSON.parse(fs.readFileSync(alPath, 'utf8'));
+    const t = (al[0] || {}).target || {};
+    if (!t.package_name) fail('assetlinks.json has no package_name');
+    const fps = t.sha256_cert_fingerprints || [];
+    if (!fps.length) fail('assetlinks.json lists no signing fingerprints');
+    else if (fps.some((f) => /REPLACE|PLACEHOLDER|XX:XX/i.test(f))) {
+      warn('assetlinks.json still holds a placeholder fingerprint. The app will show an address bar until the real one from the Play Console goes in.');
+    } else ok('assetlinks.json carries a real fingerprint');
+  }
+}
+
 console.log('\nbullying notes');
 {
   const LIMIT_WORDS = /\bdoes not\b|\bdo not\b|\bcannot\b|\bnot\b|\bnothing\b|\bgone\b|\bless\b|\brather than\b|\bgets around\b|\bonly\b/i;

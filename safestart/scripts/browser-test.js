@@ -1081,6 +1081,91 @@ function check(name, condition, detail) {
       /deletes their videos|will be deleted|deletes their/i.test(ytText));
     check('blocking uses the supervised route', /Block channel for kids/.test(ytText));
 
+    console.log('\ninstallable app');
+    /* SafeStart ships to Play as a Trusted Web Activity, so the manifest and the
+       worker are load-bearing now. The assertions that matter are the offline
+       one, because that is the whole reason to install it, and the crisis one,
+       because serving a stale /help/ page is the worst thing this site could do
+       and a caching change is exactly how it would happen by accident. */
+    const manifestRes = await page.request.get(BASE + '/manifest.json');
+    check('manifest serves', manifestRes.status() === 200, 'status ' + manifestRes.status());
+    const mf = JSON.parse(await manifestRes.text());
+    check('it is standalone, as a TWA needs', mf.display === 'standalone');
+    check('short_name fits under an icon', (mf.short_name || '').length <= 12, mf.short_name);
+    check('it has a maskable icon so Android does not letterbox it',
+      (mf.icons || []).some((i) => (i.purpose || '').includes('maskable')));
+    for (const i of mf.icons || []) {
+      const r = await page.request.get(BASE + i.src);
+      check('icon ' + i.sizes + ' ' + (i.purpose || 'any') + ' serves', r.status() === 200);
+    }
+    check('the page links the manifest',
+      /<link rel="manifest" href="\/manifest.json">/.test(await (await page.request.get(BASE + '/')).text()));
+
+    const swRes = await page.request.get(BASE + '/sw.js');
+    check('the worker serves', swRes.status() === 200);
+    const swSrc = await swRes.text();
+    check('with a real cache version, not the placeholder', !swSrc.includes('@CACHE_VERSION@'));
+
+    const alRes = await page.request.get(BASE + '/.well-known/assetlinks.json');
+    check('assetlinks serves, which is what hides the address bar', alRes.status() === 200,
+      'status ' + alRes.status());
+
+    /* Offline. A separate context so the worker installs cleanly and nothing
+       from the earlier tests is already cached. */
+    const offCtx = await browser.newContext();
+    const off = await offCtx.newPage();
+    await off.goto(BASE + '/', { waitUntil: 'networkidle' });
+    await off.waitForFunction(() => navigator.serviceWorker.controller !== null, null, { timeout: 15000 })
+      .catch(() => {});
+    const controlled = await off.evaluate(() => Boolean(navigator.serviceWorker.controller));
+    check('the worker takes control of the page', controlled);
+    // Give the precache a moment to finish before pulling the plug.
+    await off.waitForTimeout(2500);
+    await offCtx.setOffline(true);
+    await off.reload({ waitUntil: 'domcontentloaded' }).catch(() => {});
+    await off.waitForTimeout(600);
+    const offText = await off.locator('body').textContent().catch(() => '');
+    check('the home page still loads with no network', /set this up/i.test(offText));
+    const offGuides = await off.evaluate(() =>
+      fetch('/guides.json').then((r) => r.json()).then((d) => Object.keys(d.guides).length).catch(() => 0));
+    check('and every guide is readable offline, from the cached data file',
+      offGuides >= 29, 'saw ' + offGuides);
+    const crisisOffline = await off.evaluate(() =>
+      fetch('/help/uk/').then((r) => r.text()).then((t) => /999|Childline/i.test(t)).catch(() => false));
+    check('the crisis page is there offline too, which is when it matters most', crisisOffline);
+    await offCtx.setOffline(false);
+    await offCtx.close();
+
+    /* And the rule that matters: online, a crisis page comes from the network,
+       never from the cache.
+ 
+       Proven by editing what the server actually returns between two loads and
+       checking the page follows. A cache-first worker would serve the first
+       copy and the marker would never appear, which is exactly the regression
+       a well-meaning "make it faster" change would introduce. Route
+       interception is no use here, because the worker's own fetch does not
+       surface through it. */
+    const fsMod = require('fs');
+    const crisisFile = path.join(__dirname, '..', 'help', 'uk', 'index.html');
+    const crisisOriginal = fsMod.readFileSync(crisisFile, 'utf8');
+    const netCtx = await browser.newContext();
+    try {
+      const net = await netCtx.newPage();
+      await net.goto(BASE + '/help/uk/', { waitUntil: 'networkidle' });
+      await net.waitForFunction(() => navigator.serviceWorker.controller !== null, null, { timeout: 15000 })
+        .catch(() => {});
+      await net.waitForTimeout(1200);
+      const marker = 'crisis-freshness-' + Date.now();
+      fsMod.writeFileSync(crisisFile, crisisOriginal.replace('</body>', '<!--' + marker + '--></body>'));
+      await net.goto(BASE + '/help/uk/', { waitUntil: 'domcontentloaded' });
+      const html = await net.content();
+      check('a crisis page online is fetched fresh, never served from cache',
+        html.includes(marker));
+    } finally {
+      fsMod.writeFileSync(crisisFile, crisisOriginal);
+      await netCtx.close();
+    }
+
     console.log('\nanalytics');
     // The plan URL carries a real child's age, device and app list in its query
     // string, and Vercel stores the URL with every data point. So the script goes
