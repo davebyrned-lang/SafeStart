@@ -46,6 +46,36 @@ normal build.
 
 ---
 
+## 1a. Choose the account type first, because one path has a 30-day wait
+
+This is the decision that decides your timeline, and it is made at signup.
+
+**Organisation account (what TrustRaise should use).** Needs a D-U-N-S number,
+which is a free nine-digit identifier from Dun & Bradstreet. If TrustRaise does
+not already have one, applying can take **up to 30 days**, so start this before
+anything else on this page. In exchange you skip the testing requirement below
+entirely.
+
+**Personal account.** No D-U-N-S, so you can register today. But Google requires
+personal accounts created after 13 November 2023 to run a closed test with **at
+least 12 testers opted in continuously for 14 days** before the app can go to
+production. Their wording is explicit that the 14 days must be consecutive, and
+that someone who opts in, tests briefly and opts out does not count.
+
+For SafeStart the organisation route is clearly right: TrustRaise is a real
+business, and twelve people holding an opted-in test for a fortnight is real
+friction for something nobody is being paid to test.
+
+Check for an existing D-U-N-S number at Dun & Bradstreet's lookup before
+applying for a new one. Plenty of registered companies already have one without
+knowing.
+
+Sources:
+- https://support.google.com/googleplay/android-developer/answer/14151465
+- https://support.google.com/googleplay/android-developer/answer/13628312
+
+---
+
 ## 2. Create the signing key
 
 Somewhere outside this repo:
