@@ -228,6 +228,15 @@ console.log('\ninstallable app');
     if (m.display !== 'standalone' && m.display !== 'fullscreen') {
       fail(`manifest display is "${m.display}"; a TWA needs standalone`);
     }
+    // Declared screenshots have to exist, or Android silently falls back to the
+    // plain install prompt and nobody notices the files went missing.
+    (m.screenshots || []).forEach((s) => {
+      const p = path.join(ROOT, s.src.replace(/^\//, ''));
+      if (!fs.existsSync(p)) fail(`manifest names ${s.src} but it is not on disk`);
+      if (!s.form_factor) fail(`manifest screenshot ${s.src} has no form_factor`);
+    });
+    if ((m.screenshots || []).length) ok(`${m.screenshots.length} install-prompt screenshots, all present`);
+
     if ((m.short_name || '').length > 12) {
       fail(`short_name "${m.short_name}" is over 12 characters and gets truncated under the icon`);
     }

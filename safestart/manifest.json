@@ -36,6 +36,29 @@
    "purpose": "maskable"
   }
  ],
+ "screenshots": [
+  {
+   "src": "/assets/screenshots/shot-picker-v1.png",
+   "sizes": "1080x2400",
+   "type": "image/png",
+   "form_factor": "narrow",
+   "label": "Pick the device your child uses and roughly how old they are"
+  },
+  {
+   "src": "/assets/screenshots/shot-plan-v1.png",
+   "sizes": "1080x2400",
+   "type": "image/png",
+   "form_factor": "narrow",
+   "label": "One ordered plan, split into short parts with a time on each"
+  },
+  {
+   "src": "/assets/screenshots/shot-guide-v1.png",
+   "sizes": "1080x2400",
+   "type": "image/png",
+   "form_factor": "narrow",
+   "label": "Every guide shows when it was last checked against the source"
+  }
+ ],
  "shortcuts": [
   {
    "name": "Get help now",

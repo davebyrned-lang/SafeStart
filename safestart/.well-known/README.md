@@ -13,10 +13,10 @@ when it built the package on 22 September 2026:
 
     42:84:B7:92:9C:3D:F3:E6:4A:74:C2:97:2F:6F:C1:D5:71:C6:82:CD:52:92:F9:98:39:A6:AF:99:5A:06:D1:C7
 
-That key lives in `signing.keystore`, inside the PWABuilder download, and it is
-not in this repo and must never be. `.gitignore` covers `*.keystore`, `*.jks`
-and `*.p12`, but the real protection is keeping it somewhere else entirely.
-Lose it and SafeStart can never be updated under this listing again.
+That key lives in `signing.keystore`, inside the PWABuilder zip, and it is not
+in this repo and must never be. `.gitignore` covers `*.keystore`, `*.jks` and
+`*.p12`, but the real protection is keeping it somewhere else entirely. Lose it
+and SafeStart can never be updated under this listing again.
 
 ## What is still missing
 

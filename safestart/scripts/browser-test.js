@@ -1184,6 +1184,34 @@ function check(name, condition, detail) {
      * suspended app rather than a broken link. It is also the page most likely to
      * drift away from the truth, so the two claims a parent would most want to
      * rely on are asserted against the page's own text. */
+    /* Narrow phones.
+     *
+     * The header used to lay out at a fixed 411px minimum, which gave every
+     * phone under that a sideways-scrolling page and a Print button clipped off
+     * the edge. 360px is the commonest Android width there is. Since the Play
+     * Store app is this site in a window with no address bar, a layout bug at
+     * phone width is an app bug, and it reaches a parent's home screen. */
+    console.log('\nnarrow phones');
+    for (const w of [320, 360, 390, 412]) {
+      const narrow = await browser.newContext({ viewport: { width: w, height: 780 } });
+      const np = await narrow.newPage();
+      let worst = null;
+      for (const u of ['/', '/roblox/', '/android/', '/help/uk/', '/privacy/']) {
+        await np.goto(BASE + u, { waitUntil: 'domcontentloaded' });
+        await np.waitForTimeout(250);
+        const m = await np.evaluate(() => ({
+          scroll: document.documentElement.scrollWidth,
+          client: document.documentElement.clientWidth,
+        }));
+        if (m.scroll > m.client && (!worst || m.scroll - m.client > worst.over)) {
+          worst = { u, over: m.scroll - m.client };
+        }
+      }
+      check(`no sideways scroll at ${w}px`, !worst,
+        worst ? `${worst.u} overflows by ${worst.over}px` : '');
+      await narrow.close();
+    }
+
     console.log('\nprivacy policy');
     const priv = await page.request.get(BASE + '/privacy/');
     check('privacy page serves', priv.status() === 200, 'status ' + priv.status());

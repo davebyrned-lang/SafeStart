@@ -1046,6 +1046,32 @@ function build() {
       { src: "/assets/icon-512-v2.png", sizes: "512x512", type: "image/png", purpose: "any" },
       { src: "/assets/icon-maskable-512-v2.png", sizes: "512x512", type: "image/png", purpose: "maskable" }
     ],
+    /* Android shows a richer install prompt when the manifest carries
+       screenshots, with the pictures rather than a bare name and icon. These
+       are the same files that go on the Play listing, rendered from the running
+       site by scripts/store-shots.js, so there is one set and it cannot drift
+       from what the app actually looks like.
+
+       The -v1 suffix is not decoration. /assets/ is served immutable for a
+       year, so a redraw needs a new filename or browsers keep the old picture
+       until 2027. */
+    screenshots: [
+      {
+        src: "/assets/screenshots/shot-picker-v1.png",
+        sizes: "1080x2400", type: "image/png", form_factor: "narrow",
+        label: "Pick the device your child uses and roughly how old they are"
+      },
+      {
+        src: "/assets/screenshots/shot-plan-v1.png",
+        sizes: "1080x2400", type: "image/png", form_factor: "narrow",
+        label: "One ordered plan, split into short parts with a time on each"
+      },
+      {
+        src: "/assets/screenshots/shot-guide-v1.png",
+        sizes: "1080x2400", type: "image/png", form_factor: "narrow",
+        label: "Every guide shows when it was last checked against the source"
+      }
+    ],
     shortcuts: [
       {
         name: "Get help now",
