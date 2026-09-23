@@ -169,6 +169,18 @@ function renderStepStatic(step, num, symbol) {
 
   if (step.result) out.push('<p class="result">' + esc(step.result) + "</p>");
   if (step.note) out.push('<p class="note">' + esc(step.note) + "</p>");
+  /* The platform's own video for this exact step, where one exists.
+   *
+   * A parent who cannot find a menu from a written path can usually find it from
+   * ninety seconds of someone tapping through it. These are the platform's own
+   * videos rather than anyone's explainer, for the same reason every step links
+   * to the platform's own help page: it is checkable, and it does not go stale
+   * when a third party stops posting. */
+  if (step.video && step.video.url) {
+    out.push('<p class="video"><a href="' + esc(step.video.url) +
+      '" target="_blank" rel="noopener noreferrer">Watch the official video</a>' +
+      '<span class="video-label">' + esc(step.video.label) + "</span></p>");
+  }
   // No age is chosen in the static page, so a setting that changes hands at a
   // birthday says that rather than picking one answer and being wrong half the time.
   const held = step.heldBy || (step.heldByAge ? "varies" : null);

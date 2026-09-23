@@ -804,6 +804,39 @@ console.log('\ncolour contrast');
  * page counter really is kept off /plan/, and that the page has not started
  * promising there is no analytics at all.
  */
+/* Step videos.
+ *
+ * A video is only ever the platform's own. A third party's explainer goes stale
+ * the moment they stop posting, and it puts a stranger's face on a page a parent
+ * is trusting for their child's safety. So the rule is enforced rather than
+ * remembered: the label has to name the platform, and the URL has to be one of
+ * the platform's own channels.
+ *
+ * The label is checked because it is what a parent reads before deciding whether
+ * to click, and "Roblox: ..." is the thing that tells them whose video it is.
+ */
+console.log('\nstep videos');
+{
+  const OFFICIAL = /^https:\/\/(www\.youtube\.com\/watch\?v=[\w-]{6,}|youtu\.be\/[\w-]{6,}|support\.apple\.com\/|.*\.microsoft\.com\/)/;
+  let n = 0;
+  const bad = [];
+  Object.entries(data.guides).forEach(([gid, g]) => {
+    (g.steps || []).forEach((s) => {
+      if (!s.video) return;
+      n++;
+      const where = gid + '/' + s.id;
+      if (!s.video.url || !OFFICIAL.test(s.video.url)) bad.push(where + ' has a url that is not an official channel');
+      if (!s.video.label) bad.push(where + ' has no label, so a parent cannot tell whose video it is');
+      else if (!new RegExp(g.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(s.video.label)) {
+        bad.push(where + ' label does not name ' + g.name);
+      }
+    });
+  });
+  if (bad.length) bad.forEach(fail);
+  else if (n) ok(`${n} step videos, all on the platform's own channel and labelled with it`);
+  else ok('no step videos');
+}
+
 console.log('\nprivacy policy');
 {
   const privPath = path.join(ROOT, 'privacy', 'index.html');

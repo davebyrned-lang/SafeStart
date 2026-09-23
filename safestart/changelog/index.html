@@ -908,6 +908,12 @@ button { font: inherit; cursor: pointer; }
 }
 .result svg, .note svg { width: 16px; height: 16px; flex: none; margin-top: 3px; }
 .result svg { color: var(--action); }
+/* The platform's own video for a step. Quiet on purpose: it is a fallback for a
+   parent who cannot find a menu from the written path, not the main route. */
+.video { margin: 12px 0 0; font-size: .9rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; }
+.video a { color: var(--action); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.video-label { color: var(--muted); font-size: .84rem; }
+
 .note svg { color: var(--caution); }
 :root[data-theme="dark"] .note svg { color: var(--action); }
 
@@ -1320,7 +1326,22 @@ button { font: inherit; cursor: pointer; }
 <main id="app" class="wrap"><a class="back-link" href="/">Back to SafeStart</a>
 <div class="guide-head"><h1 class="guide-title">What has changed</h1></div>
 <p class="guide-blurb">Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.</p>
-<div class="meta-row"><span class="pill">36 entries</span><span class="pill">11 corrections</span></div>
+<div class="meta-row"><span class="pill">39 entries</span><span class="pill">12 corrections</span></div>
+<article class="log-entry log-correction">
+<div class="log-head"><span class="log-kind">Correction</span><time>23 September 2026</time></div>
+<h2>The Roblox guide said no setting touched private servers. There is one.</h2>
+<p>The note on the chat step told parents that being shut out of a private server is the version of Roblox bullying they hear about most, and that no setting here touches it. The first half is right. The second half was too broad. Roblox does have a private server control, at Settings, Parental Controls, Settings You Manage, Visibility and private servers, and we had not covered it at all. It has its own step now. The chat note has been narrowed to say what is actually true, which is that none of the chat settings reach it, and the new step is honest that the server control governs who can get into your child&#39;s server and does nothing about your child being kept out of someone else&#39;s. That is the part that hurts, and no setting anywhere fixes it.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>23 September 2026</time></div>
+<h2>Roblox: trading, Robux transfers and four more controls we had missed</h2>
+<p>Comparing our guide against Roblox&#39;s own parental controls page turned up controls we were not covering. The largest gap was money moving sideways. Trading and Robux gifts are how a child gets talked out of something they paid for, and a spending limit does nothing about either, because it stops them buying Robux rather than giving away Robux they already have. That is a step now, with inventory visibility and Roblox&#39;s own transfer caps of 500 Robux a day and 1,000 a month. Blocking specific games, the request-and-approve route for a blocked game, and the sensitive issues toggle have been added to the content maturity step. The friends step now carries the official menu path and the fact that a trusted friend request expires after 24 hours, which to a child looks exactly like a refusal.</p>
+</article>
+<article class="log-entry log-site">
+<div class="log-head"><span class="log-kind">Change</span><time>23 September 2026</time></div>
+<h2>Some steps now link to the platform’s own video</h2>
+<p>A written menu path is the fastest route for most people and useless for some. Where a platform has published a short video of someone tapping through the exact setting a step describes, that step now links to it. Five Roblox steps have one so far. The rule, which the build enforces rather than trusting anyone to remember, is that a video is only ever the platform&#39;s own, and its label has to name the platform. A third party&#39;s explainer goes stale the moment they stop posting, and it puts a stranger&#39;s face on a page a parent is trusting for their child&#39;s safety.</p>
+</article>
 <article class="log-entry log-site">
 <div class="log-head"><span class="log-kind">Change</span><time>22 September 2026</time></div>
 <h2>SafeStart installs now, and works with no signal</h2>
@@ -3334,6 +3355,17 @@ function renderStep(step, num) {
   }
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
+  }
+  /* The platform's own video for this step. See the note in build.js for why
+     these are only ever the platform's own, never a third party's explainer. */
+  if (step.video && step.video.url) {
+    var va = el("a", {
+      href: step.video.url, target: "_blank", rel: "noopener noreferrer",
+      text: "Watch the official video"
+    });
+    body.appendChild(el("p", { class: "video" }, [
+      va, el("span", { class: "video-label", text: step.video.label })
+    ]));
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);

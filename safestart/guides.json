@@ -217,9 +217,9 @@
     "firetablet"
    ],
    "minAge": 0,
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-23",
    "sourceConfidence": "high",
-   "minutes": 12,
+   "minutes": 26,
    "risks": [
     "Two separate voice features with two separate off switches. Turning one off does nothing to the other",
     "None of the chat settings reach chat that a game's creator built themselves",
@@ -280,7 +280,11 @@
      ],
      "result": "Every setting below now requires your PIN to change.",
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "video": {
+      "url": "https://www.youtube.com/watch?v=KQ8sP00pmGk",
+      "label": "Roblox: How to Set Up a Roblox Parent Account and Link It to Your Child's Account"
+     }
     },
     {
      "id": "maturity",
@@ -290,7 +294,9 @@
      "do": [
       "Open Content restrictions, then Content maturity.",
       "Pick the level for your child’s age from the table.",
-      "Confirm with your PIN."
+      "Confirm with your PIN.",
+      "Stay in Content restrictions and open Blocked games. Add anything you already know you do not want, by name.",
+      "In the same place, check Allow sensitive issues and turn it off unless you have a reason not to."
      ],
      "recommended": {
       "0-6": "Minimal",
@@ -299,9 +305,13 @@
       "13-15": "Mild",
       "16-17": "Moderate"
      },
-     "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood.",
+     "note": "The four levels are Minimal, Mild, Moderate and Restricted. Restricted is for age-verified adults only and includes strong violence and realistic blood. If your child wants a game the maturity level blocks, they can send you a request and you approve or refuse it from your own dashboard. That is usually a better conversation than loosening the level for everything.",
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "video": {
+      "url": "https://www.youtube.com/watch?v=J7sga3CFWZ0",
+      "label": "Roblox: How to Set the Content Maturity Level for Your Child on Roblox"
+     }
     },
     {
      "id": "chat",
@@ -338,7 +348,11 @@
       "13-15": "child",
       "16-17": "child"
      },
-     "bullying": "Most Roblox bullying comes from people your child already plays with, so these settings reduce the surface rather than the source. Being shut out of a private server is the version parents hear about most, and no setting here touches it."
+     "bullying": "Most Roblox bullying comes from people your child already plays with, so these settings reduce the surface rather than the source. Being shut out of a private server is the version parents hear about most, and none of the chat settings touch it. There is a separate private server control further down this guide, and it does not fix exclusion either.",
+     "video": {
+      "url": "https://www.youtube.com/watch?v=nKiWWH7eCtY",
+      "label": "Roblox: How to Manage Your Child's Communication and Chat Settings on Roblox"
+     }
     },
     {
      "id": "voice",
@@ -376,6 +390,21 @@
      }
     },
     {
+     "id": "privateservers",
+     "title": "Decide who can see and join their private servers",
+     "why": "Private servers are where children play with the people they actually know. That makes them the best part of Roblox and also the place where being left out happens.",
+     "path": "Settings → Parental Controls → [your child] → Settings You Manage → Visibility & private servers",
+     "do": [
+      "Open Visibility & private servers.",
+      "Set who can join their private servers. Connections only is the setting that holds for most children.",
+      "Talk about this one rather than only setting it. It is the control most likely to cause an argument, because it is the one that touches their friendships."
+     ],
+     "note": "This governs who can get into your child's server. It does nothing about your child being kept out of someone else's, which is the version that actually hurts.",
+     "mins": 2,
+     "heldBy": "parent",
+     "bullying": "Exclusion is the most common form this takes and this setting cannot reach it. What it does do is stop someone your child has never met turning up in a space they believe is private."
+    },
+    {
      "id": "spend",
      "title": "Put a ceiling on Robux spending",
      "why": "In-game purchases are designed to be quick and frictionless. A monthly cap turns an expensive surprise into a small one.",
@@ -394,6 +423,25 @@
      },
      "note": "Roblox also sends high-spend alerts at $100, $250 and $500.",
      "mins": 2,
+     "heldBy": "parent",
+     "video": {
+      "url": "https://www.youtube.com/watch?v=USS1a6hPJbE",
+      "label": "Roblox: How to Set Up Spending Limits and Notifications on Roblox"
+     }
+    },
+    {
+     "id": "trading",
+     "title": "Turn off trading and cap Robux transfers",
+     "why": "Trading and Robux gifts are how a child gets talked out of something they paid for. The pitch is always the same: send yours first and I will send mine straight back.",
+     "path": "Settings → Parental Controls → [your child] → Settings You Manage → Trading & inventory",
+     "do": [
+      "Open Trading & inventory.",
+      "Set Trading to friends only, or off. Off is the right answer for most children under 13.",
+      "Set Inventory visibility. If nobody can see what your child owns, nobody can target them for it.",
+      "Know the transfer limits Roblox applies: sending or receiving Robux needs your approval, and is capped at 500 Robux a day and 1,000 a month."
+     ],
+     "note": "Those caps are Roblox's, not yours, and they sit on top of any spending limit you set. A spending limit stops your child buying Robux. It does not stop them giving away Robux they already have.",
+     "mins": 3,
      "heldBy": "parent"
     },
     {
@@ -423,7 +471,8 @@
      "do": [
       "Open your child’s friends list.",
       "Ask about anyone you don’t recognize: where did you meet them?",
-      "Remove anyone they only know from inside a game."
+      "Remove anyone they only know from inside a game.",
+      "Use the same screen to block or report anyone who should not be there."
      ],
      "ages": [
       "0-6",
@@ -431,7 +480,14 @@
       "11-12",
       "13-15"
      ],
-     "mins": 2
+     "mins": 2,
+     "video": {
+      "url": "https://www.youtube.com/watch?v=S-fKAVMkEk8",
+      "label": "Roblox: How to Use Roblox's Reporting and Blocking Tools"
+     },
+     "path": "Settings → Parental Controls → [your child] → Connections → Manage",
+     "note": "If your child asks to add a trusted friend, you get an email or a pending request and have 24 hours to answer. Miss the window and the request expires on its own, which to a child looks exactly like you said no.",
+     "heldBy": "parent"
     },
     {
      "id": "device",

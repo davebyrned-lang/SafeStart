@@ -999,6 +999,12 @@ button { font: inherit; cursor: pointer; }
 }
 .result svg, .note svg { width: 16px; height: 16px; flex: none; margin-top: 3px; }
 .result svg { color: var(--action); }
+/* The platform's own video for a step. Quiet on purpose: it is a fallback for a
+   parent who cannot find a menu from the written path, not the main route. */
+.video { margin: 12px 0 0; font-size: .9rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 9px; }
+.video a { color: var(--action); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.video-label { color: var(--muted); font-size: .84rem; }
+
 .note svg { color: var(--caution); }
 :root[data-theme="dark"] .note svg { color: var(--action); }
 
@@ -3302,6 +3308,17 @@ function renderStep(step, num) {
   }
   if (step.note) {
     body.appendChild(el("p", { class: "note" }, [icon("alert"), document.createTextNode(step.note)]));
+  }
+  /* The platform's own video for this step. See the note in build.js for why
+     these are only ever the platform's own, never a third party's explainer. */
+  if (step.video && step.video.url) {
+    var va = el("a", {
+      href: step.video.url, target: "_blank", rel: "noopener noreferrer",
+      text: "Watch the official video"
+    });
+    body.appendChild(el("p", { class: "video" }, [
+      va, el("span", { class: "video-label", text: step.video.label })
+    ]));
   }
   var ghb = heldByNode(step);
   if (ghb) body.appendChild(ghb);
