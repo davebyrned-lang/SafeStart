@@ -1,7 +1,36 @@
 {
- "updated": "2026-09-23",
+ "updated": "2026-09-28",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-09-28",
+   "kind": "freshness-check",
+   "checked": 29,
+   "reverified": [
+    "windows",
+    "playstation",
+    "switch",
+    "netflix",
+    "primevideo",
+    "accounts",
+    "hbomax"
+   ],
+   "flagged": [
+    {
+     "guide": "snapchat",
+     "summary": [
+      "Official Snapchat documentation states that contact settings for teen accounts are fixed and cannot be expanded, contradicting the guide's instruction to manually set 'Contact Me' to Friends as if it were an adjustable option."
+     ]
+    }
+   ],
+   "unreadable": [
+    "tiktok",
+    "fortnite",
+    "whatsapp",
+    "twitch",
+    "disneyplus"
+   ]
+  },
   {
    "date": "2026-09-23",
    "kind": "correction",

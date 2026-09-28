@@ -1,0 +1,44 @@
+{
+ "date": "2026-09-28",
+ "checked": 29,
+ "changed": [
+  "snapchat"
+ ],
+ "unclear": [
+  "roblox",
+  "instagram",
+  "discord",
+  "youtube",
+  "minecraft",
+  "iphone",
+  "ipad",
+  "android",
+  "samsung",
+  "mac",
+  "chromebook",
+  "xbox",
+  "firetablet",
+  "imessage",
+  "applewatch",
+  "spotify"
+ ],
+ "unreachable": [
+  "tiktok",
+  "fortnite",
+  "whatsapp",
+  "twitch",
+  "disneyplus"
+ ],
+ "knownUnreadable": [
+  "tiktok",
+  "fortnite",
+  "whatsapp",
+  "twitch",
+  "disneyplus"
+ ],
+ "newlyUnreadable": [],
+ "rotation": "twitch",
+ "decisions": 1,
+ "minutes": 5,
+ "needsHuman": 1
+}
