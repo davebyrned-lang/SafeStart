@@ -109,7 +109,7 @@
    "context": "Removal is rarely instant and rarely total. It is still worth doing, because every copy taken down is one fewer, and the services above are the only ones with direct removal channels into the major platforms.",
    "countryNotes": {
     "CA": "There is no separate Canadian removal service. Take It Down works here, and NeedHelpNow.ca has step-by-step removal instructions for each major platform.",
-    "IE": "Intimate image abuse reports to Hotline.ie cannot be made anonymously, unlike their other report types."
+    "IE": "Intimate image abuse reports to the Irish Internet Hotline cannot be made anonymously, unlike their other report types."
    }
   },
   {
@@ -273,8 +273,8 @@
      "primary": true
     },
     {
-     "name": "Hotline.ie",
-     "what": "Reporting for child sexual abuse material, grooming, intimate image abuse and sexual extortion. Anonymous, except for intimate image abuse reports.",
+     "name": "Irish Internet Hotline",
+     "what": "Report at hotline.ie. Covers child sexual abuse material, grooming, intimate image abuse and sexual extortion. Anonymous, except for intimate image abuse reports. They do more than log it: they assess every report and work with internet service providers and other organisations to get illegal content taken down.",
      "url": "https://hotline.ie/report/",
      "phone": "+353 86 8116273, also on WhatsApp",
      "primary": true

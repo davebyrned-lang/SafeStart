@@ -1,7 +1,13 @@
 {
- "updated": "2026-09-23",
+ "updated": "2026-10-05",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-10-05",
+   "kind": "correction",
+   "title": "We had the Irish Internet Hotline’s name wrong, and undersold what they do",
+   "body": "Corrected by the organisation itself after we sent them the page to check. Two things. Their operating name is the Irish Internet Hotline, not Hotline.ie, which is their reporting address rather than what they are called. And we had described them as somewhere you send a report, which undersells it: they assess every report and work with internet service providers and other organisations to get illegal content taken down. For a parent deciding whether a report is worth making, that is the difference between filing something and getting something removed, so it belonged on the page. Both are fixed on the Irish crisis page."
+  },
   {
    "date": "2026-09-23",
    "kind": "correction",
