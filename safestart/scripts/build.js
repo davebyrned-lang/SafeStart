@@ -489,7 +489,7 @@ function renderAboutStatic() {
   ]);
 
   section("Who made it", [
-    "TrustRaise is the advisory practice of Dave Byrne, after sixteen years in Responsible Media " +
+    "TrustRaise is the advisory practice of Dave Byrne, after seventeen years in Responsible Media " +
     "and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. TrustRaise works with " +
     "platforms and advertisers on trust and safety. SafeStart is free, has no ads, and sells you " +
     'nothing. <a href="https://trust-raise.com" target="_blank" rel="noopener noreferrer">trust-raise.com</a>'
@@ -505,6 +505,97 @@ function renderAboutStatic() {
   return out.join("");
 }
 
+
+/* ---------------- how to help ----------------
+   People keep asking what they can give. The obvious answer is money, and the
+   obvious answer is wrong here.
+
+   Two reasons, one practical and one not. The practical one: the Android app is
+   a Trusted Web Activity, so this site is the app, and Google Play exempts
+   donations from Play Billing only when they are tax exempt. TrustRaise is a
+   for-profit practice, so they would not be. Real projects have been pulled for
+   less than a donate button; StreetComplete was flagged for linking to a page
+   that merely mentioned donating.
+
+   The other reason is that "there is nothing to buy and no sign-up to capture
+   you with" is the most load-bearing sentence this site has. It is why
+   safeguarding organisations reply. A donate button buys a rounding error in
+   revenue and spends that sentence.
+
+   So the page asks for the two things the site actually runs on, corrections
+   and distribution, and check.js fails the build if a money ask ever appears
+   here or anywhere under /help/. */
+
+function renderHelpOutStatic() {
+  const corrections = (LOG.entries || []).filter((e) => e.kind === "correction").length;
+  const out = [];
+  out.push('<a class="back-link" href="/">Back to SafeStart</a>');
+  out.push('<div class="guide-head"><h1 class="guide-title">How you can help</h1></div>');
+  out.push('<p class="guide-blurb">People have asked what they can give. Not money. ' +
+    "SafeStart is free and stays free, and there is nothing to buy here. There are three " +
+    "things worth more than a donation, and two of them take about a minute.</p>");
+  out.push('<div class="about-spot">' + spotStatic("together") + "</div>");
+
+  const section = (h, paras) => {
+    out.push('<div class="check-card"><h2>' + esc(h) + "</h2>");
+    paras.forEach((t) => out.push("<p>" + t + "</p>"));
+    out.push("</div>");
+  };
+
+  section("Tell us what is wrong", [
+    "This is the most useful thing anyone sends us. Menus move constantly. A guide is only " +
+    "worth something if it matches what is actually on your screen, and the only way we find " +
+    "out it has stopped matching is when somebody says so.",
+    "You do not need to be sure, and you do not need to be polite about it. " +
+    '"Step 4 is not there any more" is a complete and perfect message.',
+    "Every correction gets published with its date, including the ones that make us look " +
+    "careless. There are " + corrections + " of them so far. The most recent came from the " +
+    "Irish Internet Hotline, who read their own page and told us we had their name wrong and " +
+    "had undersold what they do.",
+    '<a class="cta-link" href="/feedback/">Tell us what is wrong</a>'
+  ]);
+
+  section("Send it to one parent", [
+    "Not a share to everybody. One person you can actually picture, who is about to hand over " +
+    "a phone and does not know where to start. That is worth more than a hundred impressions, " +
+    "because they will open it.",
+    "If you want a line to send with it: <em>this walks you through the settings that are " +
+    "already on the phone, it takes an evening, and it is free with no sign-up.</em>"
+  ]);
+
+  section("Tell your child's school", [
+    "Schools already send things home about online safety, and they are usually looking for " +
+    "something practical to send. One teacher or safeguarding lead passing this on reaches more " +
+    "families than we ever will directly.",
+    "Who to send it to: the designated safeguarding lead, the head of year, or whoever runs the " +
+    "parents' newsletter. They do not need anything from us, there is nothing to sign and " +
+    "nothing to pay for, and they can link straight to it."
+  ]);
+
+  section("If you work at an organisation", [
+    "If you work in safeguarding, child protection, education or policy, the most valuable " +
+    "thing you can do is tell us where we are wrong, in public or in private. We would rather " +
+    "hear it from you than from a parent who followed a step that had moved.",
+    "If it turns out to be useful enough to point people at, that is welcome too, and you are " +
+    "not asked for anything in return. Email " +
+    '<a href="mailto:dave@trust-raise.com">dave@trust-raise.com</a>.'
+  ]);
+
+  section("Who pays for it, since nobody is asked to", [
+    "TrustRaise does. TrustRaise is the advisory practice of Dave Byrne, after seventeen years " +
+    "in Responsible Media and Integrity teams at Google, TikTok, Spotify and IPG Mediabrands. " +
+    "It works with platforms and advertisers on trust and safety, and that is the paid work.",
+    "SafeStart is not part of it. There is no sign-up here, no mailing list, nothing is sold, " +
+    "and nothing about using this site turns you into a lead for anything. The hosting is a " +
+    "rounding error against the point of it, which is that a parent should not need to know " +
+    "someone in the industry to get their child's phone set up properly.",
+    "That is also why there is no donate button. The moment there is something to buy, the " +
+    'sentence above stops being simple. <a href="https://trust-raise.com" target="_blank" ' +
+    'rel="noopener noreferrer">trust-raise.com</a>'
+  ]);
+
+  return out.join("");
+}
 
 /* ---------------- privacy ----------------
    Play Console will not accept a listing without a privacy policy URL, which is
@@ -946,6 +1037,14 @@ function build() {
     main: renderAboutStatic()
   }));
   urls.push({ loc: SITE + "/about/", priority: "0.6", lastmod: LOG.updated });
+
+  write("how-to-help/index.html", page({
+    url: "/how-to-help/",
+    title: "How you can help — SafeStart",
+    description: "SafeStart is free and there is nothing to buy. Three things worth more than a donation: tell us what is wrong, send it to one parent, tell your child's school.",
+    main: renderHelpOutStatic()
+  }));
+  urls.push({ loc: SITE + "/how-to-help/", priority: "0.5", lastmod: LOG.updated });
 
   write("privacy/index.html", page({
     url: "/privacy/",

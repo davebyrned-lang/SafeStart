@@ -1,7 +1,13 @@
 {
- "updated": "2026-10-05",
+ "updated": "2026-10-06",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-10-06",
+   "kind": "site",
+   "title": "A page for people who want to give something, which is not money",
+   "body": "Enough people asked what they could contribute that it needed an answer, and the answer is not a donate button. Partly because the Android app is this site in a window, and Google Play only exempts donations from its billing system when they are tax exempt, which a for-profit practice's are not. Mostly because \"there is nothing to buy and no sign-up to capture you with\" is the most useful sentence this site has, and a donate button spends it for a rounding error in revenue. So the new page asks for the two things SafeStart actually runs on: tell us what is wrong, and send it to one parent or to your child's school. It also says plainly who pays for the hosting and why you are not being asked to. The build now fails if a donation link ever appears anywhere on the site, and fails harder if a money ask of any kind appears on a crisis page."
+  },
   {
    "date": "2026-10-05",
    "kind": "correction",

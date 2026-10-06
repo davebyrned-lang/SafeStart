@@ -837,6 +837,64 @@ console.log('\nstep videos');
   else ok('no step videos');
 }
 
+/* Nothing is ever for sale here.
+ *
+ * Two separate reasons, and the check enforces both because they are easy to
+ * erode one well-meaning commit at a time.
+ *
+ * Policy: the Android app is a Trusted Web Activity, so this site is the app.
+ * Google Play exempts donations from Play Billing only when they are tax
+ * exempt, and TrustRaise is a for-profit practice, so a donate link inside the
+ * app is a payments-policy breach. It also contradicts the "no purchases"
+ * answers given on the content rating and data safety forms.
+ *
+ * Trust: "there is nothing to buy and no sign-up to capture you with" is the
+ * sentence that makes safeguarding organisations reply. It is worth more than
+ * any donation revenue a site this size could raise.
+ *
+ * And the hardest line of all: never on the crisis pages. A contribute prompt
+ * beside "if your child is in immediate danger, call 999" would cost more trust
+ * than money could repay.
+ */
+console.log('\nnothing for sale');
+{
+  const ASK = /\b(donate|donation|patreon|ko-?fi|buy me a coffee|gofundme|sponsor us|chip in|paypal\.me|becomeapatron|support us financially)\b/i;
+  // Prose *about* not taking money is allowed, and the how-to-help page is made
+  // of it. What is banned is a live route to give any.
+  const ROUTE = /href=["'][^"']*(donate|patreon|ko-?fi|gofundme|buymeacoffee|paypal\.me|opencollective|givebutter|justgiving)/i;
+
+  const pages = [];
+  const walk = (dir) => fs.readdirSync(dir, { withFileTypes: true }).forEach((e) => {
+    const p = path.join(dir, e.name);
+    if (e.isDirectory() && !['node_modules', '.git', 'src', 'scripts', 'ops', 'assets', 'api'].includes(e.name)) walk(p);
+    else if (e.name === 'index.html') pages.push(p);
+  });
+  walk(ROOT);
+
+  let crisis = 0, routed = [];
+  pages.forEach((p) => {
+    const html = fs.readFileSync(p, 'utf8');
+    const rel = '/' + path.relative(ROOT, p).replace(/index\.html$/, '');
+    if (ROUTE.test(html)) routed.push(rel);
+    // On a crisis page even the words are out, because a parent scanning that
+    // page in a panic should not meet the idea of giving money at all.
+    if (/^\/help\//.test(rel) && ASK.test(html)) { fail(`crisis page ${rel} contains a money ask`); crisis++; }
+  });
+
+  if (routed.length) routed.forEach((r) => fail(`${r} links to a donation route; see the note above this check`));
+  else if (!crisis) ok(`${pages.length} pages, no donation route anywhere and nothing asked for on the crisis pages`);
+
+  const helpOut = path.join(ROOT, 'how-to-help', 'index.html');
+  if (!fs.existsSync(helpOut)) fail('no how-to-help page, so there is nowhere to point someone who wants to give something');
+  else {
+    const h = fs.readFileSync(helpOut, 'utf8');
+    if (!/feedback/.test(h)) fail('how-to-help does not route anyone to the feedback form, which is the whole point of it');
+    else if (!/href="\/how-to-help\/"/.test(fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf8'))) {
+      fail('how-to-help is not linked from the footer, so nobody will find it');
+    } else ok('how-to-help exists, is linked, and sends people to the feedback form');
+  }
+}
+
 console.log('\nprivacy policy');
 {
   const privPath = path.join(ROOT, 'privacy', 'index.html');
