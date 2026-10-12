@@ -1,7 +1,43 @@
 {
- "updated": "2026-10-06",
+ "updated": "2026-10-12",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-10-12",
+   "kind": "freshness-check",
+   "checked": 29,
+   "reverified": [
+    "instagram",
+    "snapchat",
+    "playstation",
+    "switch",
+    "netflix",
+    "primevideo",
+    "accounts",
+    "hbomax"
+   ],
+   "flagged": [
+    {
+     "guide": "firetablet",
+     "summary": [
+      "The guide claims Amazon renamed the age-filter setting to 'Content Maturity Filter & Languages', but the official Parent Dashboard page still refers to it by the old name."
+     ]
+    },
+    {
+     "guide": "applewatch",
+     "summary": [
+      "Apple's watchOS user guide now states that for watchOS 27, Apple Watch For Your Kids requires a cellular-capable Apple Watch SE 3 or Series 9 or later, a materially higher hardware floor than the guide's 'Series 6 or SE or newer' reading."
+     ]
+    }
+   ],
+   "unreadable": [
+    "tiktok",
+    "fortnite",
+    "whatsapp",
+    "twitch",
+    "disneyplus"
+   ]
+  },
   {
    "date": "2026-10-06",
    "kind": "site",
