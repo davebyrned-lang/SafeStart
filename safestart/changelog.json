@@ -1,7 +1,29 @@
 {
- "updated": "2026-10-06",
+ "updated": "2026-10-26",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-10-26",
+   "kind": "freshness-check",
+   "checked": 29,
+   "reverified": [
+    "tiktok",
+    "snapchat",
+    "playstation",
+    "switch",
+    "netflix",
+    "primevideo",
+    "accounts",
+    "hbomax"
+   ],
+   "flagged": [],
+   "unreadable": [
+    "fortnite",
+    "whatsapp",
+    "twitch",
+    "disneyplus"
+   ]
+  },
   {
    "date": "2026-10-06",
    "kind": "site",
