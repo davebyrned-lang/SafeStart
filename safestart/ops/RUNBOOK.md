@@ -38,6 +38,8 @@ The guides, the crisis pages and the plan builder do not call the API at all and
 
 The in-memory rate limiter resets whenever a serverless instance recycles, so it slows one visitor and does not stop a determined one. The spend cap in the Anthropic console is the real ceiling. Check it is set before any press goes out.
 
+The launch decision is a **$100 monthly cap** in the Anthropic console. Live guide lookups (`/api/guide`) stay on, limited to 3 new lookups per visitor per ten minutes. Curated guides are never limited. If the cap is ever reached, that route and Ask SafeStart both start failing with the friendly messages above, and everything else carries on.
+
 ## If a key leaks
 
 1. Create a new key in the provider's dashboard (Anthropic console, Resend, or GitHub for the repo secret) and delete the old one first if the leak is live.
@@ -52,8 +54,12 @@ The in-memory rate limiter resets whenever a serverless instance recycles, so it
 - **Errors.** Vercel's function logs show API failures. The handlers log `ask failed`, `feedback: resend returned` and `guide generation failed` with the upstream status.
 - **Page counter.** Vercel Web Analytics. It is deliberately not on `/plan/`.
 
+## Checking that Ask SafeStart still behaves
+
+`node scripts/ask-eval.js` sends 19 questions to the live chat and checks the answers: facts the guides settle, things it should decline, the crisis route, and attempts to leak the prompt. It costs a few cents and saves every answer to `ops/eval-last-run.md`. Run it once before launch and again after any change to `api/_lib/prompt.js` or the model. A failed rule means read the answer, since the checks are pattern matches over free text.
+
 ## Launch day
 
-- Before anything goes out: spend cap set, `RESEND_API_KEY` and `ANTHROPIC_API_KEY` present in Vercel Production, one real feedback submission received in the inbox, one real Ask SafeStart answer received.
+- Before anything goes out: spend cap set, `RESEND_API_KEY` and `ANTHROPIC_API_KEY` present in Vercel Production, one real feedback submission received in the inbox, the eval run once against the live site.
 - Watch the inbox and the Vercel function logs for the first hour, then at lunch and in the evening.
 - If chat misbehaves, switch it off (see above). Nothing else depends on it.
