@@ -746,7 +746,7 @@ function renderHelpOutStatic() {
    Dated by hand rather than from the changelog. A policy's date should move when
    the policy moves, not when a guide is corrected. */
 
-const PRIVACY_UPDATED = "22 September 2026";
+const PRIVACY_UPDATED = "26 October 2026";
 
 function renderPrivacyStatic() {
   const out = [];
@@ -801,9 +801,12 @@ function renderPrivacyStatic() {
 
   section("The feedback form", [
     "If you tell us something is wrong, we receive your message, the page you were on, and " +
-    "your email address if you chose to give one. It is delivered to us as email through " +
-    "Resend. The message is not stored on this site, and an email address you give is used to " +
-    "reply to you and for nothing else. It goes on no list.",
+    "your email address if you chose to give one. When the form can send directly, it is " +
+    "delivered to us as email through Resend. If sending from the form is not switched on, " +
+    "the form says so and opens your own mail app with the message ready. In that case it " +
+    "reaches us only if you press send there, and it travels through your own mail provider " +
+    "rather than ours. Either way the message is not stored on this site, and an email " +
+    "address you give is used to reply to you and for nothing else. It goes on no list.",
     "The same request applies here: describe what you saw on the screen, not who was using it."
   ]);
 
@@ -843,10 +846,11 @@ function renderPrivacyStatic() {
   ]);
 
   section("Who processes what", [
-    "Three companies are involved, and only these three. <strong>Vercel</strong> hosts the " +
-    "site and provides the page counter. <strong>Anthropic</strong> answers Ask SafeStart " +
-    "questions. <strong>Resend</strong> delivers feedback messages to us as email. Each is " +
-    "used only for the job named here."
+    "Three companies are involved in running the site, and only these three. " +
+    "<strong>Vercel</strong> hosts the site and provides the page counter. " +
+    "<strong>Anthropic</strong> answers Ask SafeStart questions. <strong>Resend</strong> " +
+    "delivers feedback messages to us as email when you send them through the form rather " +
+    "than from your own mail app. Each is used only for the job named here."
   ]);
 
   section("Your rights, and why there is usually nothing to hand over", [
