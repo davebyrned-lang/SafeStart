@@ -162,6 +162,37 @@ function sseResponse(events) {
   check('forwards both text chunks', res.collected.includes('Open Settings, ') && res.collected.includes('then Screen Time.'));
   check('sends a done event', res.collected.includes('"done"'));
 
+  console.log('\nguide context for the chat');
+  {
+    const { guideToText } = require(path.join(ROOT, 'api/_lib/guidetext.js'));
+    const gd = require(path.join(ROOT, 'guides.json')).guides;
+    const withOneWay = Object.values(gd).filter((g) => Array.isArray(g.oneWay) && g.oneWay.length);
+    const dropped = withOneWay.filter((g) => g.oneWay.some((w) => guideToText(g).indexOf(w) === -1)).map((g) => g.id);
+    check('every one-way warning reaches the model (' + withOneWay.length + ' guides)', dropped.length === 0, 'missing from: ' + dropped.join(', '));
+    const withUndo = Object.values(gd).filter((g) => g.steps.some((st) => st.undo));
+    const lostUndo = withUndo.filter((g) => g.steps.some((st) => st.undo && guideToText(g).indexOf(st.undo) === -1)).map((g) => g.id);
+    check('every undo note reaches the model (' + withUndo.length + ' guides)', lostUndo.length === 0, 'missing from: ' + lostUndo.join(', '));
+  }
+
+  console.log('\n/api/ask — text either side of a search');
+  nextResponse = () => sseResponse([
+    { type: 'message_start' },
+    { type: 'content_block_start', index: 0, content_block: { type: 'text' } },
+    { type: 'content_block_delta', index: 0, delta: { type: 'text_delta', text: 'Let me check.' } },
+    { type: 'content_block_start', index: 1, content_block: { type: 'server_tool_use', name: 'web_search' } },
+    { type: 'content_block_start', index: 2, content_block: { type: 'web_search_tool_result' } },
+    { type: 'content_block_start', index: 3, content_block: { type: 'text' } },
+    { type: 'content_block_delta', index: 3, delta: { type: 'text_delta', text: 'It moved to Settings' } },
+    { type: 'content_block_start', index: 4, content_block: { type: 'text' } },
+    { type: 'content_block_delta', index: 4, delta: { type: 'text_delta', text: ' and then Screen Time.' } },
+    { type: 'message_stop' },
+  ]);
+  res = mockRes();
+  await askHandler({ method: 'POST', headers: {}, socket: {}, body: { messages: [{ role: 'user', content: 'Where is it?' }], context: { guideId: 'iphone' } } }, res);
+  const texts = [...res.collected.matchAll(/data: (\{[^\n]*\})/g)].map((m) => JSON.parse(m[1])).filter((e) => e.type === 'text').map((e) => e.text).join('');
+  check('separates the text before and after a search', texts.startsWith('Let me check.\n\nIt moved'), JSON.stringify(texts));
+  check('does not split a sentence that a citation cut in two', texts.endsWith('Settings and then Screen Time.'), JSON.stringify(texts));
+
   console.log('\n/api/ask — validation');
   res = mockRes();
   await askHandler({ method: 'POST', headers: {}, socket: {}, body: { messages: [] } }, res);

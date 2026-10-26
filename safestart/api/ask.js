@@ -116,6 +116,12 @@ module.exports = async function handler(req, res) {
     const reader = upstream.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
+    // After a web search the model starts a fresh text block, and the API gives no
+    // separator between it and what came before. Without one the two run together
+    // ("...on file.TikTok locks..."). Citations also split a block mid-sentence, so a
+    // break goes in only where a search result sat between the two pieces of text.
+    let sentText = false;
+    let afterSearch = false;
 
     while (true) {
       const { done, value } = await reader.read();
@@ -141,8 +147,13 @@ module.exports = async function handler(req, res) {
           const blockType = event.content_block?.type;
           if (blockType === 'server_tool_use' || blockType === 'web_search_tool_result') {
             send({ type: 'searching' });
+            if (blockType === 'web_search_tool_result') afterSearch = true;
+          } else if (blockType === 'text' && afterSearch) {
+            if (sentText) send({ type: 'text', text: '\n\n' });
+            afterSearch = false;
           }
         } else if (event.type === 'content_block_delta' && event.delta?.type === 'text_delta') {
+          sentText = true;
           send({ type: 'text', text: event.delta.text });
         } else if (event.type === 'error') {
           send({ type: 'error', message: 'The research service returned an error.' });

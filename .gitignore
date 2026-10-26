@@ -11,4 +11,4 @@ Claude outputs/
 node_modules/
 
 # Eval output holds full model answers; read it, do not commit it
-safestart/ops/eval-last-run.md
+safestart/ops/eval-last-run*.md
