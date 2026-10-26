@@ -648,12 +648,35 @@ ok(curCount + ' {cur} tokens, substituted per country at render time');
 console.log('\nbuild output');
 const expected = ['index.html', 'sitemap.xml', 'robots.txt', 'help/index.html',
                   'changelog/index.html', 'plan/index.html', 'about/index.html',
-                  'feedback/index.html', 'privacy/index.html']
+                  'feedback/index.html', 'privacy/index.html', 'terms/index.html']
   .concat(countryIds.map((c) => 'help/' + c.toLowerCase() + '/index.html'))
   .concat(Object.keys(data.guides).map((id) => id + '/index.html'));
 const missing = expected.filter((f) => !fs.existsSync(path.join(ROOT, f)));
 if (missing.length) fail('not built yet (run npm run build): ' + missing.slice(0, 3).join(', ') + (missing.length > 3 ? ' and ' + (missing.length - 3) + ' more' : ''));
 else ok(expected.length + ' pages present');
+
+console.log('\nsitemap dates');
+{
+  const sm = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  const bad = [...sm.matchAll(/<lastmod>([^<]*)<\/lastmod>/g)].map((m) => m[1]).filter((d) => !/^\d{4}-\d{2}-\d{2}$/.test(d));
+  if (bad.length) fail(bad.length + ' sitemap lastmod value(s) are not ISO dates, e.g. "' + bad[0] + '"; search engines ignore them');
+  else ok('every lastmod is an ISO date');
+}
+
+console.log('\nterms');
+{
+  const termsPath = path.join(ROOT, 'terms', 'index.html');
+  if (fs.existsSync(termsPath)) {
+    const t = fs.readFileSync(termsPath, 'utf8');
+    const foot = fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf8');
+    if (!/href="\/terms\/"/.test(foot)) fail('src/app.html does not link to /terms/');
+    else if (!/\|terms\|/.test(foot)) fail('isStaticPage does not list terms, so the app would hydrate over the page');
+    else if (fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8').indexOf('/terms/') === -1) fail('/terms/ is missing from sitemap.xml');
+    else if (!/mailto:/.test(t) || !/Alexandria/.test(t)) fail('/terms/ no longer names who runs the site and how to reach them');
+    else if (/governed by|jurisdiction/i.test(t)) fail('/terms/ now names a governing law; that is a lawyer decision, check it was made on purpose');
+    else ok('linked from the footer, in the sitemap, static, and names who runs the site');
+  }
+}
 
 console.log('\nshare card and 404');
 {

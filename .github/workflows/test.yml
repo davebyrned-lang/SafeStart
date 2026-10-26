@@ -1,0 +1,59 @@
+# SafeStart tests, on every push and pull request.
+#
+# GitHub only reads workflows from .github/workflows/ at the repo root, and the
+# site lives one level down in safestart/, hence the working-directory default.
+#
+# Runs the same steps as `npm test` except the browser test, which needs
+# Playwright and a Chromium download. Run that one locally before a big change.
+#
+# The rebuild step is the one that matters most. Vercel serves the pages that are
+# committed, it does not build them. If someone edits guides.json or the template
+# and forgets to run the build, the site would ship stale pages while every other
+# check passed. This fails the run when a clean rebuild differs from what is
+# committed.
+
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: safestart
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Rebuild pages
+        run: node scripts/build.js
+
+      - name: Committed pages match a clean rebuild
+        run: |
+          if [ -n "$(git status --porcelain -- .)" ]; then
+            echo "A clean rebuild changed these files. Run 'node scripts/build.js' and commit the result:"
+            git status --short -- .
+            git diff --stat -- . | tail -5
+            exit 1
+          fi
+
+      - name: Content and build checks
+        run: node scripts/check.js
+
+      - name: API tests
+        run: node scripts/api-test.js

@@ -121,6 +121,100 @@ function notFoundPage() {
   ].join("\n");
 }
 
+/* ---------------- terms ----------------
+   Plain-language terms for a free guide with no accounts. Deliberately short, and
+   deliberately silent on governing law and jurisdiction: that is a choice for a
+   lawyer, not for a build script. */
+const TERMS_UPDATED = "26 October 2026";
+const TERMS_UPDATED_ISO = "2026-10-26";
+
+function renderTermsStatic() {
+  const out = [];
+  out.push('<a class="back-link" href="/">Back to SafeStart</a>');
+  out.push('<div class="guide-head"><h1 class="guide-title">Terms of use</h1></div>');
+  out.push('<p class="guide-blurb">SafeStart is a free guide to the parental controls that already ' +
+    "exist on your child's apps and devices. These are the ground rules for using it, in plain " +
+    "English.</p>");
+  out.push('<div class="meta-row"><span class="pill">Free</span><span class="pill">No account</span>' +
+    '<span class="pill">Updated ' + TERMS_UPDATED + "</span></div>");
+
+  const section = (h, paras) => {
+    out.push('<div class="check-card"><h2>' + esc(h) + "</h2>");
+    paras.forEach((t) => out.push("<p>" + t + "</p>"));
+    out.push("</div>");
+  };
+
+  section("What SafeStart is", [
+    "SafeStart gives general guidance on setting up parental controls. It is written for the " +
+    "adult setting up a device. It is not monitoring software, it does not watch your child, " +
+    "and no alert is ever coming from us.",
+    "Controls reduce risk and they do not remove it. A determined child can often get around a " +
+    "setting, and no setting replaces talking with your child and paying attention to what " +
+    "they are doing.",
+    "Nothing here is legal, medical, or professional safeguarding advice."
+  ]);
+
+  section("Menus move, and we can be wrong", [
+    "Platforms rebuild their settings often. Every guide shows the date we last checked it and " +
+    "links to the platform's own page. If a step does not match your screen, the platform's page " +
+    "is the authority, and we would like to hear about it through the " +
+    '<a href="/feedback/">feedback form</a> so it can be corrected.',
+    "You are responsible for the choices you make about your child's devices and accounts, and " +
+    "for checking that a setting did what you expected."
+  ]);
+
+  section("If something has happened", [
+    "SafeStart is not an emergency service and nobody is watching for messages here. If a child " +
+    "is in immediate danger, contact your local emergency number. The " +
+    '<a href="/help/">help pages</a> list who to report to in the UK, Ireland, the United States ' +
+    "and Canada."
+  ]);
+
+  section("Ask SafeStart", [
+    "Answers in Ask SafeStart are written by an AI model and may be wrong or out of date. Check " +
+    "anything important against the guide on screen and the platform's own page.",
+    "Please do not type your child's name, your address, or anything else that identifies your " +
+    "family into the box. The " + '<a href="/privacy/">privacy page</a> explains what is sent and to whom.'
+  ]);
+
+  section("Other people's names and links", [
+    "SafeStart links to platforms, charities and public bodies. We do not control those sites " +
+    "and cannot promise what is on them. App and company names belong to their owners. Mentioning " +
+    "them does not mean they have reviewed, approved or sponsored SafeStart, and we are not " +
+    "affiliated with them."
+  ]);
+
+  section("Using and sharing the guides", [
+    "You can read, print and share the guides with other parents, schools and charities, free of " +
+    "charge. Please keep the date the guide was last checked with it, and link back to " +
+    "SafeStart, so the person reading can see how current it is.",
+    "Please do not use automated tools to send large volumes of requests to Ask SafeStart or the " +
+    "feedback form. Both are rate limited so that one visitor cannot run up a bill for everyone.",
+    "If you send feedback, we may use it to correct a guide. We will not publish your name or " +
+    "your email address."
+  ]);
+
+  section("Our responsibility", [
+    "SafeStart is provided as it is, free of charge. To the extent the law allows, TrustRaise is " +
+    "not liable for loss or damage that comes from relying on it. Nothing in these terms limits " +
+    "anything the law does not allow us to limit.",
+    "We may change, pause or withdraw any part of SafeStart at any time."
+  ]);
+
+  section("If these terms change", [
+    "The date at the top moves when they do. Anything that changes how the site works for you is " +
+    'also recorded in the <a href="/changelog/">changelog</a>.'
+  ]);
+
+  section("Who runs this", [
+    "SafeStart is run by TrustRaise, the advisory practice of Dave Byrne, at 324 N Payne Street, " +
+    'Alexandria, VA 22314, United States. Questions: <a href="mailto:dave@trust-raise.com">' +
+    "dave@trust-raise.com</a>."
+  ]);
+
+  return out.join("\n");
+}
+
 function jsonLd(obj) {
   // Escaping "<" keeps a stray tag in guide prose from closing the script early.
   const json = JSON.stringify(obj, null, 1).replace(/</g, "\\u003c");
@@ -1095,6 +1189,14 @@ function build() {
   urls.push({ loc: SITE + "/privacy/", priority: "0.4", lastmod: LOG.updated });
 
   write("404.html", notFoundPage());
+
+  write("terms/index.html", page({
+    url: "/terms/",
+    title: "Terms of use — SafeStart",
+    description: "The ground rules for using SafeStart, in plain English: what it is, what it cannot promise, and how the guides may be shared.",
+    main: renderTermsStatic()
+  }));
+  urls.push({ loc: SITE + "/terms/", priority: "0.3", lastmod: TERMS_UPDATED_ISO });
 
   write("feedback/index.html", page({
     url: "/feedback/",

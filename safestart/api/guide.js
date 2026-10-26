@@ -86,7 +86,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const limit = rateLimit.check(req, { limit: 8, windowMs: 10 * 60 * 1000, key: 'guide' });
+  const limit = rateLimit.check(req, { limit: 3, windowMs: 10 * 60 * 1000, key: 'guide' });
   if (!limit.ok) {
     res.setHeader('Retry-After', String(limit.retryAfter));
     return res.status(429).json({

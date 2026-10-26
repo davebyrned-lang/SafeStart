@@ -118,8 +118,25 @@ function sseResponse(events) {
   console.log('\n/api/guide — upstream failure');
   nextResponse = () => jsonResponse({ error: { message: 'overloaded' } }, 529);
   res = mockRes();
-  await guideHandler({ method: 'GET', query: { app: 'Some New App' }, headers: {}, socket: {} }, res);
+  await guideHandler({ method: 'GET', query: { app: 'Some New App' }, headers: { 'x-forwarded-for': '203.0.113.50' }, socket: {} }, res);
   check('returns 502 on an upstream error', res.statusCode === 502, 'status ' + res.statusCode);
+
+  console.log('\n/api/guide — launch limit');
+  // Live generation is the one route that spends real money on a request nobody has
+  // asked for before, so it allows 3 new lookups per visitor per ten minutes.
+  nextResponse = () => jsonResponse({ error: { message: 'overloaded' } }, 529);
+  const codes = [];
+  for (let i = 0; i < 4; i++) {
+    const r = mockRes();
+    await guideHandler({ method: 'GET', query: { app: 'Limit Probe ' + i }, headers: { 'x-forwarded-for': '203.0.113.77' }, socket: {} }, r);
+    codes.push(r.statusCode);
+  }
+  check('the first three lookups are let through', codes.slice(0, 3).every((c) => c !== 429), codes.join(','));
+  check('the fourth from the same visitor gets a 429', codes[3] === 429, codes.join(','));
+  nextResponse = () => { throw new Error('should not call the API for a curated guide'); };
+  const curatedRes = mockRes();
+  await guideHandler({ method: 'GET', query: { app: 'Roblox' }, headers: { 'x-forwarded-for': '203.0.113.77' }, socket: {} }, curatedRes);
+  check('a curated guide still loads for a visitor who hit the limit', curatedRes.statusCode === 200 && curatedRes.body.source === 'curated', 'status ' + curatedRes.statusCode);
 
   console.log('\n/api/ask — streaming');
   nextResponse = () => sseResponse([

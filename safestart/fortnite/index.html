@@ -1483,6 +1483,7 @@ button { font: inherit; cursor: pointer; }
     <p><a class="foot-link" href="/changelog/">What has changed</a> · every correction and source check, with dates</p>
     <p><a class="foot-link" href="/how-to-help/">How you can help</a> · not money, and there is nothing here to buy</p>
     <p><a class="foot-link" href="/privacy/">Privacy</a> · no account, no cookies, and what the page counter does and does not see</p>
+    <p><a class="foot-link" href="/terms/">Terms</a> · the ground rules, in plain English</p>
     <p class="foot-legal">SafeStart gives general online safety guidance, not legal advice. Platforms change their menus often, so every guide shows when it was last checked and links to the official source.</p>
   </div>
 </footer>
@@ -1929,7 +1930,7 @@ function isPlanPath() { return /^\/plan\/?$/.test(location.pathname); }
    changelog, a reader with JavaScript saw the front page. Adding /about/ is what
    finally surfaced it. Anything listed here the app leaves alone. */
 function isStaticPage() {
-  return /^\/(help|about|changelog|feedback|privacy|how-to-help)(\/|$)/.test(location.pathname);
+  return /^\/(help|about|changelog|feedback|privacy|terms|how-to-help)(\/|$)/.test(location.pathname);
 }
 
 function readUrl() {
