@@ -80,12 +80,17 @@ module.exports = async function handler(req, res) {
     verifiedOn = null;
   }
 
+  // Label fields come from the browser and land in the system prompt, so they are
+  // clipped to short single lines. Real values are a few words.
+  const label = (v, max) =>
+    typeof v === 'string' ? v.replace(/[\r\n]+/g, ' ').trim().slice(0, max) : null;
+
   const system = chatSystemPrompt({
-    ageBand: ctx.ageBand,
-    deviceLabel: ctx.deviceLabel,
-    appLabel: ctx.appLabel,
-    country: ctx.country,
-    helpMode: ctx.helpMode,
+    ageBand: label(ctx.ageBand, 40),
+    deviceLabel: label(ctx.deviceLabel, 80),
+    appLabel: label(ctx.appLabel, 300),
+    country: label(ctx.country, 10),
+    helpMode: label(ctx.helpMode, 20),
     guideText,
     verifiedOn,
   });

@@ -59,9 +59,13 @@ module.exports = async function handler(req, res) {
   }
 
   const app = (req.query.app || '').toString().trim();
-  const device = (req.query.device || '').toString().trim();
-  const age = (req.query.age || '').toString().trim();
-  const country = (req.query.country || '').toString().trim();
+  // These go straight into the model prompt, so they are short, single-line values.
+  // The app name has its own limit below; without these a query string could carry a
+  // few thousand characters of someone else's instructions into the prompt.
+  const short = (v) => (v || '').toString().replace(/[\r\n]+/g, ' ').trim().slice(0, 40);
+  const device = short(req.query.device);
+  const age = short(req.query.age);
+  const country = short(req.query.country);
 
   if (!app) return res.status(400).json({ error: 'Tell me which app or platform.' });
   if (app.length > 60) return res.status(400).json({ error: 'That name is too long.' });

@@ -550,7 +550,7 @@ if (!/\/api\/guide\?/.test(html)) fail('app template does not call /api/guide');
 else ok('calls /api/guide');
 if (!/\/api\/ask/.test(html)) fail('app template does not call /api/ask');
 else ok('calls /api/ask');
-['@TITLE@', '@DESC@', '@CANON@', '@HEADEXTRA@', '@MAIN@', '@ANALYTICS@'].forEach((tok) => {
+['@TITLE@', '@DESC@', '@CANON@', '@OGIMAGE@', '@HEADEXTRA@', '@MAIN@', '@ANALYTICS@'].forEach((tok) => {
   if (html.indexOf(tok) === -1) fail('app template is missing the ' + tok + ' placeholder');
   else ok('has ' + tok);
 });
@@ -654,6 +654,37 @@ const expected = ['index.html', 'sitemap.xml', 'robots.txt', 'help/index.html',
 const missing = expected.filter((f) => !fs.existsSync(path.join(ROOT, f)));
 if (missing.length) fail('not built yet (run npm run build): ' + missing.slice(0, 3).join(', ') + (missing.length > 3 ? ' and ' + (missing.length - 3) + ' more' : ''));
 else ok(expected.length + ' pages present');
+
+console.log('\nshare card and 404');
+{
+  const ogFile = path.join(ROOT, 'assets', 'og-image-v1.png');
+  if (!fs.existsSync(ogFile)) fail('assets/og-image-v1.png is missing, so every shared link would show a blank card');
+  else {
+    const buf = fs.readFileSync(ogFile);
+    const w = buf.readUInt32BE(16), h = buf.readUInt32BE(20);
+    if (w !== 1200 || h !== 630) fail('og-image is ' + w + 'x' + h + ', expected 1200x630');
+    else if (buf.length > 600 * 1024) fail('og-image is ' + Math.round(buf.length / 1024) + 'KB; LinkedIn and others drop cards over about 600KB');
+    else ok('og-image is 1200x630 and ' + Math.round(buf.length / 1024) + 'KB');
+  }
+  const homeFile = path.join(ROOT, 'index.html');
+  if (fs.existsSync(homeFile)) {
+    const home = fs.readFileSync(homeFile, 'utf8');
+    if (!/property="og:image" content="https:\/\/[^"]+\/assets\/og-image-v1\.png"/.test(home)) fail('home page has no absolute og:image');
+    else if (!/name="twitter:card" content="summary_large_image"/.test(home)) fail('twitter:card is not summary_large_image');
+    else ok('home page carries an absolute og:image and the large twitter card');
+  }
+  const nfFile = path.join(ROOT, '404.html');
+  if (!fs.existsSync(nfFile)) fail('404.html is missing, so a mistyped link gets the host\'s generic error page');
+  else {
+    const nf = fs.readFileSync(nfFile, 'utf8');
+    if (!/name="robots" content="noindex/.test(nf)) fail('404.html is not noindex');
+    else if (/(src|href)="(?!https?:|\/|#|mailto:)/.test(nf)) fail('404.html uses a relative path, which breaks at any depth');
+    else if (/<script/i.test(nf)) fail('404.html runs script; it should have none');
+    else if (!/href="\/help\/"/.test(nf)) fail('404.html does not link to the help page');
+    else ok('404.html is noindex, script-free, absolute-path only and links to /help/');
+    if (fs.existsSync(path.join(ROOT, 'sitemap.xml')) && /404/.test(fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8'))) fail('404.html is in the sitemap');
+  }
+}
 
 if (!missing.length) {
   const titles = new Set();
