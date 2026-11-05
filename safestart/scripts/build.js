@@ -1074,6 +1074,13 @@ function renderHelpShared(country) {
     if (s.countryNotes && s.countryNotes[country]) {
       out.push('<p class="note">' + esc(s.countryNotes[country]) + "</p>");
     }
+    // Optional links that belong to one country's note, such as the source of a
+    // definition quoted there. Kept in a tiny line so it reads as sourcing.
+    if (s.countryLinks && s.countryLinks[country]) {
+      out.push('<p class="tiny">Source: ' + s.countryLinks[country]
+        .map((l) => '<a href="' + esc(l.url) + '" target="_blank" rel="noopener noreferrer">' + esc(l.label) + "</a>")
+        .join(" &middot; ") + "</p>");
+    }
     // Citations sit under the advice rather than inside it, so the instruction
     // reads as an instruction and the sourcing is still there for anyone checking.
     if (s.sources) out.push('<p class="tiny">Sources: ' + esc(s.sources) + "</p>");

@@ -1,7 +1,13 @@
 {
- "updated": "2026-10-06",
+ "updated": "2026-11-05",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-11-05",
+   "kind": "site",
+   "title": "Bullying advice reworked after feedback from PREVNet",
+   "body": "PREVNet, Canada’s national bullying prevention network, reviewed the cyberbullying content and made two points: use their definitions, and avoid general statements, because there is no one-size-fits-all approach to bullying. The Canada crisis page now carries PREVNet’s definition with credit, and links to their definitions and their province-by-province legislation pages. Across the site, lines that said what usually happens, or what order to do things in, now say what is often useful and name the limits. A few guide notes were reworded for the same reason."
+  },
   {
    "date": "2026-10-06",
    "kind": "site",

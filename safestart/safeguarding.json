@@ -115,29 +115,46 @@
   {
    "id": "bullying",
    "label": "My child is being bullied or harassed",
-   "summary": "Sustained cruelty, exclusion, threats or humiliation, usually from people your child actually knows.",
+   "summary": "Sustained cruelty, exclusion, threats or humiliation, often from people your child actually knows.",
    "urgent": false,
    "keyAdvice": [
     {
-     "title": "Screenshot the pattern, not just the worst message",
-     "body": "A single message rarely gets acted on. A run of them over days does. Capture dates wherever you can."
+     "title": "It can help to capture the pattern, not just the worst message",
+     "body": "A run of messages over days can be easier to act on than a single one. Capture dates wherever you can."
     },
     {
-     "title": "Save it before you block",
-     "body": "Blocking can put the whole conversation out of reach, and some of it deletes itself anyway. Snapchat messages go on their own, and WhatsApp blocks screenshots of View Once messages entirely. Photographing the screen with a second phone is the one method no app can block or notify about, and it works on a console too."
+     "title": "Consider saving it before you block",
+     "body": "Blocking can put the whole conversation out of reach, and some of it deletes itself anyway. Snapchat messages go on their own, and WhatsApp blocks screenshots of View Once messages entirely. If you want a record, photographing the screen with a second phone is the one method no app can block or notify about, and it works on a console too. Whether to save first or block straight away depends on what is happening and how your child is coping."
     },
     {
-     "title": "Report inside the platform first",
-     "body": "For bullying the platform genuinely is the right first stop, and most have a specific bullying or harassment category that routes faster than a general report."
+     "title": "Reporting inside the platform is often a useful early step",
+     "body": "Most platforms have a specific bullying or harassment category, which can route faster than a general report. It will not suit every situation, and it does not replace involving the school or the other adults around your child."
     },
     {
-     "title": "Involve the school if the people involved are from school",
-     "body": "Most online bullying between classmates is a school matter with an online surface. Schools have a duty here and are usually better placed to stop it than any platform is."
+     "title": "The school may be worth involving if the people involved are from school",
+     "body": "Bullying between classmates often has an online side as well as a school side, and schools can sometimes act where a platform cannot. What a school is required to do varies by country and region, so check the rules where you live."
     }
    ],
-   "context": "Bullying is generally outside the remit of the child exploitation hotlines, which handle abuse and grooming. That is a routing decision rather than a brush-off, and the school plus the platform is the faster route. Once it has calmed down, the guides mark the settings that decide who can reach your child, which is the part worth revisiting.",
+   "context": "Bullying is generally outside the remit of the child exploitation hotlines, which handle abuse and grooming. That is a routing decision rather than a brush-off. There is no single approach that fits every child or every situation, and the platform and the school are often where families look first. Once it has calmed down, the guides mark the settings that decide who can reach your child, which is the part worth revisiting.",
    "countryNotes": {
-    "UK": "CEOP does not take bullying reports and will point you to Childline, which is the better service for it."
+    "UK": "CEOP does not take bullying reports and will point you to Childline, which is the better service for it.",
+    "CA": "In Canada, PREVNet, the national bullying prevention research network, describes bullying as “a damaging social process that is characterized by an imbalance of power”, citing UNESCO. It lists several forms: physical, verbal, social, sexual, electronic (cyberbullying) and identity-based bullying. What schools and provinces are required to do, and what actions are open to you, differs by province and territory, so PREVNet’s legislation pages are the place to check yours."
+   },
+   "countryLinks": {
+    "CA": [
+     {
+      "label": "PREVNet: Bullying",
+      "url": "https://www.prevnet.ca/bullying/"
+     },
+     {
+      "label": "Types of bullying",
+      "url": "https://www.prevnet.ca/bullying/types-of-bullying/"
+     },
+     {
+      "label": "Policy and legislation by province and territory",
+      "url": "https://www.prevnet.ca/bullying-policy-legislation/"
+     }
+    ]
    }
   },
   {
@@ -255,6 +272,11 @@
      "name": "Take It Down",
      "what": "The image removal service used by Canadian families, since there is no separate Canadian one. It works internationally.",
      "url": "https://takeitdown.ncmec.org/"
+    },
+    {
+     "name": "PREVNet bullying policy and legislation",
+     "what": "Not a reporting line. Canada’s national bullying prevention research network summarises what each province and territory’s laws and school policies say, and what parents can do. The summaries vary by province and territory, and PREVNet describes them as guidance rather than legal advice.",
+     "url": "https://www.prevnet.ca/bullying-policy-legislation/"
     }
    ]
   },

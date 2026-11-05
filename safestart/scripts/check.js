@@ -741,7 +741,7 @@ if (!missing.length) {
   const AGENCIES = {
     US: ['NCMEC', 'CyberTipline', 'FBI', 'IC3', 'missingkids'],
     UK: ['CEOP', 'Internet Watch', 'IWF', 'NSPCC', 'Childline', 'National Crime Agency'],
-    CA: ['Cybertip', 'NeedHelpNow', 'Canadian Centre'],
+    CA: ['Cybertip', 'NeedHelpNow', 'Canadian Centre', 'PREVNet'],
     IE: ['Garda', 'Hotline.ie', 'ISPCC', 'Coimisi'],
   };
   let leaks = 0;
