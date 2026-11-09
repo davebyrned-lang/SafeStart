@@ -1,7 +1,55 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-09",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-11-09",
+   "kind": "freshness-check",
+   "checked": 29,
+   "reverified": [
+    "tiktok",
+    "instagram",
+    "snapchat",
+    "windows",
+    "playstation",
+    "switch",
+    "whatsapp",
+    "netflix",
+    "primevideo",
+    "accounts"
+   ],
+   "flagged": [
+    {
+     "guide": "chromebook",
+     "summary": [
+      "The official page shows Chrome web filtering living directly under Controls → Google Chrome and Web, with no 'Content restrictions' submenu as described in the guide.",
+      "Daily limits and bedtime now appear to sit under a 'Screen time' section with a 'Time limits' sub-item, not under Controls as the guide states."
+     ]
+    },
+    {
+     "guide": "firetablet",
+     "summary": [
+      "The official Parent Dashboard page still calls this setting 'Adjust Age Filter', not 'Content Maturity Filter & Languages' as the guide claims is the current name."
+     ]
+    },
+    {
+     "guide": "hbomax",
+     "summary": [
+      "The official domain for setting the Parent Code is now www.hbomax.com, not play.hbomax.com"
+     ]
+    }
+   ],
+   "unreadable": [
+    "fortnite",
+    "iphone",
+    "ipad",
+    "mac",
+    "twitch",
+    "disneyplus",
+    "imessage",
+    "applewatch"
+   ]
+  },
   {
    "date": "2026-11-05",
    "kind": "site",
