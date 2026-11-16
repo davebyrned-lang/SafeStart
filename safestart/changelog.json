@@ -1,7 +1,50 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-16",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-11-16",
+   "kind": "freshness-check",
+   "checked": 29,
+   "reverified": [
+    "tiktok",
+    "instagram",
+    "windows",
+    "playstation",
+    "switch",
+    "whatsapp",
+    "netflix",
+    "primevideo",
+    "accounts",
+    "spotify"
+   ],
+   "flagged": [
+    {
+     "guide": "discord",
+     "summary": [
+      "Turning off Message Requests is no longer something a teen account can do themselves; Discord says modifying this setting is now restricted to age-assured adult users, with messages from unknown people instead routed to a separate inbox by default."
+     ]
+    },
+    {
+     "guide": "chromebook",
+     "summary": [
+      "The menu path for web filtering no longer includes a 'Content restrictions' step; the current control is reached directly via Controls > Google Chrome and Web.",
+      "Daily limits and bedtime are now accessed via a separate 'Screen time' section, not under 'Controls' as the guide states."
+     ]
+    },
+    {
+     "guide": "hbomax",
+     "summary": [
+      "The Parent Code setup URL uses a different domain than the guide states."
+     ]
+    }
+   ],
+   "unreadable": [
+    "fortnite",
+    "twitch",
+    "disneyplus"
+   ]
+  },
   {
    "date": "2026-11-05",
    "kind": "site",
