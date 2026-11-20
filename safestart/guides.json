@@ -36,7 +36,8 @@
     "Chat with people they don’t know: off",
     "Purchases: always need your approval",
     "Content: the most restrictive setting available",
-    "Play together where you can, so the rules feel shared rather than imposed"
+    "Play together where you can, so the rules feel shared rather than imposed",
+    "Say yes to something as well as no. Making things, playing with you, and talking to family they know are why the device is worth having"
    ]
   },
   "High Protection": {
@@ -45,7 +46,8 @@
     "Chat limited to friends you’ve both agreed on",
     "Purchases need your approval",
     "Content one notch above the youngest setting",
-    "Agree screen time together rather than announcing it"
+    "Agree screen time together rather than announcing it",
+    "Name what you are happy about too, or every conversation about the device becomes a negotiation"
    ]
   },
   "Balanced Supervision": {
@@ -54,7 +56,8 @@
     "Friends-only messaging and voice chat",
     "Private account by default",
     "Spending limits rather than a hard block",
-    "Visibility over surveillance: you see patterns, not private messages"
+    "Visibility over surveillance: you see patterns, not private messages",
+    "Online friendships are real friendships at this age. The ones you can see are usually a good sign rather than a risk"
    ]
   },
   "Guided Independence": {
@@ -63,7 +66,8 @@
     "Keep location and sleep protections on",
     "Talk through privacy settings rather than setting them silently",
     "Agree a spending ceiling",
-    "Make sure they know how to block, report, and come to you"
+    "Make sure they know how to block, report, and come to you",
+    "Credit what they are good at here. Most of what they do is creative, social or learning, and saying so is what keeps them talking to you"
    ]
   }
  },
@@ -486,7 +490,7 @@
       "label": "Roblox: How to Use Roblox's Reporting and Blocking Tools"
      },
      "path": "Settings → Parental Controls → [your child] → Connections → Manage",
-     "note": "If your child asks to add a trusted friend, you get an email or a pending request and have 24 hours to answer. Miss the window and the request expires on its own, which to a child looks exactly like you said no.",
+     "note": "If your child asks to add a trusted friend, you get an email or a pending request and have 24 hours to answer. Miss the window and the request expires on its own, which to a child looks exactly like you said no. If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. Report from the profile, from the chat, or from inside the experience. The Get help now page on SafeStart has the full version, including who to contact in your country.",
      "heldBy": "parent"
     },
     {
@@ -510,7 +514,8 @@
     "Chat restricted to friends, or off",
     "Monthly spending capped",
     "Daily time limit set",
-    "Friends list reviewed together"
+    "Friends list reviewed together",
+    "You tried to chat to their account from one that is not a friend, and it did not get through"
    ],
    "talkAboutIt": [
     "Ask them to show you their favorite game and play a round with them.",
@@ -624,7 +629,7 @@
       "13-15": "Friends, or No one for DMs",
       "16-17": "Friends"
      },
-     "note": "Direct messaging is switched off entirely for accounts registered as under 16.",
+     "note": "Direct messaging is switched off entirely for accounts registered as under 16. If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. TikTok's reporting runs through the app and we could not verify a working web form, so do it on the device rather than hunting for a page. The Get help now page on SafeStart has the full version, including who to contact in your country.",
      "mins": 2,
      "outcomeByAge": {
       "13-15": "friends",
@@ -683,7 +688,8 @@
     "DMs and comments limited to friends",
     "Restricted Mode on",
     "Daily limit and overnight Time away set",
-    "They know how to reset the feed and report a video"
+    "They know how to reset the feed and report a video",
+    "You opened their profile from an account they have not approved, and their videos were not visible"
    ],
    "talkAboutIt": [
     "Ask what’s on their For You page right now. It’s the fastest way to know what they’re seeing.",
@@ -748,7 +754,8 @@
    "risks": [
     "Contact from adults through DMs and story replies",
     "Comparison and body-image pressure, especially in Reels",
-    "Location and school details leaking through tags and photos"
+    "Location and school details leaking through tags and photos",
+    "Being found through a number or email someone already has, which a private account does not prevent"
    ],
    "beforeYouStart": [
     "Check the birthday on their account first. Teen Account protections only apply if Instagram knows they’re under 18. A wrong birthday quietly disables all of it.",
@@ -790,12 +797,15 @@
      "why": "For under-16s, loosening a safety setting sends you a request. Expect a few, and treat each one as a conversation rather than a yes/no.",
      "do": [
       "Watch for approval requests in Supervision.",
+      "Expect them for anything that loosens a built-in protection, and also for going live and for turning off the protection that blurs unwanted images in direct messages.",
       "When one comes in, ask why they want the change before deciding."
      ],
      "ages": [
       "13-15"
      ],
-     "mins": 1
+     "mins": 1,
+     "note": "This is the strongest thing about a Teen Account and the easiest to miss: for an under-16 the protections are not advice, they need your permission to change. It ends on their sixteenth birthday, so the settings become theirs to loosen without asking, which is worth knowing before it happens rather than after.",
+     "heldBy": "parent"
     },
     {
      "id": "dms",
@@ -821,24 +831,29 @@
       "13-15": "locked",
       "16-17": "child"
      },
-     "bullying": "Hidden Words is easy to skip past and worth a look. It does not delete anything, it keeps it out of your child’s view, which is often the point. It can be worth switching on before anything happens rather than after."
+     "bullying": "Hidden Words is easy to skip past and worth a look. It does not delete anything, it keeps it out of your child’s view, which is often the point. It can be worth switching on before anything happens rather than after.",
+     "note": "Three separate controls, which is why getting one right does not mean the others are. Messages, story replies and comments are set in different places. On a Teen Account the messaging default is already the strictest one, so they can only be messaged by people they follow or are already connected to, and a teen under 16 cannot loosen it without your permission. Hidden Words works on comments and message requests rather than deleting anything. And none of it reaches a group chat they are already in."
     },
     {
      "id": "private",
-     "title": "Confirm the account is private and location is off",
+     "title": "Confirm the account is private, and check how findable they are",
      "why": "A private account plus no location tags is most of the privacy job done. Expect some pushback, because private costs them reach and followers, and that is a real loss to a teenager rather than an imagined one. Better to name it than to pretend the setting is free.",
      "path": "Settings and privacy → Account privacy",
      "do": [
       "Confirm Private account is on.",
       "Turn off location tags when posting.",
-      "Check their bio doesn’t name their school or team."
+      "Check their bio doesn’t name their school or team.",
+      "Open Contacts Syncing in their Instagram settings and disconnect it if it is on, so Instagram stops using their address book to suggest people."
      ],
      "mins": 1,
      "heldBy": "child",
      "heldByAge": {
       "13-15": "locked",
       "16-17": "child"
-     }
+     },
+     "note": "Private and unfindable are two different things, and this is the route parents least expect. Private controls who can see their posts. It does not stop the account being suggested to someone who already has their number or email saved, because Meta's own data policy says uploaded contacts are used to help you and others find people you may know. There is no parent-side switch for that, and the only real lever is which number and email are on the account at all. Instagram puts Contacts Syncing under Account in some versions and inside Accounts Center in others, so look in both.",
+     "confidence": "medium",
+     "result": "Their posts are visible only to approved followers, and Instagram is no longer matching their address book against other people."
     },
     {
      "id": "time",
@@ -867,7 +882,8 @@
       "Show them how to block and report while you’re there."
      ],
      "mins": 1,
-     "bullying": "Doing this together is also a way to learn who is in their life. A follower list will not show you the group chats, though, and that is often where it happens."
+     "bullying": "Doing this together is also a way to learn who is in their life. A follower list will not show you the group chats, though, and that is often where it happens.",
+     "note": "If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. Report from the profile, the post or the message itself. The Get help now page on SafeStart has the full version, including who to contact in your country."
     }
    ],
    "checklist": [
@@ -896,6 +912,14 @@
     {
      "label": "Meta: Family Center",
      "url": "https://familycenter.meta.com/"
+    },
+    {
+     "label": "Instagram: new restrictions for Teen Accounts (official)",
+     "url": "https://about.instagram.com/blog/announcements/updates-to-teen-accounts/"
+    },
+    {
+     "label": "Instagram: disconnect contacts syncing (official help)",
+     "url": "https://help.instagram.com/236691729788553"
     }
    ],
    "priority": 7,
@@ -1038,7 +1062,8 @@
     "Quick Add off",
     "Sensitive content restricted",
     "They know how to screenshot and report",
-    "My AI switched off in Family Center"
+    "My AI switched off in Family Center",
+    "You tried to send them a snap from an account that is not on their friends list, and it did not arrive"
    ],
    "talkAboutIt": [
     "Ask them to show you their Snap Map and who can see them.",
@@ -1147,7 +1172,8 @@
       "16-17": "friends"
      },
      "heldBy": "child",
-     "bullying": "This handles strangers. It does nothing about a server full of classmates, which is where it often happens. Leaving a server can be quicker than any setting, and worth agreeing as an option in advance."
+     "bullying": "This handles strangers. It does nothing about a server full of classmates, which is where it often happens. Leaving a server can be quicker than any setting, and worth agreeing as an option in advance.",
+     "note": "If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. Report from the message, the person, or the server it happened in. The Get help now page on SafeStart has the full version, including who to contact in your country."
     },
     {
      "id": "servers",
@@ -1193,7 +1219,8 @@
     "Server DMs turned off",
     "Friend requests limited",
     "Server list reviewed together",
-    "Spending capped"
+    "Spending capped",
+    "You sent them a direct message from an account that is not their friend, and it did not land as an ordinary message"
    ],
    "talkAboutIt": [
     "Ask which server they spend the most time in and what they like about it.",
@@ -1370,7 +1397,7 @@
       "Continue past the warning, pick your child, and block.",
       "To undo one, repeat and choose Unblock."
      ],
-     "note": "Two things worth knowing. Blocking a channel does not block the same video reuploaded elsewhere, or a near-identical channel. And Unblock videos in Family Center clears every block you have ever set, all at once, so avoid it unless that is what you mean. If your child uses the same Google Account for both, blocks carry across to YouTube Kids.",
+     "note": "Two things worth knowing. Blocking a channel does not block the same video reuploaded elsewhere, or a near-identical channel. And Unblock videos in Family Center clears every block you have ever set, all at once, so avoid it unless that is what you mean. If your child uses the same Google Account for both, blocks carry across to YouTube Kids. If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. Report the video or the channel from the player itself. The Get help now page on SafeStart has the full version, including who to contact in your country.",
      "mins": 3
     },
     {
@@ -1538,7 +1565,8 @@
       "13-15"
      ],
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "note": "If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. Report from inside the game. The Get help now page on SafeStart has the full version, including who to contact in your country."
     },
     {
      "id": "time",
@@ -1589,7 +1617,8 @@
     "PIN required to add friends",
     "Playtime limit and weekly report on",
     "Purchases require a PIN",
-    "Console or device controls also set"
+    "Console or device controls also set",
+    "You tried to change one of their parental controls and were asked for the PIN"
    ],
    "talkAboutIt": [
     "Ask who they usually squad up with, and whether they’ve ever played with someone they only know online.",
@@ -1715,7 +1744,7 @@
       "11-12"
      ],
      "confidence": "medium",
-     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters. Check the official Minecraft help link below.",
+     "note": "The exact menu name moves between Minecraft versions. If you can’t find it, the Xbox privacy setting above is the one that matters. Check the official Minecraft help link below. If something has already happened, the order matters more than speed: save what you can see first, because blocking can put it out of reach, then block, then report. Do not delete anything, and if an account has to go, deactivate rather than delete. Minecraft's reporting is in-game and we could not verify a working web form, so do it on the device rather than hunting for a page. The Get help now page on SafeStart has the full version, including who to contact in your country.",
      "mins": 2
     },
     {
@@ -1759,7 +1788,8 @@
     "Chat restricted in game for younger children",
     "Playing on Realms rather than public servers",
     "Purchases need approval",
-    "Screen time set"
+    "Screen time set",
+    "You tried to join a multiplayer game on their account, and it was refused"
    ],
    "talkAboutIt": [
     "Ask them to give you a tour of what they’ve built. It’s an easy in.",
@@ -1906,6 +1936,33 @@
      "mins": 2,
      "heldBy": "parent",
      "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
+    },
+    {
+     "id": "intelligence",
+     "title": "Decide about Apple Intelligence and Siri",
+     "why": "Nobody installed this one, which is exactly why it gets missed. It is also the only chatbot on the device with a proper parent-side lock, because it sits behind the Screen Time passcode you have already set rather than inside an app's own settings.",
+     "path": "Settings → Family → [your child] → Content & Privacy Restrictions → Intelligence & Siri. On older software this sits at Settings → Screen Time → Content & Privacy Restrictions → Intelligence & Siri.",
+     "do": [
+      "Open Intelligence & Siri and go through the items one at a time.",
+      "Set Writing Tools, image creation and the ChatGPT extension to Allow or Don't Allow.",
+      "Leave Siri itself allowed if they use it for timers and music, and turn off explicit language while you are in there.",
+      "If an item is not listed, it is not available on this device and there is nothing to set."
+     ],
+     "result": "Whatever you set to Don't Allow stops working, and your child cannot turn it back on without the Screen Time passcode.",
+     "recommended": {
+      "0-6": "Don't Allow, all of them",
+      "7-11": "Don't Allow, all of them",
+      "11-12": "Don't Allow the ChatGPT extension, decide on the rest",
+      "13-15": "Decide the ChatGPT extension together. Writing Tools is reasonable",
+      "16-17": "Agree it together"
+     },
+     "note": "Worth being clear about what this reaches. It covers Apple's own features and the ChatGPT extension inside them. It does nothing about a chatbot app your child installs, and nothing about any of those same products opened as a website, which the web filter is the control for. If an item is missing from the list, Apple Intelligence is probably not available on that device, language or region.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "provides": [
+      "device-ai"
+     ],
+     "mins": 3
     },
     {
      "id": "contacts",
@@ -2126,6 +2183,33 @@
      "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
+     "id": "intelligence",
+     "title": "Decide about Apple Intelligence and Siri",
+     "why": "Nobody installed this one, which is exactly why it gets missed. It is also the only chatbot on the device with a proper parent-side lock, because it sits behind the Screen Time passcode you have already set rather than inside an app's own settings.",
+     "path": "Settings → Family → [your child] → Content & Privacy Restrictions → Intelligence & Siri. On older software this sits at Settings → Screen Time → Content & Privacy Restrictions → Intelligence & Siri.",
+     "do": [
+      "Open Intelligence & Siri and go through the items one at a time.",
+      "Set Writing Tools, image creation and the ChatGPT extension to Allow or Don't Allow.",
+      "Leave Siri itself allowed if they use it for timers and music, and turn off explicit language while you are in there.",
+      "If an item is not listed, it is not available on this device and there is nothing to set."
+     ],
+     "result": "Whatever you set to Don't Allow stops working, and your child cannot turn it back on without the Screen Time passcode.",
+     "recommended": {
+      "0-6": "Don't Allow, all of them",
+      "7-11": "Don't Allow, all of them",
+      "11-12": "Don't Allow the ChatGPT extension, decide on the rest",
+      "13-15": "Decide the ChatGPT extension together. Writing Tools is reasonable",
+      "16-17": "Agree it together"
+     },
+     "note": "Worth being clear about what this reaches. It covers Apple's own features and the ChatGPT extension inside them. It does nothing about a chatbot app your child installs, and nothing about any of those same products opened as a website, which the web filter is the control for. If an item is missing from the list, Apple Intelligence is probably not available on that device, language or region.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "provides": [
+      "device-ai"
+     ],
+     "mins": 3
+    },
+    {
      "id": "contacts",
      "title": "Control who can contact them",
      "why": "The step most parents do not know exists on an iPad, because it sounds like a phone setting. Messages and FaceTime are both here, with no minimum age, so until you set this anyone holding their Apple Account email can start a conversation. Worth being straight about what it is and is not: no parental control on either platform lets you read your child's messages. What you can do is decide who is able to reach them in the first place, which is the part that prevents harm rather than finding out about it afterwards.",
@@ -2328,7 +2412,35 @@
       "16-17": "Try to block explicit sites"
      },
      "mins": 2,
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "result": "Explicit sites are refused in Chrome, and your child cannot turn SafeSearch back on.",
+     "note": "This covers Chrome and Google Search, and it is worth knowing what sits outside that. Another browser they install has its own settings or none at all, so the app controls in the earlier step are what keeps one off the device. And a link opened inside another app often uses that app's own built-in browser rather than Chrome, so that is worth trying on their device rather than assuming."
+    },
+    {
+     "id": "gemini",
+     "title": "Decide about Gemini",
+     "why": "Google's assistant is the one general-purpose chatbot a child under 13 can reach through a route the platform actually supports, and it stays off until a parent switches it on. So this is a real decision rather than a default to undo, and Google is unusually straight about what its own filtering will and will not do.",
+     "path": "Family Link → [your child] → Controls → Gemini → Gemini Apps. On older versions of Family Link this sits at Controls → Content restrictions → Gemini → Gemini Apps.",
+     "do": [
+      "Open Family Link, or familylink.google.com, and pick your child.",
+      "Find Gemini Apps and switch it on or off.",
+      "If you switch it on and nothing appears, give it a few hours and restart Gemini. Google says access can take a while to arrive."
+     ],
+     "result": "Gemini either works on their supervised account or it does not, and you are the one holding that switch.",
+     "recommended": {
+      "0-6": "Off",
+      "7-11": "Off, unless you are going to sit with them while they use it",
+      "11-12": "Off, unless you are going to sit with them while they use it",
+      "13-15": "On if you have had the conversation about it, off if you have not",
+      "16-17": "Agree it together"
+     },
+     "note": "Three limits, all of them Google's own. Its filters try to limit inappropriate content but, in Google's words, they are not perfect and your child may come across things you would rather they did not. Gemini Apps are not available for supervised accounts in the European Economic Area, Switzerland or the United Kingdom, so if the switch is missing that is probably why. And this covers the Gemini apps, not the AI answers that appear in ordinary Google search results, which is a separate route to much the same thing.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "provides": [
+      "gemini-control"
+     ],
+     "mins": 3
     },
     {
      "id": "time",
@@ -2673,6 +2785,26 @@
      "heldBy": "parent"
     },
     {
+     "id": "copilot",
+     "title": "Decide about Copilot",
+     "why": "Copilot is built into Windows and into Edge, so it is there whether or not anyone chose it. It is also the clearest case on this site of why blocking an app is not the same as blocking the thing, because Microsoft's own instructions ask you to do two separate jobs.",
+     "path": "family.microsoft.com → [your child] → Windows → Apps, features and games",
+     "do": [
+      "Sign in as the family organiser, pick your child, and open the Windows tab.",
+      "Find Copilot under Apps, features and games and choose Block app.",
+      "Block any other browsers listed there, because the web filter only covers Edge.",
+      "Then open the Web safety tab and add the Copilot website under blocked sites. The app block and the website block are two different things and you need both."
+     ],
+     "result": "Copilot stops opening on that Windows device, and the website is refused in Edge.",
+     "note": "Microsoft says to repeat this for each app, each platform and each family member, so a block you set on Windows is not a block on their phone or tablet. Its own page also lists other AI websites worth adding while you are in there. Only a family organiser can block or unblock, and a local Windows account that is not in your family group is reached by none of it.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "provides": [
+      "device-ai"
+     ],
+     "mins": 4
+    },
+    {
      "id": "time",
      "title": "Set screen time",
      "why": "You can set different limits per device, which helps if homework happens on the same PC.",
@@ -2716,7 +2848,8 @@
     "App and game age ratings set",
     "Screen time schedule set",
     "Purchases need approval",
-    "Activity reporting on"
+    "Activity reporting on",
+    "You opened a site you had blocked while signed in as them, and saw the block page"
    ],
    "talkAboutIt": [
     "Agree homework time versus game time rather than one blanket limit.",
@@ -2817,6 +2950,33 @@
      "mins": 3,
      "heldBy": "parent",
      "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
+    },
+    {
+     "id": "intelligence",
+     "title": "Decide about Apple Intelligence and Siri",
+     "why": "Nobody installed this one, which is exactly why it gets missed. It is also the only chatbot on the device with a proper parent-side lock, because it sits behind the Screen Time passcode you have already set rather than inside an app's own settings.",
+     "path": "System Settings → Screen Time → [your child] → Content & Privacy → Intelligence & Siri",
+     "do": [
+      "Open System Settings, click Screen Time, pick your child from the Family Member menu, then Content & Privacy, then Intelligence & Siri.",
+      "Turn Writing Tools, image creation and intelligence extensions off or on one at a time.",
+      "Siri itself and Math Results can be restricted from the same place on a Mac.",
+      "If an item is not listed, it is not available on this Mac, language or region."
+     ],
+     "result": "Whatever you turn off stops working, and your child cannot turn it back on without the Screen Time passcode.",
+     "recommended": {
+      "0-6": "Don't Allow, all of them",
+      "7-11": "Don't Allow, all of them",
+      "11-12": "Don't Allow the ChatGPT extension, decide on the rest",
+      "13-15": "Decide the ChatGPT extension together. Writing Tools is reasonable",
+      "16-17": "Agree it together"
+     },
+     "note": "Worth being clear about what this reaches. It covers Apple's own features and the ChatGPT extension inside them. It does nothing about a chatbot app your child installs, and nothing about any of those same products opened as a website, which the web filter is the control for. If an item is missing from the list, Apple Intelligence is probably not available on that device, language or region.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "provides": [
+      "device-ai"
+     ],
+     "mins": 3
     },
     {
      "id": "contacts",
@@ -2965,6 +3125,32 @@
      "heldBy": "parent"
     },
     {
+     "id": "gemini",
+     "title": "Decide about Gemini",
+     "why": "Google's assistant is the one general-purpose chatbot a child under 13 can reach through a route the platform actually supports, and it stays off until a parent switches it on. So this is a real decision rather than a default to undo, and Google is unusually straight about what its own filtering will and will not do.",
+     "path": "Family Link → [your child] → Controls → Gemini → Gemini Apps. On older versions of Family Link this sits at Controls → Content restrictions → Gemini → Gemini Apps.",
+     "do": [
+      "Open Family Link, or familylink.google.com, and pick your child.",
+      "Find Gemini Apps and switch it on or off.",
+      "If you switch it on and nothing appears, give it a few hours and restart Gemini. Google says access can take a while to arrive."
+     ],
+     "result": "Gemini either works on their supervised account or it does not, and you are the one holding that switch.",
+     "recommended": {
+      "0-6": "Off",
+      "7-11": "Off, unless you are going to sit with them while they use it",
+      "11-12": "Off, unless you are going to sit with them while they use it",
+      "13-15": "On if you have had the conversation about it, off if you have not",
+      "16-17": "Agree it together"
+     },
+     "note": "Three limits, all of them Google's own. Its filters try to limit inappropriate content but, in Google's words, they are not perfect and your child may come across things you would rather they did not. Gemini Apps are not available for supervised accounts in the European Economic Area, Switzerland or the United Kingdom, so if the switch is missing that is probably why. And this covers the Gemini apps, not the AI answers that appear in ordinary Google search results, which is a separate route to much the same thing.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "provides": [
+      "gemini-control"
+     ],
+     "mins": 3
+    },
+    {
      "id": "apps",
      "title": "Control apps and extensions",
      "why": "Extensions are the Chromebook equivalent of installing software.",
@@ -2995,7 +3181,8 @@
     "Chrome filtering set",
     "SafeSearch locked",
     "App and extension approval on",
-    "Daily limit and bedtime set"
+    "Daily limit and bedtime set",
+    "You opened a site you had blocked while signed in as them, and saw the block page"
    ],
    "talkAboutIt": [
     "If it’s a school device, check what the school already blocks so you’re not duplicating.",
@@ -3039,7 +3226,8 @@
    "risks": [
     "Voice chat with strangers in online matches",
     "PlayStation Store spending, including through wallet top-ups",
-    "Games rated well above the child’s age arriving through friends' recommendations"
+    "Games rated well above the child’s age arriving through friends' recommendations",
+    "The console's chat setting covers the console's own messaging and voice. A game with chat built into it, like Roblox, has its own separate settings inside the game, so those need setting too."
    ],
    "beforeYouStart": [
     "You need a PlayStation Network account in your own name to act as Family Manager.",
@@ -3151,7 +3339,8 @@
     "Game age level set",
     "Communication restricted",
     "Play time limits set",
-    "Monthly spend limit set"
+    "Monthly spend limit set",
+    "You tried to message their account from one that is not a friend, and it did not arrive"
    ],
    "talkAboutIt": [
     "Ask who they play with online and whether they’ve met them in person.",
@@ -3199,7 +3388,8 @@
    "risks": [
     "Voice and text chat with strangers in multiplayer",
     "Cross-network play, which brings in players from other platforms with different rules",
-    "Store and in-game spending"
+    "Store and in-game spending",
+    "The console's chat setting covers the console's own messaging and voice. A game with chat built into it, like Roblox, has its own separate settings inside the game, so those need setting too."
    ],
    "beforeYouStart": [
     "Your child needs a child Microsoft account inside your family group. An adult account can’t be restricted.",
@@ -3305,7 +3495,8 @@
     "Communication set to friends only",
     "Friend requests controlled",
     "Screen time schedule set",
-    "Purchases need approval"
+    "Purchases need approval",
+    "You tried to message their account from one that is not a friend, and it did not get through"
    ],
    "talkAboutIt": [
     "Ask who’s in their party when they play. It’s the fastest way to spot a stranger.",
@@ -3348,7 +3539,8 @@
    "risks": [
     "Voice chat in some games happens through a phone app, outside the console’s controls",
     "eShop spending",
-    "Sharing screenshots and videos to social media"
+    "Sharing screenshots and videos to social media",
+    "The restriction level covers the console. A game with chat of its own still has settings inside the game, and SafeStart has guides for the ones children use most."
    ],
    "beforeYouStart": [
     "Download the Nintendo Switch Parental Controls app on your phone. It’s separate from the main Nintendo app.",
@@ -3446,7 +3638,8 @@
     "Restriction level set for their age",
     "Social posting off",
     "Play-time limit and bedtime alarm set",
-    "eShop purchases blocked"
+    "eShop purchases blocked",
+    "You tried to open a game above the level you set, and it would not start"
    ],
    "talkAboutIt": [
     "Ask whether any of their games use the phone app for voice chat, since that’s outside these controls.",
@@ -3494,7 +3687,7 @@
    "risks": [
     "Without a lock screen PIN your child simply switches to your profile, where nothing is filtered",
     "Amazon Kids+ is a content subscription, not the safety product. Every control here is free",
-    "Filtered browsing filters rather than blocks, and Alexa and pre-installed apps can lead out of the sandbox",
+    "Filtered browsing filters rather than blocks, and Alexa and pre-installed apps can lead out of the sandbox. Alexa also answers questions the way a chatbot does, so treat it as one.",
     "These controls decide what gets installed and what gets opened, not who gets to talk to them. There is no setting here for who can message or call your child. That lives inside each app, so the apps they use need their own guides as well."
    ],
    "beforeYouStart": [
@@ -3628,7 +3821,8 @@
     "Age filter matches their age",
     "Browser off or restricted",
     "Daily limit and bedtime set",
-    "App downloads need your approval"
+    "App downloads need your approval",
+    "You opened their child profile and tried to reach an app that is not in it, and could not"
    ],
    "talkAboutIt": [
     "Show them the Parent Dashboard so it isn't a mystery.",
@@ -3759,8 +3953,8 @@
     {
      "id": "groups",
      "title": "Restrict who can add them to groups",
-     "why": "Group invites are the main way strangers reach a child on WhatsApp.",
-     "path": "Settings → Privacy → Groups",
+     "why": "This is set to Everyone until somebody changes it, and WhatsApp says so plainly: anyone with your phone number can add you to a group. For a child that is the most direct route a stranger has, because it needs nothing from them at all.",
+     "path": "Settings → Privacy → Groups. WhatsApp's own instructions for this one read Settings → Account → Privacy → Groups, so if Privacy is not at the top level, look inside Account.",
      "do": [
       "Open Settings, then Privacy, then Groups.",
       "Set it to My contacts, or My contacts except."
@@ -3772,10 +3966,11 @@
       "13-15": "My contacts",
       "16-17": "My contacts"
      },
-     "note": "Read this bit carefully. This only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It also does not remove them from groups they are already in.",
+     "note": "Read this bit carefully, because the setting is narrower than it sounds. It only stops someone adding them silently. Anyone can still send a group invite link, and your child can join it regardless of this setting. It does not remove them from groups they are already in. And it does not apply to community Announcements: if they are in a community, they are always in its Announcements group, whatever this is set to.",
      "mins": 1,
      "heldBy": "child",
-     "bullying": "Being added to a group in order to be mocked can happen, and this is the setting that stops it happening silently. It does not get them out of a group they are already in, and it does not block an invite link, so it stops the ambush rather than the bullying."
+     "bullying": "Being added to a group in order to be mocked can happen, and this is the setting that stops it happening silently. It does not get them out of a group they are already in, and it does not block an invite link, so it stops the ambush rather than the bullying.",
+     "result": "Someone outside their contacts can no longer drop them into a group without asking."
     },
     {
      "id": "calls",
@@ -4040,7 +4235,8 @@
     "Whispers turned off",
     "Sensitive content restricted from your side",
     "Daily limit set",
-    "Chat filters on"
+    "Chat filters on",
+    "You tried to whisper their account from one they do not follow, and it did not arrive"
    ],
    "talkAboutIt": [
     "Ask which streamers they follow and watch a few minutes with them.",
@@ -4210,7 +4406,8 @@
     "Maturity rating set for their age",
     "Every adult profile has a PIN",
     "Autoplay turned off",
-    "Titles blocked if needed"
+    "Titles blocked if needed",
+    "You tried to play something above the rating you set on their profile, and it was refused"
    ],
    "talkAboutIt": [
     "Watch the first episode of something new with them rather than vetting it alone.",
@@ -4404,7 +4601,8 @@
     "Unrated live content turned off",
     "PIN on your own profile",
     "New profiles need your password",
-    "Kid-Proof Exit on for younger children"
+    "Kid-Proof Exit on for younger children",
+    "You tried to leave their profile for an adult one, and it would not let you straight through"
    ],
    "talkAboutIt": [
     "Junior Mode is all-ages, so an older child will find it babyish. Better to talk about why than let them work around it.",
@@ -4583,7 +4781,8 @@
     "Viewing restrictions set on every device",
     "Purchases locked",
     "Your own profile locked",
-    "Fire TV set separately if you have one"
+    "Fire TV set separately if you have one",
+    "You tried to play something above the rating you set on their profile, and it was refused"
    ],
    "talkAboutIt": [
     "Explain that downloads on your profile are visible to them, so it is worth agreeing what gets downloaded.",
@@ -4647,7 +4846,7 @@
    "priority": 0,
    "risks": [
     "A child on your account gets your messages and your call history. Apple says so on its own support page",
-    "An account created with an adult birthday cannot be supervised, and correcting it later is simple on some platforms and impossible on others",
+    "An account created with an adult birthday cannot be supervised and gets adult defaults for content, contact and spending. Correcting it later is simple on some platforms and impossible on others",
     "The account quietly decides what they can reach. On Android it decides which YouTube they get"
    ],
    "beforeYouStart": [
@@ -4692,20 +4891,21 @@
     {
      "id": "create",
      "title": "Create it with their real date of birth",
-     "why": "The account type is set at creation and is not equally fixable afterwards. Apple and Microsoft let you correct a birthday, Google gives you a fourteen-day window, and PlayStation does not let you change it at all.",
+     "why": "Almost every protection on every platform is applied from this one field, which is why it is the first thing to get right and the hardest to put right afterwards. The age on the account decides which content ratings apply, whether a stricter teen experience switches on at all, whether contact is limited by default, whether purchases need your approval, and whether you can supervise the account from your own at all. Two years out and the platform is carefully protecting a different child.",
      "path": "Apple: Settings → Family → Add Member → Create Child Account",
      "do": [
       "Apple: Settings, then Family, then Add Member, then Create Child Account.",
       "Google: create the account through Family Link, or add supervision to an existing one with the child and their device next to you.",
       "Microsoft: sign in at account.microsoft.com/family, choose Add a family member, pick Member for a child, then give parental consent when prompted."
      ],
-     "note": "The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland.",
+     "note": "The age at which an account counts as a child differs by country. Apple uses under 13 in the US, the UK and Canada, and under 16 in Ireland. Worth knowing as well: some platforms no longer take the birthday at face value. OpenAI places an account its systems estimate to be under 18 into its teen experience, and Meta places suspected teens into Teen Account settings even where an adult birthday is listed. That cuts both ways. It can switch protections on without you asking, and a wrong birthday is still the thing most likely to leave them switched off.",
      "mins": 3,
      "provides": [
       "own-account"
      ],
      "undo": "If you already gave them an adult Apple Account, you probably do not need a new one. The old advice that an adult Apple ID can never be converted is out of date. Edit the birth date at Settings, your name, Personal Information, or at account.apple.com. Apple's rule: to change a birthday to any age below 13, the account must be a member of a Family Sharing group, and the Family Sharing organizer must approve the change. It is the same account throughout, so purchases, photos and Messages all survive.",
-     "heldBy": "parent"
+     "heldBy": "parent",
+     "result": "The account is now the right kind of account, which is what everything else in your plan is applied from."
     },
     {
      "id": "switchedon",
@@ -4740,7 +4940,12 @@
    "talkAboutIt": [
     "Tell them the account is theirs. Having their own is the reason your messages do not land on their screen.",
     "Agree now what happens when they want something the account will not allow, so it becomes a request rather than a workaround.",
-    "If they are old enough to have an email address, agree what it is for before it exists."
+    "If they are old enough to have an email address, agree what it is for before it exists.",
+    "Contact, in one question: who is allowed to talk to you on here? For a younger child the answer is people we both know. With a teenager, ask who they talk to most and listen to the answer rather than auditing it.",
+    "Uncomfortable content, agreed in advance: if something comes up that you wish you had not seen, you are not in trouble and the device does not get taken away. That second half is what decides whether they tell you.",
+    "AI, once and plainly: if it talks like a person it still is not one, it has no feelings, and it can be wrong while sounding completely certain. With a younger child, say that the toy or the voice is not alive. With a teenager, agree that nothing it says counts as advice.",
+    "Asking for help: agree the one sentence they can always use, something like I need to show you something. Then make the first time they use it go well, because that is what buys the second time.",
+    "Say what you are not worried about, too. Friends they already know, making things, finding out how something works. A plan that only names risks teaches them you think the whole thing is a risk, and they stop bringing you the good parts."
    ],
    "links": [
     {
@@ -4890,7 +5095,8 @@
     "Contacts in iCloud on, and Allowed Contacts set",
     "Communication Safety confirmed on",
     "Screen Unknown Senders on",
-    "You know Communication Safety will not notify you"
+    "You know Communication Safety will not notify you",
+    "You messaged them from an account that is not in their contacts, and it did not arrive"
    ],
    "talkAboutIt": [
     "Tell them what Communication Safety does before they meet it, so a blurred photo is not a fright.",
@@ -5008,7 +5214,8 @@
     "Kids profile created with the right rating group for their age",
     "Parent Code set and Kid-Proof Exit on",
     "Every adult profile has a PIN",
-    "Device-level controls set as well"
+    "Device-level controls set as well",
+    "You tried to leave their kids profile, and it would not let you straight through"
    ],
    "talkAboutIt": [
     "Show them their profile so it feels like theirs rather than a restriction.",
@@ -5231,7 +5438,8 @@
     "Schooltime scheduled",
     "Find My on, emergency contacts added",
     "Screen Time passcode set, and different from the watch passcode",
-    "You know Fall Detection will not work for them"
+    "You know Fall Detection will not work for them",
+    "You tried to call their watch from a number that is not on the list, and it did not ring through"
    ],
    "talkAboutIt": [
     "Tell them you can see where the watch is, rather than letting them find out.",
@@ -5425,7 +5633,8 @@
     "Explicit content off",
     "You know the filter does not cover podcasts or audiobooks",
     "Video and Canvas off",
-    "Time limit set at device level"
+    "Time limit set at device level",
+    "You played something marked explicit on their account, and it was skipped or refused"
    ],
    "talkAboutIt": [
     "Ask what they are actually listening to, then listen to one of them together.",
@@ -5472,6 +5681,208 @@
     "confidence": "high",
     "link": "https://support.spotify.com/us/article/managed-accounts/"
    }
+  },
+  "aichat": {
+   "id": "aichat",
+   "name": "AI chatbots",
+   "type": "app",
+   "kind": "Chat",
+   "blurb": "The chatbots your child talks to on purpose, the assistant already built into the device, and the toys that listen. The controls here are real but thinner than on any other app in this list, so more of the work is the conversation.",
+   "devices": [
+    "iphone",
+    "ipad",
+    "android",
+    "samsung",
+    "windows",
+    "mac",
+    "chromebook",
+    "firetablet"
+   ],
+   "lastVerified": "2026-11-20",
+   "sourceConfidence": "high",
+   "minutes": 23,
+   "priority": 2.5,
+   "risks": [
+    "A chatbot can be confidently wrong, and it sounds exactly the same when it is right as when it is not",
+    "Anything your child types has left your house. Their name, their school, a photo, a friend's details, or whatever is worrying them that week",
+    "It is built to sound like a person and to keep the conversation going, which is what makes a child treat it as a friend rather than a tool",
+    "The assistant built into the phone, tablet or computer is already there. Nobody installed it, so nobody thinks to check it"
+   ],
+   "beforeYouStart": [
+    "Find out which one they are actually using. The answer is often the assistant that came with the device rather than an app they chose.",
+    "Have your own account to hand if you want to link it to theirs. Only some products allow that, and the ones that do need your child to accept."
+   ],
+   "steps": [
+    {
+     "id": "which",
+     "title": "Work out which ones they can actually reach",
+     "why": "Every other guide on this site starts with an app you decided to allow. This one usually starts with something that arrived on its own. Before you change a setting it is worth knowing how many doors there are, because a control on one of them does nothing about the rest.",
+     "do": [
+      "Look for a chatbot app they installed and signed into.",
+      "Check the assistant that came with the device, which is Apple Intelligence and Siri, Gemini, Copilot or Alexa depending on what they have. Your device's guide on SafeStart has the exact path for switching it off.",
+      "Check inside the apps they already use. Several social and messaging apps now have a chatbot in the chat list or behind the search bar.",
+      "Check the browser. Every one of these also works as a website, so an app you block is still reachable by typing the address."
+     ],
+     "result": "You have a list to work from, which is usually longer than parents expect.",
+     "note": "This matters more here than anywhere else on the site, because the routes are not equivalent. Blocking an app does not block its website, and a setting inside one chatbot says nothing about the chatbot built into the device.",
+     "mins": 3
+    },
+    {
+     "id": "age",
+     "title": "Check they are old enough for the one they are using",
+     "why": "The age rules differ more between these products than between any other group of apps here, and the one that looks most like a toy is not the one with the lowest age. Knowing the rule also tells you which protections switch on by themselves, because most of them hang off the age on the account.",
+     "do": [
+      "ChatGPT: OpenAI's terms set a minimum of 13, and say that under-18s need a parent's permission. OpenAI's own help page puts it plainly: ChatGPT is not meant for children under 13.",
+      "Gemini: a child under 13 can use it only on a supervised Google account and only if you turn it on. See the next step.",
+      "Character.AI: the company removed open-ended chat for under-18s in November 2025, so a teenager cannot have that kind of back-and-forth conversation there at all.",
+      "If they are signed in with an adult birthday, fix that first. The teen protections on these products are applied from the age on the account or from the platform's own estimate of it."
+     ],
+     "note": "OpenAI says an account it estimates to be under 18, or that states an age between 13 and 17, is placed into its teen experience automatically. That is worth knowing in both directions: it can switch protections on without you asking, and it can switch them off if the birthday on the account is wrong.",
+     "mins": 2
+    },
+    {
+     "id": "link",
+     "title": "Link your account to theirs where the product allows it",
+     "why": "This is the only real parent-side control most chatbots have, and it is worth setting up for what it does rather than what you might assume it does. It shapes the experience and it can switch features off. It does not let you read the conversations, and being straight with yourself about that now saves a false sense of coverage later.",
+     "path": "ChatGPT: Settings → Parental controls, or chatgpt.com/parentalcontrols",
+     "do": [
+      "Open Parental controls from your own account and invite your teen by email or text.",
+      "They have to accept the invitation before anything applies.",
+      "Once linked, go through the settings: reduce sensitive content, turn off model training, turn off memory, and remove voice mode, image generation or group chats if you want to.",
+      "Set quiet hours if a time boundary would help, and study hours if you want it to ask questions before giving answers."
+     ],
+     "result": "The features you switched off stop working in their account, and you get a notification if the accounts are ever unlinked.",
+     "note": "Three limits, all of them stated by OpenAI. You do not see their conversations or transcripts. You are notified only in rare cases where their systems and reviewers detect a serious safety concern, and the notification carries only what is needed. And your teen can disconnect at any time, though you are told when they do. The protections also only apply inside their own account, so the same chatbot signed out, or signed in as you, is unprotected.",
+     "heldBy": "shared",
+     "mins": 4,
+     "bullying": "A linked account will not show you someone being cruel to your child, because none of this reaches their conversations. What it can do is keep a chatbot from being the only place they take it, by making the safety notification route exist at all."
+    },
+    {
+     "id": "gemini",
+     "title": "Decide about Gemini on a supervised Google account",
+     "why": "This is the one case where a child under 13 can use a general-purpose chatbot through a route the platform supports, and it is off until a parent turns it on. So the decision is genuinely yours, which is unusual here, and Google is unusually direct about the limits of its own filtering.",
+     "path": "Family Link → [your child] → Controls → Gemini → Gemini Apps. On older versions of Family Link this sits at Controls → Content restrictions → Gemini → Gemini Apps.",
+     "do": [
+      "Open Family Link, or familylink.google.com, and pick your child.",
+      "Find Gemini Apps and switch it on or off.",
+      "If you turn it on and nothing appears, give it a few hours and restart Gemini. Google says access can take time to arrive."
+     ],
+     "result": "Gemini either works on their supervised account or it does not, and you hold that switch.",
+     "recommended": {
+      "0-6": "Off",
+      "7-11": "Off unless you are going to sit with them while they use it",
+      "11-12": "Off unless you are going to sit with them while they use it",
+      "13-15": "On if you have had the conversation below, off if you have not",
+      "16-17": "Agree it together"
+     },
+     "note": "Worth knowing before you rely on it. Google says its filters try to limit inappropriate content but are not perfect, and that your child may encounter things you would rather they did not. Gemini Apps are not available for supervised accounts in the European Economic Area, Switzerland or the United Kingdom, so if you cannot find the switch, that may be why. The Keep Activity setting is not available under 13. And this switch covers the Gemini apps, not the AI answers that appear in ordinary Google search results.",
+     "heldBy": "parent",
+     "confidence": "high",
+     "mins": 3,
+     "redundantWith": [
+      "gemini-control"
+     ]
+    },
+    {
+     "id": "memory",
+     "title": "Turn off memory and training where the option exists",
+     "why": "Memory is the setting that changes what a chatbot is. With it on, the thing remembers what your child told it last week and brings it up, which is most of what makes a child feel known by it. Training is a separate question about where their words end up, and the two are usually different switches.",
+     "do": [
+      "ChatGPT, from a linked parent account: turn off Memory so it does not save or use memories, and turn off the setting that lets their conversations improve the model.",
+      "Check the same two things on any other chatbot they use. Most have both somewhere in settings, under memory, personalisation or data controls.",
+      "On a supervised Google account under 13, Google says the Keep Activity setting is not available, so there is nothing for you to switch there."
+     ],
+     "result": "The chatbot stops carrying things forward from one conversation to the next, so it feels less like someone who knows them.",
+     "note": "Two honest limits. Turning memory off changes what happens from here, and you should not assume it clears what the product has already stored, which is a separate request on most of them. And this is a setting inside one product, so it says nothing about the others on your list from step one.",
+     "heldBy": "shared",
+     "mins": 3
+    },
+    {
+     "id": "info",
+     "title": "Agree what never goes into a chatbot",
+     "why": "There is no setting for this one, which is why it is the step that does the most work. A chatbot asks questions like a person does, and answering them feels like a conversation rather than filling in a form, so children hand over things they would never type into a website.",
+     "do": [
+      "Agree the list out loud: no full name, no school, no address, no phone number, no photos of themselves or anyone else.",
+      "Add the one children find hardest: nothing about another person. Friends' names, a sibling's problem, something they were told in confidence.",
+      "Agree that passwords and account details never go in, whatever reason it gives for asking.",
+      "Give them the test to use instead of a rule to remember: would you say this out loud to someone at the bus stop?"
+     ],
+     "note": "This rule has to hold everywhere on the list from step one, because the chatbot inside a social app and the assistant on the device are the same kind of thing with the same reach. It is one rule for all of them, not a setting you repeat.",
+     "mins": 2
+    },
+    {
+     "id": "toys",
+     "title": "Check what a connected toy is actually doing",
+     "why": "A toy that talks back is doing the same job as a chatbot in a smaller case, and because it looks like a toy it gets left in a bedroom with nothing switched off. A younger child will tell it things, because that is what it invites.",
+     "do": [
+      "Check whether it has a microphone or a camera, and whether there is a way to switch them off or mute it.",
+      "Check whether it needs an account or an app. If it does, the account is where any controls will be, and it is worth a look before the toy is unwrapped.",
+      "Look for the maker's own page about what it records and how long they keep it. If you cannot find one, that is itself worth weighing before you buy.",
+      "Keep it out of the bedroom at night, or switch it off, for the same reason you would a speaker that listens.",
+      "If it talks like a character, say out loud to a younger child that it is a toy and the voice is not a person."
+     ],
+     "note": "This step is deliberately general, because these toys have no shared settings menu and no single company behind them, so SafeStart cannot name a path the way it does for an app. Treat anything that listens and answers as a chatbot your child did not sign into.",
+     "confidence": "medium",
+     "mins": 3
+    },
+    {
+     "id": "check",
+     "title": "Ask it something you already know, together",
+     "why": "This is the one thing on the page that changes how your child treats a chatbot, and it takes about two minutes. Being told it can be wrong does very little. Watching it be wrong, confidently, about something they know, does the rest of the work for you.",
+     "do": [
+      "Pick something they are certain about. A score, a date, something about your own town.",
+      "Ask it together and read the answer.",
+      "Then push back on a correct answer and see whether it folds and agrees with you. That tells them more about what it is than any explanation would.",
+      "While you are in there, open whatever you blocked in the earlier steps and check it is actually blocked."
+     ],
+     "result": "They have seen it be wrong and seen it agree too easily, which is the part that sticks.",
+     "mins": 3,
+     "note": "If something a chatbot has said already worries you, screenshot the conversation before anything else, because these can be cleared from the app and some products do it for you. Most have a way to report or flag a single answer, usually on the message itself. Then treat it as you would anything else that has upset them, and if it goes further than that, the Get help now page on SafeStart covers who to contact in your country."
+    }
+   ],
+   "checklist": [
+    "You know which chatbots and assistants they can reach, including the one built into the device and the ones inside other apps",
+    "Accounts linked where the product allows it",
+    "You opened the built-in assistant on their device and it was blocked, or you decided on purpose to leave it on",
+    "You tried one of them as a website as well as an app, and know which of the two you have actually blocked",
+    "Memory and model training turned off where the option exists",
+    "You know that none of these controls let you read the conversations",
+    "You both agreed what never goes into a chatbot, including anything about other people",
+    "You asked it something you already knew the answer to, together, and talked about what came back"
+   ],
+   "talkAboutIt": [
+    "Say it plainly once, and it will hold: it has no feelings, it does not know them, and it is not a friend, however much it sounds like one. Google says the same thing about its own product, which is worth mentioning, because it lands better coming from the company than from a parent.",
+    "It can be wrong with complete confidence, and it will often agree with whatever they say. Anything that matters gets checked somewhere else.",
+    "A good place to start homework and a bad place to finish it. Using it to explain something they are stuck on is different from using it to produce the answer, and they know the difference.",
+    "Make it ordinary to show you something a chatbot said that felt strange, upsetting or too personal, with nothing going wrong for them when they do. They will only do that if the first time goes well."
+   ],
+   "links": [
+    {
+     "label": "OpenAI: parental controls in ChatGPT (official)",
+     "url": "https://chatgpt.com/features/parental-controls/"
+    },
+    {
+     "label": "OpenAI: is ChatGPT safe for all ages (official)",
+     "url": "https://help.openai.com/en/articles/8313401"
+    },
+    {
+     "label": "Google: guide your child's Gemini Apps experience (official)",
+     "url": "https://support.google.com/gemini/answer/16109150"
+    },
+    {
+     "label": "Apple: block Apple Intelligence features in Screen Time (official)",
+     "url": "https://support.apple.com/guide/iphone/iph3fed3f2c3/ios"
+    },
+    {
+     "label": "Microsoft: block or unblock apps with Family Safety (official)",
+     "url": "https://support.microsoft.com/en-us/family-safety/block-or-unblock-apps-with-microsoft-family-safety"
+    },
+    {
+     "label": "Character.AI: removing open-ended chat for under-18s (official)",
+     "url": "https://blog.character.ai/u18-chat-announcement/"
+    }
+   ],
+   "noKidsAlt": "There is no younger version of a general-purpose chatbot. The nearest thing is Gemini on a supervised Google account, which a parent has to switch on and which is covered in its own step above."
   }
  },
  "_new": {},

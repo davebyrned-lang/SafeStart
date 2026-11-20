@@ -1,7 +1,19 @@
 {
- "updated": "2026-11-05",
+ "updated": "2026-11-20",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-11-20",
+   "kind": "correction",
+   "title": "Apple renamed half of Screen Time, and we were naming the old features",
+   "body": "Checking one menu name turned up three renames and a relocation. Downtime is now Screen Time Schedule, App Limits are Time Allowances, and Communication Limits are Allowed Contacts, with the whole pane moved from Settings, Screen Time to Settings, Family. Every affected path on the iPhone, iPad, Mac, Apple Watch and iMessage guides now gives the current location and then the older one, because both are live depending on your software and we do not print version numbers. In the same pass, the iPhone, iPad and Mac guides gained the contact step they never had. Until now the only place we explained who can reach a child on an Apple device was the iMessage guide, which a parent setting up an iPad would never have seen. Also added: Snapchat's My AI, and what Family Center can and cannot do about it."
+  },
+  {
+   "date": "2026-11-20",
+   "kind": "site",
+   "title": "AI chatbots, the assistant already on the device, and a safety check you can watch work",
+   "body": "The largest gap on this site was that none of the twenty-nine guides mentioned AI at all. There is now a guide for chatbots and assistants, covering wrong answers given confidently, what should never be typed into one, memory, connected toys, and the fact that sounding like a person is not the same as being one. Alongside it, the assistant that arrived with the device is now covered where it belongs: Apple Intelligence and Siri on the iPhone, iPad and Mac, Copilot on Windows, and Gemini on Android and Chromebook. Three other changes came out of the same review. Several guides now say which routes a restriction actually covers, because a block on an app is not a block on the same thing opened as a website, and Microsoft's own instructions for Copilot ask you to do both. Every guide now ends with at least one check a parent can watch succeed or fail, rather than a setting to confirm they set. And the accounts guide now explains what the date of birth decides, with conversation starters for contact, uncomfortable content, AI and asking for help, including the part most guidance leaves out, which is saying out loud what you are not worried about."
+  },
   {
    "date": "2026-11-05",
    "kind": "site",
