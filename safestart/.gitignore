@@ -11,3 +11,5 @@ node_modules/
 *.jks
 *.p12
 android/
+# ...but not the Android guide page, which is part of the site and must ship.
+!/android/

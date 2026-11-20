@@ -1,6 +1,6 @@
 /* SafeStart service worker.
  *
- * Generated into /sw.js by scripts/build.js, which substitutes 1191f0537cfc
+ * Generated into /sw.js by scripts/build.js, which substitutes 9bb0c58b0949
  * with a hash of the template plus both JSON files. Edit this file, not the
  * built one.
  *
@@ -35,7 +35,7 @@
  * case, so the worker declines to have an opinion about them.
  */
 
-var VERSION = "1191f0537cfc";
+var VERSION = "9bb0c58b0949";
 var CACHE = "safestart-" + VERSION;
 
 /* Precached on install.

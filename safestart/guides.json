@@ -919,7 +919,8 @@
    "risks": [
     "Snap Map can broadcast their exact location to a wide friends list",
     "Messages disappear, so evidence of harassment disappears too",
-    "Quick Add surfaces strangers as suggested friends"
+    "Quick Add surfaces strangers as suggested friends",
+    "My AI, the chatbot built into the app, is on every account by default, and children treat it like a friend because it answers like one."
    ],
    "beforeYouStart": [
     "You need your own Snapchat account, and you need to be friends with your child on it before Family Center will work.",
@@ -1005,6 +1006,21 @@
      "heldBy": "child"
     },
     {
+     "id": "myai",
+     "title": "Turn off My AI, and know what that does not cover",
+     "why": "Snapchat puts an AI chatbot called My AI in every account, and it is there by default whether anyone asked for it or not. It answers like a friend and it keeps what it is told, which is the part worth caring about: children tell it things they would not tell a stranger, because it does not feel like one. Family Center is the only way to switch it off without paying.",
+     "path": "Family Center → [your child] → My AI",
+     "do": [
+      "Open Family Center and select your child.",
+      "Turn on the setting that stops My AI replying to them.",
+      "Clear what it already holds from their own settings, under Privacy Controls, then Clear Data, then Clear My AI Data."
+     ],
+     "result": "My AI stops replying to them, though it stays sitting in their chat list.",
+     "note": "Two things this does not do. It does not take My AI out of the chat list, because only a paid subscription can unpin it, so it stays visible even switched off. And Family Center never shows you what was said to it, so there is no history to read either way. It also depends on the link holding: either of you can unlink Family Center, and this setting goes with it.",
+     "heldBy": "shared",
+     "mins": 2
+    },
+    {
      "id": "screenshots",
      "title": "Talk about the disappearing part",
      "why": "Children often believe a snap is gone forever. It isn’t. Anyone can screenshot or photograph the screen with another phone.",
@@ -1021,7 +1037,8 @@
     "Contact Me set to Friends",
     "Quick Add off",
     "Sensitive content restricted",
-    "They know how to screenshot and report"
+    "They know how to screenshot and report",
+    "My AI switched off in Family Center"
    ],
    "talkAboutIt": [
     "Ask them to show you their Snap Map and who can see them.",
@@ -1799,7 +1816,8 @@
    ],
    "beforeYouStart": [
     "Set up Family Sharing first and add your child’s Apple Account to your family group. Screen Time is far weaker without it.",
-    "Choose a Screen Time passcode that is not the phone’s unlock code and that your child doesn’t know."
+    "Choose a Screen Time passcode that is not the phone’s unlock code and that your child doesn’t know.",
+    "If the Screen Time settings do not look like these, check whether it is offering you an upgrade. Apple's newer parental controls only appear once Screen Time itself has been upgraded."
    ],
    "steps": [
     {
@@ -1838,7 +1856,7 @@
      "id": "restrictions",
      "title": "Turn on Content & Privacy Restrictions",
      "why": "This is the master switch that unlocks everything else.",
-     "path": "Settings → Screen Time → [your child] → Content & Privacy Restrictions",
+     "path": "Settings → Family → [your child] → Content & Privacy Restrictions. On older software this sits at Settings → Screen Time → [your child] → Content & Privacy Restrictions.",
      "do": [
       "Open Content & Privacy Restrictions.",
       "Enter your Screen Time passcode.",
@@ -1855,7 +1873,7 @@
      "do": [
       "Set iTunes & App Store Purchases according to the ages below. This is the one that also covers redownloads.",
       "Set In-app Purchases to Don't Allow.",
-      "Then turn on Ask to Buy in Family Sharing, so new downloads come to your phone as a request."
+      "Then turn on Ask to Buy, so new downloads come to your phone as a request. It now sits under Settings → Family → [your child] → Apps & Websites → Restrictions → Ask to Buy, and on older software it is in Family Sharing."
      ],
      "recommended": {
       "0-6": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
@@ -1897,7 +1915,7 @@
      "do": [
       "Turn on Contacts in iCloud on their device first, or the setting has nothing to work from.",
       "Set who can reach them during normal use to the level below.",
-      "Set the level for when the device is paused or in downtime, which can be narrowed further to specific people.",
+      "Set the level for when the device is paused or unavailable, which can be narrowed further to specific people.",
       "Turn on managing their contacts if you want new numbers to come to you first. They have to approve that request from their own device before it starts working."
      ],
      "result": "Calls, FaceTime and messages from anyone outside the list do not get through, in either direction.",
@@ -1921,18 +1939,18 @@
      ],
      "heldBy": "parent",
      "mins": 3,
-     "confidence": "medium",
+     "confidence": "high",
      "bullying": "These limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying often comes from someone who is."
     },
     {
      "id": "downtime",
-     "title": "Set Downtime and App Limits",
+     "title": "Set a schedule and time limits",
      "why": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.",
-     "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
+     "path": "Settings → Family → [your child] → Screen Time Schedule and Time Allowances. On older software these are called Downtime and App Limits, under Settings → Screen Time → [your child].",
      "do": [
-      "Set Downtime to cover overnight. School nights first, if you want an easier start.",
-      "Add App Limits for the categories that run away with time, usually Social and Games.",
-      "Choose which apps stay available during Downtime under Always Allowed (phone and messages to you, at minimum)."
+      "Set a schedule to cover overnight. School nights first, if you want an easier start. On older software this is Downtime.",
+      "Add limits for the categories that run away with time, usually Social and Games. On older software these are App Limits.",
+      "Choose what stays available whatever the schedule says, under Always Allowed. Phone and messages to you, at minimum."
      ],
      "recommended": {
       "0-6": "Downtime from 7pm, Social and Games limited to 45 min",
@@ -1964,7 +1982,7 @@
     "Content & Privacy Restrictions on",
     "You tried to install a free app on their device and the request arrived on your phone",
     "Web content filtered",
-    "Downtime covering overnight",
+    "A schedule covers overnight",
     "Privacy changes locked",
     "You rang their device from a number that is not in their contacts, and it did not ring through"
    ],
@@ -2018,7 +2036,8 @@
    ],
    "beforeYouStart": [
     "If the iPad is shared, decide whether it’s your child’s device (set it up under their Apple Account) or a family device (set restrictions on the account it uses).",
-    "Set up Family Sharing first and pick a Screen Time passcode your child doesn’t know."
+    "Set up Family Sharing first and pick a Screen Time passcode your child doesn’t know.",
+    "If the Screen Time settings do not look like these, check whether it is offering you an upgrade. Apple's newer parental controls only appear once Screen Time itself has been upgraded."
    ],
    "steps": [
     {
@@ -2056,7 +2075,7 @@
      "id": "restrictions",
      "title": "Turn on Content & Privacy Restrictions",
      "why": "The master switch for content ratings, web filtering and purchases.",
-     "path": "Settings → Screen Time → [your child] → Content & Privacy Restrictions",
+     "path": "Settings → Family → [your child] → Content & Privacy Restrictions. On older software this sits at Settings → Screen Time → [your child] → Content & Privacy Restrictions.",
      "do": [
       "Open Content & Privacy Restrictions and enter your passcode.",
       "Toggle it on."
@@ -2072,7 +2091,7 @@
      "do": [
       "Set iTunes & App Store Purchases according to the ages below. This is the one that also covers redownloads.",
       "Set In-app Purchases to Don't Allow.",
-      "Then turn on Ask to Buy in Family Sharing, so new downloads come to your phone as a request."
+      "Then turn on Ask to Buy, so new downloads come to your phone as a request. It now sits under Settings → Family → [your child] → Apps & Websites → Restrictions → Ask to Buy, and on older software it is in Family Sharing."
      ],
      "recommended": {
       "0-6": "Installing apps: Don’t Allow. In-app purchases: Don’t Allow.",
@@ -2114,7 +2133,7 @@
      "do": [
       "Turn on Contacts in iCloud on their device first, or the setting has nothing to work from.",
       "Set who can reach them during normal use to the level below.",
-      "Set the level for when the device is paused or in downtime, which can be narrowed further to specific people.",
+      "Set the level for when the device is paused or unavailable, which can be narrowed further to specific people.",
       "Turn on managing their contacts if you want new numbers to come to you first. They have to approve that request from their own device before it starts working."
      ],
      "result": "Calls, FaceTime and messages from anyone outside the list do not get through, in either direction.",
@@ -2138,17 +2157,17 @@
      ],
      "heldBy": "parent",
      "mins": 3,
-     "confidence": "medium",
+     "confidence": "high",
      "bullying": "These limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying often comes from someone who is."
     },
     {
      "id": "downtime",
-     "title": "Set Downtime and App Limits",
+     "title": "Set a schedule and time limits",
      "why": "iPads get used for hours without anyone noticing, and limits create a natural stop. During downtime only phone calls and the apps you put on the Always Allowed list stay available, so set that list first. On an iPad it usually wants to include whatever they use for homework.",
-     "path": "Settings → Screen Time → [your child] → Downtime / App Limits",
+     "path": "Settings → Family → [your child] → Screen Time Schedule and Time Allowances. On older software these are called Downtime and App Limits, under Settings → Screen Time → [your child].",
      "do": [
-      "Set Downtime to cover the evening and overnight.",
-      "Add App Limits for video and games.",
+      "Set a schedule to cover the evening and overnight. On older software this is Downtime.",
+      "Add limits for video and games. On older software these are App Limits.",
       "Use Always Allowed for anything that should still work, like messages to you."
      ],
      "recommended": {
@@ -2168,7 +2187,7 @@
     "Content & Privacy Restrictions on",
     "You tried to install a free app on their iPad and the request arrived on your phone",
     "Web content filtered",
-    "Downtime and app limits set",
+    "Overnight schedule and time limits set",
     "You messaged or FaceTimed their iPad from an account that is not in their contacts, and it did not arrive"
    ],
    "talkAboutIt": [
@@ -2741,7 +2760,8 @@
    ],
    "beforeYouStart": [
     "Give your child their own user account on the Mac, signed in to their own Apple Account inside your Family Sharing group.",
-    "macOS menu names shift between versions. If a menu doesn’t match, check Apple’s official page linked below."
+    "macOS menu names shift between versions. If a menu doesn’t match, check Apple’s official page linked below.",
+    "If the Screen Time settings do not look like these, check whether it is offering you an upgrade. Apple's newer parental controls only appear once Screen Time itself has been upgraded."
    ],
    "steps": [
     {
@@ -2780,7 +2800,7 @@
      "id": "content",
      "title": "Set content and privacy restrictions",
      "why": "Covers web content, app ratings and store purchases.",
-     "path": "Screen Time → Content & Privacy",
+     "path": "System Settings → Family → [your child] → Content & Privacy Restrictions. On older software this sits at System Settings → Screen Time → Content & Privacy.",
      "do": [
       "Turn on Content & Privacy.",
       "Under Content Restrictions, set web content to Limit Adult Websites, or Only Approved Websites for younger children.",
@@ -2806,7 +2826,7 @@
      "do": [
       "Turn on Contacts in iCloud on their device first, or the setting has nothing to work from.",
       "Set who can reach them during normal use to the level below.",
-      "Set the level for when the device is paused or in downtime, which can be narrowed further to specific people.",
+      "Set the level for when the device is paused or unavailable, which can be narrowed further to specific people.",
       "Turn on managing their contacts if you want new numbers to come to you first. They have to approve that request from their own device before it starts working."
      ],
      "result": "Calls, FaceTime and messages from anyone outside the list do not get through, in either direction.",
@@ -2830,17 +2850,17 @@
      ],
      "heldBy": "parent",
      "mins": 3,
-     "confidence": "medium",
+     "confidence": "high",
      "bullying": "These limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying often comes from someone who is."
     },
     {
      "id": "downtime",
-     "title": "Set Downtime and App Limits",
+     "title": "Set a schedule and time limits",
      "why": "Homework on a laptop makes a blanket limit unrealistic, so limit the categories that actually run away.",
-     "path": "Screen Time → Downtime / App Limits",
+     "path": "System Settings → Family → [your child] → Screen Time Schedule and Time Allowances. On older software these are called Downtime and App Limits, under System Settings → Screen Time.",
      "do": [
-      "Set Downtime for the evening and overnight.",
-      "Add App Limits for Games and Social rather than everything.",
+      "Set a schedule for the evening and overnight. On older software this is Downtime.",
+      "Add limits for Games and Social rather than everything. On older software these are App Limits.",
       "Add anything they need for schoolwork to Always Allowed."
      ],
      "mins": 3,
@@ -2853,7 +2873,7 @@
     "Screen Time locked with a passcode",
     "Web content filtered",
     "Purchases require a password",
-    "Downtime and category limits set",
+    "Overnight schedule and category limits set",
     "You messaged or FaceTimed their Mac from an account that is not in their contacts, and it did not arrive"
    ],
    "talkAboutIt": [
@@ -4777,13 +4797,13 @@
    "steps": [
     {
      "id": "limits",
-     "title": "Set Communication Limits",
+     "title": "Set Allowed Contacts",
      "why": "This is the real control here, and unlike most filters it blocks rather than warns. Apple's wording: if someone blocked by your limits tries to call or message, their communication will not go through, and it works in both directions.",
-     "path": "Settings → Screen Time → [your child] → Communication Limits",
+     "path": "Settings → Family → [your child] → Allowed Contacts. On older software this is called Communication Limits, under Settings → Screen Time → [your child].",
      "do": [
       "Turn on Contacts in iCloud first, or the setting has nothing to work from.",
       "Set During Screen Time to the level below.",
-      "Set During Downtime, which can be narrowed further to specific contacts."
+      "Set the level for when the device is paused or unavailable, which can be narrowed further to specific contacts."
      ],
      "recommended": {
       "0-6": "Contacts Only, and Specific Contacts during downtime",
@@ -4867,7 +4887,7 @@
     }
    ],
    "checklist": [
-    "Contacts in iCloud on, and Communication Limits set",
+    "Contacts in iCloud on, and Allowed Contacts set",
     "Communication Safety confirmed on",
     "Screen Unknown Senders on",
     "You know Communication Safety will not notify you"
@@ -5111,11 +5131,11 @@
      "id": "contacts",
      "title": "Choose who can reach them",
      "why": "The watch's address book is a list you pick from your own contacts, not theirs, which is a genuinely good design. The limits themselves are the same Screen Time controls as on an iPhone.",
-     "path": "Screen Time → [your child] → Communication Limits",
+     "path": "Settings → Family → [your child] → Allowed Contacts. On older software this is called Communication Limits, in Screen Time.",
      "do": [
       "During setup, pick the trusted people to share to the watch from your own Contacts.",
-      "Then open Communication Limits in Screen Time and set the level below.",
-      "Set During Downtime separately if you want a shorter list overnight."
+      "Then open Allowed Contacts and set the level below. On older software this is Communication Limits in Screen Time.",
+      "Set the paused or unavailable level separately if you want a shorter list overnight."
      ],
      "recommended": {
       "0-6": "Contacts Only, and Specific Contacts during downtime",
@@ -5207,7 +5227,7 @@
     "Carrier confirmed as supporting Apple Watch For Your Kids",
     "Paired to the phone that will actually manage it",
     "Ask to Buy on",
-    "Trusted contacts chosen and Communication Limits set",
+    "Trusted contacts chosen and Allowed Contacts set",
     "Schooltime scheduled",
     "Find My on, emergency contacts added",
     "Screen Time passcode set, and different from the watch passcode",
