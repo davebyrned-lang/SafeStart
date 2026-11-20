@@ -506,7 +506,7 @@
    ],
    "checklist": [
     "Parent PIN set and known only to you",
-    "Content maturity set for their age",
+    "You opened their account and tried a game above the level you set, and it would not open",
     "Chat restricted to friends, or off",
     "Monthly spending capped",
     "Daily time limit set",
@@ -873,7 +873,7 @@
    "checklist": [
     "Birthday on the account is correct",
     "Supervision linked",
-    "Account private",
+    "You opened their profile in a browser while signed out, and their posts were not visible",
     "DMs limited to people they follow",
     "Hidden Words on",
     "Sleep Mode on",
@@ -1890,6 +1890,41 @@
      "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
+     "id": "contacts",
+     "title": "Control who can contact them",
+     "why": "Messages and FaceTime are on this phone with no minimum age, so until you set this, anyone who has their number or their Apple Account email can start a conversation. Worth being straight about what it is and is not: no parental control on either platform lets you read your child's messages. What you can do is decide who is able to reach them in the first place, which is the part that prevents harm rather than finding out about it afterwards.",
+     "path": "Settings → Family → [your child] → Allowed Contacts. On older software this sits at Settings → Screen Time → [your child] → Communication Limits.",
+     "do": [
+      "Turn on Contacts in iCloud on their device first, or the setting has nothing to work from.",
+      "Set who can reach them during normal use to the level below.",
+      "Set the level for when the device is paused or in downtime, which can be narrowed further to specific people.",
+      "Turn on managing their contacts if you want new numbers to come to you first. They have to approve that request from their own device before it starts working."
+     ],
+     "result": "Calls, FaceTime and messages from anyone outside the list do not get through, in either direction.",
+     "recommended": {
+      "0-6": "Contacts Only, and Specific Contacts while paused",
+      "7-11": "Contacts Only",
+      "11-12": "Contacts Only",
+      "13-15": "Contacts & Groups with at Least One Contact",
+      "16-17": "Agree it together. Everyone is a reasonable landing point by this age"
+     },
+     "outcomeByAge": {
+      "0-6": "approved",
+      "7-11": "approved",
+      "11-12": "approved",
+      "13-15": "approved",
+      "16-17": "open"
+     },
+     "note": "Two limits worth knowing before you rely on this. It covers phone calls, FaceTime and Messages, and it works from the contacts saved in their iCloud, so if Contacts is switched off in iCloud the setting has nothing to work from and does nothing. And like the Android equivalent, it does not reach WhatsApp, Snapchat, Discord or anything else they install, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides. Emergency numbers your carrier recognises always get through, whatever you set.",
+     "provides": [
+      "apple-comms"
+     ],
+     "heldBy": "parent",
+     "mins": 3,
+     "confidence": "medium",
+     "bullying": "These limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying often comes from someone who is."
+    },
+    {
      "id": "downtime",
      "title": "Set Downtime and App Limits",
      "why": "Downtime is the one that protects sleep, which is the change most families actually feel. It does not cut them off: Apple's own wording is that during downtime only phone calls and the apps you allow are available. Build the Always Allowed list before you switch it on, so the first night is not an argument about Messages.",
@@ -1917,7 +1952,7 @@
      "do": [
       "Open Location Services and set it to Don’t Allow Changes after you’ve set it how you want.",
       "Do the same for Contacts and Photos.",
-      "Turn on Communication Limits so contact during Downtime is restricted to known contacts."
+      "Leave Contacts set to Don't Allow Changes, so an app cannot ask for the address book later."
      ],
      "mins": 2,
      "heldBy": "parent"
@@ -1927,10 +1962,11 @@
     "Child added to Family Sharing",
     "Screen Time passcode set, and secret",
     "Content & Privacy Restrictions on",
-    "Ask to Buy on, in-app purchases off",
+    "You tried to install a free app on their device and the request arrived on your phone",
     "Web content filtered",
     "Downtime covering overnight",
-    "Privacy changes locked"
+    "Privacy changes locked",
+    "You rang their device from a number that is not in their contacts, and it did not ring through"
    ],
    "talkAboutIt": [
     "Tell them what you’ve set and why. Hidden controls get worked around; explained ones usually don’t.",
@@ -2071,6 +2107,41 @@
      "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
+     "id": "contacts",
+     "title": "Control who can contact them",
+     "why": "The step most parents do not know exists on an iPad, because it sounds like a phone setting. Messages and FaceTime are both here, with no minimum age, so until you set this anyone holding their Apple Account email can start a conversation. Worth being straight about what it is and is not: no parental control on either platform lets you read your child's messages. What you can do is decide who is able to reach them in the first place, which is the part that prevents harm rather than finding out about it afterwards.",
+     "path": "Settings → Family → [your child] → Allowed Contacts. On older software this sits at Settings → Screen Time → [your child] → Communication Limits.",
+     "do": [
+      "Turn on Contacts in iCloud on their device first, or the setting has nothing to work from.",
+      "Set who can reach them during normal use to the level below.",
+      "Set the level for when the device is paused or in downtime, which can be narrowed further to specific people.",
+      "Turn on managing their contacts if you want new numbers to come to you first. They have to approve that request from their own device before it starts working."
+     ],
+     "result": "Calls, FaceTime and messages from anyone outside the list do not get through, in either direction.",
+     "recommended": {
+      "0-6": "Contacts Only, and Specific Contacts while paused",
+      "7-11": "Contacts Only",
+      "11-12": "Contacts Only",
+      "13-15": "Contacts & Groups with at Least One Contact",
+      "16-17": "Agree it together. Everyone is a reasonable landing point by this age"
+     },
+     "outcomeByAge": {
+      "0-6": "approved",
+      "7-11": "approved",
+      "11-12": "approved",
+      "13-15": "approved",
+      "16-17": "open"
+     },
+     "note": "Two limits worth knowing before you rely on this. It covers phone calls, FaceTime and Messages, and it works from the contacts saved in their iCloud, so if Contacts is switched off in iCloud the setting has nothing to work from and does nothing. And like the Android equivalent, it does not reach WhatsApp, Snapchat, Discord or anything else they install, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides. Emergency numbers your carrier recognises always get through, whatever you set.",
+     "provides": [
+      "apple-comms"
+     ],
+     "heldBy": "parent",
+     "mins": 3,
+     "confidence": "medium",
+     "bullying": "These limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying often comes from someone who is."
+    },
+    {
      "id": "downtime",
      "title": "Set Downtime and App Limits",
      "why": "iPads get used for hours without anyone noticing, and limits create a natural stop. During downtime only phone calls and the apps you put on the Always Allowed list stay available, so set that list first. On an iPad it usually wants to include whatever they use for homework.",
@@ -2095,9 +2166,10 @@
     "iPad signed in to the child’s Apple Account",
     "Screen Time passcode set and secret",
     "Content & Privacy Restrictions on",
-    "Ask to Buy on, in-app purchases off",
+    "You tried to install a free app on their iPad and the request arrived on your phone",
     "Web content filtered",
-    "Downtime and app limits set"
+    "Downtime and app limits set",
+    "You messaged or FaceTimed their iPad from an account that is not in their contacts, and it did not arrive"
    ],
    "talkAboutIt": [
     "If the iPad is shared, agree who uses it when and for what.",
@@ -2214,7 +2286,7 @@
       "13-15": "approved",
       "16-17": "open"
      },
-     "note": "The limit worth knowing before you rely on this. Google says contact limitations only apply to communications through certain apps including Google Messages, Samsung Messages, and Google Dialer. WhatsApp, Snapchat, Discord and the rest are untouched by it, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides.",
+     "note": "The limit worth knowing before you rely on this. Google says contact limitations only apply to communications through certain apps including Google Messages, Samsung Messages, and Google Dialer. WhatsApp, Snapchat, Discord and the rest are untouched by it, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides. Anyone can still leave a voicemail on their number, whatever you set here. The call does not ring through, the voicemail still lands.",
      "heldBy": "parent",
      "mins": 3,
      "bullying": "Which is also why this helps less with bullying than it looks like it should. The apps it does not reach are often the ones where it happens."
@@ -2284,10 +2356,10 @@
    "checklist": [
     "Family Link supervision active",
     "Download approval on",
-    "Who can call and text them is set",
+    "You rang their phone from a number that is not on the list, and it did not ring through",
     "Play content ratings set",
     "SafeSearch on and locked",
-    "Chrome filtering set",
+    "You opened a site you had blocked on their device and saw the block page",
     "Daily limit and bedtime set",
     "YouTube content level set"
    ],
@@ -2368,7 +2440,7 @@
       "Follow the prompts to supervise their Google account. Samsung’s own wizard hands off to Google’s Family Link at this point.",
       "Work through the Android guide for the settings themselves, then come back here for the Samsung-specific steps."
      ],
-     "note": "Samsung says this needs One UI 2.0 or later. Samsung also says that if your child is using Samsung Kids, you get additional parental control settings on top of the usual ones.",
+     "note": "Samsung says this needs One UI 2.0 or later. Samsung also says that if your child is using Samsung Kids, you get additional parental control settings on top of the usual ones. The contacts step in the Android guide is the one that covers who can call and text them. It needs a recent version of Android, so if you cannot find it on a hand-me-down phone, that is why.",
      "mins": 3,
      "heldBy": "parent"
     },
@@ -2535,7 +2607,8 @@
    "risks": [
     "Web filtering only works in Microsoft Edge, so other browsers need blocking",
     "A local (non-Microsoft) account bypasses everything",
-    "Game downloads and in-game spending"
+    "Game downloads and in-game spending",
+    "These controls decide what gets installed and what gets opened, not who gets to talk to them. There is no setting here for who can message or call your child. That lives inside each app, so the apps they use need their own guides as well."
    ],
    "beforeYouStart": [
     "Your child needs their own child Microsoft account, signed in on the PC. If they use your account, none of this applies.",
@@ -2726,6 +2799,41 @@
      "note": "Apple renamed this one. If you are following older guidance that says Allowed Websites Only, Only Approved Websites is the same setting."
     },
     {
+     "id": "contacts",
+     "title": "Control who can contact them",
+     "why": "Messages and FaceTime are on a Mac as well, which is the part parents tend not to expect, and neither has a minimum age. Until you set this, anyone with their Apple Account email can start a conversation. Worth being straight about what it is and is not: no parental control on either platform lets you read your child's messages. What you can do is decide who is able to reach them in the first place, which is the part that prevents harm rather than finding out about it afterwards.",
+     "path": "System Settings → Family → [your child] → Allowed Contacts. On older software this sits at System Settings → Screen Time → [your child] → Communication Limits.",
+     "do": [
+      "Turn on Contacts in iCloud on their device first, or the setting has nothing to work from.",
+      "Set who can reach them during normal use to the level below.",
+      "Set the level for when the device is paused or in downtime, which can be narrowed further to specific people.",
+      "Turn on managing their contacts if you want new numbers to come to you first. They have to approve that request from their own device before it starts working."
+     ],
+     "result": "Calls, FaceTime and messages from anyone outside the list do not get through, in either direction.",
+     "recommended": {
+      "0-6": "Contacts Only, and Specific Contacts while paused",
+      "7-11": "Contacts Only",
+      "11-12": "Contacts Only",
+      "13-15": "Contacts & Groups with at Least One Contact",
+      "16-17": "Agree it together. Everyone is a reasonable landing point by this age"
+     },
+     "outcomeByAge": {
+      "0-6": "approved",
+      "7-11": "approved",
+      "11-12": "approved",
+      "13-15": "approved",
+      "16-17": "open"
+     },
+     "note": "Two limits worth knowing before you rely on this. It covers phone calls, FaceTime and Messages, and it works from the contacts saved in their iCloud, so if Contacts is switched off in iCloud the setting has nothing to work from and does nothing. And like the Android equivalent, it does not reach WhatsApp, Snapchat, Discord or anything else they install, so this locks the front door and leaves the side ones exactly as they were. Set those in their own guides. Emergency numbers your carrier recognises always get through, whatever you set.",
+     "provides": [
+      "apple-comms"
+     ],
+     "heldBy": "parent",
+     "mins": 3,
+     "confidence": "medium",
+     "bullying": "These limits genuinely block, which is rare. But they work on people who are not in their contacts, and bullying often comes from someone who is."
+    },
+    {
      "id": "downtime",
      "title": "Set Downtime and App Limits",
      "why": "Homework on a laptop makes a blanket limit unrealistic, so limit the categories that actually run away.",
@@ -2745,7 +2853,8 @@
     "Screen Time locked with a passcode",
     "Web content filtered",
     "Purchases require a password",
-    "Downtime and category limits set"
+    "Downtime and category limits set",
+    "You messaged or FaceTimed their Mac from an account that is not in their contacts, and it did not arrive"
    ],
    "talkAboutIt": [
     "Separate schoolwork from everything else so limits feel fair.",
@@ -2789,7 +2898,8 @@
    "risks": [
     "School-issued devices may already be managed, and your controls won’t apply",
     "Everything runs in the browser, so web filtering matters more than app controls",
-    "Extensions can change how sites behave"
+    "Extensions can change how sites behave",
+    "These controls decide what gets installed and what gets opened, not who gets to talk to them. There is no setting here for who can message or call your child. That lives inside each app, so the apps they use need their own guides as well."
    ],
    "beforeYouStart": [
     "If this is a school Chromebook, the school’s policies take priority and you may not be able to add supervision. Ask the school first.",
@@ -3364,7 +3474,8 @@
    "risks": [
     "Without a lock screen PIN your child simply switches to your profile, where nothing is filtered",
     "Amazon Kids+ is a content subscription, not the safety product. Every control here is free",
-    "Filtered browsing filters rather than blocks, and Alexa and pre-installed apps can lead out of the sandbox"
+    "Filtered browsing filters rather than blocks, and Alexa and pre-installed apps can lead out of the sandbox",
+    "These controls decide what gets installed and what gets opened, not who gets to talk to them. There is no setting here for who can message or call your child. That lives inside each app, so the apps they use need their own guides as well."
    ],
    "beforeYouStart": [
     "You'll set this up from your own Amazon account, so have your password to hand.",
@@ -3701,7 +3812,7 @@
    ],
    "checklist": [
     "Under 13: parent-managed account set up with a PIN only you know",
-    "Last seen, profile photo, About and Status limited to contacts",
+    "You looked at their profile from a number they have not saved, and the photo and Last seen were hidden",
     "Group adds limited to contacts",
     "Unknown callers silenced",
     "Live location not being shared",
