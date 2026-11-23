@@ -1,7 +1,47 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-23",
  "intro": "Parental control menus move constantly, so any guide site is either maintained or quietly wrong. This is the record of what we have changed and when, including the things we got wrong. It is published because a verification date you cannot check is just a claim.",
  "entries": [
+  {
+   "date": "2026-11-23",
+   "kind": "freshness-check",
+   "checked": 30,
+   "reverified": [
+    "tiktok",
+    "instagram",
+    "playstation",
+    "switch",
+    "whatsapp",
+    "netflix",
+    "primevideo",
+    "accounts",
+    "applewatch",
+    "aichat"
+   ],
+   "flagged": [
+    {
+     "guide": "firetablet",
+     "summary": [
+      "The official Parent Dashboard page still refers to this control as 'Adjust Age Filter', not 'Content Maturity Filter & Languages' as the guide states."
+     ]
+    },
+    {
+     "guide": "hbomax",
+     "summary": [
+      "The Parent Code setup URL now uses the www.hbomax.com domain, not play.hbomax.com as the guide states."
+     ]
+    }
+   ],
+   "unreadable": [
+    "fortnite",
+    "iphone",
+    "ipad",
+    "mac",
+    "twitch",
+    "disneyplus",
+    "imessage"
+   ]
+  },
   {
    "date": "2026-11-20",
    "kind": "correction",
